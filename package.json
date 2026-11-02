@@ -1,0 +1,18 @@
+{
+  "name": "red-tides-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test:engine": "vitest run tests/engine.test.ts",
+    "test:visual": "vitest run tests/visual.test.ts"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.2.2",
+    "vitest": "^3.2.4"
+  }
+}

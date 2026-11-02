@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "collectedAt": "2026-11-02",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "新玩法入门",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1555937493413_13",
+      "publishedAt": "2019-04-22",
+      "kind": "publisher",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S02",
+      "title": "全兵种职业",
+      "url": "https://www.taptap.cn/moment/15202039709566172",
+      "publishedAt": "2019-04-27",
+      "kind": "community",
+      "status": "previous-text-reviewed-revisit-failed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S03",
+      "title": "二维图表",
+      "url": "https://www.taptap.cn/moment/15202528882852517",
+      "publishedAt": null,
+      "kind": "community",
+      "status": "image-extraction-pending",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S04",
+      "title": "数据汇总",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measurement",
+      "status": "image-extraction-pending",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S05",
+      "title": "全英雄全连携评测",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "publishedAt": null,
+      "kind": "community",
+      "status": "partial-text-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S06",
+      "title": "棋子技能介绍",
+      "url": "https://www.9game.cn/cczzq/3157619.html",
+      "publishedAt": "2019-05-22",
+      "kind": "media",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S07",
+      "title": "画面与界面评测",
+      "url": "https://games.sina.cn/wm/2019-05-06/detail-ihvhiqax6883923.d.html",
+      "publishedAt": "2019-05-06",
+      "kind": "media",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S08",
+      "title": "yang qi917 作品集",
+      "url": "https://yangqi917.artstation.com/",
+      "publishedAt": null,
+      "kind": "artist",
+      "status": "index-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S09",
+      "title": "小白百科",
+      "url": "https://shouyou.gamersky.com/news/201904/1178359.shtml",
+      "publishedAt": null,
+      "kind": "media",
+      "status": "search-excerpt-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S10",
+      "title": "追三星攻略",
+      "url": "https://news.17173.com/z/zzq/content/01032020/233200783_1.shtml",
+      "publishedAt": "2020-01-03",
+      "kind": "media",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S11",
+      "title": "双人模式",
+      "url": "https://shouyou.gamersky.com/news/201906/1191090_2.shtml?tag=wap",
+      "publishedAt": null,
+      "kind": "media",
+      "status": "search-excerpt-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    },
+    {
+      "id": "S12",
+      "title": "攻略导航",
+      "url": "https://www.taptap.cn/moment/15204308547013990?group_id=42979",
+      "publishedAt": null,
+      "kind": "community",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-02",
+      "targetVersion": null
+    }
+  ]
+}
