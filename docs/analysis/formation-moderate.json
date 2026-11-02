@@ -1,0 +1,2480 @@
+{
+  "label": "moderate",
+  "overrides": {
+    "hp": 300,
+    "attack": 0.25
+  },
+  "sources": {
+    "src/engine/ai.ts": "13853a46820cba41f841f1b792ee5c040ae9e8da70e261e58be7b08f2a39bb14",
+    "src/engine/battle.ts": "e915eb824e051795b50a9fe5ca94552bdb4df9ae537b57cdf232a7b86d9730cb",
+    "src/engine/abilities.ts": "fd03431c85d3b7047defa3f5897d4fc23da1cd8aa6f8ac5661c57488b2effd06",
+    "src/data/units.ts": "1b01e54648574e4828b97082c619514118520ffdbf4d0d4e6d74156c247f3a3e",
+    "src/data/traits.ts": "49aeea49efe6b83789f2d338e94a1528c24fefbe4b1c8de02c5302ab9b28676c",
+    "src/data/skills.ts": "981bdb3c330a01ba463adaab0827c708046bbe49214bca70e6c51a0ab400fae8",
+    "src/data/encounters.ts": "8ad6783d50d1cdbe90de3cc95ec068e34921383b2299aa7337738dab962fd44b",
+    "scripts/formation-survey.ts": "b72f651ed8731598b5a11be6bf02ec53f3eb6c7fb1653e8fb83ad0cb745577c6"
+  },
+  "scope": "Six slots, all two-star, 45 gold of copies per army, no items; swap attacker/defender; synthetic combat fixtures, not campaign win rates",
+  "armies": {
+    "射手防线": [
+      "guard",
+      "infantry",
+      "sniper",
+      "chariot",
+      "cannon",
+      "titan"
+    ],
+    "突袭猎杀": [
+      "panda",
+      "wolf",
+      "shadowblade",
+      "lion",
+      "pangolin",
+      "monk"
+    ],
+    "荒原兽群": [
+      "pangolin",
+      "lion",
+      "bull",
+      "turtle",
+      "wolf",
+      "deer"
+    ],
+    "治疗支援": [
+      "fish",
+      "deer",
+      "dragonfly",
+      "guard",
+      "monk",
+      "titan"
+    ],
+    "范围轰击": [
+      "chariot",
+      "cannon",
+      "bull",
+      "master",
+      "guard",
+      "pangolin"
+    ],
+    "熊猫先锋": [
+      "panda",
+      "monk",
+      "master",
+      "guard",
+      "cavalry",
+      "turtle"
+    ]
+  },
+  "budgets": {
+    "射手防线": 45,
+    "突袭猎杀": 45,
+    "荒原兽群": 45,
+    "治疗支援": 45,
+    "范围轰击": 45,
+    "熊猫先锋": 45
+  },
+  "summary": {
+    "射手防线": {
+      "games": 40,
+      "wins": 35,
+      "draws": 0
+    },
+    "突袭猎杀": {
+      "games": 40,
+      "wins": 34,
+      "draws": 0
+    },
+    "荒原兽群": {
+      "games": 40,
+      "wins": 20,
+      "draws": 2
+    },
+    "治疗支援": {
+      "games": 40,
+      "wins": 15,
+      "draws": 3
+    },
+    "范围轰击": {
+      "games": 40,
+      "wins": 12,
+      "draws": 1
+    },
+    "熊猫先锋": {
+      "games": 40,
+      "wins": 0,
+      "draws": 2
+    }
+  },
+  "pivots": [
+    {
+      "attacker": "射手防线",
+      "defender": "范围轰击",
+      "defense": "spread",
+      "spread": 2,
+      "compact": 1
+    },
+    {
+      "attacker": "突袭猎杀",
+      "defender": "荒原兽群",
+      "defense": "compact",
+      "spread": 2,
+      "compact": 0
+    },
+    {
+      "attacker": "荒原兽群",
+      "defender": "突袭猎杀",
+      "defense": "compact",
+      "spread": 0,
+      "compact": 2
+    },
+    {
+      "attacker": "荒原兽群",
+      "defender": "治疗支援",
+      "defense": "spread",
+      "spread": 0.5,
+      "compact": 2
+    },
+    {
+      "attacker": "荒原兽群",
+      "defender": "治疗支援",
+      "defense": "compact",
+      "spread": 0.5,
+      "compact": 2
+    },
+    {
+      "attacker": "治疗支援",
+      "defender": "熊猫先锋",
+      "defense": "compact",
+      "spread": 1.5,
+      "compact": 2
+    },
+    {
+      "attacker": "范围轰击",
+      "defender": "射手防线",
+      "defense": "compact",
+      "spread": 1,
+      "compact": 0
+    },
+    {
+      "attacker": "范围轰击",
+      "defender": "荒原兽群",
+      "defense": "spread",
+      "spread": 0,
+      "compact": 1
+    },
+    {
+      "attacker": "范围轰击",
+      "defender": "荒原兽群",
+      "defense": "compact",
+      "spread": 0,
+      "compact": 1
+    },
+    {
+      "attacker": "范围轰击",
+      "defender": "治疗支援",
+      "defense": "spread",
+      "spread": 0,
+      "compact": 1
+    },
+    {
+      "attacker": "范围轰击",
+      "defender": "治疗支援",
+      "defense": "compact",
+      "spread": 0,
+      "compact": 1
+    },
+    {
+      "attacker": "范围轰击",
+      "defender": "熊猫先锋",
+      "defense": "compact",
+      "spread": 1.5,
+      "compact": 2
+    },
+    {
+      "attacker": "熊猫先锋",
+      "defender": "治疗支援",
+      "defense": "spread",
+      "spread": 0,
+      "compact": 0.5
+    },
+    {
+      "attacker": "熊猫先锋",
+      "defender": "范围轰击",
+      "defense": "spread",
+      "spread": 0,
+      "compact": 0.5
+    }
+  ],
+  "pve": [
+    {
+      "name": "射手防线",
+      "formation": "spread",
+      "round": 10,
+      "winner": 0,
+      "seconds": 5.75
+    },
+    {
+      "name": "射手防线",
+      "formation": "spread",
+      "round": 15,
+      "winner": 0,
+      "seconds": 5.5
+    },
+    {
+      "name": "射手防线",
+      "formation": "spread",
+      "round": 20,
+      "winner": 0,
+      "seconds": 12
+    },
+    {
+      "name": "射手防线",
+      "formation": "spread",
+      "round": 25,
+      "winner": 0,
+      "seconds": 9.75
+    },
+    {
+      "name": "射手防线",
+      "formation": "spread",
+      "round": 30,
+      "winner": 1,
+      "seconds": 10
+    },
+    {
+      "name": "射手防线",
+      "formation": "compact",
+      "round": 10,
+      "winner": 0,
+      "seconds": 5.75
+    },
+    {
+      "name": "射手防线",
+      "formation": "compact",
+      "round": 15,
+      "winner": 0,
+      "seconds": 5.25
+    },
+    {
+      "name": "射手防线",
+      "formation": "compact",
+      "round": 20,
+      "winner": 0,
+      "seconds": 12
+    },
+    {
+      "name": "射手防线",
+      "formation": "compact",
+      "round": 25,
+      "winner": 0,
+      "seconds": 11.5
+    },
+    {
+      "name": "射手防线",
+      "formation": "compact",
+      "round": 30,
+      "winner": 1,
+      "seconds": 6.5
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "spread",
+      "round": 10,
+      "winner": 0,
+      "seconds": 4
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "spread",
+      "round": 15,
+      "winner": 0,
+      "seconds": 3.75
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "spread",
+      "round": 20,
+      "winner": 0,
+      "seconds": 11.5
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "spread",
+      "round": 25,
+      "winner": 1,
+      "seconds": 16.25
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "spread",
+      "round": 30,
+      "winner": 1,
+      "seconds": 5.5
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "compact",
+      "round": 10,
+      "winner": 0,
+      "seconds": 3.25
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "compact",
+      "round": 15,
+      "winner": 0,
+      "seconds": 3.25
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "compact",
+      "round": 20,
+      "winner": 0,
+      "seconds": 16
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "compact",
+      "round": 25,
+      "winner": 1,
+      "seconds": 10.5
+    },
+    {
+      "name": "突袭猎杀",
+      "formation": "compact",
+      "round": 30,
+      "winner": 1,
+      "seconds": 5.5
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "spread",
+      "round": 10,
+      "winner": 0,
+      "seconds": 5.75
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "spread",
+      "round": 15,
+      "winner": 0,
+      "seconds": 7.25
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "spread",
+      "round": 20,
+      "winner": 0,
+      "seconds": 36.75
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "spread",
+      "round": 25,
+      "winner": 1,
+      "seconds": 22.25
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "spread",
+      "round": 30,
+      "winner": 1,
+      "seconds": 5.25
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "compact",
+      "round": 10,
+      "winner": 0,
+      "seconds": 5.75
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "compact",
+      "round": 15,
+      "winner": 0,
+      "seconds": 10
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "compact",
+      "round": 20,
+      "winner": 1,
+      "seconds": 25.25
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "compact",
+      "round": 25,
+      "winner": 1,
+      "seconds": 19.75
+    },
+    {
+      "name": "荒原兽群",
+      "formation": "compact",
+      "round": 30,
+      "winner": 1,
+      "seconds": 7
+    },
+    {
+      "name": "治疗支援",
+      "formation": "spread",
+      "round": 10,
+      "winner": 0,
+      "seconds": 9.75
+    },
+    {
+      "name": "治疗支援",
+      "formation": "spread",
+      "round": 15,
+      "winner": 1,
+      "seconds": 16.75
+    },
+    {
+      "name": "治疗支援",
+      "formation": "spread",
+      "round": 20,
+      "winner": 0,
+      "seconds": 29.75
+    },
+    {
+      "name": "治疗支援",
+      "formation": "spread",
+      "round": 25,
+      "winner": 1,
+      "seconds": 22.75
+    },
+    {
+      "name": "治疗支援",
+      "formation": "spread",
+      "round": 30,
+      "winner": 1,
+      "seconds": 9.75
+    },
+    {
+      "name": "治疗支援",
+      "formation": "compact",
+      "round": 10,
+      "winner": 0,
+      "seconds": 9.75
+    },
+    {
+      "name": "治疗支援",
+      "formation": "compact",
+      "round": 15,
+      "winner": 1,
+      "seconds": 15.25
+    },
+    {
+      "name": "治疗支援",
+      "formation": "compact",
+      "round": 20,
+      "winner": 0,
+      "seconds": 37.25
+    },
+    {
+      "name": "治疗支援",
+      "formation": "compact",
+      "round": 25,
+      "winner": 1,
+      "seconds": 20.75
+    },
+    {
+      "name": "治疗支援",
+      "formation": "compact",
+      "round": 30,
+      "winner": 1,
+      "seconds": 8.75
+    },
+    {
+      "name": "范围轰击",
+      "formation": "spread",
+      "round": 10,
+      "winner": 0,
+      "seconds": 6.75
+    },
+    {
+      "name": "范围轰击",
+      "formation": "spread",
+      "round": 15,
+      "winner": 0,
+      "seconds": 9.5
+    },
+    {
+      "name": "范围轰击",
+      "formation": "spread",
+      "round": 20,
+      "winner": 1,
+      "seconds": 24.5
+    },
+    {
+      "name": "范围轰击",
+      "formation": "spread",
+      "round": 25,
+      "winner": 1,
+      "seconds": 16.75
+    },
+    {
+      "name": "范围轰击",
+      "formation": "spread",
+      "round": 30,
+      "winner": 1,
+      "seconds": 7.25
+    },
+    {
+      "name": "范围轰击",
+      "formation": "compact",
+      "round": 10,
+      "winner": 0,
+      "seconds": 6.25
+    },
+    {
+      "name": "范围轰击",
+      "formation": "compact",
+      "round": 15,
+      "winner": 0,
+      "seconds": 9.75
+    },
+    {
+      "name": "范围轰击",
+      "formation": "compact",
+      "round": 20,
+      "winner": 0,
+      "seconds": 17.75
+    },
+    {
+      "name": "范围轰击",
+      "formation": "compact",
+      "round": 25,
+      "winner": 1,
+      "seconds": 17.5
+    },
+    {
+      "name": "范围轰击",
+      "formation": "compact",
+      "round": 30,
+      "winner": 1,
+      "seconds": 7
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "spread",
+      "round": 10,
+      "winner": 0,
+      "seconds": 9.5
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "spread",
+      "round": 15,
+      "winner": 1,
+      "seconds": 11.25
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "spread",
+      "round": 20,
+      "winner": 1,
+      "seconds": 29
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "spread",
+      "round": 25,
+      "winner": 1,
+      "seconds": 11.75
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "spread",
+      "round": 30,
+      "winner": 1,
+      "seconds": 6
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "compact",
+      "round": 10,
+      "winner": 0,
+      "seconds": 12.25
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "compact",
+      "round": 15,
+      "winner": 1,
+      "seconds": 24.25
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "compact",
+      "round": 20,
+      "winner": 0,
+      "seconds": 32.5
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "compact",
+      "round": 25,
+      "winner": 1,
+      "seconds": 14.75
+    },
+    {
+      "name": "熊猫先锋",
+      "formation": "compact",
+      "round": 30,
+      "winner": 1,
+      "seconds": 8.25
+    }
+  ],
+  "duels": [
+    {
+      "a": "射手防线",
+      "b": "射手防线",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 14.75,
+      "remainingA": 1,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "射手防线",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 14.75,
+      "remainingA": 0,
+      "remainingB": 1
+    },
+    {
+      "a": "射手防线",
+      "b": "射手防线",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 10,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "射手防线",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 16,
+      "remainingA": 0,
+      "remainingB": 1
+    },
+    {
+      "a": "射手防线",
+      "b": "射手防线",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 16,
+      "remainingA": 1,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "射手防线",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 10,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "射手防线",
+      "b": "射手防线",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 12.25,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "射手防线",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 12.25,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "射手防线",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 15.25,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "射手防线",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 15.25,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 18.25,
+      "remainingA": 2,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 25.75,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "射手防线",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 11.5,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 22.5,
+      "remainingA": 0,
+      "remainingB": 2
+    },
+    {
+      "a": "射手防线",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 17,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "射手防线",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 9.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 17.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 16.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 9,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 9.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 14.75,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 10.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 18,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 14,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "治疗支援",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 17.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "治疗支援",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 17,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "治疗支援",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 18.5,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "治疗支援",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 12.5,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "治疗支援",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 16,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "治疗支援",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 15.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "治疗支援",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 15,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "治疗支援",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 17.75,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 10.75,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 11.5,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 10.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 10,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 17.25,
+      "remainingA": 0,
+      "remainingB": 1
+    },
+    {
+      "a": "射手防线",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 12.5,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 11.5,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 11.75,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 11.25,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 14,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 15.25,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 13.75,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 13.25,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 11.25,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 11.5,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "射手防线",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 14.5,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 8.25,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 12,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 14.5,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 10.75,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 12.75,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 11.5,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 9,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 14.75,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 10,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 16,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 15.5,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 10,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 9.5,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 9.5,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 18.5,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 16.5,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 7.25,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 7.75,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 11.25,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 9.75,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 7.25,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 7.75,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 11,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "突袭猎杀",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 11.25,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "荒原兽群",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 32.5,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "荒原兽群",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 32.5,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "荒原兽群",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 24,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "荒原兽群",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 2,
+      "remainingB": 3
+    },
+    {
+      "a": "荒原兽群",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 3,
+      "remainingB": 2
+    },
+    {
+      "a": "荒原兽群",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 24,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "荒原兽群",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 21.25,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "荒原兽群",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 21.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 13.25,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "治疗支援",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 13.25,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 11.25,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "治疗支援",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 18.75,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "治疗支援",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 13.5,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 16.25,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "治疗支援",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 14,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 16.5,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "治疗支援",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 37.5,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 4,
+      "remainingB": 2
+    },
+    {
+      "a": "治疗支援",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 31.25,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "治疗支援",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 25.25,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 29.25,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 5,
+      "remainingB": 1
+    },
+    {
+      "a": "治疗支援",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 20.75,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "治疗支援",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 25.25,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "治疗支援",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 4,
+      "remainingB": 3
+    },
+    {
+      "a": "治疗支援",
+      "b": "治疗支援",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 3,
+      "remainingB": 4
+    },
+    {
+      "a": "治疗支援",
+      "b": "治疗支援",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 5,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "治疗支援",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 33.75,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "治疗支援",
+      "b": "治疗支援",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 33.75,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "治疗支援",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 5,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "治疗支援",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 5,
+      "remainingB": 6
+    },
+    {
+      "a": "治疗支援",
+      "b": "治疗支援",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 6,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 27,
+      "remainingA": 2,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 26.5,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 28,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 19,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "治疗支援",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 33.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 30.75,
+      "remainingA": 2,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 24,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 24,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "治疗支援",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 25.25,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 29.75,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 4,
+      "remainingB": 3
+    },
+    {
+      "a": "治疗支援",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 35.5,
+      "remainingA": 5,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 34.25,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 33.5,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 33.75,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "治疗支援",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 24,
+      "remainingA": 6,
+      "remainingB": 0
+    },
+    {
+      "a": "范围轰击",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 13.75,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "范围轰击",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 14.25,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "范围轰击",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 16.5,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "范围轰击",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 13.75,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "范围轰击",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 30.25,
+      "remainingA": 3,
+      "remainingB": 0
+    },
+    {
+      "a": "范围轰击",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 22.5,
+      "remainingA": 0,
+      "remainingB": 2
+    },
+    {
+      "a": "范围轰击",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 14.5,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "范围轰击",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "a",
+      "seconds": 23,
+      "remainingA": 1,
+      "remainingB": 0
+    },
+    {
+      "a": "范围轰击",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 20,
+      "remainingA": 0,
+      "remainingB": 1
+    },
+    {
+      "a": "范围轰击",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "a",
+      "seconds": 20,
+      "remainingA": 1,
+      "remainingB": 0
+    },
+    {
+      "a": "范围轰击",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 17.5,
+      "remainingA": 1,
+      "remainingB": 0
+    },
+    {
+      "a": "范围轰击",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 15.25,
+      "remainingA": 0,
+      "remainingB": 1
+    },
+    {
+      "a": "范围轰击",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 15.25,
+      "remainingA": 1,
+      "remainingB": 0
+    },
+    {
+      "a": "范围轰击",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 17.5,
+      "remainingA": 0,
+      "remainingB": 1
+    },
+    {
+      "a": "范围轰击",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "a",
+      "seconds": 17.75,
+      "remainingA": 2,
+      "remainingB": 0
+    },
+    {
+      "a": "范围轰击",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 17.75,
+      "remainingA": 0,
+      "remainingB": 2
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 10,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 9.5,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 10,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "突袭猎杀",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 11.75,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 9,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 14.75,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 10.5,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "突袭猎杀",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 20.25,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 23.25,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 17.75,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 16.5,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "荒原兽群",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 14.5,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 19.75,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 17.5,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 16.25,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "荒原兽群",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 18.5,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "b",
+      "seconds": 17,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 23,
+      "remainingA": 0,
+      "remainingB": 3
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 16.25,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "范围轰击",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 16.75,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 3,
+      "remainingB": 2
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 23,
+      "remainingA": 0,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": "b",
+      "seconds": 15,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "范围轰击",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": "b",
+      "seconds": 17.25,
+      "remainingA": 0,
+      "remainingB": 6
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 0,
+      "winner": "a",
+      "seconds": 38,
+      "remainingA": 4,
+      "remainingB": 0
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "spread",
+      "side": 1,
+      "winner": "b",
+      "seconds": 38,
+      "remainingA": 0,
+      "remainingB": 4
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 3,
+      "remainingB": 4
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "熊猫先锋",
+      "formationA": "spread",
+      "formationB": "compact",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 3,
+      "remainingB": 3
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 3,
+      "remainingB": 3
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "spread",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 4,
+      "remainingB": 3
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 0,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 2,
+      "remainingB": 5
+    },
+    {
+      "a": "熊猫先锋",
+      "b": "熊猫先锋",
+      "formationA": "compact",
+      "formationB": "compact",
+      "side": 1,
+      "winner": null,
+      "seconds": 40,
+      "remainingA": 5,
+      "remainingB": 2
+    }
+  ]
+}

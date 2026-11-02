@@ -1,16 +1,24 @@
+import { prepareBot } from "./ai";
+import { encounterFor, encounterArmy } from "../data/encounters";
+import { rewardChoices, itemScore } from "./equipment";
 import { COPIES, ODDS, RULES, UNIT, UNITS, XP } from "../data/units";
 import { random } from "./random";
-import { simulate } from "./battle";
+import { simulate, simulateOutcome } from "./battle";
 import type { Game, Player, Piece, Battle } from "./types";
 export function createGame(seed = 20261102): Game {
   const g: Game = {
     seed: seed >>> 0,
+    combatVersion: "signature",
+    difficulty: "standard",
     nextUid: 1,
     round: 1,
     phase: "prepare",
     players: [],
     pool: Object.fromEntries(UNITS.map((u) => [u.id, COPIES[u.cost]])),
     message: "招募棋子，点击备战席棋子，再点击己方棋格部署。",
+    history: [],
+    encountersFromRound: 1,
+    reward: null,
   };
   const names = [
     "你 · 指挥官",
@@ -33,6 +41,7 @@ export function createGame(seed = 20261102): Game {
     pieces: [],
     shop: [],
     locked: false,
+    inventory: [],
   }));
   for (const p of g.players) roll(g, p, false);
   return g;
@@ -74,6 +83,9 @@ export function merge(p: Player): void {
             a.uid - b.uid,
         );
         same[0].star++;
+        const equipment = same.slice(0, 3).flatMap((x) => x.items ?? []);
+        same[0].items = equipment.slice(0, 3);
+        p.inventory.push(...equipment.slice(3));
         const removed = new Set([same[1].uid, same[2].uid]);
         p.pieces = p.pieces.filter((x) => !removed.has(x.uid));
       }
@@ -136,6 +148,7 @@ export function sell(g: Game, p: Player, uid: number): boolean {
   const copies = 3 ** (piece.star - 1);
   p.gold += UNIT[piece.defId].cost * copies;
   g.pool[piece.defId] += copies;
+  p.inventory.push(...(piece.items ?? []));
   p.pieces = p.pieces.filter((x) => x.uid !== uid);
   return true;
 }
@@ -161,49 +174,14 @@ export function income(p: Player, won: boolean): number {
     Math.min(3, Math.floor(Math.abs(p.streak) / 3))
   );
 }
-function bot(g: Game, p: Player) {
-  if (p.level < Math.min(9, 3 + Math.floor(g.round / 3)) && p.gold >= 10)
-    buyXp(g, p);
-  for (let tries = 0; tries < 2; tries++) {
-    const indices = p.shop
-      .map((_, i) => i)
-      .sort((a, b) => {
-        const score = (i: number) => {
-          const id = p.shop[i];
-          return id
-            ? UNIT[id].cost + p.pieces.filter((x) => x.defId === id).length * 4
-            : 0;
-        };
-        return score(b) - score(a);
-      });
-    for (const i of indices) if (p.gold > 2) buy(g, p, i);
-    if (tries === 0 && p.gold > 14) roll(g, p);
-    else break;
-  }
-  const best = [...p.pieces]
-    .sort(
-      (a, b) =>
-        b.star * 5 + UNIT[b.defId].cost - a.star * 5 - UNIT[a.defId].cost,
-    )
-    .slice(0, p.level);
-  for (const x of p.pieces) x.position = null;
-  const used = new Set<number>();
-  for (const x of best) {
-    const ranged = UNIT[x.defId].range > 1;
-    const preferred = ranged
-      ? [58, 61, 56, 63, 57, 60, 59, 62, 48, 49]
-      : [35, 36, 34, 37, 33, 38, 32, 39, 43, 44];
-    const pos = preferred.find((n) => !used.has(n))!;
-    x.position = pos;
-    used.add(pos);
-  }
-  while (p.pieces.filter((x) => x.position === null).length > 6) {
-    const x = p.pieces.find((x) => x.position === null)!;
-    sell(g, p, x.uid);
-  }
-}
 export interface RoundResult {
-  opponent: Player;
+  round: number;
+  seed: number;
+  combatVersion: Game["combatVersion"];
+  left: Piece[];
+  right: Piece[];
+  opponent: Pick<Player, "id" | "name" | "pieces">;
+  kind: "pvp" | "pve";
   battle: Battle;
   outcomes: { playerId: number; won: boolean; damage: number }[];
 }
@@ -213,50 +191,103 @@ export function startRound(g: Game): RoundResult | null {
     !g.players[0].pieces.some((x) => x.position !== null)
   )
     return null;
-  for (const p of g.players.filter((p) => p.id !== 0 && p.hp > 0)) bot(g, p);
+  for (const p of g.players.filter((p) => p.id !== 0 && p.hp > 0))
+    prepareBot(g, p, { buy, sell, roll, buyXp });
+  g.phase = "battle";
+  return resumeRound(g);
+}
+/** Rebuild a saved battle without buying, rolling, or consuming random state again. */
+export function resumeRound(g: Game): RoundResult | null {
+  if (g.phase !== "battle") return null;
   const alive = g.players.filter((p) => p.hp > 0);
   const enemy = alive.filter((p) => p.id !== 0);
-  const opponent = enemy[(g.round - 1) % enemy.length];
+  const encounter = encounterFor(g);
+  const opponent = encounter
+    ? { id: -1, name: encounter.name, pieces: encounterArmy(encounter) }
+    : enemy[(g.round - 1) % enemy.length];
   if (!opponent) return null;
-  const battle = simulate(g.players[0].pieces, opponent.pieces);
+  const battle = simulate(
+    g.players[0].pieces,
+    opponent.pieces,
+    g.combatVersion,
+  );
   const outcomes: RoundResult["outcomes"] = [];
   // Each player defends independently; odd population needs no special bye/ghost state.
   for (const p of alive) {
     const other =
-      p.id === 0
+      encounter || p.id === 0
         ? opponent
         : alive[
             (alive.indexOf(p) + 1 + ((g.round - 1) % (alive.length - 1))) %
               alive.length
           ];
-    const b = p.id === 0 ? battle : simulate(p.pieces, other.pieces);
+    const b =
+      p.id === 0
+        ? battle
+        : simulateOutcome(p.pieces, other.pieces, g.combatVersion);
     outcomes.push({
       playerId: p.id,
       won: b.winner === 0,
       damage: b.winner === 0 ? 0 : b.damage,
     });
   }
-  g.phase = "battle";
-  return { opponent, battle, outcomes };
+  return {
+    round: g.round,
+    combatVersion: g.combatVersion,
+    kind: encounter ? "pve" : "pvp",
+    seed: g.seed,
+    left: structuredClone(
+      g.players[0].pieces.filter((p) => p.position !== null),
+    ),
+    right: structuredClone(opponent.pieces.filter((p) => p.position !== null)),
+    opponent,
+    battle,
+    outcomes,
+  };
 }
 export function settle(g: Game, result: RoundResult): void {
-  if (g.phase !== "battle") return;
+  if (
+    g.phase !== "battle" ||
+    result.round !== g.round ||
+    result.combatVersion !== g.combatVersion ||
+    result.seed !== g.seed ||
+    g.history.some((r) => r.round === g.round)
+  )
+    return;
+  const previousHp = g.players[0].hp,
+    previousGold = g.players[0].gold;
   for (const o of result.outcomes) {
     const p = g.players[o.playerId];
     p.hp = Math.max(0, p.hp - o.damage);
-    p.streak = o.won ? Math.max(0, p.streak) + 1 : Math.min(0, p.streak) - 1;
+    if (result.kind === "pvp")
+      p.streak = o.won ? Math.max(0, p.streak) + 1 : Math.min(0, p.streak) - 1;
     if (p.hp === 0) {
       p.eliminatedRound = g.round;
       for (const x of p.pieces) g.pool[x.defId] += 3 ** (x.star - 1);
       for (const id of p.shop) if (id) g.pool[id]++;
       p.shop = [];
       p.pieces = [];
+      p.inventory = [];
     } else {
-      p.gold += income(p, o.won);
+      p.gold += income(p, result.kind === "pvp" && o.won);
       addXp(p, 1);
     }
   }
   const won = result.battle.winner === 0;
+  g.history.push({
+    round: g.round,
+    combatVersion: g.combatVersion,
+    opponentId: result.opponent.id,
+    opponentName: result.opponent.name,
+    kind: result.kind,
+    winner: result.battle.winner,
+    damage: previousHp - g.players[0].hp,
+    income: g.players[0].gold - previousGold,
+    hp: g.players[0].hp,
+    gold: g.players[0].gold,
+    left: structuredClone(result.left),
+    right: structuredClone(result.right),
+  });
   g.message = won
     ? "防守成功。金币与经验已结算。"
     : result.battle.winner === null
@@ -268,10 +299,34 @@ export function settle(g: Game, result: RoundResult): void {
     g.round >= RULES.maxRounds
       ? "finished"
       : "result";
+  if (result.kind === "pve" && g.phase !== "finished") {
+    for (const outcome of result.outcomes) {
+      const p = g.players[outcome.playerId];
+      if (p.hp <= 0) continue;
+      const choices = rewardChoices(g, outcome.won ? 3 : 2);
+      if (p.id === 0) g.reward = { round: g.round, choices };
+      else {
+        const best = choices.sort(
+          (a, b) =>
+            Math.max(
+              0,
+              ...p.pieces.map((x) => itemScore(x, b, g.combatVersion)),
+            ) -
+            Math.max(
+              0,
+              ...p.pieces.map((x) => itemScore(x, a, g.combatVersion)),
+            ),
+        )[0];
+        p.inventory.push(best);
+      }
+    }
+    g.message += " 选择一件战利品后进入准备阶段。";
+  }
 }
 export function nextRound(g: Game) {
-  if (g.phase !== "result") return;
+  if (g.phase !== "result" || g.reward) return;
   g.round++;
+  g.combatVersion = "signature";
   g.phase = "prepare";
   for (const p of g.players.filter((p) => p.hp > 0))
     if (!p.locked) roll(g, p, false);

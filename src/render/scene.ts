@@ -1,3 +1,8 @@
+import { skillGauge } from "../engine/triggers";
+import { QUALITY, type Preferences } from "../ui/preferences";
+import { FrameGate } from "./frame-policy";
+import { attackInterval } from "../engine/abilities";
+import { drawSkillEffect, drawStatuses } from "./skill-effects";
 import {
   isRanged,
   RANGED_ACTIONS,
@@ -12,7 +17,7 @@ import {
   drawMeleeWeapon,
 } from "./melee";
 import { project, cellAt } from "./projection";
-import { UNIT, UNITS } from "../data/units";
+import { UNIT } from "../data/units";
 import type { Battle, Fighter, Piece, CombatEvent } from "../engine/types";
 export interface SceneState {
   pieces: Piece[];
@@ -21,16 +26,38 @@ export interface SceneState {
   time: number;
   phase: string;
   demo: boolean;
+  paused: boolean;
 }
 export const spriteUrl = (id: string) => `/assets/units/${id}.png`;
 const W = 1280,
   H = 800;
+// Wide fins and wings should remain readable without covering neighboring pieces.
+const SPRITE_SCALES: Record<string, number> = {
+  fish: 0.72,
+  dragonfly: 0.85,
+  deer: 0.9,
+};
 // Project board corners to a trapezoid; sprites stay upright in screen space.
-const pictures = new Map<string, HTMLImageElement>();
-for (const u of UNITS) {
-  const img = new Image();
-  img.src = spriteUrl(u.id);
-  pictures.set(u.id, img);
+const pictures = new Map<string, HTMLCanvasElement | null>();
+function picture(id: string): HTMLCanvasElement | null {
+  if (!pictures.has(id)) {
+    pictures.set(id, null);
+    const image = new Image();
+    image.onload = () => {
+      const cache = document.createElement("canvas");
+      const scale = Math.min(
+        1,
+        256 / Math.max(image.naturalWidth, image.naturalHeight),
+      );
+      cache.width = Math.max(1, Math.round(image.naturalWidth * scale));
+      cache.height = Math.max(1, Math.round(image.naturalHeight * scale));
+      cache.getContext("2d")!.drawImage(image, 0, 0, cache.width, cache.height);
+      pictures.set(id, cache);
+      image.onload = null;
+    };
+    image.src = spriteUrl(id);
+  }
+  return pictures.get(id) ?? null;
 }
 const terrain = new Image();
 terrain.src = "/assets/arena/frontier.png";
@@ -56,14 +83,27 @@ export class BattleScene {
   private raf = 0;
   private hover: number | null = null;
   private running = true;
+  private gate = new FrameGate();
+  private visible = true;
+  private observer: IntersectionObserver;
+  private board = document.createElement("canvas");
+  private boardKey = "";
+  private motionReduced = false;
   constructor(
     private canvas: HTMLCanvasElement,
     private state: () => SceneState,
     onCell: (cell: number) => void,
+    private options: () => Preferences,
   ) {
     this.ctx = canvas.getContext("2d")!;
     canvas.width = W;
     canvas.height = H;
+    this.board.width = W;
+    this.board.height = H;
+    this.observer = new IntersectionObserver(([entry]) => {
+      this.visible = entry.isIntersecting;
+    });
+    this.observer.observe(canvas);
     canvas.addEventListener("pointermove", (e) => {
       const r = canvas.getBoundingClientRect();
       this.hover = cellAt(
@@ -84,7 +124,16 @@ export class BattleScene {
     });
     const loop = (now: number) => {
       if (!this.running) return;
-      this.draw(now);
+      const state = this.state(),
+        settings = this.options();
+      const fps =
+        state.battle &&
+        !state.paused &&
+        (state.phase === "battle" || state.phase === "demo")
+          ? QUALITY[settings.quality].fps
+          : 15;
+      if (this.gate.ready(now, fps, document.hidden || !this.visible))
+        this.draw(now);
       this.raf = requestAnimationFrame(loop);
     };
     this.raf = requestAnimationFrame(loop);
@@ -92,10 +141,9 @@ export class BattleScene {
   destroy() {
     this.running = false;
     cancelAnimationFrame(this.raf);
+    this.observer.disconnect();
   }
-  private draw(now: number) {
-    const c = this.ctx,
-      s = this.state();
+  private drawBoard(c: CanvasRenderingContext2D, s: SceneState) {
     c.clearRect(0, 0, W, H);
     if (terrain.complete && terrain.naturalWidth) {
       const scale = Math.max(W / terrain.width, H / terrain.height),
@@ -210,10 +258,38 @@ export class BattleScene {
       c.textAlign = "center";
       c.fillText("ABCDEFGH"[i], p.x, p.y + 18);
     }
+  }
+  private draw(now: number) {
+    const c = this.ctx,
+      s = this.state(),
+      preferences = this.options(),
+      quality = QUALITY[preferences.quality];
+    this.motionReduced = preferences.reducedMotion;
+    if (
+      this.canvas.width !== quality.width ||
+      this.canvas.height !== quality.height
+    ) {
+      this.canvas.width = quality.width;
+      this.canvas.height = quality.height;
+    }
+    c.setTransform(quality.width / W, 0, 0, quality.height / H, 0, 0);
+    const key = [
+      this.hover,
+      s.selected,
+      s.pieces.find((p) => p.uid === s.selected)?.position,
+      s.phase,
+      terrain.naturalWidth,
+    ].join(":");
+    if (key !== this.boardKey) {
+      this.drawBoard(this.board.getContext("2d")!, s);
+      this.boardKey = key;
+    }
+    c.clearRect(0, 0, W, H);
+    c.drawImage(this.board, 0, 0);
     const battle = s.battle;
     if (battle) {
       const index = Math.min(Math.floor(s.time), battle.frames.length - 1),
-        fraction = s.time - Math.floor(s.time),
+        fraction = preferences.reducedMotion ? 0 : s.time - Math.floor(s.time),
         a = battle.frames[index],
         b = battle.frames[Math.min(index + 1, battle.frames.length - 1)];
       const fs = a.fighters
@@ -221,8 +297,16 @@ export class BattleScene {
           const next = b.fighters.find((n) => n.uid === f.uid)!;
           return {
             ...f,
-            x: lerp(f.x, next.x, fraction),
-            y: lerp(f.y, next.y, fraction),
+            x: b.effects.some(
+              (e) => e.kind === "teleport" && e.target === f.uid,
+            )
+              ? f.x
+              : lerp(f.x, next.x, fraction),
+            y: b.effects.some(
+              (e) => e.kind === "teleport" && e.target === f.uid,
+            )
+              ? f.y
+              : lerp(f.y, next.y, fraction),
           };
         })
         .sort((a, b) => a.y - b.y);
@@ -236,23 +320,44 @@ export class BattleScene {
               0
           )
             last--;
-          death = (index - last + fraction) / 2.5;
+          death = (s.time - last) / 2.5;
           if (death >= 1) continue;
         }
         let attack: { event: CombatEvent; progress: number } | undefined;
         const duration = isMelee(f.defId)
-          ? Math.min(MELEE_ACTIONS[f.defId].duration, f.interval)
+          ? Math.min(MELEE_ACTIONS[f.defId].duration, attackInterval(f, s.time))
           : isRanged(f.defId)
-            ? Math.min(RANGED_ACTIONS[f.defId].duration, f.interval)
+            ? Math.min(
+                RANGED_ACTIONS[f.defId].duration,
+                attackInterval(f, s.time),
+              )
             : 1;
         for (
           let n = index;
           n >= Math.max(1, index - Math.ceil(duration));
           n--
         ) {
-          const event = battle.frames[n].events.find(
-            (e) => e.attacker === f.uid,
+          const cast = battle.frames[n].effects.find(
+            (e) => e.kind === "cast" && e.source === f.uid,
           );
+          const event =
+            battle.frames[n].events.find(
+              (e) => e.attacker === f.uid && e.primary,
+            ) ??
+            (cast
+              ? {
+                  attacker: f.uid,
+                  target: cast.target,
+                  amount: 0,
+                  absorbed: 0,
+                  damageType: "magic" as const,
+                  primary: true,
+                  skill: true,
+                  ranged: f.range > 1,
+                  from: cast.from,
+                  to: cast.to,
+                }
+              : undefined);
           if (event) {
             const progress = (s.time - n) / duration;
             if (progress < 1) attack = { event, progress };
@@ -260,7 +365,15 @@ export class BattleScene {
           }
         }
         const hit = a.events.some((e) => e.target === f.uid);
-        this.unit(f, now, s.selected, death, attack, hit && fraction < 0.35);
+        this.unit(
+          f,
+          now,
+          s.selected,
+          death,
+          attack,
+          hit && fraction < 0.35,
+          s.time,
+        );
       }
       // Render recent events without skipping any at 2x/4x playback.
       for (let n = Math.max(1, index - 7); n <= index; n++)
@@ -277,14 +390,17 @@ export class BattleScene {
           )!;
           const rangedId = isRanged(attacker.defId) ? attacker.defId : null;
           const duration = rangedId
-            ? Math.min(RANGED_ACTIONS[rangedId].duration, attacker.interval)
+            ? Math.min(
+                RANGED_ACTIONS[rangedId].duration,
+                attackInterval(attacker, n),
+              )
             : 1;
           const impactAge = rangedId
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
-          if (e.ranged && rangedId)
+          if (!preferences.reducedMotion && e.ranged && rangedId && e.primary)
             drawRangedAttack(c, rangedId, age / duration, from, to, e.skill);
-          if (!e.ranged && age < 1.5) {
+          if (!preferences.reducedMotion && !e.ranged && age < 1.5) {
             c.save();
             c.translate(to.x, to.y);
             c.globalAlpha = Math.max(0, 1 - age / 1.5);
@@ -317,20 +433,39 @@ export class BattleScene {
             }
             c.restore();
           }
-          if (age > impactAge && age < impactAge + 3) {
+          if (
+            preferences.damageNumbers &&
+            age > impactAge &&
+            age < impactAge + 3
+          ) {
             c.save();
             c.globalAlpha = Math.max(0, 1 - (age - impactAge) / 3);
             c.font = `bold ${e.skill ? 23 : 17}px sans-serif`;
             c.textAlign = "center";
             c.lineWidth = 3;
             c.strokeStyle = "#18211c";
-            const y = to.y - 20 - (age - impactAge) * 13;
-            c.strokeText(String(e.amount), to.x, y);
-            c.fillStyle = e.skill ? "#ffe191" : "#f2f5e3";
-            c.fillText(String(e.amount), to.x, y);
+            const y =
+              to.y -
+              20 -
+              (preferences.reducedMotion ? 0 : (age - impactAge) * 13);
+            const label =
+              e.amount > 0 ? String(e.amount) : `吸收 ${e.absorbed}`;
+            c.strokeText(label, to.x, y);
+            c.fillStyle =
+              e.amount === 0
+                ? "#9cdeff"
+                : e.damageType === "magic"
+                  ? "#c1acff"
+                  : e.skill
+                    ? "#ffe191"
+                    : "#f2f5e3";
+            c.fillText(label, to.x, y);
             c.restore();
           }
         }
+      for (let n = Math.max(1, index - 4); n <= index; n++)
+        for (const e of battle.frames[n].effects)
+          drawSkillEffect(c, e, s.time - n, preferences.reducedMotion);
     } else {
       for (const p of [...s.pieces]
         .filter((p) => p.position !== null)
@@ -368,7 +503,11 @@ export class BattleScene {
       }
     }
     // Ambient drifting motes around the board perimeter.
-    for (let i = 0; i < 20; i++) {
+    for (
+      let i = 0;
+      i < (preferences.reducedMotion ? 0 : quality.particles);
+      i++
+    ) {
       const x = (i * 173 + now * 0.008) % W,
         y = H - ((i * 131 + now * 0.018) % H);
       if (x > 260 && x < 1020) continue;
@@ -385,12 +524,13 @@ export class BattleScene {
     death: number,
     attack: { event: CombatEvent; progress: number } | undefined,
     hit: boolean,
+    time = 0,
   ) {
     const c = this.ctx,
       p = project(f.x + 0.5, f.y + 0.65),
       depth = 0.78 + f.y * 0.035,
       d = UNIT[f.defId],
-      im = pictures.get(f.defId),
+      im = picture(f.defId),
       scale = (1 + (f.star - 1) * 0.12) * depth;
     c.save();
     c.globalAlpha = 1 - death;
@@ -408,12 +548,12 @@ export class BattleScene {
     c.ellipse(0, 0, 30 * scale, 10 * scale, 0, 0, Math.PI * 2);
     c.stroke();
     c.shadowBlur = 0;
-    const sway = Math.sin(now * 0.002 + f.uid) * 1.2;
+    const sway = this.motionReduced ? 0 : Math.sin(now * 0.002 + f.uid) * 1.2;
     c.save();
     const pose =
-      !death && attack && isMelee(f.defId)
+      !this.motionReduced && !death && attack && isMelee(f.defId)
         ? meleePose(f.defId, attack.progress, attack.event.skill)
-        : !death && attack && isRanged(f.defId)
+        : !this.motionReduced && !death && attack && isRanged(f.defId)
           ? rangedPose(f.defId, attack.progress, attack.event.skill)
           : REST_POSE;
     const origin = attack
@@ -432,11 +572,11 @@ export class BattleScene {
       (dx / length) * pose.forward * scale,
       (dy / length) * pose.forward * scale - pose.lift * scale - sway,
     );
-    c.rotate(facing * pose.rotation + death * 1.3);
+    c.rotate(facing * pose.rotation + (this.motionReduced ? 0 : death * 1.3));
     c.scale(facing * pose.scaleX, pose.scaleY);
-    c.globalAlpha *= pose.alpha;
-    if (im?.complete && im.naturalWidth) {
-      const size = 130 * scale,
+    c.globalAlpha *= pose.alpha * (f.signature?.concealed ? 0.55 : 1);
+    if (im) {
+      const size = 130 * scale * (SPRITE_SCALES[f.defId] ?? 1),
         w = (size * im.width) / Math.max(im.width, im.height),
         h = (size * im.height) / Math.max(im.width, im.height);
       if (hit) {
@@ -458,7 +598,7 @@ export class BattleScene {
       c.fillText(d.glyph, 0, -18);
     }
     c.restore();
-    if (!death && attack && isMelee(f.defId)) {
+    if (!this.motionReduced && !death && attack && isMelee(f.defId)) {
       c.save();
       c.scale(facing, 1);
       drawMeleeWeapon(c, f.defId, attack.progress, scale, attack.event.skill);
@@ -480,6 +620,7 @@ export class BattleScene {
       }
     }
     if (!death) {
+      drawStatuses(c, f, time, scale, this.motionReduced);
       const top = -129 * scale;
       c.fillStyle = "#07130ede";
       c.fillRect(-27, top, 54, 7);
@@ -487,8 +628,9 @@ export class BattleScene {
       c.fillRect(-26, top + 1, 52 * Math.max(0, f.hp / f.maxHp), 5);
       c.fillStyle = "#0c2028";
       c.fillRect(-26, top + 8, 52, 3);
-      c.fillStyle = "#74bce7";
-      c.fillRect(-26, top + 8, (52 * f.mana) / 100, 3);
+      const gauge = skillGauge(f);
+      c.fillStyle = gauge.color;
+      c.fillRect(-26, top + 8, 52 * gauge.progress, 3);
       c.font = "bold 10px sans-serif";
       c.textAlign = "center";
       c.fillStyle = "#ffe4a1";

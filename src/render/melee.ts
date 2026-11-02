@@ -8,6 +8,10 @@ export const MELEE_ACTIONS = {
   wolf: { name: "幽影扑咬", duration: 1.9, color: "#78e7ff" },
   master: { name: "旋身横扫", duration: 2.8, color: "#ffdb8c" },
   titan: { name: "蓄力重砸", duration: 3.8, color: "#ffb56b" },
+  cavalry: { name: "扬蹄挺枪", duration: 2.8, color: "#d9ddb0" },
+  shadowblade: { name: "残影回旋斩", duration: 1.9, color: "#d7a0ff" },
+  turtle: { name: "伏甲顶撞", duration: 3.8, color: "#b5d991" },
+  bull: { name: "沉肩裂地斧", duration: 3.8, color: "#ffad79" },
 } as const;
 export type MeleeId = keyof typeof MELEE_ACTIONS;
 export interface AttackPose {
@@ -44,6 +48,32 @@ export function meleePose(id: MeleeId, t: number, skill = false): AttackPose {
     power = skill ? 1.22 : 1;
   p.impact = pulse(t, 0.28, 0.68) * power;
   switch (id) {
+    case "cavalry":
+      p.lift = 20 * wind + 5 * hit;
+      p.rotation = -0.24 * wind + 0.08 * hit;
+      p.forward = -12 * wind + 38 * hit;
+      p.trail = 0.6 * hit;
+      break;
+    case "shadowblade":
+      p.forward = 28 * pulse(t, 0.12, 0.9);
+      p.rotation = -0.6 * wind + 1.8 * hit;
+      p.alpha = 1 - 0.62 * pulse(t, 0.05, 0.55);
+      p.lift = 16 * hit;
+      p.trail = hit;
+      break;
+    case "turtle":
+      p.forward = -6 * wind + 23 * pulse(t, 0.35, 0.85);
+      p.scaleY = 1 - 0.22 * wind;
+      p.scaleX = 1 + 0.14 * wind;
+      p.rotation = 0.08 * hit;
+      p.lift = -4 * hit;
+      break;
+    case "bull":
+      p.forward = -14 * wind + 29 * hit;
+      p.rotation = -0.38 * wind + 0.58 * pulse(t, 0.28, 0.75);
+      p.lift = 12 * wind - 7 * hit;
+      p.scaleY = 1 - 0.09 * recover;
+      break;
     case "guard":
       p.forward = -9 * wind + 30 * hit;
       p.rotation = -0.14 * wind + 0.2 * hit;
@@ -133,6 +163,43 @@ export function drawMeleeWeapon(
     c.stroke();
   };
   switch (id) {
+    case "cavalry":
+      c.lineWidth = 4;
+      c.beginPath();
+      c.moveTo(-18, -45);
+      c.lineTo(60 + hit * 20, -55);
+      c.stroke();
+      c.beginPath();
+      c.moveTo(60 + hit * 20, -55);
+      c.lineTo(48 + hit * 20, -61);
+      c.lineTo(51 + hit * 20, -48);
+      c.closePath();
+      c.fill();
+      break;
+    case "shadowblade":
+      arc(8, -45, 44, t * 8 - 2, t * 8 + 0.6);
+      arc(8, -45, 34, -t * 7, -t * 7 + 2.1);
+      break;
+    case "turtle":
+      for (let i = 0; i < 3; i++) {
+        c.beginPath();
+        c.ellipse(15 + i * 12 + hit * 20, -25, 7, 20 + i * 5, 0, -1.1, 1.1);
+        c.stroke();
+      }
+      break;
+    case "bull":
+      c.translate(12, -45);
+      c.rotate(-1.5 + t * 3.8);
+      c.fillRect(-4, -48, 8, 68);
+      c.beginPath();
+      c.moveTo(-25, -45);
+      c.lineTo(25, -45);
+      c.lineTo(17, -24);
+      c.lineTo(-17, -24);
+      c.closePath();
+      c.fill();
+      arc(0, 0, 48, -2, -0.6);
+      break;
     case "guard":
       c.translate(31, -47);
       c.rotate(-0.2 + hit * 0.35);

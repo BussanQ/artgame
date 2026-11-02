@@ -1,0 +1,8351 @@
+{
+  "scope": "Four standard campaigns, normal paid commands. Alternative preparations use only owned units and items; changes are evaluated on clones and never committed to the campaign.",
+  "rows": [
+    {
+      "seed": 137,
+      "round": 1,
+      "level": 3,
+      "gold": 1,
+      "hp": 100,
+      "budget": 6,
+      "enemy": [
+        {
+          "uid": 900000100,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 35,
+          "encounterPower": 0.35,
+          "items": []
+        },
+        {
+          "uid": 900000101,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.35,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 3.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 3.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 1,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 3.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 1,
+              "position": 62,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 1,
+              "position": 57,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 137,
+      "round": 2,
+      "level": 3,
+      "gold": 0,
+      "hp": 100,
+      "budget": 5,
+      "enemy": [
+        {
+          "uid": 900000200,
+          "defId": "wolf",
+          "star": 1,
+          "position": 34,
+          "encounterPower": 0.5,
+          "items": []
+        },
+        {
+          "uid": 900000201,
+          "defId": "wolf",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.5,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 4,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 42,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 34,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 4.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 42,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 4.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 63,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 42,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 4.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 63,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 42,
+              "defId": "lion",
+              "star": 1,
+              "position": 46,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 4.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 42,
+              "defId": "lion",
+              "star": 1,
+              "position": 41,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 137,
+      "round": 3,
+      "level": 3,
+      "gold": 0,
+      "hp": 100,
+      "budget": 12,
+      "enemy": [
+        {
+          "uid": 900000300,
+          "defId": "lion",
+          "star": 1,
+          "position": 35,
+          "encounterPower": 0.75,
+          "items": []
+        },
+        {
+          "uid": 900000301,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 34,
+          "encounterPower": 0.5,
+          "items": []
+        },
+        {
+          "uid": 900000302,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.5,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 5,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "crystal",
+                "blade"
+              ]
+            },
+            {
+              "uid": 5,
+              "defId": "guard",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 5,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 5,
+              "defId": "guard",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 4.75,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 5,
+              "defId": "guard",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 4.25,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 5,
+              "defId": "guard",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 47,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 4.25,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 5,
+              "defId": "guard",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 40,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 137,
+      "round": 10,
+      "level": 6,
+      "gold": 16,
+      "hp": 94,
+      "budget": 21,
+      "enemy": [
+        {
+          "uid": 900001000,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001001,
+          "defId": "guard",
+          "star": 2,
+          "position": 36,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001002,
+          "defId": "chariot",
+          "star": 2,
+          "position": 59,
+          "encounterPower": 0.85,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 6,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 103,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 1,
+              "position": 39,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 6,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 103,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 1,
+              "position": 39,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 103,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 1,
+              "position": 32,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 103,
+              "defId": "infantry",
+              "star": 2,
+              "position": 62,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 1,
+              "position": 53,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 45,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 5.25,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 103,
+              "defId": "infantry",
+              "star": 2,
+              "position": 57,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 1,
+              "position": 50,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 42,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 137,
+      "round": 15,
+      "level": 7,
+      "gold": 28,
+      "hp": 94,
+      "budget": 34,
+      "enemy": [
+        {
+          "uid": 900001500,
+          "defId": "lion",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900001501,
+          "defId": "wolf",
+          "star": 2,
+          "position": 34,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001502,
+          "defId": "wolf",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001503,
+          "defId": "pangolin",
+          "star": 2,
+          "position": 43,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 11.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 313,
+              "defId": "bull",
+              "star": 1,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 11.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 313,
+              "defId": "bull",
+              "star": 1,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 313,
+              "defId": "bull",
+              "star": 1,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 47,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 313,
+              "defId": "bull",
+              "star": 1,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 45,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 7.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "sniper",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 40,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 313,
+              "defId": "bull",
+              "star": 1,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 42,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 137,
+      "round": 20,
+      "level": 8,
+      "gold": 24,
+      "hp": 84,
+      "budget": 41,
+      "enemy": [
+        {
+          "uid": 900002000,
+          "defId": "titan",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.1,
+          "items": []
+        },
+        {
+          "uid": 900002001,
+          "defId": "guard",
+          "star": 2,
+          "position": 34,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002002,
+          "defId": "guard",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002003,
+          "defId": "cannon",
+          "star": 2,
+          "position": 59,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 9.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "staff",
+                "coil"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 9.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "coil",
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 7,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": [
+                "coil",
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 38,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 10.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 53,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 47,
+              "items": [
+                "coil",
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 11,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 50,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 44,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 40,
+              "items": [
+                "coil",
+                "staff"
+              ]
+            },
+            {
+              "uid": 148,
+              "defId": "panda",
+              "star": 2,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 212,
+              "defId": "monk",
+              "star": 1,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 1,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 56,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 137,
+      "round": 25,
+      "level": 9,
+      "gold": 11,
+      "hp": 73,
+      "budget": 60,
+      "enemy": [
+        {
+          "uid": 900002500,
+          "defId": "monk",
+          "star": 3,
+          "position": 43,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900002501,
+          "defId": "master",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002502,
+          "defId": "panda",
+          "star": 3,
+          "position": 37,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900002503,
+          "defId": "cannon",
+          "star": 2,
+          "position": 60,
+          "encounterPower": 1.2,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 9.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 34,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "coil",
+                "staff",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 345,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 488,
+              "defId": "chariot",
+              "star": 1,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 514,
+              "defId": "titan",
+              "star": 1,
+              "position": 37,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 9.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 34,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "crystal",
+                "staff",
+                "coil"
+              ]
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 345,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 488,
+              "defId": "chariot",
+              "star": 1,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 514,
+              "defId": "titan",
+              "star": 1,
+              "position": 37,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 16.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 37,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": [
+                "crystal",
+                "staff",
+                "coil"
+              ]
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 345,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 38,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 488,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 514,
+              "defId": "titan",
+              "star": 1,
+              "position": 34,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 11,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 52,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 46,
+              "items": [
+                "crystal",
+                "staff",
+                "coil"
+              ]
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 345,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 488,
+              "defId": "chariot",
+              "star": 1,
+              "position": 62,
+              "items": []
+            },
+            {
+              "uid": 514,
+              "defId": "titan",
+              "star": 1,
+              "position": 44,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 11.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 51,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 2,
+              "position": 41,
+              "items": [
+                "crystal",
+                "staff",
+                "coil"
+              ]
+            },
+            {
+              "uid": 288,
+              "defId": "wolf",
+              "star": 2,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 345,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 443,
+              "defId": "cannon",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 488,
+              "defId": "chariot",
+              "star": 1,
+              "position": 57,
+              "items": []
+            },
+            {
+              "uid": 514,
+              "defId": "titan",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 137,
+      "round": 30,
+      "level": 9,
+      "gold": 0,
+      "hp": 37,
+      "budget": 85,
+      "enemy": [
+        {
+          "uid": 900003000,
+          "defId": "titan",
+          "star": 3,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900003001,
+          "defId": "titan",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900003002,
+          "defId": "cannon",
+          "star": 3,
+          "position": 58,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900003003,
+          "defId": "chariot",
+          "star": 3,
+          "position": 61,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 1,
+          "seconds": 10,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 3,
+              "position": 32,
+              "items": [
+                "overdrive",
+                "warblade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 535,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 536,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 555,
+              "defId": "bull",
+              "star": 1,
+              "position": 38,
+              "items": []
+            },
+            {
+              "uid": 561,
+              "defId": "master",
+              "star": 1,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 562,
+              "defId": "master",
+              "star": 1,
+              "position": 33,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 1,
+          "seconds": 9.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 3,
+              "position": 32,
+              "items": [
+                "staff",
+                "crystal",
+                "warblade"
+              ]
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 535,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 39,
+              "items": [
+                "overdrive"
+              ]
+            },
+            {
+              "uid": 536,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 555,
+              "defId": "bull",
+              "star": 1,
+              "position": 38,
+              "items": []
+            },
+            {
+              "uid": 561,
+              "defId": "master",
+              "star": 1,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 562,
+              "defId": "master",
+              "star": 1,
+              "position": 33,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 1,
+          "seconds": 12.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 3,
+              "position": 39,
+              "items": [
+                "staff",
+                "crystal",
+                "warblade"
+              ]
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 535,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "overdrive"
+              ]
+            },
+            {
+              "uid": 536,
+              "defId": "chariot",
+              "star": 1,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 555,
+              "defId": "bull",
+              "star": 1,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 561,
+              "defId": "master",
+              "star": 1,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 562,
+              "defId": "master",
+              "star": 1,
+              "position": 38,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 1,
+          "seconds": 10.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 3,
+              "position": 47,
+              "items": [
+                "staff",
+                "crystal",
+                "warblade"
+              ]
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 535,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 46,
+              "items": [
+                "overdrive"
+              ]
+            },
+            {
+              "uid": 536,
+              "defId": "chariot",
+              "star": 1,
+              "position": 63,
+              "items": []
+            },
+            {
+              "uid": 555,
+              "defId": "bull",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 561,
+              "defId": "master",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 562,
+              "defId": "master",
+              "star": 1,
+              "position": 51,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 1,
+          "seconds": 18.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 129,
+              "defId": "wolf",
+              "star": 3,
+              "position": 40,
+              "items": [
+                "staff",
+                "crystal",
+                "warblade"
+              ]
+            },
+            {
+              "uid": 343,
+              "defId": "master",
+              "star": 2,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 416,
+              "defId": "turtle",
+              "star": 2,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 535,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 41,
+              "items": [
+                "overdrive"
+              ]
+            },
+            {
+              "uid": 536,
+              "defId": "chariot",
+              "star": 1,
+              "position": 56,
+              "items": []
+            },
+            {
+              "uid": 555,
+              "defId": "bull",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 561,
+              "defId": "master",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 562,
+              "defId": "master",
+              "star": 1,
+              "position": 52,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 307,
+      "round": 1,
+      "level": 3,
+      "gold": 4,
+      "hp": 100,
+      "budget": 6,
+      "enemy": [
+        {
+          "uid": 900000100,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 35,
+          "encounterPower": 0.35,
+          "items": []
+        },
+        {
+          "uid": 900000101,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.35,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "deer",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "deer",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "deer",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "deer",
+              "star": 1,
+              "position": 62,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "deer",
+              "star": 1,
+              "position": 57,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 1,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 307,
+      "round": 2,
+      "level": 3,
+      "gold": 3,
+      "hp": 100,
+      "budget": 8,
+      "enemy": [
+        {
+          "uid": 900000200,
+          "defId": "wolf",
+          "star": 1,
+          "position": 34,
+          "encounterPower": 0.5,
+          "items": []
+        },
+        {
+          "uid": 900000201,
+          "defId": "wolf",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.5,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 1,
+              "position": 46,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 1,
+              "position": 41,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 307,
+      "round": 3,
+      "level": 3,
+      "gold": 1,
+      "hp": 100,
+      "budget": 12,
+      "enemy": [
+        {
+          "uid": 900000300,
+          "defId": "lion",
+          "star": 1,
+          "position": 35,
+          "encounterPower": 0.75,
+          "items": []
+        },
+        {
+          "uid": 900000301,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 34,
+          "encounterPower": 0.5,
+          "items": []
+        },
+        {
+          "uid": 900000302,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.5,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 4,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 4,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 4,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 4.5,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 46,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 47,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 4.5,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 41,
+              "items": [
+                "crystal"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 40,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 307,
+      "round": 10,
+      "level": 6,
+      "gold": 11,
+      "hp": 77,
+      "budget": 23,
+      "enemy": [
+        {
+          "uid": 900001000,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001001,
+          "defId": "guard",
+          "star": 2,
+          "position": 36,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001002,
+          "defId": "chariot",
+          "star": 2,
+          "position": 59,
+          "encounterPower": 0.85,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 11,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 34,
+              "items": [
+                "sage"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 185,
+              "defId": "sniper",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 11,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 34,
+              "items": [
+                "sage"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 185,
+              "defId": "sniper",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 10.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 37,
+              "items": [
+                "sage"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 185,
+              "defId": "sniper",
+              "star": 1,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 10.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 53,
+              "items": [
+                "sage"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 185,
+              "defId": "sniper",
+              "star": 1,
+              "position": 62,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 10.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 50,
+              "items": [
+                "sage"
+              ]
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 185,
+              "defId": "sniper",
+              "star": 1,
+              "position": 57,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 307,
+      "round": 15,
+      "level": 6,
+      "gold": 18,
+      "hp": 62,
+      "budget": 40,
+      "enemy": [
+        {
+          "uid": 900001500,
+          "defId": "lion",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900001501,
+          "defId": "wolf",
+          "star": 2,
+          "position": 34,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001502,
+          "defId": "wolf",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001503,
+          "defId": "pangolin",
+          "star": 2,
+          "position": 43,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 12.25,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "sage",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 295,
+              "defId": "master",
+              "star": 1,
+              "position": 34,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 12.25,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "crystal",
+                "sage"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 295,
+              "defId": "master",
+              "star": 1,
+              "position": 34,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 9.25,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 63,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "crystal",
+                "sage"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 295,
+              "defId": "master",
+              "star": 1,
+              "position": 37,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 10.5,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 63,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 46,
+              "items": [
+                "crystal",
+                "sage"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 295,
+              "defId": "master",
+              "star": 1,
+              "position": 45,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 10.5,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 56,
+              "items": [
+                "blade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 41,
+              "items": [
+                "crystal",
+                "sage"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 295,
+              "defId": "master",
+              "star": 1,
+              "position": 42,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 307,
+      "round": 20,
+      "level": 8,
+      "gold": 2,
+      "hp": 12,
+      "budget": 51,
+      "enemy": [
+        {
+          "uid": 900002000,
+          "defId": "titan",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.1,
+          "items": []
+        },
+        {
+          "uid": 900002001,
+          "defId": "guard",
+          "star": 2,
+          "position": 34,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002002,
+          "defId": "guard",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002003,
+          "defId": "cannon",
+          "star": 2,
+          "position": 59,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 11.5,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 56,
+              "items": [
+                "rageblade"
+              ]
+            },
+            {
+              "uid": 39,
+              "defId": "lion",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "crystal",
+                "sage"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 354,
+              "defId": "wolf",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 383,
+              "defId": "bull",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 385,
+              "defId": "master",
+              "star": 1,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 446,
+              "defId": "sniper",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 14.5,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 56,
+              "items": [
+                "rageblade"
+              ]
+            },
+            {
+              "uid": 78,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "sage",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 383,
+              "defId": "bull",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 385,
+              "defId": "master",
+              "star": 1,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 446,
+              "defId": "sniper",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 18,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 63,
+              "items": [
+                "rageblade"
+              ]
+            },
+            {
+              "uid": 78,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 38,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "sage",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 383,
+              "defId": "bull",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 385,
+              "defId": "master",
+              "star": 1,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 446,
+              "defId": "sniper",
+              "star": 1,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 13.25,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 63,
+              "items": [
+                "rageblade"
+              ]
+            },
+            {
+              "uid": 78,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 53,
+              "items": [
+                "sage",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 383,
+              "defId": "bull",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 385,
+              "defId": "master",
+              "star": 1,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 446,
+              "defId": "sniper",
+              "star": 1,
+              "position": 62,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 18.75,
+          "pieces": [
+            {
+              "uid": 3,
+              "defId": "infantry",
+              "star": 3,
+              "position": 56,
+              "items": [
+                "rageblade"
+              ]
+            },
+            {
+              "uid": 78,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 109,
+              "defId": "lion",
+              "star": 2,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 50,
+              "items": [
+                "sage",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 230,
+              "defId": "bull",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 383,
+              "defId": "bull",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 385,
+              "defId": "master",
+              "star": 1,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 446,
+              "defId": "sniper",
+              "star": 1,
+              "position": 57,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 809,
+      "round": 1,
+      "level": 3,
+      "gold": 0,
+      "hp": 100,
+      "budget": 5,
+      "enemy": [
+        {
+          "uid": 900000100,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 35,
+          "encounterPower": 0.35,
+          "items": []
+        },
+        {
+          "uid": 900000101,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.35,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 3.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 3.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 3.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 3.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 46,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 3.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 41,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 809,
+      "round": 2,
+      "level": 3,
+      "gold": 1,
+      "hp": 100,
+      "budget": 6,
+      "enemy": [
+        {
+          "uid": 900000200,
+          "defId": "wolf",
+          "star": 1,
+          "position": 34,
+          "encounterPower": 0.5,
+          "items": []
+        },
+        {
+          "uid": 900000201,
+          "defId": "wolf",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.5,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 4.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 43,
+              "items": [
+                "crystal"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 4.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 43,
+              "items": [
+                "crystal"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 4.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 44,
+              "items": [
+                "crystal"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 63,
+              "items": [
+                "crystal"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 1,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 4,
+              "defId": "lion",
+              "star": 1,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 56,
+              "items": [
+                "crystal"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 809,
+      "round": 3,
+      "level": 3,
+      "gold": 0,
+      "hp": 100,
+      "budget": 9,
+      "enemy": [
+        {
+          "uid": 900000300,
+          "defId": "lion",
+          "star": 1,
+          "position": 35,
+          "encounterPower": 0.75,
+          "items": []
+        },
+        {
+          "uid": 900000301,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 34,
+          "encounterPower": 0.5,
+          "items": []
+        },
+        {
+          "uid": 900000302,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.5,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "fish",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "crystal",
+                "blade"
+              ]
+            },
+            {
+              "uid": 6,
+              "defId": "guard",
+              "star": 2,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "fish",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 6,
+              "defId": "guard",
+              "star": 2,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 6.5,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "fish",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 6,
+              "defId": "guard",
+              "star": 2,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 6,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "fish",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 6,
+              "defId": "guard",
+              "star": 2,
+              "position": 46,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 5.25,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "fish",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 6,
+              "defId": "guard",
+              "star": 2,
+              "position": 41,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 809,
+      "round": 10,
+      "level": 5,
+      "gold": 18,
+      "hp": 94,
+      "budget": 21,
+      "enemy": [
+        {
+          "uid": 900001000,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001001,
+          "defId": "guard",
+          "star": 2,
+          "position": 36,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001002,
+          "defId": "chariot",
+          "star": 2,
+          "position": 59,
+          "encounterPower": 0.85,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 8.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "staff",
+                "blade"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 6.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 7.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 6.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 45,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 6.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 42,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 809,
+      "round": 15,
+      "level": 7,
+      "gold": 24,
+      "hp": 94,
+      "budget": 34,
+      "enemy": [
+        {
+          "uid": 900001500,
+          "defId": "lion",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900001501,
+          "defId": "wolf",
+          "star": 2,
+          "position": 34,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001502,
+          "defId": "wolf",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001503,
+          "defId": "pangolin",
+          "star": 2,
+          "position": 43,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 150,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 332,
+              "defId": "wolf",
+              "star": 1,
+              "position": 39,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 7,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "staff",
+                "blade"
+              ]
+            },
+            {
+              "uid": 150,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 6.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "staff",
+                "blade"
+              ]
+            },
+            {
+              "uid": 150,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 8.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 46,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "staff",
+                "blade"
+              ]
+            },
+            {
+              "uid": 150,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 53,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 20.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 41,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "staff",
+                "blade"
+              ]
+            },
+            {
+              "uid": 150,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 1,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 50,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 809,
+      "round": 20,
+      "level": 8,
+      "gold": 23,
+      "hp": 91,
+      "budget": 52,
+      "enemy": [
+        {
+          "uid": 900002000,
+          "defId": "titan",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.1,
+          "items": []
+        },
+        {
+          "uid": 900002001,
+          "defId": "guard",
+          "star": 2,
+          "position": 34,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002002,
+          "defId": "guard",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002003,
+          "defId": "cannon",
+          "star": 2,
+          "position": 59,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 9.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "staff",
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 9.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "crystal",
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 8.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "crystal",
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 14.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 45,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 62,
+              "items": [
+                "crystal",
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 9,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 42,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 57,
+              "items": [
+                "crystal",
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 1,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 809,
+      "round": 25,
+      "level": 9,
+      "gold": 1,
+      "hp": 78,
+      "budget": 74,
+      "enemy": [
+        {
+          "uid": 900002500,
+          "defId": "monk",
+          "star": 3,
+          "position": 43,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900002501,
+          "defId": "master",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002502,
+          "defId": "panda",
+          "star": 3,
+          "position": 37,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900002503,
+          "defId": "cannon",
+          "star": 2,
+          "position": 60,
+          "encounterPower": 1.2,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 28.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 37,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": [
+                "crystal",
+                "staff"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 1,
+              "position": 33,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 28.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 37,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": [
+                "staff",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 1,
+              "position": 33,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 1,
+          "seconds": 22.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 34,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "staff",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 1,
+              "position": 38,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 8.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 51,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 53,
+              "items": [
+                "staff",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 9,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "lion",
+              "star": 2,
+              "position": 52,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 50,
+              "items": [
+                "staff",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 303,
+              "defId": "cavalry",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 456,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 1,
+              "position": 44,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 809,
+      "round": 30,
+      "level": 9,
+      "gold": 9,
+      "hp": 71,
+      "budget": 83,
+      "enemy": [
+        {
+          "uid": 900003000,
+          "defId": "titan",
+          "star": 3,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900003001,
+          "defId": "titan",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900003002,
+          "defId": "cannon",
+          "star": 3,
+          "position": 58,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900003003,
+          "defId": "chariot",
+          "star": 3,
+          "position": 61,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 1,
+          "seconds": 11.25,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "plate",
+                "staff",
+                "staff"
+              ]
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 511,
+              "defId": "wolf",
+              "star": 2,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 596,
+              "defId": "turtle",
+              "star": 1,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 598,
+              "defId": "cannon",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 602,
+              "defId": "turtle",
+              "star": 1,
+              "position": 37,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 1,
+          "seconds": 13.25,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 33,
+              "items": [
+                "staff",
+                "staff"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 511,
+              "defId": "wolf",
+              "star": 2,
+              "position": 38,
+              "items": []
+            },
+            {
+              "uid": 596,
+              "defId": "turtle",
+              "star": 1,
+              "position": 34,
+              "items": []
+            },
+            {
+              "uid": 598,
+              "defId": "cannon",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 1,
+          "seconds": 8.25,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 38,
+              "items": [
+                "staff",
+                "staff"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 511,
+              "defId": "wolf",
+              "star": 2,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 596,
+              "defId": "turtle",
+              "star": 1,
+              "position": 37,
+              "items": []
+            },
+            {
+              "uid": 598,
+              "defId": "cannon",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 1,
+          "seconds": 11.5,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 45,
+              "items": [
+                "staff",
+                "staff"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 51,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 511,
+              "defId": "wolf",
+              "star": 2,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 596,
+              "defId": "turtle",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 598,
+              "defId": "cannon",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 1,
+          "seconds": 12.75,
+          "pieces": [
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 3,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 203,
+              "defId": "wolf",
+              "star": 2,
+              "position": 42,
+              "items": [
+                "staff",
+                "staff"
+              ]
+            },
+            {
+              "uid": 228,
+              "defId": "monk",
+              "star": 2,
+              "position": 52,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 302,
+              "defId": "master",
+              "star": 2,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 381,
+              "defId": "bull",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 480,
+              "defId": "shadowblade",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 511,
+              "defId": "wolf",
+              "star": 2,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 596,
+              "defId": "turtle",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 598,
+              "defId": "cannon",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 1619,
+      "round": 1,
+      "level": 3,
+      "gold": 3,
+      "hp": 100,
+      "budget": 5,
+      "enemy": [
+        {
+          "uid": 900000100,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 35,
+          "encounterPower": 0.35,
+          "items": []
+        },
+        {
+          "uid": 900000101,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.35,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "panda",
+              "star": 1,
+              "position": 39,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "panda",
+              "star": 1,
+              "position": 39,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 2.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "panda",
+              "star": 1,
+              "position": 32,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "panda",
+              "star": 1,
+              "position": 53,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 2.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 5,
+              "defId": "panda",
+              "star": 1,
+              "position": 50,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 1619,
+      "round": 2,
+      "level": 3,
+      "gold": 2,
+      "hp": 100,
+      "budget": 6,
+      "enemy": [
+        {
+          "uid": 900000200,
+          "defId": "wolf",
+          "star": 1,
+          "position": 34,
+          "encounterPower": 0.5,
+          "items": []
+        },
+        {
+          "uid": 900000201,
+          "defId": "wolf",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.5,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 44,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 47,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 63,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 3,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 40,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 1,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 1,
+              "position": 56,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 1619,
+      "round": 3,
+      "level": 3,
+      "gold": 2,
+      "hp": 100,
+      "budget": 9,
+      "enemy": [
+        {
+          "uid": 900000300,
+          "defId": "lion",
+          "star": 1,
+          "position": 35,
+          "encounterPower": 0.75,
+          "items": []
+        },
+        {
+          "uid": 900000301,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 34,
+          "encounterPower": 0.5,
+          "items": []
+        },
+        {
+          "uid": 900000302,
+          "defId": "pangolin",
+          "star": 1,
+          "position": 37,
+          "encounterPower": 0.5,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 4,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "plate",
+                "blade"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 40,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 4,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": [
+                "blade",
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 40,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 4,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 36,
+              "items": [
+                "blade",
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 40,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 46,
+              "items": [
+                "blade",
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 47,
+              "items": []
+            },
+            {
+              "uid": 40,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 53,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 41,
+              "items": [
+                "blade",
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 40,
+              "items": []
+            },
+            {
+              "uid": 40,
+              "defId": "pangolin",
+              "star": 2,
+              "position": 50,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 1619,
+      "round": 10,
+      "level": 5,
+      "gold": 15,
+      "hp": 85,
+      "budget": 24,
+      "enemy": [
+        {
+          "uid": 900001000,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001001,
+          "defId": "guard",
+          "star": 2,
+          "position": 36,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001002,
+          "defId": "chariot",
+          "star": 2,
+          "position": 59,
+          "encounterPower": 0.85,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 6,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "blade",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 1,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 204,
+              "defId": "bull",
+              "star": 1,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "crystal",
+                "blade"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 1,
+              "position": 39,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 36,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "crystal",
+                "blade"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 1,
+              "position": 32,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 6.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 47,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "crystal",
+                "blade"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 1,
+              "position": 53,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 6.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 40,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "crystal",
+                "blade"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 1,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 1,
+              "position": 50,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 1619,
+      "round": 15,
+      "level": 6,
+      "gold": 21,
+      "hp": 85,
+      "budget": 42,
+      "enemy": [
+        {
+          "uid": 900001500,
+          "defId": "lion",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900001501,
+          "defId": "wolf",
+          "star": 2,
+          "position": 34,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001502,
+          "defId": "wolf",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900001503,
+          "defId": "pangolin",
+          "star": 2,
+          "position": 43,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 4.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "staff",
+                "blade"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 4.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 44,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 5.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 36,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 43,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 47,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 45,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 6.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 40,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 42,
+              "defId": "deer",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "blade",
+                "staff"
+              ]
+            },
+            {
+              "uid": 122,
+              "defId": "monk",
+              "star": 2,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 42,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 1619,
+      "round": 20,
+      "level": 7,
+      "gold": 33,
+      "hp": 85,
+      "budget": 49,
+      "enemy": [
+        {
+          "uid": 900002000,
+          "defId": "titan",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.1,
+          "items": []
+        },
+        {
+          "uid": 900002001,
+          "defId": "guard",
+          "star": 2,
+          "position": 34,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002002,
+          "defId": "guard",
+          "star": 2,
+          "position": 37,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002003,
+          "defId": "cannon",
+          "star": 2,
+          "position": 59,
+          "encounterPower": 1,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 11,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 1,
+              "position": 34,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 11,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 1,
+              "position": 34,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": 0,
+          "seconds": 7.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 36,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 1,
+              "position": 37,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 0,
+          "seconds": 15.5,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 47,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 46,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 53,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 1,
+              "position": 44,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": 0,
+          "seconds": 18.75,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 40,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 41,
+              "items": [
+                "staff"
+              ]
+            },
+            {
+              "uid": 152,
+              "defId": "lion",
+              "star": 2,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 50,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 1,
+              "position": 43,
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 1619,
+      "round": 25,
+      "level": 9,
+      "gold": 3,
+      "hp": 53,
+      "budget": 65,
+      "enemy": [
+        {
+          "uid": 900002500,
+          "defId": "monk",
+          "star": 3,
+          "position": 43,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900002501,
+          "defId": "master",
+          "star": 2,
+          "position": 35,
+          "encounterPower": 1.2,
+          "items": []
+        },
+        {
+          "uid": 900002502,
+          "defId": "panda",
+          "star": 3,
+          "position": 37,
+          "encounterPower": 1,
+          "items": []
+        },
+        {
+          "uid": 900002503,
+          "defId": "cannon",
+          "star": 2,
+          "position": 60,
+          "encounterPower": 1.2,
+          "items": []
+        }
+      ],
+      "scores": [
+        {
+          "name": "原布阵",
+          "winner": 0,
+          "seconds": 10.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "staff",
+                "crystal"
+              ]
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 481,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 516,
+              "defId": "wolf",
+              "star": 1,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 534,
+              "defId": "deer",
+              "star": 1,
+              "position": 42,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread",
+          "winner": 0,
+          "seconds": 10.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 35,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 39,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 32,
+              "items": [
+                "crystal",
+                "staff"
+              ]
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 2,
+              "position": 36,
+              "items": []
+            },
+            {
+              "uid": 481,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 516,
+              "defId": "wolf",
+              "star": 1,
+              "position": 33,
+              "items": []
+            },
+            {
+              "uid": 534,
+              "defId": "deer",
+              "star": 1,
+              "position": 42,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "spread-mirror",
+          "winner": null,
+          "seconds": 40,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 36,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 32,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 39,
+              "items": [
+                "crystal",
+                "staff"
+              ]
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 2,
+              "position": 35,
+              "items": []
+            },
+            {
+              "uid": 481,
+              "defId": "monk",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 516,
+              "defId": "wolf",
+              "star": 1,
+              "position": 38,
+              "items": []
+            },
+            {
+              "uid": 534,
+              "defId": "deer",
+              "star": 1,
+              "position": 45,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact",
+          "winner": 1,
+          "seconds": 22.25,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 47,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 44,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 53,
+              "items": [
+                "crystal",
+                "staff"
+              ]
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 45,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 63,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 2,
+              "position": 46,
+              "items": []
+            },
+            {
+              "uid": 481,
+              "defId": "monk",
+              "star": 2,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 516,
+              "defId": "wolf",
+              "star": 1,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 534,
+              "defId": "deer",
+              "star": 1,
+              "position": 62,
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "compact-mirror",
+          "winner": null,
+          "seconds": 40,
+          "pieces": [
+            {
+              "uid": 1,
+              "defId": "pangolin",
+              "star": 3,
+              "position": 40,
+              "items": [
+                "plate"
+              ]
+            },
+            {
+              "uid": 2,
+              "defId": "panda",
+              "star": 2,
+              "position": 43,
+              "items": []
+            },
+            {
+              "uid": 151,
+              "defId": "wolf",
+              "star": 2,
+              "position": 50,
+              "items": [
+                "crystal",
+                "staff"
+              ]
+            },
+            {
+              "uid": 344,
+              "defId": "monk",
+              "star": 2,
+              "position": 42,
+              "items": []
+            },
+            {
+              "uid": 370,
+              "defId": "dragonfly",
+              "star": 2,
+              "position": 56,
+              "items": [
+                "warblade"
+              ]
+            },
+            {
+              "uid": 438,
+              "defId": "master",
+              "star": 2,
+              "position": 41,
+              "items": []
+            },
+            {
+              "uid": 481,
+              "defId": "monk",
+              "star": 2,
+              "position": 51,
+              "items": []
+            },
+            {
+              "uid": 516,
+              "defId": "wolf",
+              "star": 1,
+              "position": 52,
+              "items": []
+            },
+            {
+              "uid": 534,
+              "defId": "deer",
+              "star": 1,
+              "position": 57,
+              "items": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "seed": 137,
+      "round": 15,
+      "budget": 34,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 137,
+      "round": 20,
+      "budget": 41,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 137,
+      "round": 25,
+      "budget": 60,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 137,
+      "round": 30,
+      "budget": 85,
+      "original": 1,
+      "best": 1
+    },
+    {
+      "seed": 307,
+      "round": 15,
+      "budget": 40,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 307,
+      "round": 20,
+      "budget": 51,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 809,
+      "round": 15,
+      "budget": 34,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 809,
+      "round": 20,
+      "budget": 52,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 809,
+      "round": 25,
+      "budget": 74,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 809,
+      "round": 30,
+      "budget": 83,
+      "original": 1,
+      "best": 1
+    },
+    {
+      "seed": 1619,
+      "round": 15,
+      "budget": 42,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 1619,
+      "round": 20,
+      "budget": 49,
+      "original": 0,
+      "best": 0
+    },
+    {
+      "seed": 1619,
+      "round": 25,
+      "budget": 65,
+      "original": 0,
+      "best": 0
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { claimReward } from "../src/engine/equipment";
 import { describe, it, expect } from "vitest";
 import {
   createGame,
@@ -67,7 +68,7 @@ describe("自走棋必要模块测试", () => {
       piece(i, "guard", i === 0 ? 35 : null),
     );
     merge(p);
-    expect(p.pieces).toEqual([piece(0, "guard", 35, 3)]);
+    expect(p.pieces).toEqual([{ ...piece(0, "guard", 35, 3), items: [] }]);
   });
   it("备战席满但可以合成时允许购买，否则拒绝且不扣金", () => {
     const g = createGame(),
@@ -150,6 +151,7 @@ describe("自走棋必要模块测试", () => {
       expect(g).toEqual(after);
       conservation(g);
       if (g.phase === "result") {
+        if (g.reward) expect(claimReward(g, 0)).toBe(true);
         nextRound(g);
         expect(p.shop).toEqual(shop);
       }

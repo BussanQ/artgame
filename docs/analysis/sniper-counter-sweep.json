@@ -1,0 +1,305 @@
+{
+  "target": [
+    "guard",
+    "infantry",
+    "sniper",
+    "chariot",
+    "cannon",
+    "titan"
+  ],
+  "budget": 45,
+  "star": 2,
+  "slots": 6,
+  "items": [],
+  "combinations": 4818,
+  "duels": 38544,
+  "distribution": {
+    "0": 9096,
+    "1": 457,
+    "2": 76,
+    "3": 6,
+    "4": 1
+  },
+  "best": [
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "chariot",
+        "cannon",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 4,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "panda",
+        "monk",
+        "cannon",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 3,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "panda",
+        "wolf",
+        "cannon",
+        "shadowblade"
+      ],
+      "formation": "compact",
+      "wins": 3,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "pangolin",
+        "sniper",
+        "cannon",
+        "tiger",
+        "deer"
+      ],
+      "formation": "spread",
+      "wins": 3,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "guard",
+        "panda",
+        "sniper",
+        "lion",
+        "cannon",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 3,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "guard",
+        "panda",
+        "sniper",
+        "cannon",
+        "cavalry",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 3,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "pangolin",
+        "panda",
+        "lion",
+        "chariot",
+        "cannon",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 3,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "pangolin",
+        "sniper",
+        "titan",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "pangolin",
+        "lion",
+        "titan",
+        "shadowblade"
+      ],
+      "formation": "compact",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "pangolin",
+        "lion",
+        "titan",
+        "tiger"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "pangolin",
+        "wolf",
+        "cannon",
+        "titan"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "pangolin",
+        "cannon",
+        "titan",
+        "bull"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "panda",
+        "sniper",
+        "titan",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "panda",
+        "cannon",
+        "shadowblade",
+        "bull"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "panda",
+        "titan",
+        "cavalry",
+        "shadowblade"
+      ],
+      "formation": "compact",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "chariot",
+        "cannon",
+        "titan"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "chariot",
+        "cannon",
+        "titan"
+      ],
+      "formation": "compact",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "monk",
+        "dragonfly",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "lion",
+        "chariot",
+        "cannon",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    },
+    {
+      "ids": [
+        "infantry",
+        "guard",
+        "lion",
+        "wolf",
+        "dragonfly",
+        "shadowblade"
+      ],
+      "formation": "spread",
+      "wins": 2,
+      "draws": 0,
+      "matches": 4
+    }
+  ]
+}

@@ -1,11 +1,31 @@
+import { skillReady, concealed, attackTargets } from "./triggers";
+import { equipmentStats } from "../data/items";
 import { RULES, UNIT } from "../data/units";
-import { synergies } from "./synergies";
-import type { Battle, Fighter, Piece, CombatEvent } from "./types";
-const distance = (a: Fighter, b: Fighter) =>
-  Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
-function army(pieces: Piece[], side: 0 | 1): Fighter[] {
+import { synergies, traitBonuses } from "./synergies";
+import {
+  castSkill,
+  damage,
+  distance,
+  attackInterval,
+  gainMana,
+} from "./abilities";
+import { SKILLS } from "../data/skills";
+import type {
+  Battle,
+  Fighter,
+  Piece,
+  CombatEvent,
+  CombatEffect,
+  CombatVersion,
+} from "./types";
+export function army(
+  pieces: Piece[],
+  side: 0 | 1,
+  version: CombatVersion = "signature",
+): Fighter[] {
+  const bonuses = traitBonuses(pieces, version);
   const active = new Set(
-    synergies(pieces)
+    synergies(pieces, "legacy")
       .filter((s) => s.active)
       .map((s) => s.trait),
   );
@@ -13,13 +33,33 @@ function army(pieces: Piece[], side: 0 | 1): Fighter[] {
     .filter((p) => p.position !== null)
     .map((p) => {
       const d = UNIT[p.defId],
-        scale = 2 ** (p.star - 1),
+        scale = 2 ** (p.star - 1) * (p.encounterPower ?? 1),
+        gear = equipmentStats(p.items),
         has = (t: (typeof d.traits)[number]) =>
           d.traits.includes(t) && active.has(t);
-      const hp =
-        d.hp * scale + (has("步兵") ? 200 : 0) + (has("护卫") ? 250 : 0);
+      const sum = (
+        key:
+          | "hp"
+          | "armor"
+          | "interval"
+          | "mana"
+          | "shield"
+          | "attack"
+          | "regen"
+          | "skillPower"
+          | "shred",
+        // New traits only apply to the newly introduced units.
+      ) => d.traits.reduce((n, t) => n + (bonuses.get(t)?.[key] ?? 0), 0);
+      const hp = Math.round(
+        d.hp * scale +
+          gear.hp +
+          (version === "legacy" ? (has("步兵") ? 200 : 0) : sum("hp")),
+      );
       const pos = p.position!;
       return {
+        ...(version === "signature"
+          ? { signature: { casts: 0, attacks: 0, concealed: false } }
+          : {}),
         uid: p.uid,
         defId: p.defId,
         star: p.star,
@@ -29,28 +69,134 @@ function army(pieces: Piece[], side: 0 | 1): Fighter[] {
         hp,
         maxHp: hp,
         attack:
-          d.attack *
-          scale *
-          (has("狙击") ? 1.25 : 1) *
-          (has("刺杀") ? 1.35 : 1),
-        armor: d.armor + (has("装甲") ? 4 : 0),
+          (d.attack * scale + gear.attack) *
+          (version === "legacy"
+            ? (has("狙击") ? 1.25 : 1) * (has("刺杀") ? 1.35 : 1)
+            : 1 + sum("attack")),
+        armor:
+          d.armor +
+          gear.armor +
+          (version === "legacy" ? (has("装甲") ? 4 : 0) : sum("armor")),
         range: d.range,
-        interval: Math.max(1, d.interval - (has("野兽") ? 1 : 0)),
+        interval: Math.max(
+          1,
+          d.interval * (1 - gear.haste) -
+            (version === "legacy" ? (has("野兽") ? 1 : 0) : sum("interval")),
+        ),
         cooldown: 0,
-        mana: has("熊猫") ? 100 : 0,
+        mana:
+          version === "signature" &&
+          ["cavalry", "turtle", "tiger"].includes(p.defId)
+            ? 0
+            : Math.min(
+                100,
+                (version === "legacy" ? (has("熊猫") ? 100 : 0) : sum("mana")) +
+                  gear.mana +
+                  (d.initialMana ?? 0),
+              ),
+        lifesteal: gear.lifesteal,
+        skillPower:
+          1 + gear.skillPower + (version === "legacy" ? 0 : sum("skillPower")),
+        regeneration:
+          version === "legacy" ? (has("先锋") ? 8 : 0) : sum("regen"),
+        attackShred: version === "legacy" ? 0 : sum("shred"),
+        supportHeal:
+          version === "legacy"
+            ? 0
+            : d.traits.includes("支援")
+              ? (bonuses.get("支援")?.supportHeal ?? 0)
+              : 0,
+        supportMana:
+          version === "legacy"
+            ? 0
+            : d.traits.includes("支援")
+              ? (bonuses.get("支援")?.supportMana ?? 0)
+              : 0,
+        armorBuff: 0,
+        armorBuffUntil: 0,
+        manaLockUntil: 0,
+        magicResist: 0.2 + gear.magicResist,
         damage: 0,
         flash: false,
+        shield: version === "legacy" ? (has("护卫") ? 250 : 0) : sum("shield"),
+        shieldUntil: RULES.maxTicks + 1,
+        stunUntil: 0,
+        hasteUntil: 0,
+        armorBreak: 0,
+        armorBreakUntil: 0,
+        healing: 0,
+        absorbed: 0,
       };
     });
 }
-export function simulate(left: Piece[], right: Piece[]): Battle {
-  const fighters = [...army(left, 0), ...army(right, 1)];
-  const regeneration = [left, right].map((p) =>
-    synergies(p).some((s) => s.trait === "先锋" && s.active),
-  );
-  const frames: Battle["frames"] = [
-    { tick: 0, fighters: structuredClone(fighters), events: [] },
-  ];
+export function openingJumps(
+  fighters: Fighter[],
+  pieces: Piece[][],
+  version: CombatVersion,
+) {
+  if (version === "legacy") return;
+  for (const f of fighters
+    .filter(
+      (f) =>
+        UNIT[f.defId].traits.includes("刺杀") &&
+        synergies(pieces[f.side], version).some(
+          (s) => s.trait === "刺杀" && s.active,
+        ),
+    )
+    .sort((a, b) => a.uid - b.uid)) {
+    const targets = fighters
+      .filter((e) => e.side !== f.side)
+      .sort(
+        (a, b) =>
+          Number(b.range > 1) - Number(a.range > 1) ||
+          distance(f, b) - distance(f, a) ||
+          a.uid - b.uid,
+      );
+    for (const target of targets) {
+      const cell = [
+        [0, 1],
+        [1, 0],
+        [-1, 0],
+        [0, -1],
+      ]
+        .map(([dx, dy]) => ({ x: target.x + dx, y: target.y + dy }))
+        .find(
+          (p) =>
+            p.x >= 0 &&
+            p.x < 8 &&
+            p.y >= 0 &&
+            p.y < 8 &&
+            !fighters.some((e) => e.hp > 0 && e.x === p.x && e.y === p.y),
+        );
+      if (cell) {
+        f.x = cell.x;
+        f.y = cell.y;
+        break;
+      }
+    }
+  }
+}
+function runBattle(
+  left: Piece[],
+  right: Piece[],
+  version: CombatVersion,
+  recordFrames: boolean,
+): Battle {
+  const fighters = [...army(left, 0, version), ...army(right, 1, version)];
+  openingJumps(fighters, [left, right], version);
+  for (const f of fighters)
+    if (f.signature) f.signature.concealed = concealed(f, fighters);
+  const frames: Battle["frames"] = recordFrames
+    ? [
+        {
+          tick: 0,
+          fighters: structuredClone(fighters),
+          events: [],
+          effects: [],
+        },
+      ]
+    : [];
+  let lastTick = 0;
   for (let tick = 1; tick <= RULES.maxTicks; tick++) {
     if (
       !fighters.some((f) => f.side === 0 && f.hp > 0) ||
@@ -58,23 +204,55 @@ export function simulate(left: Piece[], right: Piece[]): Battle {
     )
       break;
     const events: CombatEvent[] = [];
+    const effects: CombatEffect[] = [];
+    const context = { fighters, tick, events, effects };
+    for (const f of fighters) {
+      f.flash = false;
+      if (f.shieldUntil <= tick) f.shield = 0;
+      if (f.armorBreakUntil <= tick) f.armorBreak = 0;
+      if (f.armorBuffUntil <= tick) f.armorBuff = 0;
+    }
     // Alternate initiative each tick to avoid permanent left-side first-action priority.
     const order = tick % 2 ? [...fighters].reverse() : fighters;
     for (const f of order) {
-      f.flash = false;
       if (f.hp <= 0) continue;
-      if (regeneration[f.side] && UNIT[f.defId].traits.includes("先锋"))
-        f.hp = Math.min(f.maxHp, f.hp + 8);
-      const enemies = fighters
-        .filter((e) => e.side !== f.side && e.hp > 0)
-        .sort((a, b) => distance(f, a) - distance(f, b) || a.uid - b.uid);
+      if (f.regeneration) f.hp = Math.min(f.maxHp, f.hp + f.regeneration);
+      const enemies = attackTargets(f, fighters).sort(
+        (a, b) => distance(f, a) - distance(f, b) || a.uid - b.uid,
+      );
       const target = enemies[0];
       if (!target) continue;
-      if (f.cooldown > 0) {
-        f.cooldown--;
-        continue;
-      }
-      if (distance(f, target) > f.range) {
+      if (f.cooldown > 0) f.cooldown--;
+      if (f.cooldown > 0) continue;
+      if (f.stunUntil > tick) continue;
+      const injuredAlly =
+        f.defId === "monk" &&
+        fighters.some(
+          (a) =>
+            a.side === f.side &&
+            a.hp > 0 &&
+            a.hp < a.maxHp &&
+            distance(f, a) <= SKILLS.monk.radius,
+        );
+      const canCast =
+        skillReady(f) &&
+        (f.defId !== "monk" || injuredAlly) &&
+        (distance(f, target) <= f.range ||
+          injuredAlly ||
+          f.defId === "panda" ||
+          [
+            "wolf",
+            "cavalry",
+            "bull",
+            "shadowblade",
+            "turtle",
+            "fish",
+            "deer",
+          ].includes(f.defId));
+      if (canCast && castSkill(context, f, target)) {
+        f.cooldown += attackInterval(f, tick);
+      } else if (distance(f, target) > f.range) {
+        f.cooldown = 0;
         const occupied = new Set(
           fighters.filter((e) => e.hp > 0).map((e) => `${e.x},${e.y}`),
         );
@@ -116,33 +294,30 @@ export function simulate(left: Piece[], right: Piece[]): Battle {
           }
         }
       } else {
-        const skill = f.mana >= 100;
-        f.flash = skill;
-        f.mana = skill ? 0 : Math.min(100, f.mana + 25);
-        // Prototype unified skill: 2.2x hit; no claim of original skill implementation.
-        const amount = Math.max(
-          1,
-          Math.round(
-            (f.attack * (skill ? 2.2 : 1) * 100) / (100 + target.armor * 6),
-          ),
-        );
-        events.push({
-          attacker: f.uid,
-          target: target.uid,
-          amount: Math.min(target.hp, amount),
-          skill,
-          ranged: f.range > 1,
-          from: { x: f.x, y: f.y },
-          to: { x: target.x, y: target.y },
-        });
-        f.damage += Math.min(target.hp, amount);
-        target.hp = Math.max(0, target.hp - amount);
-        target.mana = Math.min(100, target.mana + 10);
-        f.cooldown = f.interval - 1;
+        if (f.signature) f.signature.attacks++;
+        gainMana(f, 25, tick);
+        damage(context, f, target, f.attack);
+        f.cooldown += attackInterval(f, tick);
       }
     }
-    frames.push({ tick, fighters: structuredClone(fighters), events });
+    for (const f of fighters)
+      if (f.signature) f.signature.concealed = concealed(f, fighters);
+    lastTick = tick;
+    if (recordFrames)
+      frames.push({
+        tick,
+        fighters: structuredClone(fighters),
+        events,
+        effects,
+      });
   }
+  if (!recordFrames)
+    frames.push({
+      tick: lastTick,
+      fighters: structuredClone(fighters),
+      events: [],
+      effects: [],
+    });
   const alive = [0, 1].map((side) =>
     fighters.filter((f) => f.side === side && f.hp > 0),
   );
@@ -157,5 +332,27 @@ export function simulate(left: Piece[], right: Piece[]): Battle {
     winner,
     damage:
       winner === null ? 3 : 2 + alive[winner].reduce((n, f) => n + f.star, 0),
+  };
+}
+
+/** Full playback snapshots for the actual battle and saved replays. */
+export function simulate(
+  left: Piece[],
+  right: Piece[],
+  version: CombatVersion = "signature",
+): Battle {
+  return runBattle(left, right, version, true);
+}
+/** Same combat rules without allocating every animation snapshot during AI search. */
+export function simulateOutcome(
+  left: Piece[],
+  right: Piece[],
+  version: CombatVersion = "signature",
+) {
+  const battle = runBattle(left, right, version, false);
+  return {
+    winner: battle.winner,
+    damage: battle.damage,
+    final: battle.frames[0],
   };
 }

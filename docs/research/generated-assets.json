@@ -105,6 +105,70 @@
       "prompt": "Use case: stylized-concept. Asset type: background environment for a landscape auto chess videogame. Art of War Red Tides inspired Eastern science fantasy frontier. Wide 16:9 cinematic elevated isometric view of a rocky forest cliff arena overlooking misty turquoise mountains. Ancient carved stone and futuristic bronze technology blend. Two monumental broken stone guardian statues at left and right edges, pine trees and warm orange braziers on peripheral cliffs, scattered moss and low blue mist. Center 70 percent area is EMPTY quiet dark stone courtyard with subtle texture, no chess squares, no grid, no characters, no UI, no text. Center must be relatively flat and low contrast because interactive game board is drawn over it. Beautiful realistic stylized 3D game environment, soft warm sunlight from upper left, deep cool shadows, volumetric depth, painterly AAA RTS world building.",
       "kind": "environment",
       "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "cavalry",
+      "name": "马骑兵",
+      "prompt": "Use case: stylized-concept. Asset type: production game unit transparent sprite for an existing Art of War Red Tides inspired auto chess game. Detailed stylized semi-realistic 3D rendered miniature, Eastern science fantasy, realistic painted metal materials, strong readable silhouette, not cute chibi, not flat icon. Single full-body unit, elevated three-quarter camera looking down 25 degrees, facing screen upper-right in ready combat pose. Entire body and equipment inside square frame with 12% transparent margin, feet near 86% image height; centered. Soft upper-left warm daylight and cool rim light. Actual transparent background, no ground plane, no pedestal, no text, no interface, no watermark. Subject: a mounted futuristic lancer on a muscular armored horse, ivory lamellar armor and blue cloth, long bronze lance angled forward, powerful coherent rider-and-horse silhouette",
+      "path": "public/assets/units/cavalry.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "dragonfly",
+      "name": "蜻蜓骑兵",
+      "prompt": "Use case: stylized-concept. Asset type: production game unit transparent sprite for an existing Art of War Red Tides inspired auto chess game. Detailed stylized semi-realistic 3D rendered miniature, Eastern science fantasy, realistic painted metal materials, strong readable silhouette, not cute chibi, not flat icon. Single full-body unit, elevated three-quarter camera looking down 25 degrees, facing screen upper-right in ready combat pose. Entire body and equipment inside square frame with 12% transparent margin, feet near 86% image height; centered. Soft upper-left warm daylight and cool rim light. Actual transparent background, no ground plane, no pedestal, no text, no interface, no watermark. Subject: an agile alien rider seated on a giant dragonfly, four translucent turquoise veined wings, teal segmented carapace, delicate long abdomen, rider holding a tuning-fork energy staff, entire single mounted unit visible",
+      "path": "public/assets/units/dragonfly.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "shadowblade",
+      "name": "暗影刀",
+      "prompt": "Use case: stylized-concept. Asset type: production game unit transparent sprite for an existing Art of War Red Tides inspired auto chess game. Detailed stylized semi-realistic 3D rendered miniature, Eastern science fantasy, realistic painted metal materials, strong readable silhouette, not cute chibi, not flat icon. Single full-body unit, elevated three-quarter camera looking down 25 degrees, facing screen upper-right in ready combat pose. Entire body and equipment inside square frame with 12% transparent margin, feet near 86% image height; centered. Soft upper-left warm daylight and cool rim light. Actual transparent background, no ground plane, no pedestal, no text, no interface, no watermark. Subject: a slender sentient humanoid blade automaton, charcoal segmented metal armor, purple spectral edge on two long forearm swords, swept angular helmet, poised predatory stance",
+      "path": "public/assets/units/shadowblade.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "turtle",
+      "name": "玄龟",
+      "prompt": "Use case: stylized-concept. Asset type: production game unit transparent sprite for an existing Art of War Red Tides inspired auto chess game. Detailed stylized semi-realistic 3D rendered miniature, Eastern science fantasy, realistic painted metal materials, strong readable silhouette, not cute chibi, not flat icon. Single full-body unit, elevated three-quarter camera looking down 25 degrees, facing screen upper-right in ready combat pose. Entire body and equipment inside square frame with 12% transparent margin, feet near 86% image height; centered. Soft upper-left warm daylight and cool rim light. Actual transparent background, no ground plane, no pedestal, no text, no interface, no watermark. Subject: a colossal quadrupedal black tortoise guardian, broad jade and dark bronze interlocking armored shell, ancient geometric motifs, powerful low legs, short horned head, luminous jade eyes",
+      "path": "public/assets/units/turtle.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "tiger",
+      "name": "落箭虎",
+      "prompt": "Use case: stylized-concept. Asset type: production game unit transparent sprite for an existing Art of War Red Tides inspired auto chess game. Detailed stylized semi-realistic 3D rendered miniature, Eastern science fantasy, realistic painted metal materials, strong readable silhouette, not cute chibi, not flat icon. Single full-body unit, elevated three-quarter camera looking down 25 degrees, facing screen upper-right in ready combat pose. Entire body and equipment inside square frame with 12% transparent margin, feet near 86% image height; centered. Soft upper-left warm daylight and cool rim light. Actual transparent background, no ground plane, no pedestal, no text, no interface, no watermark. Subject: a muscular white tiger with charcoal stripes wearing a dark gold mechanical archery harness, a compact curved bow launcher mounted on its back and glowing golden arrows, crouching ready stance",
+      "path": "public/assets/units/tiger.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bull",
+      "name": "牛魔",
+      "prompt": "Use case: stylized-concept. Asset type: production game unit transparent sprite for an existing Art of War Red Tides inspired auto chess game. Detailed stylized semi-realistic 3D rendered miniature, Eastern science fantasy, realistic painted metal materials, strong readable silhouette, not cute chibi, not flat icon. Single full-body unit, elevated three-quarter camera looking down 25 degrees, facing screen upper-right in ready combat pose. Entire body and equipment inside square frame with 12% transparent margin, feet near 86% image height; centered. Soft upper-left warm daylight and cool rim light. Actual transparent background, no ground plane, no pedestal, no text, no interface, no watermark. Subject: a towering anthropomorphic bull warrior, massive curved black horns, bronze shoulder armor and red fabric belt, heavy double-bladed battle axe, powerful bent-knee charging stance",
+      "path": "public/assets/units/bull.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "fish",
+      "name": "灵鱼",
+      "prompt": "Use case: stylized-concept. Asset type: production game unit transparent sprite for an existing Art of War Red Tides inspired auto chess game. Detailed stylized semi-realistic 3D rendered miniature, Eastern science fantasy, realistic painted metal materials, strong readable silhouette, not cute chibi, not flat icon. Single full-body unit, elevated three-quarter camera looking down 25 degrees, facing screen upper-right in ready combat pose. Entire body and equipment inside square frame with 12% transparent margin, feet near 86% image height; centered. Soft upper-left warm daylight and cool rim light. Actual transparent background, no ground plane, no pedestal, no text, no interface, no watermark. Subject: a single ethereal floating koi fish spirit with ivory and pale jade scales, long flowing translucent cyan fins, small bronze orbiting collar close to its body, luminous spiritual support-unit aesthetic",
+      "path": "public/assets/units/fish.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "deer",
+      "name": "长生鹿",
+      "prompt": "Use case: stylized-concept. Asset type: production game unit transparent sprite for an existing Art of War Red Tides inspired auto chess game. Detailed stylized semi-realistic 3D rendered miniature, Eastern science fantasy, realistic painted metal materials, strong readable silhouette, not cute chibi, not flat icon. Single full-body unit, elevated three-quarter camera looking down 25 degrees, facing screen upper-right in ready combat pose. Entire body and equipment inside square frame with 12% transparent margin, feet near 86% image height; centered. Soft upper-left warm daylight and cool rim light. Actual transparent background, no ground plane, no pedestal, no text, no interface, no watermark. Subject: a majestic slender white deer spirit, branching jade antlers carrying small emerald energy orbs, bronze chest ornament, long legs and tranquil healing aura close to the body",
+      "path": "public/assets/units/deer.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
     }
   ]
 }

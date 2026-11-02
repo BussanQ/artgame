@@ -9,6 +9,7 @@ export interface ResultPresentation {
   terminal: boolean;
   rank: number;
   demo?: boolean;
+  rewardPending?: boolean;
 }
 export function resultMarkup(result: ResultPresentation | null): string {
   if (!result) return "";
@@ -23,7 +24,9 @@ export function resultMarkup(result: ResultPresentation | null): string {
     ? "演示结束 · 即将重新播放"
     : result.terminal
       ? `演习结束 · 最终排名 #${result.rank}`
-      : "战报已结算 · 即将进入下一回合";
+      : result.rewardPending
+        ? "战报已结算 · 即将选择战利品"
+        : "战报已结算 · 即将进入下一回合";
   const icon =
     result.winner === 0
       ? '<path d="M32 23 42 40 56 15 70 40 80 23 75 65H37Z"/><path d="M38 76H74M38 85H74"/><path class="crest-leaves" d="M24 35Q5 58 29 82M88 35Q107 58 83 82M19 46 10 42M18 57 7 55M21 69 11 72M93 46 102 42M94 57 105 55M91 69 101 72"/>'

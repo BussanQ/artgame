@@ -22,7 +22,8 @@ describe("战场投影与表现事件", () => {
       for (const e of frame.events) {
         count++;
         expect(e.attacker).not.toBe(e.target);
-        expect(e.amount).toBeGreaterThan(0);
+        expect(e.amount).toBeGreaterThanOrEqual(0);
+        expect(e.amount + e.absorbed).toBeGreaterThan(0);
         for (const p of [e.from, e.to]) {
           expect(p.x).toBeGreaterThanOrEqual(0);
           expect(p.x).toBeLessThan(8);

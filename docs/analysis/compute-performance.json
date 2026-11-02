@@ -1,0 +1,54 @@
+{
+  "scope": "One legal veteran campaign, seed 617/profile 4. Seven timed repetitions after warmup per sample; Node timings exclude UI, worker startup and structured-clone transfer. Old reference records every AI frame; current retains only player replay and AI final frame. Not device FPS.",
+  "sources": {
+    "src/engine/game.ts": "08d5b96ac08520872b73403004268f7464a47483c984ef424d06802f5e3e7b98",
+    "src/engine/battle.ts": "8f81f2318283c76f9dcc0f4409c4ed2487ccd21e523af8b1991b6986ce1482e9",
+    "src/engine/ai.ts": "e3f4d758867ac59bbdd0dc39829caa43bb00b841a216bbb01ecb55e52b9bfeee",
+    "src/compute/job.ts": "7d1b782399973ecd901400186e89861458f215acb09b95692bc1c60fe268df0a",
+    "src/compute/client.ts": "1ba053bfc7b10c15d57197a3bd1233d7f82712d8eb261efc1ff30a515ad0eb4c",
+    "scripts/compute-audit.ts": "a1619392ea6ac038c28d64251c9daf1007048decfcfd1b0c76f3c789a7bb426a"
+  },
+  "rows": [
+    {
+      "round": 1,
+      "players": 8,
+      "fullSnapshotsMedianMs": 1.47,
+      "compactOutcomesMedianMs": 0.57,
+      "oldFighterSnapshots": 745,
+      "newFighterSnapshots": 110
+    },
+    {
+      "round": 10,
+      "players": 8,
+      "fullSnapshotsMedianMs": 6.24,
+      "compactOutcomesMedianMs": 2.16,
+      "oldFighterSnapshots": 2982,
+      "newFighterSnapshots": 441
+    },
+    {
+      "round": 20,
+      "players": 8,
+      "fullSnapshotsMedianMs": 10.26,
+      "compactOutcomesMedianMs": 4.34,
+      "oldFighterSnapshots": 5246,
+      "newFighterSnapshots": 982
+    },
+    {
+      "round": 25,
+      "players": 7,
+      "fullSnapshotsMedianMs": 10.95,
+      "compactOutcomesMedianMs": 4.21,
+      "oldFighterSnapshots": 4792,
+      "newFighterSnapshots": 532
+    },
+    {
+      "round": 30,
+      "players": 7,
+      "fullSnapshotsMedianMs": 10.18,
+      "compactOutcomesMedianMs": 3.76,
+      "oldFighterSnapshots": 5684,
+      "newFighterSnapshots": 873
+    }
+  ],
+  "finalRound": 30
+}

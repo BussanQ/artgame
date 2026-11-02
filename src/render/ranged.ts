@@ -1,5 +1,33 @@
 import { REST_POSE, type AttackPose } from "./melee";
 export const RANGED_ACTIONS = {
+  dragonfly: {
+    name: "振翅鸣波",
+    duration: 2.8,
+    fireAt: 0.24,
+    impactAt: 0.65,
+    color: "#9deaff",
+  },
+  tiger: {
+    name: "压身张弓",
+    duration: 2.8,
+    fireAt: 0.32,
+    impactAt: 0.72,
+    color: "#ffe1a1",
+  },
+  fish: {
+    name: "摆尾灵珠",
+    duration: 3.6,
+    fireAt: 0.2,
+    impactAt: 0.68,
+    color: "#a0ffe0",
+  },
+  deer: {
+    name: "昂首引光",
+    duration: 3.6,
+    fireAt: 0.38,
+    impactAt: 0.72,
+    color: "#d7ffac",
+  },
   infantry: {
     name: "步枪三连点射",
     duration: 2.8,
@@ -39,6 +67,32 @@ export function rangedPose(id: RangedId, t: number, skill = false): AttackPose {
   if (t <= 0 || t >= 1) return { ...REST_POSE };
   const p = { ...REST_POSE };
   switch (id) {
+    case "dragonfly": {
+      const flutter = pulse(t, 0, 1);
+      p.scaleX = 1 + Math.sin(t * Math.PI * 8) * 0.11 * flutter;
+      p.lift = 15 * flutter;
+      p.forward = -9 * pulse(t, 0.24, 0.7);
+      p.rotation = 0.09 * Math.sin(t * Math.PI * 2);
+      break;
+    }
+    case "tiger":
+      p.scaleY = 1 - 0.14 * pulse(t, 0, 0.4);
+      p.forward = -13 * pulse(t, 0.32, 0.78);
+      p.lift = 8 * pulse(t, 0.3, 0.7);
+      p.rotation = -0.08 * pulse(t, 0.32, 0.78);
+      break;
+    case "fish":
+      p.rotation = 0.25 * Math.sin(t * Math.PI * 2);
+      p.scaleX = 1 + 0.12 * pulse(t, 0.1, 0.65);
+      p.lift = 10 * pulse(t, 0, 1);
+      p.forward = 7 * pulse(t, 0.15, 0.6);
+      break;
+    case "deer":
+      p.rotation = -0.16 * pulse(t, 0, 0.42) + 0.06 * pulse(t, 0.38, 0.82);
+      p.lift = 13 * pulse(t, 0, 0.55);
+      p.forward = -5 * pulse(t, 0.38, 0.8);
+      p.scaleY = 1 + 0.06 * pulse(t, 0, 0.55);
+      break;
     case "infantry": {
       const recoil =
         pulse(t, 0.15, 0.3) + pulse(t, 0.34, 0.49) + pulse(t, 0.53, 0.68);
@@ -170,6 +224,86 @@ export function drawRangedAttack(
     c.restore();
   };
   switch (id) {
+    case "dragonfly": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1)
+        for (let i = 0; i < 3; i++) {
+          const p = projectilePoint(from, to, Math.max(0, u - i * 0.1));
+          ring(p, (6 + i * 4) * power, 1 - i * 0.22);
+        }
+      if (u > 1) {
+        ring(to, 20 + (u - 1) * 32, Math.max(0, 2 - u));
+        sparks((t - profile.impactAt) / 0.35, 5);
+      }
+      break;
+    }
+    case "tiger": {
+      if (t < profile.fireAt) {
+        c.save();
+        c.translate(from.x, from.y);
+        c.rotate(angle);
+        c.beginPath();
+        c.arc(0, 0, 13 + t * 20, -1.2, 1.2);
+        c.stroke();
+        c.restore();
+      }
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1)
+        for (let i = 0; i < (skill ? 5 : 1); i++) {
+          const end = {
+            x: to.x + (skill ? (i - 2) * 15 : 0),
+            y: to.y + (skill ? Math.abs(i - 2) * 7 : 0),
+          };
+          const tip = projectilePoint(from, end, u, 55 * power),
+            tail = projectilePoint(
+              from,
+              end,
+              Math.max(0, u - 0.12),
+              55 * power,
+            );
+          line(tail, tip, 2.5);
+          c.beginPath();
+          c.arc(tip.x, tip.y, 2.5, 0, Math.PI * 2);
+          c.fill();
+        }
+      if (u > 1) sparks((t - profile.impactAt) / 0.28, skill ? 12 : 4);
+      break;
+    }
+    case "fish": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const p = projectilePoint(from, to, u, 30),
+          radius = (5 + 2 * Math.sin(u * Math.PI)) * power;
+        c.beginPath();
+        c.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        c.fill();
+        ring(p, radius * 1.8, 0.6);
+      }
+      if (u > 1) ring(to, 6 + (u - 1) * 30, Math.max(0, 2 - u));
+      break;
+    }
+    case "deer": {
+      if (t < profile.fireAt)
+        for (let i = 0; i < 3; i++)
+          ring(
+            { x: from.x, y: from.y - i * 8 },
+            6 + t * 24,
+            t / profile.fireAt,
+          );
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const tip = projectilePoint(from, to, u, 15);
+        line(
+          projectilePoint(from, to, Math.max(0, u - 0.3), 15),
+          tip,
+          4 * power,
+          0.7,
+        );
+        c.fillRect(tip.x - 4, tip.y - 4, 8, 8);
+      }
+      if (u > 1) sparks((t - profile.impactAt) / 0.28, 6);
+      break;
+    }
     case "infantry":
       for (const start of [0.15, 0.34, 0.53]) {
         const u = (t - start) / 0.14;
