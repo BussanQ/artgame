@@ -1,9 +1,16 @@
 const focusable =
-  'button:not(:disabled), select:not(:disabled), input:not(:disabled), a[href], [tabindex="0"]';
+  'button:not(:disabled), select:not(:disabled), input:not(:disabled), a[href], summary, [tabindex="0"]';
 function selector(element: Element | null): string | null {
   if (!element) return null;
   for (const name of [
     "data-action",
+    "data-focus",
+    "data-jump",
+    "data-buy",
+    "data-equip",
+    "data-unequip",
+    "data-craft",
+    "data-codex",
     "data-unit-info",
     "data-piece-info",
     "data-cell",
@@ -12,6 +19,9 @@ function selector(element: Element | null): string | null {
     "data-setting",
     "data-scout",
     "data-watch-round",
+    "data-analyze-round",
+    "data-analysis-metric",
+    "data-analysis-frame",
   ])
     if (element.hasAttribute(name))
       return `[${name}="${CSS.escape(element.getAttribute(name)!)}"]`;
@@ -75,10 +85,31 @@ export class DialogFocus {
         .querySelector<HTMLElement>(this.returnTo)
         ?.focus({ preventScroll: true });
     }
-    if (!modal && !this.open && this.active)
-      this.root
-        .querySelector<HTMLElement>(this.active)
-        ?.focus({ preventScroll: true });
+    if (!modal && !this.open && this.active) {
+      let target = this.root.querySelector<HTMLElement>(this.active);
+      if (
+        this.active.startsWith("[data-buy=") &&
+        (!target || target.matches(":disabled"))
+      ) {
+        target =
+          this.root.querySelector<HTMLElement>("[data-buy]:not(:disabled)") ??
+          this.root.querySelector<HTMLElement>(
+            '[data-action="refresh"]:not(:disabled)',
+          ) ??
+          this.root.querySelector<HTMLElement>(
+            '[data-action="lock"]:not(:disabled)',
+          );
+      }
+      if (
+        (!target || target.closest("details:not([open])")) &&
+        (this.active === '[data-focus="demo-menu"]' ||
+          /^\[data-action="(?:demo|[a-z]+-demo)"\]$/.test(this.active))
+      )
+        target =
+          this.root.querySelector<HTMLElement>('header nav > button[data-action="demo"]') ??
+          this.root.querySelector<HTMLElement>('[data-focus="demo-menu"]');
+      target?.focus({ preventScroll: true });
+    }
     this.open = !!modal;
   }
 }

@@ -6,7 +6,13 @@ export function deploymentMarkup(
   busy: boolean,
   open: boolean,
 ): string {
-  return `<div class="deployment-panel"><button data-action="deployment" aria-expanded="${open}" aria-controls="deployment-grid">${open ? "收起布阵格" : "精确布阵"}</button><span>点选棋子，再点落位格；已有棋子可交换。</span>${
+  const chosen = player.pieces.find((piece) => piece.uid === selected);
+  const hint = busy
+    ? "当前仅可查看阵容。"
+    : chosen
+      ? `已选 ${UNIT[chosen.defId].name}：点击空位部署，点击已有棋子交换；取消选择后可改选场上棋子。`
+      : "点选棋子查看详情与装备，再点落位格部署。";
+  return `<div class="deployment-panel"><button data-action="deployment" aria-expanded="${open}" aria-controls="deployment-grid">${open ? "收起布阵格" : "精确布阵"}</button><span>${hint}</span>${
     open
       ? `<div id="deployment-grid" role="grid" aria-label="己方精确布阵" class="deployment-grid">${Array.from(
           { length: 32 },

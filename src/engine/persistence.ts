@@ -6,13 +6,25 @@ import {
   UNITS,
   XP,
   ROSTER_ADDITIONS,
+  LEGION_ADDITIONS,
+  BROOD_ADDITIONS,
+  AIRSEA_ADDITIONS,
+  IMMORTAL_ADDITIONS,
+  PSYCHIC_ADDITIONS,
+  WILD_ADDITIONS,
+  PHOENIX_ADDITIONS,
+  WHALE_ADDITIONS,
+  MEDIC_ADDITIONS,
+  INFANTRY_ADDITIONS,
+  MOTORCYCLE_ADDITIONS,
 } from "../data/units";
+import { isInsect, pieceCopies } from "./progression";
 import type { Game, Piece, RoundReport } from "./types";
 
 export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
-export const SAVE_SCHEMA = 6;
+export const SAVE_SCHEMA = 21;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -59,6 +71,9 @@ function validPiece(v: unknown): v is Piece {
     typeof v.defId === "string" &&
     Object.hasOwn(UNIT, v.defId) &&
     integer(v.star, 1, 3) &&
+    (v.copies === undefined ||
+      (isInsect(v.defId) &&
+        integer(v.copies, 2 ** (v.star - 1), 3 ** (v.star - 1)))) &&
     (v.items === undefined || validItems(v.items, 3)) &&
     (v.encounterPower === undefined ||
       (typeof v.encounterPower === "number" &&
@@ -84,7 +99,13 @@ function validReport(v: unknown): v is RoundReport {
     (v.combatVersion === "legacy" ||
       v.combatVersion === "tactics" ||
       v.combatVersion === "balanced" ||
-      v.combatVersion === "signature") &&
+      v.combatVersion === "signature" ||
+      v.combatVersion === "summons" ||
+      v.combatVersion === "legions" ||
+      v.combatVersion === "brood" ||
+      v.combatVersion === "airsea" ||
+      v.combatVersion === "fleet" ||
+      v.combatVersion === "metamorph") &&
     ((v.kind === "pve" && v.opponentId === -1) ||
       (v.kind === "pvp" && integer(v.opponentId, 1, 7))) &&
     text(v.opponentName, 60) &&
@@ -108,7 +129,18 @@ export function validGame(value: unknown): value is Game {
   const g = value as unknown as Game;
   if (
     !integer(g.seed, 0, 0xffffffff) ||
-    !["legacy", "tactics", "balanced", "signature"].includes(g.combatVersion) ||
+    ![
+      "legacy",
+      "tactics",
+      "balanced",
+      "signature",
+      "summons",
+      "legions",
+      "brood",
+      "airsea",
+      "fleet",
+      "metamorph",
+    ].includes(g.combatVersion) ||
     !["relaxed", "standard", "veteran"].includes(g.difficulty) ||
     !integer(g.nextUid, 1, 1e9) ||
     !integer(g.round, 1, RULES.maxRounds) ||
@@ -161,7 +193,7 @@ export function validGame(value: unknown): value is Game {
       )
         return false;
       uids.add(piece.uid);
-      counts[piece.defId] += 3 ** (piece.star - 1);
+      counts[piece.defId] += pieceCopies(piece);
       if (piece.position === null) bench++;
       else {
         if (occupied.has(piece.position)) return false;
@@ -285,7 +317,178 @@ export function decodeSave(raw: string | null): {
     }
     if (v.schema === 5 && v.rules === "singleplayer-0.6" && record(v.game)) {
       if (v.game.phase === "prepare") v.game.combatVersion = "signature";
-      v.schema = SAVE_SCHEMA;
+      v.schema = 6;
+      v.rules = "singleplayer-0.7";
+      migrated = true;
+    }
+    if (v.schema === 6 && v.rules === "singleplayer-0.7" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "summons";
+      v.schema = 7;
+      v.rules = "singleplayer-0.8";
+      migrated = true;
+    }
+    if (
+      v.schema === 7 &&
+      v.rules === "singleplayer-0.8" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of LEGION_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      if (v.game.phase === "prepare") v.game.combatVersion = "legions";
+      v.schema = 8;
+      v.rules = "singleplayer-0.9";
+      migrated = true;
+    }
+    if (
+      v.schema === 8 &&
+      v.rules === "singleplayer-0.9" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of BROOD_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      if (v.game.phase === "prepare") v.game.combatVersion = "brood";
+      v.schema = 9;
+      v.rules = "singleplayer-0.10";
+      migrated = true;
+    }
+    if (
+      v.schema === 9 &&
+      v.rules === "singleplayer-0.10" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of AIRSEA_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      if (v.game.phase === "prepare") v.game.combatVersion = "airsea";
+      v.schema = 10;
+      v.rules = "singleplayer-0.11";
+      migrated = true;
+    }
+    if (v.schema === 10 && v.rules === "singleplayer-0.11" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "fleet";
+      v.schema = 11;
+      v.rules = "singleplayer-0.12";
+      migrated = true;
+    }
+    if (
+      v.schema === 11 &&
+      v.rules === "singleplayer-0.12" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of IMMORTAL_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      v.schema = 12;
+      v.rules = "singleplayer-0.13";
+      migrated = true;
+    }
+    if (
+      v.schema === 12 &&
+      v.rules === "singleplayer-0.13" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of PSYCHIC_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      v.schema = 13;
+      v.rules = "singleplayer-0.14";
+      migrated = true;
+    }
+    if (
+      v.schema === 13 &&
+      v.rules === "singleplayer-0.14" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of WILD_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      v.schema = 14;
+      v.rules = "singleplayer-0.15";
+      migrated = true;
+    }
+    if (v.schema === 14 && v.rules === "singleplayer-0.15" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "metamorph";
+      v.schema = 15;
+      v.rules = "singleplayer-0.16";
+      migrated = true;
+    }
+    if (
+      v.schema === 15 &&
+      v.rules === "singleplayer-0.16" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of PHOENIX_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      v.schema = 16;
+      v.rules = "singleplayer-0.17";
+      migrated = true;
+    }
+    if (
+      v.schema === 16 &&
+      v.rules === "singleplayer-0.17" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of WHALE_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      v.schema = 17;
+      v.rules = "singleplayer-0.18";
+      migrated = true;
+    }
+    if (
+      v.schema === 17 &&
+      v.rules === "singleplayer-0.18" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of MEDIC_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      v.schema = 18;
+      v.rules = "singleplayer-0.19";
+      migrated = true;
+    }
+    if (
+      v.schema === 18 &&
+      v.rules === "singleplayer-0.19" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of INFANTRY_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      v.schema = 19;
+      v.rules = "singleplayer-0.20";
+      migrated = true;
+    }
+    if (
+      v.schema === 19 &&
+      v.rules === "singleplayer-0.20" &&
+      record(v.game) &&
+      record(v.game.pool)
+    ) {
+      for (const id of MOTORCYCLE_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = COPIES[UNIT[id].cost];
+      v.schema = 20;
+      v.rules = "singleplayer-0.21";
+      migrated = true;
+    }
+    if (v.schema === 20 && v.rules === "singleplayer-0.21" && record(v.game)) {
+      // Existing balances and history are settled facts; apply the new income
+      // curve only when a not-yet-settled round actually finishes.
+      v.schema = 21;
       v.rules = RULES.version;
       migrated = true;
     }

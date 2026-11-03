@@ -1,4 +1,10 @@
+import { recruitmentMarkup } from "./ui/recruitment";
+import { incomeMarkup } from "./ui/income";
+import { salePrice } from "./engine/progression";
 import { BattleComputer, ComputationCancelled } from "./compute/client";
+import { analyzeBattle, type BattleMetric } from "./engine/battle-analysis";
+import { fighterName, fighterSprite } from "./engine/summons";
+import { battleAnalysisMarkup, BATTLE_METRICS } from "./ui/battle-analysis";
 import type { ComputeJob, ComputeResult } from "./compute/job";
 import { GameAudio } from "./audio/player";
 import { BattleSoundTrack } from "./audio/cues";
@@ -19,7 +25,12 @@ import { equip, unequip, craft, claimReward } from "./engine/equipment";
 import { SaveStore, SAVE_KEY, type PlaybackSave } from "./engine/persistence";
 import { historyMarkup } from "./ui/match-history";
 import { matchSummaryMarkup } from "./ui/match-summary";
-import { codexMarkup, codexCards, codexFilters } from "./ui/unit-codex";
+import {
+  codexMarkup,
+  refreshCodex,
+  resetCodex,
+  codexFilters,
+} from "./ui/unit-codex";
 import "./style.css";
 import {
   resultMarkup,
@@ -30,7 +41,7 @@ import { BenchTooltip, pieceInfoMarkup } from "./ui/bench-tooltip";
 import "./visual.css";
 import { BattleScene, spriteUrl } from "./render/scene";
 import type { Battle, Game } from "./engine/types";
-import { UNIT, UNITS, RULES, XP, ODDS } from "./data/units";
+import { UNIT, UNITS, RULES, XP } from "./data/units";
 import {
   createGame,
   buy,
@@ -63,6 +74,7 @@ const dialogs = new DialogFocus(app);
 let settingsOpen = false;
 let unitInfo: Piece | null = null;
 let deploymentOpen = false;
+const disclosures = new Map<string, boolean>();
 let hiddenAt: number | null = null;
 const saves = new SaveStore(storage);
 const restored = saves.load();
@@ -76,6 +88,13 @@ let lastSaveAt = 0;
 let historyOpen = false;
 let scoutId: number | null = null;
 let replayRound: number | null = null;
+let analysisView: {
+  battle: Battle;
+  at: number;
+  limit: number;
+  title: string;
+} | null = null;
+let analysisMetric: BattleMetric = "damage";
 let game = restored.data?.game ?? createGame(Date.now() >>> 0),
   selected: number | null = null,
   result: RoundResult | null = null,
@@ -96,6 +115,11 @@ let pendingJob: {
 } | null = null;
 let playbackTime = restored.data?.playback.time ?? 0;
 let demoBattle: Battle | null = null;
+let summonDemo = false;
+let insectDemo = false;
+let airseaDemo = false;
+let immortalDemo = false;
+let wildDemo = false;
 let paused = restored.data?.playback.paused ?? false;
 let resultPresentation: ResultPresentation | null = null;
 const advanceTimer = new PausableDelay();
@@ -112,7 +136,16 @@ function token(p: Piece | Fighter, enemy = false) {
   const fighter = "hp" in p ? p : null;
   return `<span class="piece ${enemy ? "enemy" : ""} ${fighter?.flash ? "flash" : ""}" style="--unit:${u.color}"><img class="unit-portrait" src="${spriteUrl(p.defId)}" alt="${u.name}" draggable="false"><span class="piece-name">${u.name}</span><span class="stars">${stars(p.star)}</span>${fighter ? `<span class="health"><i style="width:${Math.max(0, (fighter.hp / fighter.maxHp) * 100)}%"></i></span>` : ""}</span>`;
 }
+function synergyRow(s: ReturnType<typeof synergies>[number]) {
+  const key = `trait-${s.trait}`;
+  return `<details class="synergy-detail ${s.active ? "active" : ""}" data-disclosure="${key}"><summary data-focus="${key}"><span class="trait-icon">${s.active ? "◆" : "◇"}</span><b>${s.trait}</b><span class="synergy-count">${s.count}/${s.threshold}<small>${s.tier ? `${s.tier} 档` : "未激活"}</small></span></summary><p>${s.description}</p><small class="micro">梯度 ${s.tiers.join(" / ")}</small></details>`;
+}
 function render() {
+  app
+    .querySelectorAll<HTMLDetailsElement>("details[data-disclosure]")
+    .forEach((detail) => {
+      disclosures.set(detail.dataset.disclosure!, detail.open);
+    });
   dialogs.beforeRender();
   document.documentElement.dataset.reducedMotion = String(
     preferences.reducedMotion,
@@ -121,7 +154,8 @@ function render() {
   benchTooltip.hide();
   scene?.destroy();
   const p = me(),
-    busy = game.phase !== "prepare" || saveConflict || computing,
+    busy =
+      game.phase !== "prepare" || saveConflict || computing || !!demoBattle,
     fighting = game.phase === "battle" && result !== null,
     done = game.phase === "finished";
   const lastWinner = result
@@ -131,16 +165,50 @@ function render() {
     onboard = p.pieces.filter((x) => x.position !== null),
     bench = p.pieces.filter((x) => x.position === null);
   const shownBattle = demoBattle ?? (fighting ? result?.battle : null);
+  const analyzableBattle = demoBattle ?? result?.battle;
   const fighters = shownBattle
     ? shownBattle.frames[
         Math.min(Math.floor(playbackTime), shownBattle.frames.length - 1)
       ].fighters
     : [];
-  const active = synergies(p.pieces, game.combatVersion);
+  const demoPieces: Piece[] = demoBattle
+    ? demoBattle.frames[0].fighters
+        .filter((f) => (f.homeSide ?? f.side) === 0 && !f.summon)
+        .map((f) => ({
+          uid: f.uid,
+          defId: f.defId,
+          star: f.star,
+          position: f.y * 8 + f.x,
+        }))
+    : [];
+  const demoVersion = replayRound
+    ? (game.history.find((h) => h.round === replayRound)?.combatVersion ??
+      game.combatVersion)
+    : "metamorph";
+  const active = synergies(
+    demoBattle ? demoPieces : p.pieces,
+    demoBattle ? demoVersion : game.combatVersion,
+  );
   const ranked = rankings(game);
-  app.innerHTML = `<div class="shell"><header><a class="brand" href="/" aria-label="赤潮战术演习主页"><span class="brand-mark">赤</span><span>赤潮 <b>RED TIDES</b><small>战 争 艺 术 / AUTO CHESS</small></span></a><div class="mode"><i></i>单人演习 <span>${DIFFICULTIES[game.difficulty].name} · 你 + 7 位 AI</span></div><nav><button data-action="demo" ${disabled(computing || fighting || game.phase === "result")}>${demoBattle ? "退出演示" : "观看战斗演示"}</button><button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="restart">重新开始</button></nav></header>${saveNotice || saveConflict ? `<div class="save-notice" role="status">${saveConflict ? "另一窗口已更新存档。本窗口已暂停，请载入最新进度后继续。" : saveNotice}<button data-action="load">载入最新存档</button>${saveConflict ? "" : '<button data-action="dismiss-notice" aria-label="关闭存档提示">×</button>'}</div>` : ""}
+  app.innerHTML = `<div class="shell"><header><a class="brand" href="/" aria-label="赤潮战术演习主页"><span class="brand-mark">赤</span><span>赤潮 <b>RED TIDES</b><small>战 争 艺 术 / AUTO CHESS</small></span></a><div class="mode"><i></i>单人演习 <span>${DIFFICULTIES[game.difficulty].name} · 你 + 7 位 AI</span></div><nav aria-label="演习工具"><button data-jump="recruitment">招募</button>${
+    demoBattle
+      ? `<button data-action="demo" ${disabled(computing || fighting || game.phase === "result")}>${replayRound ? "退出回放" : "退出演示"}</button>`
+      : `<details class="demo-menu"><summary data-focus="demo-menu">战斗演示</summary><div class="demo-options">${[
+          ["demo", "十对十兵种"],
+          ["summon-demo", "召唤卫阵"],
+          ["insect-demo", "异虫蜂群"],
+          ["wild-demo", "猛禽陆行"],
+          ["immortal-demo", "灵能不朽"],
+          ["airsea-demo", "空海舰队"],
+        ]
+          .map(
+            ([action, label]) =>
+              `<button data-action="${action}" ${disabled(computing || fighting || game.phase === "result")}>${label}</button>`,
+          )
+          .join("")}</div></details>`
+  }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="restart">重新开始</button></nav></header>${saveNotice || saveConflict ? `<div class="save-notice" role="status">${saveConflict ? "另一窗口已更新存档。本窗口已暂停，请载入最新进度后继续。" : saveNotice}<button data-action="load">载入最新存档</button>${saveConflict ? "" : '<button data-action="dismiss-notice" aria-label="关闭存档提示">×</button>'}</div>` : ""}
  ${computing || computeError ? `<section class="compute-status" role="status" aria-live="polite"><span>${computing ? pendingJob?.label : computeError}</span><div>${!computing ? '<button data-action="retry-compute">重试计算</button>' : ""}<button data-action="cancel-compute">${computing ? "取消计算" : "关闭"}</button></div></section>` : ""}
- <div class="command"><div><span class="eyebrow">RED TIDES / 云海遗迹</span><h1>${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "部署你的下一步"}</h1></div><div class="round"><small>回合</small><strong>${String(game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? "战斗演示" : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "回合结算 · 选择战利品" : "回合结算 · 即将进入准备", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? "演示 · 十对十" : fighting ? `战斗时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : "从组合中找到胜机"}</small></div><button class="primary start" data-action="next" ${disabled(computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></div>
+ <div class="command"><div><span class="eyebrow">RED TIDES / 云海遗迹</span><h1>${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "部署你的下一步"}</h1></div><div class="round"><small>回合</small><strong>${String(replayRound ?? game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? (replayRound ? "历史回放" : "战斗演示") : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "回合结算 · 选择战利品" : "回合结算 · 即将进入准备", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? `${replayRound ? "回放" : "演示"}时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : fighting ? `战斗时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : "从组合中找到胜机"}</small></div><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></div>
  ${!demoBattle ? matchSummaryMarkup(game) : ""}
  ${!demoBattle && !done ? encounterMarkup(game) : ""}
  <main><aside class="left"><section class="panel commander" id="commander"><span class="eyebrow">COMMANDER</span><label class="difficulty-setting">难度<select data-difficulty aria-label="单机难度" title="仅在第 1 回合开战前选择难度" ${disabled(game.round !== 1 || busy || !!demoBattle)}>${Object.entries(
@@ -152,11 +220,25 @@ function render() {
    )
    .join(
      "",
-   )}</select></label><p class="difficulty-hint">${DIFFICULTIES[game.difficulty].description}</p><h2>指挥官 <span>01</span></h2><div class="vitals"><strong>${p.hp}<small>生命值</small></strong><strong class="gold">${p.gold}<small>金币</small></strong></div><div class="life"><i style="width:${p.hp}%"></i></div><div class="level"><span>等级 <b>${p.level}</b></span><span>${p.level === 10 ? "MAX" : `${p.xp} / ${XP[p.level]} XP`}</span></div><div class="xp"><i style="width:${p.level === 10 ? 100 : (p.xp / XP[p.level]) * 100}%"></i></div><button class="wide" data-action="xp" ${disabled(busy || p.gold < 5 || p.level === 10)}>购买经验 <span>5 金 / 5 XP</span></button><p class="micro">预计利息 +${Math.min(5, Math.floor(p.gold / 10))} 金 · ${p.streak >= 0 ? "连胜" : "连败"} ${Math.abs(p.streak)}</p></section>
- <section class="panel synergies"><div class="section-label"><h2>阵容连携</h2><span>${active.filter((s) => s.active).length} 已激活</span></div>${active.length ? active.map((s) => `<div class="synergy ${s.active ? "active" : ""}"><span class="trait-icon">${s.active ? "◆" : "◇"}</span><div><b>${s.trait}</b><small>${s.description}</small></div><em title="梯度 ${s.tiers.join(" / ")}">${s.count}/${s.threshold}<small>${s.tier ? `${s.tier} 档` : "未激活"}</small></em></div>`).join("") : '<p class="empty">部署不同棋子，<br>组合兵种与职业连携。</p>'}<p class="micro">同名棋子仅计数一次</p></section>
+   )}</select></label><p class="difficulty-hint">${DIFFICULTIES[game.difficulty].description}</p><h2>指挥官 <span>01</span></h2><div class="vitals"><strong>${p.hp}<small>生命值</small></strong><strong class="gold">${p.gold}<small>金币</small></strong></div><div class="life"><i style="width:${p.hp}%"></i></div><div class="level"><span>等级 <b>${p.level}</b></span><span>${p.level === 10 ? "MAX" : `${p.xp} / ${XP[p.level]} XP`}</span></div><div class="xp"><i style="width:${p.level === 10 ? 100 : (p.xp / XP[p.level]) * 100}%"></i></div><button class="wide" data-action="xp" ${disabled(busy || p.gold < 5 || p.level === 10)}>购买经验 <span>5 金 / 5 XP</span></button>${incomeMarkup(game.round)}<p class="micro">预计利息 +${Math.min(5, Math.floor(p.gold / 10))} 金 · ${p.streak >= 0 ? "连胜" : "连败"} ${Math.abs(p.streak)}</p></section>
+ <section class="panel synergies"><div class="section-label"><h2>${demoBattle ? (replayRound ? "回放阵容连携" : "演示阵容连携") : "阵容连携"}</h2><span>${active.filter((s) => s.active).length} 已激活</span></div>${
+   active.length
+     ? `${active
+         .filter((s) => s.active)
+         .map(synergyRow)
+         .join("")}${
+         active.some((s) => !s.active)
+           ? `<details class="inactive-synergies" data-disclosure="inactive-synergies"><summary data-focus="inactive-synergies">未激活连携 · ${active.filter((s) => !s.active).length}</summary>${active
+               .filter((s) => !s.active)
+               .map(synergyRow)
+               .join("")}</details>`
+           : ""
+       }`
+     : '<p class="empty">部署不同棋子，<br>组合兵种与职业连携。</p>'
+ }<p class="micro">点开连携查看效果<br>同名仅计一次 · 异虫包含备战席</p></section>
  </aside>
- <section class="arena" id="battlefield"><div class="arena-label"><span><i class="red-dot"></i>${fighting ? result!.opponent.name : "敌方阵地"}</span><span>${fighting ? "实时战况" : "8 × 8 战术棋盘"} <button class="speed" data-action="speed">${speed}×</button></span></div><div class="battle-stage ${demoBattle ? "is-demo" : ""}"><canvas id="battle-canvas" role="img" aria-label="斜俯视战场：点击己方棋格部署选中的棋子"></canvas><div class="stage-title"><span>云海遗迹</span><small>THE CLOUD SANCTUARY</small></div><div class="stage-status">${demoBattle ? "回放演示 · 不影响当前对局" : fighting ? "交战中" : game.phase === "result" ? "战果展示 · 即将进入准备" : done ? "演习结束" : "部署阶段 · 己方半场可落子"}</div><div class="stage-controls"><button data-action="pause" ${disabled(!fighting && !demoBattle)}>${paused ? "继续播放" : "暂停画面"}</button><button data-action="speed">${speed}× 速度</button></div>${resultMarkup(resultPresentation)}</div>
- <div class="arena-bottom"><span><i class="teal-dot"></i>己方阵地</span><span>已部署 <b>${onboard.length} / ${p.level}</b></span></div>
+ <section class="arena" id="battlefield"><div class="arena-label"><span><i class="red-dot"></i>${fighting ? result!.opponent.name : "敌方阵地"}</span><span>${fighting ? "实时战况" : "8 × 8 战术棋盘"} <button class="speed" data-action="speed">${speed}×</button></span></div><div class="battle-stage ${demoBattle ? "is-demo" : ""}"><canvas id="battle-canvas" role="img" aria-label="斜俯视战场：点击己方棋格部署选中的棋子"></canvas><div class="stage-title"><span>云海遗迹</span><small>THE CLOUD SANCTUARY</small></div><div class="stage-status">${demoBattle ? (replayRound ? "历史回放 · 不影响当前对局" : "兵种演示 · 不影响当前对局") : fighting ? "交战中" : game.phase === "result" ? "战果展示 · 即将进入准备" : done ? "演习结束" : "部署阶段 · 己方半场可落子"}</div><div class="stage-controls"><button data-action="pause" ${disabled(!fighting && !demoBattle)}>${paused ? "继续播放" : "暂停画面"}</button><button data-action="speed">${speed}× 速度</button><button data-action="battle-analysis" ${disabled(computing || !analyzableBattle)}>战斗分析</button></div>${resultMarkup(resultPresentation)}</div>
+ <div class="arena-bottom"><span><i class="teal-dot"></i>己方阵地</span><span>${demoBattle ? `${replayRound ? "回放" : "演示"}阵容 <b>${demoPieces.length} 枚</b>` : `已部署 <b>${onboard.length} / ${p.level}</b>`}</span></div>
  <div class="bench-header"><span>备战席 <small>${bench.length} / 8</small></span><span>${chosen ? `已选择 ${UNIT[chosen.defId].name}` : "点击棋子选择 · 点击棋格部署"}</span></div><div class="bench">${Array.from(
    { length: 8 },
    (_, i) => {
@@ -164,39 +246,34 @@ function render() {
      return `<div class="bench-item" ${x ? `data-bench-info="${x.uid}" tabindex="${busy ? 0 : -1}"` : ""}><button class="bench-slot ${x?.uid === selected ? "selected" : ""}" data-bench="${x?.uid ?? ""}" ${disabled(busy)} aria-label="${x ? UNIT[x.defId].name : "空备战位置"}">${x ? token(x) : `<span>${String(i + 1).padStart(2, "0")}</span>`}</button>${x ? `<button class="bench-info" data-piece-info="${x.uid}" aria-label="查看备战席${UNIT[x.defId].name}详情">详情</button>` : ""}</div>`;
    },
  ).join("")}</div>
- ${deploymentMarkup(p, selected, busy || !!demoBattle, deploymentOpen)}<div class="auto-deploy"><button data-action="auto-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>推荐布阵</button><button data-action="compact-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>抱团布阵</button><span class="micro">分散避群伤，抱团保护后排；均可继续手动调整</span></div><div class="selection">${chosen ? `<span><b>${UNIT[chosen.defId].name}</b> ${stars(chosen.star)} · ${UNIT[chosen.defId].traits.join(" / ")}</span><div><button data-action="unit-info">查看详情</button><button data-action="recall" ${disabled(busy || chosen.position === null)}>撤回备战席</button><button data-action="sell" ${disabled(busy)}>出售 +${UNIT[chosen.defId].cost * 3 ** (chosen.star - 1)} 金</button></div>` : "<span>招募 → 布阵 → 自动交战 → 升级阵容</span>"}</div></section>
- <aside class="right"><section class="panel leaderboard"><div class="section-label"><h2>战场情报</h2><span>${game.players.filter((x) => x.hp > 0).length} / 8 存活</span></div>${ranked.map((x, i) => `<div class="player ${x.id === 0 ? "you" : ""} ${x.hp === 0 ? "eliminated" : ""}"><span class="rank">${String(i + 1).padStart(2, "0")}</span><div><b>${x.name}</b><span class="player-bar"><i style="width:${x.hp}%"></i></span></div><strong>${x.hp}</strong>${x.id !== 0 ? `<button class="scout-button" data-scout="${x.id}" aria-label="侦察 ${x.name}" title="${AI_PROFILES[x.id].name}">侦察</button>` : ""}</div>`).join("")}</section><section class="panel report"><span class="eyebrow">${fighting || demoBattle ? "DAMAGE REPORT" : "BATTLE LOG"}</span><h2>${done ? `最终排名 #${ranked.findIndex((x) => x.id === 0) + 1}` : fighting || demoBattle ? "战斗贡献" : "作战简报"}</h2><div class="damage-stats">${
+ ${deploymentMarkup(p, selected, busy || !!demoBattle, deploymentOpen)}<div class="auto-deploy"><button data-action="auto-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>推荐布阵</button><button data-action="compact-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>抱团布阵</button><span class="micro">分散避群伤，抱团保护后排；均可继续手动调整</span></div><div class="selection">${chosen ? `<span><b>${UNIT[chosen.defId].name}</b> ${stars(chosen.star)} · ${UNIT[chosen.defId].traits.join(" / ")}</span><div><button data-action="deselect" aria-keyshortcuts="Escape" title="取消选择（Esc）">取消选择</button><button data-action="unit-info">查看详情</button><button data-action="recall" ${disabled(busy || chosen.position === null)}>撤回备战席</button><button data-action="sell" ${disabled(busy)}>出售 +${salePrice(chosen)} 金</button></div>` : "<span>招募 → 布阵 → 自动交战 → 升级阵容</span>"}</div></section>
+ ${recruitmentMarkup(game, p, busy)}
+ <aside class="right"><section class="panel leaderboard"><div class="section-label"><h2>战场情报</h2><span>${game.players.filter((x) => x.hp > 0).length} / 8 存活</span></div>${ranked.map((x, i) => `<div class="player ${x.id === 0 ? "you" : ""} ${x.hp === 0 ? "eliminated" : ""}"><span class="rank">${String(i + 1).padStart(2, "0")}</span><div><b>${x.name}</b><span class="player-bar"><i style="width:${x.hp}%"></i></span></div><strong>${x.hp}</strong>${x.id !== 0 ? `<button class="scout-button" data-scout="${x.id}" aria-label="侦察 ${x.name}" title="${AI_PROFILES[x.id].name}">侦察</button>` : ""}</div>`).join("")}</section><section class="panel report"><span class="eyebrow">${fighting || demoBattle ? "DAMAGE REPORT" : "BATTLE LOG"}</span><h2>${fighting || demoBattle ? "战斗贡献" : done ? `最终排名 #${ranked.findIndex((x) => x.id === 0) + 1}` : "作战简报"}</h2><div class="damage-stats">${
    fighting || demoBattle
      ? fighters
-         .filter((f) => f.side === 0)
+         .filter((f) => (f.homeSide ?? f.side) === 0)
          .sort((a, b) => b.damage - a.damage)
          .slice(0, 5)
          .map(
            (f) =>
-             `<div class="damage"><span>${UNIT[f.defId].name}<small>治疗 ${f.healing} · 承盾 ${f.absorbed}</small></span><b>${f.damage}</b></div>`,
+             `<div class="damage"><span>${fighterName(f)}<small>治疗 ${f.healing} · 承盾 ${f.absorbed}</small></span><b>${f.damage}</b></div>`,
          )
          .join("")
      : `<p role="status">${game.message}</p>`
  }</div>${game.phase === "result" ? `<p class="result-badge">${lastWinner === 0 ? "防守胜利" : lastWinner === null ? "战斗平局" : "防守失败"}</p>` : ""}</section></aside></main>
- ${equipmentMarkup(game, selected, busy || !!demoBattle)}
- <section class="shop panel" id="recruitment"><div class="shop-title"><div><span class="eyebrow">RECRUITMENT</span><h2>招募中心</h2></div><div><button data-action="lock" aria-pressed="${p.locked}" ${disabled(busy)}>${p.locked ? "已锁定商店" : "锁定商店"}</button><button data-action="refresh" ${disabled(busy || p.gold < 2)}>↻ 刷新 <span>2 金</span></button></div></div><p class="shop-odds">当前 ${p.level} 级招募概率：${ODDS[p.level - 1].map((n, i) => `${i + 1} 费 ${n}%`).join(" · ")}</p><div class="shop-cards">${p.shop
-   .map((id, i) => {
-     if (!id) return '<div class="card sold">已招募</div>';
-     const u = UNIT[id],
-       count = p.pieces
-         .filter((x) => x.defId === id)
-         .reduce((n, x) => n + 3 ** (x.star - 1), 0);
-     return `<article class="shop-entry"><button class="card" data-buy="${i}" style="--unit:${u.color}" ${disabled(busy || p.gold < u.cost)}><div class="card-top"><span>${u.traits.join(" / ")}</span><b>${u.cost}<small> 金</small></b></div><div class="card-art"><img src="${spriteUrl(u.id)}" alt="${u.name}" draggable="false"><i></i></div><div class="card-bottom"><strong>${u.name}</strong><small>${count ? `持有 ${count} 枚` : "点击招募"}</small></div><div class="rarity">${"▰".repeat(u.cost)}</div></button><button class="shop-info" data-unit-info="${id}" aria-label="查看${u.name}详情">查看详情</button></article>`;
-   })
-   .join(
-     "",
-   )}</div></section><footer><span>RED TIDES / 战术演习</span><span class="save-status" role="status">${saveLabel()}</span><span>ImageGen 重制形象 · 2.5D 战场</span></footer><nav class="mobile-dock" aria-label="快捷导航"><span>${p.hp} 生命 · <b>${p.gold} 金</b> · ${onboard.length}/${p.level} 人口</span><div><button data-jump="battlefield">战场</button><button data-jump="recruitment">招募</button><button data-jump="armory">装备</button><button data-jump="commander">升级</button></div></nav></div>
- ${game.reward && !computing && !resultPresentation && !saveConflict && !settingsOpen && !unitInfo && scoutId === null && !historyOpen && !help && !codex ? rewardMarkup(game) : ""}
+ ${equipmentMarkup(game, selected, busy || !!demoBattle)}<footer><span>RED TIDES / 战术演习</span><span class="save-status" role="status">${saveLabel()}</span><span>ImageGen 重制形象 · 2.5D 战场</span></footer><nav class="mobile-dock" aria-label="快捷导航"><span>${p.hp} 生命 · <b>${p.gold} 金</b> · ${onboard.length}/${p.level} 人口</span><div><button data-jump="battlefield">战场</button><button data-jump="recruitment">招募</button><button data-jump="armory">装备</button><button data-jump="commander">升级</button></div></nav></div>
+ ${game.reward && !computing && !resultPresentation && !saveConflict && !settingsOpen && !unitInfo && scoutId === null && !historyOpen && !help && !codex && !analysisView ? rewardMarkup(game) : ""}
+ ${analysisView ? battleAnalysisMarkup(analyzeBattle(analysisView.battle, analysisView.at), analysisMetric, analysisView.title, analysisView.limit, analysisView.battle.frames[analysisView.limit]?.tick ?? 0, analysisView.battle === demoBattle) : ""}
  ${settingsOpen ? settingsMarkup(preferences) : ""}
  ${unitInfo ? pieceInfoMarkup(unitInfo, game.combatVersion) : ""}
  ${scoutId !== null ? scoutingMarkup(game, scoutId) : ""}
  ${historyOpen ? historyMarkup(game) : ""}
- ${help || codex ? `<div class="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-label="${help ? "作战指南" : "棋子图鉴"}"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">FIELD MANUAL</span><h2>${help ? "作战指南" : "棋子图鉴"}</h2>${help ? `<ol><li>在招募中心购买棋子。3 个同星同名棋子自动合成，最高三星。</li><li>点击备战席中的棋子，再点击棋盘下半区部署。上场数量不能超过等级。</li><li>点击场上棋子后可移动、交换、撤回或出售。重复棋子不增加羁绊计数。</li><li>点击开始战斗，观察走位与伤害。战斗期间不能更改阵容。</li><li>结算获得基础金币、利息、连胜或连败奖励。购买经验提升人口。</li><li>存活到最后获胜；第 30 回合按剩余生命排名。重新开始会清空本局。</li></ol><p>本版包含 ${UNITS.length} 种棋子、10 类羁绊与多档效果和共享卡池。棋子各有独立技能：护盾、治疗、眩晕、破甲、贯穿和突袭。蓝色条为护盾，紫色数字为法术伤害。操作后自动保存本局，刷新可恢复战斗与准备进度。本局战报可查看已结束回合与回放。野怪回合后选择装备；选中棋子后可在装备工坊穿戴、卸下或合成。每枚棋子最多 3 件装备，升星溢出装备和出售装备会归还库存。首轮开战前可选择休闲、标准或挑战难度；战场情报的侦察按钮可查看对手站位与装备。推荐布阵可自动挑选阵容并安排前后排。</p>` : codexMarkup()}</section></div>` : ""}`;
+ ${help || codex ? `<div class="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-label="${help ? "作战指南" : "棋子图鉴"}"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">FIELD MANUAL</span><h2>${help ? "作战指南" : "棋子图鉴"}</h2>${help ? `<ol><li>在招募中心购买棋子。通常 3 个同星同名棋子自动合成，最高三星。持有 2 种异虫时，一星异虫只需 2 枚；持有 4 种时，二星也只需 2 枚。异虫种类包含备战席。异虫售价按常规星级价值计算、上限 5 金，卡池只返还实际使用份数。</li><li>点击备战席中的棋子，再点击棋盘下半区部署。上场数量不能超过等级。</li><li>点击场上棋子后可移动、交换、撤回或出售。重复棋子不增加羁绊计数。</li><li>点击开始战斗，观察走位与伤害。战斗期间不能更改阵容。</li><li>每轮基础奖励从5金开始，每5回合增加2金，最高15金；利息、对战胜利和连胜或连败奖励另算，玩家与AI使用相同规则。后期可用更多金币刷新、追星或购买经验提升人口。</li><li>存活到最后获胜；第 30 回合按剩余生命排名。重新开始会清空本局。</li></ol><p>本版包含 ${UNITS.length} 种棋子、22 类羁绊与多档效果和共享卡池。棋子各有独立技能：护盾、治疗、眩晕、破甲、贯穿和突袭。飞行属性独立于空军羁绊；空军提供飞行闪避，海神提供命中回能，巨神炮优先对空。方舟蓄力和电蛟雷场有范围预告，控制可中断施法。蓝色条为护盾，紫色数字为法术伤害。上场 2/3 种不朽棋子可在阵亡后继续作战 4/6 秒，残魂以青色倒计时显示，无法治疗或获得护盾；残魂不增加战后扣血。2/4 种灵能使全队受击反弹 20/30 点真实伤害，残魂和召唤物同样生效；反伤不连锁、不回能。童子可为邻近主力充能，战斗分析单列反伤与供能。猛禽 2/3 种使本族对地普攻增强 15%/35%；陆行者普攻转为真实伤害。声波持续伤害、罗汉蓄力及蛤蟆单次吞噬可在新阵容演示中观察。操作后自动保存本局，刷新可恢复战斗与准备进度。本局战报可查看已结束回合与回放，并打开双方战斗分析。战场上的“战斗分析”会暂停播放，只统计已播放片段，可比较伤害、承伤、治疗和护盾贡献。野怪回合后选择装备；选中棋子后可在装备工坊穿戴、卸下或合成。每枚棋子最多 3 件装备，升星溢出装备和出售装备会归还库存。首轮开战前可选择休闲、标准或挑战难度；战场情报的侦察按钮可查看对手站位与装备。推荐布阵可自动挑选阵容并安排前后排。</p>` : codexMarkup()}</section></div>` : ""}`;
+  app
+    .querySelectorAll<HTMLDetailsElement>("details[data-disclosure]")
+    .forEach((detail) => {
+      detail.open = disclosures.get(detail.dataset.disclosure!) ?? false;
+    });
   scene = new BattleScene(
     document.querySelector<HTMLCanvasElement>("#battle-canvas")!,
     () => ({
@@ -219,7 +296,9 @@ function render() {
   );
   if (computing)
     app
-      .querySelectorAll<HTMLButtonElement>("[data-watch-round]")
+      .querySelectorAll<HTMLButtonElement>(
+        "[data-watch-round], [data-analyze-round]",
+      )
       .forEach((button) => {
         button.disabled = true;
       });
@@ -406,12 +485,24 @@ function calculateRound(mode: "start" | "resume") {
   );
 }
 function closePanels() {
+  analysisView = null;
   scoutId = null;
   historyOpen = false;
   help = false;
   codex = false;
   settingsOpen = false;
   unitInfo = null;
+}
+function openBattleAnalysis(battle: Battle, limit: number, title: string) {
+  closePanels();
+  paused = true;
+  audio.stop();
+  const last = Math.max(
+    0,
+    Math.min(Math.floor(limit), battle.frames.length - 1),
+  );
+  analysisView = { battle, at: last, limit: last, title };
+  analysisMetric = "damage";
 }
 function updateSoundStatus() {
   const status = app.querySelector(".sound-status");
@@ -431,6 +522,10 @@ app.addEventListener("click", (e) => {
   if (!target || target.hasAttribute("disabled")) return;
   const p = me(),
     action = target.dataset.action;
+  if (action === "codex-reset" && codex) {
+    resetCodex(app);
+    return;
+  }
   if (action === "cancel-compute") {
     cancelComputation();
     if (demoBattle) beginPlayback();
@@ -503,6 +598,53 @@ app.addEventListener("click", (e) => {
   )
     return;
   if (action === "deployment") deploymentOpen = !deploymentOpen;
+  if (
+    action === "analysis-frame" &&
+    analysisView?.battle === demoBattle &&
+    demoBattle
+  ) {
+    playbackTime = analysisView.at;
+    frame = Math.floor(playbackTime);
+    closePanels();
+    resultPresentation = null;
+    paused = true;
+    beginPlayback();
+  }
+  if (
+    action === "analysis-replay" &&
+    analysisView?.battle === demoBattle &&
+    demoBattle
+  ) {
+    closePanels();
+    resultPresentation = null;
+    playbackTime = 0;
+    frame = 0;
+    paused = false;
+    beginPlayback();
+  }
+  if (action === "battle-analysis") {
+    const battle = demoBattle ?? result?.battle;
+    if (battle)
+      openBattleAnalysis(
+        battle,
+        playbackTime,
+        demoBattle
+          ? replayRound
+            ? `第 ${replayRound} 回合回放`
+            : wildDemo
+              ? "猛禽陆行演习"
+              : immortalDemo
+                ? "灵能不朽演习"
+                : airseaDemo
+                  ? "空海舰队演习"
+                  : insectDemo
+                    ? "异虫蜂群演习"
+                    : summonDemo
+                      ? "召唤卫阵演习"
+                      : "十对十兵种演习"
+          : `第 ${game.round} 回合 · ${result!.opponent.name}`,
+      );
+  }
   if (action === "settings") {
     closePanels();
     settingsOpen = true;
@@ -585,13 +727,17 @@ app.addEventListener("click", (e) => {
     }
   }
   if (
-    target.dataset.watchRound !== undefined &&
+    (target.dataset.watchRound !== undefined ||
+      target.dataset.analyzeRound !== undefined) &&
     (game.phase === "prepare" || game.phase === "finished")
   ) {
     const report = game.history.find(
-      (r) => r.round === Number(target.dataset.watchRound),
+      (r) =>
+        r.round ===
+        Number(target.dataset.watchRound ?? target.dataset.analyzeRound),
     );
     if (report) {
+      const analysisOnly = target.dataset.analyzeRound !== undefined;
       historyOpen = false;
       runComputation(
         {
@@ -605,11 +751,17 @@ app.addEventListener("click", (e) => {
           demoBattle = value.battle;
           replayRound = report.round;
           resultPresentation = null;
-          playbackTime = 0;
-          paused = false;
+          playbackTime = analysisOnly ? value.battle.frames.length - 1 : 0;
+          paused = analysisOnly;
+          if (analysisOnly)
+            openBattleAnalysis(
+              value.battle,
+              playbackTime,
+              `第 ${report.round} 回合 · ${report.opponentName}`,
+            );
           beginPlayback();
         },
-        `正在准备第 ${report.round} 回合回放…`,
+        `正在准备第 ${report.round} 回合${analysisOnly ? "分析" : "回放"}…`,
       );
       return;
     }
@@ -630,7 +782,14 @@ app.addEventListener("click", (e) => {
     selectCell(Number(target.dataset.cell));
     return;
   }
-  if (action === "demo") {
+  if (
+    action === "demo" ||
+    action === "summon-demo" ||
+    action === "insect-demo" ||
+    action === "airsea-demo" ||
+    action === "immortal-demo" ||
+    action === "wild-demo"
+  ) {
     resultPresentation = null;
     replayRound = null;
     if (demoBattle) {
@@ -639,9 +798,20 @@ app.addEventListener("click", (e) => {
       paused = false;
       playbackTime = result ? result.battle.frames.length - 1 : 0;
     } else {
-      const { left, right } = demoArmies();
+      summonDemo = action === "summon-demo";
+      insectDemo = action === "insect-demo";
+      airseaDemo = action === "airsea-demo";
+      immortalDemo = action === "immortal-demo";
+      wildDemo = action === "wild-demo";
+      const { left, right } = demoArmies(
+        summonDemo,
+        insectDemo,
+        airseaDemo,
+        immortalDemo,
+        wildDemo,
+      );
       runComputation(
-        { kind: "replay", left, right, version: "signature" },
+        { kind: "replay", left, right, version: "metamorph" },
         (value) => {
           if (value.kind !== "replay") return;
           demoBattle = value.battle;
@@ -657,6 +827,19 @@ app.addEventListener("click", (e) => {
   if (action === "pause") {
     paused = !paused;
     if (paused) audio.stop();
+  }
+  if (action === "deselect") {
+    const piece = p.pieces.find((piece) => piece.uid === selected);
+    selected = null;
+    render();
+    const focusTarget =
+      piece?.position === null
+        ? `[data-bench="${piece.uid}"]`
+        : piece && deploymentOpen
+          ? `[data-cell="${piece.position}"]`
+          : '[data-action="deployment"]';
+    app.querySelector<HTMLElement>(focusTarget)?.focus({ preventScroll: true });
+    return;
   }
   if (action === "refresh") {
     roll(game, p);
@@ -714,6 +897,28 @@ app.addEventListener("click", (e) => {
 app.addEventListener("change", (e) => {
   const input = e.target;
   if (
+    analysisView &&
+    input instanceof HTMLSelectElement &&
+    input.hasAttribute("data-analysis-metric") &&
+    Object.hasOwn(BATTLE_METRICS, input.value)
+  ) {
+    analysisMetric = input.value as BattleMetric;
+    render();
+    return;
+  }
+  if (
+    analysisView &&
+    input instanceof HTMLInputElement &&
+    input.hasAttribute("data-analysis-frame")
+  ) {
+    analysisView.at = Math.max(
+      0,
+      Math.min(analysisView.limit, Math.floor(Number(input.value) || 0)),
+    );
+    render();
+    return;
+  }
+  if (
     (input instanceof HTMLInputElement || input instanceof HTMLSelectElement) &&
     input.dataset.setting
   ) {
@@ -764,8 +969,16 @@ app.addEventListener("change", (e) => {
   if (key === "cost") codexFilters.cost = input.value;
   if (key === "trait") codexFilters.trait = input.value;
   if (key === "star") codexFilters.star = Number(input.value);
-  const grid = app.querySelector(".codex-grid");
-  if (grid) grid.innerHTML = codexCards();
+  if (key === "sort") codexFilters.sort = input.value;
+  if (key === "range") codexFilters.range = input.value;
+  refreshCodex(app);
+});
+app.addEventListener("input", (event) => {
+  const input = event.target;
+  if (!(input instanceof HTMLInputElement) || input.dataset.codex !== "query")
+    return;
+  codexFilters.query = input.value;
+  refreshCodex(app);
 });
 document.addEventListener("keydown", (e) => {
   const cell =
@@ -822,17 +1035,23 @@ function selectCell(pos: number) {
   } else if (at) selected = at.uid;
   render();
 }
-function demoArmies() {
+function demoArmies(
+  summoners = false,
+  insects = false,
+  airsea = false,
+  immortal = false,
+  wild = false,
+) {
   const left: Piece[] = [
     { uid: 101, defId: "guard", star: 2, position: 35 },
-    { uid: 102, defId: "pangolin", star: 2, position: 34 },
+    { uid: 102, defId: "flametrooper", star: 2, position: 34 },
     { uid: 103, defId: "panda", star: 2, position: 37 },
     { uid: 104, defId: "infantry", star: 2, position: 51 },
-    { uid: 105, defId: "monk", star: 2, position: 44 },
-    { uid: 106, defId: "cannon", star: 1, position: 60 },
+    { uid: 105, defId: "medic", star: 2, position: 43 },
+    { uid: 106, defId: "motorcycle", star: 2, position: 52 },
     { uid: 107, defId: "cavalry", star: 2, position: 33 },
-    { uid: 108, defId: "dragonfly", star: 2, position: 59 },
-    { uid: 109, defId: "fish", star: 2, position: 58 },
+    { uid: 108, defId: "grenadier", star: 2, position: 44 },
+    { uid: 109, defId: "sniper", star: 2, position: 58 },
     { uid: 110, defId: "deer", star: 2, position: 57 },
   ];
   const right: Piece[] = [
@@ -847,6 +1066,113 @@ function demoArmies() {
     { uid: 209, defId: "tiger", star: 1, position: 60 },
     { uid: 210, defId: "bull", star: 2, position: 43 },
   ];
+  if (summoners) {
+    left[0] = {
+      uid: 101,
+      defId: "shark",
+      star: 2,
+      position: 34,
+      items: ["staff"],
+    };
+    left[1] = { uid: 102, defId: "wolf", star: 2, position: 36 };
+    left[9] = {
+      uid: 110,
+      defId: "adept",
+      star: 2,
+      position: 49,
+      items: ["staff"],
+    };
+  }
+  if (insects) {
+    left[0] = { uid: 101, defId: "blastbug", star: 2, position: 35 };
+    left[3] = { uid: 104, defId: "eyebug", star: 2, position: 43 };
+    left[7] = {
+      uid: 108,
+      defId: "spider",
+      star: 2,
+      position: 42,
+      items: ["staff"],
+    };
+    left[9] = { uid: 110, defId: "wasp", star: 2, position: 44 };
+    left[4].position = 52;
+  }
+  if (airsea) {
+    const ids = [
+      "shark",
+      "bomber",
+      "ghostjet",
+      "skycrab",
+      "eel",
+      "ark",
+      "repair",
+      "fish",
+      "guard",
+      "whale",
+    ];
+    const positions = [35, 36, 33, 43, 44, 60, 51, 50, 34, 52];
+    left.splice(
+      0,
+      left.length,
+      ...ids.map((defId, i) => ({
+        uid: 101 + i,
+        defId,
+        star: 2,
+        position: positions[i],
+        ...(["bomber", "ark", "eel", "repair", "whale"].includes(defId)
+          ? { items: ["staff"] }
+          : {}),
+      })),
+    );
+  }
+  if (wild) {
+    const ids = [
+      "vajra",
+      "bloodhawk",
+      "phoenix",
+      "lion",
+      "bat",
+      "skytoad",
+      "arhat",
+      "winddragon",
+      "bonedragon",
+      "repair",
+    ];
+    const positions = [35, 36, 52, 37, 43, 44, 59, 34, 51, 60];
+    left.splice(
+      0,
+      left.length,
+      ...ids.map((defId, i) => ({
+        uid: 101 + i,
+        defId,
+        star: 2,
+        position: positions[i],
+        ...(defId === "arhat" || defId === "bat" ? { items: ["staff"] } : {}),
+      })),
+    );
+  }
+  if (immortal) {
+    const ids = [
+      "vine",
+      "treant",
+      "guard",
+      "bonedragon",
+      "adept",
+      "stormcaller",
+      "acolyte",
+      "thunderlord",
+    ];
+    const positions = [35, 36, 34, 44, 51, 52, 43, 53];
+    left.splice(
+      0,
+      left.length,
+      ...ids.map((defId, i) => ({
+        uid: 101 + i,
+        defId,
+        star: 2,
+        position: positions[i],
+      })),
+    );
+  }
   return { left, right };
 }
 function beginPlayback() {
@@ -908,12 +1234,13 @@ function beginPlayback() {
         resultPresentation = {
           winner: demoBattle.winner,
           startedAt: performance.now(),
-          round: game.round,
+          round: replayRound ?? game.round,
           damage: 0,
           income: 0,
           terminal: false,
           rank: 0,
           demo: true,
+          replay: replayRound !== null,
         };
         render();
         return;
@@ -929,17 +1256,17 @@ function beginPlayback() {
       const clock = document.querySelector(".battle-clock");
       if (clock)
         clock.textContent = demoBattle
-          ? "演示 · 十对十"
+          ? `${replayRound ? "回放" : "演示"}时间 ${(frame * RULES.tickSeconds).toFixed(1)}s`
           : `战斗时间 ${(frame * 0.25).toFixed(1)}s`;
       const stats = document.querySelector(".damage-stats");
       if (stats)
         stats.innerHTML = battle.frames[frame].fighters
-          .filter((f) => f.side === 0)
+          .filter((f) => (f.homeSide ?? f.side) === 0)
           .sort((a, b) => b.damage - a.damage)
           .slice(0, 6)
           .map(
             (f) =>
-              `<div class="damage"><img src="${spriteUrl(f.defId)}" alt=""><span>${UNIT[f.defId].name}<small>治疗 ${f.healing} · 承盾 ${f.absorbed}</small></span><b>${f.damage}</b></div>`,
+              `<div class="damage"><img src="${spriteUrl(fighterSprite(f))}" alt=""><span>${fighterName(f)}<small>治疗 ${f.healing} · 承盾 ${f.absorbed}</small></span><b>${f.damage}</b></div>`,
           )
           .join("");
     }

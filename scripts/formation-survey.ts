@@ -8,8 +8,14 @@ import { ENCOUNTERS, encounterArmy } from "../src/data/encounters";
 import type { Piece } from "../src/engine/types";
 const label = process.argv[2] ?? "current";
 if (!/^[a-z0-9-]+$/.test(label)) throw new Error("Invalid label");
-const version = process.argv[3] ?? "signature";
-if (version !== "tactics" && version !== "balanced" && version !== "signature")
+const version = process.argv[3] ?? "legions";
+if (
+  version !== "tactics" &&
+  version !== "balanced" &&
+  version !== "signature" &&
+  version !== "summons" &&
+  version !== "legions"
+)
   throw new Error("Unknown combat version");
 const formations = ["spread", "compact"] as const;
 const armies = {
@@ -24,6 +30,9 @@ const sourceFiles = [
   "src/engine/ai.ts",
   "src/engine/battle.ts",
   "src/engine/abilities.ts",
+  "src/engine/infantry-skills.ts",
+  "src/engine/triggers.ts",
+  "src/engine/summons.ts",
   "src/data/units.ts",
   "src/data/traits.ts",
   "src/data/skills.ts",

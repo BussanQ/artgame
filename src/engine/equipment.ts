@@ -89,12 +89,20 @@ export function claimReward(g: Game, index: number): boolean {
 export function itemScore(
   piece: Piece,
   id: string,
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ): number {
   const s = ITEM[id].stats,
     u = UNIT[piece.defId],
-    tank = u.traits.includes("护卫") || u.traits.includes("先锋"),
-    caster = SKILLS[u.id].damageType === "magic" || SKILLS[u.id].healRatio > 0;
+    tank =
+      u.traits.includes("护卫") ||
+      u.traits.includes("先锋") ||
+      u.id === "blastbug",
+    caster =
+      ["wolf", "adept", "shark", "spider", "repair", "whale", "medic"].includes(
+        u.id,
+      ) ||
+      SKILLS[u.id].damageType === "magic" ||
+      SKILLS[u.id].healRatio > 0;
   return (
     (s.attack ?? 0) * (u.range > 1 ? 2 : 1) +
     (s.hp ?? 0) * (tank ? 0.2 : 0.08) +
@@ -102,9 +110,27 @@ export function itemScore(
     (s.haste ?? 0) * u.attack * 4 +
     (s.lifesteal ?? 0) * u.attack * 3 +
     (s.skillPower ?? 0) *
-      (version === "signature" && u.id === "turtle" ? 0 : caster ? 300 : 100) +
+      ((version === "signature" ||
+        version === "summons" ||
+        version === "legions" ||
+        version === "brood" ||
+        version === "airsea" ||
+        version === "fleet" ||
+        version === "metamorph") &&
+      u.id === "turtle"
+        ? 0
+        : caster
+          ? 300
+          : 100) +
     (s.mana ?? 0) *
-      (version === "signature" && ["cavalry", "turtle", "tiger"].includes(u.id)
+      ((version === "signature" ||
+        version === "summons" ||
+        version === "legions" ||
+        version === "brood" ||
+        version === "airsea" ||
+        version === "fleet" ||
+        version === "metamorph") &&
+      ["cavalry", "turtle", "tiger", "blastbug"].includes(u.id)
         ? 0
         : caster
           ? 2

@@ -15,9 +15,15 @@ import { prepareBot } from "../src/engine/ai";
 import { claimReward } from "../src/engine/equipment";
 import { simulate } from "../src/engine/battle";
 import { validGame } from "../src/engine/persistence";
+import { RULES } from "../src/data/units";
 const paths = [
   "src/engine/game.ts",
+  "src/engine/economy.ts",
   "src/engine/battle.ts",
+  "src/engine/abilities.ts",
+  "src/engine/infantry-skills.ts",
+  "src/engine/triggers.ts",
+  "src/engine/summons.ts",
   "src/engine/ai.ts",
   "src/compute/job.ts",
   "src/compute/client.ts",
@@ -110,7 +116,7 @@ const report = {
   finalRound: game.round,
 };
 writeFileSync(
-  "docs/analysis/compute-performance.json",
+  `docs/analysis/compute-performance-${RULES.version}.json`,
   JSON.stringify(report, null, 2) + "\n",
 );
 console.log(JSON.stringify(rows, null, 2));

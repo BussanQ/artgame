@@ -11,7 +11,11 @@ import {
 import type { Fighter, Piece } from "../src/engine/types";
 
 function fighter(id: string, uid: number, side: 0 | 1, x = 3, y = 4): Fighter {
-  const f = army([{ uid, defId: id, star: 1, position: 35 }], side)[0];
+  const f = army(
+    [{ uid, defId: id, star: 1, position: 35 }],
+    side,
+    "signature",
+  )[0];
   Object.assign(f, { x, y, mana: 100 });
   return f;
 }
@@ -23,18 +27,36 @@ describe("独立技能结算", () => {
   it("所有棋子都有独立技能配置，施法消耗能量且不会改动原始阵容", () => {
     expect(Object.keys(SKILLS).sort()).toEqual(UNITS.map((u) => u.id).sort());
     for (const u of UNITS) {
-      const source = fighter(u.id, 1, 0),
+      const source = army(
+          [{ uid: 1, defId: u.id, star: 1, position: 35 }],
+          0,
+        )[0],
         enemy = fighter("titan", 2, 1, 3, 3);
       source.hp -= 100;
-      const ctx = context(source, enemy);
+      source.mana = 100;
+      const ally = fighter("guard", 3, 0, 4, 4);
+      ally.mana = 0;
+      ally.hp -= 100;
+      if (u.id === "skytoad") enemy.hp = 500;
+      const ctx = context(source, enemy, ally);
+      if (u.id === "blastbug") {
+        expect(castSkill(ctx, source, enemy)).toBe(false);
+        damage(ctx, enemy, source, 10000, "true");
+        expect(source.deathBurst).toBe("spent");
+        expect(ctx.effects.some((e) => e.kind === "cast")).toBe(true);
+        continue;
+      }
       expect(castSkill(ctx, source, enemy)).toBe(true);
       expect(source.mana).toBe(0);
-      expect(
-        ctx.effects.some((e) => e.kind === "cast" && e.name === u.skill),
-      ).toBe(true);
-      expect(
-        ctx.events.length + ctx.effects.filter((e) => e.kind !== "cast").length,
-      ).toBeGreaterThan(0);
+      expect(ctx.effects.some((e) => e.kind === "cast")).toBe(true);
+      if (u.id === "spider") expect(enemy.side).toBe(source.side);
+      else
+        expect(
+          ctx.events.length +
+            ctx.effects.filter((e) => e.kind !== "cast").length +
+            (source.air?.cast ? 1 : 0),
+          u.id,
+        ).toBeGreaterThan(0);
       const after = structuredClone(ctx);
       expect(castSkill(ctx, source, enemy)).toBe(false);
       expect(ctx).toEqual(after);

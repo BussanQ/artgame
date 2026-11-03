@@ -1,4 +1,9 @@
+import { advanceBurn } from "./infantry-skills";
+import { isPhoenixEgg, hatchPhoenix } from "./phoenix";
+import { advanceHawkCombo, startHawkCombo } from "./metamorphosis";
+import { advanceSonic, advanceWindup } from "./wild-skills";
 import { skillReady, concealed, attackTargets } from "./triggers";
+import { isUndying, expireUndying } from "./immortality";
 import { equipmentStats } from "../data/items";
 import { RULES, UNIT } from "../data/units";
 import { synergies, traitBonuses } from "./synergies";
@@ -8,6 +13,8 @@ import {
   distance,
   attackInterval,
   gainMana,
+  combatAttack,
+  advanceAirSkills,
 } from "./abilities";
 import { SKILLS } from "../data/skills";
 import type {
@@ -21,8 +28,10 @@ import type {
 export function army(
   pieces: Piece[],
   side: 0 | 1,
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ): Fighter[] {
+  const metamorph = version === "metamorph";
+  if (metamorph) version = "fleet";
   const bonuses = traitBonuses(pieces, version);
   const active = new Set(
     synergies(pieces, "legacy")
@@ -57,7 +66,96 @@ export function army(
       );
       const pos = p.position!;
       return {
-        ...(version === "signature"
+        ...(d.id === "phoenix"
+          ? {
+              phoenix: {
+                spent: false,
+                eggUntil: 0,
+                bodyMaxHp: hp,
+                hatched: false,
+              },
+            }
+          : {}),
+        ...(metamorph && d.id === "bloodhawk"
+          ? { hawkForm: { active: false } }
+          : {}),
+        ...(d.traits.includes("猛禽") && bonuses.get("猛禽")?.groundBonus
+          ? { groundBonus: bonuses.get("猛禽")!.groundBonus! }
+          : {}),
+        ...(d.traits.includes("陆行者") && bonuses.get("陆行者")?.trueAttack
+          ? { trueAttack: true }
+          : {}),
+        ...(d.id === "skytoad" ? { devourSpent: false } : {}),
+        ...(bonuses.get("灵能")?.reflection
+          ? { reflection: bonuses.get("灵能")!.reflection! }
+          : {}),
+        ...(version === "fleet" &&
+        d.traits.includes("不朽") &&
+        bonuses.get("不朽")?.immortal
+          ? {
+              immortal: {
+                duration: bonuses.get("不朽")!.immortal!,
+                until: 0,
+                spent: false,
+              },
+            }
+          : {}),
+        ...(version === "airsea" || version === "fleet"
+          ? {
+              air: {
+                flying: !!d.flying,
+                evasion: d.flying ? (bonuses.get("空军")?.evasion ?? 0) : 0,
+                attempts: 0,
+                seaMana: d.flying ? (bonuses.get("海神")?.seaMana ?? 0) : 0,
+                seaTick: -1,
+                siege: bonuses.get("攻城")?.siege ?? 0,
+                magicBreak: 0,
+                antiAir: d.id === "cannon",
+                phaseUntil: 0,
+              },
+            }
+          : {}),
+        ...(version === "brood" || version === "airsea" || version === "fleet"
+          ? {
+              homeSide: side,
+              ...(d.id === "blastbug" ? { deathBurst: "ready" as const } : {}),
+              ...(d.id === "spider" ? { charmCast: "ready" as const } : {}),
+            }
+          : {}),
+        ...(version === "legions" ||
+        version === "brood" ||
+        version === "airsea" ||
+        version === "fleet"
+          ? {
+              summonWard: bonuses.get("召唤")?.summonWard ?? 0,
+              ...(["adept", "shark"].includes(d.id)
+                ? {
+                    summoning: {
+                      kind:
+                        d.id === "adept"
+                          ? ("puppet" as const)
+                          : ("sentinel" as const),
+                      readyAt: 0,
+                      spent: false,
+                    },
+                  }
+                : {}),
+            }
+          : {}),
+        ...((version === "summons" ||
+          version === "legions" ||
+          version === "brood" ||
+          version === "airsea" ||
+          version === "fleet") &&
+        d.id === "wolf"
+          ? { packCall: "ready" as const }
+          : {}),
+        ...(version === "signature" ||
+        version === "summons" ||
+        version === "legions" ||
+        version === "brood" ||
+        version === "airsea" ||
+        version === "fleet"
           ? { signature: { casts: 0, attacks: 0, concealed: false } }
           : {}),
         uid: p.uid,
@@ -85,14 +183,21 @@ export function army(
         ),
         cooldown: 0,
         mana:
-          version === "signature" &&
+          (version === "signature" ||
+            version === "summons" ||
+            version === "legions" ||
+            version === "brood" ||
+            version === "airsea" ||
+            version === "fleet") &&
           ["cavalry", "turtle", "tiger"].includes(p.defId)
             ? 0
             : Math.min(
                 100,
                 (version === "legacy" ? (has("熊猫") ? 100 : 0) : sum("mana")) +
                   gear.mana +
-                  (d.initialMana ?? 0),
+                  (version === "fleet" && d.id === "bomber"
+                    ? 50
+                    : (d.initialMana ?? 0)),
               ),
         lifesteal: gear.lifesteal,
         skillPower:
@@ -115,7 +220,15 @@ export function army(
         armorBuff: 0,
         armorBuffUntil: 0,
         manaLockUntil: 0,
-        magicResist: 0.2 + gear.magicResist,
+        magicResist:
+          0.2 +
+          gear.magicResist +
+          (version === "legions" ||
+          version === "brood" ||
+          version === "airsea" ||
+          version === "fleet"
+            ? (bonuses.get("召唤")?.summonWard ?? 0)
+            : 0),
         damage: 0,
         flash: false,
         shield: version === "legacy" ? (has("护卫") ? 250 : 0) : sum("shield"),
@@ -183,7 +296,24 @@ function runBattle(
   recordFrames: boolean,
 ): Battle {
   const fighters = [...army(left, 0, version), ...army(right, 1, version)];
+  if (version === "metamorph") version = "fleet";
+  if (version === "brood" || version === "airsea" || version === "fleet") {
+    const suppression = [left, right].map((pieces) =>
+      synergies(pieces, version).some((s) => s.trait === "异能" && s.active),
+    );
+    for (const f of fighters)
+      f.energyMultiplier = suppression[1 - f.side] ? 0.75 : 1;
+  }
   openingJumps(fighters, [left, right], version);
+  if (version === "airsea" || version === "fleet") {
+    const reductions = [left, right].map(
+      (pieces) => traitBonuses(pieces, version).get("爆破")?.magicBreak ?? 0,
+    );
+    for (const f of fighters) {
+      f.air!.magicBreak = reductions[1 - f.side];
+      f.magicResist = Math.max(-0.25, f.magicResist - f.air!.magicBreak);
+    }
+  }
   for (const f of fighters)
     if (f.signature) f.signature.concealed = concealed(f, fighters);
   const frames: Battle["frames"] = recordFrames
@@ -199,8 +329,8 @@ function runBattle(
   let lastTick = 0;
   for (let tick = 1; tick <= RULES.maxTicks; tick++) {
     if (
-      !fighters.some((f) => f.side === 0 && f.hp > 0) ||
-      !fighters.some((f) => f.side === 1 && f.hp > 0)
+      !fighters.some((f) => (f.homeSide ?? f.side) === 0 && f.hp > 0) ||
+      !fighters.some((f) => (f.homeSide ?? f.side) === 1 && f.hp > 0)
     )
       break;
     const events: CombatEvent[] = [];
@@ -208,17 +338,51 @@ function runBattle(
     const context = { fighters, tick, events, effects };
     for (const f of fighters) {
       f.flash = false;
+      if (f.charm && f.charm.until <= tick) {
+        f.side = f.charm.side;
+        f.attack = f.charm.attack;
+        delete f.charm;
+      }
       if (f.shieldUntil <= tick) f.shield = 0;
       if (f.armorBreakUntil <= tick) f.armorBreak = 0;
       if (f.armorBuffUntil <= tick) f.armorBuff = 0;
+      if (f.slow && f.slow.until <= tick) delete f.slow;
+      if (f.attackBoost && f.attackBoost.until <= tick) delete f.attackBoost;
     }
+    expireUndying(context);
+    hatchPhoenix(context);
+    advanceSonic(context);
+    advanceBurn(context);
     // Alternate initiative each tick to avoid permanent left-side first-action priority.
-    const order = tick % 2 ? [...fighters].reverse() : fighters;
+    const order =
+      tick % 2
+        ? [...fighters].reverse()
+        : version === "summons" ||
+            version === "legions" ||
+            version === "brood" ||
+            version === "airsea" ||
+            version === "fleet"
+          ? [...fighters]
+          : fighters;
     for (const f of order) {
-      if (f.hp <= 0) continue;
-      if (f.regeneration) f.hp = Math.min(f.maxHp, f.hp + f.regeneration);
-      const enemies = attackTargets(f, fighters).sort(
-        (a, b) => distance(f, a) - distance(f, b) || a.uid - b.uid,
+      if (f.hp <= 0 || isPhoenixEgg(f)) continue;
+      if (f.regeneration && !isUndying(f))
+        f.hp = Math.min(f.maxHp, f.hp + f.regeneration);
+      if (
+        ((version === "fleet" && f.air?.cast) || f.windup || f.combo) &&
+        f.cooldown > 0
+      )
+        f.cooldown--;
+      if (advanceHawkCombo(context, f)) continue;
+      if (advanceWindup(context, f)) continue;
+      if (advanceAirSkills(context, f)) continue;
+      const enemies = attackTargets(f, fighters, tick).sort(
+        (a, b) =>
+          (f.air?.antiAir
+            ? Number(!!b.air?.flying) - Number(!!a.air?.flying)
+            : 0) ||
+          distance(f, a) - distance(f, b) ||
+          a.uid - b.uid,
       );
       const target = enemies[0];
       if (!target) continue;
@@ -231,6 +395,7 @@ function runBattle(
           (a) =>
             a.side === f.side &&
             a.hp > 0 &&
+            !isUndying(a) &&
             a.hp < a.maxHp &&
             distance(f, a) <= SKILLS.monk.radius,
         );
@@ -248,6 +413,12 @@ function runBattle(
             "turtle",
             "fish",
             "deer",
+            "adept",
+            "shark",
+            "repair",
+            "medic",
+            "ghostjet",
+            "bloodhawk",
           ].includes(f.defId));
       if (canCast && castSkill(context, f, target)) {
         f.cooldown += attackInterval(f, tick);
@@ -296,12 +467,13 @@ function runBattle(
       } else {
         if (f.signature) f.signature.attacks++;
         gainMana(f, 25, tick);
-        damage(context, f, target, f.attack);
+        if (!startHawkCombo(context, f, target))
+          damage(context, f, target, combatAttack(f, tick));
         f.cooldown += attackInterval(f, tick);
       }
     }
     for (const f of fighters)
-      if (f.signature) f.signature.concealed = concealed(f, fighters);
+      if (f.signature) f.signature.concealed = concealed(f, fighters, tick);
     lastTick = tick;
     if (recordFrames)
       frames.push({
@@ -319,7 +491,7 @@ function runBattle(
       effects: [],
     });
   const alive = [0, 1].map((side) =>
-    fighters.filter((f) => f.side === side && f.hp > 0),
+    fighters.filter((f) => (f.homeSide ?? f.side) === side && f.hp > 0),
   );
   const winner =
     alive[0].length && !alive[1].length
@@ -331,7 +503,13 @@ function runBattle(
     frames,
     winner,
     damage:
-      winner === null ? 3 : 2 + alive[winner].reduce((n, f) => n + f.star, 0),
+      winner === null
+        ? 3
+        : 2 +
+          alive[winner].reduce(
+            (n, f) => n + (isUndying(f) ? 0 : f.summon ? 1 : f.star),
+            0,
+          ),
   };
 }
 
@@ -339,7 +517,7 @@ function runBattle(
 export function simulate(
   left: Piece[],
   right: Piece[],
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ): Battle {
   return runBattle(left, right, version, true);
 }
@@ -347,7 +525,7 @@ export function simulate(
 export function simulateOutcome(
   left: Piece[],
   right: Piece[],
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ) {
   const battle = runBattle(left, right, version, false);
   return {

@@ -289,7 +289,7 @@ describe("羁绊梯度与 AI 策略", () => {
     settle(restored, resumeRound(restored)!);
     expect(restored.history[0].combatVersion).toBe("legacy");
     nextRound(restored);
-    expect(restored.combatVersion).toBe("signature");
+    expect(restored.combatVersion).toBe("metamorph");
     expect(validGame(restored)).toBe(true);
   });
 });

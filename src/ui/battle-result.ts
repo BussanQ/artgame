@@ -1,5 +1,5 @@
 import type { Battle } from "../engine/types";
-export const RESULT_DURATION_MS = 2600;
+export const RESULT_DURATION_MS = 1300;
 export interface ResultPresentation {
   winner: Battle["winner"];
   startedAt: number;
@@ -9,6 +9,7 @@ export interface ResultPresentation {
   terminal: boolean;
   rank: number;
   demo?: boolean;
+  replay?: boolean;
   rewardPending?: boolean;
 }
 export function resultMarkup(result: ResultPresentation | null): string {
@@ -21,7 +22,7 @@ export function resultMarkup(result: ResultPresentation | null): string {
     result.winner === 0 ? "VICTORY" : result.winner === 1 ? "DEFEAT" : "DRAW";
   const elapsed = Math.max(0, performance.now() - result.startedAt);
   const subtitle = result.demo
-    ? "演示结束 · 即将重新播放"
+    ? `${result.replay ? "回放" : "演示"}结束 · 即将重新播放`
     : result.terminal
       ? `演习结束 · 最终排名 #${result.rank}`
       : result.rewardPending
@@ -33,5 +34,5 @@ export function resultMarkup(result: ResultPresentation | null): string {
       : result.winner === 1
         ? '<path d="M56 12 88 26 84 62Q78 84 56 96 34 84 28 62L24 26Z"/><path d="M60 17 46 44 66 49 48 77 56 91"/>'
         : '<path d="M28 22H84L79 76 56 95 33 76Z"/><path d="M40 47H72M40 61H72"/>';
-  return `<div class="battle-result ${kind} ${result.terminal ? "terminal" : ""}" style="--result-elapsed:-${elapsed}ms;--result-duration:${RESULT_DURATION_MS}ms" role="status" aria-live="polite" aria-atomic="true"><div class="result-veil"></div><div class="result-burst"></div><div class="result-ring"></div><div class="result-particles" aria-hidden="true">${Array.from({ length: 18 }, (_, i) => `<i style="--i:${i};--angle:${i * 20}deg;--travel:${90 + (i % 4) * 28}px"></i>`).join("")}</div><div class="result-plaque"><span class="result-round">${result.demo ? "兵种演习" : `第 ${String(result.round).padStart(2, "0")} 回合`}</span><svg class="result-crest" viewBox="0 0 112 108" aria-hidden="true">${icon}</svg><h2>${title}</h2><span class="result-english">${label}</span><div class="result-divider"></div><p class="result-rewards">${result.demo ? "战斗演示" : `生命 ${result.damage > 0 ? `−${result.damage}` : "未损失"} <span>·</span> 金币 +${result.income}`}</p><p class="result-next">${subtitle}</p>${result.terminal ? "" : '<div class="result-countdown" aria-hidden="true"><i></i></div>'}</div></div>`;
+  return `<div class="battle-result ${kind} ${result.terminal ? "terminal" : ""}" style="--result-elapsed:-${elapsed}ms;--result-duration:${RESULT_DURATION_MS}ms" role="status" aria-live="polite" aria-atomic="true"><div class="result-veil"></div><div class="result-burst"></div><div class="result-ring"></div><div class="result-particles" aria-hidden="true">${Array.from({ length: 18 }, (_, i) => `<i style="--i:${i};--angle:${i * 20}deg;--travel:${90 + (i % 4) * 28}px"></i>`).join("")}</div><div class="result-plaque"><span class="result-round">${result.demo && !result.replay ? "兵种演习" : `${result.replay ? "回放 · " : ""}第 ${String(result.round).padStart(2, "0")} 回合`}</span><svg class="result-crest" viewBox="0 0 112 108" aria-hidden="true">${icon}</svg><h2>${title}</h2><span class="result-english">${label}</span><div class="result-divider"></div><p class="result-rewards">${result.demo ? (result.replay ? "历史回放" : "战斗演示") : `生命 ${result.damage > 0 ? `−${result.damage}` : "未损失"} <span>·</span> 金币 +${result.income}`}</p><p class="result-next">${subtitle}</p>${result.terminal ? "" : '<div class="result-countdown" aria-hidden="true"><i></i></div>'}</div></div>`;
 }

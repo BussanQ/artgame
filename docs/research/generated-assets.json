@@ -3,6 +3,184 @@
   "method": "built-in image_gen",
   "assets": [
     {
+      "id": "acolyte",
+      "name": "童子",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera, compact readable silhouette, complete body with 12% padding. Bronze and jade technological-fantasy detail, realistic stylized materials matching a premium isometric strategy game. Actual transparent background, no floor, no pedestal, no ground shadow, no text, no border, one character only. Subject: 童子, a small youthful Taoist energy attendant wearing ivory and turquoise layered robes, twin hair buns, bronze wrist rings, holding a glowing cyan spirit pearl between both hands, floating scarf and compact hovering pose. Gentle focused expression; clear round pearl and short silhouette.",
+      "path": "public/assets/units/acolyte.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "stormcaller",
+      "name": "天师",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera, compact readable silhouette, complete body with 12% padding. Bronze and jade technological-fantasy detail, realistic stylized materials matching a premium isometric strategy game. Actual transparent background, no floor, no pedestal, no ground shadow, no text, no border, one character only. Subject: 天师, a tall elderly Taoist storm master with long white beard and high ceremonial headdress, deep indigo robes with bronze edging, one hand raised holding a bright violet lightning orb, the other gripping a short rune wand. Wide sleeves and grounded stance, distinct tall wizard silhouette.",
+      "path": "public/assets/units/stormcaller.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "thunderlord",
+      "name": "雷震子",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera, compact readable silhouette, complete body with 12% padding. Bronze and jade technological-fantasy detail, realistic stylized materials matching a premium isometric strategy game. Actual transparent background, no floor, no pedestal, no ground shadow, no text, no border, one character only. Subject: 雷震子, a formidable avian thunder warrior with a fierce beaked face, enormous folded-open feather wings, muscular armored torso, bronze war hammer and chisel, blue-white lightning glowing between the weapons. Dark teal feathers, tarnished gold armor, hovering in a dynamic crouch. Broad winged silhouette, entire wings and feet visible.",
+      "path": "public/assets/units/thunderlord.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "vine",
+      "name": "藤妖",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 藤妖, a compact undead vine guardian, a hunched humanoid tangle of thick mossy roots with a hollow carved wooden skull-mask, two long whip-like vine arms coiled forward, bronze rune clasps and a small luminous jade soul inside its chest. Distinct silhouette, grounded stance, no wings. Polished hand-painted 3D strategy-game miniature, warm aged wood, desaturated olive, pale jade accents. Three-quarter front view facing viewer-right, camera looking slightly down, entire body and roots visible, centered with 12% padding, strong readable shapes at small size. Actual transparent background, no ground, no pedestal, no cast shadow, no text, no border, no extra characters.",
+      "path": "public/assets/units/vine.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "treant",
+      "name": "树妖",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 树妖, a massive ancient undead tree titan, broad trunk torso and huge asymmetrical branch fists, a stern glowing jade face deep in bark, crown of bare antler-shaped branches, bronze temple armor plates and hanging talismans, sturdy root feet. Clearly larger, broader and more upright than a vine creature. Polished hand-painted 3D strategy-game miniature, dark warm bark, muted moss, bronze and pale mint soul-light. Three-quarter front view facing viewer-right, camera looking slightly down, complete silhouette with all branches and feet inside frame, centered with 12% padding. Actual transparent background, no landscape, no base, no shadow on ground, no text, no border, no extra characters.",
+      "path": "public/assets/units/treant.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bonedragon",
+      "name": "骨龙",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 骨龙, a compact flying skeletal dragon, ivory segmented skull with swept horns, ribcage containing jade soul-fire, two clearly readable bony wings with sparse smoky teal membrane, curled tail and tucked talons, subtle bronze rune bands. Proud forward-leaning hovering pose, mouth slightly open ready to breathe spectral frost. Polished hand-painted 3D strategy-game miniature, aged ivory, charcoal joints, muted bronze, luminous mint. Three-quarter front view facing viewer-right, camera looking slightly down, whole dragon including wings and tail visible, centered with 12% empty padding. Actual transparent background, no scene, no pedestal, no ground shadow, no text, no border, no extra characters.",
+      "editPrompt": "Use case: background-extraction. Edit this skeletal dragon game sprite. Remove the entire smoky gray/black background and surrounding ambient glow, replacing it with actual alpha transparency. Preserve exactly the same whole dragon, bones, bronze bands, wing membranes, pose and jade chest light. Keep its complete wings and tail. Make a clean game sprite cutout with no opaque rectangle, no ground, no backdrop, no text. Use transparent background.",
+      "path": "public/assets/units/bonedragon.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "eel",
+      "name": "电蛟",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite. One single 2.5D Eastern science-fantasy auto-chess miniature, semi-realistic painted 3D render, antique engraved bronze and ivory materials, cyan jade energy details, readable silhouette. Elevated 25-degree three-quarter camera, facing screen right, entire subject and appendages visible with generous transparent margins. Warm upper-left light and cool rim light. Genuine transparent alpha background, no gradient backdrop, ground plane, scenery, pedestal, text or watermark. Subject: slender hovering Chinese electric sea-serpent dragon, long coiled S-shaped jade-blue scaled body, bronze segmented spinal ornaments, small horned head with white whiskers and cyan eyes, no wings, two small clawed forelimbs, curled tail fully visible, restrained electric highlights contained on the body, no lightning background.",
+      "path": "public/assets/units/eel.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "skycrab",
+      "name": "空蟹",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite. One single 2.5D Eastern science-fantasy auto-chess miniature, semi-realistic painted 3D render, antique engraved bronze and ivory materials, cyan jade energy details, readable silhouette. Elevated 25-degree three-quarter camera, facing screen right, entire subject and appendages visible with generous transparent margins. Warm upper-left light and cool rim light. Genuine transparent alpha background, no gradient backdrop, ground plane, scenery, pedestal, text or watermark. Subject: levitating celestial armored crab creature, broad teal-jade chitin shell plated with engraved antique bronze bands, two huge forward pincers framing one luminous cyan energy orb, four curled segmented legs hanging beneath, compact wide silhouette, no water or bubble effects.",
+      "path": "public/assets/units/skycrab.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "ark",
+      "name": "方舟",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite. One single 2.5D Eastern science-fantasy auto-chess miniature, semi-realistic painted 3D render, antique engraved bronze and ivory materials, cyan jade energy details, readable silhouette. Elevated 25-degree three-quarter camera, facing screen right, entire subject and appendages visible with generous transparent margins. Warm upper-left light and cool rim light. Genuine transparent alpha background, no gradient backdrop, ground plane, scenery, pedestal, text or watermark. Subject: large ornate twin-hulled flying war ark, ivory layered hull plates with dark bronze carved Chinese geometric rails, two long parallel pointed nacelles connected by a broad central chassis, brilliant teal crystal beam cannon in front, no sails, no people, ceremonial high-tech starship silhouette.",
+      "path": "public/assets/units/ark.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bomber",
+      "name": "轰炸机",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite. One single 2.5D Eastern science-fantasy auto-chess miniature, semi-realistic painted 3D render, antique engraved bronze and ivory materials, cyan jade energy details, readable silhouette. Elevated 25-degree three-quarter camera, facing screen right, entire subject and appendages visible with generous transparent margins. Warm upper-left light and cool rim light. Genuine transparent alpha background, no gradient backdrop, ground plane, scenery, pedestal, text or watermark. Subject: stocky armored hovering bomber craft with broad olive-bronze armored wings and ivory central fuselage, four circular levitation turbines, clearly visible closed bomb-bay panels and compact underside rocket pods, warm orange engine apertures, powerful heavy silhouette, no bombs detached, no smoke.",
+      "path": "public/assets/units/bomber.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "ghostjet",
+      "name": "幽灵机",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite. One single 2.5D Eastern science-fantasy auto-chess miniature, semi-realistic painted 3D render, antique engraved bronze and ivory materials, cyan jade energy details, readable silhouette. Elevated 25-degree three-quarter camera, facing screen right, entire subject and appendages visible with generous transparent margins. Warm upper-left light and cool rim light. Genuine transparent alpha background, no gradient backdrop, ground plane, scenery, pedestal, text or watermark. Subject: sleek crescent-wing stealth attack craft, dark indigo metal with bronze edges and cyan luminous engines, pointed angular cockpit, twin short energy gun barrels under swept wings, slim compact aerodynamic body, no pilot or smoke trail.",
+      "path": "public/assets/units/ghostjet.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "repair",
+      "name": "维修机",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite. One single 2.5D Eastern science-fantasy auto-chess miniature, semi-realistic painted 3D render, antique engraved bronze and ivory materials, cyan jade energy details, readable silhouette. Elevated 25-degree three-quarter camera, facing screen right, entire subject and appendages visible with generous transparent margins. Warm upper-left light and cool rim light. Genuine transparent alpha background, no gradient backdrop, ground plane, scenery, pedestal, text or watermark. Subject: small rounded ivory and bronze hovering maintenance drone, two short articulated repair arms ending in a clamp and cyan tool emitter, circular central blue lens, two compact side turbines, jade medical energy tank on back, friendly utilitarian silhouette, no red cross symbol, not a humanoid.",
+      "path": "public/assets/units/repair.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "blastbug",
+      "name": "爆裂虫",
+      "prompt": "Use case: stylized-concept. Transparent PNG full-body game sprite for a 2.5D Eastern science-fantasy auto-chess battlefield. Semi-realistic painted 3D miniature, crisp readable silhouette, elevated three-quarter camera 25 degrees, facing screen right. Organic alien chitin mixed with restrained antique bronze Chinese armor motifs, teal accents, warm daylight and cool rim light. One whole creature centered, all appendages inside frame, generous transparent margin. Genuine transparent alpha background, no landscape, no gradient backdrop, no pedestal, no ground plane, no text, no watermark. Subject: squat six-legged explosive beetle with a round swollen amber-orange luminous abdomen, heavy charcoal chitin carapace, short bronze protective neck collar, two curled ram-like antennae, small glowing orange eyes. Grounded stocky stance, claws planted, cracks in the abdomen contain glowing orange energy, no explosion or smoke. Clearly an alien insect, not a mammal.",
+      "path": "public/assets/units/blastbug.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "eyebug",
+      "name": "眼虫",
+      "prompt": "Use case: stylized-concept. Transparent PNG full-body game sprite for a 2.5D Eastern science-fantasy auto-chess battlefield. Semi-realistic painted 3D miniature, crisp readable silhouette, elevated three-quarter camera 25 degrees, facing screen right. Organic alien chitin mixed with restrained antique bronze Chinese armor motifs, teal accents, warm daylight and cool rim light. One whole creature centered, all appendages inside frame, generous transparent margin. Genuine transparent alpha background, no landscape, no gradient backdrop, no pedestal, no ground plane, no text, no watermark. Subject: a hovering alien watcher insect with one large emerald central eye in a rounded violet chitin head, thin dangling segmented tentacle legs, two small translucent insect wings and an ornate dark bronze forehead crest. Compact hovering sentinel silhouette, green psychic glow contained within the eye. No energy beams or particles.",
+      "path": "public/assets/units/eyebug.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "spider",
+      "name": "蜘蛛",
+      "prompt": "Use case: stylized-concept. Transparent PNG full-body game sprite for a 2.5D Eastern science-fantasy auto-chess battlefield. Semi-realistic painted 3D miniature, crisp readable silhouette, elevated three-quarter camera 25 degrees, facing screen right. Organic alien chitin mixed with restrained antique bronze Chinese armor motifs, teal accents, warm daylight and cool rim light. One whole creature centered, all appendages inside frame, generous transparent margin. Genuine transparent alpha background, no landscape, no gradient backdrop, no pedestal, no ground plane, no text, no watermark. Subject: elegant intimidating eight-legged alien spider, deep purple-black chitin, raised jade-green abdomen with subtle engraved bronze bands, four small glowing green eyes, two delicate front mandibles. Eight clearly separated jointed legs, low grounded body, silk-spinner tail, poised to cast a hypnotic web. No web background, no extra insects.",
+      "path": "public/assets/units/spider.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "wasp",
+      "name": "杀人蜂",
+      "prompt": "Use case: stylized-concept. Transparent PNG full-body game sprite for a 2.5D Eastern science-fantasy auto-chess battlefield. Semi-realistic painted 3D miniature, crisp readable silhouette, elevated three-quarter camera 25 degrees, facing screen right. Organic alien chitin mixed with restrained antique bronze Chinese armor motifs, teal accents, warm daylight and cool rim light. One whole creature centered, all appendages inside frame, generous transparent margin. Genuine transparent alpha background, no landscape, no gradient backdrop, no pedestal, no ground plane, no text, no watermark. Subject: armored alien hornet queen, black and bronze segmented chitin with golden abdomen bands, two pairs of translucent jade-veined wings, slender insect legs, long downward-curving stinger and small amber compound eyes. Lean diagonal hovering combat stance, full wings and tail in frame. No swarm or extra creatures.",
+      "path": "public/assets/units/wasp.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "adept",
+      "name": "真人",
+      "path": "public/assets/units/adept.png",
+      "prompt": "Use case: stylized-concept. Transparent single full-body game unit sprite for a 2.5D Eastern science-fantasy auto-chess game. Polished semi-realistic painted 3D miniature, engraved antique bronze-gold and ivory materials, teal energy accents, warm upper-left daylight and cool rim light. Elevated three-quarter camera 25 degrees, facing screen right, strong readable silhouette at small size. One character centered, full body and all appendages visible, 12 percent transparent padding. Truly transparent alpha background, no scenery, no ground plane, no pedestal, no text or watermark. Subject: elderly floating Taoist summoner sage, white swept hair and short beard, layered ivory robes with restrained emerald trim and bronze mechanical shoulder ornaments, holding an ornate ring-headed staff with a floating teal orb in one hand, other hand making a commanding gesture. Distinct tall slender silhouette, visible cloth shoes beneath robe. No extra creatures.",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "shark",
+      "name": "须弥鲨",
+      "path": "public/assets/units/shark.png",
+      "prompt": "Use case: stylized-concept. Transparent single full-body game unit sprite for a 2.5D Eastern science-fantasy auto-chess game. Polished semi-realistic painted 3D miniature, engraved antique bronze-gold and ivory materials, teal energy accents, warm upper-left daylight and cool rim light. Elevated three-quarter camera 25 degrees, facing screen right, strong readable silhouette at small size. One character centered, full body and all appendages visible, 12 percent transparent padding. Truly transparent alpha background, no scenery, no ground plane, no pedestal, no text or watermark. Subject: massive levitating mechanical shark war beast, a broad armored shark body with ivory plated flank, bronze-gold engraved harness and collar, teal crystal eyes and gill lights, prominent dorsal fin and curled segmented tail, intimidating blunt head and teeth, paired long pectoral fins. Horizontal stocky silhouette. Eastern celestial machinery with carved ritual motifs, not a humanoid, no rider, no water.",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "puppet-spirit",
+      "name": "灵木傀儡",
+      "path": "public/assets/units/puppet-spirit.png",
+      "prompt": "Use case: stylized-concept. Transparent single full-body game unit sprite for a 2.5D Eastern science-fantasy auto-chess game. Polished semi-realistic painted 3D miniature, engraved antique bronze-gold and ivory materials, teal energy accents, warm upper-left daylight and cool rim light. Elevated three-quarter camera 25 degrees, facing screen right, strong readable silhouette at small size. One character centered, full body and all appendages visible, 12 percent transparent padding. Truly transparent alpha background, no scenery, no ground plane, no pedestal, no text or watermark. Subject: small agile wooden and bronze humanoid combat puppet. Dark lacquered wood limbs and jointed carved body, modest antique bronze chest plates, blank ivory mask with two cyan glowing eyes, single short curved sword and a hanging jade talisman, red cord joints. Lean compact silhouette, crouched sword-ready stance, clearly an animated construct, not a human. All limbs visible.",
+      "kind": "transparent-combat-summon-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "shield-servant",
+      "name": "镇海盾卫",
+      "path": "public/assets/units/shield-servant.png",
+      "prompt": "Use case: stylized-concept. Transparent single full-body game unit sprite for a 2.5D Eastern science-fantasy auto-chess game. Polished semi-realistic painted 3D miniature, engraved antique bronze-gold and ivory materials, teal energy accents, warm upper-left daylight and cool rim light. Elevated three-quarter camera 25 degrees, facing screen right, strong readable silhouette at small size. One character centered, full body and all appendages visible, 12 percent transparent padding. Truly transparent alpha background, no scenery, no ground plane, no pedestal, no text or watermark. Subject: squat heavy bronze and ivory humanoid shield construct summoned by a celestial shark. Broad turtle-shell-like plated torso, chunky articulated mechanical legs, ornate sea-wave engravings, cyan glowing eye slits. Holding one large oval bronze shield with a teal central gem in the left hand and a compact bronze mace in the right. Stocky grounded defensive stance, distinct readable shield silhouette.",
+      "kind": "transparent-combat-summon-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bull-charge",
+      "name": "牛魔 · 巨牛形态（技能变身）",
+      "path": "public/assets/units/bull-charge.png",
+      "prompt": "Use case: stylized-concept. Edit target: the attached bull warrior game sprite. Create its transformed charging giant-bull form as a separate transparent game-unit sprite. Change the humanoid anatomy into a powerful quadrupedal white-maned bull with all four hooves, a massive lowered head, broad shoulders and long sweeping dark horns. Remove the held axe, hands, and upright humanoid stance. Preserve the character identity, pale ivory fur, engraved antique bronze-gold Chinese armor, dark iron accents, red cloth tassels, fierce orange eyes and warm daylight/cool rim lighting. Adapt the same armor to the shoulders and forehead of the beast. Three-quarter front view facing screen right, slightly elevated camera, tense ready-to-charge posture with front hooves planted. Full body and all horns and tail fully within frame, generous 12 percent transparent padding, readable at small game-board size. Polished semi-realistic painted 3D miniature, not a flat icon. Truly transparent alpha background. No scenery, no ground plane, no dust cloud baked into sprite, no text or watermark, one creature only.",
+      "kind": "transparent-combat-transformation-sprite",
+      "reference": "public/assets/units/bull.png",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "wolf-spirit",
+      "name": "幽影幼狼（战斗召唤物）",
+      "path": "public/assets/units/wolf-spirit.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent single game-unit sprite for a 2.5D Chinese science-fantasy auto-chess game. Generate one summoned ghost wolf cub, quadruped and agile, dark blue-gray fur, bright cyan eyes, subtle turquoise spirit flame along the spine and tail, only a simple dark-bronze collar and two small ankle cuffs. Smaller and lighter silhouette than an armored adult wolf. Three-quarter front view facing down-right, camera elevated 30 degrees, all four paws and full tail visible, grounded combat-ready stance. Painterly polished 3D miniature rendering, strong readable silhouette at 80 pixels, realistic fur and metal, restrained glow. Center one whole creature on a genuinely transparent alpha background with ample padding. No ground plate, no scenery, no text, no watermark, no additional creatures.",
+      "kind": "transparent-combat-summon-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
       "id": "infantry",
       "name": "神枪手",
       "path": "public/assets/units/infantry.png",
@@ -169,6 +347,190 @@
       "path": "public/assets/units/deer.png",
       "kind": "transparent-unit-sprite",
       "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bat",
+      "name": "蝙蝠",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature with bronze technological-fantasy details. Three-quarter front view facing viewer-right, slightly elevated camera, complete silhouette, all limbs inside frame with 12% padding, strong shapes readable at small size. Actual transparent background, no floor, no pedestal, no cast shadow, no text, no border, one creature only. Subject: 蝙蝠, a large compact dark indigo bat monster hovering with broad leathery wings, large sharp ears, small bronze forehead armor, luminous violet throat sac emitting a restrained purple sonic glow, curled clawed feet, fierce expression. A monster animal, no humanoid clothes. Wings completely visible.",
+      "path": "public/assets/units/bat.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bloodhawk",
+      "name": "血鹰",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature with bronze technological-fantasy details. Three-quarter front view facing viewer-right, slightly elevated camera, complete silhouette, all limbs inside frame with 12% padding, strong shapes readable at small size. Actual transparent background, no floor, no pedestal, no cast shadow, no text, no border, one creature only. Subject: 血鹰, a fierce crimson red raptor with hooked beak and powerful talons, sweeping red-black feathered wings, small bronze shoulder plates and a jade chest jewel, leaning forward in a swooping attack posture. Animal eagle anatomy, not humanoid. Full wings and talons visible.",
+      "path": "public/assets/units/bloodhawk.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "skytoad",
+      "name": "飞天蛤蟆",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature with bronze technological-fantasy details. Three-quarter front view facing viewer-right, slightly elevated camera, complete silhouette, all limbs inside frame with 12% padding, strong shapes readable at small size. Actual transparent background, no floor, no pedestal, no cast shadow, no text, no border, one creature only. Subject: 飞天蛤蟆, a plump olive jade flying toad monster with broad mouth and golden eyes, two short translucent teal fin-like wings, thick frog legs curled beneath round body, bronze rune harness and small pale green mist at lips. Hovering, clear squat amphibian silhouette, not a dragon or human.",
+      "path": "public/assets/units/skytoad.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "vajra",
+      "name": "金刚",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera. Bronze, ivory stone and jade technological fantasy materials, strong readable silhouette. Entire body and all limbs inside frame with 12% padding. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no border, one character only. Subject: 金刚, a broad imposing four-armed stone-and-bronze temple guardian automaton with a stern carved mask face, thick armored legs firmly planted, two large fists held forward and two smaller hands behind, luminous jade chest core, squared shoulders, compact heavy tank silhouette. No wings, no human skin.",
+      "path": "public/assets/units/vajra.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "arhat",
+      "name": "罗汉",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera. Bronze, ivory stone and jade technological fantasy materials, strong readable silhouette. Entire body and all limbs inside frame with 12% padding. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no border, one character only. Subject: 罗汉, a slender ivory-and-bronze enlightened warrior automaton with a serene faceplate and segmented halo behind the head, two hands held together gathering a bright golden energy sphere, long armored legs planted on the ground, elegant flowing teal waist cloth. Slim upright ranged-caster silhouette, no wings.",
+      "path": "public/assets/units/arhat.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "winddragon",
+      "name": "翔龙",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera. Bronze, ivory stone and jade technological fantasy materials, strong readable silhouette. Entire body and all limbs inside frame with 12% padding. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no border, one character only. Subject: 翔龙, a long sinuous jade-scaled eastern dragon with four powerful clawed legs planted on the ground, bronze plated spine, ivory horns and whiskers, tail curled around its side, a small swirling pale turquoise wind orb in its open mouth. Low ground-walking beast silhouette, no wings, not floating, complete body visible.",
+      "path": "public/assets/units/winddragon.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bloodhawk-ground",
+      "name": "血鹰·地面形态",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full body strategy game unit sprite, an alternate transformed form. Input image is a reference for the SAME blood-red hawk character: preserve crimson feathers, black wing tips, gold hooked beak, bronze geometric armor and jade chest gem. Create its transformed GROUNDED melee form: powerful upright avian beast with two planted muscular taloned legs, wings folded back like a crimson feather cloak, two prominent armored talon forelimbs poised for alternating slashes, low aggressive forward stance. Clearly different grounded silhouette from the hovering wide-winged reference. Hand-painted polished 3D miniature, three-quarter view facing viewer-right, elevated isometric camera. Whole body and feet visible with 12% padding. Actual transparent background, NO colored haze, NO floor, NO pedestal, NO ground shadow, NO text, NO border. One character only.",
+      "reference": "public/assets/units/bloodhawk.png",
+      "path": "public/assets/units/bloodhawk-ground.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "phoenix",
+      "name": "不死鸟",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body strategy game unit sprite. Subject: an elegant immortal phoenix for a Chinese science-fantasy auto-chess game, ivory-white and warm golden feathers with ember-orange feather tips, long sweeping ribbon tail, narrow crowned bird head, bronze geometric chest armor with a small jade energy core. Majestic wings lifted in a compact V, talons tucked under body, hovering poised to breathe fire. Distinct from a red hawk: slender long-necked pale gold phoenix silhouette, no extra arms. Polished hand-painted 3D miniature, three-quarter front view facing viewer-right, elevated isometric camera. Whole body, wings and tail visible with generous 12% padding. Real transparent alpha background. No floor, no pedestal, no cast shadow, no backdrop, no smoke or surrounding glow, no text, no border. One creature only.",
+      "editPrompt": "Use case: background-extraction. Edit this phoenix game sprite: remove ALL white/gold/orange haze, glow and background pixels around and BETWEEN its wings, tail and body. Replace those areas with actual alpha transparency. Keep only the physical phoenix feathers, armor, jade gem, head, tail and talons, preserving their shape, colors, pose and fine feather details exactly. Clean crisp game cutout; no luminous aura, no smoky veil, no new objects, no floor, no backdrop. Transparent background.",
+      "path": "public/assets/units/phoenix.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "phoenix-egg",
+      "name": "不死鸟·涅槃火种",
+      "prompt": "Use case: stylized-concept. Asset type: transparent game sprite for the phoenix egg form in an isometric Chinese science-fantasy auto-chess game. One upright oval rebirth egg, ivory ceramic-like shell with glowing orange ember fissures, elegant bronze segmented bands and a small jade gem, three small golden feathers curling around its lower edge. Warm inner light contained within the shell, absolutely NO surrounding haze or glow. Polished hand-painted 3D strategy miniature. Three-quarter view slightly from above, whole egg visible, centered with 20% empty padding. Actual transparent alpha background, crisp cutout edges. No ground, no nest, no pedestal, no shadow, no smoke, no backdrop, no text, no border.",
+      "path": "public/assets/units/phoenix-egg.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "whale",
+      "name": "幻鲸",
+      "prompt": "Use case: stylized-concept. Asset type: transparent game unit sprite for an existing premium Chinese sci-fi fantasy auto-chess battlefield. Primary request: one full-body phantom whale, a majestic levitating celestial sea whale, powerful compact whale silhouette, massive rounded armored head at lower left, tapering body and broad tail at upper right, paired flowing fins. Dark indigo slate skin with turquoise bioluminescent gill seams, weathered bronze and jade ornamental armor integrated into the forehead and dorsal ridge, small luminous cyan eyes, ancient Chinese science-fantasy aesthetic. High-quality painterly 3D collectible miniature render, camera three-quarter view slightly above, readable at 100px tall, crisp silhouette, restrained cyan glow confined to body. Entire body and fins inside canvas, centered with 10% transparent margin. Single creature only, no ground, no pedestal, no scenery, no bubbles or loose particles, no text, no UI, no logo, no water plane. Actual fully transparent alpha background.",
+      "editPrompt": "Edit the provided whale asset: precise background extraction. Preserve the entire whale, its armor, body texture, fins, tail, pose and composition exactly. Remove ALL surrounding background, smoke, clouds, black gradients, and all glow outside the silhouette. The background must be 100% transparent alpha, including corners and space between fins. Preserve opaque blue/bronze creature pixels and cyan markings on its body. No new scenery, no shadow, no floor, no checkerboard painted into image. Return a clean transparent game sprite cutout.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-6e851fd3-bf6a-471b-9885-7a9eac6c0107.png",
+      "selected": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-9e60f41c-7ff1-4f7e-a1a5-52a570298d0d.png",
+      "path": "public/assets/units/whale.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1536,
+        "height": 1024,
+        "min": 0,
+        "max": 254,
+        "fullyTransparentPixels": 999409
+      }
+    },
+    {
+      "id": "medic",
+      "name": "军医",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game character sprite for a TypeScript auto-chess game inspired by Art of War: Red Tides. Generate ONE original Eastern science-fiction infantry combat medic. Single adult armored field medic wearing ivory ceramic power armor with dark teal undersuit, weathered brass trims, an enclosed angular helmet with mint visor, and a compact twin-cylinder healing backpack. Hold a short mint-glowing medical injector carbine across the torso with both hands, aimed slightly forward, relaxed combat-ready pose. Distinct readable silhouette, boots and backpack entirely visible, no stand. Premium hand-painted 3D collectible game-unit render, three-quarter front view with slightly elevated camera; facing diagonally toward screen-left. Strong sculpted shapes and controlled detail readable at 80px high. Warm top-left key light, soft teal rim light. Character occupies 80% of a square canvas with comfortable transparent margins. Truly transparent alpha background. No environment, ground plane, backdrop, text, letters, logos, cross emblems, watermark, UI, duplicate characters, collage, or sprite sheet. This must be a complete isolated production sprite, not an illustration on a solid-color background.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-b2b1e7cd-2968-46b6-b0d4-d88a002da3d6.png",
+      "path": "public/assets/units/medic.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "min": 0,
+        "max": 255,
+        "fullyTransparentPixels": 1138112,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "01de57c5ca207cc8a420ebb2789b386088871bde14601f6c5d85cd64d5492a2b"
+    },
+    {
+      "id": "flametrooper",
+      "name": "火焰兵",
+      "prompt": "Use case: stylized-concept. Create ONE original full-body game unit sprite, premium hand-painted 3D collectible render for an Eastern science-fiction auto-chess battlefield. Three-quarter front view slightly from above, facing viewer-right, complete body including boots and equipment, centered with comfortable transparent margins. Readable silhouette at 90px tall, bronze trims and weathered material detail, warm top-left key light. Actual fully transparent alpha background; no background, no smoke backdrop, no ground, no pedestal, no shadow plane, no text, logo, interface, duplicates or collage. A heavy infantry flamethrower trooper in bulky charcoal and burnt-orange ceramic armor with angular bronze pauldrons, closed helmet and narrow amber visor. Two stout fuel tanks strapped to back connected by a thick hose to a short heavy flame projector held in both hands across body. Low braced wide stance. Small orange pilot flame at nozzle only. Broad shoulder silhouette, no flames covering the character.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-1582fa0c-4ff5-4669-aef6-0d8db0eae04d.png",
+      "path": "public/assets/units/flametrooper.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1200,
+        "height": 1310,
+        "min": 0,
+        "max": 255,
+        "fullyTransparentPixels": 763879,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "4a0d5d24586d04c715ef63c836c8e847aa14364a1074503dd1e78980e8a127d1"
+    },
+    {
+      "id": "grenadier",
+      "name": "投弹手",
+      "prompt": "Use case: stylized-concept. Create ONE original full-body game unit sprite, premium hand-painted 3D collectible render for an Eastern science-fiction auto-chess battlefield. Three-quarter front view slightly from above, facing viewer-right, complete body including boots and equipment, centered with comfortable transparent margins. Readable silhouette at 90px tall, bronze trims and weathered material detail, warm top-left key light. Actual fully transparent alpha background; no background, no smoke backdrop, no ground, no pedestal, no shadow plane, no text, logo, interface, duplicates or collage. An agile futuristic grenadier in dark navy and purple segmented infantry armor, asymmetric bronze shoulder shield, helmet with luminous violet slit visor. One hand holds a small glowing violet pulse grenade raised near the shoulder ready to throw, the other grips a compact short grenade launcher pointed downward. Several round canisters on a bandolier, compact backpack. Lean upright silhouette, clear separated arm and grenade, no explosion or detached particles.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-81f17d2a-420e-447a-bc42-cc269c0befa6.png",
+      "path": "public/assets/units/grenadier.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1199,
+        "height": 1312,
+        "min": 0,
+        "max": 255,
+        "fullyTransparentPixels": 1087409,
+        "corners": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "sha256": "7c395de63f4ae85c3312fc0bf43fca2a1ee0b5aede461c885c2595f708e07124"
+    },
+    {
+      "id": "motorcycle",
+      "name": "摩托骑兵",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body isometric game piece for a Chinese science-fantasy auto battler. Create one futuristic motorcycle cavalry unit: a helmeted human armored rider leaning forward on a compact heavy TWO-WHEELED combat motorcycle, both wheels clearly visible, with a chunky side-mounted three-chamber cannon pointing forwards. Single rider and bike as one cohesive silhouette. Deep petrol-blue metal, weathered bronze edges, amber engine and weapon lights; sculptural hand-painted 3D game miniature style, crisp broad readable shapes and restrained fine detail. Three-quarter view, facing RIGHT, slightly elevated camera matching an isometric battlefield, entire rider and bike in frame, generous transparent margin around wheels, weapon and helmet. Neutral ready-to-fire pose with readable separation between arms, chassis and gun. Truly transparent background with clean alpha; no base, no floor, no cast shadow, no scene, no text, no numbers, no watermark, no other figures, no muzzle flash or detached effects. Original redesign inspired by the sci-fi cavalry archetype, visually cohesive with bronze-and-teal fantasy military game pieces.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-92d04e10-1ea5-42dd-bb36-44cacd212e79.png",
+      "path": "public/assets/units/motorcycle.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1536,
+        "height": 1024,
+        "min": 0,
+        "max": 254,
+        "fullyTransparentPixels": 899926,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "99cc32d1700c556e6df94f8afd91e77c5b26f75735dbcf935b66a50f8abdebf4"
     }
   ]
 }

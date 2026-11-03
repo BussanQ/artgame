@@ -24,13 +24,15 @@
     },
     {
       "id": "S03",
-      "title": "二维图表",
+      "title": "自走棋兵种、职业二维图表（5/9更新版）",
       "url": "https://www.taptap.cn/moment/15202528882852517",
-      "publishedAt": null,
+      "publishedAt": "2019-04-27",
       "kind": "community",
-      "status": "image-extraction-pending",
-      "accessedAt": "2026-11-02",
-      "targetVersion": null
+      "status": "image-transcribed-traits-roster-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "2019-05-09作者标记；客户端版本未知",
+      "modifiedAt": "2019-05-09",
+      "note": "22类羁绊单元格已转录；攻城阈值未写，档位叠加规则未知。见historical-tables.json。"
     },
     {
       "id": "S04",
@@ -38,9 +40,10 @@
       "url": "https://www.taptap.cn/moment/15213091339897518",
       "publishedAt": "2019-07-08",
       "kind": "community-measurement",
-      "status": "image-extraction-pending",
-      "accessedAt": "2026-11-02",
-      "targetVersion": null
+      "status": "images-transcribed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "2019-07-08玩家测量；客户端版本未知",
+      "note": "56行兵种属性与35个护甲减伤样本已逐图录入，含来源图片与行号。未提供技能伤害和商店概率。见historical-tables.json。"
     },
     {
       "id": "S05",
@@ -121,6 +124,239 @@
       "status": "text-reviewed",
       "accessedAt": "2026-11-02",
       "targetVersion": null
+    },
+    {
+      "id": "S13",
+      "title": "赤潮自走棋召唤流攻略：灵能召唤阵容玩法指南",
+      "url": "https://www.gamersky.com/handbooksy/201904/1178435_5.shtml",
+      "publishedAt": "2019-04-28",
+      "kind": "media-community-guide",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "2019-04 guide, not a complete ruleset"
+    },
+    {
+      "id": "S14",
+      "title": "赤潮自走棋全英雄评测（第5期）",
+      "url": "https://www.taptap.cn/moment/15201495997744121",
+      "publishedAt": "2019-06-19",
+      "kind": "community",
+      "status": "partial-text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "S1 June balance commentary, not a complete ruleset",
+      "reviewNotes": "0.16 核对血鹰满血变身、落地及普通攻击三连击方向；同文记录升至四费。本项目保留三费与自主属性、每段60%倍率，不宣称同版本完整还原。"
+    },
+    {
+      "id": "S15",
+      "title": "自走棋异虫种族连携攻略",
+      "url": "https://news.17173.com/z/zzq/content/05052019/105530268.shtml?_platform=PC",
+      "publishedAt": "2019-05-05",
+      "kind": "community-guide",
+      "status": "search-excerpt-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "Historical article, not a complete verified ruleset"
+    },
+    {
+      "id": "S16",
+      "title": "异虫合成与出售收益攻略",
+      "url": "https://news.17173.com/z/zzq/content/11202019/152347914_all.shtml?_platform=PC",
+      "publishedAt": "2019-11-20",
+      "kind": "community-guide",
+      "status": "search-excerpt-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "Historical article, not a complete verified ruleset"
+    },
+    {
+      "id": "S17",
+      "title": "自走棋辅助与控制棋子解析",
+      "url": "https://news.17173.com/z/zzq/content/05052019/105238127.shtml?_platform=PC",
+      "publishedAt": "2019-05-05",
+      "kind": "community-guide",
+      "status": "search-excerpt-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "Historical article, not a complete verified ruleset"
+    },
+    {
+      "id": "S18",
+      "title": "赤潮棋子评测（第二期）",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "publishedAt": null,
+      "kind": "community-guide",
+      "status": "search-excerpt-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "Historical article, not a complete verified ruleset"
+    },
+    {
+      "id": "S19",
+      "title": "赤潮棋子评测（第四期）",
+      "url": "https://www.taptap.cn/moment/15225619130352356",
+      "publishedAt": null,
+      "kind": "community-guide",
+      "status": "search-excerpt-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "Historical article, not a complete verified ruleset"
+    },
+    {
+      "id": "S20",
+      "title": "赤潮自走棋中，这是你无法斩断的羁绊（种族篇）",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1556086391745_13",
+      "publishedAt": "2019-04-24",
+      "kind": "publisher",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null,
+      "reviewNotes": "0.14 rechecked psychic membership and fixed 20/30 reflection tiers; beneficiary scope not fully expanded in publisher wording."
+    },
+    {
+      "id": "S21",
+      "title": "赤潮自走棋 新版本最强吃鸡套路——空军海神",
+      "url": "https://news.17173.com/z/zzq/content/07292019/224057158.shtml?_platform=PC",
+      "publishedAt": "2019-07-29",
+      "kind": "official-tagged-community-guide",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null
+    },
+    {
+      "id": "S22",
+      "title": "赤潮自走棋 空中打击 应对莽夫新思路",
+      "url": "https://news.17173.com/z/zzq/content/08292019/163650103.shtml?_platform=PC",
+      "publishedAt": "2019-08-29",
+      "kind": "community-reprint",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null
+    },
+    {
+      "id": "S23",
+      "title": "赤潮自走棋灵能不朽简易攻略",
+      "url": "https://shouyou.3dmgame.com/gl/127334.html",
+      "publishedAt": "2019-05-13",
+      "kind": "community-guide",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null,
+      "reviewNotes": "0.14 rechecked team-wide reflection, immortal interaction, energy-support and lightning roles; all implementation coefficients remain prototype choices."
+    },
+    {
+      "id": "S24",
+      "title": "赤潮自走棋当前版本强度图（新人拿卡向）",
+      "url": "https://news.17173.com/z/zzq/content/05132019/204014986.shtml?_platform=PC",
+      "publishedAt": "2019-05-13",
+      "kind": "community-reprint",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null
+    },
+    {
+      "id": "S25",
+      "title": "赤潮自走棋职业连携图鉴一览 BUFF图鉴介绍",
+      "url": "https://wap.gamersky.com/sygl/Content-1179303.html",
+      "publishedAt": "2019-04-30",
+      "kind": "editorial-compilation",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null,
+      "reviewNotes": "Roster and class membership only; numeric prototype stats are not recovered historical values."
+    },
+    {
+      "id": "S26",
+      "title": "赤潮自走棋全英雄评测（第3期）",
+      "url": "https://www.taptap.cn/moment/15220462338441888",
+      "publishedAt": "2019-05-28",
+      "kind": "community",
+      "status": "partial-text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null,
+      "reviewNotes": "Bat damage-over-time/control, Vajra attack-speed reduction and Skytoad HP threshold roles; not a full skill specification."
+    },
+    {
+      "id": "S27",
+      "title": "战争艺术 百搭英雄不死鸟 三羁绊效果如何玩转？",
+      "url": "https://news.17173.com/z/zzq/content/04072020/173005383.shtml?_platform=PC",
+      "publishedAt": "2020-04-07",
+      "kind": "community-reprint",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "2020 historical version; not the April 2019 roster",
+      "reviewNotes": "矩形持续喷火、二星起化蛋和蛋未破则复活。文中羁绊为猛禽/爆破/法术；本项目采用早期攻城原型映射，属性/倍率/3秒孵化/每战一次均自主配置。属性段出现刀奴笔误，未直接采入。"
+    },
+    {
+      "id": "S28",
+      "title": "赤潮自走棋哪些棋子必拿 必拿棋子盘点推荐",
+      "url": "https://www.9game.cn/cczzq/3200866.html",
+      "publishedAt": null,
+      "kind": "media-community-guide",
+      "status": "search-excerpt-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null,
+      "reviewNotes": "检索摘要明确不死鸟二星后变蛋及反近战定位；正文复访超时，不作为完整参数表。"
+    },
+    {
+      "id": "S29",
+      "title": "赤潮自走棋 核心4装甲攻城爆破",
+      "url": "https://news.17173.com/z/zzq/content/07032019/230406491.shtml",
+      "publishedAt": "2019-07-03",
+      "kind": "community-reprint",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "July 2019",
+      "reviewNotes": "幻鲸加入海神阵容，改版后按目标最大生命比例造成真实伤害。本文无完整数值表；不当作五月同版本参数。"
+    },
+    {
+      "id": "S30",
+      "title": "谁才是单卡最强王者？赤潮自走棋4费5费棋子盘点",
+      "url": "https://news.17173.com/z/zzq/content/05272019/180953197.shtml?_platform=PC",
+      "publishedAt": "2019-05-27",
+      "kind": "media-reprint",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "May 2019",
+      "reviewNotes": "幻鲸为5费、持续输出10秒；不能由此推导7月版本的百分比、范围或控制规则。"
+    },
+    {
+      "id": "S31",
+      "title": "赤潮自走棋军医玩法介绍 军医适合的治疗阵容",
+      "url": "https://www.8090.com/news/xinqing/article_329043.html",
+      "publishedAt": "2019-05-14",
+      "kind": "editorial",
+      "status": "search-excerpt-reviewed-open-failed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null,
+      "note": "检索摘要描述生命守护、小范围多次治疗、300/400/500和16秒；页面直读失败。治疗量是总预算还是每目标总量存在社区歧义，不能当确定官方参数。"
+    },
+    {
+      "id": "S32",
+      "title": "最高性价比《赤潮自走棋》最强一费棋子，你猜到是谁了吗？",
+      "url": "https://news.17173.com/content/05172019/112538567.shtml",
+      "publishedAt": "2019-05-17",
+      "kind": "publisher-reprint",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null,
+      "note": "页面标注来源原作官方，确认军医属于一费治疗角色；亦将武僧熊猫列为一费肉盾。"
+    },
+    {
+      "id": "S33",
+      "title": "战争艺术 3月19日游戏平衡调整、优化及BUG修复一览！",
+      "url": "https://news.17173.com/z/zzq/content/03202020/143602197.shtml?_platform=PC",
+      "publishedAt": "2020-03-20",
+      "kind": "publisher-reprint",
+      "status": "search-text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": "2020-03-19",
+      "note": "来源战争艺术AOW微信公众号，火焰兵技能名火龙爆射及一次数值调整；较晚版本，不作为2019属性或当前灼烧机制依据。"
+    },
+    {
+      "id": "S34",
+      "title": "久等了，偷来的赤潮自走棋装备资料",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1555665047389_16",
+      "publishedAt": "2019-04-19",
+      "kind": "publisher",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-03",
+      "targetVersion": null,
+      "note": "英雄互娱账号文章，在装备比较中给出摩托骑兵三连发和三星每发400；10秒指代可能是装备，不独立用于摩托冷却依据。"
     }
   ]
 }

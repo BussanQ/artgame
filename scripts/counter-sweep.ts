@@ -4,14 +4,23 @@ import { UNITS, UNIT } from "../src/data/units";
 import { deployLineup } from "../src/engine/ai";
 import { simulateOutcome } from "../src/engine/battle";
 import type { Piece, Player } from "../src/engine/types";
-const version = process.argv[2] ?? "signature";
-if (version !== "tactics" && version !== "balanced" && version !== "signature")
+const version = process.argv[2] ?? "legions";
+if (
+  version !== "tactics" &&
+  version !== "balanced" &&
+  version !== "signature" &&
+  version !== "summons" &&
+  version !== "legions"
+)
   throw new Error("Unknown combat version");
 const sources = Object.fromEntries(
   [
     "src/engine/ai.ts",
     "src/engine/battle.ts",
     "src/engine/abilities.ts",
+    "src/engine/infantry-skills.ts",
+    "src/engine/triggers.ts",
+    "src/engine/summons.ts",
     "src/data/traits.ts",
     "src/data/skills.ts",
     "src/data/units.ts",

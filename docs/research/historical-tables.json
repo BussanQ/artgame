@@ -1,0 +1,1703 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-03",
+  "method": "Public HTML metadata and visually inspected original table images; no OCR guesses.",
+  "images": [
+    {
+      "id": "S03-1",
+      "url": "https://img2-tc.tapimg.com/bbcode/images/915032174273785f479cf7ccd0f93190.png/_tap_ugc.jpg",
+      "sha256": "1255a365dd2bf246e4f7e6d55415be1262869c73957159bc1d90832e90d3d79b",
+      "status": "visually-transcribed"
+    },
+    {
+      "id": "S04-1",
+      "url": "https://img2-tc.tapimg.com/bbcode/images/2b0748a9a1bc237a7a9fbeffb59f101e.jpg/_tap_ugc.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "status": "visually-transcribed"
+    },
+    {
+      "id": "S04-2",
+      "url": "https://img2-tc.tapimg.com/bbcode/images/ee718c16ba23f80d004860ed74f4c0d4.jpg/_tap_ugc.jpg",
+      "sha256": "8cfe13d1071e1068c397ee55921fbd752f5290de13e5ee75ce777ac5d5ed3333",
+      "status": "visually-transcribed"
+    },
+    {
+      "id": "S04-3",
+      "url": "https://img2-tc.tapimg.com/bbcode/images/8c760a766dab9304bf6b97f6c6294673.jpg/_tap_ugc.jpg",
+      "sha256": "8bf58c66ec4c7f5a01bd190165ec9128eb29282b7b8b2a08485000b322bdfc08",
+      "status": "visually-transcribed"
+    }
+  ],
+  "S03": {
+    "publishedAt": "2019-04-27",
+    "modifiedAt": "2019-05-09",
+    "targetVersion": "2019-05-09 author-labelled update, client build unknown",
+    "tierCombination": "not proven; retain cells as printed, do not assume cumulative or highest tier",
+    "traits": [
+      {
+        "name": "护卫",
+        "counts": [
+          2,
+          4
+        ],
+        "effect": "同职业护盾增加",
+        "valuesAsPrinted": [
+          250,
+          350
+        ]
+      },
+      {
+        "name": "爆破",
+        "counts": [
+          3,
+          6
+        ],
+        "effect": "敌军技能防御降低",
+        "valuesAsPrinted": [
+          20,
+          30
+        ]
+      },
+      {
+        "name": "支援",
+        "counts": [
+          2,
+          4
+        ],
+        "effect": "阵亡后全队生命/能量恢复",
+        "valuesAsPrinted": [
+          [
+            200,
+            10
+          ],
+          [
+            300,
+            10
+          ]
+        ]
+      },
+      {
+        "name": "狙击",
+        "counts": [
+          3,
+          6
+        ],
+        "effect": "同职业护甲削弱增加",
+        "valuesAsPrinted": [
+          4,
+          8
+        ]
+      },
+      {
+        "name": "攻城",
+        "counts": null,
+        "effect": "全队对装甲、空军、傀儡、海神、异虫、不朽者的攻击加成百分数",
+        "valuesAsPrinted": [
+          25,
+          25
+        ],
+        "note": "图中此栏未写触发数量，不能从两档百分数推断阈值。"
+      },
+      {
+        "name": "异能",
+        "counts": [
+          2,
+          4,
+          6
+        ],
+        "effect": "全军吸血百分数",
+        "valuesAsPrinted": [
+          5,
+          5,
+          10
+        ]
+      },
+      {
+        "name": "刺杀",
+        "counts": [
+          3,
+          6
+        ],
+        "effect": "同职业普攻4.5倍暴击概率百分数",
+        "valuesAsPrinted": [
+          10,
+          10
+        ]
+      },
+      {
+        "name": "召唤",
+        "counts": [
+          3
+        ],
+        "effect": "全队造成伤害获取能量增加百分数",
+        "valuesAsPrinted": [
+          40
+        ]
+      },
+      {
+        "name": "先锋",
+        "counts": [
+          3,
+          6
+        ],
+        "effect": "同职业护甲增加",
+        "valuesAsPrinted": [
+          6,
+          8
+        ]
+      },
+      {
+        "name": "步兵",
+        "counts": [
+          2,
+          4,
+          6
+        ],
+        "effect": "敌方护甲降低",
+        "valuesAsPrinted": [
+          3,
+          6,
+          9
+        ]
+      },
+      {
+        "name": "骑兵",
+        "counts": [
+          2
+        ],
+        "effect": "敌方能量回复降低",
+        "valuesAsPrinted": [
+          3
+        ]
+      },
+      {
+        "name": "装甲",
+        "counts": [
+          3,
+          5
+        ],
+        "effect": "同兵种护甲增加",
+        "valuesAsPrinted": [
+          4,
+          8
+        ]
+      },
+      {
+        "name": "空军",
+        "counts": [
+          2,
+          4
+        ],
+        "effect": "友军空中单位闪避百分数",
+        "valuesAsPrinted": [
+          15,
+          20
+        ]
+      },
+      {
+        "name": "傀儡",
+        "counts": [
+          2,
+          4,
+          6
+        ],
+        "effect": "前两档同兵种攻击增加，第三档全队攻击增加百分数",
+        "valuesAsPrinted": [
+          10,
+          15,
+          20
+        ]
+      },
+      {
+        "name": "灵能者",
+        "counts": [
+          2,
+          3
+        ],
+        "effect": "受击反弹伤害",
+        "valuesAsPrinted": [
+          20,
+          30
+        ]
+      },
+      {
+        "name": "陆行者",
+        "counts": [
+          1
+        ],
+        "effect": "同兵种攻击变为真实伤害",
+        "valuesAsPrinted": []
+      },
+      {
+        "name": "海神",
+        "counts": [
+          2,
+          4
+        ],
+        "effect": "友军空中单位受到技能伤害降低百分数",
+        "valuesAsPrinted": [
+          20,
+          20
+        ]
+      },
+      {
+        "name": "野兽",
+        "counts": [
+          2,
+          4,
+          6
+        ],
+        "effect": "第一档同兵种攻击速度、后两档全队攻击增加百分数",
+        "valuesAsPrinted": [
+          15,
+          25,
+          35
+        ]
+      },
+      {
+        "name": "猛禽",
+        "counts": [
+          2,
+          4
+        ],
+        "effect": "友军空中单位对地面攻击增加百分数",
+        "valuesAsPrinted": [
+          15,
+          20
+        ]
+      },
+      {
+        "name": "异虫",
+        "counts": [
+          2,
+          4
+        ],
+        "effect": "两枚同一星合二星；两枚同二星合三星",
+        "valuesAsPrinted": []
+      },
+      {
+        "name": "不朽者",
+        "counts": [
+          2,
+          3
+        ],
+        "effect": "同兵种死亡后继续战斗秒数",
+        "valuesAsPrinted": [
+          4,
+          6
+        ]
+      },
+      {
+        "name": "熊猫",
+        "counts": [
+          3
+        ],
+        "effect": "同兵种开战满能量",
+        "valuesAsPrinted": []
+      }
+    ],
+    "rosterNote": "53 distinct names after de-duplicating dual tribes, consistent with April roster; S03 uses 锯齿象 and 棍奴=护卫. Full original name crosswalk remains roster-mapping.json."
+  },
+  "S04": {
+    "publishedAt": "2019-07-08",
+    "author": "嗷呜噜噜的小鱼人",
+    "targetVersion": "2019-07-08 community observation; client build unknown",
+    "unitCount": 56,
+    "units": [
+      {
+        "sourceImage": "S04-1",
+        "row": 1,
+        "name": "神射手",
+        "races": [
+          "步兵"
+        ],
+        "classes": [
+          "狙击"
+        ],
+        "cost": 1,
+        "attackMin": 34,
+        "attackMax": 38,
+        "attackIntervalSeconds": 1,
+        "reportedDps": 36,
+        "hp": 400,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": null,
+        "passive": true,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 2,
+        "name": "医疗兵",
+        "races": [
+          "步兵"
+        ],
+        "classes": [
+          "支援"
+        ],
+        "cost": 1,
+        "attackMin": 66,
+        "attackMax": 80,
+        "attackIntervalSeconds": 2,
+        "reportedDps": 36.5,
+        "hp": 400,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          16
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 3,
+        "name": "火焰兵",
+        "races": [
+          "步兵"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 2,
+        "attackMin": 70,
+        "attackMax": 82,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 63.3,
+        "hp": 600,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          7
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 4,
+        "name": "护卫兵",
+        "races": [
+          "步兵"
+        ],
+        "classes": [
+          "护卫"
+        ],
+        "cost": 2,
+        "attackMin": 30,
+        "attackMax": 84,
+        "attackIntervalSeconds": 1,
+        "reportedDps": 57,
+        "hp": 750,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          15
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 5,
+        "name": "特种兵",
+        "races": [
+          "步兵"
+        ],
+        "classes": [
+          "狙击"
+        ],
+        "cost": 3,
+        "attackMin": 97,
+        "attackMax": 127,
+        "attackIntervalSeconds": 1.7,
+        "reportedDps": 65.9,
+        "hp": 450,
+        "armor": 5,
+        "range": 7,
+        "skillCooldownSeconds": [
+          10
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 6,
+        "name": "投弹手",
+        "races": [
+          "步兵"
+        ],
+        "classes": [
+          "异能"
+        ],
+        "cost": 4,
+        "attackMin": 45,
+        "attackMax": 50,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 31.7,
+        "hp": 700,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": [
+          15
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 7,
+        "name": "鸟骑兵",
+        "races": [
+          "骑兵"
+        ],
+        "classes": [
+          "狙击"
+        ],
+        "cost": 1,
+        "attackMin": 51,
+        "attackMax": 57,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 36,
+        "hp": 400,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": null,
+        "passive": true,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 8,
+        "name": "摩托骑兵",
+        "races": [
+          "骑兵"
+        ],
+        "classes": [
+          "爆破"
+        ],
+        "cost": 3,
+        "attackMin": 55,
+        "attackMax": 60,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 38.3,
+        "hp": 500,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          10
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 9,
+        "name": "铁狗",
+        "races": [
+          "装甲"
+        ],
+        "classes": [
+          "爆破"
+        ],
+        "cost": 1,
+        "attackMin": 32,
+        "attackMax": 39,
+        "attackIntervalSeconds": 1,
+        "reportedDps": 35.5,
+        "hp": 700,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          10
+        ],
+        "passive": false,
+        "note": "升级护甲+2"
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 10,
+        "name": "铁猿",
+        "races": [
+          "装甲"
+        ],
+        "classes": [
+          "爆破"
+        ],
+        "cost": 2,
+        "attackMin": 66,
+        "attackMax": 72,
+        "attackIntervalSeconds": 1.7,
+        "reportedDps": 40.6,
+        "hp": 800,
+        "armor": 6,
+        "range": 1,
+        "skillCooldownSeconds": [
+          10
+        ],
+        "passive": false,
+        "note": "升级护甲+2"
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 11,
+        "name": "投石车",
+        "races": [
+          "装甲"
+        ],
+        "classes": [
+          "攻城"
+        ],
+        "cost": 3,
+        "attackMin": 41,
+        "attackMax": 50,
+        "attackIntervalSeconds": 1,
+        "reportedDps": 45.5,
+        "hp": 800,
+        "armor": 10,
+        "range": 5,
+        "skillCooldownSeconds": [
+          60
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 12,
+        "name": "铁鸡",
+        "races": [
+          "装甲"
+        ],
+        "classes": [
+          "刺杀"
+        ],
+        "cost": 4,
+        "attackMin": 90,
+        "attackMax": 110,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 83.3,
+        "hp": 750,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          13
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 13,
+        "name": "铁巨神",
+        "races": [
+          "装甲"
+        ],
+        "classes": [
+          "爆破"
+        ],
+        "cost": 5,
+        "attackMin": 100,
+        "attackMax": 106,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 85.8,
+        "hp": 900,
+        "armor": 15,
+        "range": 5,
+        "skillCooldownSeconds": [
+          14,
+          12,
+          10
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 14,
+        "name": "维修机",
+        "races": [
+          "空军"
+        ],
+        "classes": [
+          "支援"
+        ],
+        "cost": 1,
+        "attackMin": 50,
+        "attackMax": 62,
+        "attackIntervalSeconds": 2,
+        "reportedDps": 28,
+        "hp": 550,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": [
+          12
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 15,
+        "name": "轰炸机",
+        "races": [
+          "空军"
+        ],
+        "classes": [
+          "爆破"
+        ],
+        "cost": 2,
+        "attackMin": 28,
+        "attackMax": 35,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 26.3,
+        "hp": 450,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          12
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 16,
+        "name": "幽灵机",
+        "races": [
+          "空军"
+        ],
+        "classes": [
+          "刺杀"
+        ],
+        "cost": 3,
+        "attackMin": 55,
+        "attackMax": 66,
+        "attackIntervalSeconds": 1.1,
+        "reportedDps": 55,
+        "hp": 500,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          16
+        ],
+        "passive": false,
+        "note": "每秒回血5"
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 17,
+        "name": "方舟",
+        "races": [
+          "空军"
+        ],
+        "classes": [
+          "攻城"
+        ],
+        "cost": 4,
+        "attackMin": 30,
+        "attackMax": 34,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 26.7,
+        "hp": 650,
+        "armor": 5,
+        "range": 5,
+        "skillCooldownSeconds": [
+          14,
+          12,
+          10
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 18,
+        "name": "熊猫武僧",
+        "races": [
+          "熊猫"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 1,
+        "attackMin": 61,
+        "attackMax": 67,
+        "attackIntervalSeconds": 1.8,
+        "reportedDps": 35.6,
+        "hp": 700,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          20
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 19,
+        "name": "熊猫忍者",
+        "races": [
+          "熊猫"
+        ],
+        "classes": [
+          "刺杀"
+        ],
+        "cost": 3,
+        "attackMin": 60,
+        "attackMax": 72,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 55,
+        "hp": 550,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          20
+        ],
+        "passive": false,
+        "note": "技能防御20%"
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 20,
+        "name": "熊猫禅师",
+        "races": [
+          "熊猫"
+        ],
+        "classes": [
+          "异能"
+        ],
+        "cost": 4,
+        "attackMin": 56,
+        "attackMax": 63,
+        "attackIntervalSeconds": 2,
+        "reportedDps": 29.8,
+        "hp": 850,
+        "armor": 5,
+        "range": 5,
+        "skillCooldownSeconds": [
+          30
+        ],
+        "passive": false,
+        "note": "技能防御20%；每秒回血5"
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 21,
+        "name": "眼虫",
+        "races": [
+          "异虫"
+        ],
+        "classes": [
+          "异能"
+        ],
+        "cost": 1,
+        "attackMin": 48,
+        "attackMax": 53,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 33.7,
+        "hp": 500,
+        "armor": 0,
+        "range": 4,
+        "skillCooldownSeconds": [
+          15
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 22,
+        "name": "爆裂虫",
+        "races": [
+          "异虫"
+        ],
+        "classes": [
+          "爆破"
+        ],
+        "cost": 2,
+        "attackMin": 38,
+        "attackMax": 42,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 33.3,
+        "hp": 500,
+        "armor": 0,
+        "range": 2,
+        "skillCooldownSeconds": null,
+        "passive": true,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 23,
+        "name": "蜘蛛",
+        "races": [
+          "异虫"
+        ],
+        "classes": [
+          "异能"
+        ],
+        "cost": 3,
+        "attackMin": 68,
+        "attackMax": 75,
+        "attackIntervalSeconds": 2.2,
+        "reportedDps": 32.5,
+        "hp": 550,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          40
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 24,
+        "name": "杀人蜂",
+        "races": [
+          "异虫"
+        ],
+        "classes": [
+          "狙击"
+        ],
+        "cost": 4,
+        "attackMin": 29,
+        "attackMax": 33,
+        "attackIntervalSeconds": 1.3,
+        "reportedDps": 23.8,
+        "hp": 450,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          20
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 25,
+        "name": "穿山甲",
+        "races": [
+          "野兽"
+        ],
+        "classes": [
+          "刺杀"
+        ],
+        "cost": 1,
+        "attackMin": 47,
+        "attackMax": 63,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 36.7,
+        "hp": 500,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          20
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 26,
+        "name": "巨齿象",
+        "races": [
+          "野兽"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 1,
+        "attackMin": 34,
+        "attackMax": 58,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 38.3,
+        "hp": 650,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          20
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 27,
+        "name": "猛毒兽",
+        "races": [
+          "野兽"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 2,
+        "attackMin": 87,
+        "attackMax": 125,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 70.7,
+        "hp": 650,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          10,
+          8,
+          6
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 28,
+        "name": "鬼狼",
+        "races": [
+          "野兽"
+        ],
+        "classes": [
+          "召唤"
+        ],
+        "cost": 3,
+        "attackMin": 59,
+        "attackMax": 70,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 53.8,
+        "hp": 750,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          60
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 29,
+        "name": "狂狮",
+        "races": [
+          "野兽"
+        ],
+        "classes": [
+          "护卫"
+        ],
+        "cost": 3,
+        "attackMin": 45,
+        "attackMax": 54,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 33,
+        "hp": 700,
+        "armor": 10,
+        "range": 1,
+        "skillCooldownSeconds": [
+          30
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 30,
+        "name": "长生鹿",
+        "races": [
+          "野兽"
+        ],
+        "classes": [
+          "支援"
+        ],
+        "cost": 4,
+        "attackMin": 79,
+        "attackMax": 95,
+        "attackIntervalSeconds": 1.8,
+        "reportedDps": 48.3,
+        "hp": 850,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": [
+          25
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 31,
+        "name": "蝙蝠",
+        "races": [
+          "猛禽"
+        ],
+        "classes": [
+          "狙击"
+        ],
+        "cost": 2,
+        "attackMin": 83,
+        "attackMax": 102,
+        "attackIntervalSeconds": 1.8,
+        "reportedDps": 51.4,
+        "hp": 450,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": [
+          10,
+          8,
+          6
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 32,
+        "name": "不死鸟",
+        "races": [
+          "猛禽"
+        ],
+        "classes": [
+          "爆破",
+          "异能"
+        ],
+        "cost": 3,
+        "attackMin": 71,
+        "attackMax": 81,
+        "attackIntervalSeconds": 1.6,
+        "reportedDps": 47.5,
+        "hp": 450,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          15
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 33,
+        "name": "血鹰",
+        "races": [
+          "猛禽",
+          "野兽"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 4,
+        "attackMin": 75,
+        "attackMax": 90,
+        "attackIntervalSeconds": 1.3,
+        "reportedDps": 63.5,
+        "hp": 950,
+        "armor": 10,
+        "range": 3,
+        "skillCooldownSeconds": null,
+        "passive": true,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 34,
+        "name": "骨龙",
+        "races": [
+          "猛禽",
+          "不朽者"
+        ],
+        "classes": [
+          "攻城"
+        ],
+        "cost": 4,
+        "attackMin": 117,
+        "attackMax": 141,
+        "attackIntervalSeconds": 2.2,
+        "reportedDps": 58.6,
+        "hp": 950,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": [
+          25
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 35,
+        "name": "飞天蛤蟆",
+        "races": [
+          "猛禽"
+        ],
+        "classes": [
+          "异能"
+        ],
+        "cost": 5,
+        "attackMin": 48,
+        "attackMax": 58,
+        "attackIntervalSeconds": 1.6,
+        "reportedDps": 33.1,
+        "hp": 1000,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          22,
+          18,
+          14
+        ],
+        "passive": false,
+        "note": "技能防御40%；每秒回血5"
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 36,
+        "name": "藤妖",
+        "races": [
+          "不朽者"
+        ],
+        "classes": [
+          "异能"
+        ],
+        "cost": 2,
+        "attackMin": 99,
+        "attackMax": 141,
+        "attackIntervalSeconds": 1.7,
+        "reportedDps": 70.6,
+        "hp": 650,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          60
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 37,
+        "name": "勾魂使",
+        "races": [
+          "不朽者"
+        ],
+        "classes": [
+          "刺杀"
+        ],
+        "cost": 3,
+        "attackMin": 49,
+        "attackMax": 63,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 46.7,
+        "hp": 550,
+        "armor": 5,
+        "range": 2,
+        "skillCooldownSeconds": [
+          15
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 38,
+        "name": "树妖",
+        "races": [
+          "不朽者"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 5,
+        "attackMin": 40,
+        "attackMax": 49,
+        "attackIntervalSeconds": 1.7,
+        "reportedDps": 26.2,
+        "hp": 950,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          30
+        ],
+        "passive": false,
+        "note": "每秒回血5"
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 39,
+        "name": "天师",
+        "races": [
+          "灵能者"
+        ],
+        "classes": [
+          "爆破"
+        ],
+        "cost": 1,
+        "attackMin": 36,
+        "attackMax": 44,
+        "attackIntervalSeconds": 1.1,
+        "reportedDps": 36.4,
+        "hp": 400,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": [
+          5,
+          4,
+          3
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 40,
+        "name": "童子",
+        "races": [
+          "灵能者"
+        ],
+        "classes": [
+          "支援"
+        ],
+        "cost": 2,
+        "attackMin": 40,
+        "attackMax": 45,
+        "attackIntervalSeconds": 1.7,
+        "reportedDps": 25,
+        "hp": 600,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": null,
+        "passive": true,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 41,
+        "name": "真人",
+        "races": [
+          "灵能者",
+          "傀儡"
+        ],
+        "classes": [
+          "召唤"
+        ],
+        "cost": 2,
+        "attackMin": 41,
+        "attackMax": 46,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 36.3,
+        "hp": 500,
+        "armor": 0,
+        "range": 4,
+        "skillCooldownSeconds": [
+          10,
+          9,
+          8
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 42,
+        "name": "雷震子",
+        "races": [
+          "灵能者"
+        ],
+        "classes": [
+          "狙击"
+        ],
+        "cost": 3,
+        "attackMin": 69,
+        "attackMax": 90,
+        "attackIntervalSeconds": 1.6,
+        "reportedDps": 49.7,
+        "hp": 450,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": null,
+        "passive": true,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 43,
+        "name": "玄龟",
+        "races": [
+          "灵能者"
+        ],
+        "classes": [
+          "护卫"
+        ],
+        "cost": 5,
+        "attackMin": 34,
+        "attackMax": 45,
+        "attackIntervalSeconds": 1.6,
+        "reportedDps": 24.7,
+        "hp": 1500,
+        "armor": 10,
+        "range": 1,
+        "skillCooldownSeconds": [
+          60
+        ],
+        "passive": false,
+        "note": "技能防御20%"
+      },
+      {
+        "sourceImage": "S04-1",
+        "row": 44,
+        "name": "斧奴",
+        "races": [
+          "傀儡"
+        ],
+        "classes": [
+          "刺杀"
+        ],
+        "cost": 1,
+        "attackMin": 80,
+        "attackMax": 113,
+        "attackIntervalSeconds": 1.8,
+        "reportedDps": 53.6,
+        "hp": 550,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          5
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 1,
+        "name": "剑奴",
+        "races": [
+          "傀儡"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 2,
+        "attackMin": 76,
+        "attackMax": 82,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 65.8,
+        "hp": 600,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          12
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 2,
+        "name": "刀奴",
+        "races": [
+          "傀儡"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 3,
+        "attackMin": 75,
+        "attackMax": 97,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 71.7,
+        "hp": 550,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": null,
+        "passive": true,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 3,
+        "name": "盾奴",
+        "races": [
+          "傀儡"
+        ],
+        "classes": [
+          "护卫"
+        ],
+        "cost": 4,
+        "attackMin": 101,
+        "attackMax": 110,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 87.9,
+        "hp": 1050,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          10
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 4,
+        "name": "棍奴",
+        "races": [
+          "傀儡"
+        ],
+        "classes": [
+          "先锋"
+        ],
+        "cost": 4,
+        "attackMin": 98,
+        "attackMax": 109,
+        "attackIntervalSeconds": 1.2,
+        "reportedDps": 86.3,
+        "hp": 900,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": null,
+        "passive": true,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 5,
+        "name": "灵鹫",
+        "races": [
+          "海神"
+        ],
+        "classes": [
+          "刺杀"
+        ],
+        "cost": 2,
+        "attackMin": 96,
+        "attackMax": 105,
+        "attackIntervalSeconds": 2,
+        "reportedDps": 50.3,
+        "hp": 550,
+        "armor": 0,
+        "range": 3,
+        "skillCooldownSeconds": [
+          6
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 6,
+        "name": "空蟹",
+        "races": [
+          "海神"
+        ],
+        "classes": [
+          "攻城"
+        ],
+        "cost": 2,
+        "attackMin": 46,
+        "attackMax": 51,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 32.3,
+        "hp": 550,
+        "armor": 5,
+        "range": 5,
+        "skillCooldownSeconds": [
+          14,
+          11,
+          9
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 7,
+        "name": "电蛟",
+        "races": [
+          "海神"
+        ],
+        "classes": [
+          "异能"
+        ],
+        "cost": 3,
+        "attackMin": 95,
+        "attackMax": 114,
+        "attackIntervalSeconds": 2,
+        "reportedDps": 52.3,
+        "hp": 750,
+        "armor": 5,
+        "range": 3,
+        "skillCooldownSeconds": [
+          10
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 8,
+        "name": "须弥鲨",
+        "races": [
+          "海神",
+          "傀儡"
+        ],
+        "classes": [
+          "召唤"
+        ],
+        "cost": 4,
+        "attackMin": 88,
+        "attackMax": 106,
+        "attackIntervalSeconds": 2.2,
+        "reportedDps": 44.1,
+        "hp": 800,
+        "armor": 0,
+        "range": 4,
+        "skillCooldownSeconds": [
+          60
+        ],
+        "passive": false,
+        "note": "技能防御20%"
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 9,
+        "name": "幻鲸",
+        "races": [
+          "海神"
+        ],
+        "classes": [
+          "攻城"
+        ],
+        "cost": 5,
+        "attackMin": 63,
+        "attackMax": 77,
+        "attackIntervalSeconds": 2,
+        "reportedDps": 35,
+        "hp": 1000,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": [
+          20
+        ],
+        "passive": false,
+        "note": "技能防御40%；每秒回血5"
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 10,
+        "name": "金刚",
+        "races": [
+          "陆行者"
+        ],
+        "classes": [
+          "护卫"
+        ],
+        "cost": 1,
+        "attackMin": 42,
+        "attackMax": 46,
+        "attackIntervalSeconds": 1.5,
+        "reportedDps": 29.3,
+        "hp": 650,
+        "armor": 5,
+        "range": 1,
+        "skillCooldownSeconds": [
+          60
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 11,
+        "name": "罗汉",
+        "races": [
+          "陆行者"
+        ],
+        "classes": [
+          "狙击"
+        ],
+        "cost": 3,
+        "attackMin": 153,
+        "attackMax": 166,
+        "attackIntervalSeconds": 2.2,
+        "reportedDps": 72.5,
+        "hp": 550,
+        "armor": 5,
+        "range": 5,
+        "skillCooldownSeconds": [
+          10
+        ],
+        "passive": false,
+        "note": ""
+      },
+      {
+        "sourceImage": "S04-2",
+        "row": 12,
+        "name": "翔龙",
+        "races": [
+          "陆行者"
+        ],
+        "classes": [
+          "攻城"
+        ],
+        "cost": 4,
+        "attackMin": 85,
+        "attackMax": 102,
+        "attackIntervalSeconds": 1.7,
+        "reportedDps": 55,
+        "hp": 750,
+        "armor": 5,
+        "range": 4,
+        "skillCooldownSeconds": [
+          20
+        ],
+        "passive": false,
+        "note": "技能防御10%"
+      }
+    ],
+    "armorDamageReductionPercent": {
+      "0": 0,
+      "1": 6,
+      "2": 11,
+      "3": 15,
+      "4": 20,
+      "5": 23,
+      "6": 27,
+      "7": 30,
+      "8": 33,
+      "9": 36,
+      "11": 41,
+      "12": 43,
+      "13": 45,
+      "14": 47,
+      "15": 49,
+      "16": 50,
+      "17": 52,
+      "18": 54,
+      "19": 55,
+      "20": 56,
+      "21": 58,
+      "22": 59,
+      "23": 60,
+      "24": 61,
+      "25": 62,
+      "26": 64,
+      "27": 65,
+      "28": 66,
+      "29": 67,
+      "30": 68,
+      "31": 68,
+      "32": 69,
+      "39": 74,
+      "43": 76,
+      "55": 81
+    },
+    "notes": [
+      "Row and source-image references apply to every field in a unit record. First image has 44 rows; second has 12.",
+      "Attack interval/cooldown interpreted as seconds. No mana, skill damage, shop odds, negative armor or range metric supplied.",
+      "Source text states HP and damage double per star, with 神射手 passive exception; this is not evidence for every skill coefficient.",
+      "神射手/医疗兵/护卫兵 and reordered panda names are retained exactly; identity mapping requires separate review.",
+      "Armor 10 and unlisted values absent; do not interpolate and label official.",
+      "Reported DPS agrees with mean attack / interval within 0.051 for all 56 rows."
+    ]
+  }
+}

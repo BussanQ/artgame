@@ -98,9 +98,12 @@ describe("完整单机对局", () => {
         expect(game.players[0].pieces).toHaveLength(0);
         expect(summary.reason).toBe("eliminated");
       }
-      // 0.7 has different outcomes; this legal sample still exercises the round cap.
-      if (seed === 617) {
-        expect(game.round).toBe(30);
+      // Balance updates can alter when a seeded campaign ends.
+      if (
+        game.round === 30 &&
+        game.players[0].hp > 0 &&
+        game.players.filter((p) => p.hp > 0).length > 1
+      ) {
         expect(summary.reason).toBe("round-limit");
       }
       const last = game.history.at(-1)!;
@@ -111,4 +114,21 @@ describe("完整单机对局", () => {
     },
     30000,
   );
+});
+
+it("第30回合结算后结束，即使多名玩家存活也不能进入31回合", () => {
+  const g = createGame(137);
+  g.round = 30;
+  const p = g.players[0];
+  buy(g, p, p.shop.findIndex(Boolean));
+  p.pieces[0].position = 35;
+  const r = startRound(g)!;
+  settle(g, r);
+  expect(p.hp).toBeGreaterThan(0);
+  expect(g.players.filter((p) => p.hp > 0).length).toBeGreaterThan(1);
+  expect(g.phase).toBe("finished");
+  expect(matchSummary(g)?.reason).toBe("round-limit");
+  const before = structuredClone(g);
+  nextRound(g);
+  expect(g).toEqual(before);
 });

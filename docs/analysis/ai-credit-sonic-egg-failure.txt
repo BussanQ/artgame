@@ -1,0 +1,36 @@
+
+> red-tides-web@0.1.0 survey:balance
+> vite-node scripts/balance-survey.ts ability-credit-final-validation 2027 4093
+
+relaxed / 步兵防线: #1@29, #1@28
+relaxed / 幽影猎杀: #1@27, #1@29
+relaxed / 荒原兽群: #1@30, #2@30
+relaxed / 空海舰队: #1@30, #2@30
+relaxed / 熊猫宗师: #2@30, #2@30
+relaxed / 异虫蜂群: #1@26, #1@29
+relaxed / 灵能不朽: #1@29, #1@30
+standard / 步兵防线: #8@19, #2@27
+standard / 幽影猎杀: #2@30, #3@29
+standard / 荒原兽群: #4@25, #5@27
+standard / 空海舰队: #4@26, #4@24
+standard / 熊猫宗师: #3@27, #4@24
+standard / 异虫蜂群: #3@29, #2@30
+standard / 灵能不朽: #8@19, #3@30
+veteran / 步兵防线: #6@24, #5@25
+/Users/haomi/Documents/code/mydev/Red Tides/src/engine/wild-skills.ts:45
+    target.sonic = target.sonic.filter((dot) => dot.remaining > 0);
+                                ^
+
+TypeError: Cannot read properties of undefined (reading 'filter')
+    at advanceSonic (/Users/haomi/Documents/code/mydev/Red Tides/src/engine/wild-skills.ts:45:33)
+    at runBattle (/Users/haomi/Documents/code/mydev/Red Tides/src/engine/battle.ts:353:5)
+    at simulateOutcome (/Users/haomi/Documents/code/mydev/Red Tides/src/engine/battle.ts:527:18)
+    at resumeRound (/Users/haomi/Documents/code/mydev/Red Tides/src/engine/game.ts:210:11)
+    at startRound (/Users/haomi/Documents/code/mydev/Red Tides/src/engine/game.ts:180:10)
+    at /Users/haomi/Documents/code/mydev/Red Tides/scripts/balance-survey.ts:113:24
+    at ViteNodeRunner.runModule (file:///Users/haomi/Documents/code/mydev/Red%20Tides/node_modules/vite-node/dist/client.mjs:397:4)
+    at ViteNodeRunner.directRequest (file:///Users/haomi/Documents/code/mydev/Red%20Tides/node_modules/vite-node/dist/client.mjs:375:3)
+    at ViteNodeRunner.cachedRequest (file:///Users/haomi/Documents/code/mydev/Red%20Tides/node_modules/vite-node/dist/client.mjs:189:11)
+    at ViteNodeRunner.executeFile (file:///Users/haomi/Documents/code/mydev/Red%20Tides/node_modules/vite-node/dist/client.mjs:162:10)
+
+Node.js v24.19.0

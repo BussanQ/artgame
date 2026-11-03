@@ -48,7 +48,7 @@ describe("0.6 平衡与旧战斗保护", () => {
       result = migrate(g);
     expect(result.status).toBe("migrated");
     expect(result.data!.schema).toBe(SAVE_SCHEMA);
-    expect(result.data!.game).toEqual({ ...g, combatVersion: "signature" });
+    expect(result.data!.game).toEqual({ ...g, combatVersion: "metamorph" });
   });
   it("已开始的旧战斗逐帧一致，结算后才切到新规则，历史继续按旧规则回放", () => {
     const g = oldGame(),
@@ -65,7 +65,7 @@ describe("0.6 平衡与旧战斗保护", () => {
     expect(resultPhase).toEqual(settled);
     if (resultPhase.reward) claimReward(resultPhase, 0);
     nextRound(resultPhase);
-    expect(resultPhase.combatVersion).toBe("signature");
+    expect(resultPhase.combatVersion).toBe("metamorph");
     expect(resultPhase.history[0].combatVersion).toBe("tactics");
     const record = resultPhase.history[0];
     expect(simulate(record.left, record.right, record.combatVersion)).toEqual(

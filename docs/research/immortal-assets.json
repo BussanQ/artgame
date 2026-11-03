@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-11-03",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "vine",
+      "name": "藤妖",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 藤妖, a compact undead vine guardian, a hunched humanoid tangle of thick mossy roots with a hollow carved wooden skull-mask, two long whip-like vine arms coiled forward, bronze rune clasps and a small luminous jade soul inside its chest. Distinct silhouette, grounded stance, no wings. Polished hand-painted 3D strategy-game miniature, warm aged wood, desaturated olive, pale jade accents. Three-quarter front view facing viewer-right, camera looking slightly down, entire body and roots visible, centered with 12% padding, strong readable shapes at small size. Actual transparent background, no ground, no pedestal, no cast shadow, no text, no border, no extra characters.",
+      "path": "public/assets/units/vine.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "treant",
+      "name": "树妖",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 树妖, a massive ancient undead tree titan, broad trunk torso and huge asymmetrical branch fists, a stern glowing jade face deep in bark, crown of bare antler-shaped branches, bronze temple armor plates and hanging talismans, sturdy root feet. Clearly larger, broader and more upright than a vine creature. Polished hand-painted 3D strategy-game miniature, dark warm bark, muted moss, bronze and pale mint soul-light. Three-quarter front view facing viewer-right, camera looking slightly down, complete silhouette with all branches and feet inside frame, centered with 12% padding. Actual transparent background, no landscape, no base, no shadow on ground, no text, no border, no extra characters.",
+      "path": "public/assets/units/treant.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bonedragon",
+      "name": "骨龙",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 骨龙, a compact flying skeletal dragon, ivory segmented skull with swept horns, ribcage containing jade soul-fire, two clearly readable bony wings with sparse smoky teal membrane, curled tail and tucked talons, subtle bronze rune bands. Proud forward-leaning hovering pose, mouth slightly open ready to breathe spectral frost. Polished hand-painted 3D strategy-game miniature, aged ivory, charcoal joints, muted bronze, luminous mint. Three-quarter front view facing viewer-right, camera looking slightly down, whole dragon including wings and tail visible, centered with 12% empty padding. Actual transparent background, no scene, no pedestal, no ground shadow, no text, no border, no extra characters.",
+      "editPrompt": "Use case: background-extraction. Edit this skeletal dragon game sprite. Remove the entire smoky gray/black background and surrounding ambient glow, replacing it with actual alpha transparency. Preserve exactly the same whole dragon, bones, bronze bands, wing membranes, pose and jade chest light. Keep its complete wings and tail. Make a clean game sprite cutout with no opaque rectangle, no ground, no backdrop, no text. Use transparent background.",
+      "path": "public/assets/units/bonedragon.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    }
+  ]
+}

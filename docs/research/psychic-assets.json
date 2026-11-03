@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-03",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "acolyte",
+      "name": "童子",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera, compact readable silhouette, complete body with 12% padding. Bronze and jade technological-fantasy detail, realistic stylized materials matching a premium isometric strategy game. Actual transparent background, no floor, no pedestal, no ground shadow, no text, no border, one character only. Subject: 童子, a small youthful Taoist energy attendant wearing ivory and turquoise layered robes, twin hair buns, bronze wrist rings, holding a glowing cyan spirit pearl between both hands, floating scarf and compact hovering pose. Gentle focused expression; clear round pearl and short silhouette.",
+      "path": "public/assets/units/acolyte.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "stormcaller",
+      "name": "天师",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera, compact readable silhouette, complete body with 12% padding. Bronze and jade technological-fantasy detail, realistic stylized materials matching a premium isometric strategy game. Actual transparent background, no floor, no pedestal, no ground shadow, no text, no border, one character only. Subject: 天师, a tall elderly Taoist storm master with long white beard and high ceremonial headdress, deep indigo robes with bronze edging, one hand raised holding a bright violet lightning orb, the other gripping a short rune wand. Wide sleeves and grounded stance, distinct tall wizard silhouette.",
+      "path": "public/assets/units/stormcaller.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "thunderlord",
+      "name": "雷震子",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera, compact readable silhouette, complete body with 12% padding. Bronze and jade technological-fantasy detail, realistic stylized materials matching a premium isometric strategy game. Actual transparent background, no floor, no pedestal, no ground shadow, no text, no border, one character only. Subject: 雷震子, a formidable avian thunder warrior with a fierce beaked face, enormous folded-open feather wings, muscular armored torso, bronze war hammer and chisel, blue-white lightning glowing between the weapons. Dark teal feathers, tarnished gold armor, hovering in a dynamic crouch. Broad winged silhouette, entire wings and feet visible.",
+      "path": "public/assets/units/thunderlord.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    }
+  ]
+}

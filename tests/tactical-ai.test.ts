@@ -21,40 +21,46 @@ const army = (ids: string[], offset = 0): Piece[] =>
     items: i === 0 ? ["aegis"] : [],
   }));
 describe("战术试算与抱团站位", () => {
-  it.each(["legacy", "tactics", "balanced", "signature"] as const)(
-    "%s 轻量试算与完整快照的胜败/扣血/末帧一致",
-    (version) => {
-      const fixtures: [Piece[], Piece[]][] = [
-        [
-          army(UNITS.slice(0, 10).map((u) => u.id)),
-          army(
-            UNITS.slice(10).map((u) => u.id),
-            100,
-          ),
-        ],
-        [
-          army(["guard", "fish", "deer", "monk", "cannon", "tiger"]),
-          encounterArmy(ENCOUNTERS[7]),
-        ],
-        [
-          army(["panda", "wolf", "shadowblade"]),
-          army(["guard", "infantry", "sniper"], 100),
-        ],
-        [[], army(["guard"], 100)],
-        [[], []],
-      ];
-      for (const [left, right] of fixtures) {
-        const before = structuredClone([left, right]),
-          full = simulate(left, right, version),
-          fast = simulateOutcome(left, right, version);
-        expect(fast.winner).toBe(full.winner);
-        expect(fast.damage).toBe(full.damage);
-        expect(fast.final.fighters).toEqual(full.frames.at(-1)!.fighters);
-        expect(fast.final.tick).toBe(full.frames.at(-1)!.tick);
-        expect([left, right]).toEqual(before);
-      }
-    },
-  );
+  it.each([
+    "legacy",
+    "tactics",
+    "balanced",
+    "signature",
+    "summons",
+    "legions",
+    "brood",
+    "fleet",
+  ] as const)("%s 轻量试算与完整快照的胜败/扣血/末帧一致", (version) => {
+    const fixtures: [Piece[], Piece[]][] = [
+      [
+        army(UNITS.slice(0, 10).map((u) => u.id)),
+        army(
+          UNITS.slice(10, 20).map((u) => u.id),
+          100,
+        ),
+      ],
+      [
+        army(["guard", "fish", "deer", "monk", "cannon", "tiger"]),
+        encounterArmy(ENCOUNTERS[7]),
+      ],
+      [
+        army(["panda", "wolf", "shadowblade"]),
+        army(["guard", "infantry", "sniper"], 100),
+      ],
+      [[], army(["guard"], 100)],
+      [[], []],
+    ];
+    for (const [left, right] of fixtures) {
+      const before = structuredClone([left, right]),
+        full = simulate(left, right, version),
+        fast = simulateOutcome(left, right, version);
+      expect(fast.winner).toBe(full.winner);
+      expect(fast.damage).toBe(full.damage);
+      expect(fast.final.fighters).toEqual(full.frames.at(-1)!.fighters);
+      expect(fast.final.tick).toBe(full.frames.at(-1)!.tick);
+      expect([left, right]).toEqual(before);
+    }
+  });
   it("抱团和分散均不创造棋子或装备，十人口落位唯一且保留备战", () => {
     const p = createGame().players[0];
     p.level = 10;

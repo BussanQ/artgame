@@ -1,5 +1,173 @@
 import { REST_POSE, type AttackPose } from "./melee";
 export const RANGED_ACTIONS = {
+  motorcycle: {
+    name: "压车架炮后坐",
+    duration: 2,
+    fireAt: 0.18,
+    impactAt: 0.55,
+    color: "#ffc173",
+  },
+  flametrooper: {
+    name: "压肩横扫喷焰",
+    duration: 3.8,
+    fireAt: 0.18,
+    impactAt: 0.62,
+    color: "#ffb365",
+  },
+  grenadier: {
+    name: "后仰扬臂抛弹",
+    duration: 4.2,
+    fireAt: 0.42,
+    impactAt: 0.8,
+    color: "#c9a2ff",
+  },
+  medic: {
+    name: "泵压注射枪点射",
+    duration: 3.4,
+    fireAt: 0.36,
+    impactAt: 0.68,
+    color: "#94ffe2",
+  },
+  whale: {
+    name: "摆尾俯首吐潮环",
+    duration: 4.2,
+    fireAt: 0.4,
+    impactAt: 0.78,
+    color: "#8fe5e1",
+  },
+  phoenix: {
+    name: "扬翼甩出焰羽",
+    duration: 3.8,
+    fireAt: 0.35,
+    impactAt: 0.72,
+    color: "#ffc880",
+  },
+  bat: {
+    name: "振耳吐声锥",
+    duration: 3.8,
+    fireAt: 0.3,
+    impactAt: 0.7,
+    color: "#c6a8ff",
+  },
+  skytoad: {
+    name: "鼓喉弹舌",
+    duration: 3.8,
+    fireAt: 0.38,
+    impactAt: 0.6,
+    color: "#c5ec99",
+  },
+  arhat: {
+    name: "合掌推出法印",
+    duration: 3.8,
+    fireAt: 0.4,
+    impactAt: 0.72,
+    color: "#ffe1a3",
+  },
+  winddragon: {
+    name: "盘颈吐风刃",
+    duration: 3.8,
+    fireAt: 0.28,
+    impactAt: 0.65,
+    color: "#a3f2df",
+  },
+  acolyte: {
+    name: "托珠推掌",
+    duration: 3.8,
+    fireAt: 0.35,
+    impactAt: 0.7,
+    color: "#a1fff0",
+  },
+  stormcaller: {
+    name: "拂袖掷雷球",
+    duration: 3.8,
+    fireAt: 0.3,
+    impactAt: 0.75,
+    color: "#c3a5ff",
+  },
+  thunderlord: {
+    name: "振翼击雷锤",
+    duration: 3.8,
+    fireAt: 0.4,
+    impactAt: 0.55,
+    color: "#b8e8ff",
+  },
+  bonedragon: {
+    name: "振翼吐冥焰",
+    duration: 3.8,
+    fireAt: 0.32,
+    impactAt: 0.65,
+    color: "#aaf7dc",
+  },
+  repair: {
+    name: "悬停甩臂电弧",
+    duration: 3.8,
+    fireAt: 0.3,
+    impactAt: 0.65,
+    color: "#94ffe2",
+  },
+  bomber: {
+    name: "侧倾投弹",
+    duration: 3.8,
+    fireAt: 0.24,
+    impactAt: 0.73,
+    color: "#ffd093",
+  },
+  ghostjet: {
+    name: "偏航双翼齐射",
+    duration: 2.8,
+    fireAt: 0.2,
+    impactAt: 0.58,
+    color: "#b5c3ff",
+  },
+  ark: {
+    name: "双舷蓄能射击",
+    duration: 3.8,
+    fireAt: 0.42,
+    impactAt: 0.6,
+    color: "#8aeeff",
+  },
+  skycrab: {
+    name: "合钳聚能弹",
+    duration: 3.8,
+    fireAt: 0.35,
+    impactAt: 0.7,
+    color: "#c5f4b7",
+  },
+  eel: {
+    name: "盘身甩尾电击",
+    duration: 3.8,
+    fireAt: 0.28,
+    impactAt: 0.5,
+    color: "#9fc6ff",
+  },
+  eyebug: {
+    name: "凝瞳脉冲",
+    duration: 3.8,
+    fireAt: 0.38,
+    impactAt: 0.6,
+    color: "#b1ff93",
+  },
+  spider: {
+    name: "伏身吐丝",
+    duration: 3.8,
+    fireAt: 0.3,
+    impactAt: 0.7,
+    color: "#d8a6ff",
+  },
+  wasp: {
+    name: "振翅甩针",
+    duration: 2.8,
+    fireAt: 0.25,
+    impactAt: 0.65,
+    color: "#ffe288",
+  },
+  adept: {
+    name: "引杖飞符",
+    duration: 3.8,
+    fireAt: 0.33,
+    impactAt: 0.72,
+    color: "#a4f1ce",
+  },
   dragonfly: {
     name: "振翅鸣波",
     duration: 2.8,
@@ -67,6 +235,140 @@ export function rangedPose(id: RangedId, t: number, skill = false): AttackPose {
   if (t <= 0 || t >= 1) return { ...REST_POSE };
   const p = { ...REST_POSE };
   switch (id) {
+    case "motorcycle":
+      p.forward = 7 * pulse(t, 0, 0.2) - 22 * pulse(t, 0.2, 0.8);
+      p.rotation = -0.12 * pulse(t, 0.18, 0.8);
+      p.scaleY = 1 - 0.1 * pulse(t, 0.15, 0.75);
+      p.lift = 4 * pulse(t, 0.25, 0.8);
+      break;
+    case "flametrooper":
+      p.forward = 15 * pulse(t, 0, 0.8);
+      p.rotation = 0.1 * pulse(t, 0.08, 0.8) * Math.sin(t * Math.PI * 3);
+      p.scaleY = 1 - 0.08 * pulse(t, 0, 0.7);
+      p.scaleX = 1 + 0.09 * pulse(t, 0.08, 0.85);
+      break;
+    case "grenadier":
+      p.forward = -18 * pulse(t, 0, 0.42) + 25 * pulse(t, 0.42, 0.85);
+      p.rotation = -0.22 * pulse(t, 0, 0.42) + 0.28 * pulse(t, 0.42, 0.9);
+      p.lift = 12 * pulse(t, 0.2, 0.65);
+      p.scaleX = 1 - 0.1 * pulse(t, 0, 0.4);
+      break;
+    case "medic":
+      p.forward = 9 * pulse(t, 0, 0.36) - 15 * pulse(t, 0.36, 0.76);
+      p.rotation = -0.07 * pulse(t, 0, 0.36) + 0.11 * pulse(t, 0.36, 0.76);
+      p.scaleY = 1 - 0.055 * pulse(t, 0.36, 0.8);
+      p.lift = 3 * pulse(t, 0.15, 0.5);
+      break;
+    case "whale":
+      p.rotation = -0.13 * pulse(t, 0, 0.4) + 0.18 * pulse(t, 0.4, 0.9);
+      p.lift = 13 * pulse(t, 0, 0.55);
+      p.scaleY = 1 + 0.12 * pulse(t, 0, 0.4) - 0.09 * pulse(t, 0.4, 0.85);
+      p.forward = -10 * pulse(t, 0, 0.4) + 21 * pulse(t, 0.4, 0.85);
+      break;
+    case "phoenix":
+      p.lift = 22 * pulse(t, 0, 0.6);
+      p.scaleX = 1 + 0.22 * pulse(t, 0, 0.35) - 0.12 * pulse(t, 0.35, 0.8);
+      p.rotation = 0.16 * pulse(t, 0.35, 0.9);
+      p.forward = 17 * pulse(t, 0.35, 0.8);
+      break;
+    case "bat":
+      p.scaleX = 1 + 0.2 * pulse(t, 0, 0.32);
+      p.lift = 11 * pulse(t, 0, 1);
+      p.scaleY = 1 - 0.1 * pulse(t, 0.3, 0.8);
+      p.forward = -12 * pulse(t, 0.3, 0.8);
+      break;
+    case "skytoad":
+      p.scaleX = 1 + 0.16 * pulse(t, 0, 0.4);
+      p.scaleY = 1 + 0.18 * pulse(t, 0, 0.4) - 0.14 * pulse(t, 0.38, 0.8);
+      p.forward = 26 * pulse(t, 0.38, 0.8);
+      break;
+    case "arhat":
+      p.rotation = -0.09 * pulse(t, 0, 0.4);
+      p.scaleX = 1 - 0.13 * pulse(t, 0, 0.4);
+      p.forward = -8 * pulse(t, 0, 0.4) + 22 * pulse(t, 0.4, 0.85);
+      p.lift = 5 * pulse(t, 0.4, 0.85);
+      break;
+    case "winddragon":
+      p.rotation = -0.2 * pulse(t, 0, 0.3) + 0.24 * pulse(t, 0.28, 0.75);
+      p.scaleX = 1 - 0.12 * pulse(t, 0, 0.3) + 0.15 * pulse(t, 0.28, 0.75);
+      p.forward = 18 * pulse(t, 0.28, 0.75);
+      p.lift = 7 * pulse(t, 0, 0.5);
+      break;
+    case "acolyte":
+      p.lift = 8 * pulse(t, 0, 0.7);
+      p.forward = -7 * pulse(t, 0, 0.35) + 18 * pulse(t, 0.35, 0.85);
+      p.scaleX = 1 - 0.06 * pulse(t, 0, 0.35);
+      break;
+    case "stormcaller":
+      p.rotation = -0.2 * pulse(t, 0, 0.3) + 0.18 * pulse(t, 0.3, 0.85);
+      p.forward = 12 * pulse(t, 0.3, 0.85);
+      p.scaleY = 1 + 0.07 * pulse(t, 0, 0.3);
+      break;
+    case "thunderlord":
+      p.lift = 20 * pulse(t, 0, 0.45);
+      p.scaleX = 1 + 0.16 * pulse(t, 0, 0.4);
+      p.forward = 15 * pulse(t, 0.4, 0.8);
+      p.rotation = 0.1 * pulse(t, 0.4, 0.85);
+      break;
+    case "bonedragon":
+      p.lift = 14 * pulse(t, 0, 0.6);
+      p.scaleX = 1 + 0.15 * pulse(t, 0, 0.38);
+      p.rotation = -0.12 * pulse(t, 0, 0.3) + 0.14 * pulse(t, 0.3, 0.85);
+      p.forward = 20 * pulse(t, 0.3, 0.8);
+      break;
+    case "repair":
+      p.rotation = 0.18 * Math.sin(t * Math.PI * 2);
+      p.lift = 9 * pulse(t, 0, 1);
+      p.forward = -10 * pulse(t, 0.3, 0.7);
+      break;
+    case "bomber":
+      p.rotation = -0.22 * pulse(t, 0, 0.35) + 0.15 * pulse(t, 0.3, 0.9);
+      p.lift = 14 * pulse(t, 0, 0.5);
+      p.scaleY = 1 - 0.08 * pulse(t, 0.24, 0.7);
+      break;
+    case "ghostjet":
+      p.forward = 24 * pulse(t, 0, 0.5) - 17 * pulse(t, 0.45, 1);
+      p.rotation = -0.16 * pulse(t, 0.1, 0.65);
+      p.scaleX = 1 - 0.1 * pulse(t, 0.1, 0.65);
+      break;
+    case "ark":
+      p.lift = 5 * pulse(t, 0, 0.5);
+      p.forward = -24 * pulse(t, 0.42, 0.9);
+      p.scaleY = 1 + 0.04 * pulse(t, 0, 0.42);
+      break;
+    case "skycrab":
+      p.scaleX = 1 - 0.18 * pulse(t, 0, 0.38) + 0.1 * pulse(t, 0.35, 0.8);
+      p.lift = 11 * pulse(t, 0, 1);
+      p.forward = -16 * pulse(t, 0.35, 0.85);
+      break;
+    case "eel":
+      p.rotation = -0.3 * pulse(t, 0, 0.3) + 0.27 * pulse(t, 0.25, 0.8);
+      p.scaleY = 1 - 0.12 * pulse(t, 0, 0.4);
+      p.forward = 20 * pulse(t, 0.28, 0.75);
+      break;
+    case "eyebug":
+      p.lift = 12 * pulse(t, 0, 1);
+      p.scaleX = 1 + 0.18 * pulse(t, 0, 0.38);
+      p.forward = -14 * pulse(t, 0.38, 0.8);
+      break;
+    case "spider":
+      p.scaleY = 1 - 0.22 * pulse(t, 0, 0.4);
+      p.scaleX = 1 + 0.1 * pulse(t, 0, 0.4);
+      p.forward = 16 * pulse(t, 0.2, 0.7);
+      p.rotation = 0.07 * pulse(t, 0.3, 0.9);
+      break;
+    case "wasp":
+      p.lift = 18 * pulse(t, 0, 1);
+      p.rotation = -0.28 * pulse(t, 0, 0.3) + 0.3 * pulse(t, 0.25, 0.75);
+      p.scaleX = 1 + 0.07 * Math.sin(t * Math.PI * 12) * pulse(t, 0, 1);
+      p.forward = 18 * pulse(t, 0.25, 0.8);
+      break;
+    case "adept":
+      p.lift = 8 * pulse(t, 0, 0.55);
+      p.rotation = -0.13 * pulse(t, 0, 0.35) + 0.16 * pulse(t, 0.3, 0.8);
+      p.forward = 11 * pulse(t, 0.3, 0.8);
+      p.scaleX = 1 - 0.06 * pulse(t, 0, 0.35);
+      break;
     case "dragonfly": {
       const flutter = pulse(t, 0, 1);
       p.scaleX = 1 + Math.sin(t * Math.PI * 8) * 0.11 * flutter;
@@ -224,6 +526,403 @@ export function drawRangedAttack(
     c.restore();
   };
   switch (id) {
+    case "motorcycle": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u, skill ? 18 : 0);
+        line(
+          projectilePoint(from, to, Math.max(0, u - 0.25), skill ? 18 : 0),
+          at,
+          4 * power,
+        );
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(angle);
+        c.fillStyle = "#fff1ce";
+        c.fillRect(-7 * power, -3 * power, 14 * power, 6 * power);
+        c.restore();
+        flash(1 - u);
+      }
+      if (u > 1) {
+        sparks((t - profile.impactAt) / (1 - profile.impactAt), 9);
+        ring(to, (10 + (u - 1) * 26) * power, Math.max(0, 2 - u));
+      }
+      break;
+    }
+    case "flametrooper": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1.4) {
+        const end = projectilePoint(from, to, Math.min(1, u * 2));
+        for (let i = 0; i < 7; i++) {
+          const q = (i + 1) / 7;
+          const at = projectilePoint(from, end, q);
+          const r = (3 + q * 10) * Math.max(0, Math.min(1, (1.4 - u) * 3));
+          c.globalAlpha = 0.75;
+          c.fillStyle = i % 2 ? "#ffe29a" : profile.color;
+          c.beginPath();
+          c.ellipse(
+            at.x + Math.sin(i * 2 + t * 20) * 3,
+            at.y,
+            r,
+            r * 0.7,
+            angle,
+            0,
+            Math.PI * 2,
+          );
+          c.fill();
+        }
+      }
+      break;
+    }
+    case "grenadier": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u, 95);
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(u * 8);
+        c.fillRect(-5, -7, 10, 14);
+        c.fillStyle = "#efe3ff";
+        c.fillRect(-3, -4, 6, 3);
+        c.restore();
+      }
+      if (u > 1) {
+        ring(to, 12 + (u - 1) * 55, Math.max(0, 2 - u));
+        ring(to, 5 + (u - 1) * 32, Math.max(0, 2 - u));
+      }
+      break;
+    }
+    case "medic": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u);
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(angle);
+        c.fillRect(-9, -3, 18, 6);
+        c.fillStyle = "#eafff5";
+        c.fillRect(4, -2, 9, 4);
+        c.restore();
+        ring(from, 8 + u * 10, 1 - u);
+      }
+      if (u > 1) ring(to, 6 + (u - 1) * 18, Math.max(0, 2 - u));
+      break;
+    }
+    case "whale": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u, 12);
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(angle);
+        for (let i = 0; i < 3; i++) {
+          c.globalAlpha = 1 - i * 0.22;
+          c.beginPath();
+          c.ellipse(-i * 10, 0, 4 + u * 5, 9 + u * 9, 0, 0, Math.PI * 2);
+          c.stroke();
+        }
+        c.restore();
+      }
+      if (u > 1) ring(to, 15 + (u - 1) * 35, Math.max(0, 2 - u));
+      break;
+    }
+    case "phoenix": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u, 24);
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(angle);
+        c.beginPath();
+        c.moveTo(15, 0);
+        c.quadraticCurveTo(-3, -10, -19, 0);
+        c.quadraticCurveTo(-3, 10, 15, 0);
+        c.fill();
+        c.strokeStyle = "#fff1c8";
+        c.beginPath();
+        c.moveTo(-14, 0);
+        c.lineTo(12, 0);
+        c.stroke();
+        c.restore();
+      }
+      sparks((t - profile.impactAt) / 0.28, 10);
+      break;
+    }
+    case "bat": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u);
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(angle);
+        for (let i = 0; i < 3; i++) {
+          c.beginPath();
+          c.arc(-i * 9, 0, 9 + u * 15 + i * 4, -0.8, 0.8);
+          c.stroke();
+        }
+        c.restore();
+      }
+      if (u > 1) ring(to, 12 + (u - 1) * 25, Math.max(0, 2 - u));
+      break;
+    }
+    case "skytoad": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1.8) {
+        const tip = projectilePoint(
+          from,
+          to,
+          u <= 1 ? u : Math.max(0, 1 - (u - 1) / 0.8),
+          8,
+        );
+        c.save();
+        c.strokeStyle = "#e9acb0";
+        line(from, tip, 5 * power);
+        c.beginPath();
+        c.arc(tip.x, tip.y, 6 * power, 0, Math.PI * 2);
+        c.fill();
+        c.restore();
+      }
+      break;
+    }
+    case "arhat": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (t < profile.fireAt)
+        ring(from, 25 * (1 - t / profile.fireAt) + 5, 0.8);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u);
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(u * Math.PI * 2);
+        c.strokeRect(-9, -9, 18, 18);
+        c.rotate(Math.PI / 4);
+        c.strokeRect(-9, -9, 18, 18);
+        c.restore();
+        line(projectilePoint(from, to, Math.max(0, u - 0.18)), at, 2, 0.6);
+      }
+      sparks((t - profile.impactAt) / 0.28, 8);
+      break;
+    }
+    case "winddragon": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u, 20);
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(angle + u * 5);
+        for (let i = 0; i < 3; i++) {
+          c.beginPath();
+          c.arc(0, 0, 7 + i * 5, i * 2.1, i * 2.1 + 1.5);
+          c.stroke();
+        }
+        c.restore();
+      }
+      sparks((t - profile.impactAt) / 0.35, 6);
+      break;
+    }
+    case "acolyte":
+    case "stormcaller": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u, id === "stormcaller" ? 55 : 14);
+        c.beginPath();
+        c.arc(
+          at.x,
+          at.y,
+          (id === "stormcaller" ? 8 : 5) * power,
+          0,
+          Math.PI * 2,
+        );
+        c.fill();
+        ring(at, (id === "stormcaller" ? 15 : 10) * power, 0.75);
+      }
+      sparks((t - profile.impactAt) / 0.25, id === "stormcaller" ? 12 : 5);
+      break;
+    }
+    case "thunderlord": {
+      if (t >= profile.fireAt && t <= profile.impactAt + 0.12) {
+        let prev = from;
+        for (let j = 1; j <= 9; j++) {
+          const at = projectilePoint(from, to, j / 9);
+          if (j < 9) at.y += Math.sin(j * 2.1) * 14 * power;
+          line(prev, at, 3 * power);
+          prev = at;
+        }
+      }
+      sparks((t - profile.impactAt) / 0.3, 10);
+      break;
+    }
+    case "bonedragon": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        for (let j = 0; j < 5; j++) {
+          const part = Math.max(0, u - j * 0.055);
+          const at = projectilePoint(from, to, part, 10);
+          c.globalAlpha = (1 - j / 6) * 0.8;
+          c.beginPath();
+          c.ellipse(
+            at.x,
+            at.y,
+            (9 - j) * power,
+            (5 - j * 0.5) * power,
+            angle,
+            0,
+            Math.PI * 2,
+          );
+          c.fill();
+        }
+        c.globalAlpha = 1;
+      }
+      sparks((t - profile.impactAt) / 0.35, 9);
+      break;
+    }
+    case "repair":
+    case "eel": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        let prev = from;
+        for (let j = 1; j <= 8; j++) {
+          const at = projectilePoint(from, to, (u * j) / 8);
+          if (j < 8)
+            at.y += Math.sin(j * 2.4 + t * 24) * (id === "eel" ? 13 : 5);
+          line(prev, at, id === "eel" ? 3 : 1.8);
+          prev = at;
+        }
+        if (id === "repair") ring(from, 8, 0.8);
+      }
+      sparks((t - profile.impactAt) / 0.35, id === "eel" ? 9 : 4);
+      break;
+    }
+    case "bomber": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u, 40);
+        c.save();
+        c.translate(at.x, at.y);
+        c.rotate(angle + u * 2);
+        c.fillRect(-5, -8, 10, 16);
+        c.restore();
+        line(projectilePoint(from, to, Math.max(0, u - 0.12), 40), at, 3, 0.45);
+      }
+      if (u > 1)
+        ring(
+          to,
+          12 + (t - profile.impactAt) * 95,
+          Math.max(0, 1 - (t - profile.impactAt) / 0.27),
+        );
+      sparks((t - profile.impactAt) / 0.27, 10);
+      break;
+    }
+    case "ghostjet": {
+      for (const side of [-1, 1]) {
+        const start = {
+          x: from.x - Math.sin(angle) * side * 13,
+          y: from.y + Math.cos(angle) * side * 13,
+        };
+        const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+        if (u >= 0 && u <= 1)
+          line(
+            projectilePoint(start, to, Math.max(0, u - 0.18)),
+            projectilePoint(start, to, u),
+            3,
+          );
+      }
+      flash(pulse(t, profile.fireAt, profile.fireAt + 0.15));
+      sparks((t - profile.impactAt) / 0.3, 6);
+      break;
+    }
+    case "ark": {
+      for (const side of [-1, 1]) {
+        const start = {
+          x: from.x - Math.sin(angle) * side * 11,
+          y: from.y + Math.cos(angle) * side * 11,
+        };
+        if (t < profile.fireAt) ring(start, 4 + t * 20, t / profile.fireAt);
+        const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+        if (u >= 0 && u <= 1)
+          line(start, projectilePoint(start, to, u), 4, 1 - u * 0.3);
+      }
+      sparks((t - profile.impactAt) / 0.4, 12);
+      break;
+    }
+    case "skycrab": {
+      if (t < profile.fireAt) {
+        const r = 22 * (1 - t / profile.fireAt) + 4;
+        ring(from, r, 0.8);
+        ring(from, r * 0.6, 0.6);
+      }
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u);
+        c.beginPath();
+        c.arc(at.x, at.y, 7 * power, 0, Math.PI * 2);
+        c.fill();
+        ring(at, 13, 0.65);
+      }
+      sparks((t - profile.impactAt) / 0.3, 8);
+      break;
+    }
+    case "eyebug": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (t < profile.fireAt) ring(from, 5 + t * 35, t / profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        line(from, projectilePoint(from, to, u), 4 * power, 1 - u * 0.6);
+        ring(projectilePoint(from, to, u), 10, 0.8);
+      }
+      sparks((t - profile.impactAt) / 0.4, 8);
+      break;
+    }
+    case "spider": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const end = projectilePoint(from, to, u, 18);
+        for (const offset of [-4, 0, 4])
+          line(
+            { x: from.x, y: from.y + offset },
+            { x: end.x, y: end.y + offset },
+            1.5,
+          );
+      }
+      if (u > 1) {
+        const fade = 1 - (t - profile.impactAt) / 0.3;
+        for (let i = 0; i < 3; i++) ring(to, 8 + i * 8, fade);
+      }
+      break;
+    }
+    case "wasp": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const p = projectilePoint(from, to, u);
+        c.save();
+        c.translate(p.x, p.y);
+        c.rotate(angle);
+        c.beginPath();
+        c.moveTo(12, 0);
+        c.lineTo(-8, -4);
+        c.lineTo(-3, 0);
+        c.lineTo(-8, 4);
+        c.closePath();
+        c.fill();
+        c.restore();
+      }
+      sparks((t - profile.impactAt) / 0.3, 5);
+      break;
+    }
+    case "adept": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (t < profile.fireAt) ring(from, 8 + t * 30, t / profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const p = projectilePoint(from, to, u, 35);
+        c.save();
+        c.translate(p.x, p.y);
+        c.rotate(angle + u * Math.PI);
+        c.fillRect(-6, -10, 12, 20);
+        c.strokeStyle = "#436e5c";
+        c.strokeRect(-3, -6, 6, 12);
+        c.restore();
+      }
+      if (u > 1) sparks((t - profile.impactAt) / 0.28, 5);
+      break;
+    }
     case "dragonfly": {
       const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
       if (u >= 0 && u <= 1)

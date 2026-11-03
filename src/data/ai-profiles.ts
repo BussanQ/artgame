@@ -9,7 +9,7 @@ export const AI_PROFILES: AiProfile[] = [
   { name: "自由指挥", traits: [], reserve: 0, description: "自行决定构筑方向" },
   {
     name: "步兵防线",
-    traits: ["步兵", "护卫"],
+    traits: ["步兵", "护卫", "陆行者"],
     reserve: 5,
     description: "稳健攒息，依靠步兵与护盾前排保护射手",
   },
@@ -17,19 +17,19 @@ export const AI_PROFILES: AiProfile[] = [
     name: "幽影猎杀",
     traits: ["刺杀", "野兽"],
     reserve: -10,
-    description: "积极追星，以突袭与吸血压制后排",
+    description: "积极追星，以刺杀与狼群压制后排",
   },
   {
     name: "荒原兽群",
-    traits: ["野兽", "先锋"],
+    traits: ["野兽", "先锋", "猛禽"],
     reserve: 0,
-    description: "优先野兽攻速与先锋恢复，追求持续近战",
+    description: "野兽与猛禽协同，先锋恢复支撑突袭与持续输出",
   },
   {
-    name: "钢铁火线",
-    traits: ["装甲", "狙击", "骑兵"],
+    name: "空海舰队",
+    traits: ["空军", "海神", "攻城"],
     reserve: 10,
-    description: "储蓄升级，寻找重装与高费远程核心",
+    description: "积累空海羁绊，以维修强化主力，寻找方舟和电蛟输出核心",
   },
   {
     name: "熊猫宗师",
@@ -38,16 +38,16 @@ export const AI_PROFILES: AiProfile[] = [
     description: "围绕初始能量、治疗和控制构筑",
   },
   {
-    name: "精准齐射",
-    traits: ["狙击", "步兵"],
+    name: "异虫蜂群",
+    traits: ["异虫", "异能", "狙击"],
     reserve: 0,
-    description: "组成射手阵线，以前排和站位保护火力",
+    description: "收集异虫加速升星，以魅惑和能量压制保护杀人蜂",
   },
   {
-    name: "不破铁壁",
-    traits: ["护卫", "装甲"],
+    name: "灵能不朽",
+    traits: ["灵能", "不朽", "召唤"],
     reserve: 5,
-    description: "重视生存装备，以护盾和控制消耗对手",
+    description: "以不朽前排延续反伤，童子充能带动雷法与召唤",
   },
 ];
 export const DIFFICULTIES: Record<

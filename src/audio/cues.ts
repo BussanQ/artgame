@@ -23,14 +23,34 @@ export class BattleSoundTrack {
       const fighters = new Map(frame.fighters.map((f) => [f.uid, f]));
       const casters = new Set<number>();
       for (const effect of frame.effects) {
-        if (effect.kind !== "cast" || casters.has(effect.source)) continue;
+        if (
+          !["cast", "pulse", "immortal", "rebirth"].includes(effect.kind) ||
+          casters.has(effect.source)
+        )
+          continue;
         casters.add(effect.source);
         const f = fighters.get(effect.source);
         if (!f) continue;
-        const support = ["fish", "deer", "monk"].includes(f.defId);
+        const support = [
+          "fish",
+          "deer",
+          "monk",
+          "repair",
+          "acolyte",
+          "medic",
+        ].includes(f.defId);
         this.cues.push({
           time: index,
-          kind: support ? "heal" : "cast",
+          kind:
+            effect.kind === "immortal" || effect.kind === "rebirth"
+              ? "chime"
+              : effect.kind === "pulse"
+                ? f.defId === "bomber" || f.defId === "phoenix"
+                  ? "blast"
+                  : "beam"
+                : support
+                  ? "heal"
+                  : "cast",
           pan: (effect.from.x / 7) * 1.4 - 0.7,
           priority: 2,
         });
@@ -41,11 +61,13 @@ export class BattleSoundTrack {
         const fighter = fighters.get(event.attacker);
         if (!fighter || !UNIT[fighter.defId]) continue;
         const id = fighter.defId;
-        const offset = isRanged(id)
-          ? RANGED_ACTIONS[id].duration * RANGED_ACTIONS[id].fireAt
-          : isMelee(id)
-            ? MELEE_ACTIONS[id].duration * 0.28
-            : 0;
+        const offset = event.strike
+          ? 0.28
+          : isRanged(id)
+            ? RANGED_ACTIONS[id].duration * RANGED_ACTIONS[id].fireAt
+            : isMelee(id)
+              ? MELEE_ACTIONS[id].duration * 0.28
+              : 0;
         this.cues.push({
           time: index + offset,
           kind: ATTACK_SOUND[id],

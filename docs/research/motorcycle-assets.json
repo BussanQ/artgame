@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-11-03",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "motorcycle",
+      "name": "摩托骑兵",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body isometric game piece for a Chinese science-fantasy auto battler. Create one futuristic motorcycle cavalry unit: a helmeted human armored rider leaning forward on a compact heavy TWO-WHEELED combat motorcycle, both wheels clearly visible, with a chunky side-mounted three-chamber cannon pointing forwards. Single rider and bike as one cohesive silhouette. Deep petrol-blue metal, weathered bronze edges, amber engine and weapon lights; sculptural hand-painted 3D game miniature style, crisp broad readable shapes and restrained fine detail. Three-quarter view, facing RIGHT, slightly elevated camera matching an isometric battlefield, entire rider and bike in frame, generous transparent margin around wheels, weapon and helmet. Neutral ready-to-fire pose with readable separation between arms, chassis and gun. Truly transparent background with clean alpha; no base, no floor, no cast shadow, no scene, no text, no numbers, no watermark, no other figures, no muzzle flash or detached effects. Original redesign inspired by the sci-fi cavalry archetype, visually cohesive with bronze-and-teal fantasy military game pieces.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-92d04e10-1ea5-42dd-bb36-44cacd212e79.png",
+      "path": "public/assets/units/motorcycle.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1536,
+        "height": 1024,
+        "min": 0,
+        "max": 254,
+        "fullyTransparentPixels": 899926,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "99cc32d1700c556e6df94f8afd91e77c5b26f75735dbcf935b66a50f8abdebf4"
+    }
+  ]
+}

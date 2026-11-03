@@ -68,6 +68,25 @@ function device() {
   return { ctx, sources, gain, factory: () => ctx as unknown as AudioContext };
 }
 describe("战斗音效与播放边界", () => {
+  it("血鹰落地三连击的声音跟随每次短动作命中，不沿用飞行俯冲延迟", () => {
+    const battle = simulate(
+      [{ uid: 1, defId: "bloodhawk", star: 2, position: 35 }],
+      [{ uid: 2, defId: "titan", star: 3, position: 35 }],
+    );
+    const frameIndex = battle.frames.findIndex((f) =>
+      f.events.some((e) => e.strike === 1),
+    );
+    expect(frameIndex).toBeGreaterThan(0);
+    const track = new BattleSoundTrack();
+    track.reset(battle, frameIndex);
+    const cues = track.take(battle, frameIndex + 0.29, true);
+    expect(
+      cues.some(
+        (c) =>
+          c.kind === ATTACK_SOUND.bloodhawk && c.time === frameIndex + 0.28,
+      ),
+    ).toBe(true);
+  });
   it("20 棋子都有攻击声，所有信号有限、非静音且有安全峰值", () => {
     expect(UNITS.every((u) => ATTACK_SOUND[u.id])).toBe(true);
     const kinds = new Set<SoundKind>([

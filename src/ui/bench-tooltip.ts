@@ -1,19 +1,25 @@
-import { TRAIT_TIERS } from "../data/traits";
+import { salePrice } from "../engine/progression";
+import { TRAIT_TIERS, AIRSEA_TRAIT_TIERS } from "../data/traits";
 import { equipmentStats, ITEM } from "../data/items";
-import { skillDescription, SKILLS } from "../data/skills";
+import { skillDescription, skillName } from "../data/skills";
 import { isRanged, RANGED_ACTIONS } from "../render/ranged";
 import { RULES, UNIT } from "../data/units";
 import type { Piece, CombatVersion } from "../engine/types";
 import { isMelee, MELEE_ACTIONS } from "../render/melee";
 export function pieceDetails(
   piece: Piece,
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ) {
   const u = UNIT[piece.defId],
     scale = 2 ** (piece.star - 1),
-    gear = equipmentStats(piece.items);
+    gear = equipmentStats(piece.items),
+    tiers =
+      version === "fleet" || version === "metamorph"
+        ? TRAIT_TIERS
+        : AIRSEA_TRAIT_TIERS;
   return {
     name: u.name,
+    flying: !!u.flying,
     hp: u.hp * scale + gear.hp,
     attack: u.attack * scale + gear.attack,
     armor: u.armor + gear.armor,
@@ -21,9 +27,9 @@ export function pieceDetails(
     interval: Math.max(1, u.interval * (1 - gear.haste)) * RULES.tickSeconds,
     items: (piece.items ?? []).map((id) => ITEM[id]),
     skillPower: Math.round(gear.skillPower * 100),
-    skill: SKILLS[u.id].name,
+    skill: skillName(u.id, version),
     skillDescription: skillDescription(u.id, version),
-    sell: u.cost * 3 ** (piece.star - 1),
+    sell: salePrice(piece),
     action: isMelee(u.id)
       ? MELEE_ACTIONS[u.id].name
       : isRanged(u.id)
@@ -31,8 +37,8 @@ export function pieceDetails(
         : "普通攻击",
     traits: u.traits.map((t) => ({
       name: t,
-      threshold: TRAIT_TIERS[t][0].count,
-      description: TRAIT_TIERS[t]
+      threshold: tiers[t][0].count,
+      description: tiers[t]
         .map((tier) => `${tier.count} 个：${tier.description}`)
         .join("；"),
     })),
@@ -40,14 +46,14 @@ export function pieceDetails(
 }
 export function pieceDetailMarkup(
   p: Piece,
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ): string {
   const d = pieceDetails(p, version);
-  return `<div class="tooltip-heading"><img src="/assets/units/${p.defId}.png" alt=""><div><strong>${d.name}</strong><span>${"★".repeat(p.star)} · ${p.star} 星</span><small>${d.range === 1 ? "近战" : "远程"} · ${d.action}</small></div></div><div class="tooltip-stats"><span>生命<b>${d.hp}</b></span><span>攻击<b>${d.attack}</b></span><span>护甲<b>${d.armor}</b></span><span>射程<b>${d.range} 格</b></span><span>攻击间隔<b>${d.interval.toFixed(2)} 秒</b></span><span>出售价格<b>${d.sell} 金</b></span></div><p class="tooltip-basis">当前星级与装备属性 · 未计入上阵羁绊</p><section><b>${d.skill}</b><p>${d.skillDescription}</p></section>${d.items.length ? `<section><b>已装备 · 技能强度 +${d.skillPower}%</b>${d.items.map((i) => `<p>${i.icon} ${i.name} · ${i.description}</p>`).join("")}</section>` : ""}<section><b>兵种与职业</b>${d.traits.map((t) => `<p><em>${t.name} · ${t.threshold} 个不同棋子</em>${t.description}</p>`).join("")}</section>`;
+  return `<div class="tooltip-heading"><img src="/assets/units/${p.defId}.png" alt=""><div><strong>${d.name}</strong><span>${"★".repeat(p.star)} · ${p.star} 星</span><small>${d.flying ? "飞行" : "地面"} · ${d.range === 1 ? "近战" : "远程"} · ${d.action}</small></div></div><div class="tooltip-stats"><span>生命<b>${d.hp}</b></span><span>攻击<b>${d.attack}</b></span><span>护甲<b>${d.armor}</b></span><span>射程<b>${d.range} 格</b></span><span>攻击间隔<b>${d.interval.toFixed(2)} 秒</b></span><span>出售价格<b>${d.sell} 金</b></span></div><p class="tooltip-basis">当前星级与装备属性 · 未计入上阵羁绊</p><section><b>${d.skill}</b><p>${d.skillDescription}</p></section>${d.items.length ? `<section><b>已装备 · 技能强度 +${d.skillPower}%</b>${d.items.map((i) => `<p>${i.icon} ${i.name} · ${i.description}</p>`).join("")}</section>` : ""}<section><b>兵种与职业</b>${d.traits.map((t) => `<p><em>${t.name} · ${t.threshold} 个不同棋子</em>${t.description}</p>`).join("")}</section>`;
 }
 export function pieceInfoMarkup(
   p: Piece,
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ): string {
   return `<div class="modal-backdrop"><section class="modal piece-info-modal" role="dialog" aria-modal="true" aria-label="棋子详情"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">UNIT INTELLIGENCE</span><h2>棋子详情</h2>${pieceDetailMarkup(p, version)}</section></div>`;
 }
@@ -59,7 +65,7 @@ export class BenchTooltip {
   constructor(
     root: HTMLElement,
     private getPiece: (uid: number) => Piece | undefined,
-    private getVersion: () => CombatVersion = () => "signature",
+    private getVersion: () => CombatVersion = () => "metamorph",
   ) {
     this.element.id = "bench-tooltip";
     this.element.className = "bench-tooltip";

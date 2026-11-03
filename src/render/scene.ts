@@ -1,8 +1,22 @@
+import { isPhoenixEgg } from "../engine/phoenix";
+import { hawkGroundPose } from "./metamorph-presentation";
 import { skillGauge } from "../engine/triggers";
+import {
+  bullTransformation,
+  bullFormPose,
+  drawBullCharge,
+  deathFade,
+  type BullTransformation,
+} from "./combat-presentation";
+import { fighterName, fighterSprite } from "../engine/summons";
 import { QUALITY, type Preferences } from "../ui/preferences";
 import { FrameGate } from "./frame-policy";
 import { attackInterval } from "../engine/abilities";
-import { drawSkillEffect, drawStatuses } from "./skill-effects";
+import {
+  drawSkillEffect,
+  drawStatuses,
+  drawAirTelegraph,
+} from "./skill-effects";
 import {
   isRanged,
   RANGED_ACTIONS,
@@ -295,43 +309,57 @@ export class BattleScene {
       const fs = a.fighters
         .map((f) => {
           const next = b.fighters.find((n) => n.uid === f.uid)!;
+          const transformation = bullTransformation(
+            battle,
+            f,
+            s.time,
+            this.motionReduced,
+          );
           return {
             ...f,
-            x: b.effects.some(
-              (e) => e.kind === "teleport" && e.target === f.uid,
-            )
-              ? f.x
-              : lerp(f.x, next.x, fraction),
-            y: b.effects.some(
-              (e) => e.kind === "teleport" && e.target === f.uid,
-            )
-              ? f.y
-              : lerp(f.y, next.y, fraction),
+            transformation,
+            x: transformation
+              ? transformation.position.x
+              : b.effects.some(
+                    (e) => e.kind === "teleport" && e.target === f.uid,
+                  )
+                ? f.x
+                : lerp(f.x, next.x, fraction),
+            y: transformation
+              ? transformation.position.y
+              : b.effects.some(
+                    (e) => e.kind === "teleport" && e.target === f.uid,
+                  )
+                ? f.y
+                : lerp(f.y, next.y, fraction),
           };
         })
         .sort((a, b) => a.y - b.y);
+      for (const f of fs) drawAirTelegraph(c, f, s.time, this.motionReduced);
       for (const f of fs) {
-        let death = 0;
-        if (f.hp <= 0) {
-          let last = index;
-          while (
-            last > 0 &&
-            battle.frames[last - 1].fighters.find((x) => x.uid === f.uid)!.hp <=
-              0
-          )
-            last--;
-          death = (s.time - last) / 2.5;
-          if (death >= 1) continue;
-        }
+        const death = deathFade(battle, f.uid, index, s.time);
+        if (death >= 1) continue;
+        if (f.transformation)
+          drawBullCharge(
+            c,
+            f.transformation,
+            quality.particles,
+            this.motionReduced,
+          );
         let attack: { event: CombatEvent; progress: number } | undefined;
-        const duration = isMelee(f.defId)
-          ? Math.min(MELEE_ACTIONS[f.defId].duration, attackInterval(f, s.time))
-          : isRanged(f.defId)
+        const duration = f.hawkForm?.active
+          ? 1
+          : isMelee(f.defId)
             ? Math.min(
-                RANGED_ACTIONS[f.defId].duration,
+                MELEE_ACTIONS[f.defId].duration,
                 attackInterval(f, s.time),
               )
-            : 1;
+            : isRanged(f.defId)
+              ? Math.min(
+                  RANGED_ACTIONS[f.defId].duration,
+                  attackInterval(f, s.time),
+                )
+              : 1;
         for (
           let n = index;
           n >= Math.max(1, index - Math.ceil(duration));
@@ -364,7 +392,7 @@ export class BattleScene {
             break;
           }
         }
-        const hit = a.events.some((e) => e.target === f.uid);
+        const hit = a.events.some((e) => e.target === f.uid && !e.evaded);
         this.unit(
           f,
           now,
@@ -373,6 +401,7 @@ export class BattleScene {
           attack,
           hit && fraction < 0.35,
           s.time,
+          f.transformation ?? undefined,
         );
       }
       // Render recent events without skipping any at 2x/4x playback.
@@ -399,8 +428,20 @@ export class BattleScene {
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
           if (!preferences.reducedMotion && e.ranged && rangedId && e.primary)
-            drawRangedAttack(c, rangedId, age / duration, from, to, e.skill);
-          if (!preferences.reducedMotion && !e.ranged && age < 1.5) {
+            drawRangedAttack(
+              c,
+              rangedId,
+              age / duration,
+              from,
+              e.evaded ? { x: to.x + 22, y: to.y - 18 } : to,
+              e.skill,
+            );
+          if (
+            !preferences.reducedMotion &&
+            !e.evaded &&
+            !e.ranged &&
+            age < 1.5
+          ) {
             c.save();
             c.translate(to.x, to.y);
             c.globalAlpha = Math.max(0, 1 - age / 1.5);
@@ -448,8 +489,13 @@ export class BattleScene {
               to.y -
               20 -
               (preferences.reducedMotion ? 0 : (age - impactAge) * 13);
-            const label =
-              e.amount > 0 ? String(e.amount) : `吸收 ${e.absorbed}`;
+            const label = e.immune
+              ? "不朽"
+              : e.evaded
+                ? "闪避"
+                : e.amount > 0
+                  ? String(e.amount)
+                  : `吸收 ${e.absorbed}`;
             c.strokeText(label, to.x, y);
             c.fillStyle =
               e.amount === 0
@@ -464,8 +510,18 @@ export class BattleScene {
           }
         }
       for (let n = Math.max(1, index - 4); n <= index; n++)
-        for (const e of battle.frames[n].effects)
+        for (const e of battle.frames[n].effects) {
+          // Bull charge uses its own grounded trail and impact, not a teleport portal.
+          if (
+            e.kind === "teleport" &&
+            e.name === "冲锋" &&
+            battle.frames[n].fighters.some(
+              (f) => f.uid === e.source && f.defId === "bull",
+            )
+          )
+            continue;
           drawSkillEffect(c, e, s.time - n, preferences.reducedMotion);
+        }
     } else {
       for (const p of [...s.pieces]
         .filter((p) => p.position !== null)
@@ -525,15 +581,17 @@ export class BattleScene {
     attack: { event: CombatEvent; progress: number } | undefined,
     hit: boolean,
     time = 0,
+    transformation?: BullTransformation,
   ) {
     const c = this.ctx,
       p = project(f.x + 0.5, f.y + 0.65),
       depth = 0.78 + f.y * 0.035,
       d = UNIT[f.defId],
-      im = picture(f.defId),
-      scale = (1 + (f.star - 1) * 0.12) * depth;
+      im = picture(fighterSprite(f)),
+      scale = (1 + (f.star - 1) * 0.12) * depth * (f.summon ? 0.7 : 1);
+    const transformed = f.defId === "bull" ? picture("bull-charge") : null;
     c.save();
-    c.globalAlpha = 1 - death;
+    c.globalAlpha = (1 - death) * (f.immortal?.spent && f.hp > 0 ? 0.62 : 1);
     c.translate(p.x, p.y);
     c.fillStyle = "#06100b66";
     c.beginPath();
@@ -550,35 +608,59 @@ export class BattleScene {
     c.shadowBlur = 0;
     const sway = this.motionReduced ? 0 : Math.sin(now * 0.002 + f.uid) * 1.2;
     c.save();
-    const pose =
-      !this.motionReduced && !death && attack && isMelee(f.defId)
-        ? meleePose(f.defId, attack.progress, attack.event.skill)
-        : !this.motionReduced && !death && attack && isRanged(f.defId)
-          ? rangedPose(f.defId, attack.progress, attack.event.skill)
-          : REST_POSE;
-    const origin = attack
-      ? project(attack.event.from.x + 0.5, attack.event.from.y + 0.5)
-      : p;
-    const destination = attack
-      ? project(attack.event.to.x + 0.5, attack.event.to.y + 0.5)
-      : p;
+    const pose = isPhoenixEgg(f)
+      ? REST_POSE
+      : transformation
+        ? bullFormPose(transformation, this.motionReduced)
+        : !this.motionReduced && !death && attack && f.hawkForm?.active
+          ? hawkGroundPose(attack.progress, attack.event.strike ?? 1)
+          : !this.motionReduced && !death && attack && isMelee(f.defId)
+            ? meleePose(f.defId, attack.progress, attack.event.skill)
+            : !this.motionReduced && !death && attack && isRanged(f.defId)
+              ? rangedPose(f.defId, attack.progress, attack.event.skill)
+              : REST_POSE;
+    const origin = transformation?.moving
+      ? project(transformation.from.x + 0.5, transformation.from.y + 0.5)
+      : attack
+        ? project(attack.event.from.x + 0.5, attack.event.from.y + 0.5)
+        : p;
+    const destination = transformation?.moving
+      ? project(transformation.to.x + 0.5, transformation.to.y + 0.5)
+      : attack
+        ? project(attack.event.to.x + 0.5, attack.event.to.y + 0.5)
+        : p;
     const dx = destination.x - origin.x,
       dy = destination.y - origin.y,
       length = Math.hypot(dx, dy) || 1;
     const facing =
-      attack && Math.abs(dx) > 1 ? Math.sign(dx) : f.side === 0 ? 1 : -1;
+      (attack || transformation) && Math.abs(dx) > 1
+        ? Math.sign(dx)
+        : f.side === 0
+          ? 1
+          : -1;
 
     c.translate(
       (dx / length) * pose.forward * scale,
-      (dy / length) * pose.forward * scale - pose.lift * scale - sway,
+      (dy / length) * pose.forward * scale -
+        pose.lift * scale -
+        sway -
+        (f.air?.flying
+          ? 7 + (this.motionReduced ? 0 : Math.sin(now * 0.002 + f.uid) * 3)
+          : 0),
     );
     c.rotate(facing * pose.rotation + (this.motionReduced ? 0 : death * 1.3));
     c.scale(facing * pose.scaleX, pose.scaleY);
     c.globalAlpha *= pose.alpha * (f.signature?.concealed ? 0.55 : 1);
-    if (im) {
-      const size = 130 * scale * (SPRITE_SCALES[f.defId] ?? 1),
-        w = (size * im.width) / Math.max(im.width, im.height),
-        h = (size * im.height) / Math.max(im.width, im.height);
+    const drawSprite = (
+      sprite: HTMLCanvasElement,
+      alpha: number,
+      enlarge = 1,
+    ) => {
+      c.save();
+      c.globalAlpha *= alpha;
+      const size = 130 * scale * (SPRITE_SCALES[f.defId] ?? 1) * enlarge,
+        w = (size * sprite.width) / Math.max(sprite.width, sprite.height),
+        h = (size * sprite.height) / Math.max(sprite.width, sprite.height);
       if (hit) {
         c.shadowColor = "#f5d4ac";
         c.shadowBlur = 15;
@@ -586,11 +668,17 @@ export class BattleScene {
       if (pose.trail > 0) {
         c.save();
         c.globalAlpha *= pose.trail * 0.24;
-        c.drawImage(im, -w / 2 - 14, -h + 4, w, h);
-        c.drawImage(im, -w / 2 - 28, -h + 4, w, h);
+        c.drawImage(sprite, -w / 2 - 14, -h + 4, w, h);
+        c.drawImage(sprite, -w / 2 - 28, -h + 4, w, h);
         c.restore();
       }
-      c.drawImage(im, -w / 2, -h + 4, w, h);
+      c.drawImage(sprite, -w / 2, -h + 4, w, h);
+      c.restore();
+    };
+    if (im) {
+      const blend = transformed && transformation ? transformation.alpha : 0;
+      drawSprite(im, 1 - blend);
+      if (blend && transformed) drawSprite(transformed, blend, 1.15);
     } else {
       c.fillStyle = d.color;
       c.font = "35px serif";
@@ -598,7 +686,13 @@ export class BattleScene {
       c.fillText(d.glyph, 0, -18);
     }
     c.restore();
-    if (!this.motionReduced && !death && attack && isMelee(f.defId)) {
+    if (
+      !transformation &&
+      !this.motionReduced &&
+      !death &&
+      attack &&
+      isMelee(f.defId)
+    ) {
       c.save();
       c.scale(facing, 1);
       drawMeleeWeapon(c, f.defId, attack.progress, scale, attack.event.skill);
@@ -624,8 +718,20 @@ export class BattleScene {
       const top = -129 * scale;
       c.fillStyle = "#07130ede";
       c.fillRect(-27, top, 54, 7);
-      c.fillStyle = color;
-      c.fillRect(-26, top + 1, 52 * Math.max(0, f.hp / f.maxHp), 5);
+      const soul = f.immortal?.spent && f.hp > 0;
+      c.fillStyle = soul ? "#b8ffe4" : color;
+      c.fillRect(
+        -26,
+        top + 1,
+        52 *
+          Math.max(
+            0,
+            soul
+              ? (f.immortal!.until - time) / f.immortal!.duration
+              : f.hp / f.maxHp,
+          ),
+        5,
+      );
       c.fillStyle = "#0c2028";
       c.fillRect(-26, top + 8, 52, 3);
       const gauge = skillGauge(f);
@@ -634,13 +740,31 @@ export class BattleScene {
       c.font = "bold 10px sans-serif";
       c.textAlign = "center";
       c.fillStyle = "#ffe4a1";
-      c.fillText("★".repeat(f.star), 0, top - 5);
+      c.fillText(
+        soul
+          ? `不朽 ${Math.max(0, (f.immortal!.until - time) / 4).toFixed(1)}s`
+          : f.summon
+            ? "召唤物"
+            : "★".repeat(f.star),
+        0,
+        top - 5,
+      );
       c.font = "11px sans-serif";
       c.strokeStyle = "#0d1816";
       c.lineWidth = 3;
-      c.strokeText(d.name, 0, 22);
+      const name =
+        transformation && transformation.alpha > 0.5
+          ? "牛魔 · 巨牛形态"
+          : fighterName(f);
+      c.strokeText(name, 0, 22);
       c.fillStyle = "#f1ecd6";
-      c.fillText(d.name, 0, 22);
+      c.fillText(name, 0, 22);
+      if (f.charm && f.charm.until > time) {
+        const label = `魅惑 ${((f.charm.until - time) / 4).toFixed(1)}s`;
+        c.strokeText(label, 0, 36);
+        c.fillStyle = "#e5b0ff";
+        c.fillText(label, 0, 36);
+      }
     }
     c.restore();
   }

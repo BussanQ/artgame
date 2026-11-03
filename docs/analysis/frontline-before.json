@@ -1,0 +1,10079 @@
+{
+  "scope": "Controlled reconstruction of manual-campaign ownership, exhaustive 8-of-11 subsets and two formations against round-25 neutral. No exact original UID/position/seed claim.",
+  "sources": {
+    "src/engine/ai.ts": "833267733955f4add66d84cfac9d8baa3db6ebac5abe25bc94b71e92d4ed0ede",
+    "src/engine/battle.ts": "c242401310d6d2f7c5919224a907cb48808ca528a9465ffc6dc85ad5d854d15f",
+    "src/data/units.ts": "87998a172801abd8599c5ca3505a786b90b41a8ec6229f0673bea70460c07572",
+    "src/data/skills.ts": "f63245afdeebb4d70be7956da6f2ea5713a38574247a09ebb481d7dcba66b97d",
+    "src/data/encounters.ts": "c07716dc80a1343b6bb3f327e5d8c466cd4fcaa277917a104e15421c92254c56",
+    "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba"
+  },
+  "owned": [
+    {
+      "uid": 1,
+      "defId": "fish",
+      "star": 2,
+      "items": [
+        "staff"
+      ],
+      "position": null
+    },
+    {
+      "uid": 2,
+      "defId": "infantry",
+      "star": 2,
+      "items": [],
+      "position": null
+    },
+    {
+      "uid": 3,
+      "defId": "guard",
+      "star": 2,
+      "items": [],
+      "position": null
+    },
+    {
+      "uid": 4,
+      "defId": "wolf",
+      "star": 2,
+      "items": [],
+      "position": null
+    },
+    {
+      "uid": 5,
+      "defId": "sniper",
+      "star": 2,
+      "items": [],
+      "position": null
+    },
+    {
+      "uid": 6,
+      "defId": "bat",
+      "star": 2,
+      "items": [],
+      "position": null
+    },
+    {
+      "uid": 7,
+      "defId": "cannon",
+      "star": 1,
+      "items": [
+        "overdrive"
+      ],
+      "position": null
+    },
+    {
+      "uid": 8,
+      "defId": "shark",
+      "star": 2,
+      "items": [
+        "staff"
+      ],
+      "position": null
+    },
+    {
+      "uid": 9,
+      "defId": "adept",
+      "star": 2,
+      "items": [],
+      "position": null
+    },
+    {
+      "uid": 10,
+      "defId": "phoenix",
+      "star": 2,
+      "items": [],
+      "position": null
+    },
+    {
+      "uid": 11,
+      "defId": "ark",
+      "star": 2,
+      "items": [],
+      "position": null
+    }
+  ],
+  "enemy": [
+    {
+      "uid": 900002500,
+      "defId": "monk",
+      "star": 3,
+      "position": 43,
+      "encounterPower": 1,
+      "items": []
+    },
+    {
+      "uid": 900002501,
+      "defId": "master",
+      "star": 2,
+      "position": 35,
+      "encounterPower": 1.2,
+      "items": []
+    },
+    {
+      "uid": 900002502,
+      "defId": "panda",
+      "star": 3,
+      "position": 37,
+      "encounterPower": 1,
+      "items": []
+    },
+    {
+      "uid": 900002503,
+      "defId": "cannon",
+      "star": 2,
+      "position": 60,
+      "encounterPower": 1.2,
+      "items": []
+    }
+  ],
+  "recommended": {
+    "formation": "spread",
+    "ids": [
+      "fish",
+      "wolf",
+      "bat",
+      "cannon",
+      "shark",
+      "adept",
+      "phoenix",
+      "ark"
+    ],
+    "positions": [
+      43,
+      32,
+      61,
+      59,
+      35,
+      57,
+      63,
+      56
+    ],
+    "score": 4192.621394995692,
+    "winner": 1,
+    "seconds": 14.75,
+    "health": [
+      0,
+      11037
+    ]
+  },
+  "summary": {
+    "all": {
+      "count": 330,
+      "wins": 33,
+      "draws": 5
+    },
+    "withGuard": {
+      "count": 240,
+      "wins": 30,
+      "draws": 5
+    },
+    "withoutGuard": {
+      "count": 90,
+      "wins": 3,
+      "draws": 0
+    }
+  },
+  "rows": [
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        63,
+        56,
+        35
+      ],
+      "score": 3567.280808413289,
+      "winner": 0,
+      "seconds": 16.25,
+      "health": [
+        2370,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        62,
+        63,
+        47
+      ],
+      "score": 3567.280808413289,
+      "winner": 1,
+      "seconds": 16.25,
+      "health": [
+        0,
+        5464
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        63,
+        56,
+        57
+      ],
+      "score": 2916.8354720391385,
+      "winner": 1,
+      "seconds": 17,
+      "health": [
+        0,
+        5214
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        62,
+        63,
+        54
+      ],
+      "score": 2916.8354720391385,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        6071
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        32,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3229.412519081014,
+      "winner": 0,
+      "seconds": 15.75,
+      "health": [
+        2613,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        47,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3229.412519081014,
+      "winner": 1,
+      "seconds": 17.25,
+      "health": [
+        0,
+        3550
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        32,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3052.3428297111936,
+      "winner": 0,
+      "seconds": 15,
+      "health": [
+        3540,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        47,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3052.3428297111936,
+      "winner": 0,
+      "seconds": 19.5,
+      "health": [
+        1598,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        56,
+        35,
+        61
+      ],
+      "score": 3641.455848649141,
+      "winner": 1,
+      "seconds": 14.5,
+      "health": [
+        0,
+        10646
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        63,
+        47,
+        61
+      ],
+      "score": 3641.455848649141,
+      "winner": 1,
+      "seconds": 24.25,
+      "health": [
+        0,
+        7889
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3812.565685570163,
+      "winner": 1,
+      "seconds": 14,
+      "health": [
+        0,
+        9949
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3812.565685570163,
+      "winner": 1,
+      "seconds": 19,
+      "health": [
+        0,
+        9323
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3614.3221272015044,
+      "winner": 1,
+      "seconds": 13.75,
+      "health": [
+        0,
+        8566
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3614.3221272015044,
+      "winner": 1,
+      "seconds": 14.5,
+      "health": [
+        0,
+        10019
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        63,
+        57,
+        56
+      ],
+      "score": 3139.0490561652064,
+      "winner": 1,
+      "seconds": 24,
+      "health": [
+        0,
+        6462
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        62,
+        54,
+        63
+      ],
+      "score": 3139.0490561652064,
+      "winner": 1,
+      "seconds": 17.5,
+      "health": [
+        0,
+        8401
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        63,
+        57,
+        56
+      ],
+      "score": 2967.4220187693836,
+      "winner": 1,
+      "seconds": 17.5,
+      "health": [
+        0,
+        8344
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        62,
+        54,
+        63
+      ],
+      "score": 2967.4220187693836,
+      "winner": 1,
+      "seconds": 24.5,
+      "health": [
+        0,
+        6179
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        32,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3267.2370950660575,
+      "winner": 1,
+      "seconds": 18.25,
+      "health": [
+        0,
+        6950
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        47,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3267.2370950660575,
+      "winner": 1,
+      "seconds": 16.25,
+      "health": [
+        0,
+        8141
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        56,
+        35,
+        61
+      ],
+      "score": 3648.5301903358695,
+      "winner": 1,
+      "seconds": 20,
+      "health": [
+        0,
+        8410
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        63,
+        47,
+        61
+      ],
+      "score": 3648.5301903358695,
+      "winner": 1,
+      "seconds": 31.75,
+      "health": [
+        0,
+        4282
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3601.9893152014934,
+      "winner": 1,
+      "seconds": 13.75,
+      "health": [
+        0,
+        8474
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3601.9893152014934,
+      "winner": 1,
+      "seconds": 19,
+      "health": [
+        0,
+        8088
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3619.45699569021,
+      "winner": 1,
+      "seconds": 12.75,
+      "health": [
+        0,
+        6859
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3619.45699569021,
+      "winner": 1,
+      "seconds": 24,
+      "health": [
+        0,
+        5704
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        63,
+        57,
+        56
+      ],
+      "score": 2963.045811860694,
+      "winner": 0,
+      "seconds": 19.25,
+      "health": [
+        5770,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        62,
+        54,
+        63
+      ],
+      "score": 2963.045811860694,
+      "winner": 1,
+      "seconds": 29.75,
+      "health": [
+        0,
+        7398
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        63,
+        57,
+        56
+      ],
+      "score": 2979.5035836273646,
+      "winner": 1,
+      "seconds": 28,
+      "health": [
+        0,
+        5015
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        62,
+        54,
+        63
+      ],
+      "score": 2979.5035836273646,
+      "winner": 1,
+      "seconds": 33.25,
+      "health": [
+        0,
+        3286
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        32,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3319.102786749572,
+      "winner": 1,
+      "seconds": 17.75,
+      "health": [
+        0,
+        9680
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        47,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3319.102786749572,
+      "winner": 1,
+      "seconds": 18,
+      "health": [
+        0,
+        9303
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3871.1430874932753,
+      "winner": 1,
+      "seconds": 16.25,
+      "health": [
+        0,
+        10695
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3871.1430874932753,
+      "winner": 1,
+      "seconds": 24.75,
+      "health": [
+        0,
+        8360
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3890.4061612656283,
+      "winner": 1,
+      "seconds": 16,
+      "health": [
+        0,
+        9920
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3890.4061612656283,
+      "winner": 1,
+      "seconds": 23.25,
+      "health": [
+        0,
+        7401
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3823.0476180346204,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        9374
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3823.0476180346204,
+      "winner": 1,
+      "seconds": 14.5,
+      "health": [
+        0,
+        10448
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        57,
+        63,
+        56
+      ],
+      "score": 3163.6596597235953,
+      "winner": 1,
+      "seconds": 19.75,
+      "health": [
+        0,
+        6873
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        54,
+        62,
+        63
+      ],
+      "score": 3163.6596597235953,
+      "winner": 1,
+      "seconds": 22.25,
+      "health": [
+        0,
+        7064
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        56,
+        35,
+        61
+      ],
+      "score": 3501.9647678099204,
+      "winner": 1,
+      "seconds": 19.75,
+      "health": [
+        0,
+        6836
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        63,
+        47,
+        61
+      ],
+      "score": 3501.9647678099204,
+      "winner": 1,
+      "seconds": 23.25,
+      "health": [
+        0,
+        7740
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3657.27014828479,
+      "winner": 1,
+      "seconds": 15.5,
+      "health": [
+        0,
+        6782
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3657.27014828479,
+      "winner": 1,
+      "seconds": 14.75,
+      "health": [
+        0,
+        9680
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3456.4375902718325,
+      "winner": 1,
+      "seconds": 13.5,
+      "health": [
+        0,
+        6644
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3456.4375902718325,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        8143
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        63,
+        57,
+        56
+      ],
+      "score": 3005.617899207831,
+      "winner": 1,
+      "seconds": 19,
+      "health": [
+        0,
+        8576
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        62,
+        54,
+        63
+      ],
+      "score": 3005.617899207831,
+      "winner": 1,
+      "seconds": 27.25,
+      "health": [
+        0,
+        6009
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        63,
+        57,
+        56
+      ],
+      "score": 2831.4018621677096,
+      "winner": 1,
+      "seconds": 31,
+      "health": [
+        0,
+        7505
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        62,
+        54,
+        63
+      ],
+      "score": 2831.4018621677096,
+      "winner": 0,
+      "seconds": 23.25,
+      "health": [
+        2028,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        32,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3364.7125971490104,
+      "winner": 1,
+      "seconds": 20.5,
+      "health": [
+        0,
+        7088
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        47,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3364.7125971490104,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        6290
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3926.98113572036,
+      "winner": 1,
+      "seconds": 16,
+      "health": [
+        0,
+        10255
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3926.98113572036,
+      "winner": 1,
+      "seconds": 19.25,
+      "health": [
+        0,
+        11429
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3733.386622965036,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        10345
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3733.386622965036,
+      "winner": 1,
+      "seconds": 22.75,
+      "health": [
+        0,
+        8542
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3880.731859229032,
+      "winner": 1,
+      "seconds": 15.25,
+      "health": [
+        0,
+        11184
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3880.731859229032,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        9173
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        57,
+        63,
+        56
+      ],
+      "score": 3208.1466974366967,
+      "winner": 1,
+      "seconds": 20.5,
+      "health": [
+        0,
+        9267
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        54,
+        62,
+        63
+      ],
+      "score": 3208.1466974366967,
+      "winner": 1,
+      "seconds": 17.75,
+      "health": [
+        0,
+        8652
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3720.9481353292795,
+      "winner": 1,
+      "seconds": 22.75,
+      "health": [
+        0,
+        7834
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3720.9481353292795,
+      "winner": 1,
+      "seconds": 27,
+      "health": [
+        0,
+        4283
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3739.3135124598143,
+      "winner": 1,
+      "seconds": 20.5,
+      "health": [
+        0,
+        9049
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3739.3135124598143,
+      "winner": 1,
+      "seconds": 23.75,
+      "health": [
+        0,
+        7759
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        32,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3929.7787872663725,
+      "winner": 1,
+      "seconds": 24.5,
+      "health": [
+        0,
+        1211
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        61,
+        53,
+        46,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3929.7787872663725,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        8223
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        35,
+        32,
+        59,
+        57,
+        63,
+        56
+      ],
+      "score": 3259.294045700133,
+      "winner": 1,
+      "seconds": 19,
+      "health": [
+        0,
+        9222
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        47,
+        55,
+        54,
+        62,
+        63
+      ],
+      "score": 3259.294045700133,
+      "winner": 1,
+      "seconds": 21.5,
+      "health": [
+        0,
+        6714
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        59,
+        36,
+        32,
+        35,
+        61,
+        63,
+        56
+      ],
+      "score": 3760.7911882945464,
+      "winner": 1,
+      "seconds": 17.75,
+      "health": [
+        0,
+        9647
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "wolf",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        55,
+        53,
+        46,
+        47,
+        61,
+        62,
+        63
+      ],
+      "score": 3760.7911882945464,
+      "winner": 1,
+      "seconds": 17.5,
+      "health": [
+        0,
+        9514
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        63,
+        56,
+        35,
+        57
+      ],
+      "score": 3239.56681150416,
+      "winner": 1,
+      "seconds": 12,
+      "health": [
+        0,
+        8591
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        63,
+        47,
+        54
+      ],
+      "score": 3239.56681150416,
+      "winner": 1,
+      "seconds": 19.75,
+      "health": [
+        0,
+        7099
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        57,
+        36,
+        61,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3425.34754919863,
+      "winner": 1,
+      "seconds": 20,
+      "health": [
+        0,
+        5636
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3425.34754919863,
+      "winner": 0,
+      "seconds": 24.25,
+      "health": [
+        2468,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        36,
+        61,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3249.110341990143,
+      "winner": 1,
+      "seconds": 14.5,
+      "health": [
+        0,
+        6918
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3249.110341990143,
+      "winner": 0,
+      "seconds": 18,
+      "health": [
+        4444,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        61,
+        59,
+        63,
+        62,
+        56
+      ],
+      "score": 2773.6811975413616,
+      "winner": 0,
+      "seconds": 18.75,
+      "health": [
+        1174,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        62,
+        60,
+        63
+      ],
+      "score": 2773.6811975413616,
+      "winner": 0,
+      "seconds": 21.75,
+      "health": [
+        276,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        61,
+        59,
+        63,
+        62,
+        56
+      ],
+      "score": 2624.060511305711,
+      "winner": 0,
+      "seconds": 16,
+      "health": [
+        3776,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        62,
+        60,
+        63
+      ],
+      "score": 2624.060511305711,
+      "winner": 1,
+      "seconds": 20,
+      "health": [
+        0,
+        580
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        62,
+        35,
+        57,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3297.201212977667,
+      "winner": 0,
+      "seconds": 16.5,
+      "health": [
+        2968,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        60,
+        47,
+        54,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3297.201212977667,
+      "winner": 1,
+      "seconds": 10.5,
+      "health": [
+        0,
+        11104
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3489.835047230582,
+      "winner": 1,
+      "seconds": 15.25,
+      "health": [
+        0,
+        10516
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3489.835047230582,
+      "winner": 1,
+      "seconds": 24.75,
+      "health": [
+        0,
+        8886
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3319.9381886379106,
+      "winner": 1,
+      "seconds": 13,
+      "health": [
+        0,
+        9606
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3319.9381886379106,
+      "winner": 1,
+      "seconds": 18.5,
+      "health": [
+        0,
+        9680
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        36,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3483.0818610103415,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        11056
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3483.0818610103415,
+      "winner": 1,
+      "seconds": 21.25,
+      "health": [
+        0,
+        6112
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 2834.8666272576133,
+      "winner": 0,
+      "seconds": 24.75,
+      "health": [
+        1784,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 2834.8666272576133,
+      "winner": 1,
+      "seconds": 17.75,
+      "health": [
+        0,
+        6696
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3308.3400433483484,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        10025
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3308.3400433483484,
+      "winner": 1,
+      "seconds": 27,
+      "health": [
+        0,
+        5501
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3326.7054204788833,
+      "winner": 1,
+      "seconds": 12,
+      "health": [
+        0,
+        8694
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3326.7054204788833,
+      "winner": 1,
+      "seconds": 22.5,
+      "health": [
+        0,
+        5336
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        36,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3528.431282724432,
+      "winner": 1,
+      "seconds": 12.5,
+      "health": [
+        0,
+        10332
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3528.431282724432,
+      "winner": 1,
+      "seconds": 21,
+      "health": [
+        0,
+        5312
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 2881.4761268516063,
+      "winner": 1,
+      "seconds": 22.75,
+      "health": [
+        0,
+        7759
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 2881.4761268516063,
+      "winner": 1,
+      "seconds": 16,
+      "health": [
+        0,
+        8469
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3539.367550795803,
+      "winner": 1,
+      "seconds": 13.25,
+      "health": [
+        0,
+        11024
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3539.367550795803,
+      "winner": 1,
+      "seconds": 23.25,
+      "health": [
+        0,
+        6157
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3359.3397704870385,
+      "winner": 1,
+      "seconds": 13.5,
+      "health": [
+        0,
+        9022
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3359.3397704870385,
+      "winner": 1,
+      "seconds": 29.25,
+      "health": [
+        0,
+        4151
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3186.853912250069,
+      "winner": 1,
+      "seconds": 13.5,
+      "health": [
+        0,
+        8746
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3186.853912250069,
+      "winner": 1,
+      "seconds": 27.75,
+      "health": [
+        0,
+        5388
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        36,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3582.369780139801,
+      "winner": 1,
+      "seconds": 12,
+      "health": [
+        0,
+        11391
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3582.369780139801,
+      "winner": 1,
+      "seconds": 29.25,
+      "health": [
+        0,
+        5001
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        35,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 2922.9977878480827,
+      "winner": 1,
+      "seconds": 23.25,
+      "health": [
+        0,
+        7747
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 2922.9977878480827,
+      "winner": 1,
+      "seconds": 11.75,
+      "health": [
+        0,
+        9688
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3592.770686045608,
+      "winner": 1,
+      "seconds": 13.5,
+      "health": [
+        0,
+        10040
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3592.770686045608,
+      "winner": 1,
+      "seconds": 21,
+      "health": [
+        0,
+        8115
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        36,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3638.1937853456925,
+      "winner": 1,
+      "seconds": 12.25,
+      "health": [
+        0,
+        11093
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "guard",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3638.1937853456925,
+      "winner": 1,
+      "seconds": 20.5,
+      "health": [
+        0,
+        6269
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        63,
+        56,
+        35,
+        57
+      ],
+      "score": 3531.845335293902,
+      "winner": 1,
+      "seconds": 12.5,
+      "health": [
+        0,
+        9803
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        63,
+        47,
+        54
+      ],
+      "score": 3531.845335293902,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        1339
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3686.006612573866,
+      "winner": 1,
+      "seconds": 12.5,
+      "health": [
+        0,
+        10066
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3686.006612573866,
+      "winner": 0,
+      "seconds": 16,
+      "health": [
+        4091,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3483.457899768549,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        8492
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3483.457899768549,
+      "winner": 1,
+      "seconds": 22.75,
+      "health": [
+        0,
+        3304
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        63,
+        62,
+        56
+      ],
+      "score": 3032.6503800151313,
+      "winner": 1,
+      "seconds": 11.5,
+      "health": [
+        0,
+        5822
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        62,
+        60,
+        63
+      ],
+      "score": 3032.6503800151313,
+      "winner": 1,
+      "seconds": 20.5,
+      "health": [
+        0,
+        6157
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        63,
+        62,
+        56
+      ],
+      "score": 2856.718188182651,
+      "winner": 1,
+      "seconds": 14,
+      "health": [
+        0,
+        4378
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        62,
+        60,
+        63
+      ],
+      "score": 2856.718188182651,
+      "winner": 1,
+      "seconds": 20.5,
+      "health": [
+        0,
+        6190
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        62,
+        32,
+        57,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3392.3293008643477,
+      "winner": 1,
+      "seconds": 17,
+      "health": [
+        0,
+        4546
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        60,
+        47,
+        54,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3392.3293008643477,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        5055
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3776.75492841774,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        8391
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3776.75492841774,
+      "winner": 1,
+      "seconds": 21,
+      "health": [
+        0,
+        7024
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3580.5465642282393,
+      "winner": 1,
+      "seconds": 13.25,
+      "health": [
+        0,
+        8794
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3580.5465642282393,
+      "winner": 1,
+      "seconds": 17.5,
+      "health": [
+        0,
+        8643
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3712.0707761861636,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        8725
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3712.0707761861636,
+      "winner": 1,
+      "seconds": 22.75,
+      "health": [
+        0,
+        6383
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 3061.2644626328556,
+      "winner": 1,
+      "seconds": 15,
+      "health": [
+        0,
+        9561
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 3061.2644626328556,
+      "winner": 1,
+      "seconds": 13,
+      "health": [
+        0,
+        8581
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3568.2859222345824,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        8392
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3568.2859222345824,
+      "winner": 1,
+      "seconds": 18.25,
+      "health": [
+        0,
+        6902
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3585.7536027232986,
+      "winner": 1,
+      "seconds": 13.25,
+      "health": [
+        0,
+        6598
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3585.7536027232986,
+      "winner": 1,
+      "seconds": 20.25,
+      "health": [
+        0,
+        5336
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3760.726478609556,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        7306
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3760.726478609556,
+      "winner": 1,
+      "seconds": 22.25,
+      "health": [
+        0,
+        5259
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 3112.0814418352643,
+      "winner": 1,
+      "seconds": 15.5,
+      "health": [
+        0,
+        4674
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 3112.0814418352643,
+      "winner": 1,
+      "seconds": 20.25,
+      "health": [
+        0,
+        5530
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3789.2720550613562,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        9535
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3789.2720550613562,
+      "winner": 1,
+      "seconds": 18.75,
+      "health": [
+        0,
+        9210
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3623.1914712848425,
+      "winner": 1,
+      "seconds": 12.75,
+      "health": [
+        0,
+        11018
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3623.1914712848425,
+      "winner": 1,
+      "seconds": 24.5,
+      "health": [
+        0,
+        2841
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3424.3941074510426,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        9246
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3424.3941074510426,
+      "winner": 1,
+      "seconds": 21.75,
+      "health": [
+        0,
+        6435
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3818.5707979364947,
+      "winner": 1,
+      "seconds": 15.5,
+      "health": [
+        0,
+        7664
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3818.5707979364947,
+      "winner": 1,
+      "seconds": 27,
+      "health": [
+        0,
+        782
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        32,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 3156.6077258441965,
+      "winner": 1,
+      "seconds": 17,
+      "health": [
+        0,
+        8041
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 3156.6077258441965,
+      "winner": 1,
+      "seconds": 10.5,
+      "health": [
+        0,
+        7679
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3846.581012222731,
+      "winner": 1,
+      "seconds": 14.5,
+      "health": [
+        0,
+        9130
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3846.581012222731,
+      "winner": 1,
+      "seconds": 20.5,
+      "health": [
+        0,
+        8880
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        61,
+        32,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3895.3103922321184,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        10365
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        61,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3895.3103922321184,
+      "winner": 1,
+      "seconds": 18.5,
+      "health": [
+        0,
+        7679
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        57,
+        61,
+        59,
+        63,
+        35,
+        62,
+        56
+      ],
+      "score": 3389.5367920462068,
+      "winner": 1,
+      "seconds": 13.25,
+      "health": [
+        0,
+        7597
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        53,
+        54,
+        61,
+        55,
+        62,
+        47,
+        60,
+        63
+      ],
+      "score": 3389.5367920462068,
+      "winner": 1,
+      "seconds": 23.5,
+      "health": [
+        0,
+        3065
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        61,
+        59,
+        63,
+        35,
+        62,
+        56
+      ],
+      "score": 3215.334779016878,
+      "winner": 1,
+      "seconds": 13.5,
+      "health": [
+        0,
+        7156
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        61,
+        55,
+        62,
+        47,
+        60,
+        63
+      ],
+      "score": 3215.334779016878,
+      "winner": 1,
+      "seconds": 21.75,
+      "health": [
+        0,
+        23
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        62,
+        57,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3611.751323889834,
+      "winner": 1,
+      "seconds": 22.25,
+      "health": [
+        0,
+        2355
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        60,
+        54,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3611.751323889834,
+      "winner": 1,
+      "seconds": 17.5,
+      "health": [
+        0,
+        6560
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        62,
+        57,
+        61,
+        59,
+        58,
+        63,
+        56
+      ],
+      "score": 2419.5038830820044,
+      "winner": 1,
+      "seconds": 10.5,
+      "health": [
+        0,
+        10082
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        59,
+        60,
+        54,
+        61,
+        55,
+        53,
+        62,
+        63
+      ],
+      "score": 2419.5038830820044,
+      "winner": 1,
+      "seconds": 10.75,
+      "health": [
+        0,
+        8021
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3448.93101400404,
+      "winner": 1,
+      "seconds": 13.75,
+      "health": [
+        0,
+        8005
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3448.93101400404,
+      "winner": 1,
+      "seconds": 16.25,
+      "health": [
+        0,
+        8427
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3493.962887690177,
+      "winner": 1,
+      "seconds": 16.25,
+      "health": [
+        0,
+        7264
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3493.962887690177,
+      "winner": 1,
+      "seconds": 18.25,
+      "health": [
+        0,
+        7330
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "infantry",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3547.5261010725103,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        6991
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "infantry",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3547.5261010725103,
+      "winner": 1,
+      "seconds": 20.5,
+      "health": [
+        0,
+        9487
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        63,
+        56,
+        35,
+        61
+      ],
+      "score": 3544.2760591100096,
+      "winner": 1,
+      "seconds": 12.75,
+      "health": [
+        0,
+        9905
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        62,
+        63,
+        47,
+        61
+      ],
+      "score": 3544.2760591100096,
+      "winner": 1,
+      "seconds": 22.25,
+      "health": [
+        0,
+        4830
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        61,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3697.9613738487456,
+      "winner": 1,
+      "seconds": 16.25,
+      "health": [
+        0,
+        5977
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3697.9613738487456,
+      "winner": 1,
+      "seconds": 14.75,
+      "health": [
+        0,
+        9680
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        61,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3494.698717231587,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        7489
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3494.698717231587,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        8143
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        35,
+        32,
+        61,
+        59,
+        63,
+        57,
+        56
+      ],
+      "score": 3043.896260909459,
+      "winner": 1,
+      "seconds": 19.75,
+      "health": [
+        0,
+        7487
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        46,
+        47,
+        61,
+        55,
+        62,
+        54,
+        63
+      ],
+      "score": 3043.896260909459,
+      "winner": 1,
+      "seconds": 25.5,
+      "health": [
+        0,
+        4998
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        35,
+        32,
+        61,
+        59,
+        63,
+        57,
+        56
+      ],
+      "score": 2867.2501252651373,
+      "winner": 1,
+      "seconds": 28.25,
+      "health": [
+        0,
+        6195
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        47,
+        61,
+        55,
+        62,
+        54,
+        63
+      ],
+      "score": 2867.2501252651373,
+      "winner": 1,
+      "seconds": 17,
+      "health": [
+        0,
+        8725
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        35,
+        32,
+        57,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3403.8182264605794,
+      "winner": 1,
+      "seconds": 20.25,
+      "health": [
+        0,
+        6944
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        47,
+        54,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3403.8182264605794,
+      "winner": 1,
+      "seconds": 17,
+      "health": [
+        0,
+        7555
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3971.808699334018,
+      "winner": 1,
+      "seconds": 15,
+      "health": [
+        0,
+        10832
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3971.808699334018,
+      "winner": 1,
+      "seconds": 24,
+      "health": [
+        0,
+        9133
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3775.7840879744936,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        11134
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3775.7840879744936,
+      "winner": 1,
+      "seconds": 23.25,
+      "health": [
+        0,
+        9112
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3921.509258502356,
+      "winner": 1,
+      "seconds": 13.5,
+      "health": [
+        0,
+        9624
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3921.509258502356,
+      "winner": 1,
+      "seconds": 17.25,
+      "health": [
+        0,
+        9680
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        35,
+        32,
+        61,
+        59,
+        57,
+        63,
+        56
+      ],
+      "score": 3246.4250591383247,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        8454
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        47,
+        61,
+        55,
+        54,
+        62,
+        63
+      ],
+      "score": 3246.4250591383247,
+      "winner": 1,
+      "seconds": 17.5,
+      "health": [
+        0,
+        7850
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3763.259426629369,
+      "winner": 1,
+      "seconds": 15,
+      "health": [
+        0,
+        9463
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3763.259426629369,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        7596
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3781.624803759904,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        9639
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3781.624803759904,
+      "winner": 1,
+      "seconds": 20.25,
+      "health": [
+        0,
+        6746
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3970.9353508609197,
+      "winner": 1,
+      "seconds": 20,
+      "health": [
+        0,
+        6984
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3970.9353508609197,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        8223
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        35,
+        32,
+        61,
+        59,
+        57,
+        63,
+        56
+      ],
+      "score": 3298.0377454323534,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        8623
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        47,
+        61,
+        55,
+        54,
+        62,
+        63
+      ],
+      "score": 3298.0377454323534,
+      "winner": 1,
+      "seconds": 22.75,
+      "health": [
+        0,
+        7375
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        35,
+        61,
+        63,
+        56
+      ],
+      "score": 3801.120484279153,
+      "winner": 1,
+      "seconds": 15,
+      "health": [
+        0,
+        9540
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        47,
+        61,
+        62,
+        63
+      ],
+      "score": 3801.120484279153,
+      "winner": 1,
+      "seconds": 17,
+      "health": [
+        0,
+        9795
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3819.0770372569827,
+      "winner": 1,
+      "seconds": 17.5,
+      "health": [
+        0,
+        10724
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3819.0770372569827,
+      "winner": 1,
+      "seconds": 17,
+      "health": [
+        0,
+        9562
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        63,
+        35,
+        61,
+        56
+      ],
+      "score": 3620.46342625316,
+      "winner": 1,
+      "seconds": 14.75,
+      "health": [
+        0,
+        9750
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        62,
+        47,
+        61,
+        63
+      ],
+      "score": 3620.46342625316,
+      "winner": 1,
+      "seconds": 18,
+      "health": [
+        0,
+        8915
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 4029.6917317652124,
+      "winner": 1,
+      "seconds": 21,
+      "health": [
+        0,
+        8134
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 4029.6917317652124,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        5161
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        35,
+        32,
+        61,
+        59,
+        57,
+        63,
+        56
+      ],
+      "score": 3343.450773862191,
+      "winner": 1,
+      "seconds": 20,
+      "health": [
+        0,
+        7812
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        47,
+        61,
+        55,
+        54,
+        62,
+        63
+      ],
+      "score": 3343.450773862191,
+      "winner": 1,
+      "seconds": 18.25,
+      "health": [
+        0,
+        8308
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        35,
+        61,
+        63,
+        56
+      ],
+      "score": 3858.5610906540587,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        10509
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        47,
+        61,
+        62,
+        63
+      ],
+      "score": 3858.5610906540587,
+      "winner": 1,
+      "seconds": 16.75,
+      "health": [
+        0,
+        11362
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        32,
+        59,
+        35,
+        61,
+        63,
+        56
+      ],
+      "score": 3907.401866151819,
+      "winner": 1,
+      "seconds": 17.75,
+      "health": [
+        0,
+        8500
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        55,
+        47,
+        61,
+        62,
+        63
+      ],
+      "score": 3907.401866151819,
+      "winner": 1,
+      "seconds": 22,
+      "health": [
+        0,
+        7352
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        36,
+        61,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3402.0991650758456,
+      "winner": 1,
+      "seconds": 14,
+      "health": [
+        0,
+        9672
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3402.0991650758456,
+      "winner": 1,
+      "seconds": 27.5,
+      "health": [
+        0,
+        5499
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        61,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3227.183208234675,
+      "winner": 1,
+      "seconds": 12.25,
+      "health": [
+        0,
+        7856
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3227.183208234675,
+      "winner": 1,
+      "seconds": 29.75,
+      "health": [
+        0,
+        5402
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        57,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3623.9744470230657,
+      "winner": 1,
+      "seconds": 11.5,
+      "health": [
+        0,
+        11340
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        54,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3623.9744470230657,
+      "winner": 1,
+      "seconds": 29.25,
+      "health": [
+        0,
+        5324
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        35,
+        57,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 2962.1034171596516,
+      "winner": 1,
+      "seconds": 23.75,
+      "health": [
+        0,
+        8008
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        47,
+        54,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 2962.1034171596516,
+      "winner": 1,
+      "seconds": 12.25,
+      "health": [
+        0,
+        9635
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3635.6162543437836,
+      "winner": 1,
+      "seconds": 13.75,
+      "health": [
+        0,
+        8568
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3635.6162543437836,
+      "winner": 1,
+      "seconds": 21,
+      "health": [
+        0,
+        9333
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3681.4185179650917,
+      "winner": 1,
+      "seconds": 12.75,
+      "health": [
+        0,
+        11085
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3681.4185179650917,
+      "winner": 1,
+      "seconds": 25.5,
+      "health": [
+        0,
+        5174
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        36,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3735.8937929247786,
+      "winner": 1,
+      "seconds": 13.25,
+      "health": [
+        0,
+        11556
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3735.8937929247786,
+      "winner": 1,
+      "seconds": 23.25,
+      "health": [
+        0,
+        8348
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        43,
+        32,
+        61,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3663.8826968487974,
+      "winner": 1,
+      "seconds": 19,
+      "health": [
+        0,
+        9098
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3663.8826968487974,
+      "winner": 1,
+      "seconds": 25.75,
+      "health": [
+        0,
+        4728
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        43,
+        32,
+        61,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3462.655234410797,
+      "winner": 1,
+      "seconds": 14,
+      "health": [
+        0,
+        7964
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3462.655234410797,
+      "winner": 1,
+      "seconds": 18.25,
+      "health": [
+        0,
+        7496
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        32,
+        57,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3858.1072957949077,
+      "winner": 1,
+      "seconds": 12.75,
+      "health": [
+        0,
+        7852
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        54,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3858.1072957949077,
+      "winner": 1,
+      "seconds": 20,
+      "health": [
+        0,
+        6131
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        32,
+        57,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 3193.6451861309138,
+      "winner": 1,
+      "seconds": 16,
+      "health": [
+        0,
+        6219
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        47,
+        54,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 3193.6451861309138,
+      "winner": 1,
+      "seconds": 10.75,
+      "health": [
+        0,
+        9960
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        32,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3887.3584114960545,
+      "winner": 1,
+      "seconds": 14.75,
+      "health": [
+        0,
+        9398
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3887.3584114960545,
+      "winner": 1,
+      "seconds": 21.75,
+      "health": [
+        0,
+        8807
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        32,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3936.466955826665,
+      "winner": 1,
+      "seconds": 14.25,
+      "health": [
+        0,
+        10997
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3936.466955826665,
+      "winner": 1,
+      "seconds": 18.25,
+      "health": [
+        0,
+        7877
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        32,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 4192.621394995692,
+      "winner": 1,
+      "seconds": 14.75,
+      "health": [
+        0,
+        11037
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 4192.621394995692,
+      "winner": 1,
+      "seconds": 21.75,
+      "health": [
+        0,
+        7911
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "fish",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        43,
+        57,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3589.1307679557744,
+      "winner": 1,
+      "seconds": 20.75,
+      "health": [
+        0,
+        6202
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "fish",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        54,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3589.1307679557744,
+      "winner": 1,
+      "seconds": 20,
+      "health": [
+        0,
+        9558
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        63,
+        56,
+        35,
+        57
+      ],
+      "score": 3665.1660978117875,
+      "winner": 0,
+      "seconds": 15.25,
+      "health": [
+        5499,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        62,
+        63,
+        47,
+        54
+      ],
+      "score": 3665.1660978117875,
+      "winner": 0,
+      "seconds": 38.75,
+      "health": [
+        1824,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        57,
+        36,
+        32,
+        61,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3802.778759088495,
+      "winner": 0,
+      "seconds": 19,
+      "health": [
+        5324,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3802.778759088495,
+      "winner": 0,
+      "seconds": 19,
+      "health": [
+        2968,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        57,
+        36,
+        32,
+        61,
+        59,
+        63,
+        35,
+        56
+      ],
+      "score": 3590.1926158481265,
+      "winner": 0,
+      "seconds": 20,
+      "health": [
+        4023,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        62,
+        47,
+        63
+      ],
+      "score": 3590.1926158481265,
+      "winner": 0,
+      "seconds": 15.5,
+      "health": [
+        2216,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        57,
+        35,
+        32,
+        61,
+        59,
+        63,
+        62,
+        56
+      ],
+      "score": 3343.480640348619,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        4704
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        46,
+        47,
+        61,
+        55,
+        62,
+        60,
+        63
+      ],
+      "score": 3343.480640348619,
+      "winner": 1,
+      "seconds": 16.75,
+      "health": [
+        0,
+        6761
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        57,
+        35,
+        32,
+        61,
+        59,
+        63,
+        62,
+        56
+      ],
+      "score": 3158.5583308298756,
+      "winner": 1,
+      "seconds": 16.25,
+      "health": [
+        0,
+        5039
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        47,
+        61,
+        55,
+        62,
+        60,
+        63
+      ],
+      "score": 3158.5583308298756,
+      "winner": 1,
+      "seconds": 20.25,
+      "health": [
+        0,
+        4084
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        62,
+        35,
+        32,
+        57,
+        61,
+        59,
+        63,
+        56
+      ],
+      "score": 3722.100243402933,
+      "winner": 1,
+      "seconds": 13.75,
+      "health": [
+        0,
+        9121
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        47,
+        54,
+        61,
+        55,
+        62,
+        63
+      ],
+      "score": 3722.100243402933,
+      "winner": 1,
+      "seconds": 17.5,
+      "health": [
+        0,
+        7470
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3902.7142434348493,
+      "winner": 1,
+      "seconds": 24.5,
+      "health": [
+        0,
+        6677
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3902.7142434348493,
+      "winner": 1,
+      "seconds": 23,
+      "health": [
+        0,
+        9489
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3696.4684488102976,
+      "winner": 1,
+      "seconds": 20.25,
+      "health": [
+        0,
+        7310
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3696.4684488102976,
+      "winner": 1,
+      "seconds": 23.5,
+      "health": [
+        0,
+        8849
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        36,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3810.3765658220086,
+      "winner": 1,
+      "seconds": 28.75,
+      "health": [
+        0,
+        5405
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3810.3765658220086,
+      "winner": 1,
+      "seconds": 23.25,
+      "health": [
+        0,
+        7589
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        35,
+        32,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 3374.622135355856,
+      "winner": 1,
+      "seconds": 18.75,
+      "health": [
+        0,
+        7486
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 3374.622135355856,
+      "winner": 1,
+      "seconds": 20.75,
+      "health": [
+        0,
+        6947
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3691.853539706589,
+      "winner": 0,
+      "seconds": 20.25,
+      "health": [
+        9368,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3691.853539706589,
+      "winner": 1,
+      "seconds": 25.5,
+      "health": [
+        0,
+        7382
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3709.209008115078,
+      "winner": 0,
+      "seconds": 19.5,
+      "health": [
+        7981,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3709.209008115078,
+      "winner": 1,
+      "seconds": 19.75,
+      "health": [
+        0,
+        7761
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        36,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3869.0432805871174,
+      "winner": 0,
+      "seconds": 15.5,
+      "health": [
+        7700,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3869.0432805871174,
+      "winner": 0,
+      "seconds": 17.75,
+      "health": [
+        2119,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        35,
+        32,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 3427.991520259377,
+      "winner": null,
+      "seconds": 40,
+      "health": [
+        2287,
+        1162
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 3427.991520259377,
+      "winner": 1,
+      "seconds": 25.75,
+      "health": [
+        0,
+        4593
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3903.4099610892854,
+      "winner": 1,
+      "seconds": 26,
+      "health": [
+        0,
+        8677
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "sniper",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3903.4099610892854,
+      "winner": 1,
+      "seconds": 36.75,
+      "health": [
+        0,
+        6013
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3740.495724036566,
+      "winner": 1,
+      "seconds": 27.5,
+      "health": [
+        0,
+        6292
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3740.495724036566,
+      "winner": null,
+      "seconds": 40,
+      "health": [
+        4219,
+        3845
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3531.660929767715,
+      "winner": 1,
+      "seconds": 20.75,
+      "health": [
+        0,
+        6923
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3531.660929767715,
+      "winner": 1,
+      "seconds": 29.5,
+      "health": [
+        0,
+        6186
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        36,
+        32,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3919.942775605573,
+      "winner": 0,
+      "seconds": 20.5,
+      "health": [
+        4159,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        53,
+        46,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3919.942775605573,
+      "winner": 1,
+      "seconds": 15,
+      "health": [
+        0,
+        8662
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        35,
+        32,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 3474.770869829931,
+      "winner": 1,
+      "seconds": 21.75,
+      "health": [
+        0,
+        6378
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        47,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 3474.770869829931,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        5560
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3953.9670957852263,
+      "winner": 1,
+      "seconds": 24.75,
+      "health": [
+        0,
+        9179
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3953.9670957852263,
+      "winner": 1,
+      "seconds": 24,
+      "health": [
+        0,
+        9146
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        61,
+        36,
+        32,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 4012.574461577057,
+      "winner": null,
+      "seconds": 40,
+      "health": [
+        201,
+        3463
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "wolf",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        61,
+        53,
+        46,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 4012.574461577057,
+      "winner": 1,
+      "seconds": 27.5,
+      "health": [
+        0,
+        6056
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        57,
+        36,
+        61,
+        59,
+        63,
+        35,
+        62,
+        56
+      ],
+      "score": 3518.617575312986,
+      "winner": 1,
+      "seconds": 25.75,
+      "health": [
+        0,
+        5391
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        62,
+        47,
+        60,
+        63
+      ],
+      "score": 3518.617575312986,
+      "winner": 1,
+      "seconds": 31.25,
+      "health": [
+        0,
+        3348
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        57,
+        36,
+        61,
+        59,
+        63,
+        35,
+        62,
+        56
+      ],
+      "score": 3334.3781318486062,
+      "winner": 1,
+      "seconds": 28,
+      "health": [
+        0,
+        2499
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        62,
+        47,
+        60,
+        63
+      ],
+      "score": 3334.3781318486062,
+      "winner": 0,
+      "seconds": 17,
+      "health": [
+        4163,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        62,
+        36,
+        57,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3725.7401744201616,
+      "winner": 0,
+      "seconds": 19.5,
+      "health": [
+        6314,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        54,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3725.7401744201616,
+      "winner": 1,
+      "seconds": 28.5,
+      "health": [
+        0,
+        3732
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        62,
+        35,
+        57,
+        61,
+        59,
+        58,
+        63,
+        56
+      ],
+      "score": 3257.024580370797,
+      "winner": 1,
+      "seconds": 15.75,
+      "health": [
+        0,
+        6513
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        47,
+        54,
+        61,
+        55,
+        53,
+        62,
+        63
+      ],
+      "score": 3257.024580370797,
+      "winner": 1,
+      "seconds": 23.75,
+      "health": [
+        0,
+        4437
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        36,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3560.5188092975027,
+      "winner": 1,
+      "seconds": 23.25,
+      "health": [
+        0,
+        7220
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3560.5188092975027,
+      "winner": 1,
+      "seconds": 22.75,
+      "health": [
+        0,
+        7264
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        36,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3614.5883264198887,
+      "winner": 0,
+      "seconds": 31,
+      "health": [
+        4006,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3614.5883264198887,
+      "winner": null,
+      "seconds": 40,
+      "health": [
+        3737,
+        1566
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        36,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3662.180084399206,
+      "winner": 0,
+      "seconds": 31,
+      "health": [
+        1600,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "guard",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3662.180084399206,
+      "winner": 1,
+      "seconds": 24.5,
+      "health": [
+        0,
+        5666
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        57,
+        32,
+        61,
+        59,
+        63,
+        35,
+        62,
+        56
+      ],
+      "score": 3962.1876734568364,
+      "winner": 1,
+      "seconds": 25.75,
+      "health": [
+        0,
+        3346
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        62,
+        47,
+        60,
+        63
+      ],
+      "score": 3962.1876734568364,
+      "winner": 1,
+      "seconds": 24,
+      "health": [
+        0,
+        7909
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        57,
+        32,
+        61,
+        59,
+        63,
+        35,
+        62,
+        56
+      ],
+      "score": 3752.5344210374446,
+      "winner": 1,
+      "seconds": 22.25,
+      "health": [
+        0,
+        5628
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        62,
+        47,
+        60,
+        63
+      ],
+      "score": 3752.5344210374446,
+      "winner": 0,
+      "seconds": 15.25,
+      "health": [
+        5070,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        62,
+        32,
+        57,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 4156.333008416772,
+      "winner": 0,
+      "seconds": 17.75,
+      "health": [
+        4187,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        46,
+        54,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 4156.333008416772,
+      "winner": 1,
+      "seconds": 21.5,
+      "health": [
+        0,
+        6820
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        62,
+        32,
+        57,
+        61,
+        59,
+        58,
+        63,
+        56
+      ],
+      "score": 3687.617414367407,
+      "winner": 1,
+      "seconds": 18.25,
+      "health": [
+        0,
+        5297
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        47,
+        54,
+        61,
+        55,
+        53,
+        62,
+        63
+      ],
+      "score": 3687.617414367407,
+      "winner": 1,
+      "seconds": 15.25,
+      "health": [
+        0,
+        7668
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        32,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3982.4601338626194,
+      "winner": 1,
+      "seconds": 23,
+      "health": [
+        0,
+        7753
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3982.4601338626194,
+      "winner": 1,
+      "seconds": 30,
+      "health": [
+        0,
+        6506
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        32,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 4041.396125040221,
+      "winner": 1,
+      "seconds": 17,
+      "health": [
+        0,
+        6593
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 4041.396125040221,
+      "winner": 1,
+      "seconds": 23.75,
+      "health": [
+        0,
+        8270
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        57,
+        32,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 4092.772918395816,
+      "winner": 1,
+      "seconds": 19,
+      "health": [
+        0,
+        8021
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        54,
+        46,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 4092.772918395816,
+      "winner": 1,
+      "seconds": 23,
+      "health": [
+        0,
+        9288
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        62,
+        57,
+        61,
+        59,
+        35,
+        58,
+        63,
+        56
+      ],
+      "score": 3876.670020749289,
+      "winner": 1,
+      "seconds": 13.5,
+      "health": [
+        0,
+        6924
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "infantry",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        60,
+        54,
+        61,
+        55,
+        47,
+        53,
+        62,
+        63
+      ],
+      "score": 3876.670020749289,
+      "winner": 1,
+      "seconds": 20.25,
+      "health": [
+        0,
+        8353
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        36,
+        32,
+        61,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3780.8422547630457,
+      "winner": 1,
+      "seconds": 22,
+      "health": [
+        0,
+        7243
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix"
+      ],
+      "positions": [
+        53,
+        46,
+        61,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3780.8422547630457,
+      "winner": 0,
+      "seconds": 18.5,
+      "health": [
+        5708,
+        0
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        36,
+        32,
+        61,
+        59,
+        63,
+        35,
+        57,
+        56
+      ],
+      "score": 3569.5773618899943,
+      "winner": 1,
+      "seconds": 33.25,
+      "health": [
+        0,
+        186
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "ark"
+      ],
+      "positions": [
+        53,
+        46,
+        61,
+        55,
+        62,
+        47,
+        54,
+        63
+      ],
+      "score": 3569.5773618899943,
+      "winner": 1,
+      "seconds": 26.75,
+      "health": [
+        0,
+        4494
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        36,
+        32,
+        57,
+        61,
+        59,
+        35,
+        63,
+        56
+      ],
+      "score": 3959.048404917142,
+      "winner": 0,
+      "seconds": 22,
+      "health": [
+        4505,
+        0
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        46,
+        54,
+        61,
+        55,
+        47,
+        62,
+        63
+      ],
+      "score": 3959.048404917142,
+      "winner": 1,
+      "seconds": 23,
+      "health": [
+        0,
+        5440
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        35,
+        32,
+        57,
+        61,
+        59,
+        62,
+        63,
+        56
+      ],
+      "score": 3513.8764991415,
+      "winner": 1,
+      "seconds": 19.25,
+      "health": [
+        0,
+        5296
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        46,
+        47,
+        54,
+        61,
+        55,
+        60,
+        62,
+        63
+      ],
+      "score": 3513.8764991415,
+      "winner": 1,
+      "seconds": 12,
+      "health": [
+        0,
+        8339
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        36,
+        32,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 3994.3136265117064,
+      "winner": 1,
+      "seconds": 26,
+      "health": [
+        0,
+        8377
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "bat",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 3994.3136265117064,
+      "winner": 1,
+      "seconds": 22,
+      "health": [
+        0,
+        9423
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        36,
+        32,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 4053.386330334128,
+      "winner": null,
+      "seconds": 40,
+      "health": [
+        1650,
+        2997
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "guard",
+        "wolf",
+        "sniper",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 4053.386330334128,
+      "winner": 1,
+      "seconds": 19.5,
+      "health": [
+        0,
+        7586
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        36,
+        32,
+        61,
+        59,
+        35,
+        57,
+        63,
+        56
+      ],
+      "score": 4104.869455746806,
+      "winner": 1,
+      "seconds": 23.5,
+      "health": [
+        0,
+        8822
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "guard",
+        "wolf",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        53,
+        46,
+        61,
+        55,
+        47,
+        54,
+        62,
+        63
+      ],
+      "score": 4104.869455746806,
+      "winner": 1,
+      "seconds": 24.25,
+      "health": [
+        0,
+        7415
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        36,
+        57,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 3703.353882735626,
+      "winner": 1,
+      "seconds": 22,
+      "health": [
+        0,
+        9039
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "guard",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        46,
+        54,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 3703.353882735626,
+      "winner": 1,
+      "seconds": 26,
+      "health": [
+        0,
+        4301
+      ]
+    },
+    {
+      "formation": "spread",
+      "ids": [
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        32,
+        57,
+        61,
+        59,
+        35,
+        62,
+        63,
+        56
+      ],
+      "score": 4133.946716732237,
+      "winner": 1,
+      "seconds": 18.5,
+      "health": [
+        0,
+        7028
+      ]
+    },
+    {
+      "formation": "compact",
+      "ids": [
+        "wolf",
+        "sniper",
+        "bat",
+        "cannon",
+        "shark",
+        "adept",
+        "phoenix",
+        "ark"
+      ],
+      "positions": [
+        46,
+        54,
+        61,
+        55,
+        47,
+        60,
+        62,
+        63
+      ],
+      "score": 4133.946716732237,
+      "winner": 1,
+      "seconds": 19,
+      "health": [
+        0,
+        5979
+      ]
+    }
+  ]
+}

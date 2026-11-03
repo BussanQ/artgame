@@ -1,19 +1,44 @@
 import { UNIT, TRAITS } from "../data/units";
 import {
   TRAIT_TIERS,
+  AIRSEA_TRAIT_TIERS,
   TACTICS_TRAIT_TIERS,
   type TraitBonus,
 } from "../data/traits";
 import type { Piece, Trait, CombatVersion } from "./types";
+import { insectCount } from "./progression";
 export function synergies(
   pieces: Piece[],
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ) {
+  if (version === "metamorph") version = "fleet";
   const counts = new Map<Trait, number>();
+  if (
+    (version === "brood" || version === "airsea" || version === "fleet") &&
+    insectCount(pieces)
+  )
+    counts.set("异虫", insectCount(pieces));
   for (const id of new Set(
     pieces.filter((p) => p.position !== null).map((p) => p.defId),
   ))
-    for (const trait of UNIT[id].traits)
+    for (const trait of UNIT[id].traits.filter(
+      (trait) =>
+        (!["不朽", "灵能", "猛禽", "陆行者"].includes(trait) ||
+          version === "fleet") &&
+        (version === "airsea" ||
+          version === "fleet" ||
+          !["空军", "海神", "攻城", "爆破"].includes(trait)) &&
+        trait !== "异虫" &&
+        (trait !== "异能" ||
+          version === "brood" ||
+          version === "airsea" ||
+          version === "fleet") &&
+        (version === "legions" ||
+          version === "brood" ||
+          version === "airsea" ||
+          version === "fleet" ||
+          !["召唤", "傀儡"].includes(trait)),
+    ))
       counts.set(trait, (counts.get(trait) ?? 0) + 1);
   return [...counts]
     .map(([trait, count]) => {
@@ -27,9 +52,13 @@ export function synergies(
           tiers: [TRAITS[trait].threshold],
           bonus: {} as TraitBonus,
         };
-      const tiers = (version === "tactics" ? TACTICS_TRAIT_TIERS : TRAIT_TIERS)[
-          trait
-        ],
+      const tiers = (
+          version === "fleet"
+            ? TRAIT_TIERS
+            : version === "tactics"
+              ? TACTICS_TRAIT_TIERS
+              : AIRSEA_TRAIT_TIERS
+        )[trait],
         tier = tiers.filter((t) => count >= t.count).length,
         current = tiers[tier - 1],
         next = tiers[tier];
@@ -53,7 +82,7 @@ export function synergies(
 }
 export function traitBonuses(
   pieces: Piece[],
-  version: CombatVersion = "signature",
+  version: CombatVersion = "metamorph",
 ) {
   const map = new Map<Trait, TraitBonus>();
   for (const s of synergies(pieces, version))

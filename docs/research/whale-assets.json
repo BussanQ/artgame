@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-11-03",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "whale",
+      "name": "幻鲸",
+      "prompt": "Use case: stylized-concept. Asset type: transparent game unit sprite for an existing premium Chinese sci-fi fantasy auto-chess battlefield. Primary request: one full-body phantom whale, a majestic levitating celestial sea whale, powerful compact whale silhouette, massive rounded armored head at lower left, tapering body and broad tail at upper right, paired flowing fins. Dark indigo slate skin with turquoise bioluminescent gill seams, weathered bronze and jade ornamental armor integrated into the forehead and dorsal ridge, small luminous cyan eyes, ancient Chinese science-fantasy aesthetic. High-quality painterly 3D collectible miniature render, camera three-quarter view slightly above, readable at 100px tall, crisp silhouette, restrained cyan glow confined to body. Entire body and fins inside canvas, centered with 10% transparent margin. Single creature only, no ground, no pedestal, no scenery, no bubbles or loose particles, no text, no UI, no logo, no water plane. Actual fully transparent alpha background.",
+      "editPrompt": "Edit the provided whale asset: precise background extraction. Preserve the entire whale, its armor, body texture, fins, tail, pose and composition exactly. Remove ALL surrounding background, smoke, clouds, black gradients, and all glow outside the silhouette. The background must be 100% transparent alpha, including corners and space between fins. Preserve opaque blue/bronze creature pixels and cyan markings on its body. No new scenery, no shadow, no floor, no checkerboard painted into image. Return a clean transparent game sprite cutout.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-6e851fd3-bf6a-471b-9885-7a9eac6c0107.png",
+      "selected": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-9e60f41c-7ff1-4f7e-a1a5-52a570298d0d.png",
+      "path": "public/assets/units/whale.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1536,
+        "height": 1024,
+        "min": 0,
+        "max": 254,
+        "fullyTransparentPixels": 999409
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-11-03",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "flametrooper",
+      "name": "火焰兵",
+      "prompt": "Use case: stylized-concept. Create ONE original full-body game unit sprite, premium hand-painted 3D collectible render for an Eastern science-fiction auto-chess battlefield. Three-quarter front view slightly from above, facing viewer-right, complete body including boots and equipment, centered with comfortable transparent margins. Readable silhouette at 90px tall, bronze trims and weathered material detail, warm top-left key light. Actual fully transparent alpha background; no background, no smoke backdrop, no ground, no pedestal, no shadow plane, no text, logo, interface, duplicates or collage. A heavy infantry flamethrower trooper in bulky charcoal and burnt-orange ceramic armor with angular bronze pauldrons, closed helmet and narrow amber visor. Two stout fuel tanks strapped to back connected by a thick hose to a short heavy flame projector held in both hands across body. Low braced wide stance. Small orange pilot flame at nozzle only. Broad shoulder silhouette, no flames covering the character.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-1582fa0c-4ff5-4669-aef6-0d8db0eae04d.png",
+      "path": "public/assets/units/flametrooper.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1200,
+        "height": 1310,
+        "min": 0,
+        "max": 255,
+        "fullyTransparentPixels": 763879,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "4a0d5d24586d04c715ef63c836c8e847aa14364a1074503dd1e78980e8a127d1"
+    },
+    {
+      "id": "grenadier",
+      "name": "投弹手",
+      "prompt": "Use case: stylized-concept. Create ONE original full-body game unit sprite, premium hand-painted 3D collectible render for an Eastern science-fiction auto-chess battlefield. Three-quarter front view slightly from above, facing viewer-right, complete body including boots and equipment, centered with comfortable transparent margins. Readable silhouette at 90px tall, bronze trims and weathered material detail, warm top-left key light. Actual fully transparent alpha background; no background, no smoke backdrop, no ground, no pedestal, no shadow plane, no text, logo, interface, duplicates or collage. An agile futuristic grenadier in dark navy and purple segmented infantry armor, asymmetric bronze shoulder shield, helmet with luminous violet slit visor. One hand holds a small glowing violet pulse grenade raised near the shoulder ready to throw, the other grips a compact short grenade launcher pointed downward. Several round canisters on a bandolier, compact backpack. Lean upright silhouette, clear separated arm and grenade, no explosion or detached particles.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-81f17d2a-420e-447a-bc42-cc269c0befa6.png",
+      "path": "public/assets/units/grenadier.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1199,
+        "height": 1312,
+        "min": 0,
+        "max": 255,
+        "fullyTransparentPixels": 1087409,
+        "corners": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "sha256": "7c395de63f4ae85c3312fc0bf43fca2a1ee0b5aede461c885c2595f708e07124"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-11-03",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "phoenix",
+      "name": "不死鸟",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body strategy game unit sprite. Subject: an elegant immortal phoenix for a Chinese science-fantasy auto-chess game, ivory-white and warm golden feathers with ember-orange feather tips, long sweeping ribbon tail, narrow crowned bird head, bronze geometric chest armor with a small jade energy core. Majestic wings lifted in a compact V, talons tucked under body, hovering poised to breathe fire. Distinct from a red hawk: slender long-necked pale gold phoenix silhouette, no extra arms. Polished hand-painted 3D miniature, three-quarter front view facing viewer-right, elevated isometric camera. Whole body, wings and tail visible with generous 12% padding. Real transparent alpha background. No floor, no pedestal, no cast shadow, no backdrop, no smoke or surrounding glow, no text, no border. One creature only.",
+      "editPrompt": "Use case: background-extraction. Edit this phoenix game sprite: remove ALL white/gold/orange haze, glow and background pixels around and BETWEEN its wings, tail and body. Replace those areas with actual alpha transparency. Keep only the physical phoenix feathers, armor, jade gem, head, tail and talons, preserving their shape, colors, pose and fine feather details exactly. Clean crisp game cutout; no luminous aura, no smoky veil, no new objects, no floor, no backdrop. Transparent background.",
+      "path": "public/assets/units/phoenix.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "phoenix-egg",
+      "name": "不死鸟·涅槃火种",
+      "prompt": "Use case: stylized-concept. Asset type: transparent game sprite for the phoenix egg form in an isometric Chinese science-fantasy auto-chess game. One upright oval rebirth egg, ivory ceramic-like shell with glowing orange ember fissures, elegant bronze segmented bands and a small jade gem, three small golden feathers curling around its lower edge. Warm inner light contained within the shell, absolutely NO surrounding haze or glow. Polished hand-painted 3D strategy miniature. Three-quarter view slightly from above, whole egg visible, centered with 20% empty padding. Actual transparent alpha background, crisp cutout edges. No ground, no nest, no pedestal, no shadow, no smoke, no backdrop, no text, no border.",
+      "path": "public/assets/units/phoenix-egg.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    }
+  ]
+}

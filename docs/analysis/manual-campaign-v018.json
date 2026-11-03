@@ -1,0 +1,514 @@
+{
+  "origin": "http://localhost:5174/",
+  "method": "Normal browser UI only; no injected game state or resources",
+  "terminal": {
+    "bench": "备战席 0 / 8点击棋子选择 · 点击棋格部署",
+    "board": "己方阵地已部署 0 / 8",
+    "heading": "演习结束",
+    "inventory": "装备工坊 0 件库存",
+    "level": "等级 86 / 36 XP",
+    "phase": "最终战报从组合中找到胜机",
+    "round": "25",
+    "summary": "\n    最终排名#4MATCH COMPLETE / 战术复盘征程落幕，再战云海第 25 回合生命耗尽，本局演习结束。标准难度 · 25 回合 · 指挥官等级 8查看整局战报回放最后一战\n    对战胜 / 负 / 平8 / 7 / 3野怪通关5 / 7最高对战连胜3累计结算金币146累计生命损失100\n    最终出战阵容 8 枚棋子灵鱼★★聚能法杖鬼狼★★未携带装备蝙蝠★★未携带装备巨神炮★超频引擎须弥鲨★★聚能法杖真人★★未携带装备不死鸟★★未携带装备方舟★★未携带装备召唤 3 · 2 档　/　攻城 3 · 1 档　/　海神 2 · 1 档　/　猛禽 2 · 1 档　/　狙击 2 · 1 档　/　傀儡 2 · 1 档回合历程 点击回合可回放1野怪 · 胜利2野怪 · 胜利3野怪 · 胜利4对战 · 胜利5对战 · 平局6对战 · 胜利7对战 · 胜利8对战 · 胜利9对战 · 失败10野怪 · 胜利11对战 · 平局12对战 · 平局13对战 · 胜利14对战 · 胜利15野怪 · 失败16对战 · 失败17对战 · 胜利18对战 · 失败19对战 · 胜利20野怪 · 胜利21对战 · 失败22对战 · 失败23对战 · 失败24对战 · 失败25野怪 · 失败结束时战场排名01零号机剩余 24 生命02渡鸦剩余 17 生命03铁幕剩余 9 生命04你 · 指挥官第 25 回合淘汰你05深海回声第 24 回合淘汰06荒原旅者第 21 回合淘汰07白夜第 21 回合淘汰08北境哨兵第 20 回合淘汰指挥官淘汰后演习结束，存活 AI 按当前生命排序。同回合淘汰或生命相同时，按席位顺序排序。\n  ",
+    "vitals": "0生命值7金币"
+  },
+  "terminalAfterReload": {
+    "bench": "备战席 0 / 8点击棋子选择 · 点击棋格部署",
+    "board": "己方阵地已部署 0 / 8",
+    "heading": "演习结束",
+    "inventory": "装备工坊 0 件库存",
+    "level": "等级 86 / 36 XP",
+    "phase": "最终战报从组合中找到胜机",
+    "round": "25",
+    "summary": "\n    最终排名#4MATCH COMPLETE / 战术复盘征程落幕，再战云海第 25 回合生命耗尽，本局演习结束。标准难度 · 25 回合 · 指挥官等级 8查看整局战报回放最后一战\n    对战胜 / 负 / 平8 / 7 / 3野怪通关5 / 7最高对战连胜3累计结算金币146累计生命损失100\n    最终出战阵容 8 枚棋子灵鱼★★聚能法杖鬼狼★★未携带装备蝙蝠★★未携带装备巨神炮★超频引擎须弥鲨★★聚能法杖真人★★未携带装备不死鸟★★未携带装备方舟★★未携带装备召唤 3 · 2 档　/　攻城 3 · 1 档　/　海神 2 · 1 档　/　猛禽 2 · 1 档　/　狙击 2 · 1 档　/　傀儡 2 · 1 档回合历程 点击回合可回放1野怪 · 胜利2野怪 · 胜利3野怪 · 胜利4对战 · 胜利5对战 · 平局6对战 · 胜利7对战 · 胜利8对战 · 胜利9对战 · 失败10野怪 · 胜利11对战 · 平局12对战 · 平局13对战 · 胜利14对战 · 胜利15野怪 · 失败16对战 · 失败17对战 · 胜利18对战 · 失败19对战 · 胜利20野怪 · 胜利21对战 · 失败22对战 · 失败23对战 · 失败24对战 · 失败25野怪 · 失败结束时战场排名01零号机剩余 24 生命02渡鸦剩余 17 生命03铁幕剩余 9 生命04你 · 指挥官第 25 回合淘汰你05深海回声第 24 回合淘汰06荒原旅者第 21 回合淘汰07白夜第 21 回合淘汰08北境哨兵第 20 回合淘汰指挥官淘汰后演习结束，存活 AI 按当前生命排序。同回合淘汰或生命相同时，按席位顺序排序。\n  ",
+    "vitals": "0生命值7金币"
+  },
+  "history": "×\nMATCH HISTORY\n本局战报\n\n记录每回合的对手、收益与生命变化。回放不会影响当前阵容或经济。\n\n第 25 回合\n对阵 灵能暴潮 · 野怪\n失败\n生命 0 （−10）\n金币 7 （+0）\n观看回放\n战斗分析\n第 24 回合\n对阵 铁幕\n失败\n生命 10 （−15）\n金币 11 （+6）\n观看回放\n战斗分析\n第 23 回合\n对阵 深海回声\n失败\n生命 25 （−12）\n金币 17 （+7）\n观看回放\n战斗分析\n第 22 回合\n对阵 零号机\n失败\n生命 37 （−11）\n金币 22 （+6）\n观看回放\n战斗分析\n第 21 回合\n对阵 零号机\n失败\n生命 48 （−10）\n金币 19 （+6）\n观看回放\n战斗分析\n第 20 回合\n对阵 铁壁防线 · 野怪\n胜利\n生命 58 （−0）\n金币 23 （+6）\n战利品：灵能晶体\n观看回放\n战斗分析\n第 19 回合\n对阵 白夜\n胜利\n生命 58 （−0）\n金币 17 （+7）\n观看回放\n战斗分析\n第 18 回合\n对阵 零号机\n失败\n生命 58 （−11）\n金币 20 （+6）\n观看回放\n战斗分析\n第 17 回合\n对阵 荒原旅者\n胜利\n生命 69 （−0）\n金币 17 （+7）\n观看回放\n战斗分析\n第 16 回合\n对阵 渡鸦\n失败\n生命 69 （−9）\n金币 34 （+7）\n观看回放\n战斗分析\n第 15 回合\n对阵 狂兽围猎 · 野怪\n失败\n生命 78 （−4）\n金币 28 （+7）\n战利品：灵能晶体\n观看回放\n战斗分析\n第 14 回合\n对阵 铁幕\n胜利\n生命 82 （−0）\n金币 23 （+7）\n观看回放\n战斗分析\n第 13 回合\n对阵 深海回声\n胜利\n生命 82 （−0）\n金币 18 （+7）\n观看回放\n战斗分析\n第 12 回合\n对阵 白夜\n平局\n生命 82 （−3）\n金币 11 （+6）\n观看回放\n战斗分析\n第 11 回合\n对阵 零号机\n平局\n生命 85 （−3）\n金币 17 （+6）\n观看回放\n战斗分析\n第 10 回合\n对阵 遗迹守军 · 野怪\n胜利\n生命 88 （−0）\n金币 14 （+5）\n战利品：加速线圈\n观看回放\n战斗分析\n第 9 回合\n对阵 渡鸦\n失败\n生命 88 （−9）\n金币 13 （+5）\n观看回放\n战斗分析\n第 8 回合\n对阵 北境哨兵\n胜利\n生命 97 （−0）\n金币 10 （+7）\n观看回放\n战斗分析\n第 7 回合\n对阵 铁幕\n胜利\n生命 97 （−0）\n金币 6 （+6）\n观看回放\n战斗分析\n第 6 回合\n对阵 深海回声\n胜利\n生命 97 （−0）\n金币 13 （+6）\n观看回放\n战斗分析\n第 5 回合\n对阵 白夜\n平局\n生命 97 （−3）\n金币 13 （+5）\n观看回放\n战斗分析\n第 4 回合\n对阵 零号机\n胜利\n生命 100 （−0）\n金币 11 （+6）\n观看回放\n战斗分析\n第 3 回合\n对阵 狮王营地 · 野怪\n胜利\n生命 100 （−0）\n金币 5 （+5）\n战利品：加速线圈\n观看回放\n战斗分析\n第 2 回合\n对阵 幽影狼群 · 野怪\n胜利\n生命 100 （−0）\n金币 8 （+5）\n战利品：灵能晶体\n观看回放\n战斗分析\n第 1 回合\n对阵 荒原斥候 · 野怪\n胜利\n生命 100 （−0）\n金币 11 （+5）\n战利品：灵能晶体\n观看回放\n战斗分析",
+  "checkpoints": [
+    {
+      "step": "round1-reward",
+      "bench": "备战席 0 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 3 / 3",
+      "heading": "战斗结算",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 31 / 4 XP",
+      "phase": "回合结算 · 选择战利品从组合中找到胜机",
+      "reward": "FIELD SALVAGE选择你的战利品第 1 回合 · 挑战成功，三选一。选择后自动进入下一回合。◆灵能晶体初始能量 +15，技能强度 +10%领取并继续 →⬡装甲片护甲 +3领取并继续 →◈汲能獠牙普攻吸血 8%领取并继续 →奖励已保存，刷新后仍可继续选择。",
+      "round": "01",
+      "vitals": "100生命值11金币"
+    },
+    {
+      "bench": "备战席 5 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 6 / 7",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 70 / 26 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "13",
+      "vitals": "82生命值11金币"
+    },
+    {
+      "bench": "备战席 4 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 7 / 7",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 71 / 26 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "14",
+      "vitals": "82生命值18金币"
+    },
+    {
+      "bench": "备战席 3 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 7 / 7",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 72 / 26 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "15",
+      "vitals": "82生命值23金币"
+    },
+    {
+      "bench": "备战席 4 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 7 / 7",
+      "heading": "战斗结算",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 73 / 26 XP",
+      "phase": "回合结算 · 选择战利品从组合中找到胜机",
+      "reward": "FIELD SALVAGE选择你的战利品第 15 回合 · 休整补给，二选一。选择后自动进入下一回合。♥生命核心生命 +150领取并继续 →◆灵能晶体初始能量 +15，技能强度 +10%领取并继续 →奖励已保存，刷新后仍可继续选择。",
+      "round": "15",
+      "vitals": "78生命值28金币"
+    },
+    {
+      "bench": "备战席 3 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 7 / 7",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 74 / 26 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "17",
+      "vitals": "69生命值34金币"
+    },
+    {
+      "bench": "备战席 4 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 7 / 7",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 725 / 26 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "18",
+      "vitals": "69生命值17金币"
+    },
+    {
+      "bench": "备战席 5 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 7 / 8",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 80 / 36 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "19",
+      "vitals": "58生命值20金币"
+    },
+    {
+      "bench": "备战席 4 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 8 / 8",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 81 / 36 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "20",
+      "vitals": "58生命值17金币"
+    },
+    {
+      "bench": "备战席 4 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 8 / 8",
+      "heading": "战斗结算",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 82 / 36 XP",
+      "phase": "回合结算 · 选择战利品从组合中找到胜机",
+      "reward": "FIELD SALVAGE选择你的战利品第 20 回合 · 挑战成功，三选一。选择后自动进入下一回合。ϟ加速线圈攻击间隔缩短 8%领取并继续 →◈汲能獠牙普攻吸血 8%领取并继续 →◆灵能晶体初始能量 +15，技能强度 +10%领取并继续 →奖励已保存，刷新后仍可继续选择。",
+      "round": "20",
+      "vitals": "58生命值23金币"
+    },
+    {
+      "bench": "备战席 4 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 8 / 8",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 83 / 36 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "22",
+      "vitals": "48生命值19金币"
+    },
+    {
+      "bench": "备战席 3 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 8 / 8",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 84 / 36 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "23",
+      "vitals": "37生命值22金币"
+    },
+    {
+      "bench": "备战席 4 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 8 / 8",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 85 / 36 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "24",
+      "vitals": "25生命值17金币"
+    },
+    {
+      "bench": "备战席 4 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 8 / 8",
+      "heading": "部署你的下一步",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 86 / 36 XP",
+      "phase": "准备阶段从组合中找到胜机",
+      "round": "25",
+      "vitals": "10生命值11金币"
+    },
+    {
+      "bench": "备战席 0 / 8点击棋子选择 · 点击棋格部署",
+      "board": "己方阵地已部署 0 / 8",
+      "heading": "演习结束",
+      "inventory": "装备工坊 0 件库存",
+      "level": "等级 86 / 36 XP",
+      "phase": "最终战报从组合中找到胜机",
+      "round": "25",
+      "summary": "\n    最终排名#4MATCH COMPLETE / 战术复盘征程落幕，再战云海第 25 回合生命耗尽，本局演习结束。标准难度 · 25 回合 · 指挥官等级 8查看整局战报回放最后一战\n    对战胜 / 负 / 平8 / 7 / 3野怪通关5 / 7最高对战连胜3累计结算金币146累计生命损失100\n    最终出战阵容 8 枚棋子灵鱼★★聚能法杖鬼狼★★未携带装备蝙蝠★★未携带装备巨神炮★超频引擎须弥鲨★★聚能法杖真人★★未携带装备不死鸟★★未携带装备方舟★★未携带装备召唤 3 · 2 档　/　攻城 3 · 1 档　/　海神 2 · 1 档　/　猛禽 2 · 1 档　/　狙击 2 · 1 档　/　傀儡 2 · 1 档回合历程 点击回合可回放1野怪 · 胜利2野怪 · 胜利3野怪 · 胜利4对战 · 胜利5对战 · 平局6对战 · 胜利7对战 · 胜利8对战 · 胜利9对战 · 失败10野怪 · 胜利11对战 · 平局12对战 · 平局13对战 · 胜利14对战 · 胜利15野怪 · 失败16对战 · 失败17对战 · 胜利18对战 · 失败19对战 · 胜利20野怪 · 胜利21对战 · 失败22对战 · 失败23对战 · 失败24对战 · 失败25野怪 · 失败结束时战场排名01零号机剩余 24 生命02渡鸦剩余 17 生命03铁幕剩余 9 生命04你 · 指挥官第 25 回合淘汰你05深海回声第 24 回合淘汰06荒原旅者第 21 回合淘汰07白夜第 21 回合淘汰08北境哨兵第 20 回合淘汰指挥官淘汰后演习结束，存活 AI 按当前生命排序。同回合淘汰或生命相同时，按席位顺序排序。\n  ",
+      "vitals": "0生命值7金币"
+    }
+  ],
+  "console": [],
+  "parsedVisibleHistory": [
+    {
+      "round": 1,
+      "opponent": "荒原斥候 · 野怪",
+      "outcome": "胜利",
+      "hp": 100,
+      "damage": 0,
+      "gold": 11,
+      "income": 5,
+      "pve": true
+    },
+    {
+      "round": 2,
+      "opponent": "幽影狼群 · 野怪",
+      "outcome": "胜利",
+      "hp": 100,
+      "damage": 0,
+      "gold": 8,
+      "income": 5,
+      "pve": true
+    },
+    {
+      "round": 3,
+      "opponent": "狮王营地 · 野怪",
+      "outcome": "胜利",
+      "hp": 100,
+      "damage": 0,
+      "gold": 5,
+      "income": 5,
+      "pve": true
+    },
+    {
+      "round": 4,
+      "opponent": "零号机",
+      "outcome": "胜利",
+      "hp": 100,
+      "damage": 0,
+      "gold": 11,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 5,
+      "opponent": "白夜",
+      "outcome": "平局",
+      "hp": 97,
+      "damage": 3,
+      "gold": 13,
+      "income": 5,
+      "pve": false
+    },
+    {
+      "round": 6,
+      "opponent": "深海回声",
+      "outcome": "胜利",
+      "hp": 97,
+      "damage": 0,
+      "gold": 13,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 7,
+      "opponent": "铁幕",
+      "outcome": "胜利",
+      "hp": 97,
+      "damage": 0,
+      "gold": 6,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 8,
+      "opponent": "北境哨兵",
+      "outcome": "胜利",
+      "hp": 97,
+      "damage": 0,
+      "gold": 10,
+      "income": 7,
+      "pve": false
+    },
+    {
+      "round": 9,
+      "opponent": "渡鸦",
+      "outcome": "失败",
+      "hp": 88,
+      "damage": 9,
+      "gold": 13,
+      "income": 5,
+      "pve": false
+    },
+    {
+      "round": 10,
+      "opponent": "遗迹守军 · 野怪",
+      "outcome": "胜利",
+      "hp": 88,
+      "damage": 0,
+      "gold": 14,
+      "income": 5,
+      "pve": true
+    },
+    {
+      "round": 11,
+      "opponent": "零号机",
+      "outcome": "平局",
+      "hp": 85,
+      "damage": 3,
+      "gold": 17,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 12,
+      "opponent": "白夜",
+      "outcome": "平局",
+      "hp": 82,
+      "damage": 3,
+      "gold": 11,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 13,
+      "opponent": "深海回声",
+      "outcome": "胜利",
+      "hp": 82,
+      "damage": 0,
+      "gold": 18,
+      "income": 7,
+      "pve": false
+    },
+    {
+      "round": 14,
+      "opponent": "铁幕",
+      "outcome": "胜利",
+      "hp": 82,
+      "damage": 0,
+      "gold": 23,
+      "income": 7,
+      "pve": false
+    },
+    {
+      "round": 15,
+      "opponent": "狂兽围猎 · 野怪",
+      "outcome": "失败",
+      "hp": 78,
+      "damage": 4,
+      "gold": 28,
+      "income": 7,
+      "pve": true
+    },
+    {
+      "round": 16,
+      "opponent": "渡鸦",
+      "outcome": "失败",
+      "hp": 69,
+      "damage": 9,
+      "gold": 34,
+      "income": 7,
+      "pve": false
+    },
+    {
+      "round": 17,
+      "opponent": "荒原旅者",
+      "outcome": "胜利",
+      "hp": 69,
+      "damage": 0,
+      "gold": 17,
+      "income": 7,
+      "pve": false
+    },
+    {
+      "round": 18,
+      "opponent": "零号机",
+      "outcome": "失败",
+      "hp": 58,
+      "damage": 11,
+      "gold": 20,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 19,
+      "opponent": "白夜",
+      "outcome": "胜利",
+      "hp": 58,
+      "damage": 0,
+      "gold": 17,
+      "income": 7,
+      "pve": false
+    },
+    {
+      "round": 20,
+      "opponent": "铁壁防线 · 野怪",
+      "outcome": "胜利",
+      "hp": 58,
+      "damage": 0,
+      "gold": 23,
+      "income": 6,
+      "pve": true
+    },
+    {
+      "round": 21,
+      "opponent": "零号机",
+      "outcome": "失败",
+      "hp": 48,
+      "damage": 10,
+      "gold": 19,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 22,
+      "opponent": "零号机",
+      "outcome": "失败",
+      "hp": 37,
+      "damage": 11,
+      "gold": 22,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 23,
+      "opponent": "深海回声",
+      "outcome": "失败",
+      "hp": 25,
+      "damage": 12,
+      "gold": 17,
+      "income": 7,
+      "pve": false
+    },
+    {
+      "round": 24,
+      "opponent": "铁幕",
+      "outcome": "失败",
+      "hp": 10,
+      "damage": 15,
+      "gold": 11,
+      "income": 6,
+      "pve": false
+    },
+    {
+      "round": 25,
+      "opponent": "灵能暴潮 · 野怪",
+      "outcome": "失败",
+      "hp": 0,
+      "damage": 10,
+      "gold": 7,
+      "income": 0,
+      "pve": true
+    }
+  ],
+  "recomputedSummary": {
+    "pvpWins": 8,
+    "pvpLosses": 7,
+    "pvpDraws": 3,
+    "pveWins": 5,
+    "pveRounds": 7,
+    "income": 146,
+    "damage": 100,
+    "bestStreak": 3
+  },
+  "sourceHashes": {
+    "src/data/ai-profiles.ts": "4c4abd2441431dd1fd153c9619bc1b378c7d5e3c49a99998c084f931a2aaa5b7",
+    "src/data/encounters.ts": "c07716dc80a1343b6bb3f327e5d8c466cd4fcaa277917a104e15421c92254c56",
+    "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba",
+    "src/data/skills.ts": "f63245afdeebb4d70be7956da6f2ea5713a38574247a09ebb481d7dcba66b97d",
+    "src/data/traits.ts": "1ee6bda0dfd96fef57507cd2d8fb710fd6874a74c999ae459c80cf2b3d8fbe3b",
+    "src/data/units.ts": "87998a172801abd8599c5ca3505a786b90b41a8ec6229f0673bea70460c07572",
+    "src/engine/abilities.ts": "90267272bd14f6befcee3dde84af06f0e22ff6498d55b970705c09bdf40cdfe4",
+    "src/engine/ai.ts": "833267733955f4add66d84cfac9d8baa3db6ebac5abe25bc94b71e92d4ed0ede",
+    "src/engine/battle-analysis.ts": "135deb26e3e6456e36f1550d8771c30102efde137d21e62d6fbb9f7bb7fb1a38",
+    "src/engine/battle.ts": "c242401310d6d2f7c5919224a907cb48808ca528a9465ffc6dc85ad5d854d15f",
+    "src/engine/equipment.ts": "581768baf0917806f5635f19b75fa6ae03b2ee931c21b6dd06588e81f24a9081",
+    "src/engine/game.ts": "b092a0a76ea6a5055d80aa3c761442a9cb8a26bf4b0620b006e599c609ef3191",
+    "src/engine/immortality.ts": "8d49e9aef3fc91f70bc4d177ab5fda6a60a96a86dd775498073bd1941b9930fd",
+    "src/engine/match-summary.ts": "f8f6ad23aa27a079c57886b93e150c46199748cef8a832a6db504e69ae71a186",
+    "src/engine/metamorphosis.ts": "d70ce056ac8dec6f62255df57b6633f72abc61be6a39adb6f0bbde3307f116f8",
+    "src/engine/persistence.ts": "a75fbdb385cd41744962b67c790ec91f1612b9ba1e1fe91ed974fe2b42e81975",
+    "src/engine/phoenix.ts": "a18077fd31b78f18ad683f5edafce90ff5c48f7294a1a7830153401bdd4fb160",
+    "src/engine/progression.ts": "730d06a1a46932f04e3f03779c47108b3d6a90adcde8a0856cdec92e69abbf41",
+    "src/engine/random.ts": "ba0d5984534fdd513fac5e9d54bc586c1e8dfb65736af189f048ade4c34d0b21",
+    "src/engine/recruitment.ts": "7e9d030e36443e271848eb4d217a38e8761eef791705bd7deffc2ffbf299aa1f",
+    "src/engine/summons.ts": "e7564f26cf76f6afe061679c83ca7fea29083a7cb1aa524d1f1405ec8362012a",
+    "src/engine/synergies.ts": "8a953b8d879e4fd5c424be44ccdafde1b10b38ca02afb1f46902f8b79bec5d2e",
+    "src/engine/triggers.ts": "4407ad5f2f1c68a2d6f1853ecbc2c050a72b420748856c931a20efd9382d19bf",
+    "src/engine/types.ts": "7584f1c005e9eb4e6304a688445af2f65b1277de44777fff3bb3ef29aaa3a951",
+    "src/engine/wild-skills.ts": "48b1b05dd86acb70172b48371f435c46b476eed97275a7f8b5e84f014f97911b",
+    "src/main.ts": "ff52f90bf007ed9fac7bd2e4b5118746395acd9cfdcccd28f1e3089b10340a55",
+    "src/ui/battle-result.ts": "7d90fbea090f768222e75e587ed1016b42b92d9dd1afe40f1a6ea5a2b9ab25fa",
+    "src/ui/deployment.ts": "e5b483e06f3c6a9f79d744dd0787ad3e2825ae50a58804707180e55818a9ed87",
+    "src/ui/match-summary.ts": "d26e585a517c425b30068247986d7d6a6c4ec7117eb1c7a4ec8b6b4db2158e82"
+  },
+  "postAuditChecks": {
+    "terminalReloadUnchanged": true,
+    "replayExitUnchanged": true,
+    "newGame": {
+      "round": 1,
+      "hp": 100,
+      "gold": 10,
+      "level": 3
+    },
+    "cancelSelection": {
+      "benchFocusRestored": true,
+      "boardFocusRestored": true,
+      "firstClickAfterCancelSelectsBoardPiece": true,
+      "positionsUnchanged": [
+        "D5 藤妖",
+        "A8 神射手"
+      ],
+      "gold": 5,
+      "boardCount": 2,
+      "benchCount": 1,
+      "escapeWorks": true
+    },
+    "viewportWidths": [
+      {
+        "viewport": 390,
+        "scrollWidth": 390
+      },
+      {
+        "viewport": 320,
+        "scrollWidth": 320
+      }
+    ],
+    "ordinaryDemoExitUnchanged": true,
+    "replayResultLabel": "回放 · 第 01 回合 / 胜 利 / 历史回放 / 回放结束 · 即将重新播放",
+    "replayResultDoesNotSettleAgain": true
+  }
+}

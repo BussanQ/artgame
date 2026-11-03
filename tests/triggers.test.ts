@@ -145,13 +145,15 @@ describe("原型 0.7 的兵种触发方式", () => {
     expect(skillDescription("tiger")).toContain("第 1、5、9");
     expect(skillDescription("tiger", "balanced")).toContain("能量满 100");
   });
-  it("更新前三版二十单位战斗的完整快照 SHA-256 原样保留", async () => {
+  it("更新前四版二十单位战斗的完整快照 SHA-256 原样保留", async () => {
     const fixtures = (start: number) =>
       UNITS.slice(start, start + 10).map((u, i) => ({
         ...p(u.id, start + i + 1, 32 + i, 2),
         items: i === 0 ? ["aegis"] : [],
       }));
     const expected = {
+      signature:
+        "3863c1d22455d08213436cca603ea8a129daa59e2deea67ed1b2574ec6dbfdbf",
       legacy:
         "6cdf0579b35fa3b1a418d37f59ccdd0756a00740fc9672808d66448aa0844998",
       tactics:
@@ -159,7 +161,12 @@ describe("原型 0.7 的兵种触发方式", () => {
       balanced:
         "14ec85ee7b1d009b8c7ecd1327635e36ec34b0cfb643100eaca3255234227b8b",
     };
-    for (const version of ["legacy", "tactics", "balanced"] as const) {
+    for (const version of [
+      "legacy",
+      "tactics",
+      "balanced",
+      "signature",
+    ] as const) {
       const hash = await crypto.subtle.digest(
         "SHA-256",
         new TextEncoder().encode(
@@ -190,7 +197,7 @@ describe("原型 0.7 的兵种触发方式", () => {
       });
     const prepare = decodeSave(encode());
     expect(prepare.data!.schema).toBe(SAVE_SCHEMA);
-    expect(prepare.data!.game).toEqual({ ...game, combatVersion: "signature" });
+    expect(prepare.data!.game).toEqual({ ...game, combatVersion: "metamorph" });
     const result = startRound(game)!;
     const restored = decodeSave(encode()).data!.game;
     expect(restored).toEqual(game);
@@ -198,7 +205,7 @@ describe("原型 0.7 的兵种触发方式", () => {
     expect(restored.history[0].combatVersion).toBe("balanced");
     if (restored.reward) claimReward(restored, 0);
     nextRound(restored);
-    expect(restored.combatVersion).toBe("signature");
+    expect(restored.combatVersion).toBe("metamorph");
     const report = restored.history[0];
     expect(simulate(report.left, report.right, report.combatVersion)).toEqual(
       result.battle,

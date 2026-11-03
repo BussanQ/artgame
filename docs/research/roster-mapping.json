@@ -1,0 +1,1184 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-03",
+  "rules": "singleplayer-0.21",
+  "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
+  "summary": {
+    "aprilUniqueUnits": 53,
+    "currentRecruitableUnits": 50,
+    "mappedNamesOrLocalDesigns": 40,
+    "missingAprilUnits": 13,
+    "currentOutsideBaseline": 10,
+    "classificationDifferences": 8
+  },
+  "aprilUnits": [
+    {
+      "historicalName": "神枪手",
+      "historicalTraits": [
+        "步兵",
+        "狙击"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "infantry",
+      "currentName": "神枪手",
+      "currentTraits": [
+        "步兵",
+        "狙击"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "军医",
+      "historicalTraits": [
+        "步兵",
+        "支援"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "medic",
+      "currentName": "军医",
+      "currentTraits": [
+        "步兵",
+        "支援"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "火焰兵",
+      "historicalTraits": [
+        "步兵",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "flametrooper",
+      "currentName": "火焰兵",
+      "currentTraits": [
+        "步兵",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.20补入；技能机制与数值采用本项目配置。"
+    },
+    {
+      "historicalName": "护盾兵",
+      "historicalTraits": [
+        "步兵",
+        "护卫"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "guard",
+      "currentName": "盾兵",
+      "currentTraits": [
+        "步兵",
+        "护卫"
+      ],
+      "mapping": "local-design",
+      "classificationMatches": true,
+      "note": "本项目盾兵对应盾卫设计；这是本地映射，不证明历史别名。"
+    },
+    {
+      "historicalName": "特种兵",
+      "historicalTraits": [
+        "步兵",
+        "狙击"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "神射手只是本项目命名，未找到证据证明它是特种兵，暂不合并。"
+    },
+    {
+      "historicalName": "投弹手",
+      "historicalTraits": [
+        "步兵",
+        "异能"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "grenadier",
+      "currentName": "投弹手",
+      "currentTraits": [
+        "步兵",
+        "异能"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.20补入；技能机制与数值采用本项目配置。"
+    },
+    {
+      "historicalName": "鸟骑兵",
+      "historicalTraits": [
+        "骑兵",
+        "狙击"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "摩托骑兵",
+      "historicalTraits": [
+        "骑兵",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "motorcycle",
+      "currentName": "摩托骑兵",
+      "currentTraits": [
+        "骑兵",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.21补入三连发与逐发转火；冷却参考S04，部分单机属性重新平衡，详见motorcycle.md。"
+    },
+    {
+      "historicalName": "铁狗",
+      "historicalTraits": [
+        "装甲",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "铁猿",
+      "historicalTraits": [
+        "装甲",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "投石车",
+      "historicalTraits": [
+        "装甲",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "chariot",
+      "currentName": "投石车",
+      "currentTraits": [
+        "装甲",
+        "狙击",
+        "攻城"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": false,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "铁鸡",
+      "historicalTraits": [
+        "装甲",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "铁巨神",
+      "historicalTraits": [
+        "装甲",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "titan",
+      "currentName": "铁巨神",
+      "currentTraits": [
+        "装甲",
+        "护卫",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": false,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "轰炸机",
+      "historicalTraits": [
+        "空军",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "bomber",
+      "currentName": "轰炸机",
+      "currentTraits": [
+        "空军",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "维修机",
+      "historicalTraits": [
+        "空军",
+        "支援"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "repair",
+      "currentName": "维修机",
+      "currentTraits": [
+        "空军",
+        "支援"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "幽灵机",
+      "historicalTraits": [
+        "空军",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "ghostjet",
+      "currentName": "幽灵机",
+      "currentTraits": [
+        "空军",
+        "刺杀"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "方舟",
+      "historicalTraits": [
+        "空军",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "ark",
+      "currentName": "方舟",
+      "currentTraits": [
+        "空军",
+        "攻城"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "斧奴",
+      "historicalTraits": [
+        "傀儡",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "真人",
+      "historicalTraits": [
+        "傀儡",
+        "灵能者",
+        "召唤"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "adept",
+      "currentName": "真人",
+      "currentTraits": [
+        "傀儡",
+        "召唤",
+        "灵能"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "剑奴",
+      "historicalTraits": [
+        "傀儡",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "刀奴",
+      "historicalTraits": [
+        "傀儡",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "盾奴",
+      "historicalTraits": [
+        "傀儡",
+        "护卫"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "须弥鲨召唤的镇海盾卫不等于可购买的盾奴，仍列缺失。"
+    },
+    {
+      "historicalName": "须弥鲨",
+      "historicalTraits": [
+        "傀儡",
+        "海神",
+        "召唤"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "shark",
+      "currentName": "须弥鲨",
+      "currentTraits": [
+        "傀儡",
+        "召唤",
+        "海神"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "棍奴",
+      "historicalTraits": [
+        "傀儡",
+        "护卫"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "傀儡/护卫；与武僧熊猫是不同棋子，尚未实现。"
+    },
+    {
+      "historicalName": "童子",
+      "historicalTraits": [
+        "灵能者",
+        "支援"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "acolyte",
+      "currentName": "童子",
+      "currentTraits": [
+        "灵能",
+        "支援"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "天师",
+      "historicalTraits": [
+        "灵能者",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "stormcaller",
+      "currentName": "天师",
+      "currentTraits": [
+        "灵能",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "雷震子",
+      "historicalTraits": [
+        "灵能者",
+        "狙击"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "thunderlord",
+      "currentName": "雷震子",
+      "currentTraits": [
+        "灵能",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": false,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "金刚",
+      "historicalTraits": [
+        "陆行者",
+        "护卫"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "vajra",
+      "currentName": "金刚",
+      "currentTraits": [
+        "陆行者",
+        "护卫"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "罗汉",
+      "historicalTraits": [
+        "陆行者",
+        "狙击"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "arhat",
+      "currentName": "罗汉",
+      "currentTraits": [
+        "陆行者",
+        "狙击"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "翔龙",
+      "historicalTraits": [
+        "陆行者",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "winddragon",
+      "currentName": "翔龙",
+      "currentTraits": [
+        "陆行者",
+        "攻城"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "灵鹫",
+      "historicalTraits": [
+        "海神",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "空蟹",
+      "historicalTraits": [
+        "海神",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "skycrab",
+      "currentName": "空蟹",
+      "currentTraits": [
+        "海神",
+        "攻城"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "电蛟",
+      "historicalTraits": [
+        "海神",
+        "异能"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "eel",
+      "currentName": "电蛟",
+      "currentTraits": [
+        "海神",
+        "异能"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "幻鲸",
+      "historicalTraits": [
+        "海神",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "whale",
+      "currentName": "幻鲸",
+      "currentTraits": [
+        "海神",
+        "攻城"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "穿山甲",
+      "historicalTraits": [
+        "野兽",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "pangolin",
+      "currentName": "穿山甲",
+      "currentTraits": [
+        "野兽",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": false,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "巨齿象",
+      "historicalTraits": [
+        "野兽",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "猛毒兽",
+      "historicalTraits": [
+        "野兽",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": null,
+      "currentName": null,
+      "currentTraits": [],
+      "mapping": "missing",
+      "classificationMatches": null,
+      "note": "尚无可招募棋子。"
+    },
+    {
+      "historicalName": "鬼狼",
+      "historicalTraits": [
+        "野兽",
+        "召唤"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "wolf",
+      "currentName": "鬼狼",
+      "currentTraits": [
+        "野兽",
+        "刺杀",
+        "召唤"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": false,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "血鹰",
+      "historicalTraits": [
+        "野兽",
+        "猛禽",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "bloodhawk",
+      "currentName": "血鹰",
+      "currentTraits": [
+        "猛禽",
+        "野兽",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "狂狮",
+      "historicalTraits": [
+        "野兽",
+        "护卫"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "lion",
+      "currentName": "狂狮",
+      "currentTraits": [
+        "野兽",
+        "护卫"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "长生鹿",
+      "historicalTraits": [
+        "野兽",
+        "支援"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "deer",
+      "currentName": "长生鹿",
+      "currentTraits": [
+        "野兽",
+        "支援"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "蝙蝠",
+      "historicalTraits": [
+        "猛禽",
+        "狙击"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "bat",
+      "currentName": "蝙蝠",
+      "currentTraits": [
+        "猛禽",
+        "狙击"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "骨龙",
+      "historicalTraits": [
+        "猛禽",
+        "不朽者",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "bonedragon",
+      "currentName": "骨龙",
+      "currentTraits": [
+        "不朽",
+        "爆破",
+        "猛禽"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": false,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "飞天蛤蟆",
+      "historicalTraits": [
+        "猛禽",
+        "异能"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "skytoad",
+      "currentName": "飞天蛤蟆",
+      "currentTraits": [
+        "猛禽",
+        "异能"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "爆裂虫",
+      "historicalTraits": [
+        "异虫",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "blastbug",
+      "currentName": "爆裂虫",
+      "currentTraits": [
+        "异虫",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "眼虫",
+      "historicalTraits": [
+        "异虫",
+        "异能"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "eyebug",
+      "currentName": "眼虫",
+      "currentTraits": [
+        "异虫",
+        "异能"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "蜘蛛",
+      "historicalTraits": [
+        "异虫",
+        "异能"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "spider",
+      "currentName": "蜘蛛",
+      "currentTraits": [
+        "异虫",
+        "异能"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "杀人蜂",
+      "historicalTraits": [
+        "异虫",
+        "狙击"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "wasp",
+      "currentName": "杀人蜂",
+      "currentTraits": [
+        "异虫",
+        "狙击"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "藤妖",
+      "historicalTraits": [
+        "不朽者",
+        "异能"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "vine",
+      "currentName": "藤妖",
+      "currentTraits": [
+        "不朽",
+        "护卫"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": false,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "树妖",
+      "historicalTraits": [
+        "不朽者",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "treant",
+      "currentName": "树妖",
+      "currentTraits": [
+        "不朽",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "武僧熊猫",
+      "historicalTraits": [
+        "熊猫",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "master",
+      "currentName": "武僧熊猫",
+      "currentTraits": [
+        "熊猫",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "本轮把本地混用名“棍奴熊猫”更正为武僧熊猫，保留master ID和现有四费横扫；历史一费肉盾设计尚未对齐。"
+    },
+    {
+      "historicalName": "忍者熊猫",
+      "historicalTraits": [
+        "熊猫",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "panda",
+      "currentName": "忍者熊猫",
+      "currentTraits": [
+        "熊猫",
+        "刺杀"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    },
+    {
+      "historicalName": "禅师熊猫",
+      "historicalTraits": [
+        "熊猫",
+        "异能"
+      ],
+      "sourceIds": [
+        "S20",
+        "S25"
+      ],
+      "currentUnitId": "monk",
+      "currentName": "禅师熊猫",
+      "currentTraits": [
+        "熊猫",
+        "护卫"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": false,
+      "note": "同名角色；属性、技能与费用须单独核对。"
+    }
+  ],
+  "otherCurrentUnits": [
+    {
+      "currentUnitId": "sniper",
+      "currentName": "神射手",
+      "currentTraits": [
+        "步兵",
+        "狙击"
+      ],
+      "sourceIds": [],
+      "status": "unverified-local-name",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "cannon",
+      "currentName": "巨神炮",
+      "currentTraits": [
+        "装甲",
+        "狙击",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S06"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "cavalry",
+      "currentName": "马骑兵",
+      "currentTraits": [
+        "骑兵",
+        "先锋"
+      ],
+      "sourceIds": [
+        "S06"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "dragonfly",
+      "currentName": "蜻蜓骑兵",
+      "currentTraits": [
+        "骑兵",
+        "支援"
+      ],
+      "sourceIds": [
+        "S06"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "shadowblade",
+      "currentName": "暗影刀",
+      "currentTraits": [
+        "装甲",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S06"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "turtle",
+      "currentName": "玄龟",
+      "currentTraits": [
+        "野兽",
+        "护卫"
+      ],
+      "sourceIds": [
+        "S06"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "tiger",
+      "currentName": "落箭虎",
+      "currentTraits": [
+        "野兽",
+        "狙击",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S06"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "bull",
+      "currentName": "牛魔",
+      "currentTraits": [
+        "野兽",
+        "先锋",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S06"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "fish",
+      "currentName": "灵鱼",
+      "currentTraits": [
+        "支援",
+        "护卫",
+        "海神"
+      ],
+      "sourceIds": [
+        "S06"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "phoenix",
+      "currentName": "不死鸟",
+      "currentTraits": [
+        "猛禽",
+        "攻城",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S27",
+        "S28"
+      ],
+      "status": "outside-april-baseline",
+      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    }
+  ]
+}

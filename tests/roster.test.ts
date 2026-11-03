@@ -191,7 +191,7 @@ describe("扩展兵种与存档", () => {
   });
   it("20 兵种混战可重放且落点唯一，有限护甲和能量状态如期结束", () => {
     const left = UNITS.slice(0, 10).map((u, i) => piece(u.id, i + 1, 32 + i)),
-      right = UNITS.slice(10).map((u, i) => piece(u.id, 20 + i, 32 + i));
+      right = UNITS.slice(10, 20).map((u, i) => piece(u.id, 20 + i, 32 + i));
     const copy = structuredClone([left, right]),
       battle = simulate(left, right);
     expect(simulate(left, right)).toEqual(battle);

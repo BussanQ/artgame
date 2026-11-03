@@ -1,5 +1,11 @@
 /** Pure animation sampling; no combat damage or simulation timing changes. */
 export const MELEE_ACTIONS = {
+  bloodhawk: { name: "收翼俯冲撕爪", duration: 2.8, color: "#ffaaa0" },
+  vajra: { name: "四臂交替重拳", duration: 3.8, color: "#e8d193" },
+  vine: { name: "双藤甩鞭", duration: 3.8, color: "#b7eb9b" },
+  treant: { name: "抬根重踏", duration: 3.8, color: "#b9dba7" },
+  blastbug: { name: "鼓腹钳击", duration: 3.8, color: "#ffc176" },
+  shark: { name: "摆尾噬咬", duration: 3.8, color: "#89e6e2" },
   guard: { name: "蓄势盾击", duration: 3.6, color: "#bfe9e6" },
   pangolin: { name: "蜷身滚撞", duration: 2.8, color: "#e8bd73" },
   panda: { name: "双刃交错斩", duration: 1.9, color: "#e8b1ff" },
@@ -48,6 +54,45 @@ export function meleePose(id: MeleeId, t: number, skill = false): AttackPose {
     power = skill ? 1.22 : 1;
   p.impact = pulse(t, 0.28, 0.68) * power;
   switch (id) {
+    case "bloodhawk":
+      p.lift = 28 * wind - 10 * hit;
+      p.forward = -12 * wind + 42 * hit;
+      p.rotation = -0.24 * wind + 0.35 * hit;
+      p.scaleX = 1 - 0.18 * wind + 0.08 * hit;
+      p.trail = hit;
+      break;
+    case "vajra":
+      p.forward = 20 * pulse(t, 0.14, 0.48) + 30 * pulse(t, 0.48, 0.86);
+      p.rotation = -0.16 * pulse(t, 0.14, 0.48) + 0.19 * pulse(t, 0.48, 0.86);
+      p.scaleY = 1 - 0.12 * wind;
+      p.lift = -6 * hit;
+      break;
+    case "vine":
+      p.rotation = -0.35 * wind + 0.48 * hit;
+      p.scaleX = 1 - 0.16 * wind + 0.24 * hit;
+      p.forward = -10 * wind + 28 * hit;
+      p.trail = 0.7 * hit;
+      break;
+    case "treant":
+      p.lift = 24 * wind - 9 * hit;
+      p.scaleY = 1 + 0.08 * wind - 0.18 * hit;
+      p.rotation = -0.06 * wind + 0.1 * hit;
+      p.forward = 14 * hit;
+      break;
+    case "blastbug":
+      p.scaleX = 1 + 0.22 * wind;
+      p.scaleY = 1 + 0.16 * wind - 0.12 * hit;
+      p.forward = -8 * wind + 25 * hit;
+      p.rotation = -0.08 * wind + 0.12 * hit;
+      p.lift = 4 * recover;
+      break;
+    case "shark":
+      p.forward = -18 * wind + 34 * hit;
+      p.rotation = 0.25 * wind - 0.18 * hit;
+      p.scaleX = 1 + 0.18 * hit;
+      p.lift = 6 * wind + 5 * recover;
+      p.trail = 0.35 * hit;
+      break;
     case "cavalry":
       p.lift = 20 * wind + 5 * hit;
       p.rotation = -0.24 * wind + 0.08 * hit;
@@ -163,6 +208,38 @@ export function drawMeleeWeapon(
     c.stroke();
   };
   switch (id) {
+    case "bloodhawk":
+      for (let i = 0; i < 3; i++) {
+        c.beginPath();
+        c.moveTo(5 + i * 11, -85);
+        c.quadraticCurveTo(55 + i * 9, -55, 35 + i * 7, -18);
+        c.stroke();
+      }
+      break;
+    case "vajra":
+      for (let i = 0; i < 4; i++) {
+        const shift = Math.sin(t * Math.PI * 4 + (i * Math.PI) / 2) * 14;
+        c.strokeRect(18 + shift, -68 + i * 13, 17, 12);
+        c.beginPath();
+        c.moveTo(-8 + shift, -62 + i * 13);
+        c.lineTo(16 + shift, -62 + i * 13);
+        c.stroke();
+      }
+      break;
+    case "blastbug":
+      arc(25, -26, 20, -0.8 - hit, 0.3);
+      arc(25, -26, 20, -0.3, 0.8 + hit);
+      break;
+    case "shark":
+      arc(34, -42, 26, -1.2, 1.2);
+      for (let i = 0; i < 4; i++) {
+        c.beginPath();
+        c.moveTo(20 + i * 9, -65);
+        c.lineTo(26 + i * 9, -48 + i * 3);
+        c.lineTo(32 + i * 9, -65);
+        c.stroke();
+      }
+      break;
     case "cavalry":
       c.lineWidth = 4;
       c.beginPath();

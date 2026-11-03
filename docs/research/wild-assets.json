@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-11-03",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "bat",
+      "name": "蝙蝠",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature with bronze technological-fantasy details. Three-quarter front view facing viewer-right, slightly elevated camera, complete silhouette, all limbs inside frame with 12% padding, strong shapes readable at small size. Actual transparent background, no floor, no pedestal, no cast shadow, no text, no border, one creature only. Subject: 蝙蝠, a large compact dark indigo bat monster hovering with broad leathery wings, large sharp ears, small bronze forehead armor, luminous violet throat sac emitting a restrained purple sonic glow, curled clawed feet, fierce expression. A monster animal, no humanoid clothes. Wings completely visible.",
+      "path": "public/assets/units/bat.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "bloodhawk",
+      "name": "血鹰",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature with bronze technological-fantasy details. Three-quarter front view facing viewer-right, slightly elevated camera, complete silhouette, all limbs inside frame with 12% padding, strong shapes readable at small size. Actual transparent background, no floor, no pedestal, no cast shadow, no text, no border, one creature only. Subject: 血鹰, a fierce crimson red raptor with hooked beak and powerful talons, sweeping red-black feathered wings, small bronze shoulder plates and a jade chest jewel, leaning forward in a swooping attack posture. Animal eagle anatomy, not humanoid. Full wings and talons visible.",
+      "path": "public/assets/units/bloodhawk.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "skytoad",
+      "name": "飞天蛤蟆",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature with bronze technological-fantasy details. Three-quarter front view facing viewer-right, slightly elevated camera, complete silhouette, all limbs inside frame with 12% padding, strong shapes readable at small size. Actual transparent background, no floor, no pedestal, no cast shadow, no text, no border, one creature only. Subject: 飞天蛤蟆, a plump olive jade flying toad monster with broad mouth and golden eyes, two short translucent teal fin-like wings, thick frog legs curled beneath round body, bronze rune harness and small pale green mist at lips. Hovering, clear squat amphibian silhouette, not a dragon or human.",
+      "path": "public/assets/units/skytoad.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "vajra",
+      "name": "金刚",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera. Bronze, ivory stone and jade technological fantasy materials, strong readable silhouette. Entire body and all limbs inside frame with 12% padding. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no border, one character only. Subject: 金刚, a broad imposing four-armed stone-and-bronze temple guardian automaton with a stern carved mask face, thick armored legs firmly planted, two large fists held forward and two smaller hands behind, luminous jade chest core, squared shoulders, compact heavy tank silhouette. No wings, no human skin.",
+      "path": "public/assets/units/vajra.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "arhat",
+      "name": "罗汉",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera. Bronze, ivory stone and jade technological fantasy materials, strong readable silhouette. Entire body and all limbs inside frame with 12% padding. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no border, one character only. Subject: 罗汉, a slender ivory-and-bronze enlightened warrior automaton with a serene faceplate and segmented halo behind the head, two hands held together gathering a bright golden energy sphere, long armored legs planted on the ground, elegant flowing teal waist cloth. Slim upright ranged-caster silhouette, no wings.",
+      "path": "public/assets/units/arhat.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    },
+    {
+      "id": "winddragon",
+      "name": "翔龙",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Polished hand-painted 3D strategy-game miniature, three-quarter front view facing viewer-right, slightly elevated camera. Bronze, ivory stone and jade technological fantasy materials, strong readable silhouette. Entire body and all limbs inside frame with 12% padding. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no border, one character only. Subject: 翔龙, a long sinuous jade-scaled eastern dragon with four powerful clawed legs planted on the ground, bronze plated spine, ivory horns and whiskers, tail curled around its side, a small swirling pale turquoise wind orb in its open mouth. Low ground-walking beast silhouette, no wings, not floating, complete body visible.",
+      "path": "public/assets/units/winddragon.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model"
+    }
+  ]
+}

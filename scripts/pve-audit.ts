@@ -13,7 +13,7 @@ import { prepareBot, deployLineup } from "../src/engine/ai";
 import { equipBot, claimReward, itemScore } from "../src/engine/equipment";
 import { simulateOutcome } from "../src/engine/battle";
 import { validGame } from "../src/engine/persistence";
-import { UNIT } from "../src/data/units";
+import { UNIT, RULES } from "../src/data/units";
 const rows = [];
 for (const seed of [137, 307, 809, 1619]) {
   const g = createGame(seed);
@@ -104,7 +104,7 @@ const summary = rows
         : 1,
   }));
 writeFileSync(
-  "docs/analysis/pve-position-v06.json",
+  `docs/analysis/pve-position-${RULES.version}.json`,
   JSON.stringify(
     {
       scope:

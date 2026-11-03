@@ -1,0 +1,7963 @@
+{
+  "seed": 137,
+  "difficulty": "standard",
+  "policy": "7 commander preferences, normal paid actions, same economy for all 8 players; rounds >=20 are late; not human win rates",
+  "sources": {
+    "src/engine/ai.ts": "6ce0bea219d0838cf22f8305b7f4f2ef890819beb15540b9d23059b6eb87d5cb",
+    "src/engine/game.ts": "29a8ba4c9a58f5ad1d1bd21361383ad291cc18beb3d36aee701d3dc018213e13",
+    "src/engine/recruitment.ts": "7e9d030e36443e271848eb4d217a38e8761eef791705bd7deffc2ffbf299aa1f",
+    "src/engine/immortality.ts": "8d49e9aef3fc91f70bc4d177ab5fda6a60a96a86dd775498073bd1941b9930fd",
+    "src/engine/wild-skills.ts": "48b1b05dd86acb70172b48371f435c46b476eed97275a7f8b5e84f014f97911b",
+    "src/engine/metamorphosis.ts": "d70ce056ac8dec6f62255df57b6633f72abc61be6a39adb6f0bbde3307f116f8",
+    "src/engine/phoenix.ts": "e79f50ce4663f06f8add2518c31e5fd1173b9550ce694522a0aede5507ecc645",
+    "src/engine/battle.ts": "05afea3e42a7fd9a9ca0cda15811132e03815e6cf0ada79fb54a85263f271075",
+    "src/engine/abilities.ts": "b6ccb1f1bb97c4a92db4199f926178a43062b8b6200ad89688554501f8d94865",
+    "src/engine/infantry-skills.ts": "d0d58952df23f6b5c8ef98cb5cfc5482977861604901fcda55a4e58e50040fb9",
+    "src/engine/triggers.ts": "4407ad5f2f1c68a2d6f1853ecbc2c050a72b420748856c931a20efd9382d19bf",
+    "src/engine/summons.ts": "e7564f26cf76f6afe061679c83ca7fea29083a7cb1aa524d1f1405ec8362012a",
+    "src/engine/progression.ts": "730d06a1a46932f04e3f03779c47108b3d6a90adcde8a0856cdec92e69abbf41",
+    "src/engine/synergies.ts": "8a953b8d879e4fd5c424be44ccdafde1b10b38ca02afb1f46902f8b79bec5d2e",
+    "src/data/units.ts": "b6fd1039ec48b1102edb72ea58914775ad79c7790797f6af3fb66c9bae1cc2e8",
+    "src/data/skills.ts": "58e6fe41f0b9380d4ef74b30624c26340760b7d04c3e24abfe8f8ac3ec012c08",
+    "src/data/traits.ts": "537d67e3727588478a33a636ef9f48be4c45011151554367ccd35808cd0e6632",
+    "src/data/ai-profiles.ts": "4c4abd2441431dd1fd153c9619bc1b378c7d5e3c49a99998c084f931a2aaa5b7",
+    "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba",
+    "src/data/encounters.ts": "c07716dc80a1343b6bb3f327e5d8c466cd4fcaa277917a104e15421c92254c56",
+    "src/engine/equipment.ts": "7cb6efbee7a81a367ca8b5ddb7d74ee1b0260a9ad8a0e6b70e903180f93fdbd6",
+    "src/engine/random.ts": "ba0d5984534fdd513fac5e9d54bc586c1e8dfb65736af189f048ade4c34d0b21",
+    "src/engine/economy.ts": "3d7e8b88ac2f16e4cdeb01fbe9ae58549a774070ed1173c2a5e666ed0a9dcd71"
+  },
+  "summary": {
+    "games": 7,
+    "lateRounds": 43,
+    "averageFinalRound": 25.14,
+    "averageRank": 4.43,
+    "averageLateIncome": 11.98,
+    "averageLateSpent": 14.14,
+    "averageLateRefreshes": 0.88,
+    "averageLateLevel": 9.42,
+    "averageLateThreeStars": 0.21,
+    "averageLateUpgradedExpensiveUnits": 1.51
+  },
+  "runs": [
+    {
+      "profile": 1,
+      "rank": 4,
+      "rounds": [
+        {
+          "round": 1,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 2,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 3,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 10,
+          "level": 4,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 4,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 5,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 10,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 7
+        },
+        {
+          "round": 6,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 2,
+          "level": 4,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 7,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 9,
+          "level": 5,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 8,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 5,
+          "gold": 25,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 9,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 6,
+          "level": 5,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "deer",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 10,
+          "purchases": 1,
+          "refreshes": 2,
+          "xpBuys": 1,
+          "spent": 10,
+          "level": 6,
+          "gold": 30,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "deer",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 11,
+          "purchases": 5,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 11,
+          "level": 6,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "medic",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "sniper",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 12,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 4,
+          "spent": 23,
+          "level": 7,
+          "gold": 20,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "medic",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "sniper",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 13,
+          "purchases": 6,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 16,
+          "level": 7,
+          "gold": 22,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 14,
+          "purchases": 1,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 7,
+          "gold": 32,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 15,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 9,
+          "level": 7,
+          "gold": 36,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "vine",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 16,
+          "purchases": 0,
+          "refreshes": 2,
+          "xpBuys": 3,
+          "spent": 19,
+          "level": 8,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vine",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "sniper",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 17,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 9,
+          "level": 8,
+          "gold": 36,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "vine",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "sniper",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 15
+        },
+        {
+          "round": 18,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 4,
+          "spent": 36,
+          "level": 8,
+          "gold": 25,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 19,
+          "purchases": 6,
+          "refreshes": 2,
+          "xpBuys": 3,
+          "spent": 40,
+          "level": 9,
+          "gold": 7,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "sniper",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 20,
+          "purchases": 3,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 15,
+          "level": 9,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "winddragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 21,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 4,
+          "spent": 22,
+          "level": 9,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "winddragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 22,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 10,
+          "level": 9,
+          "gold": 3,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "vajra",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "winddragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 23,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 16,
+          "level": 10,
+          "gold": 2,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "sniper",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "winddragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 24,
+          "purchases": 1,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 8,
+          "level": 10,
+          "gold": 8,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "sniper",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "winddragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 0
+        }
+      ]
+    },
+    {
+      "profile": 2,
+      "rank": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 2,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 3,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 10,
+          "level": 4,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 4,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 4,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 5,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 6,
+          "level": 4,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 6
+        },
+        {
+          "round": 6,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 7,
+          "level": 5,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 7,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 7,
+          "level": 5,
+          "gold": 3,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 8,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 2,
+          "level": 5,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 9,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 9,
+          "level": 5,
+          "gold": 13,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "deer",
+              "star": 2,
+              "cost": 2
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 10,
+          "purchases": 4,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 14,
+          "level": 6,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "deer",
+              "star": 2,
+              "cost": 2
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 11,
+          "purchases": 7,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 17,
+          "level": 6,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 12,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 15,
+          "level": 6,
+          "gold": 11,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 13,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 14,
+          "level": 7,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "deer",
+              "star": 2,
+              "cost": 2
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 14,
+          "purchases": 4,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 14,
+          "level": 7,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "deer",
+              "star": 2,
+              "cost": 2
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 15,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 7,
+          "gold": 24,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "phoenix",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 16,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 16,
+          "level": 7,
+          "gold": 22,
+          "lineup": [
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "phoenix",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 17,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 21,
+          "level": 7,
+          "gold": 20,
+          "lineup": [
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 18,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 10,
+          "level": 8,
+          "gold": 23,
+          "lineup": [
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "phoenix",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 19,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 4,
+          "spent": 24,
+          "level": 8,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "phoenix",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 20,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 15,
+          "level": 9,
+          "gold": 14,
+          "lineup": [
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "phoenix",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bloodhawk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 21,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 15,
+          "level": 9,
+          "gold": 11,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 15
+        },
+        {
+          "round": 22,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 19,
+          "level": 9,
+          "gold": 11,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 16
+        },
+        {
+          "round": 23,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 19,
+          "level": 9,
+          "gold": 10,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 24,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 1,
+          "spent": 23,
+          "level": 10,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 25,
+          "purchases": 3,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 13,
+          "level": 10,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 26,
+          "purchases": 4,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 17,
+          "level": 10,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 16
+        },
+        {
+          "round": 27,
+          "purchases": 1,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 10,
+          "gold": 16,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 17
+        },
+        {
+          "round": 28,
+          "purchases": 0,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 10,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 19
+        },
+        {
+          "round": 29,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 13,
+          "level": 10,
+          "gold": 39,
+          "lineup": [
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 18
+        },
+        {
+          "round": 30,
+          "purchases": 0,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 10,
+          "gold": 53,
+          "lineup": [
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "shadowblade",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 0
+        }
+      ]
+    },
+    {
+      "profile": 3,
+      "rank": 4,
+      "rounds": [
+        {
+          "round": 1,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 2,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 3,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 10,
+          "level": 4,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 4,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 5,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 10,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 7
+        },
+        {
+          "round": 6,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 4,
+          "gold": 13,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 7,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 8,
+          "level": 5,
+          "gold": 14,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 8,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 2,
+          "level": 5,
+          "gold": 21,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "pangolin",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 9,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 11,
+          "level": 5,
+          "gold": 21,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "deer",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 10,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 7,
+          "level": 6,
+          "gold": 25,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "deer",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 11,
+          "purchases": 5,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 14,
+          "level": 6,
+          "gold": 25,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "bloodhawk",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 12,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 4,
+          "spent": 31,
+          "level": 7,
+          "gold": 10,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "deer",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 13,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 6,
+          "level": 7,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 14,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 6,
+          "level": 7,
+          "gold": 20,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 15,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 7,
+          "gold": 31,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 16,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 14,
+          "level": 7,
+          "gold": 32,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 15
+        },
+        {
+          "round": 17,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 19,
+          "level": 8,
+          "gold": 30,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 18,
+          "purchases": 4,
+          "refreshes": 1,
+          "xpBuys": 4,
+          "spent": 34,
+          "level": 8,
+          "gold": 10,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "vine",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 19,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 14,
+          "level": 8,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "vine",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 20,
+          "purchases": 5,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 16,
+          "level": 9,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "deer",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "vine",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 21,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 21,
+          "level": 9,
+          "gold": 10,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 16
+        },
+        {
+          "round": 22,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 18,
+          "level": 9,
+          "gold": 10,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 23,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 15,
+          "level": 9,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 24,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 2,
+          "spent": 21,
+          "level": 10,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 15
+        },
+        {
+          "round": 25,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 12,
+          "level": 10,
+          "gold": 19,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 26,
+          "purchases": 0,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 10,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 17
+        },
+        {
+          "round": 27,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 12,
+          "level": 10,
+          "gold": 34,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "master",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 18
+        },
+        {
+          "round": 28,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 14,
+          "level": 10,
+          "gold": 42,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "master",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 20
+        },
+        {
+          "round": 29,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 13,
+          "level": 10,
+          "gold": 49,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "treant",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "master",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "skytoad",
+              "star": 2,
+              "cost": 4
+            }
+          ],
+          "income": 0
+        }
+      ]
+    },
+    {
+      "profile": 4,
+      "rank": 5,
+      "rounds": [
+        {
+          "round": 1,
+          "purchases": 6,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 9,
+          "level": 3,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "medic",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 2,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 3,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 2,
+          "lineup": [
+            {
+              "id": "infantry",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 4,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 3,
+          "gold": 7,
+          "lineup": [
+            {
+              "id": "infantry",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 5,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "medic",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "infantry",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 7
+        },
+        {
+          "round": 6,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 19,
+          "lineup": [
+            {
+              "id": "medic",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "infantry",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 7,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 4,
+          "gold": 22,
+          "lineup": [
+            {
+              "id": "medic",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 8,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 31,
+          "lineup": [
+            {
+              "id": "infantry",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 9,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 19,
+          "level": 5,
+          "gold": 24,
+          "lineup": [
+            {
+              "id": "infantry",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 10,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 10,
+          "level": 6,
+          "gold": 25,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 11,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 10,
+          "level": 6,
+          "gold": 27,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "vajra",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 12,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 7,
+          "level": 6,
+          "gold": 34,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "skycrab",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 13,
+          "purchases": 9,
+          "refreshes": 2,
+          "xpBuys": 2,
+          "spent": 33,
+          "level": 7,
+          "gold": 20,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "guard",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 14,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 16,
+          "level": 7,
+          "gold": 21,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 15,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 4,
+          "spent": 33,
+          "level": 7,
+          "gold": 3,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "skycrab",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 16,
+          "purchases": 2,
+          "refreshes": 1,
+          "xpBuys": 1,
+          "spent": 16,
+          "level": 8,
+          "gold": 3,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "skycrab",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 17,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 13,
+          "level": 8,
+          "gold": 9,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "skycrab",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 18,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 4,
+          "spent": 20,
+          "level": 8,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "skycrab",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 19,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 10,
+          "level": 8,
+          "gold": 4,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "skycrab",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 20,
+          "purchases": 2,
+          "refreshes": 1,
+          "xpBuys": 1,
+          "spent": 15,
+          "level": 9,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "ark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "skycrab",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "titan",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 21,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 12,
+          "level": 9,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 22,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 19,
+          "level": 9,
+          "gold": 3,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 23,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 19,
+          "level": 9,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "chariot",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "winddragon",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "titan",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "shark",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "cannon",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 0
+        }
+      ]
+    },
+    {
+      "profile": 5,
+      "rank": 6,
+      "rounds": [
+        {
+          "round": 1,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 2,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 3,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 10,
+          "level": 4,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 4,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 6
+        },
+        {
+          "round": 5,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 11,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 7
+        },
+        {
+          "round": 6,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 3,
+          "level": 4,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 7,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 9,
+          "level": 5,
+          "gold": 17,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 8,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 5,
+          "gold": 25,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 9,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 9,
+          "level": 5,
+          "gold": 26,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 10,
+          "purchases": 2,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 7,
+          "level": 6,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "lion",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 11,
+          "purchases": 5,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 12,
+          "level": 6,
+          "gold": 27,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "vine",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 12,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 9,
+          "level": 6,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "vine",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 13,
+          "purchases": 2,
+          "refreshes": 1,
+          "xpBuys": 2,
+          "spent": 17,
+          "level": 7,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 14,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 8,
+          "level": 7,
+          "gold": 33,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 15,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 10,
+          "level": 7,
+          "gold": 35,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 16,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 3,
+          "spent": 28,
+          "level": 8,
+          "gold": 21,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 17,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 10,
+          "level": 8,
+          "gold": 27,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 18,
+          "purchases": 4,
+          "refreshes": 2,
+          "xpBuys": 4,
+          "spent": 34,
+          "level": 8,
+          "gold": 14,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 19,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 3,
+          "spent": 32,
+          "level": 9,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 20,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 10,
+          "level": 9,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 21,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 15,
+          "level": 9,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "lion",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "titan",
+              "star": 1,
+              "cost": 5
+            }
+          ],
+          "income": 0
+        }
+      ]
+    },
+    {
+      "profile": 6,
+      "rank": 7,
+      "rounds": [
+        {
+          "round": 1,
+          "purchases": 5,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 6,
+          "level": 3,
+          "gold": 4,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 2,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 3,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 9,
+          "level": 4,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vine",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 4,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 6,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vine",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 5,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 1,
+          "level": 4,
+          "gold": 10,
+          "lineup": [
+            {
+              "id": "eyebug",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 7
+        },
+        {
+          "round": 6,
+          "purchases": 5,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 6,
+          "level": 4,
+          "gold": 11,
+          "lineup": [
+            {
+              "id": "eyebug",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 7,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 8,
+          "level": 5,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vine",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 8,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 5,
+          "gold": 20,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vine",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 9,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 17,
+          "level": 6,
+          "gold": 14,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "vine",
+              "star": 1,
+              "cost": 2
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 10,
+          "purchases": 5,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 15,
+          "level": 6,
+          "gold": 13,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "fish",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 11,
+          "purchases": 4,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 14,
+          "level": 6,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bloodhawk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 12,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 16,
+          "level": 6,
+          "gold": 12,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bloodhawk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 13,
+          "purchases": 5,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 11,
+          "level": 7,
+          "gold": 13,
+          "lineup": [
+            {
+              "id": "eyebug",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 14,
+          "purchases": 5,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 19,
+          "level": 7,
+          "gold": 17,
+          "lineup": [
+            {
+              "id": "eyebug",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 15,
+          "purchases": 3,
+          "refreshes": 2,
+          "xpBuys": 4,
+          "spent": 29,
+          "level": 7,
+          "gold": 3,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bat",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "infantry",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 16,
+          "purchases": 2,
+          "refreshes": 1,
+          "xpBuys": 1,
+          "spent": 14,
+          "level": 8,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bat",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "infantry",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 17,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 10,
+          "level": 8,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bat",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "infantry",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 18,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 15,
+          "level": 8,
+          "gold": 4,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bat",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "infantry",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 19,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 18,
+          "level": 8,
+          "gold": 3,
+          "lineup": [
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bat",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "infantry",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 20,
+          "purchases": 4,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 15,
+          "level": 9,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "bat",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wasp",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "spider",
+              "star": 2,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 21,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 9,
+          "level": 9,
+          "gold": 4,
+          "lineup": [
+            {
+              "id": "bat",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "ghostjet",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "eel",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bloodhawk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "wasp",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "spider",
+              "star": 2,
+              "cost": 3
+            }
+          ],
+          "income": 0
+        }
+      ]
+    },
+    {
+      "profile": 7,
+      "rank": 3,
+      "rounds": [
+        {
+          "round": 1,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 3,
+          "gold": 5,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 1,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 2,
+          "purchases": 6,
+          "refreshes": 1,
+          "xpBuys": 0,
+          "spent": 9,
+          "level": 3,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 3,
+          "purchases": 4,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 3,
+          "gold": 2,
+          "lineup": [
+            {
+              "id": "bomber",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 4,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 1,
+          "level": 3,
+          "gold": 6,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            }
+          ],
+          "income": 5
+        },
+        {
+          "round": 5,
+          "purchases": 0,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 0,
+          "level": 4,
+          "gold": 11,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 7
+        },
+        {
+          "round": 6,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 3,
+          "level": 4,
+          "gold": 15,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 8
+        },
+        {
+          "round": 7,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 5,
+          "level": 4,
+          "gold": 19,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 1,
+              "cost": 1
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 8,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 3,
+          "level": 4,
+          "gold": 26,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 9,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 11,
+          "level": 5,
+          "gold": 26,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 10
+        },
+        {
+          "round": 10,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 11,
+          "level": 5,
+          "gold": 29,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "panda",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 9
+        },
+        {
+          "round": 11,
+          "purchases": 5,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 10,
+          "level": 5,
+          "gold": 28,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 12,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 12,
+          "level": 6,
+          "gold": 28,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 13,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 12,
+          "level": 6,
+          "gold": 27,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 14,
+          "purchases": 2,
+          "refreshes": 2,
+          "xpBuys": 1,
+          "spent": 13,
+          "level": 7,
+          "gold": 31,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 15,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 17,
+          "level": 7,
+          "gold": 27,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 16,
+          "purchases": 1,
+          "refreshes": 2,
+          "xpBuys": 2,
+          "spent": 18,
+          "level": 8,
+          "gold": 23,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "repair",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "skycrab",
+              "star": 1,
+              "cost": 2
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 17,
+          "purchases": 4,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 19,
+          "level": 8,
+          "gold": 20,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "stormcaller",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "monk",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 18,
+          "purchases": 5,
+          "refreshes": 2,
+          "xpBuys": 4,
+          "spent": 35,
+          "level": 8,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "stormcaller",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "turtle",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 19,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 13,
+          "level": 8,
+          "gold": 3,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "stormcaller",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 1,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 12
+        },
+        {
+          "round": 20,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 16,
+          "level": 8,
+          "gold": 2,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "stormcaller",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 11
+        },
+        {
+          "round": 21,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 2,
+          "spent": 13,
+          "level": 9,
+          "gold": 4,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "stormcaller",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 15
+        },
+        {
+          "round": 22,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 21,
+          "level": 9,
+          "gold": 0,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "stormcaller",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 23,
+          "purchases": 2,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 11,
+          "level": 9,
+          "gold": 2,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            }
+          ],
+          "income": 14
+        },
+        {
+          "round": 24,
+          "purchases": 1,
+          "refreshes": 0,
+          "xpBuys": 3,
+          "spent": 19,
+          "level": 9,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 25,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 1,
+          "spent": 15,
+          "level": 10,
+          "gold": 1,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 1,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bonedragon",
+              "star": 2,
+              "cost": 4
+            }
+          ],
+          "income": 13
+        },
+        {
+          "round": 26,
+          "purchases": 3,
+          "refreshes": 0,
+          "xpBuys": 0,
+          "spent": 12,
+          "level": 10,
+          "gold": 2,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 16
+        },
+        {
+          "round": 27,
+          "purchases": 4,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 19,
+          "level": 10,
+          "gold": 8,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 15
+        },
+        {
+          "round": 28,
+          "purchases": 0,
+          "refreshes": 2,
+          "xpBuys": 0,
+          "spent": 4,
+          "level": 10,
+          "gold": 19,
+          "lineup": [
+            {
+              "id": "panda",
+              "star": 3,
+              "cost": 1
+            },
+            {
+              "id": "acolyte",
+              "star": 2,
+              "cost": 1
+            },
+            {
+              "id": "adept",
+              "star": 2,
+              "cost": 2
+            },
+            {
+              "id": "monk",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "turtle",
+              "star": 2,
+              "cost": 4
+            },
+            {
+              "id": "shark",
+              "star": 1,
+              "cost": 4
+            },
+            {
+              "id": "tiger",
+              "star": 2,
+              "cost": 5
+            },
+            {
+              "id": "wolf",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "bull",
+              "star": 2,
+              "cost": 3
+            },
+            {
+              "id": "master",
+              "star": 1,
+              "cost": 4
+            }
+          ],
+          "income": 0
+        }
+      ]
+    }
+  ]
+}

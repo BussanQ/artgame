@@ -7,6 +7,7 @@ import {
 } from "../src/ui/preferences";
 import { FrameGate } from "../src/render/frame-policy";
 import { PausableDelay } from "../src/ui/pausable-delay";
+import { RESULT_DURATION_MS } from "../src/ui/battle-result";
 import type { StoragePort } from "../src/engine/persistence";
 const memory = (): StoragePort => {
   const values = new Map<string, string>();
@@ -103,14 +104,14 @@ describe("显示偏好与后台暂停", () => {
     vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout", "performance"] });
     const delay = new PausableDelay(),
       advance = vi.fn();
-    delay.schedule(advance, 2600);
+    delay.schedule(advance, RESULT_DURATION_MS);
     vi.advanceTimersByTime(1000);
     delay.setPaused(true);
     vi.advanceTimersByTime(20000);
     delay.setPaused(true);
     expect(advance).not.toHaveBeenCalled();
     delay.setPaused(false);
-    vi.advanceTimersByTime(1599);
+    vi.advanceTimersByTime(RESULT_DURATION_MS - 1001);
     expect(advance).not.toHaveBeenCalled();
     vi.advanceTimersByTime(1);
     expect(advance).toHaveBeenCalledTimes(1);
@@ -123,15 +124,15 @@ describe("显示偏好与后台暂停", () => {
       old = vi.fn(),
       advance = vi.fn();
     delay.setPaused(true);
-    delay.schedule(old, 2600);
+    delay.schedule(old, RESULT_DURATION_MS);
     vi.advanceTimersByTime(10000);
     expect(old).not.toHaveBeenCalled();
     delay.cancel();
-    delay.schedule(advance, 2600);
+    delay.schedule(advance, RESULT_DURATION_MS);
     delay.setPaused(false);
     vi.advanceTimersByTime(1000);
-    delay.schedule(advance, 2600);
-    vi.advanceTimersByTime(2599);
+    delay.schedule(advance, RESULT_DURATION_MS);
+    vi.advanceTimersByTime(RESULT_DURATION_MS - 1);
     expect(advance).not.toHaveBeenCalled();
     vi.advanceTimersByTime(1);
     expect(advance).toHaveBeenCalledTimes(1);

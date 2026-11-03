@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-11-03",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "medic",
+      "name": "军医",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game character sprite for a TypeScript auto-chess game inspired by Art of War: Red Tides. Generate ONE original Eastern science-fiction infantry combat medic. Single adult armored field medic wearing ivory ceramic power armor with dark teal undersuit, weathered brass trims, an enclosed angular helmet with mint visor, and a compact twin-cylinder healing backpack. Hold a short mint-glowing medical injector carbine across the torso with both hands, aimed slightly forward, relaxed combat-ready pose. Distinct readable silhouette, boots and backpack entirely visible, no stand. Premium hand-painted 3D collectible game-unit render, three-quarter front view with slightly elevated camera; facing diagonally toward screen-left. Strong sculpted shapes and controlled detail readable at 80px high. Warm top-left key light, soft teal rim light. Character occupies 80% of a square canvas with comfortable transparent margins. Truly transparent alpha background. No environment, ground plane, backdrop, text, letters, logos, cross emblems, watermark, UI, duplicate characters, collage, or sprite sheet. This must be a complete isolated production sprite, not an illustration on a solid-color background.",
+      "original": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-b2b1e7cd-2968-46b6-b0d4-d88a002da3d6.png",
+      "path": "public/assets/units/medic.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "min": 0,
+        "max": 255,
+        "fullyTransparentPixels": 1138112,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "01de57c5ca207cc8a420ebb2789b386088871bde14601f6c5d85cd64d5492a2b"
+    }
+  ]
+}

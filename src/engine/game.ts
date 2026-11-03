@@ -1,3 +1,7 @@
+import { mergePieces, pieceCopies, salePrice } from "./progression";
+import { previewPurchase } from "./recruitment";
+import { income } from "./economy";
+export { income } from "./economy";
 import { prepareBot } from "./ai";
 import { encounterFor, encounterArmy } from "../data/encounters";
 import { rewardChoices, itemScore } from "./equipment";
@@ -8,7 +12,7 @@ import type { Game, Player, Piece, Battle } from "./types";
 export function createGame(seed = 20261102): Game {
   const g: Game = {
     seed: seed >>> 0,
-    combatVersion: "signature",
+    combatVersion: "metamorph",
     difficulty: "standard",
     nextUid: 1,
     round: 1,
@@ -69,42 +73,23 @@ export function roll(g: Game, p: Player, paid = true): boolean {
   }
   return true;
 }
-export function merge(p: Player): void {
-  for (const d of UNITS)
-    for (let star = 1; star < 3; star++) {
-      let same: Piece[];
-      while (
-        (same = p.pieces.filter((x) => x.defId === d.id && x.star === star))
-          .length >= 3
-      ) {
-        same.sort(
-          (a, b) =>
-            Number(a.position === null) - Number(b.position === null) ||
-            a.uid - b.uid,
-        );
-        same[0].star++;
-        const equipment = same.slice(0, 3).flatMap((x) => x.items ?? []);
-        same[0].items = equipment.slice(0, 3);
-        p.inventory.push(...equipment.slice(3));
-        const removed = new Set([same[1].uid, same[2].uid]);
-        p.pieces = p.pieces.filter((x) => !removed.has(x.uid));
-      }
-    }
+export function merge(
+  p: Player,
+  version: Game["combatVersion"] = "metamorph",
+): void {
+  mergePieces(p, version);
 }
 export function buy(g: Game, p: Player, index: number): boolean {
   const id = p.shop[index];
-  if (g.phase !== "prepare" || !id || p.gold < UNIT[id].cost) return false;
-  const combines =
-    p.pieces.filter((x) => x.defId === id && x.star === 1).length >= 2;
-  if (
-    p.pieces.filter((x) => x.position === null).length >= RULES.bench &&
-    !combines
-  )
+  if (g.phase !== "prepare" || !id || !UNIT[id] || p.gold < UNIT[id].cost)
     return false;
-  p.gold -= UNIT[id].cost;
+  const quote = previewPurchase(g, p, index);
+  if (!quote.allowed || !quote.after) return false;
+  p.gold = quote.after.gold;
   p.shop[index] = null;
-  p.pieces.push({ uid: g.nextUid++, defId: id, star: 1, position: null });
-  merge(p);
+  g.nextUid++;
+  p.pieces = quote.after.pieces;
+  p.inventory = quote.after.inventory;
   return true;
 }
 export function move(
@@ -145,8 +130,8 @@ export function sell(g: Game, p: Player, uid: number): boolean {
   if (g.phase !== "prepare") return false;
   const piece = p.pieces.find((x) => x.uid === uid);
   if (!piece) return false;
-  const copies = 3 ** (piece.star - 1);
-  p.gold += UNIT[piece.defId].cost * copies;
+  const copies = pieceCopies(piece);
+  p.gold += salePrice(piece);
   g.pool[piece.defId] += copies;
   p.inventory.push(...(piece.items ?? []));
   p.pieces = p.pieces.filter((x) => x.uid !== uid);
@@ -165,14 +150,6 @@ export function buyXp(g: Game, p: Player): boolean {
   p.gold -= 5;
   addXp(p, 5);
   return true;
-}
-export function income(p: Player, won: boolean): number {
-  return (
-    5 +
-    Math.min(5, Math.floor(p.gold / 10)) +
-    (won ? 1 : 0) +
-    Math.min(3, Math.floor(Math.abs(p.streak) / 3))
-  );
 }
 export interface RoundResult {
   round: number;
@@ -263,13 +240,13 @@ export function settle(g: Game, result: RoundResult): void {
       p.streak = o.won ? Math.max(0, p.streak) + 1 : Math.min(0, p.streak) - 1;
     if (p.hp === 0) {
       p.eliminatedRound = g.round;
-      for (const x of p.pieces) g.pool[x.defId] += 3 ** (x.star - 1);
+      for (const x of p.pieces) g.pool[x.defId] += pieceCopies(x);
       for (const id of p.shop) if (id) g.pool[id]++;
       p.shop = [];
       p.pieces = [];
       p.inventory = [];
     } else {
-      p.gold += income(p, result.kind === "pvp" && o.won);
+      p.gold += income(p, result.kind === "pvp" && o.won, g.round);
       addXp(p, 1);
     }
   }
@@ -326,7 +303,7 @@ export function settle(g: Game, result: RoundResult): void {
 export function nextRound(g: Game) {
   if (g.phase !== "result" || g.reward) return;
   g.round++;
-  g.combatVersion = "signature";
+  g.combatVersion = "metamorph";
   g.phase = "prepare";
   for (const p of g.players.filter((p) => p.hp > 0))
     if (!p.locked) roll(g, p, false);

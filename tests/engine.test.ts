@@ -1,3 +1,4 @@
+import { pieceCopies } from "../src/engine/progression";
 import { claimReward } from "../src/engine/equipment";
 import { describe, it, expect } from "vitest";
 import {
@@ -23,7 +24,7 @@ function conservation(g: Game) {
         n +
         p.pieces
           .filter((x) => x.defId === u.id)
-          .reduce((k, x) => k + 3 ** (x.star - 1), 0) +
+          .reduce((k, x) => k + pieceCopies(x), 0) +
         p.shop.filter((id) => id === u.id).length,
       0,
     );
@@ -84,7 +85,7 @@ describe("自走棋必要模块测试", () => {
     expect(p.pieces.some((x) => x.defId === "guard" && x.star === 2)).toBe(
       true,
     );
-    p.pieces = Array.from({ length: 8 }, (_, i) => piece(200 + i, "sniper"));
+    p.pieces = Array.from({ length: 8 }, (_, i) => piece(200 + i, UNITS[i].id));
     p.shop = ["guard"];
     const gold = p.gold;
     expect(buy(g, p, 0)).toBe(false);

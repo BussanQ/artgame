@@ -16,7 +16,9 @@ body {
   padding: 0 24px;
 }
 header {
-  height: 74px;
+  height: auto;
+  min-height: 74px;
+  padding: 10px 0;
   border-color: #b6b28a2b;
   gap: 25px;
 }
@@ -25,6 +27,8 @@ header {
   color: #182523;
 }
 .brand {
+  flex-shrink: 0;
+  white-space: nowrap;
   font-family: serif;
   letter-spacing: 2px;
 }
@@ -35,6 +39,8 @@ header {
   color: #8c9d99;
 }
 .mode {
+  flex-shrink: 0;
+  white-space: nowrap;
   color: #c5d4c7;
 }
 .command {
@@ -79,7 +85,13 @@ button:hover:not(:disabled) {
   background: #48574b;
   border-color: #c2c49c;
 }
+header nav {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
 nav button {
+  flex-shrink: 0;
+  white-space: nowrap;
   color: #c3cbbc;
   background: none;
 }
@@ -860,7 +872,7 @@ footer {
     #000 35%,
     transparent 68%
   );
-  animation: result-rays 2.6s ease-out both;
+  animation: result-rays var(--result-duration) ease-out both;
   animation-delay: var(--result-elapsed);
 }
 .defeat .result-burst {
@@ -1008,7 +1020,7 @@ footer {
   height: 8px;
   background: var(--result-color);
   box-shadow: 0 0 9px currentColor;
-  animation: result-particle 2.2s ease-out both;
+  animation: result-particle 1.1s ease-out both;
   animation-delay: var(--result-elapsed);
 }
 .defeat .result-particles i {
@@ -1171,6 +1183,112 @@ footer {
   padding: 8px 12px;
   border-radius: 4px;
 }
+.codex-search {
+  display: grid;
+  gap: 8px;
+  color: #bdc9bf;
+  font-size: 13px;
+}
+.codex-result-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.codex-result-bar button {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+.codex-search input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  color: #eee7d1;
+  background: #152622;
+  border: 1px solid #607061;
+  border-radius: 4px;
+}
+.codex-count,
+.shop-guide {
+  color: #b3c7ba;
+  font-size: 12px;
+}
+.shop-guide {
+  margin: 4px 0 14px;
+  line-height: 1.6;
+}
+.round-income {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 8px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #a4b49c26;
+  font-size: 12px;
+  color: #c4d2bf;
+}
+.round-income strong {
+  color: #ecd294;
+}
+.round-income small {
+  grid-column: 1 / -1;
+  color: #a7b7a8;
+  font-size: 11px;
+}
+.insect-evolution {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-left: 2px solid #d4b57d;
+  background: #d4b57d0a;
+  color: #c3cec0;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.insect-evolution strong {
+  color: #e3c991;
+}
+.insect-evolution p {
+  margin: 3px 0;
+}
+.insect-evolution span {
+  color: #a7b7a8;
+}
+.insect-evolution.active {
+  border-color: #8dd4ad;
+  background: #8dd4ad0a;
+}
+.insect-evolution.active strong {
+  color: #a6e1b7;
+}
+.purchase-hint {
+  display: grid;
+  gap: 4px;
+  padding: 8px 5px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #b7c9bc;
+  overflow-wrap: anywhere;
+}
+.purchase-hint strong {
+  color: #f1d898;
+  font-weight: 600;
+}
+.purchase-hint .interest-warning {
+  color: #dfc79c;
+}
+.shop-entry.can-upgrade .card {
+  border-color: #d9c37a;
+  box-shadow: inset 0 0 18px #d9c37a18;
+}
+.shop-entry .shop-info {
+  margin-top: auto;
+}
+.shop-entry {
+  min-width: 0;
+}
 .codex-grid .skill-description {
   font-size: 12px;
   line-height: 1.8;
@@ -1180,6 +1298,50 @@ footer {
   display: block;
   color: #e4c78b;
   margin-top: 10px;
+}
+
+/* A focused search result gets enough width for the full skill description. */
+@media (min-width: 700px) {
+  .codex-grid article:only-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    column-gap: 24px;
+    align-content: start;
+    padding: 20px;
+  }
+  .codex-grid article:only-child > :not(img) {
+    grid-column: 2;
+  }
+  .codex-grid article:only-child .codex-portrait {
+    grid-column: 1;
+    grid-row: 1 / 7;
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .codex-grid {
+    grid-template-columns: 1fr;
+  }
+  .codex-portrait {
+    float: right;
+    width: 100px;
+    height: 110px;
+    margin: 0 0 12px 12px;
+  }
+  .codex-grid strong {
+    font-size: 15px;
+  }
+  .codex-grid p {
+    font-size: 12px;
+  }
+  .codex-grid .codex-skill {
+    clear: both;
+  }
 }
 .codex-stars {
   font-size: 11px;
@@ -2210,5 +2372,320 @@ body.has-modal {
   .compute-status {
     flex-wrap: wrap;
     padding: 12px;
+  }
+}
+
+.history-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.battle-analysis-modal {
+  max-width: 1000px;
+}
+.analysis-controls {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 24px;
+  margin: 20px 0;
+  padding: 16px;
+  background: #0f211cb3;
+  border: 1px solid #839e8144;
+}
+.analysis-controls label {
+  color: #bdcbbd;
+  font-size: 12px;
+}
+.analysis-controls select {
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px;
+  background: #20362e;
+  color: #e2e8d7;
+  border: 1px solid #6e876c;
+}
+.analysis-timeline output {
+  color: #e1c58a;
+  margin-left: 8px;
+}
+.analysis-timeline input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  accent-color: #d8bf82;
+}
+.analysis-timeline small {
+  color: #9fb4a6;
+  font-size: 11px;
+}
+.analysis-sides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.analysis-side {
+  min-width: 0;
+  --contribution-color: #8ecbb1;
+}
+.analysis-side.enemy {
+  --contribution-color: #de9c82;
+}
+.analysis-side-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.analysis-side-heading h3 {
+  margin: 0;
+  color: var(--contribution-color);
+}
+.analysis-side-heading > span {
+  color: #a4b5a8;
+  font-size: 12px;
+}
+.analysis-totals {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0;
+}
+.analysis-totals > span {
+  font-size: 11px;
+  color: #b2c3b4;
+}
+.analysis-totals b {
+  display: block;
+  margin-top: 2px;
+  color: var(--contribution-color);
+  font-size: 26px;
+  font-variant-numeric: tabular-nums;
+}
+.analysis-totals > small {
+  color: #afc1b1;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.modal .contribution-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.modal .contribution-list li {
+  margin: 0 0 10px;
+  padding: 12px;
+  background: #0d201a88;
+  border: 1px solid #839e8133;
+}
+.contribution-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.contribution-heading img {
+  width: 40px;
+  height: 45px;
+  object-fit: contain;
+}
+.contribution-heading > span {
+  flex: 1;
+  min-width: 0;
+}
+.contribution-heading b {
+  font-size: 13px;
+  color: #e1e7d8;
+}
+.contribution-heading small {
+  display: block;
+  font-size: 10px;
+  color: #b9c3a6;
+  margin-top: 2px;
+}
+.contribution-heading > strong {
+  color: var(--contribution-color);
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+.contribution-track {
+  height: 4px;
+  background: #adc6af1a;
+  margin: 9px 0;
+}
+.contribution-track i {
+  display: block;
+  height: 100%;
+  background: var(--contribution-color);
+}
+.modal .contribution-detail {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #a7bdad;
+  margin: 0;
+}
+.modal .analysis-note {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #9cb2a3;
+  margin: 16px 0 0;
+}
+@media (max-width: 600px) {
+  .analysis-controls {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 12px;
+  }
+  .analysis-sides {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .history-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.analysis-playback {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Keep all five recruitment options readable without a nested horizontal scroll. */
+@media (max-width: 700px) {
+  .shop-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+  }
+  .shop-cards .card {
+    min-width: 0;
+  }
+  .purchase-hint {
+    font-size: 12px;
+  }
+}
+
+/* Keep preparation controls close; secondary information expands on demand. */
+.demo-menu {
+  position: relative;
+}
+.demo-menu > summary {
+  padding: 7px 10px;
+  color: #c3cbbc;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.demo-options {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 180px;
+  display: grid;
+  padding: 8px;
+  border: 1px solid #b5b99660;
+  border-radius: 8px;
+  background: #1c2d2b;
+  box-shadow: 0 12px 30px #0008;
+}
+header nav .demo-options button {
+  text-align: left;
+  min-height: 40px;
+}
+.synergy-detail {
+  border-bottom: 1px solid #b5b99620;
+  padding: 6px 0;
+  color: #a9b2a8;
+}
+.synergy-detail > summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  min-height: 36px;
+  list-style: none;
+}
+.synergy-detail > summary::-webkit-details-marker {
+  display: none;
+}
+.synergy-detail > summary::after {
+  content: "+";
+  flex-shrink: 0;
+}
+.synergy-detail[open] > summary::after {
+  content: "−";
+}
+.synergy-detail.active {
+  color: var(--teal);
+}
+.synergy-count {
+  margin-left: auto;
+  text-align: right;
+  font-size: 12px;
+}
+.synergy-count small {
+  display: block;
+  font-size: 9px;
+  opacity: 0.8;
+}
+.synergy-detail p {
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 8px 0;
+}
+.inactive-synergies > summary,
+.equipment-panel > details > summary {
+  cursor: pointer;
+  padding: 12px 0;
+  font-size: 12px;
+  color: #c4cbbc;
+}
+summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+@media (max-width: 700px) {
+  .demo-menu > summary {
+    min-height: 36px;
+    padding: 9px;
+    box-sizing: border-box;
+  }
+  .demo-options {
+    left: 0;
+    right: auto;
+  }
+  .synergy-detail .trait-icon {
+    display: none;
+  }
+  .synergy-detail > summary {
+    gap: 5px;
+    font-size: 12px;
+  }
+}
+
+main > .right {
+  grid-column: 3;
+  grid-row: 1;
+}
+main > .shop {
+  grid-column: 1 / -1;
+  margin-top: 0;
+  min-width: 0;
+}
+@media (max-width: 1100px) {
+  main > .right {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+@media (max-width: 700px) {
+  main > .arena {
+    order: -2;
+  }
+  main > .shop {
+    order: -1;
   }
 }

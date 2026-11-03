@@ -48,39 +48,46 @@ function mockWorker() {
 }
 afterEach(() => vi.useRealTimers());
 describe("异步战斗事务", () => {
-  it.each(["legacy", "tactics", "balanced", "signature"] as const)(
-    "%s 开战、恢复、回放逐帧等价，工作副本不改原对局",
-    (version) => {
-      const game = ready();
-      game.combatVersion = version;
-      const before = structuredClone(game),
-        expected = structuredClone(game),
-        direct = startRound(expected)!;
-      const reply = compute({ kind: "start", game });
-      expect(reply.kind).toBe("round");
-      if (reply.kind !== "round") throw new Error("wrong result");
-      expect(reply.game).toEqual(expected);
-      expect(reply.result).toEqual(direct);
-      expect(game).toEqual(before);
-      expect(validGame(reply.game)).toBe(true);
-      const saved = structuredClone(reply.game),
-        resume = compute({ kind: "resume", game: reply.game });
-      expect(resume).toEqual(reply);
-      expect(reply.game).toEqual(saved);
-      const replay = compute({
-        kind: "replay",
-        left: direct.left,
-        right: direct.right,
-        version,
-      });
-      expect(replay).toEqual({ kind: "replay", battle: direct.battle });
-      settle(reply.game, reply.result);
-      expect(validGame(reply.game)).toBe(true);
-      const settled = structuredClone(reply.game);
-      settle(reply.game, reply.result);
-      expect(reply.game).toEqual(settled);
-    },
-  );
+  it.each([
+    "legacy",
+    "tactics",
+    "balanced",
+    "signature",
+    "summons",
+    "legions",
+    "brood",
+    "fleet",
+    "airsea",
+  ] as const)("%s 开战、恢复、回放逐帧等价，工作副本不改原对局", (version) => {
+    const game = ready();
+    game.combatVersion = version;
+    const before = structuredClone(game),
+      expected = structuredClone(game),
+      direct = startRound(expected)!;
+    const reply = compute({ kind: "start", game });
+    expect(reply.kind).toBe("round");
+    if (reply.kind !== "round") throw new Error("wrong result");
+    expect(reply.game).toEqual(expected);
+    expect(reply.result).toEqual(direct);
+    expect(game).toEqual(before);
+    expect(validGame(reply.game)).toBe(true);
+    const saved = structuredClone(reply.game),
+      resume = compute({ kind: "resume", game: reply.game });
+    expect(resume).toEqual(reply);
+    expect(reply.game).toEqual(saved);
+    const replay = compute({
+      kind: "replay",
+      left: direct.left,
+      right: direct.right,
+      version,
+    });
+    expect(replay).toEqual({ kind: "replay", battle: direct.battle });
+    settle(reply.game, reply.result);
+    expect(validGame(reply.game)).toBe(true);
+    const settled = structuredClone(reply.game);
+    settle(reply.game, reply.result);
+    expect(reply.game).toEqual(settled);
+  });
   it("AI 轻量战果与完整模拟相同，覆盖野怪与 PvP", () => {
     const g = ready();
     for (let round = 1; round <= 4; round++) {
