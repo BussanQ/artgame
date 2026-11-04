@@ -30,7 +30,7 @@ import {
 } from "../src/engine/persistence";
 
 function setup() {
-  const g = createGame(123),
+  const g = createGame(123, "classic"),
     p = g.players[0];
   buy(g, p, 0);
   move(g, p, p.pieces[0].uid, 35);

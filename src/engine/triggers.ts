@@ -1,8 +1,10 @@
 import { isPhoenixEgg } from "./phoenix";
+import { commandBonuses } from "./ironrooster";
 import type { Fighter } from "./types";
 const distance = (a: Fighter, b: Fighter) =>
   Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export function usesEnergy(f: Fighter) {
+  if (f.defId === "birdrider" || f.bladeStorm) return false;
   if (
     isPhoenixEgg(f) ||
     f.hawkForm?.active ||
@@ -16,6 +18,7 @@ export function usesEnergy(f: Fighter) {
   return !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
+  if (f.defId === "birdrider" || f.bladeStorm) return false;
   if (f.air?.cast || f.windup || f.combo) return false;
   if (
     isPhoenixEgg(f) ||
@@ -41,8 +44,12 @@ export function carapaceArmor(f: Fighter, tick: number) {
 }
 export function effectiveArmor(f: Fighter, tick: number) {
   return (
-    f.armor +
-    (f.armorBuffUntil > tick ? f.armorBuff : 0) +
+    f.armor -
+    (f.infantryArmorBreak ?? 0) +
+    Math.max(
+      f.armorBuffUntil > tick ? f.armorBuff : 0,
+      commandBonuses(f, tick).armor,
+    ) +
     carapaceArmor(f, tick)
   );
 }
@@ -75,6 +82,13 @@ export function attackTargets(source: Fighter, fighters: Fighter[], tick = 0) {
   );
 }
 export function skillGauge(f: Fighter) {
+  if (f.bladeStorm)
+    return { progress: f.bladeStorm.remaining / 6, color: "#a9eadc" };
+  if (f.bird)
+    return {
+      progress: f.bird.draw ? 1 : f.bird.shots / (7 - f.star),
+      color: "#dceea0",
+    };
   if (
     isPhoenixEgg(f) ||
     f.hawkForm?.active ||

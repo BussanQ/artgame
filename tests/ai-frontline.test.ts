@@ -18,7 +18,7 @@ const ranged = () =>
 
 describe("前排保护参与选阵", () => {
   it("不会为了坦克名额强行撤下高星输出", () => {
-    const player = createGame().players[0];
+    const player = createGame(undefined, "classic").players[0];
     player.level = 5;
     player.pieces = [
       piece("guard", 1),
@@ -85,7 +85,7 @@ describe("前排保护参与选阵", () => {
     expect(team).toEqual(before);
   });
   it("长局持有阵容不再因一个刺杀近战而撤掉所有护卫，正常战斗验证保护作用", () => {
-    const player = createGame().players[0];
+    const player = createGame(undefined, "classic").players[0];
     player.level = 8;
     player.pieces = [
       "fish",

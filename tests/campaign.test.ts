@@ -27,7 +27,7 @@ describe("完整单机对局", () => {
   ] as const)(
     "种子 %i / %s / 构筑 %i 从招募到终局保持合法",
     (seed, difficulty: Difficulty, profile) => {
-      let game = createGame(seed);
+      let game = createGame(seed, "classic");
       game.difficulty = difficulty;
       const storage = new Map<string, string>();
       const port = {
@@ -117,7 +117,7 @@ describe("完整单机对局", () => {
 });
 
 it("第30回合结算后结束，即使多名玩家存活也不能进入31回合", () => {
-  const g = createGame(137);
+  const g = createGame(137, "classic");
   g.round = 30;
   const p = g.players[0];
   buy(g, p, p.shop.findIndex(Boolean));

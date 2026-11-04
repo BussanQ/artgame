@@ -24,6 +24,8 @@ export function enterPhoenixEgg(ctx: CombatContext, fighter: Fighter) {
   delete fighter.sonic;
   delete fighter.windup;
   delete fighter.combo;
+  delete fighter.command;
+  delete fighter.bladeStorm;
   if (fighter.charm) {
     fighter.side = fighter.charm.side;
     fighter.attack = fighter.charm.attack;

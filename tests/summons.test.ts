@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, expect, it } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -155,7 +156,7 @@ describe("幽狼召唤与战斗生命周期", () => {
     expect(analysis.sides[0].damage).toBe(analysis.sides[1].received);
   });
   it("schema 6 准备阶段升级、在途和历史战斗不改写，资源和战报保持合法", () => {
-    const game = createGame(137),
+    const game = createGame(137, "classic"),
       player = game.players[0];
     game.combatVersion = "signature";
     player.pieces.push(piece(game.nextUid++, "wolf", 1));
@@ -171,7 +172,7 @@ describe("幽狼召唤与战斗生命周期", () => {
       });
     expect(decodeSave(encoded()).data).toMatchObject({
       schema: SAVE_SCHEMA,
-      game: { combatVersion: "metamorph" },
+      game: { combatVersion: CURRENT_COMBAT_VERSION },
     });
     const result = startRound(game)!;
     const restored = decodeSave(encoded()).data!.game;
@@ -180,7 +181,7 @@ describe("幽狼召唤与战斗生命周期", () => {
     if (restored.reward) claimReward(restored, 0);
     nextRound(restored);
     expect(validGame(restored)).toBe(true);
-    expect(restored.combatVersion).toBe("metamorph");
+    expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
     expect(restored.history[0].combatVersion).toBe("signature");
     const report = restored.history[0];
     expect(simulate(report.left, report.right, report.combatVersion)).toEqual(

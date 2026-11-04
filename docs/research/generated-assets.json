@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03",
+  "generatedAt": "2026-11-04",
   "method": "built-in image_gen",
   "assets": [
     {
@@ -531,6 +531,154 @@
         ]
       },
       "sha256": "99cc32d1700c556e6df94f8afd91e77c5b26f75735dbcf935b66a50f8abdebf4"
+    },
+    {
+      "id": "irondog",
+      "name": "铁狗",
+      "prompt": "Create a single transparent full-body isometric game unit sprite: a heavy four-legged robotic war hound named Iron Dog, low canine silhouette, petrol-blue steel armor, aged bronze trim, amber visor, hydraulic knees, steel claws, short tail and compact copper shock-pulse generator on its back. No rider. Three-quarter front view facing right, slightly elevated camera, entire body and all four paws visible with generous padding. Polished hand-painted 3D science-fantasy strategy-game miniature style, readable broad shapes, weathered metal, warm rim light. Genuine transparent alpha background. No floor, pedestal, shadow, text, UI, watermark, other characters or detached effects.",
+      "path": "public/assets/units/irondog.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-f2116518-09d6-43c4-b8f1-ba94ee040a73.png",
+      "sha256": "9cfed00caea06886486c5994e3f9733c43c346cd5b93fbe6c1d1311293aa542b",
+      "width": 1536,
+      "height": 1024,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 885687,
+      "totalPixels": 1572864
+    },
+    {
+      "id": "specialist",
+      "name": "特种兵",
+      "prompt": "Create one transparent full-body isometric strategy-game sprite of an elite science-fantasy long-range marksman, Special Forces infantry: slim athletic adult soldier in desaturated ivory and petrol-blue light segmented armor, bronze joints, enclosed helmet with one narrow amber targeting lens, short split charcoal scout cloak. Distinctive enormous long precision rifle with a rectangular bronze barrel, cyan power chamber and telescopic sight, held in both hands; left knee bent in a stable half-kneeling aiming stance, rifle points viewer-right. No shield, no vehicle, no wings. Polished hand-painted 3D miniature aesthetic with readable broad shapes and weathered metal, warm edge lighting and cool fill, slightly elevated three-quarter front view, entire rifle and both boots in frame, generous transparent padding. Genuine transparent alpha background, no floor, pedestal, shadow, scene, text, UI, logo, watermark or detached effects. One character only. Original reinterpretation for a science-fantasy auto-chess game.",
+      "path": "public/assets/units/specialist.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-5dd7e71b-151e-419b-9696-27991c2bd269.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 998016,
+      "totalPixels": 1572864,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "279c1bf028b4a7daab8349e567a44d9f0a49062b843cc1803fb59bb127be03cc"
+    },
+    {
+      "id": "birdrider",
+      "name": "鸟骑兵",
+      "prompt": "Use case: stylized-concept. Create one transparent isometric full-body auto-chess miniature sprite: a lightly armored science-fantasy mounted archer riding a sturdy flightless long-legged bird. The bird has deep teal and indigo feathers, an ivory beak, swept-back copper crest, two powerful clawed legs planted on the ground, folded short wings, leather saddle and small weathered bronze armor plates. One human rider in ivory and bronze scout armor with closed helmet sits securely in the saddle, holding a compact mechanical recurve bow with a visible arrow aimed viewer-right. The bow, both hands, bird head, full tail and both clawed feet all fit in frame with generous transparent margins. Polished hand-painted 3D strategy-game art, broad readable shapes, slightly elevated three-quarter front view, warm edge lighting and cool fill. Rider and mount form one coherent unit, strong silhouette legible at small size. Genuine transparent alpha background; no ground, floor, pedestal, cast shadow, scenery, text, UI, border, watermark, extra characters or detached effects. An original reinterpretation for a science-fantasy auto-chess game.",
+      "path": "public/assets/units/birdrider.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-4692975b-6cc2-4174-b007-93d3589fff5a.png",
+      "width": 1219,
+      "height": 1290,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 969097,
+      "totalPixels": 1572510,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "bdb1fcf8634efacf26f2144fb967b824c9fd9d13fb1806d2ac277ed6ca933653"
+    },
+    {
+      "id": "ironape",
+      "name": "铁猿",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite for a dark sci-fi auto chess battlefield. Subject: ONE heavy mechanical gorilla called Iron Ape, squat armored primate silhouette, enormous paired hydraulic forearms and broad metal fists, short powerful legs, low gorilla head between shoulder plates. Blue gunmetal and weathered bronze armor, a small amber chest reactor and amber eyes, recessed blast vents on fists. Three-quarter front view facing slightly right, semi-realistic painted 3D strategy-game miniature, crisp readable silhouette at small size. Neutral combat-ready knuckle stance, both arms visible and separate from torso, full character including feet entirely inside frame with margin. Lighting from upper left. Actual transparent background, no scenery, no floor, no platform, no drop shadow, no lettering, no UI, no other units. Design an original mechanical gorilla rather than copying an existing model.",
+      "path": "public/assets/units/ironape.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-ec517441-6f9d-4d44-82aa-1e1ba9cfc3e4.png",
+      "width": 1312,
+      "height": 1199,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 541951,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "sha256": "1d075dac340b37bfdaefb94f2a7e7ec0439089154256392513b23168c04c3c3d"
+    },
+    {
+      "id": "ironrooster",
+      "name": "铁鸡",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a dark science-fiction auto chess game. Subject: ONE Iron Rooster, a compact bipedal armored assault and command walker with a low angular avian cockpit, a small red metal crest, two reverse-jointed hydraulic legs and wide three-toed steel feet. Paired short autocannon pods are mounted like folded wings beside its body; a raised amber command beacon and radio fins sit on its back. No organic feathers, no human rider. Weathered bronze and blue gunmetal plating, amber lenses, restrained red identifiers without lettering. Three-quarter front view facing slightly right, semi-realistic painted 3D strategy miniature, same coherent readable scale as a mechanical gorilla and armored hound. Both legs and both weapon pods clearly separated, neutral braced firing stance, entire character including feet within frame with generous margin. Upper-left lighting. Actual transparent background, no scenery, no floor, no platform, no cast shadow, no text, no UI, no other units. Original reinterpretation of a rooster-like command mech, crisp silhouette readable at small battlefield size.",
+      "path": "public/assets/units/ironrooster.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-9a90c017-785c-4eb5-8dee-725363fdbd86.png",
+      "width": 1221,
+      "height": 1289,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 970021,
+      "totalPixels": 1573869,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "0c42ac033ff35ec0f064ddfb826053c4ae844096c235a3d8b07ef6c211f0f6bd"
+    },
+    {
+      "id": "axethrall",
+      "name": "斧奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a dark science-fiction auto chess game. Primary request: ONE Axe Thrall, an agile humanoid psychic construct assassin made of angular black ceramic and emerald-turquoise armor, an enclosed pointed helmet with a tiny luminous visor, broad swept shoulder plates, slim waist, articulated armored legs and claw-like boots. It holds one long crescent-bladed throwing axe diagonally down beside the body, with a dark shaft and a bright jade energy edge; free hand slightly raised for balance. Original reinterpretation of an alien puppet warrior, not a human soldier, no exposed flesh. Semi-realistic painted 3D strategy miniature, readable crisp silhouette, three-quarter front view facing slightly right, full body including axe tip and both feet inside frame with generous margins. Neutral combat-ready stance suitable for animated leaning and slashing. Subtle bronze trims, upper-left lighting, coherent with a science-fantasy auto chess army. Actual transparent background, no scenery, no floor, no base, no cast shadow, no text, no UI, no logos, no other units.",
+      "path": "public/assets/units/axethrall.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-d57b258b-abbd-4960-b958-ae542837519d.png",
+      "width": 1199,
+      "height": 1312,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1098090,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "sha256": "ca62a717c0f0eacfe21f09cb1f5cbb816f06f106620ee42c90fe47c175467926"
+    },
+    {
+      "id": "swordthrall",
+      "name": "剑奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a science-fantasy auto chess game. Subject: ONE Sword Thrall, an agile humanoid puppet vanguard in pearl-white ceramic armor over dark articulated joints, teal crystal crest on a sealed angular helmet, swept gold shoulder horns and narrow waist. It holds TWO separate curved swords, one in each hand, arms spread in a low balanced stance ready for a turning double-sword sweep. Long dark steel blades with subtle cyan edges, short grips, no shields, no axe. Original reinterpretation of an alien construct swordsman, no human face, no exposed skin. Semi-realistic painted 3D strategy miniature, crisp silhouette coherent with a black-and-emerald axe thrall. Three-quarter front view facing slightly right. Entire character, both sword tips, helmet crest and both feet inside frame with generous 10 percent margins; readable at small battlefield size. Soft upper-left lighting, restrained jade and bronze details. Actual transparent background, no floor, no base, no cast shadow, no scenery, no text, no logo, no UI, no additional characters.",
+      "path": "public/assets/units/swordthrall.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-40d218c2-3831-4196-9fd1-41faf21cccb3.png",
+      "width": 1312,
+      "height": 1199,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1120716,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "174d970b4af5ca2737571c84b58f14ec6f589ad61211368d3b64aa42eda616d7"
     }
   ]
 }

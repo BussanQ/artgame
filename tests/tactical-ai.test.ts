@@ -62,7 +62,7 @@ describe("战术试算与抱团站位", () => {
     }
   });
   it("抱团和分散均不创造棋子或装备，十人口落位唯一且保留备战", () => {
-    const p = createGame().players[0];
+    const p = createGame(undefined, "classic").players[0];
     p.level = 10;
     p.pieces = army(UNITS.slice(0, 16).map((u) => u.id));
     const before = p.pieces.map(({ position, ...piece }) => piece);
@@ -78,7 +78,7 @@ describe("战术试算与抱团站位", () => {
     }
   });
   it("挑战试算只改部署，不消耗资源、修改对手或提前准备其他 AI", () => {
-    const g = createGame(119);
+    const g = createGame(119, "classic");
     g.round = 4;
     g.difficulty = "veteran";
     const p = g.players[1];
@@ -127,7 +127,7 @@ describe("战术试算与抱团站位", () => {
   });
   it("休闲靠自然经验，标准与挑战仍可通过付费购买经验升级", () => {
     for (const difficulty of ["relaxed", "standard", "veteran"] as const) {
-      const g = createGame(73),
+      const g = createGame(73, "classic"),
         p = g.players[1];
       g.round = 12;
       g.difficulty = difficulty;
@@ -155,7 +155,7 @@ describe("战术试算与抱团站位", () => {
     }
   });
   it("野怪轮使用公开守军；进入战斗后不允许改阵", () => {
-    const g = createGame();
+    const g = createGame(undefined, "classic");
     const p = g.players[1];
     p.pieces = army(["guard", "infantry", "fish"]);
     expect(tacticalOpponent(g, p)).toEqual(encounterArmy(ENCOUNTERS[0]));

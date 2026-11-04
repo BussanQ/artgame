@@ -44,13 +44,19 @@ export class BattleSoundTrack {
           kind:
             effect.kind === "immortal" || effect.kind === "rebirth"
               ? "chime"
-              : effect.kind === "pulse"
-                ? f.defId === "bomber" || f.defId === "phoenix"
-                  ? "blast"
-                  : "beam"
-                : support
-                  ? "heal"
-                  : "cast",
+              : ["axethrall", "swordthrall"].includes(f.defId)
+                ? "blade"
+                : f.defId === "ironrooster"
+                  ? "chime"
+                  : effect.kind === "pulse"
+                    ? ["bomber", "phoenix", "irondog", "ironape"].includes(
+                        f.defId,
+                      )
+                      ? "blast"
+                      : "beam"
+                    : support
+                      ? "heal"
+                      : "cast",
           pan: (effect.from.x / 7) * 1.4 - 0.7,
           priority: 2,
         });

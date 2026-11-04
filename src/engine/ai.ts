@@ -1,8 +1,10 @@
+import { unitArmor } from "../data/unit-stats";
+import { CURRENT_COMBAT_VERSION } from "./types";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { simulateOutcome } from "./battle";
 import { encounterFor, encounterArmy } from "../data/encounters";
-import { AI_PROFILES, DIFFICULTIES, type AiProfile } from "../data/ai-profiles";
-import { SKILLS } from "../data/skills";
+import { profileFor, DIFFICULTIES, type AiProfile } from "../data/ai-profiles";
+import { AXE_THROW, BLADE_STORM, SKILLS } from "../data/skills";
 import { RETINUE, SPIRIT_WOLF } from "./summons";
 import { equipmentStats } from "../data/items";
 import { UNIT, RULES } from "../data/units";
@@ -11,6 +13,9 @@ import { equipBot } from "./equipment";
 import type { CombatVersion, Difficulty, Game, Piece, Player } from "./types";
 
 const CONTROL_SECONDS: Record<string, number> = {
+  axethrall: AXE_THROW.stunTicks / 4,
+  irondog: 0.5,
+  specialist: 0.75,
   guard: 1,
   cavalry: 0.5,
   bull: 1,
@@ -40,12 +45,14 @@ export function abilityCredit(
       "repair",
       "medic",
       "acolyte",
+      "ironrooster",
       "wolf",
       "adept",
       "shark",
     ].includes(p.defId)
   )
     return 0;
+  if (p.defId === "birdrider") return 1.2 / (8 - p.star); // Discount interruption; no mana or skill-power gain.
   const passive = ["cavalry", "turtle", "tiger", "blastbug"].includes(p.defId);
   const initial = Math.min(
     100,
@@ -58,6 +65,26 @@ export function abilityCredit(
   utility +=
     (CONTROL_SECONDS[p.defId] ?? 0) * (skill.radius > 0 ? 1.8 : 1) * 0.035;
   switch (p.defId) {
+    case "swordthrall":
+      // Three pulses on two targets; do not assume six perfectly packed hits.
+      attacks =
+        (BLADE_STORM.damage[p.star - 1] * 3 * 2) /
+        (u.attack * 2 ** (p.star - 1));
+      utility += 0.08;
+      break;
+    case "axethrall":
+      // Historical flat 300/500/700 progression, not per-star doubling.
+      attacks = AXE_THROW.damage[p.star - 1] / (u.attack * 2 ** (p.star - 1));
+      break;
+    case "ironape":
+      attacks = (250 * 1.5 * 0.75) / u.attack; // Nearby targets, with an interruption allowance.
+      break;
+    case "specialist":
+      attacks = (300 / u.attack) * 0.75; // Aiming may be interrupted or lose its target.
+      break;
+    case "irondog":
+      attacks = (70 * 2 * 1.5) / u.attack; // Two pulses on 1.5 nearby targets; allow interruption.
+      break;
     case "motorcycle":
       attacks = (100 * 2) / u.attack; // Credit two of three shots; allow interruption.
       break;
@@ -147,7 +174,7 @@ export function pieceStrength(p: Piece): number {
       ((u.hp * scale + gear.hp) * (u.attack * scale + gear.attack)) /
         Math.max(1, u.interval * (1 - gear.haste)),
     ) *
-      (1 + (u.armor + gear.armor) * 0.025) *
+      (1 + (unitArmor(u, p.star) + gear.armor) * 0.025) *
       (p.defId === "phoenix" && p.star >= 2 ? 1.12 : 1) *
       (1 + abilityCredit(p, gear)) +
     companion
@@ -169,7 +196,7 @@ export function frontlineFactor(
       gear = equipmentStats(p.items);
     const durability =
       (u.hp * 2 ** (p.star - 1) + gear.hp) *
-      (1 + Math.max(0, u.armor + gear.armor) * 0.06);
+      (1 + Math.max(0, unitArmor(u, p.star) + gear.armor) * 0.06);
     const assassin = u.traits.includes("刺杀");
     // Bomber is deliberately placed on the front row despite its range of two.
     const frontRole =
@@ -243,9 +270,14 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
     ? pieces
         .filter(
           (p) =>
-            !["acolyte", "cavalry", "turtle", "tiger", "blastbug"].includes(
-              p.defId,
-            ),
+            ![
+              "acolyte",
+              "cavalry",
+              "turtle",
+              "tiger",
+              "blastbug",
+              "birdrider",
+            ].includes(p.defId),
         )
         .sort((a, b) => pieceStrength(b) - pieceStrength(a))
         .slice(0, 2)
@@ -256,12 +288,17 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   const flyingShare =
     pieces.filter((p) => UNIT[p.defId].flying).length /
     Math.max(1, pieces.length);
+  const physicalShare = pieces.length
+    ? pieces.filter((p) => !UNIT[p.defId].traits.includes("陆行者")).length /
+      pieces.length
+    : 0;
   const teamBonus = active.reduce(
     (n, s) =>
       n +
       (s.bonus.evasion ?? 0) * flyingShare * 0.3 +
       (s.bonus.seaMana ?? 0) * flyingShare * 0.0025 +
       (s.bonus.siege ?? 0) * 0.2 +
+      (s.bonus.enemyArmor ?? 0) * 0.012 * physicalShare +
       (s.bonus.reflection ?? 0) * 0.002 +
       ((s.bonus.groundBonus ?? 0) * 0.35 * s.count) /
         Math.max(1, pieces.length) +
@@ -275,18 +312,48 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
       UNIT[p.defId].traits.filter((t) => profile.traits.includes(t)).length * 8,
     0,
   );
+  const coordinator = pieces
+    .filter((p) => p.defId === "ironrooster")
+    .sort((a, b) => b.star - a.star)[0];
+  const coordination = coordinator
+    ? pieces
+        .map(pieceStrength)
+        .sort((a, b) => b - a)
+        .slice(0, 3)
+        .reduce((n, power) => n + power, 0) *
+      Math.min(
+        0.18,
+        (0.05 + coordinator.star * 0.1) * 0.3 +
+          (1 + coordinator.star * 2) * 0.012,
+      )
+    : 0;
+  const armorRegen = active.find((s) => s.trait === "装甲")?.bonus.regen ?? 0;
+  const sustain = pieces.reduce((value, p) => {
+    if (!UNIT[p.defId].traits.includes("装甲")) return value;
+    const hp =
+      UNIT[p.defId].hp * 2 ** (p.star - 1) + equipmentStats(p.items).hp;
+    // Credit at most six damaged seconds, capped at 20% of body value.
+    return (
+      value + pieceStrength(p) * Math.min(0.2, ((armorRegen * 24) / hp) * 0.5)
+    );
+  }, 0);
   const mixed = frontlineFactor(
     pieces,
     active.some((s) => s.active && s.bonus.jump),
   );
   return (
-    (base * (1 + bonus + teamBonus) + support + energySupport + preferred) *
+    (base * (1 + bonus + teamBonus) +
+      support +
+      energySupport +
+      coordination +
+      sustain +
+      preferred) *
     mixed
   );
 }
 /** Bounded combination search; never duplicates pieces or exceeds population. */
 function candidateLineups(p: Player, difficulty: Difficulty): Piece[][] {
-  const profile = AI_PROFILES[p.id],
+  const profile = profileFor(p),
     all = [...p.pieces].sort((a, b) => a.uid - b.uid),
     size = Math.min(p.level, all.length),
     width = DIFFICULTIES[difficulty].beam;
@@ -441,7 +508,7 @@ export function tacticalOpponent(g: Game, p: Player): Piece[] {
 export function tacticalScore(
   pieces: Piece[],
   opponent: Piece[],
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): number {
   const battle = simulateOutcome(pieces, opponent, version),
     last = battle.final;
@@ -492,7 +559,7 @@ export function savingsTarget(g: Game, p: Player): number {
   if (g.round <= 3) return 0;
   const base = Math.max(
     0,
-    (g.round < 8 ? 10 : g.round < 15 ? 20 : 30) + AI_PROFILES[p.id].reserve,
+    (g.round < 8 ? 10 : g.round < 15 ? 20 : 30) + profileFor(p).reserve,
   );
   if (p.hp <= 55) return Math.min(10, base);
   return p.streak <= -3 ? Math.max(0, base - 10) : base;
@@ -502,10 +569,10 @@ export function savingsTarget(g: Game, p: Player): number {
 export function reservePriority(
   p: Player,
   piece: Piece,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): number {
   const unit = UNIT[piece.defId],
-    profile = AI_PROFILES[p.id];
+    profile = profileFor(p);
   const partners = p.pieces.filter(
     (other) =>
       other.uid !== piece.uid &&
@@ -537,7 +604,7 @@ interface BotActions {
 }
 export function prepareBot(g: Game, p: Player, actions: BotActions) {
   if (g.phase !== "prepare" || p.hp <= 0 || p.id === 0) return;
-  const profile = AI_PROFILES[p.id],
+  const profile = profileFor(p),
     settings = DIFFICULTIES[g.difficulty],
     reserve = savingsTarget(g, p);
   const desire = (id: string) => {

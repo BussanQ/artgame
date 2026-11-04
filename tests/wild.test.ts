@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -314,7 +315,7 @@ describe("猛禽与陆行者", () => {
       kind: "replay",
       left,
       right,
-      version: "metamorph",
+      version: CURRENT_COMBAT_VERSION,
     });
     if (result.kind !== "replay") throw new Error("replay");
     expect(result.battle).toEqual(b);
@@ -332,7 +333,7 @@ describe("猛禽与陆行者", () => {
 describe("0.14 存档增量迁移", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "保留阵容与回放并补齐新池", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       for (const player of g.players)
         for (let i = 0; i < player.shop.length; i++)
           if (WILD_ADDITIONS.includes(player.shop[i] ?? ""))

@@ -52,8 +52,9 @@
       "publishedAt": null,
       "kind": "community",
       "status": "partial-text-reviewed",
-      "accessedAt": "2026-11-03",
-      "targetVersion": null
+      "accessedAt": "2026-11-04",
+      "targetVersion": null,
+      "note": "本轮核对铁狗分段控制和技能空窗描述：目标死亡后剩余控制可作用于新目标，段间可能施放瞬发技能。没有完整技能名称/分星伤害，不作精确官方参数。"
     },
     {
       "id": "S06",
@@ -182,9 +183,11 @@
       "url": "https://www.taptap.cn/moment/15217028512090333",
       "publishedAt": null,
       "kind": "community-guide",
-      "status": "search-excerpt-reviewed",
-      "accessedAt": "2026-11-03",
-      "targetVersion": "Historical article, not a complete verified ruleset"
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "Historical article, not a complete verified ruleset",
+      "note": "本轮核对铁狗控制型装甲前排的定位，与S04属性表交叉引用；不据此推断具体伤害、范围或控制时长。 0.25直读正文确认特种兵7射程、后排、物理/法术装备与狙击核心定位；页面显示2019-05-22修改，并非已核实发布日期。",
+      "modifiedAt": "2019-05-22"
     },
     {
       "id": "S19",
@@ -357,6 +360,105 @@
       "accessedAt": "2026-11-03",
       "targetVersion": null,
       "note": "英雄互娱账号文章，在装备比较中给出摩托骑兵三连发和三星每发400；10秒指代可能是装备，不独立用于摩托冷却依据。"
+    },
+    {
+      "id": "S35",
+      "title": "更新公告：5月9日早8点停服维护",
+      "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
+      "publishedAt": "2019-05-09",
+      "kind": "announcement-index",
+      "status": "previous-search-excerpt-reviewed-open-failed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "2019-05-09",
+      "note": "前序检索摘要提到特种兵射程4改7；直接打开失败，本轮复查检索未命中。作者身份未独立核实，不作为具体技能参数或官方全文已恢复的证据；当前射程另由S04/S18支持。"
+    },
+    {
+      "id": "S36",
+      "title": "《赤潮自走棋》新版本步兵狙击流攻略",
+      "url": "https://shouyou.3dmgame.com/gl/128572.html",
+      "publishedAt": "2019-05-21",
+      "kind": "media-guide",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019",
+      "note": "作者我想静静。正文支持特种兵3费、射程加强、远程单体输出定位；不提供完整技能数值。相关图片请求失败，未声称恢复图片内字段。"
+    },
+    {
+      "id": "S37",
+      "title": "赤潮自走棋 新版本最强性价比兵种以及阵容",
+      "url": "https://news.17173.com/z/zzq/content/05152019/155428285.shtml?_platform=PC",
+      "publishedAt": "2019-05-15",
+      "kind": "community-reprint",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019",
+      "note": "作者墨，来源TapTap。按原文正文而非页面AI摘要核对：特种兵3费、远程输出与控制，建议回能装备；不提供控制时长、技能名和伤害。"
+    },
+    {
+      "id": "S38",
+      "title": "赤潮自走棋 更新公告 5月30日早8点停服维护",
+      "url": "https://news.17173.com/z/zzq/content/05302019/085535417.shtml?_platform=PC",
+      "publishedAt": "2019-05-30",
+      "kind": "publisher-reprint",
+      "status": "html-text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "2019-05-30",
+      "note": "页面作者和来源均标官方；Web直读超时后，用公开HTTP读取HTML成功核对正文。鸟骑兵振翅改信仰之箭，6/5/4次普攻后的下一箭短蓄力、300%暴击；攻击区间及1.5秒间隔可提取。无精确蓄力时长、闪避和取消规则；同时包含摩托焦油弹等改动，不代表当前全部配置为同版本。"
+    },
+    {
+      "id": "S39",
+      "title": "May 16 2019 update: armored formation thresholds",
+      "url": "https://news.17173.com/z/zzq/content/05162019/161225352.shtml?_platform=PC",
+      "publishedAt": "2019-05-16",
+      "kind": "publisher-reprint",
+      "status": "search-excerpt-reviewed-direct-fetch-failed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "2019-05-16",
+      "note": "Search body attributes author/source to official and reports armor 3/5 to 2/4. Direct web open failed; HTTP fallback returned 567. Cross-checked thresholds with S18. Not used as proof of regeneration values."
+    },
+    {
+      "id": "S40",
+      "title": "《赤潮自走棋》5月9日更细了什么 5月9日更新内容简报",
+      "url": "https://www.9game.cn/news/3107101.html",
+      "publishedAt": "2019-05-09",
+      "kind": "media-guide",
+      "status": "html-text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019",
+      "note": "网页实际为六刺客阵容介绍。Web搜索摘要与公开HTTP读取的HTML正文核对一致，页面时间2019-05-09 16:27。支持铁鸡4费、装甲刺客及提高队友攻击/防御的定位；不提供具体增益幅度、范围或持续时间，不视作官方完整更新公告。"
+    },
+    {
+      "id": "S41",
+      "title": "赤潮自走棋斧奴技能介绍 斧奴适合的阵容",
+      "url": "https://www.8090.com/news/gonglue/article_328648.html",
+      "publishedAt": "2019-05-10",
+      "kind": "media-guide-with-client-screenshot",
+      "status": "html-and-client-screenshot-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019; client build unknown",
+      "note": "正文与客户端截图均支持1费、傀儡/刺杀、飞斧单体技能伤害300/500/700、短暂眩晕与5秒冷却。作者小艾，非官方配置；未给眩晕时长、投掷距离、伤害类型或初始能量。正文刺杀3/6档疑似重复数值，不据此改动羁绊。Web直读失败，使用此前公开HTTP读取的GB编码HTML和截图核对。"
+    },
+    {
+      "id": "S42",
+      "title": "《赤潮自走棋》523更新了哪些内容 523更新内容一览",
+      "url": "https://www.9game.cn/cczzq/3173740.html",
+      "publishedAt": "2019-05-27",
+      "kind": "media-guide-with-client-screenshot",
+      "status": "html-and-client-screenshot-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019; client build unknown",
+      "note": "页面署名互联网、来源手心游戏。公开HTTP读取HTML和客户端截图核对：2费傀儡先锋、狂舞花绽、6次50/100/150技能伤害、6.5秒持续、12秒冷却、期间免疫技能伤害；正文描述可移动。不是官方客户端配置，范围与初始能量未知。"
+    },
+    {
+      "id": "S43",
+      "title": "赤潮自走棋全英雄评测（第3期）",
+      "url": "https://www.taptap.cn/moment/15220462338441888",
+      "publishedAt": "2019-05-28",
+      "kind": "primary-player-review",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019",
+      "note": "User26157272的同期评测，剑奴条目支持大招可移动和免控。属于玩家观察，不是官方控制分类定义；具体控制覆盖范围仍作为本地适配。"
     }
   ]
 }

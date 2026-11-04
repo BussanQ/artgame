@@ -2,6 +2,36 @@ import type { UnitDef, Trait } from "../engine/types";
 // Names are research references. ALL combat stats, trait assignments and skills below are prototype balance, not recovered game data.
 export const UNITS: UnitDef[] = [
   {
+    id: "swordthrall",
+    name: "剑奴",
+    cost: 2,
+    traits: ["傀儡", "先锋"],
+    hp: 600,
+    attack: 79,
+    armor: 5,
+    range: 1,
+    interval: 5,
+    initialMana: 25,
+    skill: "狂舞花绽",
+    color: "#a9eadc",
+    glyph: "⚔",
+  },
+  {
+    id: "axethrall",
+    name: "斧奴",
+    cost: 1,
+    traits: ["傀儡", "刺杀"],
+    hp: 550,
+    attack: 97,
+    armor: 5,
+    range: 1,
+    interval: 7,
+    initialMana: 0,
+    skill: "飞斧",
+    color: "#79e3cb",
+    glyph: "⚒",
+  },
+  {
     id: "infantry",
     name: "神枪手",
     cost: 1,
@@ -796,6 +826,88 @@ UNITS.push({
   color: "#ffc173",
   glyph: "骑",
 });
+export const IRONDOG_ADDITIONS = ["irondog"];
+UNITS.push({
+  id: "irondog",
+  name: "铁狗",
+  cost: 1,
+  traits: ["装甲", "爆破"],
+  hp: 700,
+  attack: 36,
+  armor: 5,
+  armorPerStar: 2,
+  range: 1,
+  interval: 4,
+  initialMana: 25,
+  skill: "震荡压制",
+  color: "#e8be7c",
+  glyph: "獒",
+});
+export const SPECIALIST_ADDITIONS = ["specialist"];
+UNITS.push({
+  id: "specialist",
+  name: "特种兵",
+  cost: 3,
+  traits: ["步兵", "狙击"],
+  hp: 450,
+  attack: 112,
+  armor: 5,
+  range: 7,
+  interval: 7,
+  initialMana: 25,
+  skill: "定点狙击",
+  color: "#a6e8ef",
+  glyph: "准",
+});
+export const BIRDRIDER_ADDITIONS = ["birdrider"];
+UNITS.push({
+  id: "birdrider",
+  name: "鸟骑兵",
+  cost: 1,
+  traits: ["骑兵", "狙击"],
+  hp: 400,
+  attack: 54,
+  armor: 5,
+  range: 4,
+  interval: 6,
+  initialMana: 0,
+  skill: "信仰之箭",
+  color: "#bce6c5",
+  glyph: "羽",
+});
+export const IRONAPE_ADDITIONS = ["ironape"];
+UNITS.push({
+  id: "ironape",
+  name: "铁猿",
+  cost: 2,
+  traits: ["装甲", "爆破"],
+  hp: 800,
+  attack: 69,
+  armor: 6,
+  armorPerStar: 2,
+  range: 1,
+  interval: 7,
+  initialMana: 25,
+  skill: "重装震爆",
+  color: "#efb46c",
+  glyph: "猿",
+});
+export const IRONROOSTER_ADDITIONS = ["ironrooster"];
+UNITS.push({
+  id: "ironrooster",
+  name: "铁鸡",
+  cost: 4,
+  traits: ["装甲", "刺杀"],
+  hp: 750,
+  attack: 100,
+  armor: 5,
+  range: 3,
+  interval: 5,
+  initialMana: 50,
+  skill: "战术协同",
+  color: "#efcb85",
+  glyph: "鸡",
+});
 export const UNIT = Object.fromEntries(UNITS.map((u) => [u.id, u])) as Record<
   string,
   UnitDef
@@ -829,7 +941,7 @@ export const TRAITS: Record<Trait, { threshold: number; description: string }> =
     异能: { threshold: 2, description: "敌方能量获取降低 25%" },
   };
 export const RULES = {
-  version: "singleplayer-0.22",
+  version: "singleplayer-0.33",
   bench: 8,
   shop: 5,
   reroll: 2,
@@ -853,3 +965,7 @@ export const ODDS = [
   [10, 19, 31, 32, 8],
   [5, 15, 25, 40, 15],
 ]; // All shop odds provisional; index = level - 1.
+
+export const AXETHRALL_ADDITIONS = ["axethrall"];
+
+export const SWORDTHRALL_ADDITIONS = ["swordthrall"];

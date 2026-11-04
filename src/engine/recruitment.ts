@@ -1,3 +1,4 @@
+import { isRecruitable } from "./rotation";
 import { RULES, UNIT } from "../data/units";
 import { isInsect, mergePieces } from "./progression";
 import type { Game, Piece, Player } from "./types";
@@ -15,7 +16,7 @@ export interface PurchasePreview {
 
 /** Read-only projection shared by the shop and the actual purchase transaction. */
 export function previewPurchase(
-  game: Pick<Game, "phase" | "nextUid" | "combatVersion">,
+  game: Pick<Game, "phase" | "nextUid" | "combatVersion" | "bannedSeries">,
   player: Player,
   index: number,
 ): PurchasePreview {
@@ -34,6 +35,10 @@ export function previewPurchase(
     interestAfter: interest(player.gold - cost),
   };
   if (!id || !UNIT[id]) return result;
+  if (!isRecruitable(game, id)) {
+    result.reason = "本局已禁用该系列";
+    return result;
+  }
   const after = structuredClone(player);
   after.pieces.push({
     uid: game.nextUid,

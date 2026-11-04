@@ -1,11 +1,11 @@
 import { UNIT } from "../data/units";
 import { ITEM } from "../data/items";
-import { AI_PROFILES, DIFFICULTIES } from "../data/ai-profiles";
+import { profileFor, DIFFICULTIES } from "../data/ai-profiles";
 import { synergies } from "../engine/synergies";
 import type { Game } from "../engine/types";
 export function scoutingMarkup(g: Game, id: number) {
   const p = g.players[id],
-    profile = AI_PROFILES[id],
+    profile = profileFor(p),
     onboard = p.pieces.filter((x) => x.position !== null),
     traits = synergies(p.pieces, g.combatVersion);
   return `<div class="modal-backdrop"><section class="modal scout-modal" role="dialog" aria-modal="true" aria-label="对手侦察"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">SCOUTING · ${DIFFICULTIES[g.difficulty].name}</span><h2>${p.name} <small>${p.hp > 0 ? "仍在战场" : "已淘汰"}</small></h2><div class="scout-stats"><span>生命 <b>${p.hp}</b></span><span>金币 <b>${p.gold}</b></span><span>等级 <b>${p.level}</b></span><span>部署 <b>${onboard.length}/${p.level}</b></span></div><p><b>${profile.name}</b> · ${profile.description}</p><p class="micro">当前部署视角 · AI 会在下次开战前调整阵容，侦察不会触发购买或刷新。</p><div class="scout-board">${Array.from(

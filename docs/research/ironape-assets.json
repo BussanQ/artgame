@@ -1,0 +1,39 @@
+{
+  "status": "generated",
+  "generatedAt": "2026-11-04",
+  "method": "built-in image_gen",
+  "generationAttempts": [
+    {
+      "attempt": 1,
+      "result": "network error: error sending request"
+    },
+    {
+      "attempt": 2,
+      "result": "generated"
+    }
+  ],
+  "assets": [
+    {
+      "id": "ironape",
+      "name": "铁猿",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite for a dark sci-fi auto chess battlefield. Subject: ONE heavy mechanical gorilla called Iron Ape, squat armored primate silhouette, enormous paired hydraulic forearms and broad metal fists, short powerful legs, low gorilla head between shoulder plates. Blue gunmetal and weathered bronze armor, a small amber chest reactor and amber eyes, recessed blast vents on fists. Three-quarter front view facing slightly right, semi-realistic painted 3D strategy-game miniature, crisp readable silhouette at small size. Neutral combat-ready knuckle stance, both arms visible and separate from torso, full character including feet entirely inside frame with margin. Lighting from upper left. Actual transparent background, no scenery, no floor, no platform, no drop shadow, no lettering, no UI, no other units. Design an original mechanical gorilla rather than copying an existing model.",
+      "path": "public/assets/units/ironape.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-ec517441-6f9d-4d44-82aa-1e1ba9cfc3e4.png",
+      "width": 1312,
+      "height": 1199,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 541951,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "sha256": "1d075dac340b37bfdaefb94f2a7e7ec0439089154256392513b23168c04c3c3d"
+    }
+  ]
+}

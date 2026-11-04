@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-04",
+  "unit": "铁鸡",
+  "sources": [
+    "S04",
+    "S18",
+    "S40"
+  ],
+  "fields": {
+    "S04": {
+      "sourceImage": "S04-1",
+      "row": 12,
+      "cost": 4,
+      "traits": [
+        "装甲",
+        "刺杀"
+      ],
+      "hp": 750,
+      "attackMin": 90,
+      "attackMax": 110,
+      "attackIntervalSeconds": 1.2,
+      "armor": 5,
+      "range": 3,
+      "skillCooldownSeconds": 13
+    },
+    "S18": {
+      "role": "Armored member of assassin composition"
+    },
+    "S40": {
+      "role": "Buff allies attack and defense",
+      "cost": 4
+    }
+  },
+  "localAdaptations": {
+    "skillName": "战术协同",
+    "initialMana": 50,
+    "attack": 100,
+    "attackGrowth": "double per star",
+    "intervalTicks": 5,
+    "intervalSeconds": 1.25,
+    "attackBonusByStar": [
+      0.15,
+      0.25,
+      0.35
+    ],
+    "armorBonusByStar": [
+      3,
+      5,
+      7
+    ],
+    "durationSeconds": 6,
+    "area": "Manhattan radius 3 around caster at instant of cast",
+    "requiresVisibleEnemyInRange": true,
+    "affectsExistingSummons": true,
+    "skillPowerScales": false,
+    "stacking": "maximum per statistic; each source expires independently",
+    "deathOrLeavingRangeCancels": false,
+    "enemySidePauses": true,
+    "phoenixEggAndUndyingClear": true
+  },
+  "limitations": "No recovered exact skill name, percentages, radius, duration, initial energy or stacking rules. Different-date sources are not a unified historical client version."
+}

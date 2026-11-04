@@ -1,4 +1,6 @@
+import { bladeStormActive, startBladeStorm } from "./swordthrall";
 import { flameCells, ignite, silence } from "./infantry-skills";
+import { commandBonuses, rallyAllies } from "./ironrooster";
 import { isPhoenixEgg, enterPhoenixEgg, phoenixFlameCells } from "./phoenix";
 import {
   skillReady,
@@ -8,7 +10,7 @@ import {
 } from "./triggers";
 import { isUndying, enterUndying } from "./immortality";
 import { callWolfPack, callRetinue } from "./summons";
-import { SKILLS, HAWK_METAMORPH } from "../data/skills";
+import { SKILLS, HAWK_METAMORPH, AXE_THROW } from "../data/skills";
 import { UNIT } from "../data/units";
 import type { CombatEffect, CombatEvent, DamageType, Fighter } from "./types";
 
@@ -25,7 +27,11 @@ export const attackInterval = (f: Fighter, tick: number) =>
   );
 export const combatAttack = (f: Fighter, tick: number) =>
   f.attack *
-  (f.attackBoost && f.attackBoost.until > tick ? 1 + f.attackBoost.ratio : 1);
+  (1 +
+    Math.max(
+      f.attackBoost && f.attackBoost.until > tick ? f.attackBoost.ratio : 0,
+      commandBonuses(f, tick).attack,
+    ));
 /** Local deterministic random sequence. Does not consume campaign RNG or alter old replays. */
 function dodges(source: Fighter, target: Fighter, tick: number) {
   const air = target.air;
@@ -81,6 +87,7 @@ export function damage(
   deathBurst = false,
   reflected = false,
   periodic = false,
+  empowered = false,
 ) {
   if (
     (source.hp <= 0 &&
@@ -115,7 +122,7 @@ export function damage(
       );
     }
   };
-  if (isUndying(target)) {
+  if (isUndying(target) || (skill && bladeStormActive(target, ctx.tick))) {
     ctx.events.push({
       attacker: source.uid,
       target: target.uid,
@@ -125,6 +132,7 @@ export function damage(
       skill,
       primary,
       ranged: source.range > 1,
+      ...(empowered ? { empowered: true } : {}),
       ...(!skill && source.hawkForm?.active
         ? { strike: 3 - (source.combo?.remaining ?? 2) }
         : {}),
@@ -147,6 +155,7 @@ export function damage(
       skill: false,
       primary,
       ranged: source.range > 1,
+      ...(empowered ? { empowered: true } : {}),
       ...(!skill && source.hawkForm?.active
         ? { strike: 3 - (source.combo?.remaining ?? 2) }
         : {}),
@@ -191,7 +200,10 @@ export function damage(
   const amount = Math.min(target.hp, total - absorbed);
   target.hp -= amount;
   source.damage += amount;
-  if (target.hp === 0) interruptAirSkill(ctx, target);
+  if (target.hp === 0) {
+    delete target.bladeStorm;
+    interruptAirSkill(ctx, target);
+  }
   if (
     !reflected &&
     amount > 0 &&
@@ -219,6 +231,7 @@ export function damage(
     skill,
     primary,
     ranged: source.range > 1,
+    ...(empowered ? { empowered: true } : {}),
     ...(!skill && source.hawkForm?.active
       ? { strike: 3 - (source.combo?.remaining ?? 2) }
       : {}),
@@ -349,7 +362,12 @@ function stun(
   target: Fighter,
   ticks: number,
 ) {
-  if (target.hp <= 0 || isPhoenixEgg(target)) return;
+  if (
+    target.hp <= 0 ||
+    isPhoenixEgg(target) ||
+    bladeStormActive(target, ctx.tick)
+  )
+    return;
   interruptAirSkill(ctx, target);
   target.stunUntil = Math.max(target.stunUntil, ctx.tick + ticks + 1);
   effect(ctx, source, target, "stun", ticks / 4, "眩晕");
@@ -412,18 +430,58 @@ export function lineTargets(
     .sort((a, b) => distance(source, a) - distance(source, b) || a.uid - b.uid);
 }
 function interruptAirSkill(ctx: CombatContext, source: Fighter) {
-  if (!source.air?.cast && !source.windup && !source.combo) return;
+  if (
+    !source.air?.cast &&
+    !source.windup &&
+    !source.combo &&
+    !source.bird?.draw
+  )
+    return;
+  const wasDrawing = !!source.bird?.draw;
+  if (source.bird) delete source.bird.draw;
   if (source.air) delete source.air.cast;
   delete source.windup;
   delete source.combo;
-  effect(ctx, source, source, "silence", 0, "施法中断");
+  effect(
+    ctx,
+    source,
+    source,
+    "silence",
+    0,
+    wasDrawing ? "蓄力中断" : "施法中断",
+  );
 }
 /** Resolve telegraphed spells before acting; stuns, charm or death cancel the remaining channel. */
 export function advanceAirSkills(ctx: CombatContext, source: Fighter): boolean {
   const pending = source.air?.cast;
   if (!pending) return false;
-  if (source.hp <= 0 || source.charm || source.stunUntil > ctx.tick) {
+  if (
+    source.hp <= 0 ||
+    source.charm ||
+    source.stunUntil > ctx.tick ||
+    (["irondog", "specialist", "ironape"].includes(pending.kind) &&
+      (source.silenceUntil ?? 0) > ctx.tick)
+  ) {
     interruptAirSkill(ctx, source);
+    return true;
+  }
+  if (pending.kind === "specialist") {
+    const target = attackTargets(source, ctx.fighters, ctx.tick).find(
+      (f) => f.uid === pending.target && distance(source, f) <= source.range,
+    );
+    if (!target) {
+      interruptAirSkill(ctx, source);
+      return true;
+    }
+    // Track the locked unit, never a substitute or a now-concealed location.
+    pending.to = { x: target.x, y: target.y };
+    if (pending.next > ctx.tick) return true;
+    effect(ctx, source, target, "pulse", 0, "定点狙击");
+    damage(ctx, source, target, pending.damage, "magic", true, true);
+    if (source.air?.cast !== pending) return true;
+    if (target.hp > 0 && !isUndying(target) && !isPhoenixEgg(target))
+      stun(ctx, source, target, 3);
+    delete source.air!.cast;
     return true;
   }
   if (pending.next > ctx.tick) return true;
@@ -442,6 +500,41 @@ export function advanceAirSkills(ctx: CombatContext, source: Fighter): boolean {
     if (source.air?.cast !== pending) return true; // Reflection may kill the rider.
     if (--pending.remaining === 0) delete source.air!.cast;
     else pending.next += 2;
+    return true;
+  }
+  if (pending.kind === "ironape") {
+    // A committed area slam follows the caster, not the original target.
+    // Resolve each damage packet normally; lethal reflection stops further hits.
+    const targets = ctx.fighters.filter(
+      (f) => f.hp > 0 && f.side !== source.side && distance(source, f) <= 2,
+    );
+    effect(ctx, source, source, "pulse", 2, "重装震爆");
+    for (const target of targets) {
+      damage(ctx, source, target, pending.damage, "magic", true, true);
+      if (source.air?.cast !== pending) return true;
+    }
+    delete source.air!.cast;
+    return true;
+  }
+  if (pending.kind === "irondog") {
+    if ((source.silenceUntil ?? 0) > ctx.tick) {
+      interruptAirSkill(ctx, source);
+      return true;
+    }
+    // Area pulses hit current adjacent enemies, including concealed targets.
+    // A dead victim never consumes later pulses on behalf of a new arrival.
+    const targets = ctx.fighters.filter(
+      (f) => f.hp > 0 && f.side !== source.side && distance(source, f) <= 1,
+    );
+    effect(ctx, source, source, "pulse", 1, "震荡压制");
+    for (const target of targets) {
+      damage(ctx, source, target, pending.damage, "magic", true, true);
+      if (source.air?.cast !== pending) return true; // Lethal reflection stops the channel.
+      if (target.hp > 0 && !isUndying(target) && !isPhoenixEgg(target))
+        stun(ctx, source, target, 1);
+    }
+    if (--pending.remaining === 0) delete source.air!.cast;
+    else pending.next += 3;
     return true;
   }
   if (pending.kind === "medic") {
@@ -547,8 +640,34 @@ export function castSkill(
     return false;
   if ((source.silenceUntil ?? 0) > ctx.tick && usesEnergy(source)) return false;
   if (
-    source.defId === "motorcycle" &&
+    ["motorcycle", "irondog", "specialist", "ironape", "ironrooster"].includes(
+      source.defId,
+    ) &&
     (!source.air ||
+      (["irondog", "specialist", "ironape", "ironrooster"].includes(
+        source.defId,
+      ) &&
+        source.stunUntil > ctx.tick) ||
+      (source.skillReadyAt ?? 0) > ctx.tick ||
+      distance(source, target) > source.range ||
+      !attackTargets(source, ctx.fighters, ctx.tick).some(
+        (f) => f.uid === target.uid,
+      ))
+  )
+    return false;
+  if (
+    source.defId === "axethrall" &&
+    (source.stunUntil > ctx.tick ||
+      (source.skillReadyAt ?? 0) > ctx.tick ||
+      distance(source, target) > AXE_THROW.range ||
+      !attackTargets(source, ctx.fighters, ctx.tick).some(
+        (f) => f.uid === target.uid,
+      ))
+  )
+    return false;
+  if (
+    source.defId === "swordthrall" &&
+    (source.stunUntil > ctx.tick ||
       (source.skillReadyAt ?? 0) > ctx.tick ||
       distance(source, target) > source.range ||
       !attackTargets(source, ctx.fighters, ctx.tick).some(
@@ -607,6 +726,7 @@ export function castSkill(
           !f.summon &&
           !f.charm &&
           !isPhoenixEgg(f) &&
+          !bladeStormActive(f, ctx.tick) &&
           distance(source, f) <= 3,
       )
       .sort((a, b) => b.attack - a.attack || a.uid - b.uid)[0];
@@ -637,6 +757,7 @@ export function castSkill(
     if (dashTo(ctx, source, farthest)) target = farthest;
     else if (distance(source, target) > source.range) return false;
   }
+  if (source.defId === "ironrooster") target = source;
   source.mana = 0;
   if (source.signature) {
     source.signature.casts++;
@@ -658,6 +779,61 @@ export function castSkill(
       penetration,
     );
   switch (source.defId) {
+    case "swordthrall":
+      startBladeStorm(ctx, source);
+      break;
+    case "axethrall":
+      source.skillReadyAt = ctx.tick + AXE_THROW.cooldown;
+      effect(ctx, source, target, "pulse", 0, "飞斧");
+      damage(
+        ctx,
+        source,
+        target,
+        AXE_THROW.damage[source.star - 1] * source.skillPower,
+        "magic",
+        true,
+        true,
+      );
+      if (target.hp > 0 && !isUndying(target) && !isPhoenixEgg(target))
+        stun(ctx, source, target, AXE_THROW.stunTicks);
+      break;
+    case "ironrooster":
+      rallyAllies(ctx, source);
+      break;
+    case "ironape":
+      source.skillReadyAt = ctx.tick + 40;
+      source.air!.cast = {
+        kind: "ironape",
+        next: ctx.tick + 3,
+        remaining: 1,
+        damage: 250 * 2 ** (source.star - 1) * source.skillPower,
+        from: { x: source.x, y: source.y },
+        to: { x: source.x, y: source.y },
+      };
+      break;
+    case "specialist":
+      source.skillReadyAt = ctx.tick + 40;
+      source.air!.cast = {
+        kind: "specialist",
+        target: target.uid,
+        next: ctx.tick + 3,
+        remaining: 1,
+        damage: 300 * 2 ** (source.star - 1) * source.skillPower,
+        from: { x: source.x, y: source.y },
+        to: { x: target.x, y: target.y },
+      };
+      break;
+    case "irondog":
+      source.skillReadyAt = ctx.tick + 40;
+      source.air!.cast = {
+        kind: "irondog",
+        next: ctx.tick + 2,
+        remaining: 3,
+        damage: 70 * 2 ** (source.star - 1) * source.skillPower,
+        from: { x: source.x, y: source.y },
+        to: { x: source.x, y: source.y },
+      };
+      break;
     case "motorcycle":
       source.skillReadyAt = ctx.tick + 40;
       source.air!.cast = {
@@ -764,7 +940,7 @@ export function castSkill(
       shield(ctx, source, 0.2, 16);
       for (const enemy of enemies().filter((f) => distance(source, f) <= 1)) {
         hit(enemy, enemy.uid === target.uid);
-        if (enemy.hp <= 0) continue;
+        if (enemy.hp <= 0 || bladeStormActive(enemy, ctx.tick)) continue;
         enemy.slow = {
           until: Math.max(enemy.slow?.until ?? 0, ctx.tick + 16),
           multiplier: 1.4,
@@ -1062,7 +1238,7 @@ export function castSkill(
       const targets = enemies().filter((f) => distance(source, f) <= s.radius);
       for (const f of targets) {
         hit(f, f.uid === target.uid);
-        if (f.hp <= 0) continue;
+        if (f.hp <= 0 || bladeStormActive(f, ctx.tick)) continue;
         const dx = f.x - source.x,
           dy = f.y - source.y;
         const next = {

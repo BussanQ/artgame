@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../engine/types";
 import type { DamageType, CombatVersion } from "../engine/types";
 
 /** Independent single-player balance; these are not recovered original skill values. */
@@ -29,7 +30,78 @@ export const HAWK_METAMORPH = define({
   description:
     "满能量时变为地面形态并恢复至满生命，每场一次，不位移或立即造成技能伤害。此后每次普攻变为三段爪击，每段造成 60% 攻击物伤，后两段相隔 0.25 秒；每段独立计算护盾、闪避、吸血和反伤。控制或阵亡取消余下连击，目标死亡、隐蔽、脱离射程或成为友方也会取消。形态持续到本场结束，不再积累能量；落地后失去飞行闪避与海神回能，仍保留本族对地增伤。回血不受技能强度加成，不复活。",
 });
+export const BLADE_STORM = {
+  radius: 1.5,
+  duration: 26,
+  cooldown: 48,
+  pulseInterval: 4,
+  pulses: 6,
+  damage: [50, 100, 150],
+} as const;
+export const AXE_THROW = {
+  range: 3,
+  cooldown: 20,
+  stunTicks: 2,
+  damage: [300, 500, 700],
+} as const;
 export const SKILLS: Record<string, SkillDef> = {
+  swordthrall: define({
+    name: "狂舞花绽",
+    role: "傀儡先锋 / 移动范围伤害",
+    damageType: "magic",
+    radius: BLADE_STORM.radius,
+    duration: BLADE_STORM.duration,
+    description:
+      "初始能量25。满能量、相邻有可见敌人且冷却结束时旋转双刀，持续6.5秒。每秒对自身周围1.5格圆形范围造成50/100/150法伤，共6次，伤害按施放时技能强度计算。期间自动追击但不能普攻、再次施法或恢复能量；免疫技能伤害、眩晕、沉默、魅惑、攻速减慢与击退，仍受普通攻击（包括真伤普攻）和能量削减影响。清除已有攻速减慢，不获得额外护甲或回血。伤害范围随自身移动，每次重新判定，包含隐蔽及飞行敌人；空放仍消耗次数。冷却12秒从施放时计；阵亡立即结束。",
+  }),
+  axethrall: define({
+    name: "飞斧",
+    role: "近战刺杀 / 单体投掷控制",
+    damageType: "magic",
+    duration: AXE_THROW.stunTicks,
+    description:
+      "初始能量0。满能量、冷却结束且3格内有可见敌人时，向当前最近目标投出灵刃，造成300/500/700法术伤害并眩晕0.5秒。伤害受技能强度加成，冷却5秒；冷却期间可正常普攻、移动和回能。飞斧不增加普通攻击射程，不触发普攻吸血或破甲。眩晕、沉默、魅惑、阵亡或无合法目标时不施放、不扣能量。伤害与控制即时结算，飞行轨迹为表现；残魂免疫伤害和本次控制，化蛋目标不追加眩晕。",
+  }),
+  ironrooster: define({
+    name: "战术协同",
+    role: "远程刺杀 / 群体强化",
+    radius: 3,
+    duration: 24,
+    description:
+      "初始能量50。满能量、3格内有可见敌人且冷却结束时，以自身为中心发出协同脉冲，使3格内存活友军（含自身和已有召唤物）攻击提高15%/25%/35%、临时护甲提高3/5/7，持续6秒。不造成直接伤害，不受技能强度加成；同类攻击或护甲强化取较高值，各来源分别计时，弱效果不会延长强效果。不影响残魂、火种或被魅惑单位；后来进入范围或新召唤者不获得增益，离开范围或施法者阵亡不提前移除。受益者转为敌方时增益暂停，变为残魂或火种时清除。技能冷却13秒；冷却中可普攻回能，眩晕和沉默阻止施放。",
+  }),
+  ironape: define({
+    name: "重装震爆",
+    role: "装甲前排 / 范围爆发",
+    damageType: "magic",
+    radius: 2,
+    description:
+      "初始能量25。满能量、有相邻可见敌人且冷却结束时原地蓄力0.75秒，随后对自身周围曼哈顿2格内全体敌人造成250/500/1000法术伤害，不附带控制。伤害受施法时技能强度加成。命中时重新判定范围，可命中隐蔽或空中敌人；原目标离开不取消，范围内无人仍会空放。蓄力期间不能移动或普攻；眩晕、沉默、魅惑或阵亡会中断，不退能量或冷却。冷却10秒，从施放时计；冷却中可正常攻击回能。护甲随升星为6/8/10。",
+  }),
+  birdrider: define({
+    name: "信仰之箭",
+    role: "骑射 / 周期强化普攻",
+    damageType: "physical",
+    description:
+      "被动：普通攻击累计6/5/4次（一/二/三星）后，下一次攻击蓄力0.5秒，射出造成300%攻击物理伤害的强力箭。计数包含被闪避的攻击，不消耗或积累能量，不受技能强度加成。强力箭仍按普攻计算护甲、闪避、破甲与吸血。蓄力期间不能移动或另行普攻，攻击冷却继续流逝；眩晕、魅惑、阵亡，或目标阵亡、隐蔽、变为友方、离开射程会取消本箭，不退回计数。沉默与封能不影响该被动；魅惑期间的攻击不累计。",
+  }),
+  specialist: define({
+    name: "定点狙击",
+    role: "超远程单体控制",
+    damageType: "magic",
+    duration: 3,
+    description:
+      "初始能量25。满能量且冷却结束时锁定7格内当前可见敌人，瞄准0.75秒后射击，造成300/600/1200法术伤害并眩晕0.75秒。伤害受施法时技能强度加成。瞄准期间不能移动或普攻；眩晕、沉默、魅惑或阵亡会中断，锁定目标阵亡、隐蔽、变为友方或离开射程也会取消，不转火。技能冷却10秒，从开始瞄准计算，取消不返还能量；冷却中仍可移动、普攻和回能。",
+  }),
+  irondog: define({
+    name: "震荡压制",
+    role: "装甲前排 / 分段控制",
+    multiplier: 0,
+    damageType: "magic",
+    radius: 1,
+    description:
+      "初始能量25。满能量且有相邻可见敌人时原地引导3次震荡：0.5秒后首发，此后每0.75秒一次，每次对周围1格全体敌人造成70/140/280法伤并眩晕0.25秒；伤害受施法时技能强度加成。每次重新判定范围，可命中新进入的敌人，空放仍消耗次数。眩晕、沉默、魅惑或阵亡会中断。引导期间不能移动或普攻，冷却中可正常攻击回能；技能冷却10秒，从施放时计。护甲随升星为5/7/9。",
+  }),
   motorcycle: define({
     name: "三连发",
     role: "逐发转火爆发",
@@ -437,18 +509,37 @@ export const SKILLS: Record<string, SkillDef> = {
 };
 export function skillDescription(
   id: string,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
-  if (id === "bloodhawk" && version === "metamorph")
+  if (
+    id === "bloodhawk" &&
+    (version === "metamorph" || version === "infantry" || version === "armored")
+  )
     return HAWK_METAMORPH.description;
-  if (version === "metamorph") version = "fleet";
+  if (
+    version === "metamorph" ||
+    version === "infantry" ||
+    version === "armored"
+  )
+    version = "fleet";
   if (id === "bomber" && version === "fleet")
     return `初始能量 50。${SKILLS.bomber.description}引导期间攻击冷却正常流逝。`;
   if (["ark", "eel"].includes(id) && version === "fleet")
     return `${SKILLS[id].description}蓄力或引导期间攻击冷却正常流逝。`;
   if (id === "cannon" && (version === "airsea" || version === "fleet"))
     return "优先追击可见空中敌人，普攻对其伤害 +50% 且必中（不绕过隐身）。满能量施放裁决：光束贯穿敌人，造成 300% 攻击法伤并消耗目标 30 能量。";
-  if (id === "blastbug" || id === "motorcycle") return SKILLS[id].description;
+  if (
+    [
+      "blastbug",
+      "motorcycle",
+      "irondog",
+      "specialist",
+      "birdrider",
+      "ironape",
+      "ironrooster",
+    ].includes(id)
+  )
+    return SKILLS[id].description;
   if (id === "adept" || id === "shark")
     return `${SKILLS[id].description}召唤物下一战斗步开始行动，不能施法，主人阵亡后仍作战；不占人口或卡池，每只存活召唤物在胜利扣血时计 1 点。`;
   if (
@@ -480,27 +571,39 @@ export function skillDescription(
   return `能量满 100 时自动施放。${SKILLS[id].description}`;
 }
 
-export const skillName = (id: string, version: CombatVersion = "metamorph") =>
-  id === "bloodhawk" && version === "metamorph"
+export const skillName = (
+  id: string,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) =>
+  id === "bloodhawk" &&
+  (version === "metamorph" || version === "infantry" || version === "armored")
     ? HAWK_METAMORPH.name
     : (version === "summons" ||
           version === "legions" ||
           version === "brood" ||
           version === "airsea" ||
           version === "fleet" ||
-          version === "metamorph") &&
+          version === "metamorph" ||
+          version === "infantry" ||
+          version === "armored") &&
         id === "wolf"
       ? "幽狼召唤"
       : SKILLS[id].name;
-export const skillRole = (id: string, version: CombatVersion = "metamorph") =>
-  id === "bloodhawk" && version === "metamorph"
+export const skillRole = (
+  id: string,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) =>
+  id === "bloodhawk" &&
+  (version === "metamorph" || version === "infantry" || version === "armored")
     ? HAWK_METAMORPH.role
     : (version === "summons" ||
           version === "legions" ||
           version === "brood" ||
           version === "airsea" ||
           version === "fleet" ||
-          version === "metamorph") &&
+          version === "metamorph" ||
+          version === "infantry" ||
+          version === "armored") &&
         id === "wolf"
       ? "狼群召唤"
       : SKILLS[id].role;

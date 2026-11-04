@@ -5,7 +5,7 @@ import { validGame } from "../src/engine/persistence";
 import { recruitmentMarkup } from "../src/ui/recruitment";
 
 function fixture(ids: string[], offer = "guard") {
-  const g = createGame(307),
+  const g = createGame(307, "classic"),
     p = g.players[0];
   for (const id of p.shop) if (id) g.pool[id]++;
   p.shop = [offer, null, null, null, null];
@@ -179,7 +179,7 @@ describe("只读招募预览与实际交易", () => {
     expect(previewPurchase(g, p, 1).after).toBeNull();
   });
   it("多轮真实商店的预览不改变随机数或卡池，购买结果一致", () => {
-    const g = createGame(137),
+    const g = createGame(137, "classic"),
       p = g.players[0];
     p.gold = 100;
     for (let round = 0; round < 10; round++) {

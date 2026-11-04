@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import {
   createGame,
@@ -38,7 +39,7 @@ const piece = (
   ...(copies === undefined ? {} : { copies }),
 });
 function board() {
-  const g = createGame(137),
+  const g = createGame(137, "classic"),
     p = g.players[0];
   p.gold = 100;
   const give = (id: string) => {
@@ -280,7 +281,7 @@ describe("异虫战斗技能", () => {
 describe("0.9存档迁移", () => {
   for (const phase of ["prepare", "battle", "result"] as const)
     it(`${phase}保留资源、战报和进行中的规则`, () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "legions";
       // An old roster cannot contain an insect shop reservation.
       for (const p of g.players)
@@ -315,14 +316,14 @@ describe("0.9存档迁移", () => {
       expect(restored.players).toEqual(g.players);
       expect(restored.history).toEqual(g.history);
       expect(restored.combatVersion).toBe(
-        phase === "prepare" ? "metamorph" : "legions",
+        phase === "prepare" ? CURRENT_COMBAT_VERSION : "legions",
       );
       for (const id of BROOD_ADDITIONS)
         expect(restored.pool[id]).toBe(COPIES[UNIT[id].cost]);
       if (phase === "result") {
         if (restored.reward) claimReward(restored, 0);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("metamorph");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
       }
     });
 });

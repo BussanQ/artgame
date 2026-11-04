@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-03",
-  "rules": "singleplayer-0.21",
+  "reviewedAt": "2026-11-04",
+  "rules": "singleplayer-0.33",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
-    "currentRecruitableUnits": 50,
-    "mappedNamesOrLocalDesigns": 40,
-    "missingAprilUnits": 13,
+    "currentRecruitableUnits": 57,
+    "mappedNamesOrLocalDesigns": 47,
+    "missingAprilUnits": 6,
     "currentOutsideBaseline": 10,
     "classificationDifferences": 8
   },
@@ -102,12 +102,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "神射手只是本项目命名，未找到证据证明它是特种兵，暂不合并。"
+      "currentUnitId": "specialist",
+      "currentName": "特种兵",
+      "currentTraits": [
+        "步兵",
+        "狙击"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.25独立补入；基础字段参考S04，1.7秒间隔适配为1.75秒。锁定技能名、伤害和控制等具体参数为本地设计；不与sniper合并。"
     },
     {
       "historicalName": "投弹手",
@@ -139,12 +142,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "birdrider",
+      "currentName": "鸟骑兵",
+      "currentTraits": [
+        "骑兵",
+        "狙击"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.26独立补入；S04基础字段、S38五月30日信仰之箭。蓄力时长、打断/计数细节和统一星级成长为本地适配，不替代其他骑兵。"
     },
     {
       "historicalName": "摩托骑兵",
@@ -176,12 +182,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "irondog",
+      "currentName": "铁狗",
+      "currentTraits": [
+        "装甲",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.24补入分段震荡与逐星+2护甲；基础属性参考S04，技能名及参数为单机适配，见irondog.md。"
     },
     {
       "historicalName": "铁猿",
@@ -191,14 +200,20 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S05",
+        "S18"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "ironape",
+      "currentName": "铁猿",
+      "currentTraits": [
+        "装甲",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.27补入，基础属性参考S04，范围法伤定位参考S05/S18；具体技能参数为本地适配。"
     },
     {
       "historicalName": "投石车",
@@ -229,14 +244,20 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S18",
+        "S40"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "ironrooster",
+      "currentName": "铁鸡",
+      "currentTraits": [
+        "装甲",
+        "刺杀"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.30补入；S04基础字段、S40友军攻防强化定位。技能名、幅度、范围、持续时间及边界为单机适配，详见ironrooster-history.json。"
     },
     {
       "historicalName": "铁巨神",
@@ -347,14 +368,19 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S41"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "axethrall",
+      "currentName": "斧奴",
+      "currentTraits": [
+        "傀儡",
+        "刺杀"
+      ],
+      "mapping": "historical-reference-local-adaptation",
+      "classificationMatches": true,
+      "note": "0.32新增；S04基础属性和S41飞斧300/500/700及5秒冷却有资料，3格技能射程、0.5秒控制和边界为本地适配。"
     },
     {
       "historicalName": "真人",
@@ -388,12 +414,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "swordthrall",
+      "currentName": "剑奴",
+      "currentTraits": [
+        "傀儡",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.33补入；基础属性及狂舞花绽伤害、次数、持续、冷却与免技能伤害有史料，移动免控参考同期玩家评测；半径及交互为本地适配。"
     },
     {
       "historicalName": "刀奴",

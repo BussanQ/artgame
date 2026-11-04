@@ -1,17 +1,19 @@
+import { CURRENT_COMBAT_VERSION } from "./types";
 import { UNIT, TRAITS } from "../data/units";
-import {
-  TRAIT_TIERS,
-  AIRSEA_TRAIT_TIERS,
-  TACTICS_TRAIT_TIERS,
-  type TraitBonus,
-} from "../data/traits";
+import { traitTiers, type TraitBonus } from "../data/traits";
 import type { Piece, Trait, CombatVersion } from "./types";
 import { insectCount } from "./progression";
 export function synergies(
   pieces: Piece[],
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
-  if (version === "metamorph") version = "fleet";
+  const table = traitTiers(version);
+  if (
+    version === "metamorph" ||
+    version === "infantry" ||
+    version === "armored"
+  )
+    version = "fleet";
   const counts = new Map<Trait, number>();
   if (
     (version === "brood" || version === "airsea" || version === "fleet") &&
@@ -52,13 +54,7 @@ export function synergies(
           tiers: [TRAITS[trait].threshold],
           bonus: {} as TraitBonus,
         };
-      const tiers = (
-          version === "fleet"
-            ? TRAIT_TIERS
-            : version === "tactics"
-              ? TACTICS_TRAIT_TIERS
-              : AIRSEA_TRAIT_TIERS
-        )[trait],
+      const tiers = table[trait],
         tier = tiers.filter((t) => count >= t.count).length,
         current = tiers[tier - 1],
         next = tiers[tier];
@@ -82,7 +78,7 @@ export function synergies(
 }
 export function traitBonuses(
   pieces: Piece[],
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
   const map = new Map<Trait, TraitBonus>();
   for (const s of synergies(pieces, version))

@@ -31,7 +31,10 @@ export type CombatVersion =
   | "brood"
   | "airsea"
   | "fleet"
-  | "metamorph";
+  | "metamorph"
+  | "infantry"
+  | "armored";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "armored";
 export type Difficulty = "relaxed" | "standard" | "veteran";
 export interface UnitDef {
   flying?: boolean;
@@ -42,6 +45,7 @@ export interface UnitDef {
   hp: number;
   attack: number;
   armor: number;
+  armorPerStar?: number;
   range: number;
   interval: number;
   skill: string;
@@ -59,7 +63,18 @@ export interface Piece {
   items?: string[];
   encounterPower?: number;
 }
+export type AiProfileId =
+  | "infantry"
+  | "assassins"
+  | "beasts"
+  | "fleet"
+  | "pandas"
+  | "insects"
+  | "psychic"
+  | "armor";
 export interface Player {
+  /** Stable doctrine for new games; absent on legacy saves, which retain seat-based profiles. */
+  aiProfile?: AiProfileId;
   id: number;
   name: string;
   hp: number;
@@ -74,6 +89,8 @@ export interface Player {
   eliminatedRound?: number;
 }
 export interface Game {
+  /** Fixed for the whole match; absent on pre-rotation saves. */
+  bannedSeries?: import("./rotation").Series[];
   combatVersion: CombatVersion;
   difficulty: Difficulty;
   seed: number;
@@ -103,7 +120,22 @@ export interface RoundReport {
   right: Piece[];
 }
 export interface Fighter {
-  /** Per-battle active-skill cooldown, currently used by motorcycle cavalry. */
+  bladeStorm?: { until: number; next: number; remaining: number; damage: number };
+  /** Iron rooster grants; each source retains its own expiration. */
+  command?: {
+    source: number;
+    side: 0 | 1;
+    until: number;
+    attack: number;
+    armor: number;
+  }[];
+  bird?: {
+    shots: number;
+    draw?: { target: number; until: number; damage: number };
+  };
+  /** Enemy opening infantry formation; persists through cleanse and is inherited by summons. */
+  infantryArmorBreak?: number;
+  /** Per-battle active-skill cooldown, used by multi-pulse active skills. */
   skillReadyAt?: number;
   phoenix?: {
     spent: boolean;
@@ -141,7 +173,11 @@ export interface Fighter {
         | "phoenix"
         | "whale"
         | "medic"
-        | "motorcycle";
+        | "motorcycle"
+        | "ironape"
+        | "irondog"
+        | "specialist";
+      target?: number; // Unit lock for specialist aiming; area spells keep only coordinates.
       next: number;
       remaining: number;
       damage: number;
@@ -193,6 +229,8 @@ export interface Fighter {
   skillPower: number;
   magicResist: number;
   regeneration: number;
+  /** Armor formation regeneration per tick; opening bonus retained for the battle. */
+  armorRegen?: number;
   attackShred: number;
   armorBuff: number;
   armorBuffUntil: number;
@@ -238,6 +276,8 @@ export interface CombatEffect {
   to: { x: number; y: number };
 }
 export interface CombatEvent {
+  /** Strengthened ordinary attack; still subject to attack defenses and lifesteal. */
+  empowered?: boolean;
   strike?: number;
   periodic?: boolean;
   reflected?: boolean;

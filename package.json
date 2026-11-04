@@ -49,7 +49,19 @@
     "test:infantry": "vitest run tests/infantry.test.ts tests/medic.test.ts tests/visual.test.ts tests/phoenix.test.ts",
     "test:motorcycle": "vitest run tests/motorcycle.test.ts tests/airsea.test.ts tests/visual.test.ts",
     "test:economy": "vitest run tests/economy.test.ts",
-    "survey:economy": "vite-node scripts/economy-survey.ts"
+    "survey:economy": "vite-node scripts/economy-survey.ts",
+    "test:infantry-formation": "vitest run tests/infantry-formation.test.ts tests/infantry.test.ts tests/strategy.test.ts tests/balance-migration.test.ts tests/persistence.test.ts",
+    "test:irondog": "vitest run tests/irondog.test.ts tests/infantry-formation.test.ts tests/visual.test.ts",
+    "test:specialist": "vitest run tests/specialist.test.ts tests/visual.test.ts tests/infantry-formation.test.ts",
+    "test:birdrider": "vitest run tests/birdrider.test.ts tests/visual.test.ts tests/infantry-formation.test.ts",
+    "test:ironape": "vitest run tests/ironape.test.ts tests/visual.test.ts tests/infantry-formation.test.ts",
+    "test:ai-doctrines": "vitest run tests/ai-doctrines.test.ts tests/strategy.test.ts tests/ai-reserves.test.ts tests/tactical-ai.test.ts tests/persistence.test.ts tests/computation.test.ts",
+    "test:armor-blast": "vitest run tests/armor-blast.test.ts tests/infantry-formation.test.ts tests/ironape.test.ts tests/irondog.test.ts tests/battle-analysis.test.ts tests/strategy.test.ts tests/persistence.test.ts tests/computation.test.ts",
+    "test:ironrooster": "vitest run tests/ironrooster.test.ts tests/visual.test.ts tests/phoenix.test.ts tests/immortality.test.ts tests/computation.test.ts",
+    "test:rotation": "vitest run tests/rotation.test.ts tests/recruitment.test.ts tests/persistence.test.ts tests/computation.test.ts tests/ai-doctrines.test.ts",
+    "survey:rotation": "vite-node scripts/rotation-survey.ts",
+    "test:axethrall": "vitest run tests/axethrall.test.ts tests/rotation.test.ts tests/visual.test.ts tests/persistence.test.ts tests/computation.test.ts tests/audio.test.ts",
+    "test:swordthrall": "vitest run tests/swordthrall.test.ts tests/axethrall.test.ts tests/rotation.test.ts tests/visual.test.ts tests/audio.test.ts tests/persistence.test.ts tests/computation.test.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

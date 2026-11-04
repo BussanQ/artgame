@@ -25,12 +25,12 @@ const report = (
 
 describe("整局总结", () => {
   it("进行中的对局不提前生成最终排名", () => {
-    const game = createGame();
+    const game = createGame(undefined, "classic");
     expect(matchSummary(game)).toBeNull();
     expect(matchSummaryMarkup(game)).toBe("");
   });
   it("野怪轮不打断对战连胜，对战平局会打断；累计收入不等于剩余金币", () => {
-    const game = createGame();
+    const game = createGame(undefined, "classic");
     game.phase = "finished";
     game.history = [
       report(1, 0),
@@ -53,7 +53,7 @@ describe("整局总结", () => {
     expect(game).toEqual(before);
   });
   it("最后一场野怪失利仍可能赢得整局，胜负标题按最终排名判定", () => {
-    const game = createGame();
+    const game = createGame(undefined, "classic");
     game.phase = "finished";
     game.round = 30;
     game.players.forEach((p, i) => {
@@ -77,7 +77,7 @@ describe("整局总结", () => {
     expect(matchSummaryMarkup(game)).not.toContain("云海之巅");
   });
   it("只剩指挥官存活时明确胜利原因；同回合全灭不授予冠军", () => {
-    const game = createGame();
+    const game = createGame(undefined, "classic");
     game.phase = "finished";
     game.round = 22;
     game.history = [report(22, 0)];

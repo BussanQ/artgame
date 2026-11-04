@@ -1,5 +1,9 @@
 /** Pure animation sampling; no combat damage or simulation timing changes. */
 export const MELEE_ACTIONS = {
+  swordthrall: { name: "双刀错步回切", duration: 3.8, color: "#a9eadc" },
+  axethrall: { name: "侧身引斧斜劈", duration: 3.4, color: "#79e3cb" },
+  ironape: { name: "双拳举臂震地", duration: 3.6, color: "#efb46c" },
+  irondog: { name: "液压前扑钳咬", duration: 3.2, color: "#e8be7c" },
   bloodhawk: { name: "收翼俯冲撕爪", duration: 2.8, color: "#ffaaa0" },
   vajra: { name: "四臂交替重拳", duration: 3.8, color: "#e8d193" },
   vine: { name: "双藤甩鞭", duration: 3.8, color: "#b7eb9b" },
@@ -43,6 +47,26 @@ export const REST_POSE: AttackPose = {
 export function isMelee(id: string): id is MeleeId {
   return id in MELEE_ACTIONS;
 }
+/** Hold the raised pose until the simulation emits the slam, never show an early impact. */
+export function ironapeChargePose(progress: number): AttackPose {
+  const t = Math.max(0, Math.min(1, progress));
+  return {
+    ...REST_POSE,
+    lift: 18 * t,
+    rotation: -0.14 * t,
+    scaleX: 1 - 0.06 * t,
+    scaleY: 1 + 0.13 * t,
+  };
+}
+export function bladeStormPose(time: number): AttackPose {
+  return {
+    ...REST_POSE,
+    rotation: Math.sin(time * 3.2) * 0.17,
+    scaleX: 0.58 + Math.abs(Math.cos(time * 1.6)) * 0.42,
+    lift: 2 + Math.sin(time * 3.2) * 2,
+    trail: 1,
+  };
+}
 const pulse = (t: number, a: number, b: number) =>
   t <= a || t >= b ? 0 : Math.sin((Math.PI * (t - a)) / (b - a));
 export function meleePose(id: MeleeId, t: number, skill = false): AttackPose {
@@ -54,6 +78,39 @@ export function meleePose(id: MeleeId, t: number, skill = false): AttackPose {
     power = skill ? 1.22 : 1;
   p.impact = pulse(t, 0.28, 0.68) * power;
   switch (id) {
+    case "swordthrall":
+      p.forward =
+        -7 * wind + 17 * pulse(t, 0.18, 0.5) + 12 * pulse(t, 0.5, 0.91);
+      p.rotation =
+        -0.3 * wind + 0.28 * pulse(t, 0.18, 0.5) - 0.22 * pulse(t, 0.5, 0.91);
+      p.scaleX = 1 - 0.15 * wind + 0.08 * hit;
+      p.lift = 3 * wind - 3 * hit;
+      p.trail = 0.8 * hit;
+      break;
+    case "axethrall":
+      p.forward = -10 * wind + (skill ? 12 : 24) * hit;
+      p.rotation = -0.28 * wind + (skill ? 0.42 : 0.31) * hit - 0.06 * recover;
+      p.lift = 6 * wind - 5 * hit;
+      p.scaleX = 1 - 0.09 * wind + 0.1 * hit;
+      p.scaleY = 1 + 0.05 * wind - 0.07 * hit;
+      p.trail = 0.7 * hit;
+      break;
+    case "ironape":
+      p.forward = -9 * wind + 17 * hit;
+      p.lift = 18 * wind - 12 * hit + 3 * recover;
+      p.rotation = -0.14 * wind + 0.22 * hit;
+      p.scaleX = 1 - 0.06 * wind + 0.19 * hit;
+      p.scaleY = 1 + 0.13 * wind - 0.2 * hit;
+      p.trail = 0.35 * hit;
+      break;
+    case "irondog":
+      p.forward = -15 * wind + 32 * hit - 5 * recover;
+      p.lift = 7 * wind - 4 * hit;
+      p.rotation = -0.09 * wind + 0.13 * hit;
+      p.scaleX = 1 - 0.1 * wind + 0.14 * hit;
+      p.scaleY = 1 - 0.16 * hit;
+      p.trail = 0.25 * hit;
+      break;
     case "bloodhawk":
       p.lift = 28 * wind - 10 * hit;
       p.forward = -12 * wind + 42 * hit;
@@ -208,6 +265,44 @@ export function drawMeleeWeapon(
     c.stroke();
   };
   switch (id) {
+    case "swordthrall":
+      arc(5, -42, 45, -2.7 + t * 4, -1.1 + t * 4);
+      arc(12, -38, 32, 1.7 - t * 5, 3.1 - t * 5);
+      c.beginPath();
+      c.moveTo(-12, -54);
+      c.lineTo(40 + hit * 14, -31);
+      c.stroke();
+      break;
+    case "axethrall":
+      // A single long crescent sweep, distinct from the bull's two-sided ground axe.
+      c.translate(12, -48);
+      c.rotate(-1.9 + t * 3.7);
+      c.fillRect(-2, -42, 4, 68);
+      arc(0, -30, 22, -2.2, 1.1);
+      arc(0, -30, 15, -2.2, 1.1);
+      arc(0, 0, 53, -2.3, -0.7);
+      break;
+    case "ironape":
+      for (const offset of [-15, 15]) {
+        const y = -90 + 68 * hit;
+        c.strokeRect(14 + offset, y, 22, 18);
+        c.beginPath();
+        c.moveTo(23 + offset, y - 27);
+        c.lineTo(23 + offset, y);
+        c.stroke();
+        arc(25 + offset, -12, 12 + hit * 15, 0, Math.PI);
+      }
+      break;
+    case "irondog":
+      // Two hydraulic jaws close around the impact point.
+      for (const sign of [-1, 1]) {
+        c.beginPath();
+        c.moveTo(12, -40 + sign * (17 - hit * 8));
+        c.lineTo(45 + hit * 16, -40 + sign * (9 - hit * 5));
+        c.lineTo(37 + hit * 16, -40);
+        c.stroke();
+      }
+      break;
     case "bloodhawk":
       for (let i = 0; i < 3; i++) {
         c.beginPath();

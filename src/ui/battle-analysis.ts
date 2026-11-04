@@ -54,5 +54,5 @@ export function battleAnalysisMarkup(
         }</ol></section>`,
     )
     .join("")}</div>
-  ${canReplay ? '<div class="analysis-playback"><button data-action="analysis-frame">查看此刻战场</button><button data-action="analysis-replay">从头回放这场战斗</button></div>' : ""}<p class="analysis-note">伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗不含溢出及自然再生。每枚棋子独立列出，双方条形使用相同刻度。查看实时战斗会暂停播放，关闭后可手动继续。</p></section></div>`;
+  ${canReplay ? '<div class="analysis-playback"><button data-action="analysis-frame">查看此刻战场</button><button data-action="analysis-replay">从头回放这场战斗</button></div>' : ""}<p class="analysis-note">伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生，不含溢出及先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。查看实时战斗会暂停播放，关闭后可手动继续。</p></section></div>`;
 }

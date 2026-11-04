@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { advanceSonic } from "../src/engine/wild-skills";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
@@ -281,7 +282,12 @@ describe("燎原矩形引导", () => {
     const original = structuredClone([left, right]),
       b = simulate(left, right),
       fast = simulateOutcome(left, right);
-    const w = compute({ kind: "replay", left, right, version: "metamorph" });
+    const w = compute({
+      kind: "replay",
+      left,
+      right,
+      version: CURRENT_COMBAT_VERSION,
+    });
     expect(w.kind).toBe("replay");
     if (w.kind !== "replay") return;
     expect(JSON.stringify(w.battle)).toBe(JSON.stringify(b));
@@ -320,7 +326,7 @@ describe("燎原矩形引导", () => {
 describe("0.16到0.17卡池迁移", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "保留旧资源、战斗和历史，仅补新卡池", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       let result: ReturnType<typeof startRound>;
       if (phase !== "prepare") {
         const me = g.players[0];

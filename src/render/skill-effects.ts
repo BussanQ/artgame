@@ -1,3 +1,4 @@
+import { commandBonuses } from "../engine/ironrooster";
 import { flameCells } from "../engine/infantry-skills";
 import { isPhoenixEgg, phoenixFlameCells } from "../engine/phoenix";
 import { carapaceArmor } from "../engine/triggers";
@@ -60,7 +61,44 @@ export function drawSkillEffect(
   c.lineWidth = 2;
   c.shadowColor = colors[e.kind];
   c.shadowBlur = 12;
-  if (e.kind === "flame" || e.kind === "grenade") {
+  if (e.kind === "pulse" && e.name === "狂舞花绽") {
+    c.strokeStyle = "#a9eadc";
+    c.lineWidth = 3;
+    for (let i = 0; i < 2; i++) {
+      c.beginPath();
+      c.ellipse(
+        p.x,
+        p.y - 24,
+        55 + age * 14,
+        20 + age * 5,
+        0,
+        age * 2 + i * Math.PI,
+        age * 2 + i * Math.PI + 2.2,
+      );
+      c.stroke();
+    }
+  } else if (e.kind === "pulse" && e.name === "飞斧") {
+    const t = Math.min(1, age / 2);
+    const x = origin.x + (p.x - origin.x) * t;
+    const y = origin.y - 65 + (p.y - origin.y) * t - Math.sin(t * Math.PI) * 22;
+    c.strokeStyle = "#79e3cb";
+    c.fillStyle = "#b5ffe8";
+    c.shadowColor = "#79e3cb";
+    c.translate(x, y);
+    if (age < 2) {
+      c.rotate(age * Math.PI * 2);
+      c.fillRect(-2, -19, 4, 38);
+      c.lineWidth = 5;
+      c.beginPath();
+      c.arc(0, -9, 17, -2.2, 1.1);
+      c.stroke();
+    } else {
+      c.lineWidth = 3;
+      c.beginPath();
+      c.arc(0, 0, 12 + (age - 2) * 17, 0, Math.PI * 2);
+      c.stroke();
+    }
+  } else if (e.kind === "flame" || e.kind === "grenade") {
     const cells =
       e.kind === "flame"
         ? flameCells(e.from, e.to)
@@ -114,6 +152,21 @@ export function drawSkillEffect(
     c.font = "bold 16px sans-serif";
     c.textAlign = "center";
     c.fillText(e.name, p.x, p.y - 105 - age * 6);
+  } else if (e.kind === "pulse" && e.name === "定点狙击") {
+    c.strokeStyle = "#a6e8ef";
+    c.lineWidth = Math.max(1, 5 - age * 2);
+    c.beginPath();
+    c.moveTo(origin.x, origin.y - 40);
+    c.lineTo(p.x, p.y - 40);
+    c.stroke();
+    const r = 10 + age * 12;
+    c.beginPath();
+    c.arc(p.x, p.y - 40, r, 0, Math.PI * 2);
+    c.moveTo(p.x - r - 8, p.y - 40);
+    c.lineTo(p.x + r + 8, p.y - 40);
+    c.moveTo(p.x, p.y - 40 - r - 8);
+    c.lineTo(p.x, p.y - 40 + r + 8);
+    c.stroke();
   } else if (e.kind === "pulse" && e.name === "虚空潮汐") {
     drawWhaleVortex(c, e.to, age);
   } else if (e.kind === "pulse" && e.name === "不死烈焰") {
@@ -318,7 +371,9 @@ export function drawSkillEffect(
         c.stroke();
       }
     } else {
-      c.strokeStyle = e.name === "轰炸脉冲" ? "#ffbd76" : "#b2baff";
+      c.strokeStyle = ["轰炸脉冲", "震荡压制", "重装震爆"].includes(e.name)
+        ? "#ffbd76"
+        : "#b2baff";
       const radius = 25 + age * 30;
       for (let i = 0; i < 3; i++) {
         c.beginPath();
@@ -332,6 +387,24 @@ export function drawSkillEffect(
           Math.PI * 2,
         );
         c.stroke();
+      }
+      if (e.name === "重装震爆") {
+        // Twin impacts and radial fragments distinguish a single heavy slam.
+        for (const offset of [-22, 22]) {
+          c.fillStyle = "#ffe1ac";
+          c.globalAlpha *= 0.8;
+          c.fillRect(p.x + offset - 8, p.y - 24 - age * 7, 16, 11);
+        }
+        for (let i = 0; i < 8; i++) {
+          const angle = (i * Math.PI) / 4;
+          c.beginPath();
+          c.moveTo(p.x + Math.cos(angle) * 20, p.y + Math.sin(angle) * 9);
+          c.lineTo(
+            p.x + Math.cos(angle) * radius,
+            p.y + Math.sin(angle) * radius * 0.45 - age * 6,
+          );
+          c.stroke();
+        }
       }
       if (e.name === "雷霆脉冲") {
         c.lineWidth = 3;
@@ -408,6 +481,22 @@ export function drawSkillEffect(
     c.font = "bold 17px sans-serif";
     c.textAlign = "center";
     c.fillText(e.name, origin.x, origin.y - 100 - age * 7);
+  } else if (e.kind === "fortify" && e.name === "战术协同") {
+    c.strokeStyle = "#efcb85";
+    c.beginPath();
+    c.moveTo(origin.x, origin.y - 45);
+    c.lineTo(p.x, p.y - 45);
+    c.stroke();
+    c.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const angle = (i * Math.PI) / 3 - Math.PI / 2;
+      const x = p.x + Math.cos(angle) * (16 + age * 3);
+      const y = p.y - 55 + Math.sin(angle) * (22 + age * 3);
+      if (i) c.lineTo(x, y);
+      else c.moveTo(x, y);
+    }
+    c.closePath();
+    c.stroke();
   } else if (e.kind === "heal" || e.kind === "shield") {
     c.beginPath();
     c.ellipse(p.x, p.y - 35, 20 + age * 3, 40, 0, 0, Math.PI * 2);
@@ -480,8 +569,60 @@ export function drawStatuses(
     c.fillRect(-26, top - 4, 52 * Math.min(1, f.shield / f.maxHp), 2);
   }
   const labels: string[] = [];
-  if (f.defId === "motorcycle" && !f.air?.cast && (f.skillReadyAt ?? 0) > time)
-    labels.push(`装填 ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`);
+  if (f.bladeStorm && f.bladeStorm.until > time) {
+    labels.push(
+      `狂舞 · 免技能伤害 / 免控 ${((f.bladeStorm.until - time) / 4).toFixed(1)}s`,
+    );
+    c.strokeStyle = "#a9eadc";
+    c.lineWidth = 3;
+    for (let i = 0; i < 2; i++) {
+      const angle = (reducedMotion ? 0 : time * 2.4) + i * Math.PI;
+      c.beginPath();
+      c.ellipse(0, -35 * scale, 59 * scale, 25 * scale, 0, angle, angle + 2.5);
+      c.stroke();
+    }
+  }
+  if (f.bird) {
+    labels.push(
+      f.bird.draw
+        ? `强箭蓄力 ${Math.max(0, (f.bird.draw.until - time) / 4).toFixed(2)}s`
+        : f.bird.shots >= 7 - f.star
+          ? "强箭就绪"
+          : `强箭 ${f.bird.shots}/${7 - f.star}`,
+    );
+    if (f.bird.draw) {
+      c.strokeStyle = "#dceea0";
+      c.lineWidth = 3;
+      c.beginPath();
+      c.arc(
+        0,
+        -65 * scale,
+        (reducedMotion
+          ? 20
+          : 16 + Math.max(0, 2 - f.bird.draw.until + time) * 7) * scale,
+        -1.15,
+        1.15,
+      );
+      c.stroke();
+    }
+  }
+  if (
+    [
+      "swordthrall",
+      "axethrall",
+      "motorcycle",
+      "irondog",
+      "specialist",
+      "ironape",
+      "ironrooster",
+    ].includes(f.defId) &&
+    !f.air?.cast &&
+    !(f.bladeStorm && f.bladeStorm.until > time) &&
+    (f.skillReadyAt ?? 0) > time
+  )
+    labels.push(
+      `${["swordthrall", "axethrall", "irondog", "ironape"].includes(f.defId) ? "回充" : "装填"} ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`,
+    );
   if (isPhoenixEgg(f))
     labels.push(
       `涅槃 ${Math.max(0, (f.phoenix!.eggUntil - time) / 4).toFixed(1)}s`,
@@ -527,17 +668,41 @@ export function drawStatuses(
     labels.push(
       f.air.cast.kind === "ark"
         ? "重炮蓄力"
-        : f.air.cast.kind === "motorcycle"
-          ? `连发 · 余${f.air.cast.remaining}发`
-          : f.air.cast.kind === "medic"
-            ? `治疗 · 余${f.air.cast.remaining}次`
-            : f.air.cast.kind === "whale"
-              ? `潮汐 · 余${f.air.cast.remaining}次`
-              : "持续施法",
+        : f.air.cast.kind === "ironape"
+          ? `震爆蓄力 · ${Math.max(0, (f.air.cast.next - time) / 4).toFixed(2)}s`
+          : f.air.cast.kind === "specialist"
+            ? `锁定 · ${Math.max(0, (f.air.cast.next - time) / 4).toFixed(2)}s`
+            : f.air.cast.kind === "irondog"
+              ? `震荡 · 余${f.air.cast.remaining}次`
+              : f.air.cast.kind === "motorcycle"
+                ? `连发 · 余${f.air.cast.remaining}发`
+                : f.air.cast.kind === "medic"
+                  ? `治疗 · 余${f.air.cast.remaining}次`
+                  : f.air.cast.kind === "whale"
+                    ? `潮汐 · 余${f.air.cast.remaining}次`
+                    : "持续施法",
+    );
+  const command = commandBonuses(f, time);
+  if (command.attack || command.armor)
+    labels.push(
+      `协同 +${Math.round(command.attack * 100)}% / 甲+${command.armor}`,
     );
   if (f.attackBoost && f.attackBoost.until > time) labels.push("攻击强化");
   if (f.hasteUntil > time) labels.push("加速");
   if (f.armorBreakUntil > time) labels.push("破甲");
+  if (f.armorRegen && f.hp > 0) {
+    labels.push(`装甲再生 +${f.armorRegen * 4}/s`);
+    if (f.hp < f.maxHp) {
+      c.strokeStyle = "#88edc2";
+      c.lineWidth = 2;
+      c.globalAlpha = reducedMotion ? 0.7 : 0.5 + Math.sin(time * 1.5) * 0.2;
+      c.beginPath();
+      c.ellipse(0, 8, 27 * scale, 10 * scale, 0, 0, Math.PI * 2);
+      c.stroke();
+      c.globalAlpha = 1;
+    }
+  }
+  if (f.infantryArmorBreak) labels.push(`步兵减甲 −${f.infantryArmorBreak}`);
   if (f.armorBuffUntil > time) labels.push("护甲强化");
   if (carapaceArmor(f, time) > 0)
     labels.push(`玄甲 +${carapaceArmor(f, time).toFixed(1)}`);
@@ -582,7 +747,26 @@ export function drawAirTelegraph(
   c.lineWidth = 2;
   c.globalAlpha = reducedMotion ? 0.65 : 0.55 + Math.sin(time * 3) * 0.15;
   c.setLineDash([7, 6]);
-  if (cast.kind === "motorcycle") {
+  if (cast.kind === "specialist") {
+    const a = project(f.x + 0.5, f.y + 0.5),
+      b = project(cast.to.x + 0.5, cast.to.y + 0.5);
+    c.strokeStyle = "#a6e8ef";
+    c.beginPath();
+    c.moveTo(a.x, a.y - 40);
+    c.lineTo(b.x, b.y - 40);
+    c.stroke();
+    c.setLineDash([]);
+    const r = reducedMotion
+      ? 18
+      : 12 + Math.min(1, Math.max(0, (cast.next - time) / 3)) * 16;
+    c.beginPath();
+    c.arc(b.x, b.y - 40, r, 0, Math.PI * 2);
+    c.moveTo(b.x - r - 6, b.y - 40);
+    c.lineTo(b.x + r + 6, b.y - 40);
+    c.moveTo(b.x, b.y - 40 - r - 6);
+    c.lineTo(b.x, b.y - 40 + r + 6);
+    c.stroke();
+  } else if (cast.kind === "motorcycle") {
     const p = project(f.x + 0.5, f.y + 0.5);
     c.setLineDash([]);
     c.strokeStyle = "#ffc173";
@@ -622,10 +806,13 @@ export function drawAirTelegraph(
       c.stroke();
     }
   } else {
-    const center = cast.kind === "bomber" ? f : cast.to;
+    const center = ["bomber", "irondog", "ironape"].includes(cast.kind)
+      ? f
+      : cast.to;
+    const radius = cast.kind === "irondog" ? 1 : 2;
     for (let y = 0; y < 8; y++)
       for (let x = 0; x < 8; x++) {
-        if (Math.abs(x - center.x) + Math.abs(y - center.y) > 2) continue;
+        if (Math.abs(x - center.x) + Math.abs(y - center.y) > radius) continue;
         const points = [
           project(x, y),
           project(x + 1, y),

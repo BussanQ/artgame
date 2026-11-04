@@ -17,6 +17,8 @@ const sources = Object.fromEntries(
   [
     "src/engine/ai.ts",
     "src/engine/battle.ts",
+  "src/engine/birdrider.ts",
+  "src/engine/ironrooster.ts",
     "src/engine/abilities.ts",
     "src/engine/infantry-skills.ts",
     "src/engine/triggers.ts",
@@ -24,6 +26,8 @@ const sources = Object.fromEntries(
     "src/data/traits.ts",
     "src/data/skills.ts",
     "src/data/units.ts",
+    "src/data/unit-stats.ts",
+    "src/engine/types.ts",
     "scripts/counter-sweep.ts",
   ].map((f) => [f, createHash("sha256").update(readFileSync(f)).digest("hex")]),
 );

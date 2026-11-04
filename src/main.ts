@@ -1,3 +1,7 @@
+import { SWORDTHRALL_DEMO } from "./data/swordthrall-demo";
+import { AXETHRALL_DEMO } from "./data/axethrall-demo";
+import { rotationMarkup } from "./ui/rotation";
+import { CURRENT_COMBAT_VERSION } from "./engine/types";
 import { recruitmentMarkup } from "./ui/recruitment";
 import { incomeMarkup } from "./ui/income";
 import { salePrice } from "./engine/progression";
@@ -17,7 +21,7 @@ import {
 import { deploymentMarkup } from "./ui/deployment";
 import { DialogFocus } from "./ui/dialog-focus";
 import { PausableDelay } from "./ui/pausable-delay";
-import { AI_PROFILES, DIFFICULTIES } from "./data/ai-profiles";
+import { profileFor, DIFFICULTIES } from "./data/ai-profiles";
 import { deployLineup } from "./engine/ai";
 import { scoutingMarkup } from "./ui/scouting";
 import { equipmentMarkup, rewardMarkup, encounterMarkup } from "./ui/equipment";
@@ -156,6 +160,10 @@ let insectDemo = false;
 let airseaDemo = false;
 let immortalDemo = false;
 let wildDemo = false;
+let riderDemo = false;
+let armorDemo = false;
+let axeDemo = false;
+let swordDemo = false;
 let paused = restored.data?.playback.paused ?? false;
 let resultPresentation: ResultPresentation | null = null;
 const advanceTimer = new PausableDelay();
@@ -220,7 +228,7 @@ function render() {
   const demoVersion = replayRound
     ? (game.history.find((h) => h.round === replayRound)?.combatVersion ??
       game.combatVersion)
-    : "metamorph";
+    : CURRENT_COMBAT_VERSION;
   const active = synergies(
     demoBattle ? demoPieces : p.pieces,
     demoBattle ? demoVersion : game.combatVersion,
@@ -234,6 +242,10 @@ function render() {
           ["summon-demo", "召唤卫阵"],
           ["insect-demo", "异虫蜂群"],
           ["wild-demo", "猛禽陆行"],
+          ["rider-demo", "骑射编队"],
+          ["armor-demo", "装甲爆破"],
+          ["axe-demo", "傀儡刺杀"],
+          ["sword-demo", "傀儡先锋"],
           ["immortal-demo", "灵能不朽"],
           ["airsea-demo", "空海舰队"],
         ]
@@ -244,8 +256,8 @@ function render() {
           .join("")}</div></details>`
   }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="restart">重新开始</button></nav></header>${saveNotice || saveConflict ? `<div class="save-notice" role="status">${saveConflict ? "另一窗口已更新存档。本窗口已暂停，请载入最新进度后继续。" : saveNotice}<button data-action="load">载入最新存档</button>${saveConflict ? "" : '<button data-action="dismiss-notice" aria-label="关闭存档提示">×</button>'}</div>` : ""}
  ${computing || computeError ? `<section class="compute-status" role="status" aria-live="polite"><span>${computing ? pendingJob?.label : computeError}</span><div>${!computing ? '<button data-action="retry-compute">重试计算</button>' : ""}<button data-action="cancel-compute">${computing ? "取消计算" : "关闭"}</button></div></section>` : ""}
- <div class="command"><div><span class="eyebrow">RED TIDES / 云海遗迹</span><h1>${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "部署你的下一步"}</h1></div><div class="round"><small>回合</small><strong>${String(replayRound ?? game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? (replayRound ? "历史回放" : "战斗演示") : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "回合结算 · 选择战利品" : "回合结算 · 即将进入准备", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? `${replayRound ? "回放" : "演示"}时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : fighting ? `战斗时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : "从组合中找到胜机"}</small></div><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></div>
- ${!demoBattle ? matchSummaryMarkup(game) : ""}
+ <div class="command"><div><span class="eyebrow">RED TIDES / 云海遗迹</span><h1>${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "部署你的下一步"}</h1></div><div class="round"><small>回合</small><strong>${String(replayRound ?? game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? (replayRound ? "历史回放" : "战斗演示") : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "回合结算 · 选择战利品" : "回合结算 · 即将进入准备", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? `${replayRound ? "回放" : "演示"}时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : fighting ? `战斗时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : "从组合中找到胜机"}</small></div><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></div>
+ ${!demoBattle ? rotationMarkup(game) + matchSummaryMarkup(game) : ""}
  <main><aside class="left"><section class="panel commander" id="commander"><span class="eyebrow">COMMANDER</span><label class="difficulty-setting">难度<select data-difficulty aria-label="单机难度" title="仅在第 1 回合开战前选择难度" ${disabled(game.round !== 1 || busy || !!demoBattle)}>${Object.entries(
    DIFFICULTIES,
  )
@@ -283,7 +295,7 @@ function render() {
  ).join("")}</div>
  <div class="formation-tools">${deploymentMarkup(p, selected, busy || !!demoBattle, deploymentOpen)}<div class="auto-deploy"><button data-action="auto-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>推荐布阵</button><button data-action="compact-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>抱团布阵</button><span class="micro">分散避群伤，抱团保护后排；均可继续手动调整</span></div></div><div class="selection ${chosen ? "has-selection" : ""}">${chosen ? `<span><b>${UNIT[chosen.defId].name}</b> ${stars(chosen.star)} · ${UNIT[chosen.defId].traits.join(" / ")}</span><div><button data-action="deselect" aria-keyshortcuts="Escape" title="取消选择（Esc）">取消选择</button><button data-action="unit-info">查看详情</button><button data-action="recall" ${disabled(busy || chosen.position === null)}>撤回备战席</button><button data-action="sell" ${disabled(busy)}>出售 +${salePrice(chosen)} 金</button></div>` : "<span>招募 → 布阵 → 自动交战 → 升级阵容</span>"}</div><p class="mobile-feedback" role="status">${game.message}</p></section>
  ${recruitmentMarkup(game, p, busy)}<button class="mobile-shop-return" data-jump="battlefield">返回战场布阵 <span>备战 ${bench.length} / 8 →</span></button></div>
- <aside class="right" id="intel"><section class="panel leaderboard"><div class="section-label"><h2>战场情报</h2><span>${game.players.filter((x) => x.hp > 0).length} / 8 存活</span></div>${ranked.map((x, i) => `<div class="player ${x.id === 0 ? "you" : ""} ${x.hp === 0 ? "eliminated" : ""}"><span class="rank">${String(i + 1).padStart(2, "0")}</span><div><b>${x.name}</b><span class="player-bar"><i style="width:${x.hp}%"></i></span></div><strong>${x.hp}</strong>${x.id !== 0 ? `<button class="scout-button" data-scout="${x.id}" aria-label="侦察 ${x.name}" title="${AI_PROFILES[x.id].name}">侦察</button>` : ""}</div>`).join("")}</section><section class="panel report"><span class="eyebrow">${fighting || demoBattle ? "DAMAGE REPORT" : "BATTLE LOG"}</span><h2>${fighting || demoBattle ? "战斗贡献" : done ? `最终排名 #${ranked.findIndex((x) => x.id === 0) + 1}` : "作战简报"}</h2><div class="damage-stats">${
+ <aside class="right" id="intel"><section class="panel leaderboard"><div class="section-label"><h2>战场情报</h2><span>${game.players.filter((x) => x.hp > 0).length} / 8 存活</span></div>${ranked.map((x, i) => `<div class="player ${x.id === 0 ? "you" : ""} ${x.hp === 0 ? "eliminated" : ""}"><span class="rank">${String(i + 1).padStart(2, "0")}</span><div><b>${x.name}</b>${x.id !== 0 ? `<small class="player-doctrine">${profileFor(x).name}</small>` : ""}<span class="player-bar"><i style="width:${x.hp}%"></i></span></div><strong>${x.hp}</strong>${x.id !== 0 ? `<button class="scout-button" data-scout="${x.id}" aria-label="侦察 ${x.name}" title="${profileFor(x).name}">侦察</button>` : ""}</div>`).join("")}</section><section class="panel report"><span class="eyebrow">${fighting || demoBattle ? "DAMAGE REPORT" : "BATTLE LOG"}</span><h2>${fighting || demoBattle ? "战斗贡献" : done ? `最终排名 #${ranked.findIndex((x) => x.id === 0) + 1}` : "作战简报"}</h2><div class="damage-stats">${
    fighting || demoBattle
      ? fighters
          .filter((f) => (f.homeSide ?? f.side) === 0)
@@ -303,7 +315,7 @@ function render() {
  ${unitInfo ? pieceInfoMarkup(unitInfo, game.combatVersion) : ""}
  ${scoutId !== null ? scoutingMarkup(game, scoutId) : ""}
  ${historyOpen ? historyMarkup(game) : ""}
- ${help || codex ? `<div class="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-label="${help ? "作战指南" : "棋子图鉴"}"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">FIELD MANUAL</span><h2>${help ? "作战指南" : "棋子图鉴"}</h2>${help ? `<ol><li>在招募中心购买棋子。通常 3 个同星同名棋子自动合成，最高三星。持有 2 种异虫时，一星异虫只需 2 枚；持有 4 种时，二星也只需 2 枚。异虫种类包含备战席。异虫售价按常规星级价值计算、上限 5 金，卡池只返还实际使用份数。</li><li>点击备战席中的棋子，再点击棋盘下半区部署。上场数量不能超过等级。</li><li>点击场上棋子后可移动、交换、撤回或出售。重复棋子不增加羁绊计数。</li><li>点击开始战斗，观察走位与伤害。战斗期间不能更改阵容。</li><li>每轮基础奖励从5金开始，每5回合增加2金，最高15金；利息、对战胜利和连胜或连败奖励另算，玩家与AI使用相同规则。后期可用更多金币刷新、追星或购买经验提升人口。</li><li>存活到最后获胜；第 30 回合按剩余生命排名。重新开始会清空本局。</li></ol><p>本版包含 ${UNITS.length} 种棋子、22 类羁绊与多档效果和共享卡池。棋子各有独立技能：护盾、治疗、眩晕、破甲、贯穿和突袭。飞行属性独立于空军羁绊；空军提供飞行闪避，海神提供命中回能，巨神炮优先对空。方舟蓄力和电蛟雷场有范围预告，控制可中断施法。蓝色条为护盾，紫色数字为法术伤害。上场 2/3 种不朽棋子可在阵亡后继续作战 4/6 秒，残魂以青色倒计时显示，无法治疗或获得护盾；残魂不增加战后扣血。2/4 种灵能使全队受击反弹 20/30 点真实伤害，残魂和召唤物同样生效；反伤不连锁、不回能。童子可为邻近主力充能，战斗分析单列反伤与供能。猛禽 2/3 种使本族对地普攻增强 15%/35%；陆行者普攻转为真实伤害。声波持续伤害、罗汉蓄力及蛤蟆单次吞噬可在新阵容演示中观察。操作后自动保存本局，刷新可恢复战斗与准备进度。本局战报可查看已结束回合与回放，并打开双方战斗分析。战场上的“战斗分析”会暂停播放，只统计已播放片段，可比较伤害、承伤、治疗和护盾贡献。野怪回合后选择装备；选中棋子后可在装备工坊穿戴、卸下或合成。每枚棋子最多 3 件装备，升星溢出装备和出售装备会归还库存。首轮开战前可选择休闲、标准或挑战难度；战场情报的侦察按钮可查看对手站位与装备。推荐布阵可自动挑选阵容并安排前后排。</p>` : codexMarkup()}</section></div>` : ""}`;
+ ${help || codex ? `<div class="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-label="${help ? "作战指南" : "棋子图鉴"}"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">FIELD MANUAL</span><h2>${help ? "作战指南" : "棋子图鉴"}</h2>${help ? `<ol><li>新开比赛系统随机禁用3个种族系列，玩家与AI共用剩余卡池，整场不变。双种族命中任一禁用系列即不可招募。展开“本局禁用”可查看棋子与羁绊影响；图鉴可筛选本局可招募棋子。旧局继续原卡池。</li><li>在招募中心购买棋子。通常 3 个同星同名棋子自动合成，最高三星。持有 2 种异虫时，一星异虫只需 2 枚；持有 4 种时，二星也只需 2 枚。异虫种类包含备战席。异虫售价按常规星级价值计算、上限 5 金，卡池只返还实际使用份数。</li><li>点击备战席中的棋子，再点击棋盘下半区部署。上场数量不能超过等级。</li><li>点击场上棋子后可移动、交换、撤回或出售。重复棋子不增加羁绊计数。</li><li>点击开始战斗，观察走位与伤害。战斗期间不能更改阵容。</li><li>每轮基础奖励从5金开始，每5回合增加2金，最高15金；利息、对战胜利和连胜或连败奖励另算，玩家与AI使用相同规则。后期可用更多金币刷新、追星或购买经验提升人口。</li><li>存活到最后获胜；第 30 回合按剩余生命排名。重新开始会清空本局。</li></ol><p>本版包含 ${UNITS.length} 种棋子、22 类羁绊与多档效果和共享卡池。棋子各有独立技能：护盾、治疗、眩晕、破甲、贯穿和突袭。飞行属性独立于空军羁绊；空军提供飞行闪避，海神提供命中回能，巨神炮优先对空。方舟蓄力和电蛟雷场有范围预告，控制可中断施法。蓝色条为护盾，紫色数字为法术伤害。上场 2/3 种不朽棋子可在阵亡后继续作战 4/6 秒，残魂以青色倒计时显示，无法治疗或获得护盾；残魂不增加战后扣血。2/4 种灵能使全队受击反弹 20/30 点真实伤害，残魂和召唤物同样生效；反伤不连锁、不回能。童子可为邻近主力充能，战斗分析单列反伤与供能。猛禽 2/3 种使本族对地普攻增强 15%/35%；陆行者普攻转为真实伤害。声波持续伤害、罗汉蓄力及蛤蟆单次吞噬可在新阵容演示中观察。操作后自动保存本局，刷新可恢复战斗与准备进度。本局战报可查看已结束回合与回放，并打开双方战斗分析。战场上的“战斗分析”会暂停播放，只统计已播放片段，可比较伤害、承伤、治疗和护盾贡献。野怪回合后选择装备；选中棋子后可在装备工坊穿戴、卸下或合成。每枚棋子最多 3 件装备，升星溢出装备和出售装备会归还库存。首轮开战前可选择休闲、标准或挑战难度；新开局根据剩余卡池，从8种构筑风格中选择仍可构筑的偏好分配给7名AI，可能重复；同一对手在本局内保持风格。战场情报会显示风格，侦察按钮可查看对手站位与装备。推荐布阵可自动挑选阵容并安排前后排。</p>` : codexMarkup(game)}</section></div>` : ""}`;
   app
     .querySelectorAll<HTMLDetailsElement>("details[data-disclosure]")
     .forEach((detail) => {
@@ -568,7 +580,7 @@ app.addEventListener("click", (e) => {
   }
   if (target.closest("#game-tools") && action) mobileToolsOpen = false;
   if (action === "codex-reset" && codex) {
-    resetCodex(app);
+    resetCodex(app, game);
     return;
   }
   if (action === "cancel-compute") {
@@ -678,17 +690,25 @@ app.addEventListener("click", (e) => {
         demoBattle
           ? replayRound
             ? `第 ${replayRound} 回合回放`
-            : wildDemo
-              ? "猛禽陆行演习"
-              : immortalDemo
-                ? "灵能不朽演习"
-                : airseaDemo
-                  ? "空海舰队演习"
-                  : insectDemo
-                    ? "异虫蜂群演习"
-                    : summonDemo
-                      ? "召唤卫阵演习"
-                      : "十对十兵种演习"
+            : swordDemo
+              ? "傀儡先锋演习"
+              : axeDemo
+                ? "傀儡刺杀演习"
+                : armorDemo
+                  ? "装甲爆破演习"
+                  : riderDemo
+                    ? "骑射编队演习"
+                    : wildDemo
+                      ? "猛禽陆行演习"
+                      : immortalDemo
+                        ? "灵能不朽演习"
+                        : airseaDemo
+                          ? "空海舰队演习"
+                          : insectDemo
+                            ? "异虫蜂群演习"
+                            : summonDemo
+                              ? "召唤卫阵演习"
+                              : "十对十兵种演习"
           : `第 ${game.round} 回合 · ${result!.opponent.name}`,
       );
   }
@@ -836,7 +856,11 @@ app.addEventListener("click", (e) => {
     action === "insect-demo" ||
     action === "airsea-demo" ||
     action === "immortal-demo" ||
-    action === "wild-demo"
+    action === "wild-demo" ||
+    action === "rider-demo" ||
+    action === "armor-demo" ||
+    action === "axe-demo" ||
+    action === "sword-demo"
   ) {
     if (mobileViewport.matches) showMobileView("battlefield");
     resultPresentation = null;
@@ -852,15 +876,25 @@ app.addEventListener("click", (e) => {
       airseaDemo = action === "airsea-demo";
       immortalDemo = action === "immortal-demo";
       wildDemo = action === "wild-demo";
-      const { left, right } = demoArmies(
-        summonDemo,
-        insectDemo,
-        airseaDemo,
-        immortalDemo,
-        wildDemo,
-      );
+      riderDemo = action === "rider-demo";
+      armorDemo = action === "armor-demo";
+      axeDemo = action === "axe-demo";
+      swordDemo = action === "sword-demo";
+      const { left, right } = swordDemo
+        ? SWORDTHRALL_DEMO
+        : axeDemo
+          ? AXETHRALL_DEMO
+          : demoArmies(
+              summonDemo,
+              insectDemo,
+              airseaDemo,
+              immortalDemo,
+              wildDemo,
+              riderDemo,
+              armorDemo,
+            );
       runComputation(
-        { kind: "replay", left, right, version: "metamorph" },
+        { kind: "replay", left, right, version: CURRENT_COMBAT_VERSION },
         (value) => {
           if (value.kind !== "replay") return;
           demoBattle = value.battle;
@@ -1016,19 +1050,20 @@ app.addEventListener("change", (e) => {
   }
   if (!input.dataset.codex) return;
   const key = input.dataset.codex;
+  if (key === "availability") codexFilters.availability = input.value;
   if (key === "cost") codexFilters.cost = input.value;
   if (key === "trait") codexFilters.trait = input.value;
   if (key === "star") codexFilters.star = Number(input.value);
   if (key === "sort") codexFilters.sort = input.value;
   if (key === "range") codexFilters.range = input.value;
-  refreshCodex(app);
+  refreshCodex(app, game);
 });
 app.addEventListener("input", (event) => {
   const input = event.target;
   if (!(input instanceof HTMLInputElement) || input.dataset.codex !== "query")
     return;
   codexFilters.query = input.value;
-  refreshCodex(app);
+  refreshCodex(app, game);
 });
 document.addEventListener("keydown", (e) => {
   const cell =
@@ -1091,11 +1126,55 @@ function demoArmies(
   airsea = false,
   immortal = false,
   wild = false,
+  riders = false,
+  armor = false,
 ) {
+  if (armor)
+    return {
+      left: [
+        { uid: 101, defId: "ironape", star: 2, position: 35 },
+        { uid: 102, defId: "irondog", star: 2, position: 36 },
+        { uid: 103, defId: "ghostjet", star: 2, position: 58 },
+        { uid: 104, defId: "motorcycle", star: 2, position: 51 },
+        { uid: 105, defId: "titan", star: 1, position: 34 },
+        { uid: 106, defId: "bomber", star: 2, position: 37 },
+        { uid: 107, defId: "ironrooster", star: 2, position: 43 },
+        { uid: 108, defId: "phoenix", star: 2, position: 59 },
+      ] satisfies Piece[],
+      right: [
+        { uid: 201, defId: "turtle", star: 2, position: 35 },
+        { uid: 202, defId: "vajra", star: 2, position: 36 },
+        { uid: 203, defId: "arhat", star: 2, position: 37 },
+        { uid: 204, defId: "infantry", star: 2, position: 51 },
+        { uid: 205, defId: "medic", star: 2, position: 43 },
+        { uid: 206, defId: "birdrider", star: 2, position: 58 },
+        { uid: 207, defId: "adept", star: 2, position: 50 },
+        { uid: 208, defId: "shark", star: 2, position: 34 },
+      ] satisfies Piece[],
+    };
+  if (riders)
+    return {
+      left: [
+        { uid: 101, defId: "birdrider", star: 3, position: 56 },
+        { uid: 102, defId: "motorcycle", star: 2, position: 43 },
+        { uid: 103, defId: "cavalry", star: 2, position: 34 },
+        { uid: 104, defId: "dragonfly", star: 2, position: 58 },
+        { uid: 105, defId: "guard", star: 3, position: 35 },
+        { uid: 106, defId: "medic", star: 2, position: 50 },
+      ] satisfies Piece[],
+      right: [
+        { uid: 201, defId: "irondog", star: 3, position: 35 },
+        { uid: 202, defId: "turtle", star: 2, position: 36 },
+        { uid: 203, defId: "guard", star: 3, position: 37 },
+        { uid: 204, defId: "infantry", star: 2, position: 51 },
+        { uid: 205, defId: "medic", star: 2, position: 43 },
+        { uid: 206, defId: "arhat", star: 2, position: 58 },
+      ] satisfies Piece[],
+    };
   const left: Piece[] = [
     { uid: 101, defId: "guard", star: 2, position: 35 },
     { uid: 102, defId: "flametrooper", star: 2, position: 34 },
-    { uid: 103, defId: "panda", star: 2, position: 37 },
+    { uid: 103, defId: "irondog", star: 2, position: 37 },
     { uid: 104, defId: "infantry", star: 2, position: 51 },
     { uid: 105, defId: "medic", star: 2, position: 43 },
     { uid: 106, defId: "motorcycle", star: 2, position: 52 },
@@ -1222,6 +1301,19 @@ function demoArmies(
         position: positions[i],
       })),
     );
+  }
+  if (!summoners && !insects && !airsea && !immortal && !wild) {
+    // Keep the channeling frontliner away from the opening titan knockdown
+    // so the general unit showcase can display all three shock pulses.
+    left[0].position = 37;
+    left[2].position = 35;
+    left[8] = {
+      uid: 109,
+      defId: "specialist",
+      star: 2,
+      position: 58,
+      items: ["staff"],
+    };
   }
   return { left, right };
 }

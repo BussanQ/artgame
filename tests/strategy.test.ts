@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { damage } from "../src/engine/abilities";
 import { describe, it, expect } from "vitest";
 import { TRAIT_TIERS } from "../src/data/traits";
@@ -42,7 +43,7 @@ function conservation(g: Game) {
           p.shop.filter((id) => id === u.id).length +
           p.pieces
             .filter((x) => x.defId === u.id)
-            .reduce((m, x) => m + 3 ** (x.star - 1), 0),
+            .reduce((m, x) => m + (x.copies ?? 3 ** (x.star - 1)), 0),
         0,
       );
     expect(total).toBe(COPIES[u.cost]);
@@ -74,7 +75,8 @@ describe("羁绊梯度与 AI 策略", () => {
     ];
     const modern = army(pieces, 0),
       legacy = army(pieces, 0, "legacy");
-    expect(modern[0].maxHp).toBe(1100);
+    expect(modern[0].maxHp).toBe(800);
+    expect(army(pieces, 0, "metamorph")[0].maxHp).toBe(1100);
     expect(army(pieces, 0, "tactics")[0].maxHp).toBe(1200);
     expect(legacy[0].maxHp).toBe(1000);
     expect(modern[1].attack).toBeCloseTo(58 * 1.15);
@@ -135,7 +137,7 @@ describe("羁绊梯度与 AI 策略", () => {
     );
   });
   it("组合选阵不修改输入，保留强势高星棋子，布阵不超人口或重叠", () => {
-    const p = createGame().players[1];
+    const p = createGame(undefined, "classic").players[1];
     p.level = 3;
     p.pieces = [
       piece("guard", 0, 3),
@@ -161,7 +163,7 @@ describe("羁绊梯度与 AI 策略", () => {
     ).toBe(true);
   });
   it("推荐布阵计入装备，保留同星同种的已武装棋子", () => {
-    const p = createGame().players[0];
+    const p = createGame(undefined, "classic").players[0];
     p.level = 1;
     p.pieces = [
       piece("infantry", 0, 2),
@@ -173,7 +175,7 @@ describe("羁绊梯度与 AI 策略", () => {
     expect(chooseLineup(p, "standard").map((p) => p.uid)).toEqual([2]);
   });
   it("辅助位于队伍中段且覆盖前排，输出射手仍在后排", () => {
-    const p = createGame().players[0];
+    const p = createGame(undefined, "classic").players[0];
     p.level = 6;
     p.pieces = ["guard", "cavalry", "fish", "deer", "infantry", "monk"].map(
       (id, i) => piece(id, i, 2),
@@ -224,9 +226,10 @@ describe("羁绊梯度与 AI 策略", () => {
   it("不同 AI 有明确构筑偏好，攒息目标会随阶段和危险血量变化", () => {
     expect(
       new Set(AI_PROFILES.slice(1).map((p) => p.traits.join("/"))).size,
-    ).toBe(7);
-    const g = createGame(),
+    ).toBe(8);
+    const g = createGame(undefined, "classic"),
       p = g.players[1];
+    p.aiProfile = "infantry";
     g.round = 12;
     expect(savingsTarget(g, p)).toBe(25);
     p.hp = 30;
@@ -237,7 +240,7 @@ describe("羁绊梯度与 AI 策略", () => {
   });
   it("各难度 AI 只使用合法经济操作，卡池守恒，行动可重复且不在战斗中购物", () => {
     for (const difficulty of ["relaxed", "standard", "veteran"] as const) {
-      const g = createGame(55);
+      const g = createGame(55, "classic");
       g.difficulty = difficulty;
       const other = structuredClone(g);
       for (const p of g.players.slice(1))
@@ -263,7 +266,7 @@ describe("羁绊梯度与 AI 策略", () => {
     }
   });
   it("schema 2 战斗存档使用 legacy 恢复，进入下一回合才切换新规则", () => {
-    const g = createGame(88);
+    const g = createGame(88, "classic");
     g.combatVersion = "legacy";
     g.encountersFromRound = 31;
     buy(g, g.players[0], 0);
@@ -289,7 +292,7 @@ describe("羁绊梯度与 AI 策略", () => {
     settle(restored, resumeRound(restored)!);
     expect(restored.history[0].combatVersion).toBe("legacy");
     nextRound(restored);
-    expect(restored.combatVersion).toBe("metamorph");
+    expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
     expect(validGame(restored)).toBe(true);
   });
 });

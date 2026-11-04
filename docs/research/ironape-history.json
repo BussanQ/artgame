@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-04",
+  "unit": "铁猿",
+  "sources": [
+    "S04",
+    "S05",
+    "S18"
+  ],
+  "fields": {
+    "S04": {
+      "sourceImage": "S04-1",
+      "row": 10,
+      "cost": 2,
+      "traits": [
+        "装甲",
+        "爆破"
+      ],
+      "hp": 800,
+      "attackMin": 66,
+      "attackMax": 72,
+      "attackIntervalSeconds": 1.7,
+      "armor": 6,
+      "armorPerStar": 2,
+      "range": 1,
+      "skillCooldownSeconds": 10
+    },
+    "S05": {
+      "role": "High armor, high area damage"
+    },
+    "S18": {
+      "role": "Durable armored spell damage, no control"
+    }
+  },
+  "localAdaptations": {
+    "skillName": "重装震爆",
+    "damageByStar": [
+      250,
+      500,
+      1000
+    ],
+    "damageType": "magic",
+    "initialMana": 25,
+    "windupSeconds": 0.75,
+    "area": "Manhattan radius 2 around current caster position",
+    "attack": 69,
+    "attackGrowth": "double per star",
+    "intervalTicks": 7,
+    "intervalSeconds": 1.75,
+    "skillPower": "snapshot at cast",
+    "hardControlSilenceDeathCancel": true,
+    "originalTargetLossCancels": false,
+    "areaHitsConcealedAndFlying": true,
+    "lethalReflectionStopsLaterTargets": true
+  },
+  "limitations": "No recovered exact skill name, star damage, radius, initial energy or interruption rules. Historical dates differ; this is not a unified client version restoration."
+}

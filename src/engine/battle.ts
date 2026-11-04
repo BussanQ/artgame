@@ -1,7 +1,11 @@
+import { advanceBladeStorm } from "./swordthrall";
+import { unitArmor } from "../data/unit-stats";
+import { CURRENT_COMBAT_VERSION } from "./types";
 import { advanceBurn } from "./infantry-skills";
 import { isPhoenixEgg, hatchPhoenix } from "./phoenix";
 import { advanceHawkCombo, startHawkCombo } from "./metamorphosis";
 import { advanceSonic, advanceWindup } from "./wild-skills";
+import { startFaithArrow, advanceFaithArrow } from "./birdrider";
 import { skillReady, concealed, attackTargets } from "./triggers";
 import { isUndying, expireUndying } from "./immortality";
 import { equipmentStats } from "../data/items";
@@ -16,7 +20,7 @@ import {
   combatAttack,
   advanceAirSkills,
 } from "./abilities";
-import { SKILLS } from "../data/skills";
+import { AXE_THROW, SKILLS } from "../data/skills";
 import type {
   Battle,
   Fighter,
@@ -28,11 +32,12 @@ import type {
 export function army(
   pieces: Piece[],
   side: 0 | 1,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): Fighter[] {
-  const metamorph = version === "metamorph";
-  if (metamorph) version = "fleet";
   const bonuses = traitBonuses(pieces, version);
+  const metamorph =
+    version === "metamorph" || version === "infantry" || version === "armored";
+  if (metamorph) version = "fleet";
   const active = new Set(
     synergies(pieces, "legacy")
       .filter((s) => s.active)
@@ -66,6 +71,7 @@ export function army(
       );
       const pos = p.position!;
       return {
+        ...(d.id === "birdrider" ? { bird: { shots: 0 } } : {}),
         ...(d.id === "phoenix"
           ? {
               phoenix: {
@@ -172,7 +178,7 @@ export function army(
             ? (has("狙击") ? 1.25 : 1) * (has("刺杀") ? 1.35 : 1)
             : 1 + sum("attack")),
         armor:
-          d.armor +
+          unitArmor(d, p.star) +
           gear.armor +
           (version === "legacy" ? (has("装甲") ? 4 : 0) : sum("armor")),
         range: d.range,
@@ -183,25 +189,34 @@ export function army(
         ),
         cooldown: 0,
         mana:
-          (version === "signature" ||
-            version === "summons" ||
-            version === "legions" ||
-            version === "brood" ||
-            version === "airsea" ||
-            version === "fleet") &&
-          ["cavalry", "turtle", "tiger"].includes(p.defId)
+          d.id === "birdrider"
             ? 0
-            : Math.min(
-                100,
-                (version === "legacy" ? (has("熊猫") ? 100 : 0) : sum("mana")) +
-                  gear.mana +
-                  (version === "fleet" && d.id === "bomber"
-                    ? 50
-                    : (d.initialMana ?? 0)),
-              ),
+            : (version === "signature" ||
+                  version === "summons" ||
+                  version === "legions" ||
+                  version === "brood" ||
+                  version === "airsea" ||
+                  version === "fleet") &&
+                ["cavalry", "turtle", "tiger"].includes(p.defId)
+              ? 0
+              : Math.min(
+                  100,
+                  (version === "legacy"
+                    ? has("熊猫")
+                      ? 100
+                      : 0
+                    : sum("mana")) +
+                    gear.mana +
+                    (version === "fleet" && d.id === "bomber"
+                      ? 50
+                      : (d.initialMana ?? 0)),
+                ),
         lifesteal: gear.lifesteal,
         skillPower:
           1 + gear.skillPower + (version === "legacy" ? 0 : sum("skillPower")),
+        ...(bonuses.get("装甲")?.regen && d.traits.includes("装甲")
+          ? { armorRegen: bonuses.get("装甲")!.regen }
+          : {}),
         regeneration:
           version === "legacy" ? (has("先锋") ? 8 : 0) : sum("regen"),
         attackShred: version === "legacy" ? 0 : sum("shred"),
@@ -295,8 +310,21 @@ function runBattle(
   version: CombatVersion,
   recordFrames: boolean,
 ): Battle {
+  const formationVersion = version;
   const fighters = [...army(left, 0, version), ...army(right, 1, version)];
-  if (version === "metamorph") version = "fleet";
+  if (version === "infantry" || version === "armored") {
+    const reductions = [left, right].map(
+      (pieces) => traitBonuses(pieces, version).get("步兵")?.enemyArmor ?? 0,
+    );
+    for (const f of fighters)
+      if (reductions[1 - f.side]) f.infantryArmorBreak = reductions[1 - f.side];
+  }
+  if (
+    version === "metamorph" ||
+    version === "infantry" ||
+    version === "armored"
+  )
+    version = "fleet";
   if (version === "brood" || version === "airsea" || version === "fleet") {
     const suppression = [left, right].map((pieces) =>
       synergies(pieces, version).some((s) => s.trait === "异能" && s.active),
@@ -307,7 +335,8 @@ function runBattle(
   openingJumps(fighters, [left, right], version);
   if (version === "airsea" || version === "fleet") {
     const reductions = [left, right].map(
-      (pieces) => traitBonuses(pieces, version).get("爆破")?.magicBreak ?? 0,
+      (pieces) =>
+        traitBonuses(pieces, formationVersion).get("爆破")?.magicBreak ?? 0,
     );
     for (const f of fighters) {
       f.air!.magicBreak = reductions[1 - f.side];
@@ -338,6 +367,8 @@ function runBattle(
     const context = { fighters, tick, events, effects };
     for (const f of fighters) {
       f.flash = false;
+      if (f.bladeStorm && (f.hp <= 0 || f.bladeStorm.until <= tick))
+        delete f.bladeStorm;
       if (f.charm && f.charm.until <= tick) {
         f.side = f.charm.side;
         f.attack = f.charm.attack;
@@ -348,6 +379,10 @@ function runBattle(
       if (f.armorBuffUntil <= tick) f.armorBuff = 0;
       if (f.slow && f.slow.until <= tick) delete f.slow;
       if (f.attackBoost && f.attackBoost.until <= tick) delete f.attackBoost;
+      if (f.command) {
+        f.command = f.command.filter((grant) => grant.until > tick);
+        if (!f.command.length) delete f.command;
+      }
     }
     expireUndying(context);
     hatchPhoenix(context);
@@ -366,13 +401,23 @@ function runBattle(
           : fighters;
     for (const f of order) {
       if (f.hp <= 0 || isPhoenixEgg(f)) continue;
-      if (f.regeneration && !isUndying(f))
-        f.hp = Math.min(f.maxHp, f.hp + f.regeneration);
+      if (f.regeneration && !isUndying(f)) {
+        const restored = Math.min(f.maxHp - f.hp, f.regeneration);
+        f.hp += restored;
+        // Preserve historical vanguard accounting; record actual armor self-healing.
+        if (f.armorRegen) f.healing += restored;
+      }
       if (
-        ((version === "fleet" && f.air?.cast) || f.windup || f.combo) &&
+        ((version === "fleet" && f.air?.cast) ||
+          f.windup ||
+          f.combo ||
+          f.bird?.draw) &&
         f.cooldown > 0
       )
         f.cooldown--;
+      const spinning = advanceBladeStorm(context, f);
+      if (f.hp <= 0) continue;
+      if (advanceFaithArrow(context, f)) continue;
       if (advanceHawkCombo(context, f)) continue;
       if (advanceWindup(context, f)) continue;
       if (advanceAirSkills(context, f)) continue;
@@ -387,7 +432,7 @@ function runBattle(
       const target = enemies[0];
       if (!target) continue;
       if (f.cooldown > 0) f.cooldown--;
-      if (f.cooldown > 0) continue;
+      if (f.cooldown > 0 && !spinning) continue;
       if (f.stunUntil > tick) continue;
       const injuredAlly =
         f.defId === "monk" &&
@@ -403,6 +448,7 @@ function runBattle(
         skillReady(f) &&
         (f.defId !== "monk" || injuredAlly) &&
         (distance(f, target) <= f.range ||
+          (f.defId === "axethrall" && distance(f, target) <= AXE_THROW.range) ||
           injuredAlly ||
           f.defId === "panda" ||
           [
@@ -465,9 +511,13 @@ function runBattle(
           }
         }
       } else {
+        if (spinning) continue;
         if (f.signature) f.signature.attacks++;
         gainMana(f, 25, tick);
-        if (!startHawkCombo(context, f, target))
+        if (
+          !startFaithArrow(context, f, target) &&
+          !startHawkCombo(context, f, target)
+        )
           damage(context, f, target, combatAttack(f, tick));
         f.cooldown += attackInterval(f, tick);
       }
@@ -517,7 +567,7 @@ function runBattle(
 export function simulate(
   left: Piece[],
   right: Piece[],
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): Battle {
   return runBattle(left, right, version, true);
 }
@@ -525,7 +575,7 @@ export function simulate(
 export function simulateOutcome(
   left: Piece[],
   right: Piece[],
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
   const battle = runBattle(left, right, version, false);
   return {

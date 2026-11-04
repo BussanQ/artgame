@@ -27,6 +27,8 @@ import {
   isMelee,
   MELEE_ACTIONS,
   meleePose,
+  ironapeChargePose,
+  bladeStormPose,
   REST_POSE,
   drawMeleeWeapon,
 } from "./melee";
@@ -434,7 +436,7 @@ export class BattleScene {
               age / duration,
               from,
               e.evaded ? { x: to.x + 22, y: to.y - 18 } : to,
-              e.skill,
+              e.skill || !!e.empowered,
             );
           if (
             !preferences.reducedMotion &&
@@ -494,7 +496,7 @@ export class BattleScene {
               : e.evaded
                 ? "闪避"
                 : e.amount > 0
-                  ? String(e.amount)
+                  ? `${e.empowered ? "暴击 " : ""}${e.amount}`
                   : `吸收 ${e.absorbed}`;
             c.strokeText(label, to.x, y);
             c.fillStyle =
@@ -502,7 +504,7 @@ export class BattleScene {
                 ? "#9cdeff"
                 : e.damageType === "magic"
                   ? "#c1acff"
-                  : e.skill
+                  : e.skill || e.empowered
                     ? "#ffe191"
                     : "#f2f5e3";
             c.fillText(label, to.x, y);
@@ -612,13 +614,30 @@ export class BattleScene {
       ? REST_POSE
       : transformation
         ? bullFormPose(transformation, this.motionReduced)
-        : !this.motionReduced && !death && attack && f.hawkForm?.active
-          ? hawkGroundPose(attack.progress, attack.event.strike ?? 1)
-          : !this.motionReduced && !death && attack && isMelee(f.defId)
-            ? meleePose(f.defId, attack.progress, attack.event.skill)
-            : !this.motionReduced && !death && attack && isRanged(f.defId)
-              ? rangedPose(f.defId, attack.progress, attack.event.skill)
-              : REST_POSE;
+        : !this.motionReduced && !death && f.bladeStorm
+          ? bladeStormPose(time)
+          : !this.motionReduced && !death && f.air?.cast?.kind === "ironape"
+            ? ironapeChargePose(1 - (f.air.cast.next - time) / 3)
+            : !this.motionReduced && !death && f.bird?.draw
+              ? rangedPose(
+                  "birdrider",
+                  Math.max(
+                    0,
+                    Math.min(0.29, (1 - (f.bird.draw.until - time) / 2) * 0.29),
+                  ),
+                  true,
+                )
+              : !this.motionReduced && !death && attack && f.hawkForm?.active
+                ? hawkGroundPose(attack.progress, attack.event.strike ?? 1)
+                : !this.motionReduced && !death && attack && isMelee(f.defId)
+                  ? meleePose(f.defId, attack.progress, attack.event.skill)
+                  : !this.motionReduced && !death && attack && isRanged(f.defId)
+                    ? rangedPose(
+                        f.defId,
+                        attack.progress,
+                        attack.event.skill || !!attack.event.empowered,
+                      )
+                    : REST_POSE;
     const origin = transformation?.moving
       ? project(transformation.from.x + 0.5, transformation.from.y + 0.5)
       : attack
@@ -691,6 +710,7 @@ export class BattleScene {
       !this.motionReduced &&
       !death &&
       attack &&
+      f.air?.cast?.kind !== "ironape" &&
       isMelee(f.defId)
     ) {
       c.save();

@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -181,7 +182,7 @@ describe("原型 0.7 的兵种触发方式", () => {
     }
   });
   it("0.6 存档准备阶段升级，进行中战斗和历史继续旧规则，下一轮才切换", () => {
-    const game = createGame(137);
+    const game = createGame(137, "classic");
     game.combatVersion = "balanced";
     const piece = p("guard", game.nextUid++);
     game.players[0].pieces.push(piece);
@@ -197,7 +198,10 @@ describe("原型 0.7 的兵种触发方式", () => {
       });
     const prepare = decodeSave(encode());
     expect(prepare.data!.schema).toBe(SAVE_SCHEMA);
-    expect(prepare.data!.game).toEqual({ ...game, combatVersion: "metamorph" });
+    expect(prepare.data!.game).toEqual({
+      ...game,
+      combatVersion: CURRENT_COMBAT_VERSION,
+    });
     const result = startRound(game)!;
     const restored = decodeSave(encode()).data!.game;
     expect(restored).toEqual(game);
@@ -205,7 +209,7 @@ describe("原型 0.7 的兵种触发方式", () => {
     expect(restored.history[0].combatVersion).toBe("balanced");
     if (restored.reward) claimReward(restored, 0);
     nextRound(restored);
-    expect(restored.combatVersion).toBe("metamorph");
+    expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
     const report = restored.history[0];
     expect(simulate(report.left, report.right, report.combatVersion)).toEqual(
       result.battle,

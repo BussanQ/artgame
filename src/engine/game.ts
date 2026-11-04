@@ -1,3 +1,5 @@
+import { availableUnits, isRecruitable, randomBans } from "./rotation";
+import { CURRENT_COMBAT_VERSION } from "./types";
 import { mergePieces, pieceCopies, salePrice } from "./progression";
 import { previewPurchase } from "./recruitment";
 import { income } from "./economy";
@@ -7,18 +9,29 @@ import { encounterFor, encounterArmy } from "../data/encounters";
 import { rewardChoices, itemScore } from "./equipment";
 import { COPIES, ODDS, RULES, UNIT, UNITS, XP } from "../data/units";
 import { random } from "./random";
+import { opponentProfiles } from "../data/ai-profiles";
 import { simulate, simulateOutcome } from "./battle";
 import type { Game, Player, Piece, Battle } from "./types";
-export function createGame(seed = 20261102): Game {
+export function createGame(
+  seed = 20261102,
+  mode: "rotation" | "classic" = "rotation",
+): Game {
+  const bannedSeries = mode === "rotation" ? randomBans(seed) : undefined;
   const g: Game = {
     seed: seed >>> 0,
-    combatVersion: "metamorph",
+    ...(bannedSeries ? { bannedSeries } : {}),
+    combatVersion: CURRENT_COMBAT_VERSION,
     difficulty: "standard",
     nextUid: 1,
     round: 1,
     phase: "prepare",
     players: [],
-    pool: Object.fromEntries(UNITS.map((u) => [u.id, COPIES[u.cost]])),
+    pool: Object.fromEntries(
+      UNITS.map((u) => [
+        u.id,
+        isRecruitable({ bannedSeries }, u.id) ? COPIES[u.cost] : 0,
+      ]),
+    ),
     message: "招募棋子，点击备战席棋子，再点击己方棋格部署。",
     history: [],
     encountersFromRound: 1,
@@ -34,9 +47,14 @@ export function createGame(seed = 20261102): Game {
     "深海回声",
     "铁幕",
   ];
+  const doctrines = opponentProfiles(
+    seed,
+    bannedSeries ? availableUnits({ bannedSeries }) : undefined,
+  );
   g.players = names.map((name, id) => ({
     id,
     name,
+    ...(id > 0 ? { aiProfile: doctrines[id - 1] } : {}),
     hp: 100,
     gold: 10,
     level: 3,
@@ -57,14 +75,16 @@ export function roll(g: Game, p: Player, paid = true): boolean {
   p.shop = [];
   for (let i = 0; i < RULES.shop; i++) {
     const choices = UNITS.filter(
-      (u) => g.pool[u.id] > 0 && ODDS[p.level - 1][u.cost - 1] > 0,
+      (u) =>
+        isRecruitable(g, u.id) &&
+        g.pool[u.id] > 0 &&
+        ODDS[p.level - 1][u.cost - 1] > 0,
     );
     const weight = (id: string) =>
       (ODDS[p.level - 1][UNIT[id].cost - 1] * g.pool[id]) /
-      UNITS.filter((u) => u.cost === UNIT[id].cost).reduce(
-        (n, u) => n + g.pool[u.id],
-        0,
-      );
+      UNITS.filter(
+        (u) => u.cost === UNIT[id].cost && isRecruitable(g, u.id),
+      ).reduce((n, u) => n + g.pool[u.id], 0);
     let pick = random(g) * choices.reduce((n, u) => n + weight(u.id), 0);
     const unit =
       choices.find((u) => (pick -= weight(u.id)) < 0) ?? choices.at(-1);
@@ -75,7 +95,7 @@ export function roll(g: Game, p: Player, paid = true): boolean {
 }
 export function merge(
   p: Player,
-  version: Game["combatVersion"] = "metamorph",
+  version: Game["combatVersion"] = CURRENT_COMBAT_VERSION,
 ): void {
   mergePieces(p, version);
 }
@@ -303,7 +323,7 @@ export function settle(g: Game, result: RoundResult): void {
 export function nextRound(g: Game) {
   if (g.phase !== "result" || g.reward) return;
   g.round++;
-  g.combatVersion = "metamorph";
+  g.combatVersion = CURRENT_COMBAT_VERSION;
   g.phase = "prepare";
   for (const p of g.players.filter((p) => p.hp > 0))
     if (!p.locked) roll(g, p, false);

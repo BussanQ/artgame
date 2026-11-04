@@ -1,5 +1,26 @@
 import { REST_POSE, type AttackPose } from "./melee";
 export const RANGED_ACTIONS = {
+  ironrooster: {
+    name: "双足稳架交替炮击",
+    duration: 3.8,
+    fireAt: 0.24,
+    impactAt: 0.72,
+    color: "#efcb85",
+  },
+  birdrider: {
+    name: "跨鞍张弓振羽",
+    duration: 3.2,
+    fireAt: 0.3,
+    impactAt: 0.7,
+    color: "#dceea0",
+  },
+  specialist: {
+    name: "半跪锁定拉栓重狙",
+    duration: 4.6,
+    fireAt: 0.46,
+    impactAt: 0.58,
+    color: "#a6e8ef",
+  },
   motorcycle: {
     name: "压车架炮后坐",
     duration: 2,
@@ -235,6 +256,29 @@ export function rangedPose(id: RangedId, t: number, skill = false): AttackPose {
   if (t <= 0 || t >= 1) return { ...REST_POSE };
   const p = { ...REST_POSE };
   switch (id) {
+    case "ironrooster":
+      p.forward = -16 * pulse(t, 0.18, 0.55) - 11 * pulse(t, 0.43, 0.86);
+      p.rotation = -0.12 * pulse(t, 0.18, 0.55) + 0.1 * pulse(t, 0.43, 0.86);
+      p.scaleY = 1 - 0.08 * pulse(t, 0.1, 0.9);
+      p.lift = 5 * pulse(t, 0, 0.3);
+      break;
+    case "birdrider":
+      p.lift = 7 * pulse(t, 0, 0.45) - 3 * pulse(t, 0.45, 0.9);
+      p.forward = -13 * pulse(t, 0, 0.3) + 14 * pulse(t, 0.3, 0.75);
+      p.rotation = -0.1 * pulse(t, 0, 0.3) + 0.09 * pulse(t, 0.3, 0.9);
+      p.scaleX = 1 + 0.08 * pulse(t, 0.1, 0.6);
+      p.scaleY = 1 - 0.055 * pulse(t, 0.3, 0.8);
+      break;
+    case "specialist": {
+      const brace = pulse(t, 0, 0.46),
+        recoil = pulse(t, 0.46, 0.7),
+        bolt = pulse(t, 0.7, 1);
+      p.scaleY = 1 - 0.14 * brace;
+      p.forward = 6 * brace - 25 * recoil - 5 * bolt;
+      p.rotation = 0.025 * brace - 0.15 * recoil + 0.06 * bolt;
+      p.scaleX = 1 + 0.04 * bolt;
+      break;
+    }
     case "motorcycle":
       p.forward = 7 * pulse(t, 0, 0.2) - 22 * pulse(t, 0.2, 0.8);
       p.rotation = -0.12 * pulse(t, 0.18, 0.8);
@@ -526,6 +570,80 @@ export function drawRangedAttack(
     c.restore();
   };
   switch (id) {
+    case "ironrooster": {
+      for (const [index, offset] of [-8, 8].entries()) {
+        const u = (t - profile.fireAt - index * 0.12) / 0.36;
+        if (u < 0 || u > 1) continue;
+        const muzzle = {
+          x: from.x - Math.sin(angle) * offset,
+          y: from.y + Math.cos(angle) * offset,
+        };
+        line(
+          projectilePoint(muzzle, to, Math.max(0, u - 0.16)),
+          projectilePoint(muzzle, to, u),
+          3,
+        );
+        ring(muzzle, 4 + u * 5, 1 - u);
+      }
+      sparks((t - profile.impactAt) / 0.28, 5);
+      break;
+    }
+    case "birdrider": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const tip = projectilePoint(from, to, u, skill ? 9 : 24);
+        const tail = projectilePoint(
+          from,
+          to,
+          Math.max(0, u - 0.2),
+          skill ? 9 : 24,
+        );
+        line(tail, tip, skill ? 5 : 2.5);
+        c.save();
+        c.translate(tip.x, tip.y);
+        c.rotate(Math.atan2(tip.y - tail.y, tip.x - tail.x));
+        c.beginPath();
+        c.moveTo(9 * power, 0);
+        c.lineTo(-4, -5 * power);
+        c.lineTo(-1, 0);
+        c.lineTo(-4, 5 * power);
+        c.closePath();
+        c.fill();
+        c.restore();
+        if (skill) ring(tip, 8, 0.7);
+      }
+      if (u > 1) {
+        sparks((t - profile.impactAt) / 0.3, skill ? 10 : 3);
+      }
+      break;
+    }
+    case "specialist": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        line(
+          projectilePoint(from, to, Math.max(0, u - 0.35)),
+          projectilePoint(from, to, u),
+          3 * power,
+        );
+        flash(1 - u);
+      }
+      if (u > 1) {
+        const fade = Math.max(0, (1 - t) / (1 - profile.impactAt));
+        c.globalAlpha *= fade;
+        line(
+          { x: to.x - 12 * power, y: to.y },
+          { x: to.x + 12 * power, y: to.y },
+          2,
+        );
+        line(
+          { x: to.x, y: to.y - 12 * power },
+          { x: to.x, y: to.y + 12 * power },
+          2,
+        );
+        ring(to, (8 + (1 - fade) * 20) * power, fade);
+      }
+      break;
+    }
     case "motorcycle": {
       const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
       if (u >= 0 && u <= 1) {

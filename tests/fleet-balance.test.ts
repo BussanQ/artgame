@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -85,7 +86,7 @@ describe("0.12 空海战斗节奏与版本隔离", () => {
   });
   for (const phase of ["prepare", "battle", "result"] as const)
     it(`schema10 ${phase}保留资源和旧战斗，准备或下一回合才升级`, () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "airsea";
       const player = g.players[0];
       buy(g, player, 0);
@@ -110,12 +111,12 @@ describe("0.12 空海战斗节奏与版本隔离", () => {
       expect(validGame(restored)).toBe(true);
       expect(restored).toEqual({
         ...g,
-        combatVersion: phase === "prepare" ? "metamorph" : "airsea",
+        combatVersion: phase === "prepare" ? CURRENT_COMBAT_VERSION : "airsea",
       });
       if (phase === "result") {
         if (restored.reward) claimReward(restored, 0);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("metamorph");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
         expect(restored.history[0].combatVersion).toBe("airsea");
       }
     });

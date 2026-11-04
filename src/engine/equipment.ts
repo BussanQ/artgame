@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
 import { SKILLS } from "../data/skills";
@@ -89,18 +90,27 @@ export function claimReward(g: Game, index: number): boolean {
 export function itemScore(
   piece: Piece,
   id: string,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): number {
   const s = ITEM[id].stats,
     u = UNIT[piece.defId],
     tank =
       u.traits.includes("护卫") ||
       u.traits.includes("先锋") ||
-      u.id === "blastbug",
+      u.id === "blastbug" ||
+      u.id === "irondog" ||
+      u.id === "ironape",
     caster =
-      ["wolf", "adept", "shark", "spider", "repair", "whale", "medic"].includes(
-        u.id,
-      ) ||
+      [
+        "wolf",
+        "adept",
+        "shark",
+        "spider",
+        "repair",
+        "whale",
+        "medic",
+        "ironrooster",
+      ].includes(u.id) ||
       SKILLS[u.id].damageType === "magic" ||
       SKILLS[u.id].healRatio > 0;
   return (
@@ -116,8 +126,10 @@ export function itemScore(
         version === "brood" ||
         version === "airsea" ||
         version === "fleet" ||
-        version === "metamorph") &&
-      u.id === "turtle"
+        version === "metamorph" ||
+        version === "infantry" ||
+        version === "armored") &&
+      ["turtle", "birdrider", "ironrooster"].includes(u.id)
         ? 0
         : caster
           ? 300
@@ -129,8 +141,10 @@ export function itemScore(
         version === "brood" ||
         version === "airsea" ||
         version === "fleet" ||
-        version === "metamorph") &&
-      ["cavalry", "turtle", "tiger", "blastbug"].includes(u.id)
+        version === "metamorph" ||
+        version === "infantry" ||
+        version === "armored") &&
+      ["cavalry", "turtle", "tiger", "blastbug", "birdrider"].includes(u.id)
         ? 0
         : caster
           ? 2

@@ -19,7 +19,14 @@ export type SoundKind =
   | "place"
   | "reward";
 export const ATTACK_SOUND: Record<string, SoundKind> = {
+  swordthrall: "blade",
+  axethrall: "blade",
   motorcycle: "blast",
+  ironrooster: "shot",
+  birdrider: "bow",
+  specialist: "shot",
+  irondog: "impact",
+  ironape: "impact",
   phoenix: "blast",
   medic: "shot",
   flametrooper: "blast",

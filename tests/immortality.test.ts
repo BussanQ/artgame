@@ -263,7 +263,7 @@ describe("不朽生命周期与控制", () => {
   });
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(`schema11 ${phase}只补新卡池，不改资源或旧回放`, () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       // Reconstruct an old save without new offers; preserve every old reservation.
       for (const player of g.players)
         player.shop = player.shop.map((id) => {

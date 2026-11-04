@@ -1,3 +1,4 @@
+import { bladeStormActive } from "./swordthrall";
 import { damage, type CombatContext } from "./abilities";
 import { isPhoenixEgg } from "./phoenix";
 import type { Fighter } from "./types";
@@ -97,7 +98,12 @@ export function silence(
   target: Fighter,
   ticks: number,
 ) {
-  if (target.hp <= 0 || isPhoenixEgg(target)) return;
+  if (
+    target.hp <= 0 ||
+    isPhoenixEgg(target) ||
+    bladeStormActive(target, ctx.tick)
+  )
+    return;
   target.silenceUntil = Math.max(target.silenceUntil ?? 0, ctx.tick + ticks);
   // Active channels stop immediately; ordinary attacks (including claw combos) continue.
   if (target.air) delete target.air.cast;

@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -375,7 +376,7 @@ describe("空海选阵估值", () => {
       lineupScore(carry, AI_PROFILES[0]) -
       pieceStrength(support[0]);
     expect(surplus(strong)).toBeGreaterThan(surplus(weak));
-    const player = createGame(137).players[0];
+    const player = createGame(137, "classic").players[0];
     player.level = 3;
     player.pieces = [p("bomber", 1), p("repair", 2), p("ark", 3)];
     deployLineup(player, "standard");
@@ -390,7 +391,7 @@ describe("空海选阵估值", () => {
 describe("0.10存档迁移", () => {
   for (const phase of ["prepare", "battle", "result"] as const)
     it(`${phase}补齐空海卡池但保留当前资源和旧战报`, () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "brood";
       for (const player of g.players)
         for (let i = 0; i < player.shop.length; i++)
@@ -423,14 +424,14 @@ describe("0.10存档迁移", () => {
       expect(restored.players).toEqual(g.players);
       expect(restored.history).toEqual(g.history);
       expect(restored.combatVersion).toBe(
-        phase === "prepare" ? "metamorph" : "brood",
+        phase === "prepare" ? CURRENT_COMBAT_VERSION : "brood",
       );
       for (const id of AIRSEA_ADDITIONS)
         expect(restored.pool[id]).toBe(COPIES[UNIT[id].cost]);
       if (phase === "result") {
         if (restored.reward) claimReward(restored, 0);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("metamorph");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
       }
     });
 });

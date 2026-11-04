@@ -1,6 +1,6 @@
 # 本地存档与战报
 
-存档格式 `schema: 17`，规则版本随 `RULES.version` 保存。代码位于 `src/engine/persistence.ts`；基础验证为 `tests/persistence.test.ts`，增量迁移由对应版本模块验证。
+存档格式 `schema: 32`，规则版本随 `RULES.version` 保存。代码位于 `src/engine/persistence.ts`；基础验证为 `tests/persistence.test.ts`，增量迁移由对应版本模块验证。
 
 历史 singleplayer-0.12：schema 10 顺序迁移至 11，准备阶段升级 fleet；战斗、结算、终局及历史报告保留原 combatVersion，下一回合才切换。不改变金币、生命、商店、棋子、装备或卡池。轰炸机初始能量、引导冷却及四空军闪避按保存版本结算。`tests/fleet-balance.test.ts` 验证迁移及旧 airsea 完整快照，详见 [0.12 说明](fleet-balance.md)。
 
@@ -69,7 +69,7 @@ schema 8 补入四种异虫卡池，准备阶段升级 brood，在途及历史�
 
 schema 9 补六种空海卡池，准备阶段升级 airsea，在途及历史规则保留，下一回合切换。闪避使用局部确定性随机，完整/快速/恢复模拟一致。迁移不改现有金币、库存、棋子或战报；三阶段覆盖见 tests/airsea.test.ts。
 
-当前 singleplayer-0.18：schema 16 → 17 仅补幻鲸卡池 10 份，所有阶段保留战斗版本、金币、商店、棋子、装备、历史和播放状态。旧 schema 15 必须先按字面版本 0.17 升至 16，再进入本迁移。新兵种沿用 metamorph，不改变旧 45 棋子的战斗算法。见 tests/whale.test.ts。
+历史 singleplayer-0.18：schema 16 → 17 仅补幻鲸卡池 10 份，所有阶段保留战斗版本、金币、商店、棋子、装备、历史和播放状态。旧 schema 15 必须先按字面版本 0.17 升至 16，再进入本迁移。新兵种沿用 metamorph，不改变旧 45 棋子的战斗算法。见 tests/whale.test.ts。
 
 ## schema 18 / 规则 0.19
 
@@ -86,3 +86,49 @@ schema19/0.20仅补motorcycle共享卡池25份，保留旧战斗版本及所有�
 ## schema21 / 规则0.22
 
 递增收入只修改结算公式，schema20迁移仅更新版本元信息。当前金币、历史收益、回放、卡池和商店均保留；新的基础奖励从下一个未结算回合起生效，不补发过去回合。旧准备/战斗/结算/终局四阶段及上版卡池迁移已验证，详见[economy-growth.md](economy-growth.md)。
+
+## schema22 / 规则0.23
+
+准备阶段切换infantry战斗版本；在途战斗、结算、终局和历史报告保留原版本，下一轮准备才切换。20组旧版本完整帧哈希不变，四阶段迁移保留资源和播放状态，见[步兵编队](infantry-formation.md)。
+
+## schema23 / 规则0.24
+
+schema22/0.23仅补铁狗45份卡池；保留所有阶段资源、combatVersion、商店、阵容、战报与播放状态。前一步的中间规则固定为0.23。四阶段与旧回放验证见[铁狗](irondog.md)。
+
+## schema 24 / singleplayer-0.25
+
+schema23 / 0.24迁移至24：仅在缺少该键时补入特种兵25份共享卡池，并更新规则标记；准备、战斗、结算、终局均保留combatVersion、资源、商店、棋子、装备、战报和播放状态。schema22→23固定写入0.24后继续顺序迁移。锁定的目标UID、瞄准进度与伤害快照由确定性回放重建；不写入持久阵容。四阶段迁移、进行中回放逐帧一致和真实付费升星见 `tests/specialist.test.ts` 与[特种兵说明](specialist.md)。
+
+## schema 25 / singleplayer-0.26
+
+schema24 / 0.25仅补入缺失的鸟骑兵45份卡池和新规则标记。四个阶段的战斗版本、资源、商店、棋子、历史和播放状态均保留；schema23先迁至固定0.25，再继续升级。普通射击计数、强化箭目标与蓄力状态由确定性模拟恢复，不写入持久阵容。四阶段迁移与进行中回放一致见 `tests/birdrider.test.ts`。
+
+## schema 26 / singleplayer-0.27
+
+schema25/0.26→26仅在缺少铁猿时新增30份卡池，保持原商店、资源、阵容、战报、战斗版本与播放状态。上一步固定写入0.26再顺序迁移；战斗瞬态由确定性引擎恢复。四阶段迁移与旧回放验证见 tests/ironape.test.ts。
+
+## schema 28 / singleplayer-0.29
+
+从0.28升级时，准备阶段使用 `armored`；battle/result/finished保留原版本，到下一次准备切换。经济、卡池、棋子、AI风格、播放位置和历史保持。0.22迁移中间边界固定为 `infantry`。校验器接受新版本的当前局与历史记录，新增11组覆盖54种棋子的0.28完整逐帧冻结样本，详见[装甲与爆破](armor-blast.md)。
+
+## schema 27 / singleplayer-0.28
+
+新局AI保存可选 `Player.aiProfile` 字符串标识，包含8种已知风格；玩家本人不接受该字段，损坏/未知标识拒绝载入。schema26/0.27→27只更新封套，不为旧对手重分配、不消耗随机数、不动资源、商店、历史或播放状态；缺少字段时仍按原座位解析。旧铁猿迁移固定写入0.27后顺序升级。四阶段完整状态保持及Worker一致性见 tests/ai-doctrines.test.ts。
+
+## schema 29 / singleplayer-0.30
+
+从schema28/0.29迁移仅补缺失的15份四费铁鸡卡池，不改变经济、AI风格、战斗版本、棋子、商店、装备、历史战报或播放位置。上一阶段迁移固定写入0.29后再继续。prepare/battle/result/finished均有精确相等验证，战斗中恢复逐帧相同。新增11组0.29 `armored` 回放冻结，覆盖之前54种棋子。见[铁鸡](ironrooster.md)。
+
+## schema 30 / singleplayer-0.31
+
+新局保存 `bannedSeries`，恰好 3 个不重复的已知种族。准备、战斗、结算、终局和 Worker 恢复均保留禁用；刷新与下一轮不重新抽取。禁用棋子的卡池、商店、持有份数必须合计为零，历史玩家/PvP阵容也不能含禁用棋子；PvE守军不受限制。
+
+schema29 / singleplayer-0.30 顺序迁移只升级存档封套，Game 和历史回放原样保留。没有 `bannedSeries` 的旧比赛继续完整卡池，只有新开比赛才应用随机禁用。12组旧战斗快照、四阶段迁移及损坏禁用字段由 `tests/rotation.test.ts` 验证，见[系列禁用](species-rotation.md)。
+
+## schema 31 / singleplayer-0.32
+
+schema30只补缺失斧奴卡池：傀儡被禁用时为0，允许招募时为45份。保留禁用、资源、商店、持有棋子、AI风格、历史与播放位置，不重新抽取禁用。上一步迁移固定写入0.31再顺序升级；八类阶段/禁用组合及战斗恢复见 `tests/axethrall.test.ts` 和[斧奴说明](axethrall.md)。
+
+## schema 32 / singleplayer-0.33
+
+schema31只补缺失剑奴卡池：傀儡禁用为0，允许招募为30份。保留禁用结果、资源、商店、阵容、装备、历史与回放位置，战斗版本继续armored。上一步固定迁移到0.32后顺序升级。八种阶段/禁用组合及恢复战斗一致性见 `tests/swordthrall.test.ts`。

@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { chooseLineup, lineupScore, deployLineup } from "../src/engine/ai";
 import { AI_PROFILES } from "../src/data/ai-profiles";
 import { describe, it, expect } from "vitest";
@@ -161,7 +162,12 @@ describe("军医持续范围治疗", () => {
       right = [p("turtle", 3, 3, 35), p("infantry", 4, 2, 43)];
     const b = simulate(left, right),
       fast = simulateOutcome(left, right),
-      worker = compute({ kind: "replay", left, right, version: "metamorph" });
+      worker = compute({
+        kind: "replay",
+        left,
+        right,
+        version: CURRENT_COMBAT_VERSION,
+      });
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
     expect([fast.winner, fast.damage]).toEqual([b.winner, b.damage]);
     expect(worker.kind).toBe("replay");
@@ -189,7 +195,7 @@ describe("军医持续范围治疗", () => {
 describe("0.18存档增量迁移", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "保留资源和旧战斗，仅增加军医池", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       let battle: ReturnType<typeof startRound> | undefined;
       // Remove medic from shops before constructing a genuine old-roster fixture.
       for (const pl of g.players)
@@ -246,7 +252,7 @@ describe("0.18存档增量迁移", () => {
 describe("军医AI选择", () => {
   it("已有前排和输出时，选择带法杖的军医且不改动候选对象", () => {
     for (const star of [1, 2, 3]) {
-      const player = createGame(41).players[1];
+      const player = createGame(41, "classic").players[1];
       player.level = 3;
       player.pieces = [
         p("guard", 1, star),

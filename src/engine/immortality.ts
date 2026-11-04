@@ -11,6 +11,8 @@ export function enterUndying(ctx: CombatContext, fighter: Fighter) {
   state.until = ctx.tick + state.duration;
   fighter.hp = 1;
   fighter.shield = 0;
+  delete fighter.command;
+  delete fighter.bladeStorm;
   ctx.effects.push({
     source: fighter.uid,
     target: fighter.uid,

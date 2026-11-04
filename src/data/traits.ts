@@ -1,5 +1,6 @@
-import type { Trait } from "../engine/types";
+import type { CombatVersion, Trait } from "../engine/types";
 export interface TraitBonus {
+  enemyArmor?: number;
   groundBonus?: number;
   trueAttack?: boolean;
   reflection?: number;
@@ -240,8 +241,8 @@ export const AIRSEA_TRAIT_TIERS: Record<Trait, TraitTier[]> = {
   ],
 };
 
-/** Current 0.12 rules; retain the 0.11 table for deterministic historical replays. */
-export const TRAIT_TIERS: Record<Trait, TraitTier[]> = {
+/** 0.12–0.22 rules, retained for deterministic historical replays. */
+export const METAMORPH_TRAIT_TIERS: Record<Trait, TraitTier[]> = {
   ...AIRSEA_TRAIT_TIERS,
   // Only reachable with 0.20 additions; existing 0.19 armies have at most four infantry.
   步兵: [
@@ -257,3 +258,38 @@ export const TRAIT_TIERS: Record<Trait, TraitTier[]> = {
     },
   ],
 };
+
+/** S03 May 9 infantry thresholds; highest tier replaces lower tiers in this adaptation. */
+export const INFANTRY_TRAIT_TIERS: Record<Trait, TraitTier[]> = {
+  ...METAMORPH_TRAIT_TIERS,
+  步兵: [3, 6, 9].map((enemyArmor, index) => ({
+    count: (index + 1) * 2,
+    description: `全体敌人护甲降低 ${enemyArmor} 点（整场生效，含后续召唤物；取最高档，护甲减伤最低为零）`,
+    bonus: { enemyArmor },
+  })),
+};
+/** S1 formation totals. Higher tiers replace lower tiers; do not add totals twice. */
+export const TRAIT_TIERS: Record<Trait, TraitTier[]> = {
+  ...INFANTRY_TRAIT_TIERS,
+  装甲: [15, 50].map((perSecond, index) => ({
+    count: (index + 1) * 2,
+    description: `装甲每秒恢复 ${perSecond} 生命（取最高档；阵亡不再恢复）`,
+    bonus: { regen: perSecond / 4 },
+  })),
+  爆破: [20, 60].map((percent, index) => ({
+    count: (index + 1) * 3,
+    description: `全体敌人法术减伤降低 ${percent} 个百分点（取最高档，最低 −25%；含后续召唤物）`,
+    bonus: { magicBreak: percent / 100 },
+  })),
+};
+export function traitTiers(version: CombatVersion) {
+  return version === "armored"
+    ? TRAIT_TIERS
+    : version === "infantry"
+      ? INFANTRY_TRAIT_TIERS
+      : version === "fleet" || version === "metamorph"
+        ? METAMORPH_TRAIT_TIERS
+        : version === "tactics"
+          ? TACTICS_TRAIT_TIERS
+          : AIRSEA_TRAIT_TIERS;
+}

@@ -1,0 +1,24 @@
+{
+  "status": "generated",
+  "generatedAt": "2026-11-04",
+  "method": "built-in image_gen",
+  "failedAttemptsBeforeSuccess": 2,
+  "assets": [
+    {
+      "id": "irondog",
+      "name": "铁狗",
+      "prompt": "Create a single transparent full-body isometric game unit sprite: a heavy four-legged robotic war hound named Iron Dog, low canine silhouette, petrol-blue steel armor, aged bronze trim, amber visor, hydraulic knees, steel claws, short tail and compact copper shock-pulse generator on its back. No rider. Three-quarter front view facing right, slightly elevated camera, entire body and all four paws visible with generous padding. Polished hand-painted 3D science-fantasy strategy-game miniature style, readable broad shapes, weathered metal, warm rim light. Genuine transparent alpha background. No floor, pedestal, shadow, text, UI, watermark, other characters or detached effects.",
+      "path": "public/assets/units/irondog.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-f2116518-09d6-43c4-b8f1-ba94ee040a73.png",
+      "sha256": "9cfed00caea06886486c5994e3f9733c43c346cd5b93fbe6c1d1311293aa542b",
+      "width": 1536,
+      "height": 1024,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 885687,
+      "totalPixels": 1572864
+    }
+  ]
+}

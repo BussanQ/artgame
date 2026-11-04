@@ -1,3 +1,4 @@
+import { bladeStormActive } from "./swordthrall";
 import { isPhoenixEgg } from "./phoenix";
 import type { CombatContext } from "./abilities";
 import type { Fighter } from "./types";
@@ -53,6 +54,9 @@ export function callWolfPack(ctx: CombatContext, source: Fighter): boolean {
   for (const cell of cells) {
     const hp = Math.round(SPIRIT_WOLF.hp * scale);
     const pup: Fighter = {
+      ...(source.infantryArmorBreak
+        ? { infantryArmorBreak: source.infantryArmorBreak }
+        : {}),
       ...(source.reflection ? { reflection: source.reflection } : {}),
       uid: uid--,
       defId: "wolf",
@@ -203,6 +207,9 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
   for (const cell of cells) {
     const hp = Math.round(profile.hp * scale);
     ctx.fighters.push({
+      ...(source.infantryArmorBreak
+        ? { infantryArmorBreak: source.infantryArmorBreak }
+        : {}),
       ...(source.reflection ? { reflection: source.reflection } : {}),
       uid: uid--,
       defId: profile.defId,
@@ -277,6 +284,7 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
         f.hp > 0 &&
         cells.some((p) => Math.abs(p.x - f.x) + Math.abs(p.y - f.y) <= 1),
     )) {
+      if (bladeStormActive(enemy, ctx.tick)) continue;
       if (enemy.air) delete enemy.air.cast;
       enemy.stunUntil = Math.max(enemy.stunUntil, ctx.tick + 2);
       ctx.effects.push({

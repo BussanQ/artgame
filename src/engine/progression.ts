@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "./types";
 import { UNIT, UNITS } from "../data/units";
 import type { CombatVersion, Piece, Player } from "./types";
 export const isInsect = (id: string) =>
@@ -14,13 +15,15 @@ export function mergeCount(
   pieces: Piece[],
   id: string,
   star: number,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
   if (
     (version !== "brood" &&
       version !== "airsea" &&
       version !== "fleet" &&
-      version !== "metamorph") ||
+      version !== "metamorph" &&
+      version !== "infantry" &&
+      version !== "armored") ||
     !isInsect(id)
   )
     return 3;
@@ -28,7 +31,10 @@ export function mergeCount(
   return kinds >= (star === 1 ? 2 : 4) ? 2 : 3;
 }
 /** Evolution records real pool copies; equipment overflow returns to inventory. */
-export function mergePieces(p: Player, version: CombatVersion = "metamorph") {
+export function mergePieces(
+  p: Player,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) {
   for (const d of UNITS)
     for (let star = 1; star < 3; star++) {
       for (;;) {

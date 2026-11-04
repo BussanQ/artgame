@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -210,7 +211,7 @@ describe("召唤职业与傀儡战线", () => {
   it.each(["prepare", "battle", "result"] as const)(
     "0.8 %s 存档仅补卡池，进行中的旧战斗和战报保留",
     (phase) => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "summons";
       for (const player of g.players)
         player.shop = player.shop.map((id) => {
@@ -250,14 +251,14 @@ describe("召唤职业与傀儡战线", () => {
       expect(restored.players).toEqual(before.players);
       expect(restored.history).toEqual(before.history);
       expect(restored.combatVersion).toBe(
-        phase === "prepare" ? "metamorph" : "summons",
+        phase === "prepare" ? CURRENT_COMBAT_VERSION : "summons",
       );
       if (phase === "battle")
         expect(resumeRound(restored)!.battle).toEqual(round!.battle);
       if (phase === "result") {
         if (restored.reward) claimReward(restored, 0);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("metamorph");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
       }
     },
   );

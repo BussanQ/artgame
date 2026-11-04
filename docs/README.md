@@ -1,8 +1,18 @@
 # 赤潮网页自走棋：资料与开发方案
 
+最新增量：[0.33剑奴](design/swordthrall.md) · [历史字段](research/swordthrall-history.json) · [ImageGen提示词与资产](research/swordthrall-assets.json) · [36局正常经济采样](analysis/swordthrall-v033.json)。当前57种棋子，四月映射47/53，仍缺6项。
+
+历史增量：[0.32斧奴](design/axethrall.md) · [历史字段](research/axethrall-history.json) · [ImageGen提示词与资产](research/axethrall-assets.json) · [36局正常经济采样](analysis/axethrall-v032.json)。当前56种棋子，四月映射46/53，仍缺7项。
+
+上一玩法增量：[0.31 每局随机禁用 3 个种族](design/species-rotation.md) · [36局配对采样](analysis/rotation-v031.json)。整局共享禁用与关联过滤、图鉴筛选、概率说明及旧存档兼容已接入。
+
+上一兵种增量：[铁鸡战术协同](design/ironrooster.md) · [历史字段与适配](research/ironrooster-history.json) · [ImageGen 提示词与资产](research/ironrooster-assets.json) · [72局正常经济采样](analysis/balance-ironrooster-v030-after.json)。0.30共55种棋子，四月基线对应45/53，仍缺8项。
+
 整理日期：2026-11-02。目标技术栈：TypeScript + Vite。目标产品：浏览器中的科幻自走棋，先交付可验证的单机演习，再逐步还原历史规则与接入多人服务。
 
 ## 验收图片约定
+
+上一增量：[装甲再生与六爆破](design/armor-blast.md)，包含0.29战斗规则、史料边界、迁移和对局验证。
 
 后续界面验收截图统一保存到仓库根目录的 `tmp/`，该目录已被 Git 忽略。`docs/` 中原有的 PNG 验收图已清理，保留文字验证记录；历史图片可从 Git 历史恢复。游戏运行素材继续保存在 `public/assets/`。
 
@@ -150,3 +160,27 @@
 ## 0.22 回合递增收入
 
 每5回合基础金币提高2，六档5/7/9/11/13/15，玩家与AI共用；旧存档保留历史收益。面板显示本轮奖励和下次增长点。见[规则、39项必要验证与前后经济采样](design/economy-growth.md)。
+
+## 0.23 步兵编队
+
+[历史阈值对齐、战斗机制与验证](design/infantry-formation.md)：步兵2/4/6档降低全体敌方护甲，旧回放冻结及四阶段迁移；21局前后采样显示挑战档仍需校准。
+
+## 0.24 铁狗
+
+[铁狗实现与证据](design/irondog.md)：一费装甲/爆破前排、分段震荡、逐星护甲、独立动作，51种棋子；四月名单缺口剩12项。
+
+## 0.25 特种兵
+
+[锁定狙击实现与验收](design/specialist.md) · [生成形象及提示词](research/specialist-assets.json) · [21局正常经济采样](analysis/balance-specialist-v025-after.json)。当前52种（19近战/33远程），四月名单缺口剩11项；具体技能参数为本地设计。
+
+## 0.26 鸟骑兵
+
+[信仰之箭与骑射演示](design/birdrider.md) · [历史字段](research/birdrider-history.json) · [生成形象与提示词](research/birdrider-assets.json) · [新种子42局采样](analysis/balance-birdrider-v026-validation.json)。当前53种（19近战/34远程），四月名单覆盖43项，仍缺10项。
+
+## 0.27 铁猿
+
+[重装震爆与装甲演示](design/ironape.md) · [历史字段与适配](research/ironape-history.json) · [生成形象与提示词](research/ironape-assets.json)。当前54种（20近战/34远程），四月名单映射44项、仍缺9项。
+
+## 0.28 对手构筑风格
+
+[正式装甲AI、8选7分配与存档](design/ai-doctrines.md) · [72局正常经济采样](analysis/balance-ai-doctrines-v028.json)。排行榜显示风格，侦察/购买/储蓄/选阵使用同一分配；旧局原策略不变。

@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -175,7 +176,12 @@ describe("摩托骑兵集成", () => {
       right = [p("turtle", 3, 3, 35), p("medic", 4, 3, 43)];
     const b = simulate(left, right),
       fast = simulateOutcome(left, right),
-      job = compute({ kind: "replay", left, right, version: "metamorph" });
+      job = compute({
+        kind: "replay",
+        left,
+        right,
+        version: CURRENT_COMBAT_VERSION,
+      });
     expect(fast.winner).toBe(b.winner);
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
     expect(fast.damage).toBe(b.damage);
@@ -198,7 +204,7 @@ describe("摩托骑兵集成", () => {
     ).toBeGreaterThanOrEqual(3);
   });
   it("AI把摩托骑兵作为后排，技能装备提高估值且卡池正常", () => {
-    const g = createGame(137),
+    const g = createGame(137, "classic"),
       pl = g.players[0];
     pl.level = 2;
     pl.pieces = [p("motorcycle", 1, 2), p("guard", 2, 2)];
@@ -211,7 +217,7 @@ describe("摩托骑兵集成", () => {
   });
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it("0.20 " + phase + "仅新增25份卡池，保留资源和逐帧回放", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.pool.motorcycle = 0;
       let result: ReturnType<typeof startRound> | undefined;
       if (phase !== "prepare") {

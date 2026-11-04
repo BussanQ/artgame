@@ -305,7 +305,7 @@ describe("充能辅助选阵", () => {
       [["thunderlord", "titan", "stormcaller"], "acolyte"],
       [["cavalry", "turtle", "tiger"], "infantry"],
     ] as const) {
-      const game = createGame(42),
+      const game = createGame(42, "classic"),
         me = game.players[0];
       me.level = 4;
       me.pieces = [
@@ -325,7 +325,7 @@ describe("充能辅助选阵", () => {
 describe("0.13存档增量兼容", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "只补新卡池并保留回放", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       for (const player of g.players)
         for (let i = 0; i < player.shop.length; i++)
           if (PSYCHIC_ADDITIONS.includes(player.shop[i] ?? ""))

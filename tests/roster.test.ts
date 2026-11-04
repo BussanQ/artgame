@@ -210,7 +210,7 @@ describe("扩展兵种与存档", () => {
   it.each(["prepare", "battle", "result"] as const)(
     "schema 3 的 %s 存档只补新卡池，不重抽商店或改旧战斗",
     (phase) => {
-      const old = createGame(17);
+      const old = createGame(17, "classic");
       for (const p of old.players)
         p.shop = p.shop.map((id) => {
           if (id && ROSTER_ADDITIONS.includes(id)) {
