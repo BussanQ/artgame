@@ -16,7 +16,7 @@ function insectEvolutionMarkup(game: Game, player: Player) {
         : kinds < 4
           ? `再收集${4 - kinds}种不同异虫，二星也可2合1。`
           : "两档进化均已激活，最高三星。";
-  return `<aside class="insect-evolution ${first === 2 ? "active" : ""}" aria-label="异虫进化"><strong>异虫进化 · 已持有 ${kinds}/${first === 2 ? 4 : 2} 种</strong><p>一星 → 二星：${first}枚同名一星 · 二星 → 三星：${second}枚同名二星</p><span>${hint}场上与备战席一起计数，同名只算1种。</span></aside>`;
+  return `<aside class="insect-evolution ${first === 2 ? "active" : ""}" aria-label="异虫进化" title="${hint}场上与备战席一起计数，同名只算1种。"><strong>异虫进化 · 已持有 ${kinds}/${first === 2 ? 4 : 2} 种</strong><p>一星 → 二星：${first}枚同名一星 · 二星 → 三星：${second}枚同名二星</p><span>${hint}场上与备战席一起计数，同名只算1种。</span></aside>`;
 }
 
 export function recruitmentMarkup(game: Game, player: Player, busy: boolean) {

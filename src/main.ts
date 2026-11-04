@@ -39,6 +39,7 @@ import {
 } from "./ui/battle-result";
 import { BenchTooltip, pieceInfoMarkup } from "./ui/bench-tooltip";
 import "./visual.css";
+import "./compact.css";
 import { BattleScene, spriteUrl } from "./render/scene";
 import type { Battle, Game } from "./engine/types";
 import { UNIT, UNITS, RULES, XP } from "./data/units";
@@ -74,6 +75,41 @@ const dialogs = new DialogFocus(app);
 let settingsOpen = false;
 let unitInfo: Piece | null = null;
 let deploymentOpen = false;
+const mobileViewport = window.matchMedia("(max-width: 700px)");
+const mobileViews = [
+  "battlefield",
+  "recruitment",
+  "armory",
+  "commander",
+  "intel",
+] as const;
+type MobileView = (typeof mobileViews)[number];
+let mobileView: MobileView = "battlefield";
+let mobileToolsOpen = false;
+function syncMobileNavigation() {
+  const shell = app.querySelector<HTMLElement>(".shell");
+  if (shell) shell.dataset.mobileView = mobileView;
+  app
+    .querySelector("#game-tools")
+    ?.classList.toggle("is-open", mobileToolsOpen);
+  const toggle = app.querySelector("[data-action=mobile-tools]");
+  toggle?.setAttribute("aria-expanded", String(mobileToolsOpen));
+  if (toggle) toggle.textContent = mobileToolsOpen ? "收起菜单" : "菜单";
+  app
+    .querySelectorAll<HTMLElement>(".mobile-dock [data-jump]")
+    .forEach((button) => {
+      if (button.dataset.jump === mobileView)
+        button.setAttribute("aria-current", "page");
+      else button.removeAttribute("aria-current");
+    });
+}
+function showMobileView(view: MobileView) {
+  mobileView = view;
+  mobileToolsOpen = false;
+  benchTooltip.hide();
+  syncMobileNavigation();
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
 const disclosures = new Map<string, boolean>();
 let hiddenAt: number | null = null;
 const saves = new SaveStore(storage);
@@ -190,7 +226,7 @@ function render() {
     demoBattle ? demoVersion : game.combatVersion,
   );
   const ranked = rankings(game);
-  app.innerHTML = `<div class="shell"><header><a class="brand" href="/" aria-label="赤潮战术演习主页"><span class="brand-mark">赤</span><span>赤潮 <b>RED TIDES</b><small>战 争 艺 术 / AUTO CHESS</small></span></a><div class="mode"><i></i>单人演习 <span>${DIFFICULTIES[game.difficulty].name} · 你 + 7 位 AI</span></div><nav aria-label="演习工具"><button data-jump="recruitment">招募</button>${
+  app.innerHTML = `<div class="shell" data-mobile-view="${mobileView}"><header><a class="brand" href="/" aria-label="赤潮战术演习主页"><span class="brand-mark">赤</span><span>赤潮 <b>RED TIDES</b><small>战 争 艺 术 / AUTO CHESS</small></span></a><div class="mode"><i></i>单人演习 <span>${DIFFICULTIES[game.difficulty].name} · 你 + 7 位 AI</span></div><button class="mobile-tools-toggle" data-action="mobile-tools" aria-controls="game-tools" aria-expanded="${mobileToolsOpen}">菜单</button><nav id="game-tools" aria-label="演习工具"><button data-jump="recruitment">招募</button>${
     demoBattle
       ? `<button data-action="demo" ${disabled(computing || fighting || game.phase === "result")}>${replayRound ? "退出回放" : "退出演示"}</button>`
       : `<details class="demo-menu"><summary data-focus="demo-menu">战斗演示</summary><div class="demo-options">${[
@@ -210,7 +246,6 @@ function render() {
  ${computing || computeError ? `<section class="compute-status" role="status" aria-live="polite"><span>${computing ? pendingJob?.label : computeError}</span><div>${!computing ? '<button data-action="retry-compute">重试计算</button>' : ""}<button data-action="cancel-compute">${computing ? "取消计算" : "关闭"}</button></div></section>` : ""}
  <div class="command"><div><span class="eyebrow">RED TIDES / 云海遗迹</span><h1>${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "部署你的下一步"}</h1></div><div class="round"><small>回合</small><strong>${String(replayRound ?? game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? (replayRound ? "历史回放" : "战斗演示") : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "回合结算 · 选择战利品" : "回合结算 · 即将进入准备", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? `${replayRound ? "回放" : "演示"}时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : fighting ? `战斗时间 ${(frame * RULES.tickSeconds).toFixed(1)}s` : "从组合中找到胜机"}</small></div><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></div>
  ${!demoBattle ? matchSummaryMarkup(game) : ""}
- ${!demoBattle && !done ? encounterMarkup(game) : ""}
  <main><aside class="left"><section class="panel commander" id="commander"><span class="eyebrow">COMMANDER</span><label class="difficulty-setting">难度<select data-difficulty aria-label="单机难度" title="仅在第 1 回合开战前选择难度" ${disabled(game.round !== 1 || busy || !!demoBattle)}>${Object.entries(
    DIFFICULTIES,
  )
@@ -236,9 +271,9 @@ function render() {
        }`
      : '<p class="empty">部署不同棋子，<br>组合兵种与职业连携。</p>'
  }<p class="micro">点开连携查看效果<br>同名仅计一次 · 异虫包含备战席</p></section>
- </aside>
- <section class="arena" id="battlefield"><div class="arena-label"><span><i class="red-dot"></i>${fighting ? result!.opponent.name : "敌方阵地"}</span><span>${fighting ? "实时战况" : "8 × 8 战术棋盘"} <button class="speed" data-action="speed">${speed}×</button></span></div><div class="battle-stage ${demoBattle ? "is-demo" : ""}"><canvas id="battle-canvas" role="img" aria-label="斜俯视战场：点击己方棋格部署选中的棋子"></canvas><div class="stage-title"><span>云海遗迹</span><small>THE CLOUD SANCTUARY</small></div><div class="stage-status">${demoBattle ? (replayRound ? "历史回放 · 不影响当前对局" : "兵种演示 · 不影响当前对局") : fighting ? "交战中" : game.phase === "result" ? "战果展示 · 即将进入准备" : done ? "演习结束" : "部署阶段 · 己方半场可落子"}</div><div class="stage-controls"><button data-action="pause" ${disabled(!fighting && !demoBattle)}>${paused ? "继续播放" : "暂停画面"}</button><button data-action="speed">${speed}× 速度</button><button data-action="battle-analysis" ${disabled(computing || !analyzableBattle)}>战斗分析</button></div>${resultMarkup(resultPresentation)}</div>
- <div class="arena-bottom"><span><i class="teal-dot"></i>己方阵地</span><span>${demoBattle ? `${replayRound ? "回放" : "演示"}阵容 <b>${demoPieces.length} 枚</b>` : `已部署 <b>${onboard.length} / ${p.level}</b>`}</span></div>
+ ${equipmentMarkup(game, selected, busy || !!demoBattle)}</aside>
+ <div class="battle-column"><section class="arena" id="battlefield"><div class="arena-label"><span><i class="red-dot"></i>${fighting ? result!.opponent.name : "敌方阵地"}</span><span>${fighting ? "实时战况" : "8 × 8 战术棋盘"} <button class="speed" data-action="speed">${speed}×</button></span></div><div class="battle-viewport"><div class="battle-stage ${demoBattle ? "is-demo" : ""}"><canvas id="battle-canvas" role="img" aria-label="斜俯视战场：点击己方棋格部署选中的棋子"></canvas><div class="stage-title"><span>云海遗迹</span><small>THE CLOUD SANCTUARY</small></div><div class="stage-status">${demoBattle ? (replayRound ? "历史回放 · 不影响当前对局" : "兵种演示 · 不影响当前对局") : fighting ? "交战中" : game.phase === "result" ? "战果展示 · 即将进入准备" : done ? "演习结束" : "部署阶段 · 己方半场可落子"}</div>${resultMarkup(resultPresentation)}</div></div>
+ <div class="arena-bottom"><div class="stage-controls"><button data-action="pause" ${disabled(!fighting && !demoBattle)}>${paused ? "继续播放" : "暂停画面"}</button><button data-action="speed">${speed}× 速度</button><button data-action="battle-analysis" ${disabled(computing || !analyzableBattle)}>战斗分析</button></div><span><i class="teal-dot"></i>己方阵地</span><span>${demoBattle ? `${replayRound ? "回放" : "演示"}阵容 <b>${demoPieces.length} 枚</b>` : `已部署 <b>${onboard.length} / ${p.level}</b>`}</span></div>
  <div class="bench-header"><span>备战席 <small>${bench.length} / 8</small></span><span>${chosen ? `已选择 ${UNIT[chosen.defId].name}` : "点击棋子选择 · 点击棋格部署"}</span></div><div class="bench">${Array.from(
    { length: 8 },
    (_, i) => {
@@ -246,9 +281,9 @@ function render() {
      return `<div class="bench-item" ${x ? `data-bench-info="${x.uid}" tabindex="${busy ? 0 : -1}"` : ""}><button class="bench-slot ${x?.uid === selected ? "selected" : ""}" data-bench="${x?.uid ?? ""}" ${disabled(busy)} aria-label="${x ? UNIT[x.defId].name : "空备战位置"}">${x ? token(x) : `<span>${String(i + 1).padStart(2, "0")}</span>`}</button>${x ? `<button class="bench-info" data-piece-info="${x.uid}" aria-label="查看备战席${UNIT[x.defId].name}详情">详情</button>` : ""}</div>`;
    },
  ).join("")}</div>
- ${deploymentMarkup(p, selected, busy || !!demoBattle, deploymentOpen)}<div class="auto-deploy"><button data-action="auto-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>推荐布阵</button><button data-action="compact-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>抱团布阵</button><span class="micro">分散避群伤，抱团保护后排；均可继续手动调整</span></div><div class="selection">${chosen ? `<span><b>${UNIT[chosen.defId].name}</b> ${stars(chosen.star)} · ${UNIT[chosen.defId].traits.join(" / ")}</span><div><button data-action="deselect" aria-keyshortcuts="Escape" title="取消选择（Esc）">取消选择</button><button data-action="unit-info">查看详情</button><button data-action="recall" ${disabled(busy || chosen.position === null)}>撤回备战席</button><button data-action="sell" ${disabled(busy)}>出售 +${salePrice(chosen)} 金</button></div>` : "<span>招募 → 布阵 → 自动交战 → 升级阵容</span>"}</div></section>
- ${recruitmentMarkup(game, p, busy)}
- <aside class="right"><section class="panel leaderboard"><div class="section-label"><h2>战场情报</h2><span>${game.players.filter((x) => x.hp > 0).length} / 8 存活</span></div>${ranked.map((x, i) => `<div class="player ${x.id === 0 ? "you" : ""} ${x.hp === 0 ? "eliminated" : ""}"><span class="rank">${String(i + 1).padStart(2, "0")}</span><div><b>${x.name}</b><span class="player-bar"><i style="width:${x.hp}%"></i></span></div><strong>${x.hp}</strong>${x.id !== 0 ? `<button class="scout-button" data-scout="${x.id}" aria-label="侦察 ${x.name}" title="${AI_PROFILES[x.id].name}">侦察</button>` : ""}</div>`).join("")}</section><section class="panel report"><span class="eyebrow">${fighting || demoBattle ? "DAMAGE REPORT" : "BATTLE LOG"}</span><h2>${fighting || demoBattle ? "战斗贡献" : done ? `最终排名 #${ranked.findIndex((x) => x.id === 0) + 1}` : "作战简报"}</h2><div class="damage-stats">${
+ <div class="formation-tools">${deploymentMarkup(p, selected, busy || !!demoBattle, deploymentOpen)}<div class="auto-deploy"><button data-action="auto-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>推荐布阵</button><button data-action="compact-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>抱团布阵</button><span class="micro">分散避群伤，抱团保护后排；均可继续手动调整</span></div></div><div class="selection ${chosen ? "has-selection" : ""}">${chosen ? `<span><b>${UNIT[chosen.defId].name}</b> ${stars(chosen.star)} · ${UNIT[chosen.defId].traits.join(" / ")}</span><div><button data-action="deselect" aria-keyshortcuts="Escape" title="取消选择（Esc）">取消选择</button><button data-action="unit-info">查看详情</button><button data-action="recall" ${disabled(busy || chosen.position === null)}>撤回备战席</button><button data-action="sell" ${disabled(busy)}>出售 +${salePrice(chosen)} 金</button></div>` : "<span>招募 → 布阵 → 自动交战 → 升级阵容</span>"}</div><p class="mobile-feedback" role="status">${game.message}</p></section>
+ ${recruitmentMarkup(game, p, busy)}<button class="mobile-shop-return" data-jump="battlefield">返回战场布阵 <span>备战 ${bench.length} / 8 →</span></button></div>
+ <aside class="right" id="intel"><section class="panel leaderboard"><div class="section-label"><h2>战场情报</h2><span>${game.players.filter((x) => x.hp > 0).length} / 8 存活</span></div>${ranked.map((x, i) => `<div class="player ${x.id === 0 ? "you" : ""} ${x.hp === 0 ? "eliminated" : ""}"><span class="rank">${String(i + 1).padStart(2, "0")}</span><div><b>${x.name}</b><span class="player-bar"><i style="width:${x.hp}%"></i></span></div><strong>${x.hp}</strong>${x.id !== 0 ? `<button class="scout-button" data-scout="${x.id}" aria-label="侦察 ${x.name}" title="${AI_PROFILES[x.id].name}">侦察</button>` : ""}</div>`).join("")}</section><section class="panel report"><span class="eyebrow">${fighting || demoBattle ? "DAMAGE REPORT" : "BATTLE LOG"}</span><h2>${fighting || demoBattle ? "战斗贡献" : done ? `最终排名 #${ranked.findIndex((x) => x.id === 0) + 1}` : "作战简报"}</h2><div class="damage-stats">${
    fighting || demoBattle
      ? fighters
          .filter((f) => (f.homeSide ?? f.side) === 0)
@@ -260,8 +295,8 @@ function render() {
          )
          .join("")
      : `<p role="status">${game.message}</p>`
- }</div>${game.phase === "result" ? `<p class="result-badge">${lastWinner === 0 ? "防守胜利" : lastWinner === null ? "战斗平局" : "防守失败"}</p>` : ""}</section></aside></main>
- ${equipmentMarkup(game, selected, busy || !!demoBattle)}<footer><span>RED TIDES / 战术演习</span><span class="save-status" role="status">${saveLabel()}</span><span>ImageGen 重制形象 · 2.5D 战场</span></footer><nav class="mobile-dock" aria-label="快捷导航"><span>${p.hp} 生命 · <b>${p.gold} 金</b> · ${onboard.length}/${p.level} 人口</span><div><button data-jump="battlefield">战场</button><button data-jump="recruitment">招募</button><button data-jump="armory">装备</button><button data-jump="commander">升级</button></div></nav></div>
+ }</div>${game.phase === "result" ? `<p class="result-badge">${lastWinner === 0 ? "防守胜利" : lastWinner === null ? "战斗平局" : "防守失败"}</p>` : ""}</section>${!demoBattle && !done ? encounterMarkup(game) : ""}</aside></main>
+ <footer><span>RED TIDES / 战术演习</span><span class="save-status" role="status">${saveLabel()}</span><span>ImageGen 重制形象 · 2.5D 战场</span></footer><nav class="mobile-dock" aria-label="快捷导航"><span>${p.hp} 生命 · <b>${p.gold} 金</b> · ${onboard.length}/${p.level} 人口</span><div><button data-jump="battlefield">战场</button><button data-jump="recruitment">招募</button><button data-jump="armory">装备</button><button data-jump="commander">升级</button><button data-jump="intel">情报</button></div></nav></div>
  ${game.reward && !computing && !resultPresentation && !saveConflict && !settingsOpen && !unitInfo && scoutId === null && !historyOpen && !help && !codex && !analysisView ? rewardMarkup(game) : ""}
  ${analysisView ? battleAnalysisMarkup(analyzeBattle(analysisView.battle, analysisView.at), analysisMetric, analysisView.title, analysisView.limit, analysisView.battle.frames[analysisView.limit]?.tick ?? 0, analysisView.battle === demoBattle) : ""}
  ${settingsOpen ? settingsMarkup(preferences) : ""}
@@ -274,6 +309,7 @@ function render() {
     .forEach((detail) => {
       detail.open = disclosures.get(detail.dataset.disclosure!) ?? false;
     });
+  syncMobileNavigation();
   scene = new BattleScene(
     document.querySelector<HTMLCanvasElement>("#battle-canvas")!,
     () => ({
@@ -349,6 +385,7 @@ function reset() {
   saveNotice = "";
   closePanels();
   deploymentOpen = false;
+  mobileView = "battlefield";
   replayRound = null;
   resultPresentation = null;
   advanceTimer.cancel();
@@ -456,6 +493,7 @@ function runComputation(
     });
 }
 function calculateRound(mode: "start" | "resume") {
+  if (mobileViewport.matches) showMobileView("battlefield");
   const restoring = mode === "resume";
   runComputation(
     { kind: mode, game },
@@ -485,6 +523,7 @@ function calculateRound(mode: "start" | "resume") {
   );
 }
 function closePanels() {
+  mobileToolsOpen = false;
   analysisView = null;
   scoutId = null;
   historyOpen = false;
@@ -522,6 +561,12 @@ app.addEventListener("click", (e) => {
   if (!target || target.hasAttribute("disabled")) return;
   const p = me(),
     action = target.dataset.action;
+  if (action === "mobile-tools") {
+    mobileToolsOpen = !mobileToolsOpen;
+    syncMobileNavigation();
+    return;
+  }
+  if (target.closest("#game-tools") && action) mobileToolsOpen = false;
   if (action === "codex-reset" && codex) {
     resetCodex(app);
     return;
@@ -567,10 +612,12 @@ app.addEventListener("click", (e) => {
   }
   if (
     target.dataset.jump &&
-    ["battlefield", "recruitment", "armory", "commander"].includes(
-      target.dataset.jump,
-    )
+    mobileViews.includes(target.dataset.jump as MobileView)
   ) {
+    if (mobileViewport.matches) {
+      showMobileView(target.dataset.jump as MobileView);
+      return;
+    }
     document.getElementById(target.dataset.jump)?.scrollIntoView({
       behavior: preferences.reducedMotion ? "instant" : "smooth",
       block: "start",
@@ -738,6 +785,7 @@ app.addEventListener("click", (e) => {
     );
     if (report) {
       const analysisOnly = target.dataset.analyzeRound !== undefined;
+      if (mobileViewport.matches) showMobileView("battlefield");
       historyOpen = false;
       runComputation(
         {
@@ -790,6 +838,7 @@ app.addEventListener("click", (e) => {
     action === "immortal-demo" ||
     action === "wild-demo"
   ) {
+    if (mobileViewport.matches) showMobileView("battlefield");
     resultPresentation = null;
     replayRound = null;
     if (demoBattle) {
@@ -880,6 +929,7 @@ app.addEventListener("click", (e) => {
     return;
   }
   if (action === "next") {
+    if (mobileViewport.matches) showMobileView("battlefield");
     if (game.phase === "finished") {
       reset();
       return;

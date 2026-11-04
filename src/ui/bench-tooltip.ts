@@ -150,11 +150,25 @@ export class BenchTooltip {
       this.hide();
       return;
     }
-    // Constrain the panel to one side of the slot. Clamping a full-height
-    // panel to the viewport could cover the hovered button before a click.
+    // A compact bench can sit near the middle of the screen. Use the room
+    // beside it for long descriptions before introducing an internal scroll.
+    // Every placement keeps the hovered slot clear so it remains clickable.
     const spaceAbove = Math.max(0, r.top - 22),
       spaceBelow = Math.max(0, innerHeight - r.bottom - 22),
       placeAbove = spaceAbove >= spaceBelow;
+    this.element.style.maxHeight = `${Math.max(0, innerHeight - 24)}px`;
+    const naturalWidth = this.element.offsetWidth,
+      naturalHeight = this.element.offsetHeight,
+      fitsRight = r.right + naturalWidth + 22 <= innerWidth,
+      fitsLeft = r.left >= naturalWidth + 22;
+    if (
+      naturalHeight > Math.max(spaceAbove, spaceBelow) &&
+      (fitsRight || fitsLeft)
+    ) {
+      this.element.style.left = `${fitsRight ? r.right + 10 : r.left - naturalWidth - 10}px`;
+      this.element.style.top = `${Math.max(12, Math.min(innerHeight - naturalHeight - 12, r.top + r.height / 2 - naturalHeight / 2))}px`;
+      return;
+    }
     this.element.style.maxHeight = `${placeAbove ? spaceAbove : spaceBelow}px`;
     const w = this.element.offsetWidth,
       h = this.element.offsetHeight;
