@@ -51,6 +51,6 @@ npm run build
 
 本轮仅运行必要模块，去重 110 项通过：fleet-balance 8、ai-reserves 7、airsea 17、strategy 9、tactical-ai 12、computation 14、triggers 11、insects 13、legions 9、balance-migration 5、campaign 5。覆盖满备战合成、误卖升星棋子、完整羁绊选阵、低血投资、引导冷却、新旧版本、存档迁移、完整/轻量战果一致及完整单局。末次推荐改动后复跑 ai-reserves/strategy 16 项通过。类型检查、生产构建和 diff 空白检查通过，未运行全量测试。
 
-浏览器在 localhost 独立存档确认新图鉴文本、演示 45% 闪避，退出后仍为第 7 回合、77 生命、47 金，控制台无告警或错误。[图鉴截图](../preview-fleet-v012-codex.png)。未修改用户 127.0.0.1 对局，未提交或推送 Git。
+浏览器在 localhost 独立存档确认新图鉴文本、演示 45% 闪避，退出后仍为第 7 回合、77 生命、47 金，控制台无告警或错误。未修改用户 127.0.0.1 对局，未提交或推送 Git。
 
 本增量不是单机最终验收。原作剩余职业/兵种、构筑弱势、弱设备实测及当前版本整体人工体验审计仍未完成，目标保持进行中。
