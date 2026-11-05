@@ -19,7 +19,8 @@
       "id": "S04-2",
       "url": "https://img2-tc.tapimg.com/bbcode/images/ee718c16ba23f80d004860ed74f4c0d4.jpg/_tap_ugc.jpg",
       "sha256": "8cfe13d1071e1068c397ee55921fbd752f5290de13e5ee75ce777ac5d5ed3333",
-      "status": "visually-transcribed"
+      "status": "visually-transcribed",
+      "localArchive": "images/s04-arhat-attributes.jpg"
     },
     {
       "id": "S04-3",
@@ -32,7 +33,7 @@
     "publishedAt": "2019-04-27",
     "modifiedAt": "2019-05-09",
     "targetVersion": "2019-05-09 author-labelled update, client build unknown",
-    "tierCombination": "not proven; retain cells as printed, do not assume cumulative or highest tier",
+    "tierCombination": "retain printed steps; four-formation cumulative interpretation cross-checked with S50/S18 in formation-stacking-history.json; client build remains unknown",
     "traits": [
       {
         "name": "护卫",
@@ -226,7 +227,9 @@
           1
         ],
         "effect": "同兵种攻击变为真实伤害",
-        "valuesAsPrinted": []
+        "valuesAsPrinted": [],
+        "conditionAsPrinted": "己方唯一触发",
+        "conditionReview": "S50客户端卡进一步明确唯一一种；同名重复不多计种类。"
       },
       {
         "name": "海神",
@@ -247,7 +250,7 @@
           4,
           6
         ],
-        "effect": "第一档同兵种攻击速度、后两档全队攻击增加百分数",
+        "effect": "第一档同兵种攻击速度、后两档全队攻击速度增加百分数",
         "valuesAsPrinted": [
           15,
           25,
@@ -296,7 +299,48 @@
         "valuesAsPrinted": []
       }
     ],
-    "rosterNote": "53 distinct names after de-duplicating dual tribes, consistent with April roster; S03 uses 锯齿象 and 棍奴=护卫. Full original name crosswalk remains roster-mapping.json."
+    "rosterNote": "53 distinct names after de-duplicating dual tribes, consistent with April roster; S03 uses 锯齿象 and 棍奴=护卫. Full original name crosswalk remains roster-mapping.json.",
+    "cumulativeReview": {
+      "rules": "singleplayer-0.43",
+      "record": "formation-stacking-history.json",
+      "traits": [
+        "步兵",
+        "先锋",
+        "野兽",
+        "傀儡"
+      ],
+      "method": "sum unlocked steps per beneficiary; preserve raw printed cells"
+    },
+    "counterplayReview": {
+      "rules": "singleplayer-0.44",
+      "record": "counterplay-history.json",
+      "sourceIds": [
+        "S18",
+        "S20",
+        "S51"
+      ],
+      "note": "原印刷字段不变；灵能2/3与2/4冲突保留，当前按S20/S51选择2/4；原版护甲和技能伤害模型尚未全量复原。"
+    },
+    "lineagesReview": {
+      "rules": "singleplayer-0.45",
+      "record": "lineages-history.json",
+      "sourceIds": [
+        "S03",
+        "S18",
+        "S45"
+      ],
+      "note": "八项职业交叉格已目视复核，当前异能采用2/4/6全军吸血总量5/10/20%；原始印刷5/5/10和其他单元格保持不变。"
+    },
+    "coalitionsReview": {
+      "rules": "singleplayer-0.46",
+      "record": "coalitions-history.json",
+      "sourceIds": [
+        "S03",
+        "S50",
+        "S51"
+      ],
+      "note": "空军、猛禽、支援、召唤、攻城、陆行者、熊猫、爆破已交叉核对；原始印刷增量不被累计总量覆盖，攻城人数仍由独立客户端卡佐证。原图13个种族包含骑兵。"
+    }
   },
   "S04": {
     "publishedAt": "2019-07-08",
@@ -1698,6 +1742,20 @@
       "神射手/医疗兵/护卫兵 and reordered panda names are retained exactly; identity mapping requires separate review.",
       "Armor 10 and unlisted values absent; do not interpolate and label official.",
       "Reported DPS agrees with mean attack / interval within 0.051 for all 56 rows."
-    ]
+    ],
+    "qiReview": {
+      "reviewedAt": "2026-11-05",
+      "sourceImage": "S04-2",
+      "row": 11,
+      "fieldsAdopted": [
+        "hp",
+        "armor",
+        "range",
+        "attackIntervalSeconds"
+      ],
+      "attackAdaptation": "Round mean of 153–166 to deterministic 160; not original random damage.",
+      "record": "qi-history.json",
+      "boundary": "July body stats combined explicitly with the mixed-date S50 skill card. Original table cells are unchanged."
+    }
   }
 }

@@ -1,0 +1,101 @@
+{
+  "unitId": "staffthrall",
+  "name": "棍奴",
+  "reviewedAt": "2026-11-05",
+  "status": "implemented-local-adaptation",
+  "earlyClassification": {
+    "sources": [
+      "S20",
+      "S25",
+      "S03"
+    ],
+    "traits": [
+      "傀儡",
+      "护卫"
+    ]
+  },
+  "julyObservation": {
+    "source": "S04-2 row 4",
+    "publishedAt": "2019-07-08",
+    "traits": [
+      "傀儡",
+      "先锋"
+    ],
+    "cost": 4,
+    "hp": 900,
+    "attackMin": 98,
+    "attackMax": 109,
+    "armor": 5,
+    "intervalSeconds": 1.2,
+    "range": 1,
+    "passive": true,
+    "skillCooldownSeconds": null
+  },
+  "laterCommunityCard": {
+    "source": "S44",
+    "publishedAt": "2021-05-25",
+    "kind": "player-designed infographic, not an official client screenshot",
+    "articleTitleAsPrinted": "多多自走棋手游 玩家自制四费英雄图签",
+    "authorAsPrinted": "战争艺术AOW",
+    "warning": "Title names a different auto-chess game, while the article body and card depict War Art units. Preserve that mismatch and do not treat the page as a verified 2019 ruleset.",
+    "referenceImageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/STwIxXbpglvynjz.png",
+    "referenceImageSha256": "6b0e48752c82460c21f8863b8fe001e1e53f3f113b2351b35735f6ccb7174f4b",
+    "traitsAsPrinted": [
+      "傀儡",
+      "战士"
+    ],
+    "skillName": "疾风",
+    "mechanism": "Repeated attacks on one target build attack speed; switching target removes the bonus. At ten stacks the attack animation changes and armor increases.",
+    "speedPerStackByStar": [
+      0.1,
+      0.15,
+      0.2
+    ],
+    "maxStacks": 10,
+    "armorAtMaxStacks": 50
+  },
+  "unresolved": [
+    "2019同时期疾风的完整参数仍未核实；当前采用2021社区机制做本地适配。",
+    "全局先锋梯度和四月分类基线仍存在历史版本差异，未因加入本单位而解决。"
+  ],
+  "classificationChoice": {
+    "traits": [
+      "傀儡",
+      "先锋"
+    ],
+    "sources": [
+      "S45 2019-06-19",
+      "S04-2 row 4 2019-07-08"
+    ],
+    "note": "四月基线为护卫，六月社区记录护卫改先锋；采用年中先锋分类并保留与四月名单的分类差异，不把战士与先锋自动视为同一职业。"
+  },
+  "implementation": {
+    "rules": "singleplayer-0.38",
+    "cost": 4,
+    "hp": 900,
+    "attack": 104,
+    "armor": 5,
+    "range": 1,
+    "intervalSeconds": 1.25,
+    "statAdaptation": "攻击98–109取近似中值104；1.2秒按0.25秒战斗步调整至1.25秒。",
+    "skillName": "疾风",
+    "skillSource": "S44 later community card, not verified 2019 skill values",
+    "speedPerStackByStar": [
+      0.1,
+      0.15,
+      0.2
+    ],
+    "maxStacks": 10,
+    "additionalArmorAtMax": 50,
+    "localBoundaries": [
+      "每次合法普攻尝试叠一层，闪避/护盾/免伤不阻止，技能不叠层。",
+      "基础间隔除以1+层数攻速，再乘装备、加速和减速倍率，最低一战斗步。",
+      "换目标或失去可见敌方目标清空，阵营改变清空；同一目标仅离开射程不直接清空。",
+      "优先继续攻击仍可见且在近战范围内的原目标，否则使用普通就近选敌。",
+      "换目标按剩余冷却比例移除旧加速；满层护甲为额外50，实际伤害结算同时校验目标仍有效。",
+      "沉默/能量锁不停止被动，眩晕暂停攻击但不直接清层。",
+      "临时层数仅存在战斗快照，回合重新开始时为零。",
+      "残魂和涅槃火种若仍是同一可攻击实体，继续视为同一目标；真正离场才失去目标。"
+    ]
+  }
+}

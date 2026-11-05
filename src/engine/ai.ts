@@ -1,18 +1,36 @@
+import { catalogCost, catalogUnit } from "../data/catalog";
 import { unitArmor } from "../data/unit-stats";
 import { CURRENT_COMBAT_VERSION } from "./types";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { simulateOutcome } from "./battle";
 import { encounterFor, encounterArmy } from "../data/encounters";
 import { profileFor, DIFFICULTIES, type AiProfile } from "../data/ai-profiles";
-import { AXE_THROW, BLADE_STORM, SKILLS } from "../data/skills";
+import {
+  AXE_THROW,
+  BLADE_STORM,
+  BLADE_CRITICAL,
+  SHIELD_WAVE,
+  STAFF_GALE,
+  TUSK_CHARGE,
+  ACID_POLLUTION,
+  DEATH_SONG,
+  PANGOLIN_BURROW,
+  SKILLS,
+  AURORA,
+  ARHAT_QI,
+} from "../data/skills";
 import { RETINUE, SPIRIT_WOLF } from "./summons";
 import { equipmentStats } from "../data/items";
 import { UNIT, RULES } from "../data/units";
 import { synergies } from "./synergies";
+import { traitTiers } from "../data/traits";
+import { availableUnits, type RecruitmentContext } from "./rotation";
 import { equipBot } from "./equipment";
 import type { CombatVersion, Difficulty, Game, Piece, Player } from "./types";
 
 const CONTROL_SECONDS: Record<string, number> = {
+  pangolin: PANGOLIN_BURROW.knockupTicks / 4,
+  elephant: TUSK_CHARGE.knockupTicks / 4,
   axethrall: AXE_THROW.stunTicks / 4,
   irondog: 0.5,
   specialist: 0.75,
@@ -52,6 +70,11 @@ export function abilityCredit(
     ].includes(p.defId)
   )
     return 0;
+  if (p.defId === "bladethrall")
+    return BLADE_CRITICAL.chance * (BLADE_CRITICAL.multiplier[p.star - 1] - 1);
+  // Expect only three stacks, not permanent maximum speed or the conditional 50 armor.
+  if (p.defId === "staffthrall")
+    return Math.min(0.45, STAFF_GALE.speedPerStack[p.star - 1] * 3);
   if (p.defId === "birdrider") return 1.2 / (8 - p.star); // Discount interruption; no mana or skill-power gain.
   const passive = ["cavalry", "turtle", "tiger", "blastbug"].includes(p.defId);
   const initial = Math.min(
@@ -65,6 +88,33 @@ export function abilityCredit(
   utility +=
     (CONTROL_SECONDS[p.defId] ?? 0) * (skill.radius > 0 ? 1.8 : 1) * 0.035;
   switch (p.defId) {
+    case "skycrab":
+      attacks = AURORA.damage[p.star - 1] / (u.attack * 2 ** (p.star - 1));
+      // Credit part of the first attack increase, never assume three casts in a short fight.
+      utility += AURORA.attackPerStack * 0.35;
+      break;
+    case "pangolin":
+      attacks =
+        PANGOLIN_BURROW.damage[p.star - 1] / (u.attack * 2 ** (p.star - 1));
+      break;
+    case "lingjiu":
+      // Close-range circle; allow partial coverage instead of assuming an entire backline.
+      attacks =
+        (DEATH_SONG.damage[p.star - 1] * 1.6) / (u.attack * 2 ** (p.star - 1));
+      break;
+    case "elephant":
+      attacks = TUSK_CHARGE.damage[p.star - 1] / (u.attack * 2 ** (p.star - 1));
+      break;
+    case "venombeast":
+      // Utility, not fictitious direct damage or guaranteed whole-team coverage.
+      attacks = 0;
+      utility += Math.min(0.28, ACID_POLLUTION.armor[p.star - 1] * 0.012) * 1.5;
+      break;
+    case "shieldthrall":
+      attacks =
+        (SHIELD_WAVE.damage[p.star - 1] * 2) / (u.attack * 2 ** (p.star - 1));
+      utility += (SHIELD_WAVE.silenceTicks / 4) * 0.05 * 2;
+      break;
     case "swordthrall":
       // Three pulses on two targets; do not assume six perfectly packed hits.
       attacks =
@@ -93,7 +143,7 @@ export function abilityCredit(
     case "bloodhawk":
       return 0.22 * readiness; // Heal/form cannot be amplified by skill power.
     case "skytoad":
-      return 0.22 * readiness; // HP threshold, once per battle; not amplified damage.
+      return (0.22 + 0.06 + Math.min(0.08, 0.04 * p.star)) * readiness; // Threshold execution plus some first-feast sustain/rage, not unlimited kills or skill-power scaling.
     case "spider":
       return Math.min(0.24, 0.08 + p.star * 0.04) * readiness;
     case "flametrooper":
@@ -118,7 +168,8 @@ export function abilityCredit(
       attacks = skill.multiplier * 1.8 * 0.75;
       break;
     case "arhat":
-      attacks *= 0.75;
+      attacks =
+        (ARHAT_QI.damage[p.star - 1] / (u.attack * 2 ** (p.star - 1))) * 0.75;
       break;
     case "thunderlord":
       attacks *= 1 + 0.8 + 0.64;
@@ -140,7 +191,8 @@ export function abilityCredit(
       utility += 0.05;
       break;
   }
-  const damageWeight = skill.damageType === "true" ? 1.25 : 1;
+  const damageWeight =
+    p.defId !== "arhat" && skill.damageType === "true" ? 1.25 : 1;
   // Keep stars, permanent stats and completed synergies important. Extra gear never
   // turns a one-star specialist into a guaranteed replacement for a developed carry.
   return Math.min(
@@ -277,6 +329,8 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
               "tiger",
               "blastbug",
               "birdrider",
+              "bladethrall",
+              "staffthrall",
             ].includes(p.defId),
         )
         .sort((a, b) => pieceStrength(b) - pieceStrength(a))
@@ -295,8 +349,25 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   const teamBonus = active.reduce(
     (n, s) =>
       n +
+      (s.bonus.teamAttack ?? 0) * 0.35 +
+      (s.bonus.teamLifesteal ?? 0) * 0.3 +
+      ((s.bonus.criticalChance ?? 0) *
+        ((s.bonus.criticalMultiplier ?? 1) - 1) *
+        0.35 *
+        s.count) /
+        Math.max(1, pieces.length) +
+      (s.bonus.teamHaste ?? 0) * 0.35 +
+      ((s.bonus.haste ?? 0) * 0.35 * s.count) / Math.max(1, pieces.length) +
+      ((s.bonus.armor ?? 0) * 0.012 * s.count) / Math.max(1, pieces.length) +
+      ((s.bonus.attack ?? 0) * 0.35 * s.count) / Math.max(1, pieces.length) +
       (s.bonus.evasion ?? 0) * flyingShare * 0.3 +
       (s.bonus.seaMana ?? 0) * flyingShare * 0.0025 +
+      (s.bonus.seaWard ?? 0) * flyingShare * 0.3 +
+      (s.bonus.airGroundBonus ?? 0) * flyingShare * 0.35 +
+      (s.bonus.damageMana ?? 0) * 0.1 +
+      (s.bonus.enemyManaPenalty ?? 0) * 0.01 +
+      ((s.bonus.armorPenetration ?? 0) * 0.012 * s.count) /
+        Math.max(1, pieces.length) +
       (s.bonus.siege ?? 0) * 0.2 +
       (s.bonus.enemyArmor ?? 0) * 0.012 * physicalShare +
       (s.bonus.reflection ?? 0) * 0.002 +
@@ -339,7 +410,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   }, 0);
   const mixed = frontlineFactor(
     pieces,
-    active.some((s) => s.active && s.bonus.jump),
+    pieces.some((p) => UNIT[p.defId].traits.includes("刺杀")),
   );
   return (
     (base * (1 + bonus + teamBonus) +
@@ -564,14 +635,37 @@ export function savingsTarget(g: Game, p: Player): number {
   if (p.hp <= 55) return Math.min(10, base);
   return p.streak <= -3 ? Math.max(0, base - 10) : base;
 }
+/** A collection plan is limited by this match's bans and the next population slot.
+ * It influences paid decisions only; deployment still compares actual lineup strength. */
+function puppetCollection(
+  p: Player,
+  context: RecruitmentContext,
+  version: CombatVersion,
+) {
+  if (profileFor(p).id !== "puppets") return null;
+  const kinds = new Set(
+    p.pieces
+      .filter((piece) => UNIT[piece.defId].traits.includes("傀儡"))
+      .map((piece) => piece.defId),
+  );
+  const available = availableUnits(context).filter((unit) =>
+    unit.traits.includes("傀儡"),
+  ).length;
+  const target =
+    traitTiers(version)
+      .傀儡.filter((tier) => tier.count <= Math.min(p.level + 1, available))
+      .at(-1)?.count ?? 0;
+  return { kinds, target };
+}
 /** Value a held copy, not the desire to BUY another. Merged pieces and upgrade pairs
  * must not become expendable merely because merging removed their one-star copies. */
 export function reservePriority(
   p: Player,
   piece: Piece,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
+  context: RecruitmentContext = {},
 ): number {
-  const unit = UNIT[piece.defId],
+  const unit = catalogUnit({ ...context, combatVersion: version }, piece.defId),
     profile = profileFor(p);
   const partners = p.pieces.filter(
     (other) =>
@@ -588,12 +682,22 @@ export function reservePriority(
         (id) => id !== piece.defId && UNIT[id].traits.includes(trait),
       ),
   ).length;
+  const collection = puppetCollection(p, context, version);
+  const lastCore =
+    collection &&
+    unit.traits.includes("傀儡") &&
+    collection.kinds.size + Number(!collection.kinds.has(piece.defId)) <=
+      collection.target &&
+    !p.pieces.some(
+      (other) => other.uid !== piece.uid && other.defId === piece.defId,
+    );
   return (
     pieceStrength(piece) * 0.06 +
     unit.cost * pieceCopies(piece) +
     unit.traits.filter((trait) => profile.traits.includes(trait)).length * 5 +
     Math.min(partners, needed - 1) * 8 * piece.star +
-    links * 6
+    links * 6 +
+    (lastCore ? 12 : 0)
   );
 }
 interface BotActions {
@@ -608,7 +712,7 @@ export function prepareBot(g: Game, p: Player, actions: BotActions) {
     settings = DIFFICULTIES[g.difficulty],
     reserve = savingsTarget(g, p);
   const desire = (id: string) => {
-    const u = UNIT[id],
+    const u = catalogUnit(g, id),
       same = p.pieces.filter((x) => x.defId === id);
     if (same.some((x) => x.star === 3)) return -100;
     const pair = same.filter((x) => x.star === 1).length;
@@ -621,13 +725,20 @@ export function prepareBot(g: Game, p: Player, actions: BotActions) {
       : u.traits.filter((t) =>
           p.pieces.some((x) => UNIT[x.defId].traits.includes(t)),
         ).length;
+    const collection = puppetCollection(p, g, g.combatVersion);
+    const newCore =
+      collection &&
+      u.traits.includes("傀儡") &&
+      !same.length &&
+      collection.kinds.size < collection.target;
     return (
       u.cost +
       evolution +
       pair * 5 +
       same.filter((x) => x.star === 2).length * 3 +
       fit * 3 +
-      link * 2
+      link * 2 +
+      (newCore ? (collection.kinds.size === collection.target - 1 ? 10 : 6) : 0)
     );
   };
   const buyShop = () => {
@@ -650,10 +761,25 @@ export function prepareBot(g: Game, p: Player, actions: BotActions) {
           ) -
             1,
         needsBodies = p.pieces.length < p.level;
+      const collection = puppetCollection(p, g, g.combatVersion);
+      const newCore =
+        collection &&
+        UNIT[id].traits.includes("傀儡") &&
+        !collection.kinds.has(id) &&
+        collection.kinds.size < collection.target;
+      const completesCore =
+        newCore &&
+        collection.target <= p.level &&
+        collection.kinds.size === collection.target - 1;
       if ((score < 3 && !needsBodies) || score < 0) continue;
-      if (!upgrade && !needsBodies && p.gold - UNIT[id].cost < reserve)
+      if (
+        !upgrade &&
+        !needsBodies &&
+        !completesCore &&
+        p.gold - catalogCost(g, id) < reserve
+      )
         continue;
-      if (p.gold < UNIT[id].cost) continue;
+      if (p.gold < catalogCost(g, id)) continue;
       // Buy first: a full bench may still accept a merge, including a new insect kind.
       if (actions.buy(g, p, index)) continue;
       if (p.pieces.filter((x) => x.position === null).length < RULES.bench)
@@ -664,17 +790,25 @@ export function prepareBot(g: Game, p: Player, actions: BotActions) {
         star: 1,
         position: null,
       };
-      const value = reservePriority(p, incoming, g.combatVersion);
+      const value = reservePriority(p, incoming, g.combatVersion, g);
       const expendable = p.pieces
         .filter((x) => x.position === null && x.defId !== id)
+        .filter(
+          (piece) =>
+            !newCore ||
+            !collection.kinds.has(piece.defId) ||
+            p.pieces.some(
+              (other) => other.uid !== piece.uid && other.defId === piece.defId,
+            ),
+        )
         .sort(
           (a, b) =>
-            reservePriority(p, a, g.combatVersion) -
-              reservePriority(p, b, g.combatVersion) || a.uid - b.uid,
+            reservePriority(p, a, g.combatVersion, g) -
+              reservePriority(p, b, g.combatVersion, g) || a.uid - b.uid,
         )[0];
       if (
         expendable &&
-        value > reservePriority(p, expendable, g.combatVersion) + 4 &&
+        value > reservePriority(p, expendable, g.combatVersion, g) + 4 &&
         actions.sell(g, p, expendable.uid)
       )
         actions.buy(g, p, index);

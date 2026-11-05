@@ -19,7 +19,7 @@ export const TACTICS_ENCOUNTERS: Encounter[] = [
   {
     round: 2,
     name: "幽影狼群",
-    hint: "鬼狼会突袭残血目标，避免让单个远程孤立。",
+    hint: "鬼狼可召唤幼狼，前排接敌、远程集中火力。",
     units: [
       ["wolf", 1, 34, 0.5],
       ["wolf", 1, 37, 0.5],

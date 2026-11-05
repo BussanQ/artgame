@@ -1,3 +1,4 @@
+import { unitSprite } from "../data/unit-stats";
 import { UNIT } from "../data/units";
 import { ITEM } from "../data/items";
 import { profileFor, DIFFICULTIES } from "../data/ai-profiles";
@@ -12,7 +13,7 @@ export function scoutingMarkup(g: Game, id: number) {
     { length: 32 },
     (_, i) => {
       const piece = onboard.find((x) => x.position === 32 + i);
-      return `<div class="scout-cell">${piece ? `<img src="/assets/units/${piece.defId}.png" alt="${UNIT[piece.defId].name}"><small>${"★".repeat(piece.star)}</small>` : ""}</div>`;
+      return `<div class="scout-cell">${piece ? `<img src="/assets/units/${unitSprite(piece.defId, g.combatVersion)}.png" alt="${UNIT[piece.defId].name}"><small>${"★".repeat(piece.star)}</small>` : ""}</div>`;
     },
   ).join("")}</div><div class="scout-traits">${
     traits

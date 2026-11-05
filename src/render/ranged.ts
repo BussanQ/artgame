@@ -1,5 +1,18 @@
 import { REST_POSE, type AttackPose } from "./melee";
+import {
+  CURRENT_COMBAT_VERSION,
+  hasAuroraRules,
+  hasQiRules,
+  type CombatVersion,
+} from "../engine/types";
 export const RANGED_ACTIONS = {
+  lingjiu: {
+    name: "展鳍俯身鸣击",
+    duration: 4.8,
+    fireAt: 0.32,
+    impactAt: 0.7,
+    color: "#d6b2f5",
+  },
   ironrooster: {
     name: "双足稳架交替炮击",
     duration: 3.8,
@@ -148,7 +161,7 @@ export const RANGED_ACTIONS = {
     color: "#8aeeff",
   },
   skycrab: {
-    name: "合钳聚能弹",
+    name: "翼脊聚能弹",
     duration: 3.8,
     fireAt: 0.35,
     impactAt: 0.7,
@@ -252,10 +265,45 @@ export function isRanged(id: string): id is RangedId {
 }
 const pulse = (t: number, a: number, b: number) =>
   t <= a || t >= b ? 0 : Math.sin((Math.PI * (t - a)) / (b - a));
-export function rangedPose(id: RangedId, t: number, skill = false): AttackPose {
+export function rangedActionName(
+  id: RangedId,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) {
+  if (id === "skycrab" && !hasAuroraRules(version)) return "合钳聚能弹";
+  if (id === "arhat" && hasQiRules(version)) return "晶核掌击";
+  return RANGED_ACTIONS[id].name;
+}
+export function rangedPose(
+  id: RangedId,
+  t: number,
+  skill = false,
+  qi = false,
+): AttackPose {
   if (t <= 0 || t >= 1) return { ...REST_POSE };
   const p = { ...REST_POSE };
+  if (id === "arhat" && qi) {
+    const draw = pulse(t, 0, 0.4),
+      release = pulse(t, 0.38, 0.88);
+    p.rotation = -0.06 * draw + 0.05 * release;
+    p.scaleX = 1 - 0.05 * draw + 0.08 * release;
+    p.scaleY = 1 - 0.04 * draw;
+    p.forward = -8 * draw + (skill ? 30 : 20) * release;
+    p.lift = 3 * draw;
+    return p;
+  }
   switch (id) {
+    case "lingjiu": {
+      const draw = pulse(t, 0, 0.35),
+        release = pulse(t, 0.25, 0.76),
+        settle = pulse(t, 0.7, 1);
+      p.lift = 11 * draw + (skill ? 10 : 4) * release;
+      p.forward = -10 * draw + 8 * release;
+      p.rotation = -0.16 * draw + 0.11 * release - 0.05 * settle;
+      p.scaleX = 1 - 0.12 * draw + 0.09 * release;
+      p.scaleY = 1 + 0.11 * draw - 0.06 * release;
+      p.trail = 0.45 * release;
+      break;
+    }
     case "ironrooster":
       p.forward = -16 * pulse(t, 0.18, 0.55) - 11 * pulse(t, 0.43, 0.86);
       p.rotation = -0.12 * pulse(t, 0.18, 0.55) + 0.1 * pulse(t, 0.43, 0.86);
@@ -505,6 +553,7 @@ export function drawRangedAttack(
   from: Point,
   to: Point,
   skill: boolean,
+  qi = false,
 ) {
   if (t < 0 || t >= 1) return;
   const profile = RANGED_ACTIONS[id],
@@ -513,9 +562,10 @@ export function drawRangedAttack(
     dy = to.y - from.y,
     angle = Math.atan2(dy, dx);
   c.save();
-  c.strokeStyle = profile.color;
-  c.fillStyle = profile.color;
-  c.shadowColor = profile.color;
+  const color = id === "arhat" && qi ? "#93efff" : profile.color;
+  c.strokeStyle = color;
+  c.fillStyle = color;
+  c.shadowColor = color;
   c.shadowBlur = skill ? 18 : 10;
   c.lineCap = "round";
   const line = (a: Point, b: Point, width: number, alpha = 1) => {
@@ -570,6 +620,32 @@ export function drawRangedAttack(
     c.restore();
   };
   switch (id) {
+    case "lingjiu": {
+      if (skill) {
+        for (let i = 0; i < 3; i++) {
+          const u = (t - i * 0.13) / 0.7;
+          if (u > 0 && u < 1) ring(from, 10 + u * 70, (1 - u) * 0.8);
+        }
+      } else {
+        const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+        if (u >= 0 && u <= 1) {
+          const point = projectilePoint(from, to, u, 10);
+          c.save();
+          c.translate(point.x, point.y);
+          c.rotate(angle);
+          c.lineWidth = 2.5;
+          for (let i = 0; i < 3; i++) {
+            c.globalAlpha = 1 - i * 0.25;
+            c.beginPath();
+            c.arc(-i * 7, 0, 6 + i * 3, -0.9, 0.9);
+            c.stroke();
+          }
+          c.restore();
+        }
+        sparks((t - profile.impactAt) / 0.3, 4);
+      }
+      break;
+    }
     case "ironrooster": {
       for (const [index, offset] of [-8, 8].entries()) {
         const u = (t - profile.fireAt - index * 0.12) / 0.36;
@@ -804,6 +880,16 @@ export function drawRangedAttack(
     }
     case "arhat": {
       const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      if (qi) {
+        if (t < profile.fireAt) ring(from, 6 + (16 * t) / profile.fireAt, 0.8);
+        if (u >= 0 && u <= 1) {
+          const at = projectilePoint(from, to, u);
+          ring(at, (skill ? 14 : 8) * power, 0.9);
+          line(projectilePoint(from, to, Math.max(0, u - 0.22)), at, 5 * power);
+        }
+        sparks((t - profile.impactAt) / 0.28, 10);
+        break;
+      }
       if (t < profile.fireAt)
         ring(from, 25 * (1 - t / profile.fireAt) + 5, 0.8);
       if (u >= 0 && u <= 1) {

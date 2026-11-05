@@ -1,0 +1,193 @@
+.armory-overview-button {
+  display: block;
+  width: 100%;
+  padding: 9px;
+  margin: 8px 0;
+  text-align: left;
+  border-color: #799374;
+  color: #e0d4a9;
+}
+.armory-overview-button > span {
+  display: block;
+  margin: 4px 0 0;
+  font-size: 10px;
+  color: #afbeab;
+}
+.armory-owner-list {
+  margin: 10px 0;
+}
+.armory-owner-list h3 {
+  margin: 5px 0;
+  font-size: 11px;
+  color: #bac9b6;
+}
+.armory-owner {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 4px;
+  margin: 4px 0;
+  text-align: left;
+  min-width: 0;
+}
+.armory-owner img {
+  width: 28px;
+  height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.armory-owner > span {
+  margin: 0;
+  min-width: 0;
+}
+.armory-owner b {
+  font-size: 10px;
+  font-weight: 500;
+}
+.armory-owner small {
+  display: block;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #aabdac;
+  overflow-wrap: anywhere;
+}
+.armory-owner.is-selected {
+  border-color: #a4cfac;
+  background: #34503c;
+}
+.equipment-overview-modal {
+  max-width: 1060px;
+  width: min(1060px, 100%);
+}
+.equipment-overview-modal h2 {
+  margin-bottom: 12px;
+}
+.equipment-ledger-summary {
+  color: #d8d1a8;
+}
+.equipment-ledger-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 10px;
+}
+.equipment-ledger-filters button {
+  min-height: 38px;
+  padding: 7px 12px;
+}
+.equipment-ledger-filters [aria-pressed="true"] {
+  color: #f1e1b6;
+  border-color: #bfa66e;
+  background: #405144;
+}
+.equipment-ledger-section h3 {
+  font-size: 14px;
+  color: #d7c699;
+  margin: 20px 0 10px;
+}
+.equipment-ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.equipment-ledger-card {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #56674f;
+  background: #162920;
+}
+.equipment-ledger-card.is-owned {
+  border-color: #9aaf7d;
+  background: #22392b;
+}
+.equipment-ledger-card h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  color: #e3d6ae;
+  font-size: 14px;
+}
+.equipment-ledger-card .item-icon {
+  font-size: 21px;
+}
+.equipment-ledger-card p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 6px 0;
+}
+.equipment-ledger-counts {
+  color: #c2ceb8;
+}
+.equipment-ledger-counts b {
+  color: #f0d59e;
+}
+.equipment-ledger-owners {
+  display: grid;
+  gap: 5px;
+  margin: 9px 0;
+}
+.equipment-ledger-owners > small {
+  color: #91a28e;
+}
+.equipment-ledger-owners button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: 4px 6px;
+  text-align: left;
+}
+.equipment-ledger-owners img {
+  width: 30px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.equipment-ledger-owners button > span {
+  color: #dce4d0;
+  margin: 0;
+  font-size: 12px;
+}
+.equipment-ledger-owners small {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  color: #a9bca6;
+}
+.equipment-ledger-recipe {
+  display: block;
+  color: #9eae95;
+  font-size: 10px;
+  line-height: 1.7;
+  border-top: 1px solid #667b5644;
+  padding-top: 7px;
+}
+@media (max-width: 850px) {
+  .equipment-ledger-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .equipment-ledger-grid {
+    grid-template-columns: 1fr;
+  }
+  .equipment-overview-modal {
+    padding: 22px 18px;
+  }
+  .equipment-ledger-filters button,
+  .equipment-ledger-owners button,
+  .armory-overview-button {
+    min-height: 44px;
+  }
+  .armory-owner {
+    min-height: 48px;
+  }
+  .armory-owner b,
+  .armory-owner small {
+    font-size: 12px;
+  }
+}

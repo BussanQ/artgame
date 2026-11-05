@@ -196,6 +196,7 @@ describe("0.18存档增量迁移", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "保留资源和旧战斗，仅增加军医池", () => {
       const g = createGame(137, "classic");
+      g.combatVersion = "metamorph";
       let battle: ReturnType<typeof startRound> | undefined;
       // Remove medic from shops before constructing a genuine old-roster fixture.
       for (const pl of g.players)
@@ -241,6 +242,8 @@ describe("0.18存档增量迁移", () => {
       expect(decoded.data?.schema).toBe(SAVE_SCHEMA);
       expect(decoded.data!.game).toEqual({
         ...before,
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "metamorph",
         pool: { ...before.pool, medic: COPIES[1] },
       });
       expect(validGame(decoded.data!.game)).toBe(true);

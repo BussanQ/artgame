@@ -254,10 +254,10 @@ describe("异虫战斗技能", () => {
     expect(fast).toMatchObject({ winner: b.winner, damage: b.damage });
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
   });
-  it("异能仅统计上阵两种，敌人所有回能按75%计算，旧版无此效果", () => {
+  it("旧brood异能仅统计上阵两种，敌人所有回能按75%计算，legions无此效果", () => {
     const left = [piece("spider", 1, 1, 35), piece("eyebug", 2, 1, 43)],
       right = [piece("guard", 3, 1, 36)];
-    const b = simulate(left, right),
+    const b = simulate(left, right, "brood"),
       enemy = b.frames[0].fighters.find((f) => f.uid === 3)!;
     expect(enemy.energyMultiplier).toBe(0.75);
     enemy.mana = 0;
@@ -268,8 +268,9 @@ describe("异虫战斗技能", () => {
     expect(enemy.mana).toBe(26.25);
     left[1].position = null;
     expect(
-      simulate(left, right).frames[0].fighters.find((f) => f.uid === 3)!
-        .energyMultiplier,
+      simulate(left, right, "brood").frames[0].fighters.find(
+        (f) => f.uid === 3,
+      )!.energyMultiplier,
     ).toBe(1);
     expect(
       simulate(left, right, "legions").frames[0].fighters.every(

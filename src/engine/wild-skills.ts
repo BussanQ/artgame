@@ -1,4 +1,5 @@
-import { damage, type CombatContext } from "./abilities";
+import { damage, distance, type CombatContext } from "./abilities";
+import { attackTargets } from "./triggers";
 import type { Fighter } from "./types";
 
 /** A committed sonic curse keeps ticking after its caster dies; source damage is frozen at cast. */
@@ -55,7 +56,12 @@ export function advanceSonic(ctx: CombatContext) {
 export function advanceWindup(ctx: CombatContext, source: Fighter): boolean {
   const cast = source.windup;
   if (!cast) return false;
-  if (source.hp <= 0 || source.charm || source.stunUntil > ctx.tick) {
+  if (
+    source.hp <= 0 ||
+    source.charm ||
+    source.stunUntil > ctx.tick ||
+    (source.qiSkill && (source.silenceUntil ?? 0) > ctx.tick)
+  ) {
     delete source.windup;
     ctx.effects.push({
       source: source.uid,
@@ -73,6 +79,34 @@ export function advanceWindup(ctx: CombatContext, source: Fighter): boolean {
   const target = ctx.fighters.find(
     (f) => f.uid === cast.target && f.hp > 0 && f.side !== source.side,
   );
-  if (target) damage(ctx, source, target, cast.damage, "true", true);
+  const valid =
+    target &&
+    (!source.qiSkill ||
+      (distance(source, target) <= source.range &&
+        attackTargets(source, ctx.fighters, ctx.tick).some(
+          (f) => f.uid === target.uid,
+        )));
+  if (valid) {
+    if (source.qiSkill)
+      ctx.effects.push({
+        source: source.uid,
+        target: target.uid,
+        kind: "pulse",
+        name: "气波掌",
+        amount: 1,
+        from: { x: source.x, y: source.y },
+        to: { x: target.x, y: target.y },
+      });
+    damage(ctx, source, target, cast.damage, cast.damageType ?? "true", true);
+  } else if (source.qiSkill)
+    ctx.effects.push({
+      source: source.uid,
+      target: source.uid,
+      kind: "silence",
+      name: "目标丢失",
+      amount: 0,
+      from: { x: source.x, y: source.y },
+      to: { x: source.x, y: source.y },
+    });
   return true;
 }

@@ -12,6 +12,8 @@
 }
 * {
   box-sizing: border-box;
+  /* Cover nested scrollers too; keep scrolling and pinch zoom without double-tap zoom. */
+  touch-action: manipulation;
 }
 body {
   margin: 0;

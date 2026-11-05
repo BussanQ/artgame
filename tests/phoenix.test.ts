@@ -327,6 +327,7 @@ describe("0.16到0.17卡池迁移", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "保留旧资源、战斗和历史，仅补新卡池", () => {
       const g = createGame(137, "classic");
+      g.combatVersion = "metamorph";
       let result: ReturnType<typeof startRound>;
       if (phase !== "prepare") {
         const me = g.players[0];
@@ -356,6 +357,8 @@ describe("0.16到0.17卡池迁移", () => {
       expect(decoded.data!.schema).toBe(SAVE_SCHEMA);
       expect(decoded.data!.game).toEqual({
         ...before,
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "metamorph",
         pool: { ...before.pool, phoenix: COPIES[UNIT.phoenix.cost] },
       });
       expect(validGame(decoded.data!.game)).toBe(true);

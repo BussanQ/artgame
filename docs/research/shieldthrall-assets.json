@@ -1,0 +1,71 @@
+{
+  "status": "generated",
+  "updatedAt": "2026-11-05",
+  "method": "built-in image_gen",
+  "generationAttempts": [
+    {
+      "attempt": 1,
+      "result": "failed",
+      "reason": "network error: error sending request"
+    },
+    {
+      "attempt": 2,
+      "result": "failed",
+      "reason": "network error: error sending request"
+    },
+    {
+      "attempt": 3,
+      "result": "failed",
+      "reason": "network error: error sending request"
+    },
+    {
+      "attempt": 4,
+      "result": "failed",
+      "reason": "network error: error sending request"
+    },
+    {
+      "attempt": 5,
+      "result": "failed",
+      "reason": "network error: error sending request"
+    },
+    {
+      "attempt": 6,
+      "result": "failed",
+      "reason": "network error: error sending request"
+    },
+    {
+      "attempt": 7,
+      "result": "failed",
+      "reason": "network error: error sending request"
+    },
+    {
+      "attempt": 8,
+      "result": "generated",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a science-fantasy auto chess game. ONE Shield Thrall: a hulking faceless alien puppet in layered obsidian and gunmetal plate armor, broad shoulders, sealed angular helmet with a jade eye slit and two small green crystal horns. LEFT forearm braces a large faceted kite shield with a pale jade central crystal and bright edge trim. RIGHT hand holds a short broad straight energy sword lowered beside the body. Thick armored knees and boots, planted shield-bracing stance. Restrained emerald joint lights, bronze fasteners and pale teal rim lighting. Semi-realistic painted 3D strategy miniature, three-quarter front view facing slightly right, crisp readable silhouette. Entire shield, sword tip, horns and feet visible with generous margins. Actual transparent background, no scenery, floor, pedestal, cast shadow, text, UI, logo or other character."
+    }
+  ],
+  "asset": {
+    "id": "shieldthrall",
+    "name": "盾奴",
+    "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a science-fantasy auto chess game. ONE Shield Thrall: a hulking faceless alien puppet in layered obsidian and gunmetal plate armor, broad shoulders, sealed angular helmet with a jade eye slit and two small green crystal horns. LEFT forearm braces a large faceted kite shield with a pale jade central crystal and bright edge trim. RIGHT hand holds a short broad straight energy sword lowered beside the body. Thick armored knees and boots, planted shield-bracing stance. Restrained emerald joint lights, bronze fasteners and pale teal rim lighting. Semi-realistic painted 3D strategy miniature, three-quarter front view facing slightly right, crisp readable silhouette. Entire shield, sword tip, horns and feet visible with generous margins. Actual transparent background, no scenery, floor, pedestal, cast shadow, text, UI, logo or other character.",
+    "kind": "transparent-unit-sprite",
+    "origin": "AI-generated reinterpretation, not original game model",
+    "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-bb6f4c13-2f0b-412d-9ff1-b1a2f1f65352.png",
+    "path": "public/assets/units/shieldthrall.png",
+    "width": 1199,
+    "height": 1312,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "transparentPixels": 664230,
+    "totalPixels": 1573088,
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "sha256": "aab1be8aa34741633294264c62fcbf6110807f37abb30fedbc409630b5410e01"
+  },
+  "initialPrompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a science-fantasy auto chess game. Subject: ONE Shield Thrall, a hulking humanoid alien puppet bodyguard wearing layered obsidian-black and dark gunmetal ceramic plate armor, broad squared shoulders, a sealed angular helmet with a slit of jade light, and compact green crystal horns. No face or exposed flesh. It braces one large faceted kite shield on its LEFT forearm; the shield has dark metal facets, a pale jade central crystal and readable bright edge trim. Its RIGHT hand holds a short broad straight energy sword lowered beside the body, not a spear, not a staff. Thick articulated knees, claw-like armored boots, weight planted forward in a shield-bracing stance. Restrained emerald energy glows through the torso joints, small bronze fasteners, pale teal rim lighting so the dark silhouette reads on a battlefield. Original reinterpretation, coherent with an ivory dual-sword puppet and an indigo blade duelist. Semi-realistic painted 3D strategy miniature, three-quarter front view facing slightly right, crisp readable silhouette. Entire shield, sword tip, helmet horns and both feet in frame with generous ten percent margins. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no UI, no logos, no additional characters.",
+  "generatedAt": "2026-11-05"
+}

@@ -18,7 +18,6 @@ import {
 import { createGame, startRound, nextRound, settle } from "../src/engine/game";
 import { decodeSave, SAVE_SCHEMA } from "../src/engine/persistence";
 import { claimReward, itemScore } from "../src/engine/equipment";
-import { UNITS } from "../src/data/units";
 import { skillDescription } from "../src/data/skills";
 import type { Fighter, Piece } from "../src/engine/types";
 const p = (defId: string, uid: number, position = 35, star = 1): Piece => ({
@@ -147,9 +146,32 @@ describe("原型 0.7 的兵种触发方式", () => {
     expect(skillDescription("tiger", "balanced")).toContain("能量满 100");
   });
   it("更新前四版二十单位战斗的完整快照 SHA-256 原样保留", async () => {
+    // Freeze the 0.7 inputs from commit 04420db; later additions must not shift this roster.
+    const originalUnits = [
+      "infantry",
+      "guard",
+      "pangolin",
+      "panda",
+      "sniper",
+      "lion",
+      "chariot",
+      "monk",
+      "wolf",
+      "cannon",
+      "master",
+      "titan",
+      "cavalry",
+      "dragonfly",
+      "shadowblade",
+      "turtle",
+      "tiger",
+      "bull",
+      "fish",
+      "deer",
+    ];
     const fixtures = (start: number) =>
-      UNITS.slice(start, start + 10).map((u, i) => ({
-        ...p(u.id, start + i + 1, 32 + i, 2),
+      originalUnits.slice(start, start + 10).map((id, i) => ({
+        ...p(id, start + i + 1, 32 + i, 2),
         items: i === 0 ? ["aegis"] : [],
       }));
     const expected = {

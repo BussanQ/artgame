@@ -1,7 +1,7 @@
 import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { damage } from "../src/engine/abilities";
 import { describe, it, expect } from "vitest";
-import { TRAIT_TIERS } from "../src/data/traits";
+import { traitTiers } from "../src/data/traits";
 import { UNITS, UNIT, COPIES } from "../src/data/units";
 import { AI_PROFILES } from "../src/data/ai-profiles";
 import { synergies } from "../src/engine/synergies";
@@ -51,7 +51,9 @@ function conservation(g: Game) {
 }
 describe("羁绊梯度与 AI 策略", () => {
   it("每档羁绊均能由当前棋子达到，只取最高档，不计重复和备战", () => {
-    for (const [trait, tiers] of Object.entries(TRAIT_TIERS)) {
+    for (const [trait, tiers] of Object.entries(
+      traitTiers(CURRENT_COMBAT_VERSION),
+    )) {
       const units = UNITS.filter((u) => u.traits.some((t) => t === trait));
       expect(units.length).toBeGreaterThanOrEqual(tiers.at(-1)!.count);
       for (const [i, tier] of tiers.entries()) {
@@ -79,21 +81,21 @@ describe("羁绊梯度与 AI 策略", () => {
     expect(army(pieces, 0, "metamorph")[0].maxHp).toBe(1100);
     expect(army(pieces, 0, "tactics")[0].maxHp).toBe(1200);
     expect(legacy[0].maxHp).toBe(1000);
-    expect(modern[1].attack).toBeCloseTo(58 * 1.15);
+    expect(modern[1].attack).toBe(58);
     expect(legacy[1].attack).toBe(58);
     const pandas = army(
       [piece("panda", 0), piece("monk", 1), piece("master", 2)],
       0,
     );
-    expect(pandas.every((f) => f.mana === 100 && f.skillPower === 1.15)).toBe(
+    expect(pandas.every((f) => f.mana === 100 && f.skillPower === 1)).toBe(
       true,
     );
     const guards = army(
       [
         piece("guard", 0),
         piece("lion", 1),
-        piece("monk", 2),
-        piece("titan", 3),
+        piece("staffthrall", 2),
+        piece("shieldthrall", 3),
       ],
       0,
     );
@@ -102,12 +104,14 @@ describe("羁绊梯度与 AI 策略", () => {
       [
         piece("infantry", 0),
         piece("sniper", 1),
-        piece("chariot", 2),
+        piece("thunderlord", 2),
         piece("cannon", 3),
       ],
       0,
     );
-    expect(snipers.every((f) => f.attackShred === 2)).toBe(true);
+    expect(
+      snipers.every((f) => f.armorPenetration === 4 && f.attackShred === 0),
+    ).toBe(true);
     const target = army(
       [{ uid: 100, defId: "guard", star: 1, position: 35 }],
       1,
@@ -118,12 +122,12 @@ describe("羁绊梯度与 AI 策略", () => {
       target,
       100,
     );
-    expect(target.armorBreak).toBe(2);
-    expect(target.armorBreakUntil).toBe(13);
-    expect(target.hp).toBe(800 - Math.round((100 * 100) / 130));
+    expect(target.armorBreak).toBe(0);
+    expect(target.armorBreakUntil).toBe(0);
+    expect(target.hp).toBe(800 - Math.round((100 * 100) / 118));
   });
   it("两种刺杀开场切入后排，落点唯一且不越界，旧版不跳跃", () => {
-    const left = [piece("panda", 0), piece("wolf", 1)],
+    const left = [piece("panda", 0), piece("axethrall", 1)],
       right = [piece("guard", 4), { ...piece("sniper", 5), position: 59 }];
     const b = simulate(left, right),
       old = simulate(left, right, "legacy");
@@ -226,7 +230,7 @@ describe("羁绊梯度与 AI 策略", () => {
   it("不同 AI 有明确构筑偏好，攒息目标会随阶段和危险血量变化", () => {
     expect(
       new Set(AI_PROFILES.slice(1).map((p) => p.traits.join("/"))).size,
-    ).toBe(8);
+    ).toBe(9);
     const g = createGame(undefined, "classic"),
       p = g.players[1];
     p.aiProfile = "infantry";

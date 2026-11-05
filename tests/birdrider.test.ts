@@ -323,6 +323,7 @@ describe("鸟骑兵单机集成", () => {
     (phase) => {
       const g = createGame(137, "classic"),
         me = g.players[0];
+      g.combatVersion = "infantry";
       for (const pl of g.players)
         pl.shop = pl.shop.map((id) => {
           if (id !== "birdrider") return id;
@@ -363,6 +364,8 @@ describe("鸟骑兵单机集成", () => {
       });
       expect(out.data!.game).toEqual({
         ...before,
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "infantry",
         pool: { ...before.pool, birdrider: COPIES[1] },
       });
       expect(validGame(out.data!.game)).toBe(true);

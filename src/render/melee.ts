@@ -1,5 +1,10 @@
 /** Pure animation sampling; no combat damage or simulation timing changes. */
 export const MELEE_ACTIONS = {
+  elephant: { name: "踏步扬鼻挑牙", duration: 3.8, color: "#e5bd83" },
+  venombeast: { name: "压肩横甩撕咬", duration: 3.6, color: "#b7dc76" },
+  staffthrall: { name: "双手点棍与疾风轮转", duration: 3.4, color: "#85c8ff" },
+  shieldthrall: { name: "架盾弓步重推", duration: 3.8, color: "#8cf0cc" },
+  bladethrall: { name: "压身拔刀瞬斩", duration: 3.5, color: "#b8d6ff" },
   swordthrall: { name: "双刀错步回切", duration: 3.8, color: "#a9eadc" },
   axethrall: { name: "侧身引斧斜劈", duration: 3.4, color: "#79e3cb" },
   ironape: { name: "双拳举臂震地", duration: 3.6, color: "#efb46c" },
@@ -78,6 +83,51 @@ export function meleePose(id: MeleeId, t: number, skill = false): AttackPose {
     power = skill ? 1.22 : 1;
   p.impact = pulse(t, 0.28, 0.68) * power;
   switch (id) {
+    case "elephant":
+      p.forward = -7 * wind + (skill ? 32 : 18) * hit - 5 * recover;
+      p.rotation = -0.12 * wind - (skill ? 0.28 : 0.16) * hit + 0.08 * recover;
+      p.lift = (skill ? 14 : 8) * hit - 4 * recover;
+      p.scaleX = 1 - 0.05 * wind + 0.12 * hit;
+      p.scaleY = 1 + 0.09 * hit;
+      p.trail = hit * (skill ? 0.7 : 0.25);
+      break;
+    case "venombeast":
+      p.forward = -13 * wind + (skill ? 12 : 26) * hit - 4 * recover;
+      p.rotation = 0.12 * wind - 0.21 * hit + 0.13 * recover;
+      p.lift = -6 * wind + (skill ? 8 : 2) * hit;
+      p.scaleX = 1 - 0.1 * wind + 0.15 * hit;
+      p.scaleY = 1 - 0.08 * wind - 0.04 * hit;
+      p.trail = 0.5 * hit;
+      break;
+    case "staffthrall":
+      p.forward = -8 * wind + (skill ? 25 : 20) * hit - 4 * recover;
+      p.rotation = skill
+        ? Math.sin(t * Math.PI * 2) * 0.42
+        : -0.18 * wind + 0.32 * hit;
+      p.lift = 5 * wind - 3 * hit;
+      p.scaleX = skill
+        ? 0.65 + Math.abs(Math.cos(t * Math.PI * 2)) * 0.35
+        : 1 - 0.08 * wind;
+      p.scaleY = 1 - 0.06 * hit;
+      p.trail = hit * (skill ? 1.6 : 0.6);
+      break;
+    case "shieldthrall":
+      p.forward = -6 * wind + 22 * hit - 3 * recover;
+      p.rotation = -0.1 * wind + 0.19 * hit;
+      p.scaleX = 1 + 0.11 * hit;
+      p.scaleY = 1 - 0.09 * hit;
+      p.lift = -3 * wind + 2 * recover;
+      p.trail = 0.3 * hit;
+      break;
+    case "bladethrall":
+      p.forward =
+        -15 * wind + (skill ? 43 : 31) * pulse(t, 0.27, 0.57) - 4 * recover;
+      p.rotation = -0.22 * wind + 0.38 * pulse(t, 0.27, 0.57) - 0.08 * recover;
+      p.scaleX = 1 - 0.18 * wind + 0.14 * hit;
+      p.scaleY = 1 - 0.12 * wind;
+      p.lift = -8 * wind + 3 * hit;
+      p.trail = hit * (skill ? 1.4 : 0.7);
+      break;
     case "swordthrall":
       p.forward =
         -7 * wind + 17 * pulse(t, 0.18, 0.5) + 12 * pulse(t, 0.5, 0.91);
@@ -265,6 +315,84 @@ export function drawMeleeWeapon(
     c.stroke();
   };
   switch (id) {
+    case "elephant":
+      c.lineWidth = skill ? 5 : 3;
+      for (const offset of [-9, 9])
+        arc(20 + 26 * hit, -38 + offset, 29, -0.5 - 0.6 * hit, 1.3 - hit);
+      if (skill) {
+        c.beginPath();
+        c.ellipse(18, 3, 18 + 28 * hit, 7 + 5 * hit, 0, 0, Math.PI * 2);
+        c.stroke();
+      }
+      break;
+    case "venombeast":
+      for (const offset of [-1, 1]) {
+        c.beginPath();
+        c.moveTo(12 + 15 * hit, -44 + offset * (19 - 10 * hit));
+        c.lineTo(45 + 25 * hit, -40 + offset * (12 - 8 * hit));
+        c.lineTo(52 + 25 * hit, -40);
+        c.stroke();
+      }
+      if (skill) {
+        c.fillStyle = "#b7f176";
+        c.beginPath();
+        c.arc(44 + 20 * hit, -44, 4 + 4 * hit, 0, Math.PI * 2);
+        c.fill();
+      }
+      break;
+    case "staffthrall":
+      c.translate(8 + 12 * hit, -47);
+      c.rotate(skill ? -0.5 + t * Math.PI * 4 : -1.1 + t * 2.2);
+      c.lineWidth = 5;
+      c.beginPath();
+      c.moveTo(-60, 0);
+      c.lineTo(65, 0);
+      c.stroke();
+      c.fillStyle = "#d6f1ff";
+      c.fillRect(-64, -4, 12, 8);
+      c.fillRect(57, -4, 12, 8);
+      if (skill) {
+        c.lineWidth = 2;
+        arc(0, 0, 64, t * 4, t * 4 + 2.6);
+        arc(0, 0, 56, t * 4 + Math.PI, t * 4 + Math.PI + 2.6);
+      }
+      break;
+    case "shieldthrall": {
+      const x = 13 + 27 * hit;
+      c.beginPath();
+      c.moveTo(x - 16, -76);
+      c.lineTo(x + 18, -72);
+      c.lineTo(x + 22, -48);
+      c.lineTo(x, -15);
+      c.lineTo(x - 20, -48);
+      c.closePath();
+      c.stroke();
+      c.beginPath();
+      c.moveTo(x, -66);
+      c.lineTo(x, -28);
+      c.stroke();
+      if (skill) {
+        arc(x + 12, -45, 28 + 15 * hit, -1.1, 1.1);
+        arc(x + 15, -45, 40 + 15 * hit, -1, 1);
+      }
+      break;
+    }
+    case "bladethrall": {
+      const reach = 20 + 66 * pulse(t, 0.22, 0.72);
+      c.lineWidth = (skill ? 6 : 3) * power;
+      c.beginPath();
+      c.moveTo(-24, -25);
+      c.quadraticCurveTo(25, -80, reach, -55);
+      c.stroke();
+      c.lineWidth = 1.5;
+      c.strokeStyle = "#f1f8ff";
+      c.beginPath();
+      c.moveTo(-19, -23);
+      c.lineTo(reach + 7, -57);
+      c.stroke();
+      if (skill) arc(30, -42, 38, -2.1, 0.5);
+      break;
+    }
     case "swordthrall":
       arc(5, -42, 45, -2.7 + t * 4, -1.1 + t * 4);
       arc(12, -38, 32, 1.7 - t * 5, 3.1 - t * 5);

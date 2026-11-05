@@ -1,0 +1,107 @@
+.battle-inspector {
+  position: absolute;
+  z-index: 8;
+  left: 12px;
+  bottom: 12px;
+  width: min(300px, calc(100% - 24px));
+  max-height: 55%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px;
+  background: #122923f2;
+  border: 1px solid #9cac7b;
+  box-shadow: 0 6px 24px #050e0cc9;
+  color: #dae6dc;
+  font-size: 12px;
+  pointer-events: none;
+}
+.battle-inspector[hidden] {
+  display: none;
+}
+.battle-inspector.is-pinned {
+  pointer-events: auto;
+}
+.battle-inspector-body {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.battle-inspector h3 {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0 28px 10px 0;
+  background: #122923;
+  color: #e5d3a3;
+  font-size: 14px;
+}
+.battle-inspector h3 small {
+  font-size: 11px;
+  font-weight: 400;
+  color: #a7b9af;
+}
+.battle-inspector button {
+  position: absolute;
+  z-index: 2;
+  right: 4px;
+  top: 3px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: none;
+}
+.battle-inspector.is-pinned button {
+  display: block;
+}
+.battle-inspector-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 12px;
+}
+.battle-inspector-stats span {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px;
+  color: #a7b9af;
+}
+.battle-inspector-stats b {
+  color: #e3e9dd;
+  font-weight: 500;
+}
+.battle-inspector ul {
+  list-style: none;
+  margin: 9px 0 0;
+  padding: 8px 0 0;
+  border-top: 1px solid #6d897652;
+}
+.battle-inspector li {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.battle-inspector p {
+  margin-top: 8px;
+  font-size: 10px;
+  color: #91a69a;
+}
+@media (max-width: 700px) {
+  .battle-inspector {
+    left: 8px;
+    bottom: 8px;
+    width: min(290px, calc(100% - 16px));
+    max-height: 62%;
+    padding: 10px;
+    font-size: 11px;
+  }
+  .battle-inspector h3 {
+    padding-right: 40px;
+  }
+  .battle-inspector button {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+  }
+}

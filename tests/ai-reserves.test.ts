@@ -157,7 +157,7 @@ describe("AI备战席与连败投入", () => {
 
 // Regression extracted from seed 307, round 19: the old beam pruned both support planes.
 describe("完整羁绊候选", () => {
-  it("个体较弱的拼图不会在四空军完成前被裁掉，返回更高团队评分且不改输入", () => {
+  it("推荐与舰队AI的评分不低于完整四空军候选，并保持输入不变", () => {
     const player = createGame(undefined, "classic").players[4];
     player.aiProfile = "fleet";
     player.level = 8;
@@ -196,20 +196,26 @@ describe("完整羁绊候选", () => {
     player.id = 0;
     delete player.aiProfile;
     const recommended = chooseLineup(player, "standard");
+    // The recovered sky-crab spell makes two-air/two-sea better in 0.47.
+    // Keep the original four-air lineup as a complete-team scoring baseline.
+    const fourAir = [2, 40, 79, 167, 193, 220, 286, 313].map(
+      (uid) => player.pieces.find((p) => p.uid === uid)!,
+    );
     expect(
-      synergies(recommended.map((p, i) => ({ ...p, position: 32 + i }))).find(
+      synergies(fourAir.map((p, i) => ({ ...p, position: 32 + i }))).find(
         (s) => s.trait === "空军",
       ),
     ).toMatchObject({ count: 4, tier: 2 });
+    expect(lineupScore(recommended, AI_PROFILES[0])).toBeGreaterThanOrEqual(
+      lineupScore(fourAir, AI_PROFILES[0]),
+    );
     player.id = 4;
     player.aiProfile = "fleet";
     expect(chosen).toHaveLength(8);
     expect(new Set(chosen.map((p) => p.uid)).size).toBe(8);
-    expect(
-      synergies(chosen.map((p, i) => ({ ...p, position: 32 + i }))).find(
-        (s) => s.trait === "空军",
-      ),
-    ).toMatchObject({ count: 4, tier: 2 });
+    expect(lineupScore(chosen, AI_PROFILES[4])).toBeGreaterThanOrEqual(
+      lineupScore(fourAir, AI_PROFILES[4]),
+    );
     const previous = [2, 79, 193, 220, 255, 286, 313, 327].map(
       (uid) => player.pieces.find((p) => p.uid === uid)!,
     );

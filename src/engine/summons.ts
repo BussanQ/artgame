@@ -13,12 +13,17 @@ export function fighterName(
   return f.summon ? "幽影幼狼" : UNIT[f.defId].name;
 }
 export function fighterSprite(
-  f: Pick<Fighter, "defId" | "summon" | "hawkForm" | "phoenix">,
+  f: Pick<
+    Fighter,
+    "defId" | "summon" | "hawkForm" | "phoenix" | "aurora" | "qiSkill"
+  >,
 ) {
   if (isPhoenixEgg(f)) return "phoenix-egg";
   if (f.hawkForm?.active) return "bloodhawk-ground";
   if (f.summon?.kind === "puppet") return "puppet-spirit";
   if (f.summon?.kind === "sentinel") return "shield-servant";
+  if (!f.summon && f.defId === "skycrab" && f.aurora) return "skycrab-aurora";
+  if (!f.summon && f.defId === "arhat" && f.qiSkill) return "arhat-qi";
   return f.summon ? "wolf-spirit" : f.defId;
 }
 
@@ -54,9 +59,18 @@ export function callWolfPack(ctx: CombatContext, source: Fighter): boolean {
   for (const cell of cells) {
     const hp = Math.round(SPIRIT_WOLF.hp * scale);
     const pup: Fighter = {
+      ...(source.teamAttack ? { teamAttack: source.teamAttack } : {}),
+      ...(source.teamLifesteal ? { teamLifesteal: source.teamLifesteal } : {}),
+      ...(source.damageManaBonus
+        ? { damageManaBonus: source.damageManaBonus }
+        : {}),
+      ...(source.teamHaste
+        ? { teamHaste: source.teamHaste, formationHaste: source.teamHaste }
+        : {}),
       ...(source.infantryArmorBreak
         ? { infantryArmorBreak: source.infantryArmorBreak }
         : {}),
+      ...(source.energyPenalty ? { energyPenalty: source.energyPenalty } : {}),
       ...(source.reflection ? { reflection: source.reflection } : {}),
       uid: uid--,
       defId: "wolf",
@@ -66,6 +80,10 @@ export function callWolfPack(ctx: CombatContext, source: Fighter): boolean {
         ? {
             homeSide: source.homeSide ?? source.side,
             air: {
+              ...(source.air.groundBonus
+                ? { groundBonus: source.air.groundBonus }
+                : {}),
+              ...(source.air.siegeDirect ? { siegeDirect: true as const } : {}),
               flying: false,
               evasion: 0,
               attempts: 0,
@@ -83,7 +101,9 @@ export function callWolfPack(ctx: CombatContext, source: Fighter): boolean {
       signature: { casts: 0, attacks: 0, concealed: false },
       hp,
       maxHp: hp,
-      attack: Math.round(SPIRIT_WOLF.attack * scale),
+      attack: Math.round(
+        SPIRIT_WOLF.attack * scale * (1 + (source.teamAttack ?? 0)),
+      ),
       armor: SPIRIT_WOLF.armor,
       range: 1,
       interval: SPIRIT_WOLF.interval,
@@ -99,7 +119,7 @@ export function callWolfPack(ctx: CombatContext, source: Fighter): boolean {
       armorBreakUntil: 0,
       healing: 0,
       absorbed: 0,
-      lifesteal: 0,
+      lifesteal: source.teamLifesteal ?? 0,
       skillPower: 1,
       magicResist: Math.max(
         -0.25,
@@ -207,9 +227,18 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
   for (const cell of cells) {
     const hp = Math.round(profile.hp * scale);
     ctx.fighters.push({
+      ...(source.teamAttack ? { teamAttack: source.teamAttack } : {}),
+      ...(source.teamLifesteal ? { teamLifesteal: source.teamLifesteal } : {}),
+      ...(source.damageManaBonus
+        ? { damageManaBonus: source.damageManaBonus }
+        : {}),
+      ...(source.teamHaste
+        ? { teamHaste: source.teamHaste, formationHaste: source.teamHaste }
+        : {}),
       ...(source.infantryArmorBreak
         ? { infantryArmorBreak: source.infantryArmorBreak }
         : {}),
+      ...(source.energyPenalty ? { energyPenalty: source.energyPenalty } : {}),
       ...(source.reflection ? { reflection: source.reflection } : {}),
       uid: uid--,
       defId: profile.defId,
@@ -219,6 +248,10 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
         ? {
             homeSide: source.homeSide ?? source.side,
             air: {
+              ...(source.air.groundBonus
+                ? { groundBonus: source.air.groundBonus }
+                : {}),
+              ...(source.air.siegeDirect ? { siegeDirect: true as const } : {}),
               flying: false,
               evasion: 0,
               attempts: 0,
@@ -236,7 +269,9 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
       signature: { casts: 0, attacks: 0, concealed: false },
       hp,
       maxHp: hp,
-      attack: Math.round(profile.attack * scale),
+      attack: Math.round(
+        profile.attack * scale * (1 + (source.teamAttack ?? 0)),
+      ),
       armor: profile.armor,
       range: 1,
       interval: profile.interval,
@@ -252,7 +287,7 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
       armorBreakUntil: 0,
       healing: 0,
       absorbed: 0,
-      lifesteal: 0,
+      lifesteal: source.teamLifesteal ?? 0,
       skillPower: 1,
       magicResist: Math.max(
         -0.25,

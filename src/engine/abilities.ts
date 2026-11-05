@@ -1,3 +1,9 @@
+import { setFlight } from "./sea-ward";
+import { releaseShieldWave } from "./shieldthrall";
+import { rollAssassinCritical } from "./assassins";
+import { staffSpeed } from "./staffthrall";
+import { acidCells, applyCorrosion } from "./beasts";
+import { inDeathSong } from "./lingjiu";
 import { bladeStormActive, startBladeStorm } from "./swordthrall";
 import { flameCells, ignite, silence } from "./infantry-skills";
 import { commandBonuses, rallyAllies } from "./ironrooster";
@@ -10,10 +16,26 @@ import {
 } from "./triggers";
 import { isUndying, enterUndying } from "./immortality";
 import { callWolfPack, callRetinue } from "./summons";
-import { SKILLS, HAWK_METAMORPH, AXE_THROW } from "../data/skills";
+import {
+  SKILLS,
+  AURORA,
+  AURORA_SKILL,
+  ARHAT_QI,
+  QI_SKILL,
+  TAOTIE,
+  TAOTIE_SKILL,
+  HAWK_METAMORPH,
+  AXE_THROW,
+  TUSK_CHARGE,
+  ACID_POLLUTION,
+  DEATH_SONG,
+  BURROW_SKILL,
+  PANGOLIN_BURROW,
+} from "../data/skills";
 import { UNIT } from "../data/units";
 import type { CombatEffect, CombatEvent, DamageType, Fighter } from "./types";
 
+export const ATTACK_MANA = 25;
 export const distance = (
   a: { x: number; y: number },
   b: { x: number; y: number },
@@ -21,12 +43,14 @@ export const distance = (
 export const attackInterval = (f: Fighter, tick: number) =>
   Math.max(
     1,
-    f.interval *
+    (f.interval / (1 + staffSpeed(f) + (f.formationHaste ?? 0))) *
       (f.hasteUntil > tick ? 0.7 : 1) *
       (f.slow && f.slow.until > tick ? f.slow.multiplier : 1),
   );
 export const combatAttack = (f: Fighter, tick: number) =>
-  f.attack *
+  (f.attack +
+    (f.taotie?.rage && f.taotie.rage.until > tick ? f.taotie.rage.attack : 0)) *
+  (1 + (f.aurora?.stacks ?? 0) * AURORA.attackPerStack) *
   (1 +
     Math.max(
       f.attackBoost && f.attackBoost.until > tick ? f.attackBoost.ratio : 0,
@@ -47,9 +71,13 @@ function dodges(source: Fighter, target: Fighter, tick: number) {
   n = (n ^ (n >>> 16)) >>> 0;
   return n / 4294967296 < air.evasion;
 }
+export function recoveredMana(f: Fighter, amount: number) {
+  const gain = amount * (f.energyMultiplier ?? 1);
+  return f.energyPenalty ? Math.max(0, gain - f.energyPenalty) : gain;
+}
 export function gainMana(f: Fighter, amount: number, tick: number) {
   if (usesEnergy(f) && f.hp > 0 && f.manaLockUntil <= tick)
-    f.mana = Math.min(100, f.mana + amount * (f.energyMultiplier ?? 1));
+    f.mana = Math.min(100, f.mana + recoveredMana(f, amount));
 }
 export interface CombatContext {
   fighters: Fighter[];
@@ -88,6 +116,7 @@ export function damage(
   reflected = false,
   periodic = false,
   empowered = false,
+  gale = 0,
 ) {
   if (
     (source.hp <= 0 &&
@@ -97,9 +126,27 @@ export function damage(
     target.hp <= 0
   )
     return 0;
+  const assassinCritical =
+    !skill &&
+    !reflected &&
+    !periodic &&
+    source.stunUntil <= ctx.tick &&
+    source.side !== target.side &&
+    distance(source, target) <= source.range &&
+    !!source.assassinCrit &&
+    attackTargets(source, ctx.fighters, ctx.tick).some(
+      (f) => f.uid === target.uid,
+    ) &&
+    rollAssassinCritical(source);
+  if (assassinCritical) {
+    raw *= source.assassinCrit!.multiplier;
+    empowered = true;
+  }
   if (!skill && source.trueAttack) type = "true";
-  if (!skill && source.groundBonus && !target.air?.flying)
-    raw *= 1 + source.groundBonus;
+  const groundBonus =
+    (source.groundBonus ?? 0) +
+    (source.air?.flying ? (source.air.groundBonus ?? 0) : 0);
+  if (!skill && groundBonus && !target.air?.flying) raw *= 1 + groundBonus;
   const reflectHit = () => {
     if (
       !reflected &&
@@ -133,6 +180,8 @@ export function damage(
       primary,
       ranged: source.range > 1,
       ...(empowered ? { empowered: true } : {}),
+      ...(assassinCritical ? { assassinCritical: true } : {}),
+      ...(gale ? { gale } : {}),
       ...(!skill && source.hawkForm?.active
         ? { strike: 3 - (source.combo?.remaining ?? 2) }
         : {}),
@@ -156,6 +205,8 @@ export function damage(
       primary,
       ranged: source.range > 1,
       ...(empowered ? { empowered: true } : {}),
+      ...(assassinCritical ? { assassinCritical: true } : {}),
+      ...(gale ? { gale } : {}),
       ...(!skill && source.hawkForm?.active
         ? { strike: 3 - (source.combo?.remaining ?? 2) }
         : {}),
@@ -165,13 +216,18 @@ export function damage(
     });
     return 0;
   }
-  if (!skill && source.air) {
-    if (source.air.antiAir && target.air?.flying) raw *= 1.5;
+  if (!skill && source.air?.antiAir && target.air?.flying) raw *= 1.5;
+  if (
+    source.air &&
+    (source.air.siegeDirect ? !reflected && !periodic : !skill)
+  ) {
     if (
       target.summon
         ? target.summon.kind === "puppet"
-        : UNIT[target.defId].traits.some((t) =>
-            ["装甲", "空军", "傀儡", "海神", "异虫"].includes(t),
+        : UNIT[target.defId].traits.some(
+            (t) =>
+              ["装甲", "空军", "傀儡", "海神", "异虫"].includes(t) ||
+              (source.air!.siegeDirect && t === "不朽"),
           )
     )
       raw *= 1 + source.air.siege;
@@ -183,8 +239,9 @@ export function damage(
   const armor =
     Math.max(
       0,
-      effectiveArmor(target, ctx.tick) -
-        (target.armorBreakUntil > ctx.tick ? target.armorBreak : 0),
+      effectiveArmor(target, ctx.tick, ctx.fighters) -
+        (target.armorBreakUntil > ctx.tick ? target.armorBreak : 0) -
+        (type === "physical" ? (source.armorPenetration ?? 0) : 0),
     ) *
     (1 - penetration);
   const mitigation =
@@ -216,10 +273,7 @@ export function damage(
   }
   // Preserve the historical lethal-hit energy value for old replay snapshots.
   if (!reflected && usesEnergy(target) && target.manaLockUntil <= ctx.tick)
-    target.mana = Math.min(
-      100,
-      target.mana + 10 * (target.energyMultiplier ?? 1),
-    );
+    target.mana = Math.min(100, target.mana + recoveredMana(target, 10));
   ctx.events.push({
     ...(reflected ? { reflected: true } : {}),
     ...(periodic ? { periodic: true } : {}),
@@ -232,14 +286,53 @@ export function damage(
     primary,
     ranged: source.range > 1,
     ...(empowered ? { empowered: true } : {}),
+    ...(assassinCritical ? { assassinCritical: true } : {}),
+    ...(gale ? { gale } : {}),
     ...(!skill && source.hawkForm?.active
       ? { strike: 3 - (source.combo?.remaining ?? 2) }
       : {}),
     from: { x: source.x, y: source.y },
     to: { x: target.x, y: target.y },
   });
-  if (!skill && source.lifesteal > 0)
-    heal(ctx, source, source, amount * source.lifesteal);
+  if (
+    !skill &&
+    !periodic &&
+    !reflected &&
+    amount > 0 &&
+    source.attackManaReady
+  ) {
+    source.attackManaReady = false;
+    if (
+      source.damageManaBonus &&
+      usesEnergy(source) &&
+      source.hp > 0 &&
+      source.manaLockUntil <= ctx.tick
+    ) {
+      const before = source.mana;
+      // Amplify the same attack recovery. Cavalry's flat penalty must be charged only once.
+      const extra =
+        recoveredMana(source, ATTACK_MANA * (1 + source.damageManaBonus)) -
+        recoveredMana(source, ATTACK_MANA);
+      source.mana = Math.min(100, source.mana + Math.max(0, extra));
+      if (source.mana > before)
+        effect(
+          ctx,
+          source,
+          source,
+          "energize",
+          source.mana - before,
+          "召唤回能",
+        );
+    }
+  }
+  if (!skill && !periodic && !reflected && source.lifesteal > 0)
+    heal(
+      ctx,
+      source,
+      source,
+      amount * source.lifesteal,
+      source.teamLifesteal ? "普攻吸血" : "治疗",
+    );
   if (target.hp === 0 && target.supportHeal > 0) {
     const healing = target.supportHeal,
       mana = target.supportMana;
@@ -282,6 +375,7 @@ export function heal(
   source: Fighter,
   target: Fighter,
   amount: number,
+  name = "治疗",
 ) {
   if (target.hp <= 0 || isUndying(target) || isPhoenixEgg(target)) return;
   const actual = Math.max(
@@ -291,7 +385,7 @@ export function heal(
   if (!actual) return;
   target.hp += actual;
   source.healing += actual;
-  effect(ctx, source, target, "heal", actual, "治疗");
+  effect(ctx, source, target, "heal", actual, name);
 }
 function shield(
   ctx: CombatContext,
@@ -323,7 +417,12 @@ function fortify(
   effect(ctx, source, target, "fortify", armor, `护甲 +${armor}`);
 }
 /** Charge only into a free adjacent cell. No movement may overlap a living unit. */
-function dashTo(ctx: CombatContext, source: Fighter, target: Fighter): boolean {
+function dashTo(
+  ctx: CombatContext,
+  source: Fighter,
+  target: Fighter,
+  name = "冲锋",
+): boolean {
   if (distance(source, target) <= 1) return true;
   const cell = [
     [0, 1],
@@ -350,7 +449,7 @@ function dashTo(ctx: CombatContext, source: Fighter, target: Fighter): boolean {
     target: source.uid,
     kind: "teleport",
     amount: 0,
-    name: "冲锋",
+    name,
     from,
     to: cell,
   });
@@ -361,6 +460,7 @@ function stun(
   source: Fighter,
   target: Fighter,
   ticks: number,
+  name = "眩晕",
 ) {
   if (
     target.hp <= 0 ||
@@ -370,7 +470,7 @@ function stun(
     return;
   interruptAirSkill(ctx, target);
   target.stunUntil = Math.max(target.stunUntil, ctx.tick + ticks + 1);
-  effect(ctx, source, target, "stun", ticks / 4, "眩晕");
+  effect(ctx, source, target, "stun", ticks / 4, name);
 }
 function breakArmor(ctx: CombatContext, source: Fighter, target: Fighter) {
   target.armorBreak = 4;
@@ -635,10 +735,41 @@ export function castSkill(
   source: Fighter,
   target: Fighter,
 ) {
-  const s = source.hawkForm ? HAWK_METAMORPH : SKILLS[source.defId];
+  const s = source.taotie
+    ? TAOTIE_SKILL
+    : source.qiSkill
+      ? QI_SKILL
+      : source.aurora
+        ? AURORA_SKILL
+        : source.burrowSkill
+          ? BURROW_SKILL
+          : source.hawkForm
+            ? HAWK_METAMORPH
+            : SKILLS[source.defId];
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
   if ((source.silenceUntil ?? 0) > ctx.tick && usesEnergy(source)) return false;
+  if (
+    (source.aurora || source.qiSkill) &&
+    (source.stunUntil > ctx.tick ||
+      (source.skillReadyAt ?? 0) > ctx.tick ||
+      distance(source, target) > source.range ||
+      !attackTargets(source, ctx.fighters, ctx.tick).some(
+        (f) => f.uid === target.uid,
+      ))
+  )
+    return false;
+  if (
+    source.burrowSkill &&
+    (source.stunUntil > ctx.tick ||
+      (source.skillReadyAt ?? 0) > ctx.tick ||
+      distance(source, target) > PANGOLIN_BURROW.range ||
+      !attackTargets(source, ctx.fighters, ctx.tick).some(
+        (f) => f.uid === target.uid,
+      ) ||
+      !dashTo(ctx, source, target, "遁地"))
+  )
+    return false;
   if (
     ["motorcycle", "irondog", "specialist", "ironape", "ironrooster"].includes(
       source.defId,
@@ -666,7 +797,7 @@ export function castSkill(
   )
     return false;
   if (
-    source.defId === "swordthrall" &&
+    ["swordthrall", "shieldthrall", "elephant"].includes(source.defId) &&
     (source.stunUntil > ctx.tick ||
       (source.skillReadyAt ?? 0) > ctx.tick ||
       distance(source, target) > source.range ||
@@ -675,6 +806,30 @@ export function castSkill(
       ))
   )
     return false;
+  if (
+    source.defId === "venombeast" &&
+    (source.stunUntil > ctx.tick ||
+      (source.skillReadyAt ?? 0) > ctx.tick ||
+      distance(source, target) > ACID_POLLUTION.range ||
+      !attackTargets(source, ctx.fighters, ctx.tick).some(
+        (f) => f.uid === target.uid,
+      ))
+  )
+    return false;
+  if (source.defId === "lingjiu") {
+    if (source.stunUntil > ctx.tick || (source.skillReadyAt ?? 0) > ctx.tick)
+      return false;
+    // A self-centered circle must not be blocked by the ordinary Manhattan target tie-break.
+    const nearby = attackTargets(source, ctx.fighters, ctx.tick)
+      .filter((enemy) => inDeathSong(source, enemy))
+      .sort(
+        (a, b) =>
+          Math.hypot(a.x - source.x, a.y - source.y) -
+            Math.hypot(b.x - source.x, b.y - source.y) || a.uid - b.uid,
+      )[0];
+    if (!nearby) return false;
+    target = nearby;
+  }
   if (source.defId === "medic") {
     if (
       !source.air ||
@@ -694,7 +849,16 @@ export function castSkill(
   if (source.defId === "acolyte" && !energyTargets(ctx, source).length)
     return false;
   if (source.defId === "skytoad") {
-    const victim = ctx.fighters
+    if (
+      source.taotie &&
+      (source.stunUntil > ctx.tick || (source.skillReadyAt ?? 0) > ctx.tick)
+    )
+      return false;
+    const victim = (
+      source.taotie
+        ? attackTargets(source, ctx.fighters, ctx.tick)
+        : ctx.fighters
+    )
       .filter(
         (f) =>
           f.hp > 0 &&
@@ -779,6 +943,77 @@ export function castSkill(
       penetration,
     );
   switch (source.defId) {
+    case "lingjiu":
+      source.skillReadyAt = ctx.tick + DEATH_SONG.cooldown;
+      effect(ctx, source, source, "pulse", DEATH_SONG.radius, "死魂曲");
+      for (const enemy of enemies().filter((enemy) =>
+        inDeathSong(source, enemy),
+      )) {
+        if (source.hp <= 0) break;
+        damage(
+          ctx,
+          source,
+          enemy,
+          DEATH_SONG.damage[source.star - 1] * source.skillPower,
+          "magic",
+          true,
+          enemy.uid === target.uid,
+        );
+      }
+      break;
+    case "elephant":
+      source.skillReadyAt = ctx.tick + TUSK_CHARGE.cooldown;
+      damage(
+        ctx,
+        source,
+        target,
+        TUSK_CHARGE.damage[source.star - 1] * source.skillPower,
+        "magic",
+        true,
+      );
+      if (
+        target.hp > 0 &&
+        !isUndying(target) &&
+        !isPhoenixEgg(target) &&
+        !bladeStormActive(target, ctx.tick)
+      ) {
+        stun(ctx, source, target, TUSK_CHARGE.knockupTicks, "击飞");
+        target.knockup = {
+          start: ctx.tick,
+          until: ctx.tick + TUSK_CHARGE.knockupTicks,
+        };
+      }
+      effect(ctx, source, target, "pulse", 1, "獠牙冲");
+      break;
+    case "venombeast": {
+      source.skillReadyAt = ctx.tick + ACID_POLLUTION.cooldown[source.star - 1];
+      const cells = new Set(
+        acidCells(target).map((cell) => `${cell.x},${cell.y}`),
+      );
+      effect(ctx, source, target, "pulse", 1, "酸性污染");
+      for (const enemy of enemies().filter((enemy) =>
+        cells.has(`${enemy.x},${enemy.y}`),
+      )) {
+        if (
+          isUndying(enemy) ||
+          isPhoenixEgg(enemy) ||
+          bladeStormActive(enemy, ctx.tick)
+        )
+          continue;
+        const armor = ACID_POLLUTION.armor[source.star - 1];
+        applyCorrosion(
+          enemy,
+          source.uid,
+          armor,
+          ctx.tick + ACID_POLLUTION.duration,
+        );
+        effect(ctx, source, enemy, "break", armor, "酸性减甲");
+      }
+      break;
+    }
+    case "shieldthrall":
+      releaseShieldWave(ctx, source, target);
+      break;
     case "swordthrall":
       startBladeStorm(ctx, source);
       break;
@@ -920,7 +1155,7 @@ export function castSkill(
         source.hawkForm.active = true;
         heal(ctx, source, source, source.maxHp);
         if (source.air) {
-          source.air.flying = false;
+          setFlight(source, false);
           source.air.evasion = 0;
           source.air.seaMana = 0;
         }
@@ -931,11 +1166,50 @@ export function castSkill(
       heal(ctx, source, source, amount * 0.5);
       break;
     }
-    case "skytoad":
-      source.devourSpent = true;
-      effect(ctx, source, target, "devour", 1, "吞云噬体");
-      damage(ctx, source, target, target.hp + target.shield, "true", true);
+    case "skytoad": {
+      if (source.taotie)
+        source.skillReadyAt = ctx.tick + TAOTIE.cooldown[source.star - 1];
+      else source.devourSpent = true;
+      const before = target.hp;
+      effect(
+        ctx,
+        source,
+        target,
+        "devour",
+        1,
+        source.taotie ? TAOTIE.name : "吞云噬体",
+      );
+      const dealt = damage(
+        ctx,
+        source,
+        target,
+        target.hp + target.shield,
+        "true",
+        true,
+      );
+      if (
+        source.taotie &&
+        dealt >= before &&
+        source.hp > 0 &&
+        !isUndying(source)
+      ) {
+        source.taotie.feasts++;
+        heal(ctx, source, source, TAOTIE.healing[source.star - 1], "饕餮回复");
+        source.taotie.rage = {
+          until: ctx.tick + TAOTIE.duration,
+          attack: TAOTIE.attack[source.star - 1],
+        };
+        effect(
+          ctx,
+          source,
+          source,
+          "haste",
+          TAOTIE.attack[source.star - 1],
+          "饕餮狂暴",
+        );
+      }
       break;
+    }
     case "vajra":
       shield(ctx, source, 0.2, 16);
       for (const enemy of enemies().filter((f) => distance(source, f) <= 1)) {
@@ -949,13 +1223,23 @@ export function castSkill(
       }
       break;
     case "arhat":
+      if (source.qiSkill) source.skillReadyAt = ctx.tick + ARHAT_QI.cooldown;
       source.windup = {
-        until: ctx.tick + 4,
+        until: ctx.tick + (source.qiSkill ? ARHAT_QI.windup : 4),
         target: target.uid,
-        damage:
-          combatAttack(source, ctx.tick) * s.multiplier * source.skillPower,
+        damage: source.qiSkill
+          ? ARHAT_QI.damage[source.star - 1] * source.skillPower
+          : combatAttack(source, ctx.tick) * s.multiplier * source.skillPower,
+        ...(source.qiSkill ? { damageType: "magic" as const } : {}),
       };
-      effect(ctx, source, target, "windup", 1, "真言蓄力");
+      effect(
+        ctx,
+        source,
+        target,
+        "windup",
+        1,
+        source.qiSkill ? "晶核蓄力" : "真言蓄力",
+      );
       break;
     case "winddragon":
       for (const enemy of enemies().filter((f) => distance(f, target) <= 1)) {
@@ -1058,6 +1342,30 @@ export function castSkill(
       if (source.air) source.air.phaseUntil = ctx.tick + 8;
       break;
     case "skycrab": {
+      if (source.aurora) {
+        source.skillReadyAt = ctx.tick + AURORA.cooldown;
+        effect(ctx, source, target, "pulse", 1, AURORA.name);
+        damage(
+          ctx,
+          source,
+          target,
+          AURORA.damage[source.star - 1] * source.skillPower,
+          "magic",
+          true,
+        );
+        if (source.aurora.stacks < AURORA.maxStacks) {
+          source.aurora.stacks++;
+          effect(
+            ctx,
+            source,
+            source,
+            "haste",
+            source.aurora.stacks * AURORA.attackPerStack * 100,
+            "极光增幅",
+          );
+        }
+        break;
+      }
       const victim = enemies()
         .filter((f) => distance(source, f) <= source.range)
         .sort(
@@ -1150,6 +1458,8 @@ export function castSkill(
         ally.stunUntil = 0;
         ally.armorBreak = 0;
         ally.armorBreakUntil = 0;
+        delete ally.corrosion;
+        delete ally.knockup;
         ally.manaLockUntil = 0;
         delete ally.silenceUntil;
         effect(ctx, source, ally, "cleanse", 0, "驱散");
@@ -1182,6 +1492,31 @@ export function castSkill(
       stun(ctx, source, target, 4);
       break;
     case "pangolin":
+      if (source.burrowSkill) {
+        source.skillReadyAt = ctx.tick + PANGOLIN_BURROW.cooldown;
+        damage(
+          ctx,
+          source,
+          target,
+          PANGOLIN_BURROW.damage[source.star - 1] * source.skillPower,
+          "magic",
+          true,
+        );
+        if (
+          target.hp > 0 &&
+          !isUndying(target) &&
+          !isPhoenixEgg(target) &&
+          !bladeStormActive(target, ctx.tick)
+        ) {
+          stun(ctx, source, target, PANGOLIN_BURROW.knockupTicks, "击飞");
+          target.knockup = {
+            start: ctx.tick,
+            until: ctx.tick + PANGOLIN_BURROW.knockupTicks,
+          };
+        }
+        effect(ctx, source, target, "pulse", 1, "遁地");
+        break;
+      }
       for (const f of enemies().filter(
         (f) => distance(target, f) <= s.radius,
       )) {

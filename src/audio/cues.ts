@@ -44,19 +44,29 @@ export class BattleSoundTrack {
           kind:
             effect.kind === "immortal" || effect.kind === "rebirth"
               ? "chime"
-              : ["axethrall", "swordthrall"].includes(f.defId)
-                ? "blade"
-                : f.defId === "ironrooster"
-                  ? "chime"
-                  : effect.kind === "pulse"
-                    ? ["bomber", "phoenix", "irondog", "ironape"].includes(
-                        f.defId,
-                      )
-                      ? "blast"
-                      : "beam"
-                    : support
-                      ? "heal"
-                      : "cast",
+              : f.aurora
+                ? "beam"
+                : f.burrowSkill ||
+                    ["shieldthrall", "elephant"].includes(f.defId)
+                  ? "impact"
+                  : f.defId === "venombeast"
+                    ? "cast"
+                    : ["axethrall", "swordthrall"].includes(f.defId)
+                      ? "blade"
+                      : ["ironrooster", "lingjiu"].includes(f.defId)
+                        ? "chime"
+                        : effect.kind === "pulse"
+                          ? [
+                              "bomber",
+                              "phoenix",
+                              "irondog",
+                              "ironape",
+                            ].includes(f.defId)
+                            ? "blast"
+                            : "beam"
+                          : support
+                            ? "heal"
+                            : "cast",
           pan: (effect.from.x / 7) * 1.4 - 0.7,
           priority: 2,
         });
@@ -78,7 +88,12 @@ export class BattleSoundTrack {
           time: index + offset,
           kind: ATTACK_SOUND[id],
           pan: (event.from.x / 7) * 1.4 - 0.7,
-          priority: 1,
+          priority:
+            event.assassinCritical ||
+            (id === "bladethrall" && event.empowered) ||
+            event.gale === 10
+              ? 2
+              : 1,
         });
       }
     }

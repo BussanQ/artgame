@@ -261,6 +261,7 @@ describe("步兵集成", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it("0.19 " + phase + "迁移只补新卡池，不改资源和回放", () => {
       const g = createGame(137, "classic");
+      g.combatVersion = "metamorph";
       let battle: ReturnType<typeof startRound> | undefined;
       for (const pl of g.players)
         for (let i = 0; i < pl.shop.length; i++)
@@ -303,6 +304,8 @@ describe("步兵集成", () => {
       expect(decoded.data?.schema).toBe(SAVE_SCHEMA);
       expect(decoded.data!.game).toEqual({
         ...before,
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "metamorph",
         pool: { ...before.pool, flametrooper: COPIES[2], grenadier: COPIES[4] },
       });
       expect(validGame(decoded.data!.game)).toBe(true);

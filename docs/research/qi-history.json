@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.48",
+  "unit": "arhat",
+  "sources": [
+    {
+      "id": "S50",
+      "title": "一个从赤潮老玩家到自走棋玩家的攻略",
+      "author": "邪王易风",
+      "url": "https://www.taptap.cn/moment/15203671482564780?group_id=42979",
+      "modifiedAt": "2019-05-11",
+      "evidence": "Original client card visually reviewed; article images come from different client versions.",
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/1f937d33f1cb9ccc00dc162e2c4acd00.png/_tap_ugc.jpg",
+      "localArchive": "images/s50-arhat-client.jpg",
+      "sha256": "f7634c8e61e94697d0132d6a4f30fb1b6d4cefece951da46d44f097e08883f1a",
+      "clientDate": "unknown"
+    },
+    {
+      "id": "S04",
+      "title": "数据汇总",
+      "author": "嗷呜噜噜的小鱼人",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "evidence": "Original attribute image downloaded again and visually checked; matches the earlier transcription SHA. The page body was not fetched again successfully.",
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/ee718c16ba23f80d004860ed74f4c0d4.jpg/_tap_ugc.jpg",
+      "sourceImage": "S04-2",
+      "row": 11,
+      "localArchive": "images/s04-arhat-attributes.jpg",
+      "sha256": "8cfe13d1071e1068c397ee55921fbd752f5290de13e5ee75ce777ac5d5ed3333",
+      "clientDate": "unknown; July community observations"
+    },
+    {
+      "id": "S52",
+      "title": "赤潮自走棋全英雄评测（第2期）",
+      "author": "User26157272",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "modifiedAt": "2019-05-22",
+      "evidence": "Original player review reports a long startup during which Arhat cannot perform ordinary attacks; no numerical startup duration is supplied. It discusses May 9/16 changes."
+    },
+    {
+      "id": "S14",
+      "title": "赤潮自走棋全英雄评测（第5期）",
+      "author": "User26157272",
+      "url": "https://www.taptap.cn/moment/15201495997744121",
+      "publishedAt": "2019-06-19",
+      "evidence": "Later review reports changed random targeting and possibly shorter startup. These are separate-era evidence and were not imported into the early-card targeting branch."
+    }
+  ],
+  "printedFields": {
+    "clientCard": {
+      "name": "罗汉",
+      "cost": 3,
+      "traits": [
+        "陆行者",
+        "狙击"
+      ],
+      "skill": "气波掌",
+      "cooldownSeconds": 10,
+      "starDamage": [
+        250,
+        450,
+        650
+      ],
+      "damageCategory": "技能伤害",
+      "target": "前方敌人",
+      "visual": "blue-gray stone/crystal golem with thick forearms"
+    },
+    "julyTable": {
+      "name": "罗汉",
+      "cost": 3,
+      "traits": [
+        "陆行者",
+        "狙击"
+      ],
+      "attackMin": 153,
+      "attackMax": 166,
+      "attackIntervalSeconds": 2.2,
+      "reportedDps": 72.5,
+      "hp": 550,
+      "armor": 5,
+      "range": 5,
+      "skillCooldownSeconds": 10
+    }
+  },
+  "implemented": {
+    "combatVersion": "qi",
+    "saveSchema": 47,
+    "baseStats": {
+      "hp": 550,
+      "attack": 160,
+      "armor": 5,
+      "range": 5,
+      "intervalTicks": 8.8
+    },
+    "starHp": [
+      550,
+      1100,
+      2200
+    ],
+    "starAttack": [
+      160,
+      320,
+      640
+    ],
+    "starDamage": [
+      250,
+      450,
+      650
+    ],
+    "cooldownTicks": 40,
+    "windupTicks": 4,
+    "damageType": "magic",
+    "damageIsAttackIndependent": true,
+    "skillPowerFrozenAtStart": true,
+    "target": "Lock current visible enemy within range; no retarget or refund if target dies, hides, changes side or moves out of range.",
+    "duringWindup": "No moving or ordinary attacks; ordinary cooldown still elapses. Stun, silence, charm and death interrupt. Cooldown and energy remain spent.",
+    "feedback": "Cyan charge and pulse; target-loss feedback and recorded interruptions in battle analysis. Counters refer only to recorded effects, not an inferred total of every failed cast."
+  },
+  "localAdaptations": [
+    "This combines a mixed-date early skill card with the July attribute table, field by field. It does not establish a single original-client build.",
+    "Deterministic attack 160 is the rounded mean of printed 153–166, not a recovered random-damage implementation. Star doubling remains the local engine rule.",
+    "The card labels skill damage without proving magic/physical/true categories. Magic, generic resistance and ordinary-only landwalker true damage are local interpretations.",
+    "One-second startup, initial energy 0, Manhattan targeting/range, locked target, invalidation at release, no refund, frozen skill power and generic energy recovery are explicit local choices.",
+    "Fractional ordinary cooldown preserves the 2.2-second average on a 0.25-second tick. Animation recovery and exact action eligibility are not a measured original-client reconstruction.",
+    "Cooldown starts at charge start. Spells are checked on normal action slots, so practical starts can be later than exactly ten seconds apart.",
+    "The June random-target change remains documented as a later revision; it does not prove early targeting or a numerical startup duration."
+  ],
+  "compatibility": {
+    "frozenBeforeEdit": 71,
+    "fixture": "../../tests/fixtures/pre-v048-replays.json",
+    "fixtureSha256": "b834ca9f7838f028bc3dc835969c2a3e67a32c7d537a5e8418f5d83ac869aaf8",
+    "legacyVersion": "aurora and earlier retain 750 HP, 60 attack, 3 armor, range 4, 1-second ordinary interval, old attack-based true-damage windup and old portrait.",
+    "policy": "Only prepare migrates to qi. In-flight battles, result, finished, history and playback retain their version until the next preparation. Resources, units, items, pool, shop, bans and seeds are preserved."
+  },
+  "art": "qi-assets.json",
+  "remaining": [
+    "Other units still need same-era ability/fee/base-stat review and a coherent historical ruleset.",
+    "Natural three-star Arhat, high tier builds, economy and standard/challenge difficulty are not validated by these two seeds.",
+    "Final multi-build human play and actual weak-device/mobile touch measurements remain outstanding."
+  ]
+}

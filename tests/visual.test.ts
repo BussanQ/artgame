@@ -43,6 +43,7 @@ import { UNITS } from "../src/data/units";
 import { pieceDetails } from "../src/ui/bench-tooltip";
 import {
   RANGED_ACTIONS,
+  rangedActionName,
   rangedPose,
   projectilePoint,
 } from "../src/render/ranged";
@@ -70,7 +71,7 @@ describe("远程攻击表现", () => {
       }
       expect(
         pieceDetails({ uid: 1, defId: id, star: 1, position: null }).action,
-      ).toBe(RANGED_ACTIONS[id].name);
+      ).toBe(rangedActionName(id));
     }
     expect(trajectories.size).toBe(ranged.length);
   });

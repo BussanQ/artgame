@@ -164,7 +164,7 @@ describe("空海羁绊与攻击结算", () => {
     damage(c, a, b, 1, "true", true);
     expect(a.mana).toBe(30);
   });
-  it("攻城只增幅指定类型的普攻，爆破降低敌方法术减伤并传递给后续召唤物", () => {
+  it("攻城增幅指定类型的普攻与直接技能，爆破降低敌方法术减伤并传递给后续召唤物", () => {
     const pieces = ["chariot", "bull", "cannon"].map((id, i) =>
       p(id, i + 1, 32 + i),
     );
@@ -172,17 +172,17 @@ describe("空海羁绊与攻击结算", () => {
       b = f("bomber", 20, 1),
       c = ctx(a, b);
     b.armor = 0;
-    expect(damage(c, a, b, 100)).toBe(115);
-    expect(damage(c, a, b, 100, "true", true)).toBe(100);
+    expect(damage(c, a, b, 100)).toBe(125);
+    expect(damage(c, a, b, 100, "true", true)).toBe(125);
     const battle = simulate(
       [p("blastbug", 1), p("bomber", 2, 36), p("titan", 3, 34)],
       [{ ...p("adept", 4, 43), items: ["staff"] }, p("guard", 5, 35)],
     );
     const initial = battle.frames[0].fighters.find((x) => x.uid === 4)!;
-    expect(initial.magicResist).toBeCloseTo(0.1);
+    expect(initial.magicResist).toBeCloseTo(0);
     const pet = battle.frames.flatMap((x) => x.fighters).find((x) => x.summon);
     expect(pet).toBeDefined();
-    expect(pet!.magicResist).toBeCloseTo(0.1);
+    expect(pet!.magicResist).toBeCloseTo(0);
     expect(pet!.air?.flying).toBe(false);
   });
 });
@@ -228,8 +228,12 @@ describe("空海独立技能与中断", () => {
     damage(c, b, a, 100, "magic", true);
     expect(a.hp).toBeLessThan(hp);
   });
-  it("空蟹只狙杀射程内攻击最高敌人", () => {
-    const a = f("skycrab", 1),
+  it("旧空蟹只狙杀射程内攻击最高敌人", () => {
+    const a = Object.assign(army([p("skycrab", 1)], 0, "coalitions")[0], {
+        x: 3,
+        y: 3,
+        mana: 100,
+      }),
       weak = f("guard", 2, 1, 3, 4),
       strong = f("titan", 3, 1, 4, 3),
       far = f("titan", 4, 1, 7, 7);
@@ -350,9 +354,38 @@ describe("空海独立技能与中断", () => {
     expect(fast).toMatchObject({ winner: b.winner, damage: b.damage });
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
     expect(simulate(left, right)).toEqual(b);
+    // Pin the original 26 identities; new units are prepended to UNITS over time.
+    const originalIds = [
+      "infantry",
+      "guard",
+      "pangolin",
+      "panda",
+      "sniper",
+      "lion",
+      "chariot",
+      "monk",
+      "wolf",
+      "cannon",
+      "master",
+      "titan",
+      "cavalry",
+      "dragonfly",
+      "shadowblade",
+      "turtle",
+      "tiger",
+      "bull",
+      "fish",
+      "deer",
+      "adept",
+      "shark",
+      "eyebug",
+      "blastbug",
+      "spider",
+      "wasp",
+    ];
     const old = simulate(
-      UNITS.slice(0, 13).map((u, i) => p(u.id, i + 1, 32 + i, 2)),
-      UNITS.slice(13, 26).map((u, i) => p(u.id, i + 101, 32 + i, 2)),
+      originalIds.slice(0, 13).map((id, i) => p(id, i + 1, 32 + i, 2)),
+      originalIds.slice(13, 26).map((id, i) => p(id, i + 101, 32 + i, 2)),
       "brood",
     );
     const hash = await crypto.subtle.digest(

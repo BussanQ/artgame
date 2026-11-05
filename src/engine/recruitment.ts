@@ -1,3 +1,4 @@
+import { catalogCost } from "../data/catalog";
 import { isRecruitable } from "./rotation";
 import { RULES, UNIT } from "../data/units";
 import { isInsect, mergePieces } from "./progression";
@@ -16,12 +17,15 @@ export interface PurchasePreview {
 
 /** Read-only projection shared by the shop and the actual purchase transaction. */
 export function previewPurchase(
-  game: Pick<Game, "phase" | "nextUid" | "combatVersion" | "bannedSeries">,
+  game: Pick<
+    Game,
+    "phase" | "nextUid" | "combatVersion" | "bannedSeries" | "catalogVersion"
+  >,
   player: Player,
   index: number,
 ): PurchasePreview {
   const id = player.shop[index];
-  const cost = id ? (UNIT[id]?.cost ?? 0) : 0;
+  const cost = id && UNIT[id] ? catalogCost(game, id) : 0;
   const interest = (gold: number) =>
     Math.min(5, Math.floor(Math.max(0, gold) / 10));
   const result: PurchasePreview = {

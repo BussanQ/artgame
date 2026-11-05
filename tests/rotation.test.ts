@@ -78,7 +78,7 @@ afterEach(() =>
 );
 
 describe("每局随机禁用三个种族", () => {
-  it("固定种子可重现，12个种族均有机会，所有生成卡池保留费用与基础职业路径", () => {
+  it("固定种子可重现，全部种族均有机会，所有生成卡池保留费用与基础职业路径", () => {
     const seen = new Set<string>(),
       combinations = new Set<string>();
     for (let seed = 0; seed < 512; seed++) {
@@ -222,15 +222,17 @@ describe("每局随机禁用三个种族", () => {
     expect(g).toEqual(before);
     expect(validGame(g)).toBe(false);
   });
-  it.each([
-    [],
-    ["野兽"],
-    ["野兽", "野兽", "步兵"],
-    ["野兽", "步兵", "护卫"],
-    ["野兽", "步兵", "海神", "空军"],
-    null,
-    "野兽",
-  ].map(value => [value]))("拒绝损坏禁用字段 %j", (value) => {
+  it.each(
+    [
+      [],
+      ["野兽"],
+      ["野兽", "野兽", "步兵"],
+      ["野兽", "步兵", "护卫"],
+      ["野兽", "步兵", "海神", "空军"],
+      null,
+      "野兽",
+    ].map((value) => [value]),
+  )("拒绝损坏禁用字段 %j", (value) => {
     const g = createGame(173);
     (g as any).bannedSeries = value;
     expect(validGame(g)).toBe(false);
@@ -239,7 +241,7 @@ describe("每局随机禁用三个种族", () => {
   it("禁用面板和图鉴标记成员、同费变化及不可达档位，可筛出本局棋子", () => {
     const g = createGame(173),
       text = rotationMarkup(g);
-    expect(text).toContain("海神");
+    for (const series of g.bannedSeries!) expect(text).toContain(series);
     expect(text).toContain("同费单卡初始占比");
     expect(text).toContain("不可达");
     codexFilters.availability = "available";
@@ -285,6 +287,7 @@ describe("每局随机禁用三个种族", () => {
       buy(g, p, 0);
       move(g, p, p.pieces[0].uid, 35);
       if (phase === "finished") p.hp = 1;
+      if (phase !== "prepare") g.combatVersion = "armored";
       if (phase !== "prepare") {
         const result = startRound(g)!;
         if (phase === "result" || phase === "finished") settle(g, result);

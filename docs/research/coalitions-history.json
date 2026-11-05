@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.46",
+  "scope": "S03早期连携与S50客户端卡、S51五月更新前后的交叉核对；不声明所有属性/费用/技能属于同一客户端版本。",
+  "sources": [
+    {
+      "id": "S03",
+      "url": "https://www.taptap.cn/moment/15202528882852517",
+      "publishedAt": "2019-04-27",
+      "modifiedAt": "2019-05-09",
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/915032174273785f479cf7ccd0f93190.png/_tap_ugc.jpg",
+      "sha256": "1255a365dd2bf246e4f7e6d55415be1262869c73957159bc1d90832e90d3d79b",
+      "review": "本轮目视原图。13个种族行包含骑兵；空军/猛禽2/4与15/20印刷增量，支援2/4的200/300生命及10/10能量，召唤3的伤害回能40%，熊猫3满能量，爆破20/30增量。原图攻城未写人数，仍保留为空。页面文本本次读取失败，不假称重抓成功。"
+    },
+    {
+      "id": "S50",
+      "url": "https://www.taptap.cn/moment/15203671482564780?group_id=42979",
+      "modifiedAt": "2019-05-11",
+      "review": "原作者说明连携逐档叠加，原始客户端卡确认唯一一种陆行者和攻城3/6档25/25增量。页面及图片混期，图片对应客户端日期未知。",
+      "images": [
+        {
+          "name": "陆行者/罗汉客户端卡",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/1f937d33f1cb9ccc00dc162e2c4acd00.png/_tap_ugc.jpg",
+          "sha256": "f7634c8e61e94697d0132d6a4f30fb1b6d4cefece951da46d44f097e08883f1a",
+          "visuallyReviewed": true,
+          "formation": "己方场上唯一一种陆行者才能激活；其攻击变为真实伤害。",
+          "additionalUnitFactsNotImplementedThisRound": {
+            "unit": "罗汉",
+            "cost": 3,
+            "skill": "气波掌",
+            "cooldownSeconds": 10,
+            "skillDamage": [
+              250,
+              450,
+              650
+            ],
+            "damageTypeAsPrinted": "技能伤害，未指明当前引擎的物理/魔法分类"
+          }
+        },
+        {
+          "name": "攻城/空蟹客户端卡",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/42148186b198d44c7cffea2e9007cf1a.png/_tap_ugc.jpg",
+          "sha256": "f14f75e07712a24fb77430c1252e4c2e1bd080f53bdd202ff61c400024390808",
+          "visuallyReviewed": true,
+          "thresholds": [
+            3,
+            6
+          ],
+          "steps": [
+            0.25,
+            0.25
+          ],
+          "targetSpecies": [
+            "装甲",
+            "空军",
+            "傀儡",
+            "海神",
+            "异虫",
+            "不朽"
+          ],
+          "additionalUnitFactsNotImplementedThisRound": {
+            "unit": "空蟹",
+            "cost": 2,
+            "skill": "极光电影",
+            "cooldownSeconds": 13,
+            "skillDamage": [
+              575,
+              825,
+              1075
+            ],
+            "attackGrowthAfterEachCast": 0.25,
+            "maximumAttackGrowthStacks": 3,
+            "damageTypeAsPrinted": "技能伤害，未指明当前引擎的物理/魔法分类"
+          }
+        }
+      ],
+      "followUp": "本文件的“本轮未实现”指0.46。空蟹卡中的技能伤害、13秒冷却与三层攻击成长已在0.47实现，见aurora-history.json；罗汉气波掌仍待推进。"
+    },
+    {
+      "id": "S51",
+      "url": "https://www.taptap.cn/moment/15220462338441888",
+      "publishedAsDisplayed": "2019-05-28",
+      "review": "原作者明确对照三召唤由伤害回能40%改全军技能防御30%；六爆破更新前总量为50，更新后40。0.46选择其更新前的召唤和20/50爆破，与早期图表交叉；不把后来的技能防御或六月60并入当前档位。"
+    }
+  ],
+  "selectedFormations": {
+    "空军": {
+      "thresholds": [
+        2,
+        4
+      ],
+      "printedSteps": [
+        0.15,
+        0.2
+      ],
+      "totalEvasion": [
+        0.15,
+        0.35
+      ],
+      "beneficiaries": "全部空中友军，非空军也受益；落地失效。"
+    },
+    "猛禽": {
+      "thresholds": [
+        2,
+        4
+      ],
+      "printedSteps": [
+        0.15,
+        0.2
+      ],
+      "totalGroundAttackBonus": [
+        0.15,
+        0.35
+      ],
+      "beneficiaries": "全部空中友军，不仅猛禽；只增对地普攻。"
+    },
+    "支援": {
+      "thresholds": [
+        2,
+        4
+      ],
+      "printedSteps": [
+        [
+          200,
+          10
+        ],
+        [
+          300,
+          10
+        ]
+      ],
+      "totalDeathRecovery": [
+        [
+          200,
+          10
+        ],
+        [
+          500,
+          20
+        ]
+      ],
+      "beneficiaries": "支援死亡时的存活友军，含召唤物；不能复活，不能让召唤物施法。"
+    },
+    "召唤": {
+      "thresholds": [
+        3
+      ],
+      "damageEnergyBonus": 0.4,
+      "beneficiaries": "全部能正常回能的友军；移除旧2/3召唤法术减伤。"
+    },
+    "攻城": {
+      "thresholds": [
+        3,
+        6
+      ],
+      "printedSteps": [
+        0.25,
+        0.25
+      ],
+      "totalDirectDamageBonus": [
+        0.25,
+        0.5
+      ],
+      "targetSpecies": [
+        "装甲",
+        "空军",
+        "傀儡",
+        "海神",
+        "异虫",
+        "不朽"
+      ]
+    },
+    "陆行者": {
+      "thresholds": [
+        1
+      ],
+      "exclusiveDifferentNames": true,
+      "duplicateCopiesAllowed": true,
+      "openingLock": true
+    },
+    "熊猫": {
+      "thresholds": [
+        3
+      ],
+      "initialMana": 100,
+      "extraSkillPower": 0,
+      "removeTwoPandaManaBonus": true
+    },
+    "爆破": {
+      "thresholds": [
+        3,
+        6
+      ],
+      "printedSteps": [
+        0.2,
+        0.3
+      ],
+      "totalMagicBreak": [
+        0.2,
+        0.5
+      ],
+      "localResistFloor": -0.25
+    }
+  },
+  "localBoundaries": [
+    "召唤将本地25点普通攻击基础回能提高40%；一次普通攻击首次造成正生命伤害才补差值，护盾全吸收、闪避、免伤、技能、反伤、持续伤害不补。原版基础回能公式仍未恢复。",
+    "普通攻击基础回能保持原模型：未命中也可得到基础25，额外部分必须造成生命伤害；受击10、支援、童子和初始能量不放大。",
+    "额外回能使用recoveredMana(25×1.4)−recoveredMana(25)，骑兵平减只算一次；满能量、封能与无能量技能不产生虚假收益。",
+    "攻城原图没有严格拆分伤害类型。参考原作者的技能流描述，当前增幅普攻和直接技能，排除反伤与持续伤害；属于明确本地结算边界。多重目标种族只乘一次，跨羁绊乘法沿用现有模型。",
+    "各羁绊开场锁定，不因提供者阵亡而重算；陆行者多种冲突不会在另一种死亡后自动激活。",
+    "飞行状态动态决定空军/猛禽/海神受益，血鹰落地、凤凰化蛋/孵化分别停用或恢复。召唤物按真实飞行属性，不能继承主人的个人身份。"
+  ],
+  "rotation": {
+    "speciesCount": 13,
+    "newlyIncludedSpecies": "骑兵",
+    "removedWhenBanned": [
+      "birdrider",
+      "motorcycle"
+    ],
+    "choose": 3,
+    "combinations": 286,
+    "currentPlayableCombinations": 286,
+    "coverageSeeds": 512,
+    "distinctCombinationsObserved": 243,
+    "policy": "保留30种以上、6近战/8远程、所有费用档最低种数、一费近战及至少三种可达职业，含前排与输出路径。不再要求所有残留职业都达到最低档；未成羁绊棋子仍可凭自身能力使用。",
+    "oldSavesKeepBans": true
+  },
+  "compatibility": {
+    "schema": 45,
+    "combatVersion": "coalitions",
+    "previousVersion": "lineages",
+    "frozenBeforeEdits": 58,
+    "frozenFile": "tests/fixtures/pre-v046-replays.json",
+    "frozenSha256": "bd1f6e83e6fb6b61bec59fb01d409082046279c244f3b0bde6fd7419fa8ef9a9",
+    "migration": "schema44仅准备期切换；在途/结算/终局/历史保留旧版本；下一准备阶段更新。中间0.44→0.45固定lineages和0.45。"
+  },
+  "remaining": [
+    "基础伤害/护甲/回能公式、同版本兵种技能与费用尚未全量复原。",
+    "本轮新确认的罗汉/空蟹客户端技能与费用尚未实现对应修正。",
+    "玩家最高档自然构筑、高星经济、整体难度与真实设备体验仍需推进。"
+  ]
+}

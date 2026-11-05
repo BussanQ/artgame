@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-04",
-  "rules": "singleplayer-0.33",
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.48",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
-    "currentRecruitableUnits": 57,
-    "mappedNamesOrLocalDesigns": 47,
-    "missingAprilUnits": 6,
+    "currentRecruitableUnits": 63,
+    "mappedNamesOrLocalDesigns": 53,
+    "missingAprilUnits": 0,
     "currentOutsideBaseline": 10,
-    "classificationDifferences": 8
+    "classificationDifferences": 0
   },
   "aprilUnits": [
     {
@@ -229,12 +229,22 @@
       "currentName": "投石车",
       "currentTraits": [
         "装甲",
-        "狙击",
         "攻城"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "装甲",
+          "狙击",
+          "攻城"
+        ]
+      }
     },
     {
       "historicalName": "铁鸡",
@@ -273,12 +283,22 @@
       "currentName": "铁巨神",
       "currentTraits": [
         "装甲",
-        "护卫",
         "爆破"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ]
+      }
     },
     {
       "historicalName": "轰炸机",
@@ -434,12 +454,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "bladethrall",
+      "currentName": "刀奴",
+      "currentTraits": [
+        "傀儡",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.34补入；属性、10%普攻暴击及300/450/600%倍率有史料。截图60秒冷却含义未确定，当前采用无主动冷却的普攻被动，交互与随机序列为本地适配。"
     },
     {
       "historicalName": "盾奴",
@@ -451,12 +474,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "须弥鲨召唤的镇海盾卫不等于可购买的盾奴，仍列缺失。"
+      "currentUnitId": "shieldthrall",
+      "currentName": "盾奴",
+      "currentTraits": [
+        "傀儡",
+        "护卫"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.35独立补入；S04基础字段、S42正义冲锋200/300/400法伤、10秒冷却与2秒沉默有史料。矩形范围大小、初始能量、反伤和控制边界为本地适配。镇海盾卫仍是不同召唤物。"
     },
     {
       "historicalName": "须弥鲨",
@@ -490,12 +516,31 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "傀儡/护卫；与武僧熊猫是不同棋子，尚未实现。"
+      "currentUnitId": "staffthrall",
+      "currentName": "棍奴",
+      "currentTraits": [
+        "傀儡",
+        "护卫"
+      ],
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45分类改回四月/五月护卫；疾风保留后期资料参数与本地边界。六月护卫→先锋的历史差异由S45佐证。",
+      "implementationSources": [
+        "S04",
+        "S44",
+        "S45"
+      ],
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03",
+          "S45"
+        ],
+        "previousTraits": [
+          "傀儡",
+          "先锋"
+        ]
+      }
     },
     {
       "historicalName": "童子",
@@ -551,11 +596,21 @@
       "currentName": "雷震子",
       "currentTraits": [
         "灵能",
-        "爆破"
+        "狙击"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "灵能",
+          "爆破"
+        ]
+      }
     },
     {
       "historicalName": "金刚",
@@ -595,7 +650,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.48按S50技能卡与S04属性表分别采用气波掌250/450/650、10秒及550生命/5甲/5格/2.2秒；攻击区间取均值160。仍含跨期与本地适配，不等于统一客户端完整复原。",
+      "mechanicsReview": "qi-history.json"
     },
     {
       "historicalName": "翔龙",
@@ -627,12 +683,21 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "lingjiu",
+      "currentName": "灵鹫",
+      "currentTraits": [
+        "海神",
+        "刺杀"
+      ],
+      "mapping": "mixed-version-adaptation",
+      "classificationMatches": true,
+      "note": "0.40补入；基础属性和6秒冷却参考S04，死魂曲200/300/400由2020年S48明确公告支持。自身1.5格范围、初始能量与边界是本地适配；S20原图视觉核对并生成独立飞行海兽形象。",
+      "implementationSources": [
+        "S04",
+        "S20",
+        "S48",
+        "S49"
+      ]
     },
     {
       "historicalName": "空蟹",
@@ -702,17 +767,19 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S50"
       ],
       "currentUnitId": "pangolin",
       "currentName": "穿山甲",
       "currentTraits": [
         "野兽",
-        "先锋"
+        "刺杀"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "mixed-version-adaptation",
+      "classificationMatches": true,
+      "note": "0.42分类与S04基本字段已对齐，S50客户端卡支持遁地100/200/300及20秒。初始能量、技能距离、法伤类型、击飞时长和位移边界为本地适配，旧回放保留先锋旧定义。"
     },
     {
       "historicalName": "巨齿象",
@@ -724,12 +791,21 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "elephant",
+      "currentName": "巨齿象",
+      "currentTraits": [
+        "野兽",
+        "先锋"
+      ],
+      "mapping": "mixed-version-adaptation",
+      "classificationMatches": true,
+      "note": "0.39补入；基础属性与20秒冷却参考S04，獠牙冲名称另见2020年S47。单体100/200/300、击飞1秒及其边界为本地适配；S46原图仅见索引转写，未完成视觉核实。",
+      "implementationSources": [
+        "S04",
+        "S18",
+        "S46",
+        "S47"
+      ]
     },
     {
       "historicalName": "猛毒兽",
@@ -741,12 +817,20 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "venombeast",
+      "currentName": "猛毒兽",
+      "currentTraits": [
+        "野兽",
+        "先锋"
+      ],
+      "mapping": "mixed-version-adaptation",
+      "classificationMatches": true,
+      "note": "0.39补入；S04基础字段，S35五月9日公告明确酸性污染10/8/6秒冷却，S18支持削甲定位。减甲7/14/21、九宫格、3格施法及6秒持续为本地适配，不虚构直接毒伤。",
+      "implementationSources": [
+        "S04",
+        "S18",
+        "S35"
+      ]
     },
     {
       "historicalName": "鬼狼",
@@ -762,12 +846,22 @@
       "currentName": "鬼狼",
       "currentTraits": [
         "野兽",
-        "刺杀",
         "召唤"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "野兽",
+          "刺杀",
+          "召唤"
+        ]
+      }
     },
     {
       "historicalName": "血鹰",
@@ -866,12 +960,23 @@
       "currentName": "骨龙",
       "currentTraits": [
         "不朽",
-        "爆破",
+        "攻城",
         "猛禽"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ]
+      }
     },
     {
       "historicalName": "飞天蛤蟆",
@@ -987,11 +1092,21 @@
       "currentName": "藤妖",
       "currentTraits": [
         "不朽",
-        "护卫"
+        "异能"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "不朽",
+          "护卫"
+        ]
+      }
     },
     {
       "historicalName": "树妖",
@@ -1067,11 +1182,21 @@
       "currentName": "禅师熊猫",
       "currentTraits": [
         "熊猫",
-        "护卫"
+        "异能"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "熊猫",
+          "护卫"
+        ]
+      }
     }
   ],
   "otherCurrentUnits": [

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.47",
+  "unit": "skycrab",
+  "sources": [
+    {
+      "id": "S50",
+      "title": "一个从赤潮老玩家到自走棋玩家的攻略",
+      "author": "邪王易风",
+      "url": "https://www.taptap.cn/moment/15203671482564780?group_id=42979",
+      "modifiedAt": "2019-05-11",
+      "evidence": "Original client card visually reviewed, not search-snippet text.",
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/42148186b198d44c7cffea2e9007cf1a.png/_tap_ugc.jpg",
+      "localArchive": "images/s50-skycrab-client.jpg",
+      "sha256": "f14f75e07712a24fb77430c1252e4c2e1bd080f53bdd202ff61c400024390808",
+      "clientDate": "unknown; the edited article contains images from different client versions"
+    }
+  ],
+  "printedFields": {
+    "name": "空蟹",
+    "cost": 2,
+    "traits": [
+      "海神",
+      "攻城"
+    ],
+    "skill": "极光电影",
+    "cooldownSeconds": 13,
+    "starDamage": [
+      575,
+      825,
+      1075
+    ],
+    "target": "前方单体",
+    "attackGrowthPerCast": 0.25,
+    "maximumStacks": 3,
+    "damageCategory": "技能伤害"
+  },
+  "implemented": {
+    "combatVersion": "aurora",
+    "cooldownTicks": 52,
+    "damageIsAttackIndependent": true,
+    "skillPowerScalesDamage": true,
+    "attackStacks": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "stacksOnSuccessfulReleaseNotHpDamage": true,
+    "scope": "Battle-local; resets in each army creation. Energy and cooldown are separate gates. A legitimate target is checked before spending.",
+    "legacyVersion": "coalitions retains the old 450% attack spell and highest-attack target selection.",
+    "saveSchema": 46
+  },
+  "localAdaptations": [
+    "The card does not specify physical/magic/true damage categories. This engine maps its skill damage to magic; the existing resistance/siege/armor-blast rules apply.",
+    "Initial energy 0, 3-cell Manhattan range, base HP/attack/armor/interval, instant logical impact and nearest/current visible-target selection retain local single-player design; the card does not prove them.",
+    "Three 25% increments are interpreted additively to +75% of battle opening attack including permanent equipment/formation attack. Repair/rooster share their existing max temporary multiplier and then multiply self growth.",
+    "Shield-only or immune hits still count as successful releases; missing, dead, allied, hidden or out-of-range targets do not spend energy or begin cooldown. These are explicit consistency choices.",
+    "Control eligibility, retention of stacks through temporary charm, generic energy recovery and no ordinary lifesteal on skill damage follow the local engine; they are not reconstructed original-client formulas."
+  ],
+  "compatibility": {
+    "frozenBeforeEdit": 64,
+    "fixture": "../../tests/fixtures/pre-v047-replays.json",
+    "fixtureSha256": "6370e0505379817e728ed566bbafb4b88f1251df944639cae31ba945fc274e48",
+    "policy": "Only prepare migrates to aurora; battle/result/finished and historical rounds retain their version. No pool, economy, item, ban or seed reset."
+  },
+  "art": "aurora-assets.json",
+  "remaining": [
+    "罗汉客户端卡的气波掌250/450/650与10秒冷却仍未实现。",
+    "其余同版本兵种属性、费用、能力与完整伤害/回能公式未完成核对。",
+    "三星/三层的自然实战覆盖、高阶构筑、标准/挑战难度和真实弱设备体验仍需完善。"
+  ],
+  "followups": [
+    {
+      "rules": "singleplayer-0.48",
+      "record": "qi-history.json",
+      "note": "罗汉气波掌及S04基础属性已接入，旧规则保留；原remaining为0.47历史状态，其他历史字段/高星/整体体验仍待推进。"
+    }
+  ]
+}

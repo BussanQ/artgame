@@ -1,6 +1,35 @@
 # 赤潮网页自走棋：资料与开发方案
 
-最新增量：[0.33剑奴](design/swordthrall.md) · [历史字段](research/swordthrall-history.json) · [ImageGen提示词与资产](research/swordthrall-assets.json) · [36局正常经济采样](analysis/swordthrall-v033.json)。当前57种棋子，四月映射47/53，仍缺6项。
+当前增量：[0.48罗汉气波掌](design/qi.md) · [史料与本地适配](research/qi-history.json) · [ImageGen形象及完整提示词](research/qi-assets.json) · [默认采样](analysis/qi-v048.json) · [步兵采样](analysis/qi-v048-infantry.json)。375项必要检查、71组旧回放、24局617回合完成；当前仍为63种，完整单机目标继续推进。
+上一增量：[0.47空蟹极光成长](design/aurora.md) · [客户端卡与取舍](research/aurora-history.json) · [新ImageGen形象及提示词](research/aurora-assets.json) · [默认风格采样](analysis/aurora-v047.json) · [舰队风格采样](analysis/aurora-v047-fleet.json)。370项必要检查、64组旧回放与24局596回合验证完成；自然三星、高阶构筑、其他历史能力和整体体验仍在推进。
+
+[0.46 空援协同](design/coalitions.md)：修正八项羁绊的门槛、累计与受益范围，补齐13种族随机禁用（含骑兵）；新增九对九演示、陆行者冲突提示及手机详情独立滚动。777项必要检查、58组旧回放与36局940回合通过。自然最高档构筑、兵种同版本能力、高星与难度、真实设备体验继续推进。 [原图与边界](research/coalitions-history.json) · [正常经济采样](analysis/coalitions-v046.json)。
+
+[0.45 职业分类与异能续战](design/lineages-and-lifesteal.md)：校正8项职业，四月53名分类差异归零；异能2/4/6恢复全军普攻吸血5%/10%/20%，召唤继承与旧回放兼容。新增八对八演示及吸血详情。549项必要检查、47组旧回放、36局938回合采样完成；高阶自然成型、高星、整体难度和最终体验继续推进。 [研究记录](research/lineages-history.json) · [正常经济采样](analysis/lineages-v045.json)。
+
+[0.44 狙骑、海神、灵能与战斗详情](design/counterplay.md) · [原始规则与版本边界](research/counterplay-history.json) · [36局961回合采样](analysis/counterplay-v044.json)。785项必要检查、35组旧回放及桌面/手机验收通过。新增六狙两骑演示和可固定的棋子状态，8项分类差异、高星、挑战难度与最终体验继续推进。
+
+[0.43 连携累计](design/formation-stacking.md) · [原始范围、累计证据与推导](research/formation-stacking-history.json) · [36局947回合采样](analysis/formations-v043.json)。修正步兵、先锋、野兽和傀儡的高阶收益，642项必要检查、27组旧回放及三档屏幕验收通过。当前仍有8项分类差异，其他历史机制、高星、挑战难度和最终体验继续推进。
+
+[0.42 刺杀与遁地](design/assassins.md) · [原作者及客户端图片研究](research/assassin-history.json) · [36局正常经济采样](analysis/assassin-v042.json)。穿山甲改回刺杀并恢复遁地，刺杀3/6档10%/20%概率4.5倍普攻暴击。501项必要检查和当前桌面/手机验收完成，8项分类差异、其他累计梯度、高星、难度和最终体验仍在推进。
+
+[0.41 野兽与先锋](design/wildfront.md) · [原图复核与版本边界](research/wildfront-history.json) · [36局正常经济采样](analysis/wildfront-v041.json)。野兽为本族15%/全队25%/35%攻速，先锋为3/6档护甲6/8。385项必要检查、22组旧回放通过，桌面与390/320px展示验收完成；历史名单分类、其他羁绊、同版本能力、整体难度和最终体验继续推进。
+
+[0.40灵鹫](design/lingjiu.md) · [历史字段与版本边界](research/lingjiu-history.json) · [内置ImageGen提示词与资产](research/lingjiu-assets.json) · [36局常规采样](analysis/lingjiu-v040.json) · [12局构筑覆盖](analysis/lingjiu-v040-coverage.json)。当前63种棋子、27近战/36远程，四月名单53/53均有对应，仍有9项分类差异。160项必要检查通过；名单补齐不代表统一版本或完整复刻验收已经完成。
+
+[0.39野兽前排](design/beast-frontline.md) · [历史字段与适配边界](research/beast-frontline-history.json) · [内置ImageGen提示词与资产](research/beast-frontline-assets.json) · [36局932回合采样](analysis/beast-frontline-v039.json)。新增巨齿象、猛毒兽，62种棋子均有形象，四月名单52/53，仍缺灵鹫、存在9项分类差异；181项必要检查和三档屏幕验收通过。
+
+[0.38棍奴疾风](design/staffthrall.md) · [研究与版本边界](research/staffthrall-history.json) · [36局930回合采样](analysis/staffthrall-v038.json)。同目标叠速、十层护甲、换目标清空、独立动作、AI与迁移已接入；206项必要检查完成。棍奴与盾奴形象生成成功，当前60种棋子均有独立形象，四月名单50/53，仍缺3种、存在9项分类差异。
+
+最新策略增量：[0.37傀儡卫阵AI](design/puppet-ai.md) · [36局常规采样](analysis/puppet-ai-v037.json) · [18局傀儡覆盖](analysis/puppet-ai-v037-coverage.json)。九种风格、可达档位收集与关键拼图保护已接入；158项必要检查、54局1374回合采样通过，两个正式AI席次自然形成六傀儡。完整卡池的六人档、难度与最终整体验收继续推进。
+
+历史规则增量：[0.36傀儡2/4/6](design/puppet-formation.md) · [36局911回合正常经济采样](analysis/puppet-v036.json)。本族攻击与全队攻击、召唤继承、图鉴及禁用说明和阶段感知迁移已接入；345项必要检查通过。该轮只有演示与专项六人档样本，后续自然经营见0.37。
+
+历史战斗增量：[0.35盾奴](design/shieldthrall.md) · [历史字段](research/shieldthrall-history.json) · [ImageGen待完成记录](research/shieldthrall-assets.json) · [36局915回合正常经济采样](analysis/shieldthrall-v035.json)。当前59种棋子，四月映射49/53，仍缺4项；盾奴形象已在0.38第八次内置生成后补齐。
+
+历史增量：[0.34刀奴](design/bladethrall.md) · [历史字段](research/bladethrall-history.json) · [ImageGen提示词与资产](research/bladethrall-assets.json) · [36局正常经济采样](analysis/bladethrall-v034.json)。0.34时58种棋子，四月映射48/53，仍缺5项。
+
+历史增量：[0.33剑奴](design/swordthrall.md) · [历史字段](research/swordthrall-history.json) · [ImageGen提示词与资产](research/swordthrall-assets.json) · [36局正常经济采样](analysis/swordthrall-v033.json)。当前57种棋子，四月映射47/53，仍缺6项。
 
 历史增量：[0.32斧奴](design/axethrall.md) · [历史字段](research/axethrall-history.json) · [ImageGen提示词与资产](research/axethrall-assets.json) · [36局正常经济采样](analysis/axethrall-v032.json)。当前56种棋子，四月映射46/53，仍缺7项。
 
@@ -51,7 +80,7 @@
 
 ## 野怪与装备
 
-已加入 8 个野怪关卡、战后可恢复的装备选择、6 种基础材料和 10 种成装；穿戴、卸下、合成、升星溢出与出售归还均生效，AI 同样获得和使用装备。[规则与迁移说明](design/encounters-and-equipment.md)。
+已加入 8 个野怪关卡、战后可恢复的装备选择、6 种基础材料和 10 种成装；穿戴、卸下、合成、升星溢出与出售归还均生效，AI 同样获得和使用装备。工坊可查看全部装备的属性、配方、数量及场上/备战席持有人，并点击定位棋子。[规则与迁移说明](design/encounters-and-equipment.md)。
 
 ## 策略与侦察
 

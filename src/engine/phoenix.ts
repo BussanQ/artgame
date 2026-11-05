@@ -1,3 +1,4 @@
+import { setFlight } from "./sea-ward";
 import type { Fighter } from "./types";
 import type { CombatContext } from "./abilities";
 
@@ -18,6 +19,8 @@ export function enterPhoenixEgg(ctx: CombatContext, fighter: Fighter) {
   fighter.manaLockUntil = 0;
   delete fighter.silenceUntil;
   delete fighter.burn;
+  delete fighter.corrosion;
+  delete fighter.knockup;
   fighter.armorBreak = 0;
   fighter.armorBreakUntil = 0;
   delete fighter.slow;
@@ -32,7 +35,7 @@ export function enterPhoenixEgg(ctx: CombatContext, fighter: Fighter) {
     delete fighter.charm;
   }
   if (fighter.air) {
-    fighter.air.flying = false;
+    setFlight(fighter, false);
     fighter.air.phaseUntil = 0;
     delete fighter.air.cast;
   }
@@ -64,7 +67,7 @@ export function hatchPhoenix(ctx: CombatContext) {
     fighter.maxHp = fighter.hp = state.bodyMaxHp;
     fighter.mana = 0;
     fighter.cooldown = 1;
-    if (fighter.air) fighter.air.flying = true;
+    setFlight(fighter, true);
     ctx.effects.push({
       source: fighter.uid,
       target: fighter.uid,

@@ -1,7 +1,12 @@
+import { compactBattleLabels } from "./battle-inspection";
+import { shieldWaveCells } from "../engine/shieldthrall";
+import { acidCells, corrosionArmor } from "../engine/beasts";
+import { deathSongCells } from "../engine/lingjiu";
+import { AURORA, ARHAT_QI, STAFF_GALE } from "../data/skills";
 import { commandBonuses } from "../engine/ironrooster";
 import { flameCells } from "../engine/infantry-skills";
 import { isPhoenixEgg, phoenixFlameCells } from "../engine/phoenix";
-import { carapaceArmor } from "../engine/triggers";
+import { carapaceArmor, usesEnergy } from "../engine/triggers";
 import type { CombatEffect, Fighter } from "../engine/types";
 import { project } from "./projection";
 
@@ -61,7 +66,201 @@ export function drawSkillEffect(
   c.lineWidth = 2;
   c.shadowColor = colors[e.kind];
   c.shadowBlur = 12;
-  if (e.kind === "pulse" && e.name === "狂舞花绽") {
+  if (e.kind === "pulse" && e.name === ARHAT_QI.name) {
+    c.strokeStyle = "#8cecff";
+    c.shadowColor = "#5ad6ff";
+    c.shadowBlur = 20;
+    const dx = p.x - origin.x,
+      dy = p.y - origin.y;
+    for (let i = 0; i < 3; i++) {
+      const t = Math.min(1, Math.max(0, (age - i * 0.22) / 1.8));
+      if (t <= 0) continue;
+      c.globalAlpha = Math.max(0, 1 - age / 4) * (1 - i * 0.2);
+      c.lineWidth = 4 - i;
+      c.beginPath();
+      c.ellipse(
+        origin.x + dx * t,
+        origin.y - 50 + dy * t,
+        8 + t * 18,
+        12 + t * 22,
+        Math.atan2(dy, dx),
+        -1.25,
+        1.25,
+      );
+      c.stroke();
+    }
+  } else if (e.kind === "pulse" && e.name === AURORA.name) {
+    const start = { x: origin.x, y: origin.y - 55 };
+    const end = { x: p.x, y: p.y - 40 };
+    c.strokeStyle = "#83efff";
+    c.shadowColor = "#49caff";
+    c.shadowBlur = 20;
+    for (let strand = -1; strand <= 1; strand++) {
+      c.lineWidth = strand === 0 ? 5 : 1.5;
+      c.beginPath();
+      c.moveTo(start.x, start.y);
+      for (let i = 1; i <= 8; i++) {
+        const t = i / 8;
+        const bend =
+          Math.sin(i * 2.3 + age * 4 + strand) * 9 * Math.sin(t * Math.PI);
+        c.lineTo(
+          start.x + (end.x - start.x) * t + bend * 0.35,
+          start.y + (end.y - start.y) * t + bend + strand * 5,
+        );
+      }
+      c.stroke();
+    }
+    c.strokeStyle = "#e8ffff";
+    c.lineWidth = 2;
+    c.beginPath();
+    c.ellipse(end.x, end.y, 10 + age * 10, 16 + age * 12, 0, 0, Math.PI * 2);
+    c.stroke();
+  } else if (e.kind === "haste" && e.name === "极光增幅") {
+    c.strokeStyle = "#83efff";
+    c.fillStyle = "#d0fbff";
+    c.beginPath();
+    c.ellipse(p.x, p.y - 25, 22 + age * 8, 8 + age * 3, 0, 0, Math.PI * 2);
+    c.stroke();
+    for (let i = 0; i < e.amount / 25; i++) {
+      c.beginPath();
+      c.arc(p.x - 12 + i * 12, p.y - 80 - age * 5, 3, 0, Math.PI * 2);
+      c.fill();
+    }
+  } else if (e.kind === "pulse" && e.name === "死魂曲") {
+    c.strokeStyle = "#d6b2f5";
+    c.fillStyle = "#d6b2f5";
+    for (const cell of deathSongCells(e.from)) {
+      const center = project(cell.x + 0.5, cell.y + 0.5);
+      c.globalAlpha = Math.max(0, 1 - age / 4) * 0.13;
+      c.beginPath();
+      c.ellipse(center.x, center.y, 24, 8, 0, 0, Math.PI * 2);
+      c.fill();
+    }
+    for (let i = 0; i < 3; i++) {
+      const progress = (age - i * 0.5) / 3;
+      if (progress <= 0 || progress >= 1) continue;
+      c.globalAlpha = (1 - progress) * 0.85;
+      c.lineWidth = 3 - progress;
+      c.beginPath();
+      c.ellipse(
+        origin.x,
+        origin.y - 20,
+        18 + progress * 95,
+        8 + progress * 32,
+        0,
+        0,
+        Math.PI * 2,
+      );
+      c.stroke();
+    }
+  } else if (e.kind === "pulse" && e.name === "酸性污染") {
+    c.strokeStyle = "#bcf181";
+    c.fillStyle = "#bcf181";
+    const progress = Math.min(1, age / 1.4);
+    const x = origin.x + (p.x - origin.x) * progress;
+    const y =
+      origin.y -
+      48 +
+      (p.y - origin.y) * progress -
+      Math.sin(progress * Math.PI) * 35;
+    if (progress < 1) {
+      c.beginPath();
+      c.ellipse(
+        x,
+        y,
+        8,
+        5,
+        Math.atan2(p.y - origin.y, p.x - origin.x),
+        0,
+        Math.PI * 2,
+      );
+      c.fill();
+    }
+    for (const cell of acidCells(e.to)) {
+      const center = project(cell.x + 0.5, cell.y + 0.5);
+      c.globalAlpha = Math.max(0, 1 - age / 4) * 0.36;
+      c.beginPath();
+      c.ellipse(center.x, center.y, 22 + age * 3, 7 + age, 0, 0, Math.PI * 2);
+      c.fill();
+      c.stroke();
+    }
+  } else if (
+    e.name === "遁地" &&
+    (e.kind === "teleport" || e.kind === "pulse")
+  ) {
+    c.strokeStyle = "#d6b37c";
+    c.fillStyle = "#bc965d";
+    c.lineWidth = 3;
+    if (e.kind === "teleport") {
+      c.setLineDash([7, 5]);
+      c.beginPath();
+      c.moveTo(origin.x, origin.y);
+      c.lineTo(p.x, p.y);
+      c.stroke();
+      c.setLineDash([]);
+    }
+    for (const at of e.kind === "teleport" ? [origin, p] : [p]) {
+      c.beginPath();
+      c.ellipse(at.x, at.y, 18 + age * 9, 6 + age * 4, 0, 0, Math.PI * 2);
+      c.stroke();
+      for (let i = 0; i < 5; i++) {
+        const x = at.x + Math.cos(i * 1.3) * (14 + age * 8);
+        const y =
+          at.y - Math.sin((age / 4) * Math.PI) * 22 + Math.sin(i * 1.3) * 5;
+        c.fillRect(x, y, 4, 3);
+      }
+    }
+  } else if (e.kind === "pulse" && e.name === "獠牙冲") {
+    c.strokeStyle = "#ffe2a1";
+    c.lineWidth = 4;
+    for (const offset of [-9, 9]) {
+      c.beginPath();
+      c.arc(p.x + offset, p.y - 35 - age * 12, 15 + age * 3, -1.8, 0.4);
+      c.stroke();
+    }
+    c.beginPath();
+    c.ellipse(p.x, p.y, 23 + age * 9, 7 + age * 3, 0, 0, Math.PI * 2);
+    c.stroke();
+  } else if (e.kind === "pulse" && e.name === "正义冲锋") {
+    c.fillStyle = "#8cf0cc";
+    c.strokeStyle = "#8cf0cc";
+    for (const cell of shieldWaveCells(e.from, e.to)) {
+      const points = [
+        [0, 0],
+        [1, 0],
+        [1, 1],
+        [0, 1],
+      ].map(([dx, dy]) => project(cell.x + dx, cell.y + dy));
+      c.globalAlpha = Math.max(0, 1 - age / 4) * 0.14;
+      c.beginPath();
+      c.moveTo(points[0].x, points[0].y);
+      for (const point of points.slice(1)) c.lineTo(point.x, point.y);
+      c.closePath();
+      c.fill();
+      c.stroke();
+    }
+    const dx = e.to.x - e.from.x,
+      dy = e.to.y - e.from.y,
+      length = Math.hypot(dx, dy) || 1;
+    const ux = dx / length,
+      uy = dy / length,
+      advance = 0.6 + Math.min(1, age / 3) * 2.9;
+    const a = project(
+      e.from.x + 0.5 + ux * advance - uy * 1.45,
+      e.from.y + 0.5 + uy * advance + ux * 1.45,
+    );
+    const b = project(
+      e.from.x + 0.5 + ux * advance + uy * 1.45,
+      e.from.y + 0.5 + uy * advance - ux * 1.45,
+    );
+    c.globalAlpha = Math.max(0, 1 - age / 4);
+    c.strokeStyle = "#b4ffe3";
+    c.lineWidth = 5;
+    c.beginPath();
+    c.moveTo(a.x, a.y - 32);
+    c.lineTo(b.x, b.y - 32);
+    c.stroke();
+  } else if (e.kind === "pulse" && e.name === "狂舞花绽") {
     c.strokeStyle = "#a9eadc";
     c.lineWidth = 3;
     for (let i = 0; i < 2; i++) {
@@ -209,6 +408,10 @@ export function drawSkillEffect(
       c.stroke();
     }
   } else if (e.kind === "windup") {
+    if (e.name === "晶核蓄力") {
+      c.strokeStyle = "#8cecff";
+      c.shadowColor = "#5ad6ff";
+    }
     c.setLineDash([4, 6]);
     c.beginPath();
     c.moveTo(origin.x, origin.y - 45);
@@ -219,6 +422,27 @@ export function drawSkillEffect(
     c.arc(p.x, p.y - 45, 24 - age * 3, 0, Math.PI * 2);
     c.stroke();
   } else if (e.kind === "devour") {
+    if (e.name === "饕餮") {
+      // A tether and inward motes show consumption, without erasing death/rebirth rules.
+      c.strokeStyle = "#d8d69b";
+      c.lineWidth = 4 * Math.max(0.2, 1 - age / 4);
+      c.beginPath();
+      c.moveTo(origin.x, origin.y - 55);
+      c.lineTo(p.x, p.y - 40);
+      c.stroke();
+      for (let i = 0; i < 3; i++) {
+        const u = Math.min(1, age / 4 + i * 0.1);
+        c.beginPath();
+        c.arc(
+          p.x + (origin.x - p.x) * u,
+          p.y - 40 + (origin.y - p.y - 15) * u,
+          3,
+          0,
+          Math.PI * 2,
+        );
+        c.fill();
+      }
+    }
     const spread = 18 + Math.sin((age / 4) * Math.PI) * 24;
     for (const side of [-1, 1]) {
       c.beginPath();
@@ -541,6 +765,7 @@ export function drawStatuses(
   time: number,
   scale: number,
   reducedMotion = false,
+  presentation?: { compact?: boolean; onLabels?: (labels: string[]) => void },
 ) {
   c.save();
   if (f.immortal?.spent && f.hp > 0) {
@@ -569,6 +794,43 @@ export function drawStatuses(
     c.fillRect(-26, top - 4, 52 * Math.min(1, f.shield / f.maxHp), 2);
   }
   const labels: string[] = [];
+  if (f.air?.flying && f.air.evasion)
+    labels.push(`空军闪避 ${Math.round(f.air.evasion * 100)}%`);
+  if (f.air?.flying && f.air.groundBonus)
+    labels.push(`猛禽对地普攻 +${Math.round(f.air.groundBonus * 100)}%`);
+  if (f.groundBonus)
+    labels.push(`对地普攻 +${Math.round(f.groundBonus * 100)}%`);
+  if (f.damageManaBonus && usesEnergy(f))
+    labels.push(`召唤命中回能 +${Math.round(f.damageManaBonus * 100)}%`);
+  if (f.air?.siege)
+    labels.push(
+      `攻城${f.air.siegeDirect ? "直接伤害" : "普攻"} +${Math.round(f.air.siege * 100)}%`,
+    );
+  if (f.trueAttack) labels.push("陆行者 · 普攻真实伤害");
+  if (f.supportHeal)
+    labels.push(`支援阵亡 · 治疗${f.supportHeal} / 回能${f.supportMana}`);
+  if (f.lifesteal)
+    labels.push(
+      `普攻吸血 ${Math.round(f.lifesteal * 100)}%${f.teamLifesteal ? ` · 异能${Math.round(f.teamLifesteal * 100)}%` : ""}`,
+    );
+  if (f.armorPenetration) labels.push(`狙击甲穿 +${f.armorPenetration}`);
+  if (f.energyPenalty) labels.push(`回能压制 −${f.energyPenalty}`);
+  if (f.air?.seaWard && f.air.flying)
+    labels.push(`海神法术减伤 +${Math.round(f.air.seaWard * 100)}%`);
+  if (f.reflection) labels.push(`灵能反伤 ${f.reflection}`);
+  if (f.formationAttack || f.teamAttack)
+    labels.push(
+      `${(f.formationAttack ?? 0) > (f.teamAttack ?? 0) ? "傀儡" : "全军"}攻击 +${Math.round((f.formationAttack ?? f.teamAttack!) * 100)}%`,
+    );
+  if (f.formationHaste)
+    labels.push(
+      `${f.formationHaste > (f.teamHaste ?? 0) ? "野兽" : "全军"}攻速 +${Math.round(f.formationHaste * 100)}%`,
+    );
+  if (f.bladeCrit) labels.push(`暴击 10% · 已触发${f.bladeCrit.crits}次`);
+  if (f.assassinCrit)
+    labels.push(
+      `刺杀暴击 ${Math.round(f.assassinCrit.chance * 100)}% · 已触发${f.assassinCrit.crits}次`,
+    );
   if (f.bladeStorm && f.bladeStorm.until > time) {
     labels.push(
       `狂舞 · 免技能伤害 / 免控 ${((f.bladeStorm.until - time) / 4).toFixed(1)}s`,
@@ -579,6 +841,19 @@ export function drawStatuses(
       const angle = (reducedMotion ? 0 : time * 2.4) + i * Math.PI;
       c.beginPath();
       c.ellipse(0, -35 * scale, 59 * scale, 25 * scale, 0, angle, angle + 2.5);
+      c.stroke();
+    }
+  }
+  if (f.gale) {
+    const full = f.gale.stacks === STAFF_GALE.maxStacks;
+    labels.push(
+      `疾风 ${f.gale.stacks}/${STAFF_GALE.maxStacks} · 攻速+${Math.round(f.gale.stacks * STAFF_GALE.speedPerStack[f.star - 1] * 100)}%${full ? " · 额外护甲+50" : ""}`,
+    );
+    if (full) {
+      c.strokeStyle = "#85c8ff";
+      c.lineWidth = 3;
+      c.beginPath();
+      c.ellipse(0, -42 * scale, 43 * scale, 18 * scale, 0, 0, Math.PI * 2);
       c.stroke();
     }
   }
@@ -606,8 +881,22 @@ export function drawStatuses(
       c.stroke();
     }
   }
+  if (f.aurora) {
+    if (f.aurora.stacks)
+      labels.push(
+        `极光增幅 ${f.aurora.stacks}/${AURORA.maxStacks} · 攻击+${f.aurora.stacks * AURORA.attackPerStack * 100}%`,
+      );
+    if ((f.skillReadyAt ?? 0) > time)
+      labels.push(`极光冷却 ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`);
+  }
+  if (f.qiSkill && (f.skillReadyAt ?? 0) > time)
+    labels.push(`气波掌冷却 ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`);
   if (
     [
+      "elephant",
+      "venombeast",
+      "lingjiu",
+      "shieldthrall",
       "swordthrall",
       "axethrall",
       "motorcycle",
@@ -621,7 +910,7 @@ export function drawStatuses(
     (f.skillReadyAt ?? 0) > time
   )
     labels.push(
-      `${["swordthrall", "axethrall", "irondog", "ironape"].includes(f.defId) ? "回充" : "装填"} ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`,
+      `${["pangolin", "lingjiu", "elephant", "venombeast", "shieldthrall", "swordthrall", "axethrall", "irondog", "ironape"].includes(f.defId) ? "回充" : "装填"} ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`,
     );
   if (isPhoenixEgg(f))
     labels.push(
@@ -630,8 +919,12 @@ export function drawStatuses(
   else if (f.phoenix?.hatched) labels.push("涅槃已用");
   if (f.hawkForm?.active) labels.push(f.combo ? "地面 · 连击" : "地面形态");
   if (f.windup) {
-    labels.push("真言蓄力");
-    c.strokeStyle = "#ffe3a2";
+    labels.push(
+      f.qiSkill
+        ? `晶核蓄力 ${Math.max(0, (f.windup.until - time) / 4).toFixed(1)}s`
+        : "真言蓄力",
+    );
+    c.strokeStyle = f.qiSkill ? "#8cecff" : "#ffe3a2";
     c.lineWidth = 2;
     c.beginPath();
     c.arc(
@@ -647,9 +940,25 @@ export function drawStatuses(
   }
   if (f.slow && f.slow.until > time) labels.push("攻速降低");
   if (f.sonic?.length) labels.push("声波侵蚀");
+  if (f.taotie) {
+    labels.push(`成功吞噬 ${f.taotie.feasts} 次`);
+    if (f.taotie.rage && f.taotie.rage.until > time) {
+      labels.push(
+        `饕餮狂暴 · 攻击+${f.taotie.rage.attack} · ${((f.taotie.rage.until - time) / 4).toFixed(1)}s`,
+      );
+      c.strokeStyle = "#edc56c";
+      c.lineWidth = 2;
+      c.beginPath();
+      c.ellipse(0, -30 * scale, 29 * scale, 35 * scale, 0, 0, Math.PI * 2);
+      c.stroke();
+    }
+    if ((f.skillReadyAt ?? 0) > time)
+      labels.push(`饕餮冷却 ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`);
+    labels.push(`自然恢复 ${f.regeneration * 4} 生命/秒`);
+  }
   if (f.devourSpent) labels.push("吞噬已用");
   if (f.stunUntil > time) {
-    labels.push("眩晕");
+    labels.push(f.knockup && f.knockup.until > time ? "击飞" : "眩晕");
     c.fillStyle = "#ffe080";
     for (let i = 0; i < 3; i++) {
       const a = (reducedMotion ? 0 : time * 2) + (i * Math.PI * 2) / 3;
@@ -690,6 +999,15 @@ export function drawStatuses(
   if (f.attackBoost && f.attackBoost.until > time) labels.push("攻击强化");
   if (f.hasteUntil > time) labels.push("加速");
   if (f.armorBreakUntil > time) labels.push("破甲");
+  const corrosion = corrosionArmor(f, time);
+  if (corrosion) {
+    labels.push(`酸蚀减甲 −${corrosion}`);
+    c.strokeStyle = "#b7dc76";
+    c.lineWidth = 2;
+    c.beginPath();
+    c.ellipse(0, 4, 30 * scale, 9 * scale, 0, 0, Math.PI * 2);
+    c.stroke();
+  }
   if (f.armorRegen && f.hp > 0) {
     labels.push(`装甲再生 +${f.armorRegen * 4}/s`);
     if (f.hp < f.maxHp) {
@@ -716,14 +1034,18 @@ export function drawStatuses(
   if (f.manaLockUntil > time) labels.push("封能");
   if ((f.silenceUntil ?? 0) > time) labels.push("沉默");
   if (f.burn?.length) labels.push("灼烧");
-  if (labels.length) {
+  presentation?.onLabels?.(labels);
+  const visibleLabels = presentation?.compact
+    ? compactBattleLabels(f, time)
+    : labels;
+  if (visibleLabels.length) {
     c.font = "bold 11px sans-serif";
     c.textAlign = "center";
     c.strokeStyle = "#101c1b";
     c.lineWidth = 3;
-    c.strokeText(labels.join(" · "), 0, 36);
+    c.strokeText(visibleLabels.join(" · "), 0, 36);
     c.fillStyle = f.stunUntil > time ? "#ffe080" : "#aee5f0";
-    c.fillText(labels.join(" · "), 0, 36);
+    c.fillText(visibleLabels.join(" · "), 0, 36);
   }
   c.restore();
 }

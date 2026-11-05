@@ -139,7 +139,7 @@ describe("装甲再生与爆破高档", () => {
     [2, 0],
     [3, 0.2],
     [5, 0.2],
-    [6, 0.6],
+    [6, 0.5],
   ])("%i种爆破降低敌方法术减伤%s，双向独立且含非爆破目标", (count, amount) => {
     const b = simulate(
       line(blastIds.slice(0, count)),
@@ -151,11 +151,15 @@ describe("装甲再生与爆破高档", () => {
       expect(f.magicResist).toBeCloseTo(Math.max(-0.25, 0.2 - reduction));
     }
   });
-  it("六爆破受最低减伤限制，召唤防御和装备先叠加；普攻物理与真伤不放大", () => {
-    const initial = simulate(left, [
-      ...line(["wolf", "adept", "shark"], 100),
-      { ...p("turtle", 110, 60), items: ["fortress"] },
-    ]).frames[0];
+  it("旧lineages六爆破受最低减伤限制，召唤防御和装备先叠加；普攻物理与真伤不放大", () => {
+    const initial = simulate(
+      left,
+      [
+        ...line(["wolf", "adept", "shark"], 100),
+        { ...p("turtle", 110, 60), items: ["fortress"] },
+      ],
+      "lineages",
+    ).frames[0];
     const a = initial.fighters.find((f) => f.side === 0)!;
     const target = initial.fighters.find((f) => f.defId === "wolf")!;
     expect(target.summonWard).toBe(0.25);
@@ -180,8 +184,8 @@ describe("装甲再生与爆破高档", () => {
     expect(hit("true", -0.25)).toBe(100);
     expect(hit("physical", -0.25)).toBe(hit("physical", 0.2));
   });
-  it("后续幼狼与傀儡继承爆破及召唤防御，不继承装甲再生", () => {
-    const fighters = simulate(left, right).frames[0].fighters;
+  it("旧lineages后续幼狼与傀儡继承爆破及召唤防御，不继承装甲再生", () => {
+    const fighters = simulate(left, right, "lineages").frames[0].fighters;
     const ctx: CombatContext = { fighters, tick: 10, events: [], effects: [] };
     const wolf = fighters.find((f) => f.defId === "wolf")!,
       adept = fighters.find((f) => f.defId === "adept")!;
@@ -204,7 +208,7 @@ describe("装甲再生与爆破高档", () => {
       b.frames
         .at(-1)!
         .fighters.filter((f) => f.side === 1)
-        .every((f) => f.air!.magicBreak === 0.6),
+        .every((f) => f.air!.magicBreak === 0.5),
     ).toBe(true);
     expect([left, right]).toEqual(before);
     for (const f of b.frames
@@ -219,13 +223,13 @@ describe("装甲再生与爆破高档", () => {
     ).toContain("每秒恢复 50");
     expect(
       current.traits.find((t) => t.name === "爆破")!.description,
-    ).toContain("降低 60");
+    ).toContain("降低 50");
     expect(
       pieceDetails(p("ironape", 1), "infantry").traits.find(
         (t) => t.name === "装甲",
       )!.description,
     ).toContain("护甲 +6");
-    expect(codexMarkup()).toContain("最低 −25%");
+    expect(codexMarkup()).toMatch(/最低\s*−25%/);
     const old = simulate(left, right, "infantry").frames[0].fighters;
     expect(old.find((f) => f.defId === "ironape")!.armor).toBe(12);
     expect(old.every((f) => f.armorRegen === undefined)).toBe(true);
@@ -298,7 +302,8 @@ describe("0.28存档升级", () => {
       const restored = decoded.data!.game;
       expect(restored).toEqual({
         ...before,
-        combatVersion: phase === "prepare" ? "armored" : "infantry",
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "infantry",
       });
       if (phase === "battle") {
         expect(resumeRound(restored)!.battle).toEqual(result!.battle);
@@ -310,7 +315,7 @@ describe("0.28存档升级", () => {
         expect(restored).toEqual(settled);
         if (restored.reward) expect(claimReward(restored, 0)).toBe(true);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("armored");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
         const h = restored.history[0];
         expect(h.combatVersion).toBe("infantry");
         expect(simulate(h.left, h.right, h.combatVersion)).toEqual(

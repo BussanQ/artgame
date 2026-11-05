@@ -1,0 +1,62 @@
+{
+  "unitId": "bladethrall",
+  "name": "刀奴",
+  "reviewedAt": "2026-11-04",
+  "rules": "singleplayer-0.34",
+  "sources": [
+    "S04",
+    "S20",
+    "S25",
+    "S42",
+    "S43"
+  ],
+  "historical": {
+    "cost": 3,
+    "traits": [
+      "傀儡",
+      "先锋"
+    ],
+    "hp": 550,
+    "attackMin": 75,
+    "attackMax": 97,
+    "armor": 5,
+    "attackIntervalSeconds": 1.2,
+    "range": 1,
+    "passive": true,
+    "skillName": "零时突进",
+    "criticalChance": 0.1,
+    "criticalMultiplier": [
+      3,
+      4.5,
+      6
+    ],
+    "displayedCooldownSeconds": 60
+  },
+  "provenance": {
+    "baseStats": "S04-2 row 2, player-measured table; not official client configuration",
+    "skill": "S42 embedded client screenshot",
+    "referenceImageUrl": "https://image.9game.cn/2019/5/27/80505095.jpg",
+    "referenceImageSha256": "f575a3479039fdcd2acd442bfb3c617c8c68ff8417c560875149ce39078166b4",
+    "role": "S43 player review"
+  },
+  "localAdaptation": {
+    "attack": 86,
+    "attackIntervalSeconds": 1.25,
+    "intervalReason": "Nearest 0.25-second simulation step",
+    "hpAndAttackStarScale": [
+      1,
+      2,
+      4
+    ],
+    "initialMana": 0,
+    "usesEnergy": false,
+    "activeCooldown": false,
+    "damageType": "physical basic attack",
+    "chanceResolution": "One independent threshold roll per valid basic attack attempt, including later evaded or immune attacks",
+    "randomStream": "Hash of both opening armies plus UID and attempt count; battle-local, no campaign RNG consumption",
+    "silenceAndManaLock": "Do not disable passive",
+    "charm": "Passive remains active while attacking original allies",
+    "criticalInteraction": "Basic attack armor, shield, evasion, shred, lifesteal and reflection apply normally",
+    "caveat": "Client screenshot displays 60s cooldown while its prose and S04 identify a passive. Its functional meaning is unresolved. This project uses an always-available on-attack passive without a 60s gate; exact trigger boundaries and RNG are local choices. Sources span dates, not a unified official ruleset."
+  }
+}

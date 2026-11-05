@@ -1,4 +1,7 @@
+import { taotieScale } from "./taotie";
 import { isPhoenixEgg } from "../engine/phoenix";
+import { pickBattleFighter, fighterBattleMarkup } from "./battle-inspection";
+import { knockupLift, burrowPose } from "./beast-presentation";
 import { hawkGroundPose } from "./metamorph-presentation";
 import { skillGauge } from "../engine/triggers";
 import {
@@ -9,6 +12,7 @@ import {
   type BullTransformation,
 } from "./combat-presentation";
 import { fighterName, fighterSprite } from "../engine/summons";
+import { ARHAT_QI } from "../data/skills";
 import { QUALITY, type Preferences } from "../ui/preferences";
 import { FrameGate } from "./frame-policy";
 import { attackInterval } from "../engine/abilities";
@@ -38,6 +42,7 @@ import type { Battle, Fighter, Piece, CombatEvent } from "../engine/types";
 export interface SceneState {
   pieces: Piece[];
   selected: number | null;
+  inspected?: number | null;
   battle: Battle | null;
   time: number;
   phase: string;
@@ -105,13 +110,39 @@ export class BattleScene {
   private board = document.createElement("canvas");
   private boardKey = "";
   private motionReduced = false;
+  private inspector = document.createElement("aside");
+  private inspectorBody = document.createElement("div");
+  private paintedFighters: Fighter[] = [];
+  private hoverFighter: number | null = null;
+  private pinnedFighter: number | null = null;
+  private inspectorKey = "";
+  private closeInspection = () => {
+    this.pinnedFighter = this.hoverFighter = null;
+    this.onInspect?.(null);
+    this.inspector.hidden = true;
+  };
   constructor(
     private canvas: HTMLCanvasElement,
     private state: () => SceneState,
     onCell: (cell: number) => void,
     private options: () => Preferences,
+    private onInspect?: (uid: number | null) => void,
   ) {
     this.ctx = canvas.getContext("2d")!;
+    this.pinnedFighter = this.state().inspected ?? null;
+    this.inspector.className = "battle-inspector";
+    this.inspectorBody.className = "battle-inspector-body";
+    this.inspector.setAttribute("role", "region");
+    this.inspector.setAttribute("aria-label", "棋子战斗详情");
+    this.inspector.hidden = true;
+    this.inspector.innerHTML =
+      '<button type="button" data-close-battle-info aria-label="关闭棋子战斗详情">×</button>';
+    this.inspector.append(this.inspectorBody);
+    canvas.closest(".battle-viewport")?.append(this.inspector);
+    this.inspector.addEventListener("click", (e) => {
+      if ((e.target as Element).closest("[data-close-battle-info]"))
+        this.closeInspection();
+    });
     canvas.width = W;
     canvas.height = H;
     this.board.width = W;
@@ -126,11 +157,21 @@ export class BattleScene {
         ((e.clientX - r.left) / r.width) * W,
         ((e.clientY - r.top) / r.height) * H,
       );
+      this.hoverFighter = this.pickAt(e.clientX, e.clientY);
     });
     canvas.addEventListener("pointerleave", () => {
       this.hover = null;
+      this.hoverFighter = null;
+      if (this.pinnedFighter === null) this.inspector.hidden = true;
     });
     canvas.addEventListener("click", (e) => {
+      if (this.state().battle) {
+        this.pinnedFighter = this.pickAt(e.clientX, e.clientY);
+        this.onInspect?.(this.pinnedFighter);
+        this.hoverFighter = null;
+        if (this.pinnedFighter === null) this.inspector.hidden = true;
+        return;
+      }
       const r = canvas.getBoundingClientRect(),
         cell = cellAt(
           ((e.clientX - r.left) / r.width) * W,
@@ -158,6 +199,35 @@ export class BattleScene {
     this.running = false;
     cancelAnimationFrame(this.raf);
     this.observer.disconnect();
+    this.inspector.remove();
+  }
+  dismissInspection() {
+    if (this.pinnedFighter === null && this.hoverFighter === null) return false;
+    this.closeInspection();
+    return true;
+  }
+  private pickAt(clientX: number, clientY: number) {
+    const s = this.state(),
+      battle = s.battle;
+    if (!battle) return null;
+    const r = this.canvas.getBoundingClientRect();
+    return pickBattleFighter(
+      this.paintedFighters,
+      {
+        x: ((clientX - r.left) / r.width) * W,
+        y: ((clientY - r.top) / r.height) * H,
+      },
+      s.time,
+    );
+  }
+  private showInspection(f: Fighter, time: number, labels: string[]) {
+    const markup = fighterBattleMarkup(f, time, labels);
+    if (markup !== this.inspectorKey) {
+      this.inspectorBody.innerHTML = markup;
+      this.inspectorKey = markup;
+    }
+    this.inspector.classList.toggle("is-pinned", this.pinnedFighter !== null);
+    this.inspector.hidden = false;
   }
   private drawBoard(c: CanvasRenderingContext2D, s: SceneState) {
     c.clearRect(0, 0, W, H);
@@ -308,6 +378,12 @@ export class BattleScene {
         fraction = preferences.reducedMotion ? 0 : s.time - Math.floor(s.time),
         a = battle.frames[index],
         b = battle.frames[Math.min(index + 1, battle.frames.length - 1)];
+      const inspected = a.fighters.find(
+        (f) => f.uid === (this.pinnedFighter ?? this.hoverFighter),
+      );
+      if (!inspected) this.inspector.hidden = true;
+      else if (inspected.hp <= 0)
+        this.showInspection(inspected, s.time, ["已阵亡"]);
       const fs = a.fighters
         .map((f) => {
           const next = b.fighters.find((n) => n.uid === f.uid)!;
@@ -337,6 +413,7 @@ export class BattleScene {
           };
         })
         .sort((a, b) => a.y - b.y);
+      this.paintedFighters = fs;
       for (const f of fs) drawAirTelegraph(c, f, s.time, this.motionReduced);
       for (const f of fs) {
         const death = deathFade(battle, f.uid, index, s.time);
@@ -429,7 +506,13 @@ export class BattleScene {
           const impactAge = rangedId
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
-          if (!preferences.reducedMotion && e.ranged && rangedId && e.primary)
+          if (
+            !preferences.reducedMotion &&
+            e.ranged &&
+            rangedId &&
+            e.primary &&
+            !((attacker.qiSkill || attacker.taotie) && e.skill)
+          )
             drawRangedAttack(
               c,
               rangedId,
@@ -437,6 +520,7 @@ export class BattleScene {
               from,
               e.evaded ? { x: to.x + 22, y: to.y - 18 } : to,
               e.skill || !!e.empowered,
+              !!attacker.qiSkill,
             );
           if (
             !preferences.reducedMotion &&
@@ -496,7 +580,7 @@ export class BattleScene {
               : e.evaded
                 ? "闪避"
                 : e.amount > 0
-                  ? `${e.empowered ? "暴击 " : ""}${e.amount}`
+                  ? `${e.gale === 10 ? "疾风 " : e.empowered ? "暴击 " : ""}${e.amount}`
                   : `吸收 ${e.absorbed}`;
             c.strokeText(label, to.x, y);
             c.fillStyle =
@@ -590,7 +674,11 @@ export class BattleScene {
       depth = 0.78 + f.y * 0.035,
       d = UNIT[f.defId],
       im = picture(fighterSprite(f)),
-      scale = (1 + (f.star - 1) * 0.12) * depth * (f.summon ? 0.7 : 1);
+      scale =
+        (1 + (f.star - 1) * 0.12) *
+        depth *
+        (f.summon ? 0.7 : 1) *
+        taotieScale(f, time);
     const transformed = f.defId === "bull" ? picture("bull-charge") : null;
     c.save();
     c.globalAlpha = (1 - death) * (f.immortal?.spent && f.hp > 0 ? 0.62 : 1);
@@ -614,30 +702,64 @@ export class BattleScene {
       ? REST_POSE
       : transformation
         ? bullFormPose(transformation, this.motionReduced)
-        : !this.motionReduced && !death && f.bladeStorm
-          ? bladeStormPose(time)
-          : !this.motionReduced && !death && f.air?.cast?.kind === "ironape"
-            ? ironapeChargePose(1 - (f.air.cast.next - time) / 3)
-            : !this.motionReduced && !death && f.bird?.draw
-              ? rangedPose(
-                  "birdrider",
-                  Math.max(
-                    0,
-                    Math.min(0.29, (1 - (f.bird.draw.until - time) / 2) * 0.29),
-                  ),
-                  true,
-                )
-              : !this.motionReduced && !death && attack && f.hawkForm?.active
-                ? hawkGroundPose(attack.progress, attack.event.strike ?? 1)
-                : !this.motionReduced && !death && attack && isMelee(f.defId)
-                  ? meleePose(f.defId, attack.progress, attack.event.skill)
-                  : !this.motionReduced && !death && attack && isRanged(f.defId)
-                    ? rangedPose(
-                        f.defId,
-                        attack.progress,
-                        attack.event.skill || !!attack.event.empowered,
-                      )
-                    : REST_POSE;
+        : !this.motionReduced && !death && f.burrowSkill && attack?.event.skill
+          ? burrowPose(attack.progress)
+          : !this.motionReduced && !death && f.bladeStorm
+            ? bladeStormPose(time)
+            : !this.motionReduced && !death && f.air?.cast?.kind === "ironape"
+              ? ironapeChargePose(1 - (f.air.cast.next - time) / 3)
+              : !this.motionReduced && !death && f.qiSkill && f.windup
+                ? rangedPose(
+                    "arhat",
+                    Math.max(
+                      0,
+                      Math.min(
+                        0.39,
+                        (1 - (f.windup.until - time) / ARHAT_QI.windup) * 0.39,
+                      ),
+                    ),
+                    true,
+                    true,
+                  )
+                : !this.motionReduced && !death && f.bird?.draw
+                  ? rangedPose(
+                      "birdrider",
+                      Math.max(
+                        0,
+                        Math.min(
+                          0.29,
+                          (1 - (f.bird.draw.until - time) / 2) * 0.29,
+                        ),
+                      ),
+                      true,
+                    )
+                  : !this.motionReduced &&
+                      !death &&
+                      attack &&
+                      f.hawkForm?.active
+                    ? hawkGroundPose(attack.progress, attack.event.strike ?? 1)
+                    : !this.motionReduced &&
+                        !death &&
+                        attack &&
+                        isMelee(f.defId)
+                      ? meleePose(
+                          f.defId,
+                          attack.progress,
+                          attack.event.skill ||
+                            !!attack.event.empowered ||
+                            attack.event.gale === 10,
+                        )
+                      : !this.motionReduced &&
+                          !death &&
+                          attack &&
+                          isRanged(f.defId)
+                        ? rangedPose(
+                            f.defId,
+                            attack.progress,
+                            attack.event.skill || !!attack.event.empowered,
+                            !!f.qiSkill,
+                          )
+                        : REST_POSE;
     const origin = transformation?.moving
       ? project(transformation.from.x + 0.5, transformation.from.y + 0.5)
       : attack
@@ -662,6 +784,7 @@ export class BattleScene {
       (dx / length) * pose.forward * scale,
       (dy / length) * pose.forward * scale -
         pose.lift * scale -
+        knockupLift(f, time, this.motionReduced) * scale -
         sway -
         (f.air?.flying
           ? 7 + (this.motionReduced ? 0 : Math.sin(now * 0.002 + f.uid) * 3)
@@ -715,7 +838,13 @@ export class BattleScene {
     ) {
       c.save();
       c.scale(facing, 1);
-      drawMeleeWeapon(c, f.defId, attack.progress, scale, attack.event.skill);
+      drawMeleeWeapon(
+        c,
+        f.defId,
+        attack.progress,
+        scale,
+        attack.event.skill || attack.event.gale === 10,
+      );
       c.restore();
       if (
         f.defId === "titan" &&
@@ -734,7 +863,15 @@ export class BattleScene {
       }
     }
     if (!death) {
-      drawStatuses(c, f, time, scale, this.motionReduced);
+      drawStatuses(c, f, time, scale, this.motionReduced, {
+        compact: true,
+        ...(f.uid === (this.pinnedFighter ?? this.hoverFighter)
+          ? {
+              onLabels: (labels: string[]) =>
+                this.showInspection(f, time, labels),
+            }
+          : {}),
+      });
       const top = -129 * scale;
       c.fillStyle = "#07130ede";
       c.fillRect(-27, top, 54, 7);

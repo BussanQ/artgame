@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.44",
+  "combatVersion": "counterplay",
+  "sources": [
+    {
+      "id": "S03",
+      "url": "https://www.taptap.cn/moment/15202528882852517",
+      "modifiedAt": "2019-05-09",
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/915032174273785f479cf7ccd0f93190.png/_tap_ugc.jpg",
+      "imageSha256": "1255a365dd2bf246e4f7e6d55415be1262869c73957159bc1d90832e90d3d79b",
+      "status": "original-chart-visually-rechecked",
+      "facts": {
+        "sniper": { "counts": [3, 6], "printedArmorPenetration": [4, 8] },
+        "cavalry": { "count": 2, "enemyEnergyRecoveryReduction": 3 },
+        "sea": {
+          "counts": [2, 4],
+          "printedFlyingSkillDefensePercent": [20, 20]
+        },
+        "psychic": { "countsAsPrinted": [2, 3], "printedReflection": [20, 30] }
+      },
+      "limits": "保留灵能原图2/3，不把它改写成2/4；当前人数采用S20和S51交叉核对。原图数字是逐档步骤，不能将八点甲穿误作六狙总量。"
+    },
+    {
+      "id": "S18",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "modifiedAt": "2019-05-22",
+      "author": "User26157272",
+      "status": "relevant-original-body-read-via-web",
+      "facts": {
+        "sniperCounts": [3, 6],
+        "sniperArmorPenetrationTotals": [4, 12],
+        "psychicReflectionTotals": [20, 50]
+      },
+      "limits": "骑兵同时保留减3与改为减5的版本写法，本轮选用S03明确的减3。作者对灵能减免原伤害的内容是传闻，不作为实现依据；发布日期未核实。"
+    },
+    {
+      "id": "S51",
+      "url": "https://www.taptap.cn/moment/15220462338441888",
+      "dateAsDisplayed": "2019-05-28",
+      "author": "User26157272",
+      "kind": "first-person-contemporary-review",
+      "status": "relevant-original-body-read-via-web",
+      "beforePatch": {
+        "seaCounts": [2, 4],
+        "flyingSkillDefenseTotalsPercent": [20, 40],
+        "psychicCounts": [2, 4],
+        "teamReflectionTotals": [20, 50]
+      },
+      "afterPatch": {
+        "seaEnergyTotalsAsReported": [8, 20],
+        "teamReflectionTotals": [15, 50]
+      },
+      "limits": "正文明确各连携数值按和报告，并批评新海神回能的描述有歧义。本轮采用其更新前海神/灵能规则，不将后来的回能和早期减伤同时叠入。客户端构建号未知。"
+    },
+    {
+      "id": "S20",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1556086391745_13",
+      "publishedAt": "2019-04-24",
+      "kind": "publisher",
+      "facts": {
+        "psychicCounts": [2, 4],
+        "printedReflection": [20, 30],
+        "seaPrintedDefensePercent": [20, 20]
+      },
+      "limits": "四月文字把灵能范围写成本族，与五月S51全军不同；本轮人数交叉采用2/4，范围采用明确写全军的五月切片。"
+    },
+    {
+      "id": "S19",
+      "url": "https://www.taptap.cn/moment/15225619130352356",
+      "modifiedAt": "2019-06-05",
+      "facts": [
+        "后续灵能又调整为低档本族、高档全军",
+        "作者报告反伤不会抵扣英雄原受伤害"
+      ],
+      "limits": "用于说明版本冲突，不将六月的个人25或其他数值拼进本轮五月20/50配置；不是独立官方公告。"
+    }
+  ],
+  "implemented": {
+    "sniper": {
+      "counts": [3, 6],
+      "flatPhysicalArmorPenetrationTotals": [4, 12],
+      "extraAttackOrTargetDebuff": false
+    },
+    "cavalry": { "count": 2, "enemyManaPenaltyPerRecovery": 3 },
+    "sea": {
+      "counts": [2, 4],
+      "flyingMagicResistanceBonusTotals": [0.2, 0.4],
+      "extraHitMana": 0
+    },
+    "psychic": { "counts": [2, 4], "teamTrueReflectionTotals": [20, 50] }
+  },
+  "localAdaptations": {
+    "sniper": "flat attacker penetration affects ordinary and skill physical damage, after target armor debuffs and before skill percentage penetration; zero armor floor; no sharing with allies or summons",
+    "cavalry": "subtract 3 from each positive energy recovery after existing multiplier, minimum zero; initial energy, energy spending and passive energy eligibility unchanged; later summons carry opposing penalty",
+    "sea": "historical skill defense maps to this engine's magic resistance; additive with gear and summon ward, capped at 75% before explosive reduction, floor -25%; physical and true damage unaffected",
+    "flight": "landing removes sea ward; phoenix egg loses it and hatch restores it from opening unbuffed resistance; later ground summons do not inherit flying defense",
+    "snapshot": "opening different deployed IDs; duplicates, bench and summons do not increase counts; provider death and charm do not recalculate formation",
+    "reflection": "existing shield-hit, soul, no-recursion, no-lifesteal and no-energy rules retained; never deduct reflected amount from original incoming damage"
+  },
+  "compatibility": {
+    "saveSchema": 43,
+    "fromSchema": 42,
+    "prepare": "switch-to-counterplay",
+    "otherPhasesAndHistory": "preserve original combat version; next preparation adopts latest rules",
+    "frozenBeforeEdits": "tests/fixtures/pre-v044-replays.json: 35 formations battles",
+    "olderSnapshots": "original 26/32-unit SHA values unchanged after pinning identities instead of slicing an expanded roster"
+  },
+  "remaining": [
+    "8历史分类差异",
+    "其余职业/种族梯度及同版本技能与费用",
+    "原版技能伤害分类和护甲公式的完整核对",
+    "玩家四海神/四灵能及更多自然高阶构筑",
+    "高星和挑战难度",
+    "最终多构筑人工与真实弱设备体验"
+  ]
+}

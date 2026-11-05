@@ -38,7 +38,7 @@ function offers(g: Game, p: Player, ids: (string | null)[]) {
 }
 
 describe("新局对手构筑", () => {
-  it("八种偏好各可出现，同局七种不重复，种子决定分配且不绑座位", () => {
+  it("九种偏好各可出现，同局七种不重复，种子决定分配且不绑座位", () => {
     const seen = new Set<string>(),
       seatOne = new Set<string>(),
       lineups = new Set<string>();
@@ -65,7 +65,7 @@ describe("新局对手构筑", () => {
         .sort(),
     );
     expect(seatOne.size).toBeGreaterThan(1);
-    expect(omitted.size).toBe(8);
+    expect(omitted.size).toBe(9);
     expect(lineups.size).toBeGreaterThan(1);
   });
   it("分配不消费招募随机流，也不赠送金币、经验或棋子", () => {

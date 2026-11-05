@@ -1,12 +1,22 @@
+import { bladeStrike, seedBladeStrikes } from "./bladethrall";
+import { recordStaffAttack, retargetStaff } from "./staffthrall";
 import { advanceBladeStorm } from "./swordthrall";
-import { unitArmor } from "../data/unit-stats";
-import { CURRENT_COMBAT_VERSION } from "./types";
+import { unitArmor, unitDefinition } from "../data/unit-stats";
+import { seedAssassinStrikes } from "./assassins";
+import {
+  CURRENT_COMBAT_VERSION,
+  hasAmbushRules,
+  hasCounterplayRules,
+  hasLineageRules,
+  hasAuroraRules,
+  hasQiRules,
+} from "./types";
 import { advanceBurn } from "./infantry-skills";
 import { isPhoenixEgg, hatchPhoenix } from "./phoenix";
 import { advanceHawkCombo, startHawkCombo } from "./metamorphosis";
 import { advanceSonic, advanceWindup } from "./wild-skills";
 import { startFaithArrow, advanceFaithArrow } from "./birdrider";
-import { skillReady, concealed, attackTargets } from "./triggers";
+import { skillReady, usesEnergy, concealed, attackTargets } from "./triggers";
 import { isUndying, expireUndying } from "./immortality";
 import { equipmentStats } from "../data/items";
 import { RULES, UNIT } from "../data/units";
@@ -17,10 +27,16 @@ import {
   distance,
   attackInterval,
   gainMana,
+  ATTACK_MANA,
   combatAttack,
   advanceAirSkills,
 } from "./abilities";
-import { AXE_THROW, SKILLS } from "../data/skills";
+import {
+  AXE_THROW,
+  ACID_POLLUTION,
+  PANGOLIN_BURROW,
+  SKILLS,
+} from "../data/skills";
 import type {
   Battle,
   Fighter,
@@ -34,9 +50,18 @@ export function army(
   side: 0 | 1,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): Fighter[] {
+  const definitionVersion = version;
   const bonuses = traitBonuses(pieces, version);
+  const teamAttack = bonuses.get("傀儡")?.teamAttack ?? 0;
+  const teamHaste = bonuses.get("野兽")?.teamHaste ?? 0;
+  const teamLifesteal = bonuses.get("异能")?.teamLifesteal ?? 0;
   const metamorph =
-    version === "metamorph" || version === "infantry" || version === "armored";
+    version === "metamorph" ||
+    version === "infantry" ||
+    version === "armored" ||
+    version === "puppets" ||
+    version === "wildfront" ||
+    hasAmbushRules(version);
   if (metamorph) version = "fleet";
   const active = new Set(
     synergies(pieces, "legacy")
@@ -46,7 +71,7 @@ export function army(
   return pieces
     .filter((p) => p.position !== null)
     .map((p) => {
-      const d = UNIT[p.defId],
+      const d = unitDefinition(p.defId, definitionVersion),
         scale = 2 ** (p.star - 1) * (p.encounterPower ?? 1),
         gear = equipmentStats(p.items),
         has = (t: (typeof d.traits)[number]) =>
@@ -70,7 +95,64 @@ export function army(
           (version === "legacy" ? (has("步兵") ? 200 : 0) : sum("hp")),
       );
       const pos = p.position!;
+      const formationHaste =
+        teamHaste +
+        (d.traits.includes("野兽") ? (bonuses.get("野兽")?.haste ?? 0) : 0);
+      const baseMagicResist =
+        (d.magicResist ?? 0.2) +
+        gear.magicResist +
+        (["legions", "brood", "airsea", "fleet"].includes(version)
+          ? (bonuses.get("召唤")?.summonWard ?? 0)
+          : 0);
+      const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasQiRules(definitionVersion) && d.id === "arhat"
+          ? { qiSkill: true as const }
+          : {}),
+        ...(hasAuroraRules(definitionVersion) && d.id === "skycrab"
+          ? { aurora: { stacks: 0 } }
+          : {}),
+        ...(d.traits.includes("狙击") && bonuses.get("狙击")?.armorPenetration
+          ? { armorPenetration: bonuses.get("狙击")!.armorPenetration }
+          : {}),
+        ...(hasAmbushRules(definitionVersion) && d.id === "pangolin"
+          ? { burrowSkill: true as const }
+          : {}),
+        ...(d.traits.includes("刺杀") && bonuses.get("刺杀")?.criticalChance
+          ? {
+              assassinCrit: {
+                chance: bonuses.get("刺杀")!.criticalChance!,
+                multiplier: bonuses.get("刺杀")!.criticalMultiplier!,
+                attempts: 0,
+                crits: 0,
+              },
+            }
+          : {}),
+        ...(teamAttack ? { teamAttack } : {}),
+        ...(teamLifesteal ? { teamLifesteal } : {}),
+        ...(bonuses.get("召唤")?.damageMana
+          ? { damageManaBonus: bonuses.get("召唤")!.damageMana }
+          : {}),
+        ...((definitionVersion === "formations" ||
+          hasCounterplayRules(definitionVersion)) &&
+        (teamAttack ||
+          (d.traits.includes("傀儡") && bonuses.get("傀儡")?.attack))
+          ? {
+              formationAttack:
+                teamAttack +
+                (d.traits.includes("傀儡")
+                  ? (bonuses.get("傀儡")?.attack ?? 0)
+                  : 0),
+            }
+          : {}),
+        ...(teamHaste ? { teamHaste } : {}),
+        ...(formationHaste ? { formationHaste } : {}),
+        ...(d.id === "staffthrall"
+          ? { gale: { target: null, stacks: 0, side } }
+          : {}),
+        ...(d.id === "bladethrall"
+          ? { bladeCrit: { attempts: 0, crits: 0 } }
+          : {}),
         ...(d.id === "birdrider" ? { bird: { shots: 0 } } : {}),
         ...(d.id === "phoenix"
           ? {
@@ -91,7 +173,11 @@ export function army(
         ...(d.traits.includes("陆行者") && bonuses.get("陆行者")?.trueAttack
           ? { trueAttack: true }
           : {}),
-        ...(d.id === "skytoad" ? { devourSpent: false } : {}),
+        ...(d.id === "skytoad"
+          ? definitionVersion === "taotie"
+            ? { taotie: { feasts: 0 }, innateRegen: true as const }
+            : { devourSpent: false }
+          : {}),
         ...(bonuses.get("灵能")?.reflection
           ? { reflection: bonuses.get("灵能")!.reflection! }
           : {}),
@@ -109,6 +195,13 @@ export function army(
         ...(version === "airsea" || version === "fleet"
           ? {
               air: {
+                ...(bonuses.get("猛禽")?.airGroundBonus
+                  ? { groundBonus: bonuses.get("猛禽")!.airGroundBonus }
+                  : {}),
+                ...(bonuses.get("攻城")?.siegeDirect
+                  ? { siegeDirect: true as const }
+                  : {}),
+                ...(seaWard ? { seaWard, seaBaseResist: baseMagicResist } : {}),
                 flying: !!d.flying,
                 evasion: d.flying ? (bonuses.get("空军")?.evasion ?? 0) : 0,
                 attempts: 0,
@@ -176,7 +269,7 @@ export function army(
           (d.attack * scale + gear.attack) *
           (version === "legacy"
             ? (has("狙击") ? 1.25 : 1) * (has("刺杀") ? 1.35 : 1)
-            : 1 + sum("attack")),
+            : 1 + sum("attack") + teamAttack),
         armor:
           unitArmor(d, p.star) +
           gear.armor +
@@ -188,37 +281,33 @@ export function army(
             (version === "legacy" ? (has("野兽") ? 1 : 0) : sum("interval")),
         ),
         cooldown: 0,
-        mana:
-          d.id === "birdrider"
+        mana: ["birdrider", "bladethrall", "staffthrall"].includes(d.id)
+          ? 0
+          : (version === "signature" ||
+                version === "summons" ||
+                version === "legions" ||
+                version === "brood" ||
+                version === "airsea" ||
+                version === "fleet") &&
+              ["cavalry", "turtle", "tiger"].includes(p.defId)
             ? 0
-            : (version === "signature" ||
-                  version === "summons" ||
-                  version === "legions" ||
-                  version === "brood" ||
-                  version === "airsea" ||
-                  version === "fleet") &&
-                ["cavalry", "turtle", "tiger"].includes(p.defId)
-              ? 0
-              : Math.min(
-                  100,
-                  (version === "legacy"
-                    ? has("熊猫")
-                      ? 100
-                      : 0
-                    : sum("mana")) +
-                    gear.mana +
-                    (version === "fleet" && d.id === "bomber"
-                      ? 50
-                      : (d.initialMana ?? 0)),
-                ),
-        lifesteal: gear.lifesteal,
+            : Math.min(
+                100,
+                (version === "legacy" ? (has("熊猫") ? 100 : 0) : sum("mana")) +
+                  gear.mana +
+                  (version === "fleet" && d.id === "bomber"
+                    ? 50
+                    : (d.initialMana ?? 0)),
+              ),
+        lifesteal: gear.lifesteal + teamLifesteal,
         skillPower:
           1 + gear.skillPower + (version === "legacy" ? 0 : sum("skillPower")),
         ...(bonuses.get("装甲")?.regen && d.traits.includes("装甲")
           ? { armorRegen: bonuses.get("装甲")!.regen }
           : {}),
         regeneration:
-          version === "legacy" ? (has("先锋") ? 8 : 0) : sum("regen"),
+          (version === "legacy" ? (has("先锋") ? 8 : 0) : sum("regen")) +
+          (d.regeneration ?? 0) * RULES.tickSeconds,
         attackShred: version === "legacy" ? 0 : sum("shred"),
         supportHeal:
           version === "legacy"
@@ -235,15 +324,9 @@ export function army(
         armorBuff: 0,
         armorBuffUntil: 0,
         manaLockUntil: 0,
-        magicResist:
-          0.2 +
-          gear.magicResist +
-          (version === "legions" ||
-          version === "brood" ||
-          version === "airsea" ||
-          version === "fleet"
-            ? (bonuses.get("召唤")?.summonWard ?? 0)
-            : 0),
+        magicResist: seaWard
+          ? Math.min(0.75, baseMagicResist + seaWard)
+          : baseMagicResist,
         damage: 0,
         flash: false,
         shield: version === "legacy" ? (has("护卫") ? 250 : 0) : sum("shield"),
@@ -266,10 +349,11 @@ export function openingJumps(
   for (const f of fighters
     .filter(
       (f) =>
-        UNIT[f.defId].traits.includes("刺杀") &&
-        synergies(pieces[f.side], version).some(
-          (s) => s.trait === "刺杀" && s.active,
-        ),
+        unitDefinition(f.defId, version).traits.includes("刺杀") &&
+        (hasAmbushRules(version) ||
+          synergies(pieces[f.side], version).some(
+            (s) => s.trait === "刺杀" && s.active,
+          )),
     )
     .sort((a, b) => a.uid - b.uid)) {
     const targets = fighters
@@ -312,7 +396,22 @@ function runBattle(
 ): Battle {
   const formationVersion = version;
   const fighters = [...army(left, 0, version), ...army(right, 1, version)];
-  if (version === "infantry" || version === "armored") {
+  if (hasCounterplayRules(version)) {
+    const penalties = [left, right].map(
+      (p) => traitBonuses(p, version).get("骑兵")?.enemyManaPenalty ?? 0,
+    );
+    for (const f of fighters)
+      if (penalties[1 - f.side]) f.energyPenalty = penalties[1 - f.side];
+  }
+  seedBladeStrikes(fighters);
+  seedAssassinStrikes(fighters);
+  if (
+    version === "infantry" ||
+    version === "armored" ||
+    version === "puppets" ||
+    version === "wildfront" ||
+    hasAmbushRules(version)
+  ) {
     const reductions = [left, right].map(
       (pieces) => traitBonuses(pieces, version).get("步兵")?.enemyArmor ?? 0,
     );
@@ -322,17 +421,23 @@ function runBattle(
   if (
     version === "metamorph" ||
     version === "infantry" ||
-    version === "armored"
+    version === "armored" ||
+    version === "puppets" ||
+    version === "wildfront" ||
+    hasAmbushRules(version)
   )
     version = "fleet";
-  if (version === "brood" || version === "airsea" || version === "fleet") {
+  if (
+    !hasLineageRules(formationVersion) &&
+    (version === "brood" || version === "airsea" || version === "fleet")
+  ) {
     const suppression = [left, right].map((pieces) =>
       synergies(pieces, version).some((s) => s.trait === "异能" && s.active),
     );
     for (const f of fighters)
       f.energyMultiplier = suppression[1 - f.side] ? 0.75 : 1;
   }
-  openingJumps(fighters, [left, right], version);
+  openingJumps(fighters, [left, right], formationVersion);
   if (version === "airsea" || version === "fleet") {
     const reductions = [left, right].map(
       (pieces) =>
@@ -378,6 +483,13 @@ function runBattle(
       if (f.armorBreakUntil <= tick) f.armorBreak = 0;
       if (f.armorBuffUntil <= tick) f.armorBuff = 0;
       if (f.slow && f.slow.until <= tick) delete f.slow;
+      if (f.knockup && (f.knockup.until <= tick || f.hp <= 0)) delete f.knockup;
+      if (f.corrosion) {
+        f.corrosion = f.corrosion.filter((c) => c.until > tick);
+        if (!f.corrosion.length || f.hp <= 0) delete f.corrosion;
+      }
+      if (f.taotie?.rage && (f.taotie.rage.until <= tick || f.hp <= 0))
+        delete f.taotie.rage;
       if (f.attackBoost && f.attackBoost.until <= tick) delete f.attackBoost;
       if (f.command) {
         f.command = f.command.filter((grant) => grant.until > tick);
@@ -405,7 +517,7 @@ function runBattle(
         const restored = Math.min(f.maxHp - f.hp, f.regeneration);
         f.hp += restored;
         // Preserve historical vanguard accounting; record actual armor self-healing.
-        if (f.armorRegen) f.healing += restored;
+        if (f.armorRegen || f.innateRegen) f.healing += restored;
       }
       if (
         ((version === "fleet" && f.air?.cast) ||
@@ -429,7 +541,13 @@ function runBattle(
           distance(f, a) - distance(f, b) ||
           a.uid - b.uid,
       );
-      const target = enemies[0];
+      const target =
+        (f.gale &&
+          enemies.find(
+            (e) => e.uid === f.gale!.target && distance(f, e) <= f.range,
+          )) ||
+        enemies[0];
+      retargetStaff(f, target);
       if (!target) continue;
       if (f.cooldown > 0) f.cooldown--;
       if (f.cooldown > 0 && !spinning) continue;
@@ -449,6 +567,9 @@ function runBattle(
         (f.defId !== "monk" || injuredAlly) &&
         (distance(f, target) <= f.range ||
           (f.defId === "axethrall" && distance(f, target) <= AXE_THROW.range) ||
+          (f.defId === "venombeast" &&
+            distance(f, target) <= ACID_POLLUTION.range) ||
+          (f.burrowSkill && distance(f, target) <= PANGOLIN_BURROW.range) ||
           injuredAlly ||
           f.defId === "panda" ||
           [
@@ -513,17 +634,42 @@ function runBattle(
       } else {
         if (spinning) continue;
         if (f.signature) f.signature.attacks++;
-        gainMana(f, 25, tick);
+        if (f.damageManaBonus && usesEnergy(f)) f.attackManaReady = true;
+        gainMana(f, ATTACK_MANA, tick);
+        const gale = recordStaffAttack(f, target);
         if (
           !startFaithArrow(context, f, target) &&
-          !startHawkCombo(context, f, target)
+          !startHawkCombo(context, f, target) &&
+          !bladeStrike(context, f, target)
         )
-          damage(context, f, target, combatAttack(f, tick));
+          damage(
+            context,
+            f,
+            target,
+            combatAttack(f, tick),
+            "physical",
+            false,
+            true,
+            0,
+            false,
+            false,
+            false,
+            false,
+            gale,
+          );
         f.cooldown += attackInterval(f, tick);
       }
     }
-    for (const f of fighters)
+    for (const f of fighters) {
       if (f.signature) f.signature.concealed = concealed(f, fighters, tick);
+      if (f.gale)
+        retargetStaff(
+          f,
+          attackTargets(f, fighters, tick).find(
+            (e) => e.uid === f.gale!.target,
+          ),
+        );
+    }
     lastTick = tick;
     if (recordFrames)
       frames.push({

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.42",
+  "combatVersion": "ambush",
+  "sources": [
+    {
+      "id": "S03",
+      "url": "https://www.taptap.cn/moment/15202528882852517",
+      "targetVersion": "2019-05-09 author-labelled chart; exact client unknown",
+      "imageSha256": "1255a365dd2bf246e4f7e6d55415be1262869c73957159bc1d90832e90d3d79b",
+      "facts": {
+        "assassinCounts": [3, 6],
+        "chanceInEachCell": [0.1, 0.1],
+        "totalAttackMultiplier": 4.5
+      },
+      "limits": "The table alone does not establish whether both 10% entries accumulate."
+    },
+    {
+      "id": "S50",
+      "title": "一个从赤潮老玩家到自走棋玩家的攻略",
+      "url": "https://www.taptap.cn/moment/15203671482564780?group_id=42979",
+      "author": "邪王易风",
+      "publishedAt": "2019-04-29",
+      "modifiedAt": "2019-05-11",
+      "kind": "primary-first-person-player-guide",
+      "status": "relevant-original-body-and-three-client-images-reviewed",
+      "htmlSha256": "23fd4171eee13cb795afc68d8f8d94ff1bae8dd6cbc10e3457b4a05ddc4628ab",
+      "facts": {
+        "assassinTotalChance": [0.1, 0.2],
+        "totalAttackMultiplier": 4.5
+      },
+      "images": [
+        {
+          "subject": "assassin-client-tooltip",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/e8272cbdfa81425622d9bdf496d48519.png/_tap_ugc.jpg",
+          "sha256": "95d5e1fc6bc76ee8304153154f529aa00a1b6f16efbc5ecb5bf5efdee215ed53",
+          "facts": "3/6 entries each print 10% and 4.5x; total20% is clarified by the author body."
+        },
+        {
+          "subject": "pangolin-client-card",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/2c334d0357ec1123ec5886cda49ff725.png/_tap_ugc.jpg",
+          "sha256": "5be880e769a72756b77a6113e38f9f31cd729cc84f7e3c22aaa88ac333e1378f",
+          "facts": {
+            "name": "穿山甲",
+            "cost": 1,
+            "traits": ["野兽", "刺杀"],
+            "skill": "遁地",
+            "damage": [100, 200, 300],
+            "cooldownSeconds": 20,
+            "control": "knockup-duration-unspecified"
+          }
+        },
+        {
+          "subject": "vanguard-client-tooltip",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/6bf959f9c08cff198929e5f60da20ead.png/_tap_ugc.jpg",
+          "sha256": "86c0df852864bef7c4aa16c0d01af25a4553a7ad9ddb5113ac7901432628bd17",
+          "facts": "Image still shows older regeneration while the edited body describes the armor change; do not treat every image and paragraph as one uniform client snapshot."
+        }
+      ],
+      "limits": "This is a player observation, not an official configuration. General statements about all tiers stacking are new evidence for later field-by-field review; they do not resolve every mixed-date table."
+    },
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "sourceImage": "S04-1",
+      "row": 25,
+      "facts": {
+        "cost": 1,
+        "traits": ["野兽", "刺杀"],
+        "hp": 500,
+        "attackMin": 47,
+        "attackMax": 63,
+        "armor": 5,
+        "range": 1,
+        "intervalSeconds": 1.5,
+        "cooldownSeconds": 20
+      },
+      "selection": "55 attack is the exact midpoint; HP/attack double per star under the existing single-player rule. This July row is not claimed to be the May client's base stats."
+    }
+  ],
+  "localAdaptations": {
+    "critical": "One reproducible battle-local roll per legal ordinary attack; skills/periodic/reflection excluded. Evade/immunity consume a roll, but only landed hits count as critical hits. No guaranteed proc interval; no campaign RNG usage.",
+    "openingJump": "Assassin role works with one unit, independently of 3/6 critical thresholds. Existing deterministic backline selection, instantaneous timing and adjacent free-cell rule are local adaptations.",
+    "burrow": {
+      "initialMana": 25,
+      "skillRangeTiles": 3,
+      "damageType": "magic",
+      "knockupTicks": 4,
+      "resolution": "instant legal adjacent move; no extra invulnerability or concealment; blocked distant landing retains mana",
+      "visuals": "existing ImageGen portrait with an independent dive/eruption pose and earth ripples"
+    },
+    "summons": "Do not inherit personal assassin critical chance, and do not increase the opening formation count.",
+    "bladeThrall": "Vanguard personal passive remains an independent 10% roll with 3/4.5/6 multipliers; six assassins do not grant it the assassin trait.",
+    "otherTiers": "Other formations retain their existing versioned single-player choices. Wild-beast/vanguard cumulative interpretation and other historical differences remain open work."
+  },
+  "compatibility": {
+    "saveSchema": 41,
+    "fromSchema": 40,
+    "prepare": "adopt-ambush",
+    "battleResultFinishedHistory": "retain-old-combat-version",
+    "oldPangolin": {
+      "traits": ["野兽", "先锋"],
+      "hp": 720,
+      "attack": 42,
+      "armor": 6,
+      "intervalTicks": 3,
+      "skill": "破阵冲击"
+    },
+    "economyRosterShopsGearAiBansRngAndPlayback": "unchanged"
+  }
+}

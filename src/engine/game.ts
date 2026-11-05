@@ -1,3 +1,4 @@
+import { catalogCost, catalogVersion } from "../data/catalog";
 import { availableUnits, isRecruitable, randomBans } from "./rotation";
 import { CURRENT_COMBAT_VERSION } from "./types";
 import { mergePieces, pieceCopies, salePrice } from "./progression";
@@ -20,6 +21,7 @@ export function createGame(
   const g: Game = {
     seed: seed >>> 0,
     ...(bannedSeries ? { bannedSeries } : {}),
+    catalogVersion: CURRENT_COMBAT_VERSION,
     combatVersion: CURRENT_COMBAT_VERSION,
     difficulty: "standard",
     nextUid: 1,
@@ -73,21 +75,17 @@ export function roll(g: Game, p: Player, paid = true): boolean {
   if (paid) p.gold -= RULES.reroll;
   for (const id of p.shop) if (id) g.pool[id]++;
   p.shop = [];
+  const units = availableUnits(g);
   for (let i = 0; i < RULES.shop; i++) {
-    const choices = UNITS.filter(
-      (u) =>
-        isRecruitable(g, u.id) &&
-        g.pool[u.id] > 0 &&
-        ODDS[p.level - 1][u.cost - 1] > 0,
+    const totals = [0, 0, 0, 0, 0, 0];
+    for (const unit of units) totals[unit.cost] += g.pool[unit.id];
+    const choices = units.filter(
+      (u) => g.pool[u.id] > 0 && ODDS[p.level - 1][u.cost - 1] > 0,
     );
-    const weight = (id: string) =>
-      (ODDS[p.level - 1][UNIT[id].cost - 1] * g.pool[id]) /
-      UNITS.filter(
-        (u) => u.cost === UNIT[id].cost && isRecruitable(g, u.id),
-      ).reduce((n, u) => n + g.pool[u.id], 0);
-    let pick = random(g) * choices.reduce((n, u) => n + weight(u.id), 0);
-    const unit =
-      choices.find((u) => (pick -= weight(u.id)) < 0) ?? choices.at(-1);
+    const weight = (unit: (typeof units)[number]) =>
+      (ODDS[p.level - 1][unit.cost - 1] * g.pool[unit.id]) / totals[unit.cost];
+    let pick = random(g) * choices.reduce((n, u) => n + weight(u), 0);
+    const unit = choices.find((u) => (pick -= weight(u)) < 0) ?? choices.at(-1);
     p.shop.push(unit?.id ?? null);
     if (unit) g.pool[unit.id]--;
   }
@@ -101,7 +99,7 @@ export function merge(
 }
 export function buy(g: Game, p: Player, index: number): boolean {
   const id = p.shop[index];
-  if (g.phase !== "prepare" || !id || !UNIT[id] || p.gold < UNIT[id].cost)
+  if (g.phase !== "prepare" || !id || !UNIT[id] || p.gold < catalogCost(g, id))
     return false;
   const quote = previewPurchase(g, p, index);
   if (!quote.allowed || !quote.after) return false;
@@ -151,7 +149,7 @@ export function sell(g: Game, p: Player, uid: number): boolean {
   const piece = p.pieces.find((x) => x.uid === uid);
   if (!piece) return false;
   const copies = pieceCopies(piece);
-  p.gold += salePrice(piece);
+  p.gold += salePrice(piece, catalogVersion(g));
   g.pool[piece.defId] += copies;
   p.inventory.push(...(piece.items ?? []));
   p.pieces = p.pieces.filter((x) => x.uid !== uid);

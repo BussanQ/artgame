@@ -1,7 +1,14 @@
-import { CURRENT_COMBAT_VERSION } from "../engine/types";
+import {
+  CURRENT_COMBAT_VERSION,
+  hasAmbushRules,
+  hasLineageRules,
+  hasCoalitionRules,
+  hasAuroraRules,
+  hasQiRules,
+} from "../engine/types";
 import type { DamageType, CombatVersion } from "../engine/types";
 
-/** Independent single-player balance; these are not recovered original skill values. */
+/** Shared spell metadata; individual historical sources and local adaptations live in docs/research. */
 export interface SkillDef {
   name: string;
   role: string;
@@ -24,12 +31,111 @@ const define = (
   healRatio: 0,
   ...skill,
 });
+/** S50 client card: flat star damage, 13s cooldown and three 25% attack stacks. */
+export const AURORA = {
+  name: "极光电影",
+  role: "成长狙杀",
+  cooldown: 52,
+  damage: [575, 825, 1075],
+  attackPerStack: 0.25,
+  maxStacks: 3,
+  description:
+    "初始能量0。满能量且13秒冷却结束时，对射程内当前可见敌人造成575/825/1075法术伤害；技能强度提高伤害，攻击力不提高技能伤害。每次成功施放后攻击+25%，最多3层、累计+75%，持续本场战斗，不因护盾或免伤而停止叠层。冷却从施放开始计算，期间可以普攻和回能，能量满时仍须等待冷却。眩晕、沉默、魅惑及阵亡时不能施放；无合法目标不扣能量或开始冷却。",
+} as const;
+export const AURORA_SKILL = define({
+  name: AURORA.name,
+  role: AURORA.role,
+  damageType: "magic",
+  description: AURORA.description,
+});
+/** S50 client card fixes damage and cooldown; 1s startup and target retention are local. */
+export const ARHAT_QI = {
+  name: "气波掌",
+  role: "晶核蓄能",
+  cooldown: 40,
+  windup: 4,
+  damage: [250, 450, 650],
+  description:
+    "初始能量0。满能量且10秒冷却结束时锁定射程内当前可见敌人，蓄力1秒后造成250/450/650法术伤害，按开始蓄力时的技能强度计算，攻击力不提高技能伤害。蓄力时不能移动或普攻，攻击冷却仍流逝；眩晕、沉默、魅惑或阵亡会中断。目标阵亡、隐蔽、变为友方或离开射程时落空，不换目标、不返还能量或冷却。冷却期间可正常移动、普攻与回能。陆行者连携只改变其普通攻击伤害类型。",
+} as const;
+export const QI_SKILL = define({
+  name: ARHAT_QI.name,
+  role: ARHAT_QI.role,
+  damageType: "magic",
+  description: ARHAT_QI.description,
+});
+/** S38 May 30 patch: healing, flat rage attack, duration and per-star cooldown. */
+export const TAOTIE = {
+  name: "饕餮",
+  role: "吞噬狂暴",
+  cooldown: [88, 72, 56],
+  healing: [300, 600, 1200],
+  attack: [50, 100, 200],
+  duration: 32,
+  description:
+    "初始能量25，自带40%法术减伤、每秒恢复5生命。满能量且22/18/14秒冷却结束时，吞噬射程内当前生命低于自身的可见敌人，优先生命最高者。造成足以清空其护盾和生命的真实伤害，成功造成致命生命伤害且自身仍存活时恢复300/600/1200生命，攻击增加50/100/200、体型增大，持续8秒；不叠加，重复吞噬刷新。固定回血与攻击增量不受技能强度放大，溢出治疗无效；眩晕、沉默、魅惑时不能施放，免疫伤害不会获得回血或狂暴。不能吞噬不朽残魂，但致命伤害仍触发不朽续战或涅槃。冷却期间可正常移动、普攻和回能。",
+} as const;
+export const TAOTIE_SKILL = define({
+  name: TAOTIE.name,
+  role: TAOTIE.role,
+  damageType: "true",
+  description: TAOTIE.description,
+});
 export const HAWK_METAMORPH = define({
   name: "血羽化身",
   role: "落地连击",
   description:
     "满能量时变为地面形态并恢复至满生命，每场一次，不位移或立即造成技能伤害。此后每次普攻变为三段爪击，每段造成 60% 攻击物伤，后两段相隔 0.25 秒；每段独立计算护盾、闪避、吸血和反伤。控制或阵亡取消余下连击，目标死亡、隐蔽、脱离射程或成为友方也会取消。形态持续到本场结束，不再积累能量；落地后失去飞行闪避与海神回能，仍保留本族对地增伤。回血不受技能强度加成，不复活。",
 });
+export const SHIELD_WAVE = {
+  depth: 3,
+  halfWidth: 1,
+  cooldown: 40,
+  silenceTicks: 8,
+  damage: [200, 300, 400],
+} as const;
+/** 2019 cooldowns; damage, control and acid geometry are documented single-player adaptations. */
+export const TUSK_CHARGE = {
+  cooldown: 80,
+  damage: [100, 200, 300],
+  knockupTicks: 4,
+} as const;
+/** Client screenshot S50; range, startup and knockup duration are local adaptations. */
+export const PANGOLIN_BURROW = {
+  name: "遁地",
+  role: "突袭击飞",
+  range: 3,
+  cooldown: 80,
+  knockupTicks: 4,
+  damage: [100, 200, 300],
+  description:
+    "初始能量25。满能量、冷却结束时遁地突袭3格内的可见敌人，移动到其相邻空格，造成100/200/300法术伤害并击飞1秒。冷却20秒；技能强度提高伤害，技能不触发刺杀暴击。不附带范围伤害、减甲或持续伤害。没有相邻空格且原地不在近战距离时不施放、不扣能量；眩晕、沉默、魅惑或阵亡时不能施放。位移瞬时结算，不额外获得免伤或隐身。",
+} as const;
+export const BURROW_SKILL = define({
+  name: PANGOLIN_BURROW.name,
+  role: PANGOLIN_BURROW.role,
+  description: PANGOLIN_BURROW.description,
+  damageType: "magic",
+});
+/** S04 2019 cooldown; flat damage is the explicitly dated 2020-07-30 adaptation. */
+export const DEATH_SONG = {
+  radius: 1.5,
+  cooldown: 24,
+  damage: [200, 300, 400],
+} as const;
+export const ACID_POLLUTION = {
+  range: 3,
+  cooldown: [40, 32, 24],
+  armor: [7, 14, 21],
+  duration: 24,
+} as const;
+/** Later community card (2021); retained as a documented local adaptation, not verified April 2019 values. */
+export const STAFF_GALE = {
+  speedPerStack: [0.1, 0.15, 0.2],
+  maxStacks: 10,
+  armorAtMax: 50,
+} as const;
+export const BLADE_CRITICAL = { chance: 0.1, multiplier: [3, 4.5, 6] } as const;
 export const BLADE_STORM = {
   radius: 1.5,
   duration: 26,
@@ -45,6 +151,51 @@ export const AXE_THROW = {
   damage: [300, 500, 700],
 } as const;
 export const SKILLS: Record<string, SkillDef> = {
+  lingjiu: define({
+    name: "死魂曲",
+    role: "飞行刺杀 / 近身范围法伤",
+    damageType: "magic",
+    radius: DEATH_SONG.radius,
+    description:
+      "初始能量25。满能量、冷却结束且自身1.5格圆形范围内有可见敌人时，以自身为中心发出一次音波，对该范围内全体敌人造成200/300/400法术伤害。伤害受技能强度加成，包含隐蔽和飞行敌人，不影响友军；只结算一次，不附带眩晕、沉默、减甲或持续伤害。冷却6秒从施放时计，期间可正常移动、普攻和回能。没有近身可见敌人时保留能量，仍可用3格普通攻击；当前两刺杀羁绊可使其开场跳向后排。不额外获得空军或猛禽标签。眩晕、沉默、魅惑、阵亡或没有合法近身目标时不施放、不扣能量。",
+  }),
+  elephant: define({
+    name: "獠牙冲",
+    role: "野兽先锋 / 近身击飞",
+    damageType: "magic",
+    duration: TUSK_CHARGE.knockupTicks,
+    description:
+      "初始能量25。满能量、相邻有可见敌人且冷却结束时，以獠牙挑击单个目标，造成100/200/300法术伤害并原地击飞1秒。伤害受技能强度加成，击飞期间不能行动并打断主动蓄力或引导，不改变棋格或飞行种族。冷却20秒从施放时计，期间可正常普攻、移动与回能。眩晕、沉默、魅惑、阵亡或没有合法目标时不施放、不扣能量。技能免伤中的剑奴不受伤害或击飞；残魂、涅槃火种不追加击飞。",
+  }),
+  venombeast: define({
+    name: "酸性污染",
+    role: "野兽先锋 / 范围减甲",
+    radius: 1,
+    duration: ACID_POLLUTION.duration,
+    description:
+      "初始能量25。满能量、3格内有可见敌人且冷却结束时，向其所在格喷出酸液，使该格及周围九宫格内敌人护甲降低7/14/21，持续6秒。包含空中和隐蔽敌人，不影响友军；后进入区域的单位不受影响。技能不直接造成伤害或附加持续伤害，技能强度不提高减甲。多个猛毒兽的污染取当前最高值，各来源分别计时，弱效果不会延长强效果；与步兵减甲、普攻破甲分别计算，物伤结算护甲最低为0。灵鱼可驱散，残魂、火种和旋转免控的剑奴不受影响；已施加污染在施法者阵亡后仍持续。冷却10/8/6秒从施放时计；技能不提高近战普攻射程。眩晕、沉默、魅惑、阵亡或没有合法目标时不施放、不扣能量。",
+  }),
+  staffthrall: define({
+    name: "疾风",
+    role: "连续普攻 / 攻速叠层",
+    description:
+      "被动：连续攻击同一目标，每次攻击获得10%/15%/20%攻速，最多10层。满层改变攻击动作并获得50护甲。更换目标、目标死亡或失去可见目标时清空；眩晕只暂停，沉默不阻止。按攻击次数叠层，闪避、护盾和免伤不阻止叠层。攻速按基础间隔÷(1+层数加成)，再叠加装备、加速与减速，最快每0.25秒一次；换目标按剩余冷却比例移除加速。阵营改变会清空。不积累能量，不受技能强度加成。",
+  }),
+  shieldthrall: define({
+    name: "正义冲锋",
+    role: "傀儡护卫 / 前方范围沉默",
+    damageType: "magic",
+    radius: SHIELD_WAVE.depth,
+    duration: SHIELD_WAVE.silenceTicks,
+    description:
+      "初始能量25。满能量、相邻有可见敌人且冷却结束时，向该目标方向释放长3格、宽3格的矩形能量波，造成200/300/400法术伤害（一/二/三星）并沉默2秒。伤害受技能强度加成，命中按当前矩形区域判定，包含飞行和隐蔽敌人，不命中身后、侧边或友军。伤害与沉默即时结算，能量波为表现，不产生位移、额外护盾或护甲。冷却10秒从施放时计，冷却中仍可普攻、移动与回能。眩晕、沉默、魅惑、阵亡或没有合法近身目标时不施放、不扣能量。沉默不影响普攻与被动；免控中的剑奴、残魂、涅槃火种不追加沉默。",
+  }),
+  bladethrall: define({
+    name: "零时突进",
+    role: "傀儡先锋 / 概率暴击",
+    description:
+      "被动：每次普通攻击有10%概率造成300%/450%/600%攻击的暴击（一/二/三星）。按普通攻击计算护甲、闪避、护盾、破甲与吸血，技能强度不提高暴击伤害。不积累或消耗能量，没有主动施法与技能冷却；沉默和封能不影响被动，眩晕、阵亡或没有合法攻击目标时不进行攻击与暴击判定。魅惑期间仍可暴击原队友。概率按每次攻击独立判定，不保证每十次必定触发；回放结果固定。",
+  }),
   swordthrall: define({
     name: "狂舞花绽",
     role: "傀儡先锋 / 移动范围伤害",
@@ -511,15 +662,54 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (version === "taotie" && id === "skytoad") return TAOTIE.description;
+  if (hasQiRules(version) && id === "arhat") return ARHAT_QI.description;
+  if (hasAuroraRules(version) && id === "skycrab") return AURORA.description;
+  if (hasCoalitionRules(version) && ["wolf", "adept", "shark"].includes(id))
+    return `${skillDescription(id, "lineages")}三召唤使全军普通攻击造成生命伤害时回能+40%，不再提供法术减伤；无能量技能的召唤物不能因此施法。`;
+  if (hasLineageRules(version) && id === "acolyte")
+    return skillDescription(id, "counterplay").replace("异能压制", "骑兵压制");
+  if (hasLineageRules(version) && ["wolf", "adept", "shark"].includes(id))
+    return `${skillDescription(id, "counterplay")}异能的全军普攻吸血对后续召唤物生效，与召唤者装备吸血分开计算。`;
+  if (hasAmbushRules(version) && id === "pangolin")
+    return PANGOLIN_BURROW.description;
+  if (hasAmbushRules(version) && id === "lingjiu")
+    return skillDescription(id, "wildfront").replace(
+      "当前两刺杀羁绊可使其开场跳向后排。",
+      "单名刺杀即可开战跳向后排，3/6刺杀额外提供普通攻击暴击。",
+    );
+  if (
+    (version === "wildfront" || hasAmbushRules(version)) &&
+    ["wolf", "adept", "shark"].includes(id)
+  )
+    return `${skillDescription(id, "puppets")}4/6野兽的全队攻速对召唤物生效，2野兽的个人攻速不传递。`;
+  if (version === "puppets" && ["wolf", "adept", "shark"].includes(id))
+    return skillDescription(id, "armored")
+      .replace(
+        "不继承装备或傀儡攻击羁绊",
+        "不继承装备或2/4档傀儡攻击，6档全队攻击对召唤物生效",
+      )
+      .replace(
+        "不继承装备或召唤者个人开场增益。",
+        "不继承装备或召唤者个人开场增益；6傀儡的全队攻击加成对幼狼生效。",
+      );
   if (
     id === "bloodhawk" &&
-    (version === "metamorph" || version === "infantry" || version === "armored")
+    (version === "metamorph" ||
+      version === "infantry" ||
+      version === "armored" ||
+      version === "puppets" ||
+      version === "wildfront" ||
+      hasAmbushRules(version))
   )
     return HAWK_METAMORPH.description;
   if (
     version === "metamorph" ||
     version === "infantry" ||
-    version === "armored"
+    version === "armored" ||
+    version === "puppets" ||
+    version === "wildfront" ||
+    hasAmbushRules(version)
   )
     version = "fleet";
   if (id === "bomber" && version === "fleet")
@@ -531,10 +721,15 @@ export function skillDescription(
   if (
     [
       "blastbug",
+      "elephant",
+      "venombeast",
+      "lingjiu",
       "motorcycle",
       "irondog",
       "specialist",
       "birdrider",
+      "bladethrall",
+      "staffthrall",
       "ironape",
       "ironrooster",
     ].includes(id)
@@ -575,35 +770,67 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
-  id === "bloodhawk" &&
-  (version === "metamorph" || version === "infantry" || version === "armored")
-    ? HAWK_METAMORPH.name
-    : (version === "summons" ||
-          version === "legions" ||
-          version === "brood" ||
-          version === "airsea" ||
-          version === "fleet" ||
-          version === "metamorph" ||
-          version === "infantry" ||
-          version === "armored") &&
-        id === "wolf"
-      ? "幽狼召唤"
-      : SKILLS[id].name;
+  id === "skytoad" && version === "taotie"
+    ? TAOTIE.name
+    : id === "arhat" && hasQiRules(version)
+      ? ARHAT_QI.name
+      : id === "skycrab" && hasAuroraRules(version)
+        ? AURORA.name
+        : id === "pangolin" && hasAmbushRules(version)
+          ? PANGOLIN_BURROW.name
+          : id === "bloodhawk" &&
+              (version === "metamorph" ||
+                version === "infantry" ||
+                version === "armored" ||
+                version === "puppets" ||
+                version === "wildfront" ||
+                hasAmbushRules(version))
+            ? HAWK_METAMORPH.name
+            : (version === "summons" ||
+                  version === "legions" ||
+                  version === "brood" ||
+                  version === "airsea" ||
+                  version === "fleet" ||
+                  version === "metamorph" ||
+                  version === "infantry" ||
+                  version === "armored" ||
+                  version === "puppets" ||
+                  version === "wildfront" ||
+                  hasAmbushRules(version)) &&
+                id === "wolf"
+              ? "幽狼召唤"
+              : SKILLS[id].name;
 export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
-  id === "bloodhawk" &&
-  (version === "metamorph" || version === "infantry" || version === "armored")
-    ? HAWK_METAMORPH.role
-    : (version === "summons" ||
-          version === "legions" ||
-          version === "brood" ||
-          version === "airsea" ||
-          version === "fleet" ||
-          version === "metamorph" ||
-          version === "infantry" ||
-          version === "armored") &&
-        id === "wolf"
-      ? "狼群召唤"
-      : SKILLS[id].role;
+  id === "skytoad" && version === "taotie"
+    ? TAOTIE.role
+    : id === "arhat" && hasQiRules(version)
+      ? ARHAT_QI.role
+      : id === "skycrab" && hasAuroraRules(version)
+        ? AURORA.role
+        : id === "pangolin" && hasAmbushRules(version)
+          ? PANGOLIN_BURROW.role
+          : id === "bloodhawk" &&
+              (version === "metamorph" ||
+                version === "infantry" ||
+                version === "armored" ||
+                version === "puppets" ||
+                version === "wildfront" ||
+                hasAmbushRules(version))
+            ? HAWK_METAMORPH.role
+            : (version === "summons" ||
+                  version === "legions" ||
+                  version === "brood" ||
+                  version === "airsea" ||
+                  version === "fleet" ||
+                  version === "metamorph" ||
+                  version === "infantry" ||
+                  version === "armored" ||
+                  version === "puppets" ||
+                  version === "wildfront" ||
+                  hasAmbushRules(version)) &&
+                id === "wolf"
+              ? "狼群召唤"
+              : SKILLS[id].role;

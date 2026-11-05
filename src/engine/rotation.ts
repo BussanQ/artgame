@@ -1,11 +1,15 @@
+import { catalogUnit } from "../data/catalog";
 import { UNITS, UNIT } from "../data/units";
-import { TRAIT_TIERS } from "../data/traits";
+import { unitDefinition } from "../data/unit-stats";
+import { traitTiers } from "../data/traits";
+import { CURRENT_COMBAT_VERSION } from "./types";
 import { random } from "./random";
 import type { Game, Trait } from "./types";
 
 /** Species only: professions such as sniper or assassin remain shared links. */
 export const SERIES = [
   "步兵",
+  "骑兵",
   "装甲",
   "野兽",
   "熊猫",
@@ -19,14 +23,17 @@ export const SERIES = [
   "陆行者",
 ] as const;
 export type Series = (typeof SERIES)[number];
-export type RecruitmentContext = Pick<Game, "bannedSeries">;
+export type RecruitmentContext = Pick<Game, "bannedSeries"> &
+  Partial<Pick<Game, "combatVersion" | "catalogVersion">>;
 export function isRecruitable(game: RecruitmentContext, id: string): boolean {
   return (
     !!UNIT[id] && !game.bannedSeries?.some((t) => UNIT[id].traits.includes(t))
   );
 }
 export function availableUnits(game: RecruitmentContext) {
-  return UNITS.filter((u) => isRecruitable(game, u.id));
+  return UNITS.map((u) => catalogUnit(game, u.id)).filter((u) =>
+    isRecruitable(game, u.id),
+  );
 }
 export function validBans(value: unknown): value is Series[] | undefined {
   return (
@@ -37,7 +44,7 @@ export function validBans(value: unknown): value is Series[] | undefined {
       value.every((t) => SERIES.includes(t)))
   );
 }
-/** Keep a usable early shop, all cost bands and basic profession links. */
+/** Keep early shops and several viable builds; an incomplete profession is still a usable unit. */
 export function playableRotation(bannedSeries: readonly Series[]): boolean {
   const units = UNITS.filter(
     (u) => !bannedSeries.some((s) => u.traits.includes(s)),
@@ -56,11 +63,20 @@ export function playableRotation(bannedSeries: readonly Series[]): boolean {
   )
     return false;
   if (!units.some((u) => u.cost === 1 && u.range === 1)) return false;
-  return Object.entries(TRAIT_TIERS).every(([trait, tiers]) => {
-    if (SERIES.includes(trait as Series)) return true;
-    const count = units.filter((u) => u.traits.includes(trait as Trait)).length;
-    return count === 0 || count >= tiers[0].count;
-  });
+  const professions = Object.entries(traitTiers(CURRENT_COMBAT_VERSION))
+    .filter(([trait, tiers]) => {
+      if (SERIES.includes(trait as Series)) return false;
+      const count = units.filter((u) =>
+        u.traits.includes(trait as Trait),
+      ).length;
+      return count >= tiers[0].count;
+    })
+    .map(([trait]) => trait);
+  return (
+    professions.length >= 3 &&
+    professions.some((t) => ["护卫", "先锋"].includes(t)) &&
+    professions.some((t) => ["狙击", "刺杀", "爆破", "攻城"].includes(t))
+  );
 }
 const combinations: Series[][] = [];
 for (let a = 0; a < SERIES.length - 2; a++)
@@ -81,9 +97,16 @@ export function randomBans(seed: number): Series[] {
 }
 export function rotationTraits(game: RecruitmentContext) {
   const units = availableUnits(game);
-  return Object.entries(TRAIT_TIERS).map(([trait, tiers]) => ({
+  return Object.entries(
+    traitTiers(game.combatVersion ?? CURRENT_COMBAT_VERSION),
+  ).map(([trait, tiers]) => ({
     trait,
-    total: UNITS.filter((u) => u.traits.includes(trait as Trait)).length,
+    total: UNITS.filter((u) =>
+      unitDefinition(
+        u.id,
+        game.combatVersion ?? CURRENT_COMBAT_VERSION,
+      ).traits.includes(trait as Trait),
+    ).length,
     available: units.filter((u) => u.traits.includes(trait as Trait)).length,
     tiers: tiers.map((t) => t.count),
   }));

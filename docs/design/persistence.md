@@ -1,6 +1,46 @@
 # 本地存档与战报
 
-存档格式 `schema: 32`，规则版本随 `RULES.version` 保存。代码位于 `src/engine/persistence.ts`；基础验证为 `tests/persistence.test.ts`，增量迁移由对应版本模块验证。
+存档格式 `schema: 47`，规则版本随 `RULES.version` 保存。代码位于 `src/engine/persistence.ts`；基础验证为 `tests/persistence.test.ts`，增量迁移由对应版本模块验证。
+
+## schema 47 / singleplayer-0.48
+
+schema46仅准备阶段切换qi；在途战斗、结算、终局、历史与播放保留原combatVersion，下一准备再更新。中间0.46→0.47固定aurora与0.47；旧罗汉全部基础字段、旧技能和旧图保持，qi继承空蟹成长。资源、棋子、装备、商店、卡池、随机数、既有禁用及播放不重置。技能蓄力和冷却仅存在战斗快照；71组修改前回放及八种阶段/禁用迁移见[罗汉气波掌](qi.md)。
+
+## schema 46 / singleplayer-0.47
+
+schema45仅准备期切换aurora，战斗/结算/终局与历史保留coalitions，下一准备阶段再升级。中间0.45→0.46固定coalitions及0.46；空蟹旧450%技能、目标选择和原形象均保留，新版成长与技能冷却只存在于Fighter。经济、棋子、装备、商店、卡池、禁用、随机数和播放不重置。64组修改前回放与八种阶段/禁用迁移见[空蟹极光成长](aurora.md)。
+
+## schema 45 / singleplayer-0.46
+
+schema44仅准备期升级coalitions；在途、结算、终局和历史保留原版本，下一准备阶段才更新。中间0.44→0.45固定lineages与0.45，hasLineageRules保留八项新职业，旧羁绊和新增八项机制分别由版本重建。13系列只影响新局生成，既有禁用、商店、卡池、棋子、装备、资源、随机数与播放不重置。攻击回能标记为战斗临时状态，不写入永久Piece。58组修改前逐帧回放与八种阶段/禁用组合见[空援协同](coalitions.md)。
+
+## schema 44 / singleplayer-0.45
+
+schema43仅准备期升级lineages；在途、结算、终局和历史保留counterplay或原版本，下一准备阶段再使用新职业及异能吸血。unitDefinition冻结8项旧职业，原种族禁用集合、卡池、资源、商店、装备、随机数和播放均保留。中间0.43→0.44固定counterplay和0.44，47组修改前逐帧回放及八种阶段/禁用组合见[职业与异能](lineages-and-lifesteal.md)。
+
+## schema 43 / singleplayer-0.44
+
+schema42只在准备期切换counterplay；在途战斗、结算、终局和历史保留原版本，下一次准备再启用甲穿、回能压制、空中防御和50反伤。中间0.42→0.43固定formations和0.43，避免当前常量改变旧边界。资源、棋子、商店、卡池、禁用、AI、随机数及播放不重置。35组修改前逐帧回放与八种阶段/禁用组合见[战术克制](counterplay.md)；战斗详情选择仅为界面内存，不进入永久棋子或存档。
+
+## schema 42 / singleplayer-0.43
+
+schema41仅准备阶段切换formations，启用步兵/先锋/野兽/傀儡累计；在途战斗、结算、终局、历史和播放保留原版本，下一次准备才更新。中间0.41→0.42固定ambush和0.42规则，避免常量跨过历史边界。没有改写资源、卡池、商店、棋子、装备、禁用、AI、随机数或回放输入。穿山甲与刺杀沿用ambush定义；27组修改前冻结及八种阶段/禁用组合见[连携累计](formation-stacking.md)和`tests/formation-stacking.test.ts`。
+
+## schema 41 / singleplayer-0.42
+
+schema40只在准备阶段切换ambush；进行中的战斗、结算、终局和历史保持原combatVersion，下一轮准备才更新。`unitDefinition`按版本保留穿山甲旧先锋分类、720生命/42攻击/6护甲/0.75秒和破阵冲击，新版本才使用野兽/刺杀与遁地。商店、图鉴、详情、招募可达性与战斗使用一致定义。中间0.40→0.41固定写入wildfront，避免新常量改写旧边界。资源、卡池、商店、棋子、装备、禁用、AI风格、随机数和播放不变；八种阶段/禁用组合、24组0.41逐帧冻结与旧puppets回放见[刺杀与穿山甲](assassins.md)。
+
+## schema 40 / singleplayer-0.41
+
+schema39只在准备阶段切换到wildfront；battle/result/finished、历史战报与播放保留原combatVersion，下一轮准备才使用新野兽攻速和先锋护甲。金币、生命、卡池、商店、棋子、装备、禁用、随机数和AI风格不变。0.35→0.36的中间迁移固定为puppets，0.39→0.40固定写入0.40后继续，避免随CURRENT_COMBAT_VERSION跳过历史边界。八种阶段/禁用组合及22组修改前冻结的旧回放见`tests/wildfront.test.ts`和[野兽与先锋](wildfront.md)。
+
+## schema 39 / singleplayer-0.40
+
+schema38只补灵鹫30份的缺失卡池，海神被禁用时为零，不重复追加已有池。各阶段保留combatVersion、资源、随机数、棋子、商店、装备、AI风格、历史与播放；恢复进行中的战斗不再次准备AI。八种阶段/禁用组合与19组旧回放由`tests/lingjiu.test.ts`验证，见[灵鹫](lingjiu.md)。
+
+## schema 38 / singleplayer-0.39
+
+schema37仅补巨齿象45份与猛毒兽30份的缺失卡池，野兽被禁用时为零；已存在的池不重复补。保留所有阶段的combatVersion、随机数、既有卡池/商店、资源、棋子、装备、AI风格、历史与播放位置。污染和击飞是临时战斗快照状态，由参战阵容确定性重建，不写入永久Piece。八种阶段/禁用迁移及18组旧回放由`tests/beast-frontline.test.ts`验证，见[野兽前排](beast-frontline.md)。
 
 历史 singleplayer-0.12：schema 10 顺序迁移至 11，准备阶段升级 fleet；战斗、结算、终局及历史报告保留原 combatVersion，下一回合才切换。不改变金币、生命、商店、棋子、装备或卡池。轰炸机初始能量、引导冷却及四空军闪避按保存版本结算。`tests/fleet-balance.test.ts` 验证迁移及旧 airsea 完整快照，详见 [0.12 说明](fleet-balance.md)。
 
@@ -132,3 +172,23 @@ schema30只补缺失斧奴卡池：傀儡被禁用时为0，允许招募时为45
 ## schema 32 / singleplayer-0.33
 
 schema31只补缺失剑奴卡池：傀儡禁用为0，允许招募为30份。保留禁用结果、资源、商店、阵容、装备、历史与回放位置，战斗版本继续armored。上一步固定迁移到0.32后顺序升级。八种阶段/禁用组合及恢复战斗一致性见 `tests/swordthrall.test.ts`。
+
+## schema 33 / singleplayer-0.34
+
+schema32只补缺失刀奴卡池：傀儡禁用时0份，允许招募时25份。旧比赛的禁用、商店、持有棋子、资源、AI偏好、装备、历史和播放位置保持。上一步固定写入0.33后顺序升级；暴击计数和对阵种子由参战快照重建，不进入持久棋子。八种阶段/禁用组合与进行中战斗恢复见 `tests/bladethrall.test.ts`。
+
+## schema 34 / singleplayer-0.35
+
+schema33只补缺失盾奴卡池：傀儡禁用时0份，允许招募时15份。上一步固定写入0.34再顺序升级；不重新抽取禁用、商店或奖励，不改变资源、棋子、装备、AI偏好、历史和播放位置。继续使用armored战斗版本，临时沉默与冷却由参战快照重建。八种阶段/禁用组合、进行中战斗恢复及15组旧回放哈希见 `tests/shieldthrall.test.ts`。
+
+## schema 35 / singleplayer-0.36
+
+schema34升级只在准备阶段切换至puppets，战斗、结算、终局和历史保留原combatVersion；下一回合准备才启用新规则。保留资源、卡池、禁用、AI风格、商店、棋子、装备、历史和播放位置。早期0.28→0.29的中间迁移固定写入armored，不随CURRENT_COMBAT_VERSION变化。八种阶段/禁用组合和16组旧回放哈希见 `tests/puppet-formation.test.ts`。
+
+## schema 36 / singleplayer-0.37
+
+加入第九个合法AI标识puppets。schema35只升级封套，不给旧比赛重新分配风格，不改变战斗版本、经济、禁用、卡池、商店、阵容、装备、历史与播放位置。缺少标识的旧座位继续原七种映射；四阶段原样迁移、当前傀儡策略的存档/Worker往返见 `tests/puppet-ai.test.ts`。
+
+## schema 37 / singleplayer-0.38
+
+schema36只补缺失棍奴卡池：本局可招募时15份，傀儡禁用时0份。上一步固定写入0.37后顺序升级；不重抽禁用、商店、奖励或AI风格，不改变资源、已有棋子、装备、历史和播放位置。战斗版本仍为puppets；疾风层数只在战斗内从参战快照重建，不持久化到Piece。八种阶段/禁用组合、Worker及17组加入前旧回放见 `tests/staffthrall.test.ts`。

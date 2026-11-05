@@ -55,9 +55,9 @@ describe("步兵编队减甲", () => {
     [1, 0],
     [2, 3],
     [3, 3],
-    [4, 6],
-    [5, 6],
-    [6, 9],
+    [4, 9],
+    [5, 9],
+    [6, 18],
   ])("%i种步兵使敌方护甲降低%i，替代旧生命加成", (count, reduction) => {
     const pieces = infantry(count),
       bonus = synergies(pieces).find((s) => s.trait === "步兵")!;
@@ -84,7 +84,7 @@ describe("步兵编队减甲", () => {
     expect(
       frame.fighters
         .filter((f) => f.side === 0)
-        .every((f) => f.infantryArmorBreak === 6),
+        .every((f) => f.infantryArmorBreak === 9),
     ).toBe(true);
     expect(
       frame.fighters
@@ -187,14 +187,14 @@ describe("步兵编队减甲", () => {
     const current = pieceDetails(p("guard", 1)).traits.find(
       (t) => t.name === "步兵",
     )!.description;
-    expect(current).toContain("4 个：全体敌人护甲降低 6 点");
+    expect(current).toContain("4 个：全体敌人护甲降低 9 点");
     expect(current).not.toContain("生命 +");
     expect(
       pieceDetails(p("guard", 1), "metamorph").traits.find(
         (t) => t.name === "步兵",
       )!.description,
     ).toContain("生命 +300");
-    expect(codexMarkup()).toContain("6 个不同棋子：全体敌人护甲降低 9 点");
+    expect(codexMarkup()).toContain("6 个不同棋子：全体敌人护甲降低 18 点");
     expect(mergeCount([p("eyebug", 1), p("blastbug", 2)], "eyebug", 1)).toBe(2);
     const f = army([p("bloodhawk", 1)], 0)[0];
     expect(f.hawkForm).toEqual({ active: false });

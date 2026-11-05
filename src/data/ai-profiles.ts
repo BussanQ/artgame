@@ -40,7 +40,7 @@ export const AI_PROFILES: AiProfile[] = [
     name: "荒原兽群",
     traits: ["野兽", "先锋", "猛禽"],
     reserve: 0,
-    description: "野兽与猛禽协同，先锋恢复支撑突袭与持续输出",
+    description: "野兽与猛禽协同，先锋前排支撑突袭与持续输出",
   },
   {
     id: "fleet",
@@ -61,7 +61,7 @@ export const AI_PROFILES: AiProfile[] = [
     name: "异虫蜂群",
     traits: ["异虫", "异能", "狙击"],
     reserve: 0,
-    description: "收集异虫加速升星，以魅惑和能量压制保护杀人蜂",
+    description: "收集异虫加速升星，以魅惑和异能吸血支撑杀人蜂持续输出",
   },
   {
     id: "psychic",
@@ -77,6 +77,14 @@ export const AI_PROFILES: AiProfile[] = [
     reserve: 0,
     description:
       "铁狗与铁猿支撑前排，爆破技能削弱密集阵容，投石车和高费装甲接续输出",
+  },
+  {
+    id: "puppets",
+    name: "傀儡卫阵",
+    traits: ["傀儡", "召唤", "护卫"],
+    reserve: 0,
+    description:
+      "收集不同傀儡形成四人核心，寻找六傀儡全队攻击与召唤协同；缺少拼图时保留过渡战力",
   },
 ];
 export function isAiProfileId(value: unknown): value is AiProfileId {

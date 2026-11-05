@@ -32,6 +32,11 @@ describe("独立技能结算", () => {
           0,
         )[0],
         enemy = fighter("titan", 2, 1, 3, 3);
+      if (["birdrider", "bladethrall", "staffthrall"].includes(u.id)) {
+        expect(source.mana).toBe(0);
+        expect(castSkill(context(source, enemy), source, enemy)).toBe(false);
+        continue;
+      }
       source.hp -= 100;
       source.mana = 100;
       const ally = fighter("guard", 3, 0, 4, 4);
@@ -54,7 +59,13 @@ describe("独立技能结算", () => {
         expect(
           ctx.events.length +
             ctx.effects.filter((e) => e.kind !== "cast").length +
-            (source.air?.cast ? 1 : 0),
+            (source.air?.cast ||
+            source.bladeStorm ||
+            source.sonic ||
+            source.windup ||
+            source.combo
+              ? 1
+              : 0),
           u.id,
         ).toBeGreaterThan(0);
       const after = structuredClone(ctx);
@@ -270,11 +281,29 @@ describe("独立技能结算", () => {
           .filter((e) => e.target === f.uid)
           .reduce((n, e) => n + e.absorbed, 0),
       );
-      expect(f.healing).toBe(
-        effects
-          .filter((e) => e.source === f.uid && e.kind === "heal")
-          .reduce((n, e) => n + e.amount, 0),
-      );
+      const activeHealing = effects
+        .filter((e) => e.source === f.uid && e.kind === "heal")
+        .reduce((n, e) => n + e.amount, 0);
+      // Health conservation observes self-regeneration independently of the regen rate.
+      const regeneration = f.armorRegen
+        ? b.frames.slice(1).reduce((total, frame, index) => {
+            const previous = b.frames[index].fighters.find(
+              (unit) => unit.uid === f.uid,
+            );
+            const current = frame.fighters.find((unit) => unit.uid === f.uid);
+            if (!previous || !current || previous.hp <= 0) return total;
+            const received = frame.events
+              .filter((event) => event.target === f.uid)
+              .reduce((n, event) => n + event.amount, 0);
+            const healed = frame.effects
+              .filter(
+                (effect) => effect.kind === "heal" && effect.target === f.uid,
+              )
+              .reduce((n, effect) => n + effect.amount, 0);
+            return total + current.hp - previous.hp + received - healed;
+          }, 0)
+        : 0;
+      expect(f.healing).toBeCloseTo(activeHealing + regeneration, 8);
     }
   });
 });

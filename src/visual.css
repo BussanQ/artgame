@@ -1354,21 +1354,6 @@ footer {
   margin-top: 3px;
 }
 
-.save-notice {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 12px 18px;
-  margin-top: 12px;
-  border: 1px solid #66765b;
-  background: #263a30;
-  color: #d7e4c8;
-  font-size: 13px;
-}
-.save-notice button {
-  padding: 5px 10px;
-}
 .save-status {
   color: #a8c3ae;
 }
@@ -2202,7 +2187,8 @@ body.has-modal {
     grid-template-columns: repeat(4, 1fr);
     gap: 7px;
   }
-  .mobile-dock button {
+  .mobile-dock button,
+  .mobile-dock a {
     min-height: 40px;
     font-size: 13px;
     color: #e6e1bd;

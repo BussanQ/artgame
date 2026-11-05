@@ -1,3 +1,4 @@
+import { unitCost } from "../data/catalog";
 import { CURRENT_COMBAT_VERSION } from "./types";
 import { UNIT, UNITS } from "../data/units";
 import type { CombatVersion, Piece, Player } from "./types";
@@ -7,10 +8,13 @@ export const insectCount = (pieces: Piece[]) =>
   new Set(pieces.filter((p) => isInsect(p.defId)).map((p) => p.defId)).size;
 export const pieceCopies = (piece: Piece) =>
   piece.copies ?? 3 ** (piece.star - 1);
-export const salePrice = (piece: Piece) =>
+export const salePrice = (
+  piece: Piece,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) =>
   isInsect(piece.defId)
-    ? Math.min(5, UNIT[piece.defId].cost * 3 ** (piece.star - 1))
-    : UNIT[piece.defId].cost * pieceCopies(piece);
+    ? Math.min(5, unitCost(piece.defId, version) * 3 ** (piece.star - 1))
+    : unitCost(piece.defId, version) * pieceCopies(piece);
 export function mergeCount(
   pieces: Piece[],
   id: string,
@@ -23,7 +27,17 @@ export function mergeCount(
       version !== "fleet" &&
       version !== "metamorph" &&
       version !== "infantry" &&
-      version !== "armored") ||
+      version !== "armored" &&
+      version !== "puppets" &&
+      version !== "wildfront" &&
+      version !== "ambush" &&
+      version !== "formations" &&
+      version !== "counterplay" &&
+      version !== "lineages" &&
+      version !== "coalitions" &&
+      version !== "aurora" &&
+      version !== "qi" &&
+      version !== "taotie") ||
     !isInsect(id)
   )
     return 3;

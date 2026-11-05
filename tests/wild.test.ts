@@ -20,15 +20,20 @@ import {
 } from "../src/engine/game";
 import { decodeSave, SAVE_SCHEMA, validGame } from "../src/engine/persistence";
 import { COPIES, UNIT, WILD_ADDITIONS } from "../src/data/units";
-import type { Fighter, Piece } from "../src/engine/types";
+import type { Fighter, Piece, CombatVersion } from "../src/engine/types";
 const p = (
   id: string,
   uid: number,
   position: number | null = 35,
   star = 1,
 ): Piece => ({ defId: id, uid, position, star });
-const f = (id: string, uid: number, side: 0 | 1 = 0) => {
-  const a = army([p(id, uid)], side)[0];
+const f = (
+  id: string,
+  uid: number,
+  side: 0 | 1 = 0,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) => {
+  const a = army([p(id, uid)], side, version)[0];
   Object.assign(a, { x: 3, y: side === 0 ? 4 : 3, shield: 0, mana: 100 });
   return a;
 };
@@ -39,16 +44,16 @@ const ctx = (...fighters: Fighter[]): CombatContext => ({
   effects: [],
 });
 describe("猛禽与陆行者", () => {
-  it("猛禽2/3种仅强化本族对地普攻，备战与重复不计，旧版本不启用", () => {
+  it("旧lineages猛禽2/3种仅强化本族对地普攻，备战与重复不计，旧版本不启用", () => {
     const pieces = [
       p("bat", 1),
       p("bloodhawk", 2, 36),
       p("bonedragon", 3, 43),
       p("guard", 4, 34),
     ];
-    const a = army(pieces, 0);
+    const a = army(pieces, 0, "lineages");
     expect(a.map((x) => x.groundBonus)).toEqual([0.35, 0.35, 0.35, undefined]);
-    expect(army(pieces.slice(0, 2), 0)[0].groundBonus).toBe(0.15);
+    expect(army(pieces.slice(0, 2), 0, "lineages")[0].groundBonus).toBe(0.15);
     expect(
       army([p("bat", 1), p("bat", 2, 36), p("bloodhawk", 3, null)], 0)[0]
         .groundBonus,
@@ -140,8 +145,8 @@ describe("猛禽与陆行者", () => {
     expect(attackInterval(b, 15)).toBe(5.6);
     expect(attackInterval(b, 31)).toBe(4);
   });
-  it("罗汉等待完整一秒后对锁定目标造成冻结的真伤", () => {
-    const a = f("arhat", 1),
+  it("旧罗汉等待完整一秒后对锁定目标造成冻结的真伤", () => {
+    const a = f("arhat", 1, 0, "aurora"),
       b = f("guard", 2, 1);
     b.armor = 100;
     const c = ctx(a, b);
@@ -163,8 +168,8 @@ describe("猛禽与陆行者", () => {
     "target-dead",
     "target-friendly",
   ] as const)
-    it("罗汉蓄力取消或落空：" + reason, () => {
-      const a = f("arhat", 1),
+    it("旧罗汉蓄力取消或落空：" + reason, () => {
+      const a = f("arhat", 1, 0, "aurora"),
         b = f("guard", 2, 1);
       const c = ctx(a, b);
       castSkill(c, a, b);
@@ -181,8 +186,8 @@ describe("猛禽与陆行者", () => {
       expect(a.windup).toBeUndefined();
       expect(a.mana).toBe(reason === "death" ? 10 : 0);
     });
-  it("实际控制技能立即中断蓄力，战斗中蓄力期间冷却流逝且不普通攻击", () => {
-    const a = f("arhat", 1),
+  it("旧罗汉实际控制立即中断蓄力，蓄力期间冷却流逝且不普通攻击", () => {
+    const a = f("arhat", 1, 0, "aurora"),
       g = f("guard", 2, 1);
     const c = ctx(a, g);
     castSkill(c, a, g);
@@ -191,6 +196,7 @@ describe("猛禽与陆行者", () => {
     const battle = simulate(
       [{ ...p("arhat", 1, 35), items: ["staff"] }],
       [p("turtle", 2, 35, 3)],
+      "aurora",
     );
     const first = battle.frames.findIndex((fr) => fr.fighters[0].windup);
     expect(first).toBeGreaterThan(0);
@@ -208,8 +214,8 @@ describe("猛禽与陆行者", () => {
       );
     }
   });
-  it("吞噬选两格内低于自身当前生命的最健康目标，每战一次且穿盾", () => {
-    const a = f("skytoad", 1),
+  it("旧蛤蟆吞噬选两格内低于自身当前生命的最健康目标，每战一次且穿盾", () => {
+    const a = f("skytoad", 1, 0, "qi"),
       b = f("guard", 2, 1),
       d = f("guard", 3, 1),
       far = f("guard", 4, 1);
@@ -246,8 +252,8 @@ describe("猛禽与陆行者", () => {
     c.fighters.push(fresh);
     expect(castSkill(c, fresh, b)).toBe(false);
   });
-  it("吞噬可以触发殉爆，血鹰吸血仅使用实际生命伤害", () => {
-    const a = f("skytoad", 1),
+  it("旧蛤蟆吞噬可以触发殉爆，血鹰吸血仅使用实际生命伤害", () => {
+    const a = f("skytoad", 1, 0, "qi"),
       bug = f("blastbug", 2, 1);
     bug.hp = 100;
     const c = ctx(a, bug);
@@ -334,6 +340,7 @@ describe("0.14 存档增量迁移", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "保留阵容与回放并补齐新池", () => {
       const g = createGame(137, "classic");
+      g.combatVersion = "fleet";
       for (const player of g.players)
         for (let i = 0; i < player.shop.length; i++)
           if (WILD_ADDITIONS.includes(player.shop[i] ?? ""))
@@ -370,7 +377,9 @@ describe("0.14 存档增量迁移", () => {
       expect(validGame(after)).toBe(true);
       expect(after.players).toEqual(before.players);
       expect(after.history).toEqual(before.history);
-      expect(after.combatVersion).toBe(before.combatVersion);
+      expect(after.combatVersion).toBe(
+        phase === "prepare" ? CURRENT_COMBAT_VERSION : "fleet",
+      );
       for (const id of WILD_ADDITIONS)
         expect(after.pool[id]).toBe(COPIES[UNIT[id].cost]);
       if (phase === "battle")

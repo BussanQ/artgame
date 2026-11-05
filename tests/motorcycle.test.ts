@@ -218,6 +218,7 @@ describe("摩托骑兵集成", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it("0.20 " + phase + "仅新增25份卡池，保留资源和逐帧回放", () => {
       const g = createGame(137, "classic");
+      g.combatVersion = "metamorph";
       g.pool.motorcycle = 0;
       let result: ReturnType<typeof startRound> | undefined;
       if (phase !== "prepare") {
@@ -248,6 +249,8 @@ describe("摩托骑兵集成", () => {
       expect(decoded.data!.schema).toBe(SAVE_SCHEMA);
       expect(decoded.data!.game).toEqual({
         ...before,
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "metamorph",
         pool: { ...before.pool, motorcycle: 25 },
       });
       expect(validGame(decoded.data!.game)).toBe(true);

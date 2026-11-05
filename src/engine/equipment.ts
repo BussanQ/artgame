@@ -1,7 +1,8 @@
-import { CURRENT_COMBAT_VERSION } from "./types";
+import { CURRENT_COMBAT_VERSION, hasAmbushRules } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
-import { SKILLS } from "../data/skills";
+import { unitDefinition } from "../data/unit-stats";
+import { BLADE_CRITICAL, STAFF_GALE, SKILLS } from "../data/skills";
 import { random } from "./random";
 import type { Game, Player, Piece, CombatVersion } from "./types";
 
@@ -92,8 +93,15 @@ export function itemScore(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): number {
+  const expectedAttack =
+    piece.defId === "bladethrall"
+      ? 1 +
+        BLADE_CRITICAL.chance * (BLADE_CRITICAL.multiplier[piece.star - 1] - 1)
+      : piece.defId === "staffthrall"
+        ? 1 + Math.min(0.45, STAFF_GALE.speedPerStack[piece.star - 1] * 3)
+        : 1;
   const s = ITEM[id].stats,
-    u = UNIT[piece.defId],
+    u = unitDefinition(piece.defId, version),
     tank =
       u.traits.includes("护卫") ||
       u.traits.includes("先锋") ||
@@ -110,15 +118,17 @@ export function itemScore(
         "whale",
         "medic",
         "ironrooster",
+        "venombeast",
       ].includes(u.id) ||
+      (hasAmbushRules(version) && u.id === "pangolin") ||
       SKILLS[u.id].damageType === "magic" ||
       SKILLS[u.id].healRatio > 0;
   return (
-    (s.attack ?? 0) * (u.range > 1 ? 2 : 1) +
+    (s.attack ?? 0) * (u.range > 1 ? 2 : 1) * expectedAttack +
     (s.hp ?? 0) * (tank ? 0.2 : 0.08) +
     (s.armor ?? 0) * (tank ? 10 : 4) +
-    (s.haste ?? 0) * u.attack * 4 +
-    (s.lifesteal ?? 0) * u.attack * 3 +
+    (s.haste ?? 0) * u.attack * 4 * expectedAttack +
+    (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
       ((version === "signature" ||
         version === "summons" ||
@@ -128,8 +138,18 @@ export function itemScore(
         version === "fleet" ||
         version === "metamorph" ||
         version === "infantry" ||
-        version === "armored") &&
-      ["turtle", "birdrider", "ironrooster"].includes(u.id)
+        version === "armored" ||
+        version === "puppets" ||
+        version === "wildfront" ||
+        hasAmbushRules(version)) &&
+      [
+        "turtle",
+        "birdrider",
+        "bladethrall",
+        "staffthrall",
+        "ironrooster",
+        "venombeast",
+      ].includes(u.id)
         ? 0
         : caster
           ? 300
@@ -143,8 +163,19 @@ export function itemScore(
         version === "fleet" ||
         version === "metamorph" ||
         version === "infantry" ||
-        version === "armored") &&
-      ["cavalry", "turtle", "tiger", "blastbug", "birdrider"].includes(u.id)
+        version === "armored" ||
+        version === "puppets" ||
+        version === "wildfront" ||
+        hasAmbushRules(version)) &&
+      [
+        "cavalry",
+        "turtle",
+        "tiger",
+        "blastbug",
+        "birdrider",
+        "bladethrall",
+        "staffthrall",
+      ].includes(u.id)
         ? 0
         : caster
           ? 2

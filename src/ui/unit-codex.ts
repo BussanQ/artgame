@@ -1,10 +1,12 @@
+import { catalogUnit } from "../data/catalog";
 import {
   availableUnits,
   isRecruitable,
   type RecruitmentContext,
 } from "../engine/rotation";
-import { unitArmor } from "../data/unit-stats";
-import { TRAIT_TIERS } from "../data/traits";
+import { unitArmor, unitDefinition, unitSprite } from "../data/unit-stats";
+import { traitTiers } from "../data/traits";
+import { CURRENT_COMBAT_VERSION } from "../engine/types";
 import { UNITS, TRAITS } from "../data/units";
 import { skillName, skillRole, skillDescription } from "../data/skills";
 
@@ -30,37 +32,39 @@ export function filteredUnits(game: RecruitmentContext = {}) {
     .trim()
     .split(/\s+/)
     .filter(Boolean);
-  return UNITS.filter(
-    (u) =>
-      (codexFilters.availability === "all" ||
-        (codexFilters.availability === "available"
-          ? isRecruitable(game, u.id)
-          : !isRecruitable(game, u.id))) &&
-      (codexFilters.cost === "all" || u.cost === Number(codexFilters.cost)) &&
-      (codexFilters.trait === "all" ||
-        u.traits.some((t) => t === codexFilters.trait)) &&
-      (codexFilters.range === "all" ||
-        (codexFilters.range === "melee"
-          ? u.range === 1
-          : codexFilters.range === "ranged"
-            ? u.range > 1
-            : !!u.flying)) &&
-      words.every((word) =>
-        `${u.name} ${u.id} ${u.traits.join(" ")} ${skillName(u.id)} ${skillRole(u.id)} ${skillDescription(u.id)}`
-          .normalize("NFKC")
-          .toLocaleLowerCase()
-          .includes(word),
-      ),
-  ).sort(
-    (a, b) =>
-      (codexFilters.sort === "attack"
-        ? b.attack - a.attack
-        : codexFilters.sort === "hp"
-          ? b.hp - a.hp
-          : codexFilters.sort === "range"
-            ? b.range - a.range
-            : a.cost - b.cost) || a.cost - b.cost,
-  );
+  return UNITS.map((u) => catalogUnit(game, u.id))
+    .filter(
+      (u) =>
+        (codexFilters.availability === "all" ||
+          (codexFilters.availability === "available"
+            ? isRecruitable(game, u.id)
+            : !isRecruitable(game, u.id))) &&
+        (codexFilters.cost === "all" || u.cost === Number(codexFilters.cost)) &&
+        (codexFilters.trait === "all" ||
+          u.traits.some((t) => t === codexFilters.trait)) &&
+        (codexFilters.range === "all" ||
+          (codexFilters.range === "melee"
+            ? u.range === 1
+            : codexFilters.range === "ranged"
+              ? u.range > 1
+              : !!u.flying)) &&
+        words.every((word) =>
+          `${u.name} ${u.id} ${u.traits.join(" ")} ${skillName(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)} ${skillRole(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)} ${skillDescription(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)}`
+            .normalize("NFKC")
+            .toLocaleLowerCase()
+            .includes(word),
+        ),
+    )
+    .sort(
+      (a, b) =>
+        (codexFilters.sort === "attack"
+          ? b.attack - a.attack
+          : codexFilters.sort === "hp"
+            ? b.hp - a.hp
+            : codexFilters.sort === "range"
+              ? b.range - a.range
+              : a.cost - b.cost) || a.cost - b.cost,
+    );
 }
 export function codexCount(game: RecruitmentContext = {}) {
   return `找到 ${filteredUnits(game).length} / ${UNITS.length} 种棋子${game.bannedSeries ? ` · 本局可招募 ${availableUnits(game).length} 种` : ""}`;
@@ -97,7 +101,7 @@ export function codexCards(game: RecruitmentContext = {}) {
     ? units
         .map(
           (u) =>
-            `<article class="${isRecruitable(game, u.id) ? "" : "codex-banned"}">${!isRecruitable(game, u.id) ? '<span class="ban-badge">本局禁用</span>' : ""}<img class="codex-portrait" src="/assets/units/${u.id}.png" alt="${u.name}"><strong style="color:${u.color}">${u.name} <span class="codex-stars">${"★".repeat(codexFilters.star)}</span></strong><small>${u.cost} 金 · ${u.flying ? "飞行" : "地面"} · ${u.traits.join(" / ")} · ${skillRole(u.id)}</small><p>生命 ${u.hp * scale} · 攻击 ${u.attack * scale}<br>护甲 ${unitArmor(u, codexFilters.star)} · 射程 ${u.range} · 间隔 ${u.interval * 0.25} 秒</p><b class="codex-skill">${skillName(u.id)}</b><p class="skill-description">${skillDescription(u.id)}</p></article>`,
+            `<article class="${isRecruitable(game, u.id) ? "" : "codex-banned"}">${!isRecruitable(game, u.id) ? '<span class="ban-badge">本局禁用</span>' : ""}<img class="codex-portrait" src="/assets/units/${unitSprite(u.id, game.combatVersion)}.png" alt="${u.name}"><strong style="color:${u.color}">${u.name} <span class="codex-stars">${"★".repeat(codexFilters.star)}</span></strong><small>${u.cost} 金 · ${u.flying ? "飞行" : "地面"} · ${u.traits.join(" / ")} · ${skillRole(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)}</small><p>生命 ${u.hp * scale} · 攻击 ${u.attack * scale}<br>护甲 ${unitArmor(u, codexFilters.star)} · 射程 ${u.range} · 间隔 ${u.interval * 0.25} 秒</p><b class="codex-skill">${skillName(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)}</b><p class="skill-description">${skillDescription(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)}</p></article>`,
         )
         .join("")
     : '<p class="empty">没有符合条件的棋子。请缩短关键词，或将招募范围、费用、羁绊和攻击方式改为全部。</p>';
@@ -148,7 +152,7 @@ export function codexMarkup(game: RecruitmentContext = {}) {
     .join(
       "",
     )}</select></label></div><div class="codex-result-bar"><p class="codex-count" role="status">${codexCount(game)}</p><button data-action="codex-reset">重置图鉴</button></div><div class="codex-grid">${codexCards(game)}</div><details class="trait-handbook"><summary>羁绊梯度 · 同名仅计一次，异虫包含备战席</summary><div class="trait-handbook-grid">${Object.entries(
-    TRAIT_TIERS,
+    traitTiers(game.combatVersion ?? CURRENT_COMBAT_VERSION),
   )
     .map(
       ([name, tiers]) =>

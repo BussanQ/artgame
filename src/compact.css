@@ -1234,15 +1234,22 @@ main > .right > .encounter-brief {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 5px;
   }
-  .mobile-dock button {
+  .mobile-dock button,
+  .mobile-dock a {
     min-height: 44px;
     font-size: 12px;
     background: #1c3129;
   }
-  .mobile-dock button[aria-current="page"] {
+  .mobile-dock button[aria-current="page"],
+  .mobile-dock a[aria-current="page"] {
     color: #15211c;
     background: linear-gradient(#d5c394, #ae9365);
     border-color: #ecdaa8;
     font-weight: 700;
   }
 }
+
+/* Distinct landwalkers suppress their exclusive formation. Keep the conflict visible. */
+.synergy-detail.conflicted { border-color: #a05f49; background: #512e2340; }
+.synergy-detail.conflicted .trait-icon,
+.synergy-detail.conflicted .synergy-count small { color: #efb098; }

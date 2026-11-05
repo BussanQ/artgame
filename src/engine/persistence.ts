@@ -1,8 +1,14 @@
+import { catalogCost } from "../data/catalog";
 import { isRecruitable, validBans } from "./rotation";
 import { isAiProfileId } from "../data/ai-profiles";
 import { CURRENT_COMBAT_VERSION } from "./types";
 import { ITEM, COMPONENTS } from "../data/items";
 import {
+  LINGJIU_ADDITIONS,
+  BEAST_FRONTLINE_ADDITIONS,
+  STAFFTHRALL_ADDITIONS,
+  SHIELDTHRALL_ADDITIONS,
+  BLADETHRALL_ADDITIONS,
   SWORDTHRALL_ADDITIONS,
   AXETHRALL_ADDITIONS,
   COPIES,
@@ -34,7 +40,7 @@ import type { Game, Piece, RoundReport } from "./types";
 export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
-export const SAVE_SCHEMA = 32;
+export const SAVE_SCHEMA = 48;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -106,18 +112,7 @@ function validReport(v: unknown): v is RoundReport {
   return (
     record(v) &&
     integer(v.round, 1, RULES.maxRounds) &&
-    (v.combatVersion === "legacy" ||
-      v.combatVersion === "tactics" ||
-      v.combatVersion === "balanced" ||
-      v.combatVersion === "signature" ||
-      v.combatVersion === "summons" ||
-      v.combatVersion === "legions" ||
-      v.combatVersion === "brood" ||
-      v.combatVersion === "airsea" ||
-      v.combatVersion === "fleet" ||
-      v.combatVersion === "metamorph" ||
-      v.combatVersion === "infantry" ||
-      v.combatVersion === "armored") &&
+    validCombatVersion(v.combatVersion) &&
     ((v.kind === "pve" && v.opponentId === -1) ||
       (v.kind === "pvp" && integer(v.opponentId, 1, 7))) &&
     text(v.opponentName, 60) &&
@@ -135,6 +130,32 @@ function validReport(v: unknown): v is RoundReport {
       v.left.length + v.right.length
   );
 }
+const validCombatVersion = (version: unknown) =>
+  typeof version === "string" &&
+  [
+    "legacy",
+    "tactics",
+    "balanced",
+    "signature",
+    "summons",
+    "legions",
+    "brood",
+    "airsea",
+    "fleet",
+    "metamorph",
+    "infantry",
+    "armored",
+    "puppets",
+    "wildfront",
+    "ambush",
+    "formations",
+    "counterplay",
+    "lineages",
+    "coalitions",
+    "aurora",
+    "qi",
+    "taotie",
+  ].includes(version);
 /** Reject broken money/population/card-pool state before it reaches the engine or UI. */
 export function validGame(value: unknown): value is Game {
   if (!record(value)) return false;
@@ -142,20 +163,8 @@ export function validGame(value: unknown): value is Game {
   if (
     !integer(g.seed, 0, 0xffffffff) ||
     !validBans(g.bannedSeries) ||
-    ![
-      "legacy",
-      "tactics",
-      "balanced",
-      "signature",
-      "summons",
-      "legions",
-      "brood",
-      "airsea",
-      "fleet",
-      "metamorph",
-      "infantry",
-      "armored",
-    ].includes(g.combatVersion) ||
+    !validCombatVersion(g.combatVersion) ||
+    (g.catalogVersion !== undefined && !validCombatVersion(g.catalogVersion)) ||
     !["relaxed", "standard", "veteran"].includes(g.difficulty) ||
     !integer(g.nextUid, 1, 1e9) ||
     !integer(g.round, 1, RULES.maxRounds) ||
@@ -227,9 +236,9 @@ export function validGame(value: unknown): value is Game {
   if (Object.keys(g.pool).length !== UNITS.length) return false;
   for (const u of UNITS)
     if (
-      !integer(g.pool[u.id], 0, COPIES[u.cost]) ||
+      !integer(g.pool[u.id], 0, COPIES[catalogCost(g, u.id)]) ||
       g.pool[u.id] + counts[u.id] !==
-        (isRecruitable(g, u.id) ? COPIES[u.cost] : 0)
+        (isRecruitable(g, u.id) ? COPIES[catalogCost(g, u.id)] : 0)
     )
       return false;
   const settled = g.phase === "result" || g.phase === "finished";
@@ -283,6 +292,12 @@ export function decodeSave(raw: string | null): {
     if (!record(v)) return { data: null, status: "damaged" };
     let migrated = false;
     if (
+      integer(v.schema, 1, 47) &&
+      record(v.game) &&
+      v.game.catalogVersion === undefined
+    )
+      v.game.catalogVersion = "qi";
+    if (
       v.schema === 1 &&
       v.rules === "singleplayer-0.2" &&
       record(v.game) &&
@@ -327,7 +342,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of ROSTER_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 4;
       v.rules = "singleplayer-0.5";
       migrated = true;
@@ -359,7 +374,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of LEGION_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       if (v.game.phase === "prepare") v.game.combatVersion = "legions";
       v.schema = 8;
       v.rules = "singleplayer-0.9";
@@ -373,7 +388,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of BROOD_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       if (v.game.phase === "prepare") v.game.combatVersion = "brood";
       v.schema = 9;
       v.rules = "singleplayer-0.10";
@@ -387,7 +402,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of AIRSEA_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       if (v.game.phase === "prepare") v.game.combatVersion = "airsea";
       v.schema = 10;
       v.rules = "singleplayer-0.11";
@@ -407,7 +422,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of IMMORTAL_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 12;
       v.rules = "singleplayer-0.13";
       migrated = true;
@@ -420,7 +435,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of PSYCHIC_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 13;
       v.rules = "singleplayer-0.14";
       migrated = true;
@@ -433,7 +448,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of WILD_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 14;
       v.rules = "singleplayer-0.15";
       migrated = true;
@@ -452,7 +467,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of PHOENIX_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 16;
       v.rules = "singleplayer-0.17";
       migrated = true;
@@ -465,7 +480,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of WHALE_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 17;
       v.rules = "singleplayer-0.18";
       migrated = true;
@@ -478,7 +493,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of MEDIC_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 18;
       v.rules = "singleplayer-0.19";
       migrated = true;
@@ -491,7 +506,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of INFANTRY_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 19;
       v.rules = "singleplayer-0.20";
       migrated = true;
@@ -504,7 +519,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of MOTORCYCLE_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 20;
       v.rules = "singleplayer-0.21";
       migrated = true;
@@ -531,7 +546,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of IRONDOG_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 23;
       v.rules = "singleplayer-0.24";
       migrated = true;
@@ -544,7 +559,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of SPECIALIST_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 24;
       v.rules = "singleplayer-0.25";
       migrated = true;
@@ -557,7 +572,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of BIRDRIDER_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 25;
       v.rules = "singleplayer-0.26";
       migrated = true;
@@ -570,7 +585,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of IRONAPE_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 26;
       v.rules = "singleplayer-0.27";
       migrated = true;
@@ -582,8 +597,7 @@ export function decodeSave(raw: string | null): {
       migrated = true;
     }
     if (v.schema === 27 && v.rules === "singleplayer-0.28" && record(v.game)) {
-      if (v.game.phase === "prepare")
-        v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      if (v.game.phase === "prepare") v.game.combatVersion = "armored";
       v.schema = 28;
       v.rules = "singleplayer-0.29";
       migrated = true;
@@ -596,7 +610,7 @@ export function decodeSave(raw: string | null): {
     ) {
       for (const id of IRONROOSTER_ADDITIONS)
         if (!Object.hasOwn(v.game.pool, id))
-          v.game.pool[id] = COPIES[UNIT[id].cost];
+          v.game.pool[id] = COPIES[catalogCost(v.game, id)];
       v.schema = 29;
       v.rules = "singleplayer-0.30";
       migrated = true;
@@ -620,7 +634,7 @@ export function decodeSave(raw: string | null): {
             { bannedSeries: v.game.bannedSeries },
             id,
           )
-            ? COPIES[UNIT[id].cost]
+            ? COPIES[catalogCost(v.game, id)]
             : 0;
       v.schema = 31;
       v.rules = "singleplayer-0.32";
@@ -639,9 +653,171 @@ export function decodeSave(raw: string | null): {
             { bannedSeries: v.game.bannedSeries },
             id,
           )
-            ? COPIES[UNIT[id].cost]
+            ? COPIES[catalogCost(v.game, id)]
             : 0;
       v.schema = 32;
+      v.rules = "singleplayer-0.33";
+      migrated = true;
+    }
+    if (
+      v.schema === 32 &&
+      v.rules === "singleplayer-0.33" &&
+      record(v.game) &&
+      record(v.game.pool) &&
+      validBans(v.game.bannedSeries)
+    ) {
+      for (const id of BLADETHRALL_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = isRecruitable(
+            { bannedSeries: v.game.bannedSeries },
+            id,
+          )
+            ? COPIES[catalogCost(v.game, id)]
+            : 0;
+      v.schema = 33;
+      v.rules = "singleplayer-0.34";
+      migrated = true;
+    }
+    if (
+      v.schema === 33 &&
+      v.rules === "singleplayer-0.34" &&
+      record(v.game) &&
+      record(v.game.pool) &&
+      validBans(v.game.bannedSeries)
+    ) {
+      for (const id of SHIELDTHRALL_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = isRecruitable(
+            { bannedSeries: v.game.bannedSeries },
+            id,
+          )
+            ? COPIES[catalogCost(v.game, id)]
+            : 0;
+      v.schema = 34;
+      v.rules = "singleplayer-0.35";
+      migrated = true;
+    }
+    if (v.schema === 34 && v.rules === "singleplayer-0.35" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "puppets";
+      v.schema = 35;
+      v.rules = "singleplayer-0.36";
+      migrated = true;
+    }
+    if (v.schema === 35 && v.rules === "singleplayer-0.36") {
+      // New games can assign the puppet doctrine; existing seats keep their saved policy.
+      v.schema = 36;
+      v.rules = "singleplayer-0.37";
+      migrated = true;
+    }
+    if (
+      v.schema === 36 &&
+      v.rules === "singleplayer-0.37" &&
+      record(v.game) &&
+      record(v.game.pool) &&
+      validBans(v.game.bannedSeries)
+    ) {
+      for (const id of STAFFTHRALL_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = isRecruitable(
+            { bannedSeries: v.game.bannedSeries },
+            id,
+          )
+            ? COPIES[catalogCost(v.game, id)]
+            : 0;
+      v.schema = 37;
+      v.rules = "singleplayer-0.38";
+      migrated = true;
+    }
+    if (
+      v.schema === 37 &&
+      v.rules === "singleplayer-0.38" &&
+      record(v.game) &&
+      record(v.game.pool) &&
+      validBans(v.game.bannedSeries)
+    ) {
+      for (const id of BEAST_FRONTLINE_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = isRecruitable(
+            { bannedSeries: v.game.bannedSeries },
+            id,
+          )
+            ? COPIES[catalogCost(v.game, id)]
+            : 0;
+      v.schema = 38;
+      v.rules = "singleplayer-0.39";
+      migrated = true;
+    }
+    if (
+      v.schema === 38 &&
+      v.rules === "singleplayer-0.39" &&
+      record(v.game) &&
+      record(v.game.pool) &&
+      validBans(v.game.bannedSeries)
+    ) {
+      for (const id of LINGJIU_ADDITIONS)
+        if (!Object.hasOwn(v.game.pool, id))
+          v.game.pool[id] = isRecruitable(
+            { bannedSeries: v.game.bannedSeries },
+            id,
+          )
+            ? COPIES[catalogCost(v.game, id)]
+            : 0;
+      v.schema = 39;
+      v.rules = "singleplayer-0.40";
+      migrated = true;
+    }
+    if (v.schema === 39 && v.rules === "singleplayer-0.40" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "wildfront";
+      v.schema = 40;
+      v.rules = "singleplayer-0.41";
+      migrated = true;
+    }
+    if (v.schema === 40 && v.rules === "singleplayer-0.41" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "ambush";
+      v.schema = 41;
+      v.rules = "singleplayer-0.42";
+      migrated = true;
+    }
+    if (v.schema === 41 && v.rules === "singleplayer-0.42" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "formations";
+      v.schema = 42;
+      v.rules = "singleplayer-0.43";
+      migrated = true;
+    }
+    if (v.schema === 42 && v.rules === "singleplayer-0.43" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "counterplay";
+      v.schema = 43;
+      v.rules = "singleplayer-0.44";
+      migrated = true;
+    }
+    if (v.schema === 43 && v.rules === "singleplayer-0.44" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "lineages";
+      v.schema = 44;
+      v.rules = "singleplayer-0.45";
+      migrated = true;
+    }
+    if (v.schema === 44 && v.rules === "singleplayer-0.45" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "coalitions";
+      v.schema = 45;
+      v.rules = "singleplayer-0.46";
+      migrated = true;
+    }
+    if (v.schema === 45 && v.rules === "singleplayer-0.46" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "aurora";
+      v.schema = 46;
+      v.rules = "singleplayer-0.47";
+      migrated = true;
+    }
+    if (v.schema === 46 && v.rules === "singleplayer-0.47" && record(v.game)) {
+      if (v.game.phase === "prepare") v.game.combatVersion = "qi";
+      v.schema = 47;
+      v.rules = "singleplayer-0.48";
+      migrated = true;
+    }
+    if (v.schema === 47 && v.rules === "singleplayer-0.48" && record(v.game)) {
+      if (v.game.phase === "prepare")
+        v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      v.schema = 48;
       v.rules = RULES.version;
       migrated = true;
     }

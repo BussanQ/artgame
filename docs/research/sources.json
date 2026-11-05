@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "collectedAt": "2026-11-02",
+  "collectedAt": "2026-11-05",
   "sources": [
     {
       "id": "S01",
@@ -29,10 +29,15 @@
       "publishedAt": "2019-04-27",
       "kind": "community",
       "status": "image-transcribed-traits-roster-reviewed",
-      "accessedAt": "2026-11-03",
+      "accessedAt": "2026-11-05",
       "targetVersion": "2019-05-09作者标记；客户端版本未知",
       "modifiedAt": "2019-05-09",
-      "note": "22类羁绊单元格已转录；攻城阈值未写，档位叠加规则未知。见historical-tables.json。"
+      "note": "22类羁绊单元格保存原始逐档数字；攻城阈值未写。0.43通过S50累计说明与S18总量交叉核对四条连携，见formation-stacking-history.json，不将推导结果冒充原图文字。",
+      "wildfrontReview": "0.41重新下载并目视核对原图，SHA与既存记录一致；野兽为2/4/6档攻速15/25/35%，后两档全军，先锋3/6档护甲6/8。纠正historical-tables.json后两档漏写速度的转录。取最高、增速公式和召唤继承是本地选择。",
+      "formationReview": "0.43再次目视原图，步兵3/6/9与先锋6/8是累计步骤；野兽个人15与团队25/35、傀儡个人10/15与团队20按受益范围分别累计。统一客户端版本仍未知。",
+      "counterplayReview": "0.44原图再次目视：狙击3/6甲穿步骤4/8、骑兵2减回能3、海神2/4空中防御步骤20/20。灵能印为2/3，保留原转录；当前人数与全军范围以S20/S51交叉复核。",
+      "lineagesReview": "0.45目视同指纹原图，核对8项职业格与异能5/5/10增量；本轮页面文本读取失败，不假称重新抓取。",
+      "coalitionsReview": "0.46复核记录见coalitions-history.json；客户端卡已实际目视，保留图片指纹、时间边界、原始增量与本地结算解释。"
     },
     {
       "id": "S04",
@@ -43,7 +48,8 @@
       "status": "images-transcribed",
       "accessedAt": "2026-11-03",
       "targetVersion": "2019-07-08玩家测量；客户端版本未知",
-      "note": "56行兵种属性与35个护甲减伤样本已逐图录入，含来源图片与行号。未提供技能伤害和商店概率。见historical-tables.json。"
+      "note": "56行兵种属性与35个护甲减伤样本已逐图录入，含来源图片与行号。未提供技能伤害和商店概率。见historical-tables.json。",
+      "qiReview": "0.48重新下载并目视S04-2第11行，SHA与先前转录一致，采用550生命、5护甲、5格、2.2秒及153–166区间取整均值160。原始字段保持不变；本次页面正文未成功重新获取，不能称全文复核。见qi-history.json。"
     },
     {
       "id": "S05",
@@ -145,7 +151,8 @@
       "status": "partial-text-reviewed",
       "accessedAt": "2026-11-03",
       "targetVersion": "S1 June balance commentary, not a complete ruleset",
-      "reviewNotes": "0.16 核对血鹰满血变身、落地及普通攻击三连击方向；同文记录升至四费。本项目保留三费与自主属性、每段60%倍率，不宣称同版本完整还原。"
+      "reviewNotes": "0.16 核对血鹰满血变身、落地及普通攻击三连击方向；同文记录升至四费。本项目保留三费与自主属性、每段60%倍率，不宣称同版本完整还原。",
+      "qiReview": "0.48复核原作者六月评测中的罗汉随机目标和可能缩短前摇，保留为后期变更，没有用来证明早期锁定行为或1秒前摇。"
     },
     {
       "id": "S15",
@@ -184,10 +191,13 @@
       "publishedAt": null,
       "kind": "community-guide",
       "status": "text-reviewed",
-      "accessedAt": "2026-11-04",
+      "accessedAt": "2026-11-05",
       "targetVersion": "Historical article, not a complete verified ruleset",
       "note": "本轮核对铁狗控制型装甲前排的定位，与S04属性表交叉引用；不据此推断具体伤害、范围或控制时长。 0.25直读正文确认特种兵7射程、后排、物理/法术装备与狙击核心定位；页面显示2019-05-22修改，并非已核实发布日期。",
-      "modifiedAt": "2019-05-22"
+      "modifiedAt": "2019-05-22",
+      "formationReview": "原始正文经web直读，作者说明各连携数值按和报告；先锋总量6/14，步兵总量3/9/18。野兽35/65与括注40/75及划线内容存在版本/范围歧义。直接HTTP返回WAF页，未将其指纹当正文证据；发布日期仍未核实。",
+      "counterplayReview": "再次直读原文狙击与骑兵段：三/六狙总甲穿4/12；骑兵同时含减3和改减5，采用S03减3。对反伤抵扣原伤害的传闻不采纳。",
+      "lineagesReview": "0.45重新读取异能2/4/6全军吸血5/10/20总量及构筑机会成本；精确伤害分类和召唤继承另标本地边界。"
     },
     {
       "id": "S19",
@@ -197,7 +207,8 @@
       "kind": "community-guide",
       "status": "search-excerpt-reviewed",
       "accessedAt": "2026-11-03",
-      "targetVersion": "Historical article, not a complete verified ruleset"
+      "targetVersion": "Historical article, not a complete verified ruleset",
+      "counterplayReview": "直读灵能调整段，作者报告反伤不减免原受伤害；其低档本族25/高档全军50属于后续切片，不拼入五月20/50。"
     },
     {
       "id": "S20",
@@ -206,9 +217,16 @@
       "publishedAt": "2019-04-24",
       "kind": "publisher",
       "status": "text-reviewed",
-      "accessedAt": "2026-11-03",
+      "accessedAt": "2026-11-05",
       "targetVersion": null,
-      "reviewNotes": "0.14 rechecked psychic membership and fixed 20/30 reflection tiers; beneficiary scope not fully expanded in publisher wording."
+      "reviewNotes": "0.14 rechecked psychic membership and fixed 20/30 reflection tiers; beneficiary scope not fully expanded in publisher wording.",
+      "visualReview": {
+        "reviewedAt": "2026-11-05",
+        "imageUrl": "https://video.kts.g.mi.com/ktv_1103968488_bEZsNDhRK2FWYWdsVzJrT0tIYUludz09_1556086200042.jpeg",
+        "sha256": "f29f5453424788005490766b3be606f4d5753db0517184687559035c894e478f",
+        "status": "valid-jpeg-visually-reviewed-lingjiu-first-two-cost-card"
+      },
+      "wildfrontReview": "0.41重读四月原文，野兽2/4/6的10/10/15%本族攻速与五月全军25/35不同，明确保留版本差异。"
     },
     {
       "id": "S21",
@@ -367,10 +385,12 @@
       "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
       "publishedAt": "2019-05-09",
       "kind": "announcement-index",
-      "status": "previous-search-excerpt-reviewed-open-failed",
-      "accessedAt": "2026-11-04",
+      "status": "relevant-full-text-reviewed",
+      "accessedAt": "2026-11-05",
       "targetVersion": "2019-05-09",
-      "note": "前序检索摘要提到特种兵射程4改7；直接打开失败，本轮复查检索未命中。作者身份未独立核实，不作为具体技能参数或官方全文已恢复的证据；当前射程另由S04/S18支持。"
+      "note": "此次读到公告正文；事件日期五月9日、页面修改日期五月8日，作者署名拉克西丝，未单独核验其官方账号标识。明确猛毒兽酸性污染20秒改为10/8/6秒，并有特种兵射程4改7、装甲15/35再生、先锋6/8护甲、野兽4档起全军等记录。正文核实取代此前仅检索摘要状态；这些梯度仍需在独立战斗版本中逐项对齐。",
+      "modifiedAt": "2019-05-08",
+      "wildfrontReview": "0.41再次读取原始HTML正文，确认4野兽起全军生效与先锋改为6/8护甲；配合S03恢复档位。原始HTML指纹及未核验账号标识见wildfront-history.json。"
     },
     {
       "id": "S36",
@@ -447,7 +467,7 @@
       "status": "html-and-client-screenshot-reviewed",
       "accessedAt": "2026-11-04",
       "targetVersion": "May 2019; client build unknown",
-      "note": "页面署名互联网、来源手心游戏。公开HTTP读取HTML和客户端截图核对：2费傀儡先锋、狂舞花绽、6次50/100/150技能伤害、6.5秒持续、12秒冷却、期间免疫技能伤害；正文描述可移动。不是官方客户端配置，范围与初始能量未知。"
+      "note": "页面署名互联网、来源手心游戏。公开HTTP读取HTML和客户端截图核对：2费傀儡先锋、狂舞花绽、6次50/100/150技能伤害、6.5秒持续、12秒冷却、期间免疫技能伤害；正文描述可移动。不是官方客户端配置，范围与初始能量未知。 0.34另核对同页刀奴客户端截图80505095.jpg：3费傀儡/先锋、零时突进、普攻10%概率暴击及300/450/600%倍率；截图还显示60秒冷却，与被动描述及S04空白冷却的关系未确定，未伪称已恢复官方触发时序。 0.35另核对同页盾奴客户端截图80505108.jpg：4费傀儡/护卫、正义冲锋、前方矩形范围200/300/400法术伤害、冷却10秒；正文另述新增2秒沉默。精确范围、初始能量与交互细节未给出。"
     },
     {
       "id": "S43",
@@ -458,7 +478,115 @@
       "status": "text-reviewed",
       "accessedAt": "2026-11-04",
       "targetVersion": "May 2019",
-      "note": "User26157272的同期评测，剑奴条目支持大招可移动和免控。属于玩家观察，不是官方控制分类定义；具体控制覆盖范围仍作为本地适配。"
+      "note": "User26157272的同期评测，剑奴条目支持大招可移动和免控。属于玩家观察，不是官方控制分类定义；具体控制覆盖范围仍作为本地适配。 同文刀奴条目支持被动输出、二星过渡及野兽傀儡的构筑用途，不提供概率或倍率。"
+    },
+    {
+      "id": "S44",
+      "title": "多多自走棋手游 玩家自制四费英雄图签",
+      "url": "https://news.17173.com/z/zzq/content/05252021/183731192.shtml",
+      "publishedAt": "2021-05-25",
+      "kind": "media-reposted-community-infographic",
+      "status": "text-and-player-designed-card-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "2021 community material; not a verified 2019 client ruleset",
+      "note": "作者字段为战争艺术AOW，来源微信公众号；页面标题提及多多而正文及图签是战争艺术单位，保留此冲突。棍奴玩家图签记录疾风、同目标叠攻速10/15/20%每层、最多10层、满层50护甲与换目标清除。2021职业写战士；不能用于消除四月护卫、七月先锋的时间切片差异。0.38将疾风作为明确标注的后期机制适配实现，基础属性与先锋分类另取2019资料；见staffthrall-history.json。"
+    },
+    {
+      "id": "S45",
+      "title": "赤潮自走棋全英雄评测（第5期）",
+      "url": "https://www.taptap.cn/moment/15201495997744121",
+      "publishedAt": "2019-06-19",
+      "kind": "community-review",
+      "status": "relevant-classification-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "June 2019 community observations",
+      "note": "页面明确记录棍奴职业由护卫改为先锋，配合S04七月属性表选择本地先锋分类。并未提供疾风叠速或满层护甲数值，不能代替S44后期图签的日期边界。",
+      "lineagesReview": "0.45重新读取护卫→先锋原文，以此佐证选择四月/五月护卫分类；0.38当时的先锋选择作为历史记录保留。"
+    },
+    {
+      "id": "S46",
+      "title": "优先挑身板好的英雄上场《战争艺术：赤潮》兵种图鉴",
+      "url": "https://news.17173.com/content/05032019/080728972.shtml",
+      "publishedAt": "2019-05-03",
+      "kind": "media-reposted-publisher-infographic",
+      "status": "indexed-text-reviewed-image-fetch-unavailable",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "May 2019 article; original card not visually verified this turn",
+      "note": "检索文本标注来源为战争艺术赤潮官方。图片索引转写包含巨齿象单体100/200/300伤害与击飞，以及灵鹫候选字段，但原图请求超时/返回HTML挑战，未取得可核实图像。转写存在撕牙冲、灵鳐等读名误差，不能标为精确官方值或已逐图恢复。候选图URL为https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/aSAwUQbnjyDnqsp.jpg。"
+    },
+    {
+      "id": "S47",
+      "title": "《赤潮自走棋》9月28日更新公告",
+      "url": "https://www.sohu.com/a/421209278_100204787",
+      "publishedAt": "2020-09-28",
+      "kind": "game-update-announcement-repost",
+      "status": "relevant-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "2020-09-28, not April/May 2019",
+      "note": "巨齿象獠牙冲冷却20秒改为10/8/6秒；用于技能名及版本差异佐证，不能覆盖S04的2019年20秒冷却。该页面还有其他后期数值，未直接移植到2019规则。"
+    },
+    {
+      "id": "S48",
+      "title": "赤潮自走棋 7月30日不停服更新内容一览",
+      "url": "https://news.17173.com/z/zzq/content/07302020/182340097.shtml?_platform=PC",
+      "publishedAt": "2020-07-30",
+      "kind": "media-reposted-official-announcement",
+      "status": "relevant-full-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "2020-07-30, not a verified 2019 ruleset",
+      "note": "直接正文作者和来源均署名官方，明确灵鹫死魂曲伤害150/250/350改为200/300/400。当前采用后者为注明日期的后期适配；公告没有提供本轮所需的技能中心、范围或初始能量。"
+    },
+    {
+      "id": "S49",
+      "title": "赤潮自走棋 当前版本强度图(新人拿卡向)",
+      "url": "https://news.17173.com/z/zzq/content/05132019/204014986.shtml?_platform=PC",
+      "publishedAt": "2019-05-13",
+      "kind": "media-reposted-community-guide",
+      "status": "relevant-indexed-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "May 2019 player observations",
+      "note": "作者六芒龙、来源TapTap，相关检索正文描述灵鹫普攻与范围技能伤害优秀，但身板脆、作为刺客跳后排易被集火。用于角色定位，不能当作精确伤害或范围参数。"
+    },
+    {
+      "id": "S50",
+      "title": "一个从赤潮老玩家到自走棋玩家的攻略",
+      "url": "https://www.taptap.cn/moment/15203671482564780?group_id=42979",
+      "publishedAt": "2019-04-29",
+      "modifiedAt": "2019-05-11",
+      "kind": "primary-player-guide",
+      "status": "body-and-original-client-images-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "mixed early client images; edited May 11 player commentary",
+      "note": "原作者邪王易风，4月29日发表、5月11日修改。正文明确三刺10%、六刺总20%的4.5倍暴击；三张原始客户端图片实际下载并查看，穿山甲为野兽/刺杀、遁地100/200/300、20秒。先锋图仍为旧回血而正文已谈护甲，不能当统一客户端切片；全梯度累计的玩家说法保留为后续逐字段证据。见assassin-history.json。",
+      "formationReview": "0.43采用正文累计说明，重新目视野兽客户端提示；结合S03逐档范围推导野兽自身15/40/75与其他友军0/25/60、傀儡自身10/25/45与其他友军0/0/20。未将混期先锋回血图覆盖五月护甲。",
+      "coalitionsReview": "0.46复核记录见coalitions-history.json；客户端卡已实际目视，保留图片指纹、时间边界、原始增量与本地结算解释。",
+      "auroraReview": "0.47再次目视空蟹客户端卡，复核极光电影575/825/1075、13秒冷却、25%攻击与三层上限；卡片原图归档images/s50-skycrab-client.jpg，来源指纹及本地法伤/目标/叠加公式边界见aurora-history.json。客户端日期仍未知。",
+      "qiReview": "0.48目视罗汉客户端卡：气波掌250/450/650、10秒，3费陆行者/狙击及石晶轮廓。原图images/s50-arhat-client.jpg，日期及本地适配见qi-history.json；不据此推定原始伤害类型、精确前摇或统一客户端版本。"
+    },
+    {
+      "id": "S51",
+      "title": "赤潮自走棋全英雄评测（第3期）",
+      "url": "https://www.taptap.cn/moment/15220462338441888",
+      "publishedAt": null,
+      "dateAsDisplayed": "2019-05-28",
+      "kind": "community-original-review",
+      "status": "relevant-original-body-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "五月28日更新前/后对照；客户端构建未知",
+      "note": "正文明确数值按和报告；更新前海神2/4空中技能防御20/40%、灵能2/4全军20/50反伤。更新后海神改回能且低档灵能15。0.44采用更新前切片，保留能量描述和版本冲突，见counterplay-history.json。",
+      "coalitionsReview": "0.46复核记录见coalitions-history.json；客户端卡已实际目视，保留图片指纹、时间边界、原始增量与本地结算解释。"
+    },
+    {
+      "id": "S52",
+      "title": "赤潮自走棋全英雄评测（第2期）",
+      "author": "User26157272",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "modifiedAt": "2019-05-22",
+      "kind": "community-original-review",
+      "status": "relevant-original-body-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "May 9/16 changes discussed; exact client build unknown",
+      "note": "原作者指出罗汉前摇期间不能普攻，没有给精确时长。由S51系列链接定位原帖。本文混有两个五月版本，0.48只采用该行为方向，不宣称1秒来自原文。见qi-history.json。"
     }
   ]
 }

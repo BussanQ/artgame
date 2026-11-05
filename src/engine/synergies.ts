@@ -1,5 +1,6 @@
 import { CURRENT_COMBAT_VERSION } from "./types";
-import { UNIT, TRAITS } from "../data/units";
+import { TRAITS } from "../data/units";
+import { unitDefinition } from "../data/unit-stats";
 import { traitTiers, type TraitBonus } from "../data/traits";
 import type { Piece, Trait, CombatVersion } from "./types";
 import { insectCount } from "./progression";
@@ -8,10 +9,20 @@ export function synergies(
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
   const table = traitTiers(version);
+  const definitionVersion = version;
   if (
     version === "metamorph" ||
     version === "infantry" ||
-    version === "armored"
+    version === "armored" ||
+    version === "puppets" ||
+    version === "wildfront" ||
+    version === "ambush" ||
+    version === "formations" ||
+    version === "counterplay" ||
+    version === "lineages" ||
+    version === "coalitions" ||
+    version === "aurora" ||
+    (version === "qi" || version === "taotie")
   )
     version = "fleet";
   const counts = new Map<Trait, number>();
@@ -23,7 +34,7 @@ export function synergies(
   for (const id of new Set(
     pieces.filter((p) => p.position !== null).map((p) => p.defId),
   ))
-    for (const trait of UNIT[id].traits.filter(
+    for (const trait of unitDefinition(id, definitionVersion).traits.filter(
       (trait) =>
         (!["不朽", "灵能", "猛禽", "陆行者"].includes(trait) ||
           version === "fleet") &&
@@ -53,9 +64,13 @@ export function synergies(
           tier: count >= TRAITS[trait].threshold ? 1 : 0,
           tiers: [TRAITS[trait].threshold],
           bonus: {} as TraitBonus,
+          conflicted: false,
         };
       const tiers = table[trait],
-        tier = tiers.filter((t) => count >= t.count).length,
+        conflicted = tiers.some((t) => t.exclusive && count > t.count),
+        tier = tiers.filter(
+          (t) => count >= t.count && (!t.exclusive || count === t.count),
+        ).length,
         current = tiers[tier - 1],
         next = tiers[tier];
       return {
@@ -66,6 +81,7 @@ export function synergies(
         threshold: next?.count ?? tiers.at(-1)!.count,
         description: current?.description ?? tiers[0].description,
         active: tier > 0,
+        conflicted,
         bonus: current?.bonus ?? {},
       };
     })

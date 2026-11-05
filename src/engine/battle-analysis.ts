@@ -4,6 +4,15 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  taotie?: Fighter["taotie"];
+  aurora?: Fighter["aurora"];
+  qiSkill?: true;
+  interruptions: number;
+  lostTargets: number;
+  armorApplications?: number;
+  knockups?: number;
+  peakGale?: number;
+  criticalHits?: number;
   phoenix?: Fighter["phoenix"];
   hawkForm?: Fighter["hawkForm"];
   undying?: boolean;
@@ -28,6 +37,15 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.taotie ? { taotie: structuredClone(f.taotie) } : {}),
+    ...(f.aurora ? { aurora: { ...f.aurora } } : {}),
+    ...(f.qiSkill ? { qiSkill: true as const } : {}),
+    interruptions: 0,
+    lostTargets: 0,
+    ...(f.defId === "venombeast" ? { armorApplications: 0 } : {}),
+    ...(f.defId === "elephant" || f.burrowSkill ? { knockups: 0 } : {}),
+    ...(f.gale ? { peakGale: 0 } : {}),
+    ...(f.bladeCrit || f.assassinCrit ? { criticalHits: 0 } : {}),
     ...(f.phoenix ? { phoenix: { ...f.phoenix } } : {}),
     ...(f.hawkForm ? { hawkForm: { ...f.hawkForm } } : {}),
     ...(isUndying(f) ? { undying: true } : {}),
@@ -69,6 +87,8 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
       const source = units.get(event.attacker),
         target = units.get(event.target);
       if (source) {
+        if (source.peakGale !== undefined)
+          source.peakGale = Math.max(source.peakGale, event.gale ?? 0);
         source.damage += event.amount;
         source[
           event.reflected
@@ -78,6 +98,14 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
               : "normalDamage"
         ] += event.amount;
         source.shieldDamage += event.absorbed;
+        if (
+          source.criticalHits !== undefined &&
+          event.empowered &&
+          !event.skill &&
+          !event.evaded &&
+          !event.immune
+        )
+          source.criticalHits++;
       }
       if (target) {
         if (event.evaded) target.evades++;
@@ -88,8 +116,25 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
     for (const effect of battle.frames[i].effects) {
       const source = units.get(effect.source);
       if (source && effect.kind === "cast") source.casts++;
+      if (source && effect.kind === "silence") {
+        if (["施法中断", "蓄力中断"].includes(effect.name))
+          source.interruptions++;
+        if (effect.name === "目标丢失") source.lostTargets++;
+      }
       if (source && effect.kind === "energize")
         source.energyGiven += effect.amount;
+      if (
+        source?.armorApplications !== undefined &&
+        effect.kind === "break" &&
+        effect.name === "酸性减甲"
+      )
+        source.armorApplications++;
+      if (
+        source?.knockups !== undefined &&
+        effect.kind === "stun" &&
+        effect.name === "击飞"
+      )
+        source.knockups++;
     }
   }
   const sides = ([0, 1] as const).map((side) => {

@@ -1,10 +1,17 @@
 import { isPhoenixEgg } from "./phoenix";
 import { commandBonuses } from "./ironrooster";
+import { staffArmor } from "./staffthrall";
+import { corrosionArmor } from "./beasts";
+import { STAFF_GALE } from "../data/skills";
 import type { Fighter } from "./types";
 const distance = (a: Fighter, b: Fighter) =>
   Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export function usesEnergy(f: Fighter) {
-  if (f.defId === "birdrider" || f.bladeStorm) return false;
+  if (
+    ["birdrider", "bladethrall", "staffthrall"].includes(f.defId) ||
+    f.bladeStorm
+  )
+    return false;
   if (
     isPhoenixEgg(f) ||
     f.hawkForm?.active ||
@@ -18,7 +25,11 @@ export function usesEnergy(f: Fighter) {
   return !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
-  if (f.defId === "birdrider" || f.bladeStorm) return false;
+  if (
+    ["birdrider", "bladethrall", "staffthrall"].includes(f.defId) ||
+    f.bladeStorm
+  )
+    return false;
   if (f.air?.cast || f.windup || f.combo) return false;
   if (
     isPhoenixEgg(f) ||
@@ -42,15 +53,23 @@ export function carapaceArmor(f: Fighter, tick: number) {
     Math.max(0, Math.min(1, (shell.until - tick) / (shell.until - shell.start)))
   );
 }
-export function effectiveArmor(f: Fighter, tick: number) {
+export function effectiveArmor(f: Fighter, tick: number, fighters?: Fighter[]) {
+  const galeArmor =
+    f.gale &&
+    (!fighters ||
+      attackTargets(f, fighters, tick).some((e) => e.uid === f.gale!.target))
+      ? staffArmor(f)
+      : 0;
   return (
     f.armor -
-    (f.infantryArmorBreak ?? 0) +
+    (f.infantryArmorBreak ?? 0) -
+    corrosionArmor(f, tick) +
     Math.max(
       f.armorBuffUntil > tick ? f.armorBuff : 0,
       commandBonuses(f, tick).armor,
     ) +
-    carapaceArmor(f, tick)
+    carapaceArmor(f, tick) +
+    galeArmor
   );
 }
 /** Bodyguards conceal fish; enemy fish reveal nearby targets. AoE still hits. */
@@ -82,6 +101,10 @@ export function attackTargets(source: Fighter, fighters: Fighter[], tick = 0) {
   );
 }
 export function skillGauge(f: Fighter) {
+  if (f.gale)
+    return { progress: f.gale.stacks / STAFF_GALE.maxStacks, color: "#85c8ff" };
+  // Chance is not a charge meter; do not imply a guaranteed next critical hit.
+  if (f.bladeCrit) return { progress: 0, color: "#b8d6ff" };
   if (f.bladeStorm)
     return { progress: f.bladeStorm.remaining / 6, color: "#a9eadc" };
   if (f.bird)
