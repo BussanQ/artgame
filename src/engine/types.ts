@@ -28,10 +28,10 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "hive";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "spirit-ward";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
@@ -39,6 +39,8 @@ export const hasThornBindRules = (version: CombatVersion) => hasRuleSince(versio
 export const hasRifleRules = (version: CombatVersion) => hasRuleSince(version,"rifle");
 export const hasGazeRules = (version: CombatVersion) => hasRuleSince(version,"gaze");
 export const hasHiveRules = (version: CombatVersion) => hasRuleSince(version,"hive");
+export const hasBulwarkRules = (version: CombatVersion) => hasRuleSince(version,"bulwark");
+export const hasSpiritWardRules = (version: CombatVersion) => hasRuleSince(version,"spirit-ward");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
 export const hasWarcryRules = (version: CombatVersion) => hasRuleSince(version,"warcry");
@@ -179,6 +181,12 @@ export interface RoundReport {
   inventory?: string[];
 }
 export interface Fighter {
+  /** Maintained friendly connections; effective protection is never added to permanent body stats. */
+  spiritWard?:{formed:number;protected:number;severed:number;interrupted:number;mitigated:number;physicalSaved:number;magicSaved:number;actedAt?:number;
+    channel?:{start:number;release:number;until:number;side:0|1;targets:number[];formed:boolean;armor:number;resist:number}};
+  spiritWards?:{source:number;until:number;armor:number;resist:number}[];
+  /** Short personal armor stance with a one-time adjacent taunt. */
+  bulwark?:{formations:number;taunts:number;start:number;until:number;armor:number};
   hive?: {
     volleys:number; needles:number; explosions:number; innerHits:number; outerHits:number; interrupted:number;
     actedAt?:number;
@@ -286,7 +294,7 @@ export interface Fighter {
     casting?: { start: number; until: number };
   };
   /** Short forced aggression; source death, invalid allegiance or cleanse releases it. */
-  taunt?: { source: number; until: number };
+  taunt?: { source: number; until: number; kind?:"bulwark" };
   /** Released forest waves and actual two-stage control applications, battle-local only. */
   jungle?: { waves: number; hits: number; knockups: number; landings: number };
   /** A committed knockup lands even after its caster dies; cleansing removes the pending stun. */
@@ -552,6 +560,8 @@ export interface CombatEffect {
   to: { x: number; y: number };
 }
 export interface CombatEvent {
+  /** Avoided consumption of existing HP/shield; credited to one strongest live deer connection. */
+  ward?:{source:number;prevented:number};
   /** Secondary ordinary physical contact made by the transformed panda's cleave. */
   wushiSplash?: true;
   /** Zero is the initiating attack; later hops remain ordinary physical damage. */

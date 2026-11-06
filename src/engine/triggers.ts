@@ -4,6 +4,7 @@ import { staffArmor } from "./staffthrall";
 import { corrosionArmor } from "./beasts";
 import { STAFF_GALE } from "../data/skills";
 import type { Fighter } from "./types";
+import {spiritWardBuff} from "./spirit-ward";
 const distance = (a: Fighter, b: Fighter) =>
   Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export function usesEnergy(f: Fighter) {
@@ -28,6 +29,7 @@ export function usesEnergy(f: Fighter) {
   return !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
+  if(f.spiritWard?.channel)return false;
   if(f.hive?.casting||f.hive?.burst)return false;
   if(f.rifle)return false;
   if(f.thornbind?.channel)return false;
@@ -81,8 +83,14 @@ export function effectiveArmor(f: Fighter, tick: number, fighters?: Fighter[]) {
     ) +
     carapaceArmor(f, tick) +
     galeArmor +
+    (spiritWardBuff(f,tick,fighters)?.armor??0) +
+    (f.hp > 0 && f.bulwark && f.bulwark.until > tick ? f.bulwark.armor : 0) +
     (f.hp > 0 && f.wushi && f.wushi.until > tick ? f.wushi.armor : 0)
   );
+}
+export function effectiveMagicResist(f:Fighter,tick:number,fighters?:Fighter[]){
+  const ward=spiritWardBuff(f,tick,fighters);
+  return ward?Math.min(0.75,f.magicResist+ward.resist):f.magicResist;
 }
 /** Bodyguards conceal fish; enemy fish reveal nearby targets. AoE still hits. */
 export function concealed(f: Fighter, fighters: Fighter[], tick = 0) {

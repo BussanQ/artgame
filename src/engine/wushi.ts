@@ -1,7 +1,7 @@
 import { WUSHI, WUSHI_CONTROL } from "../data/skills";
 import { combatAttack, damage, distance, type CombatContext } from "./abilities";
 import type { Fighter } from "./types";
-import { attackTargets } from "./triggers";
+export {tauntTarget as wushiTauntTarget,expireTaunts as expireWushiTaunts} from "./taunt";
 import { isUndying } from "./immortality";
 import { isPhoenixEgg } from "./phoenix";
 import { bladeStormActive } from "./swordthrall";
@@ -28,23 +28,6 @@ function interrupt(ctx: CombatContext, source: Fighter) {
   delete state.casting;
   state.interrupted++;
   signal(ctx, source, "silence", "蓄力中断", 0.25);
-}
-
-/** Taunt redirects new actions, never rewrites a committed channel or missile. */
-export function wushiTauntTarget(ctx: CombatContext, victim: Fighter) {
-  const taunt = victim.taunt;
-  if (!taunt || taunt.until <= ctx.tick || victim.hp <= 0 || isUndying(victim) ||
-      isPhoenixEgg(victim) || bladeStormActive(victim, ctx.tick)) return undefined;
-  const source = ctx.fighters.find(f => f.uid === taunt.source);
-  if (!source || !wushiActive(source, ctx.tick) || isUndying(source) || isPhoenixEgg(source) ||
-      source.side === victim.side ||
-      !attackTargets(victim, ctx.fighters, ctx.tick).some(f => f.uid === source.uid)) return undefined;
-  return source;
-}
-
-export function expireWushiTaunts(ctx: CombatContext) {
-  for (const victim of ctx.fighters)
-    if (victim.taunt && !wushiTauntTarget(ctx, victim)) delete victim.taunt;
 }
 
 function tauntNearby(ctx: CombatContext, source: Fighter) {

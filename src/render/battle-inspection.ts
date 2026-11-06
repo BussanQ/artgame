@@ -1,6 +1,7 @@
 import type { Fighter } from "../engine/types";
 import { combatAttack, attackInterval } from "../engine/abilities";
-import { effectiveArmor } from "../engine/triggers";
+import { effectiveArmor,effectiveMagicResist } from "../engine/triggers";
+import {spiritWardBuff} from "../engine/spirit-ward";
 import { fighterName } from "../engine/summons";
 import { isPhoenixEgg } from "../engine/phoenix";
 import { project } from "./projection";
@@ -11,6 +12,8 @@ import { petrified } from "../engine/warcry";
 /** Only urgent, short labels belong beside every combatant. Full effects live in its inspector. */
 export function compactBattleLabels(f: Fighter, time: number) {
   const labels: string[] = [];
+  if(f.spiritWard?.channel)labels.push(f.spiritWard.channel.formed?"维持庇护":"庇护蓄灵");
+  if(f.hp>0&&f.bulwark&&f.bulwark.until>time)labels.push("举盾增甲");
   if(f.hive?.casting)labels.push("蜂群蓄能");
   if(f.hive?.burst)labels.push("三针连射");
   if(f.gazed&&f.gazed.until>time&&f.stunUntil>time)labels.push("凝视压制");
@@ -39,6 +42,7 @@ export function compactBattleLabels(f: Fighter, time: number) {
   if (f.immortal?.spent && f.hp > 0) labels.push("残魂");
   if (f.signature?.concealed) labels.push("隐蔽");
   if (f.burn?.length) labels.push("灼烧");
+  if(spiritWardBuff(f,time))labels.push("庇护防御");
   return labels.slice(0, 2);
 }
 
@@ -84,5 +88,5 @@ export function fighterBattleMarkup(
     0,
     effectiveArmor(f, time) - (f.armorBreakUntil > time ? f.armorBreak : 0),
   );
-  return `<h3>${escape(fighterName(f))} <small>${f.side === 0 ? "己方" : "敌方"} · ${"★".repeat(f.star)}</small></h3><div class="battle-inspector-stats"><span>生命 <b>${Math.max(0, Math.round(f.hp))} / ${Math.round(f.maxHp)}</b></span><span>能量 <b>${f.gospelAura ? "被动供能" : `${Math.round(f.mana)} / 100`}</b></span><span>攻击 <b>${Math.round(combatAttack(f, time))}</b></span><span>间隔 <b>${(attackInterval(f, time) / 4).toFixed(2)} 秒</b></span><span>护甲 <b>${armor.toFixed(1)}</b></span><span>法术减伤 <b>${Math.round(f.magicResist * 100)}%</b></span></div>${labels.length ? `<ul>${labels.map((label) => `<li>${escape(label)}</li>`).join("")}</ul>` : ""}<p>点击棋子固定详情 · 点击空处或按 Esc 收起</p>`;
+  return `<h3>${escape(fighterName(f))} <small>${f.side === 0 ? "己方" : "敌方"} · ${"★".repeat(f.star)}</small></h3><div class="battle-inspector-stats"><span>生命 <b>${Math.max(0, Math.round(f.hp))} / ${Math.round(f.maxHp)}</b></span><span>能量 <b>${f.gospelAura ? "被动供能" : `${Math.round(f.mana)} / 100`}</b></span><span>攻击 <b>${Math.round(combatAttack(f, time))}</b></span><span>间隔 <b>${(attackInterval(f, time) / 4).toFixed(2)} 秒</b></span><span>护甲 <b>${armor.toFixed(1)}</b></span><span>法术减伤 <b>${Math.round(effectiveMagicResist(f,time) * 100)}%</b></span></div>${labels.length ? `<ul>${labels.map((label) => `<li>${escape(label)}</li>`).join("")}</ul>` : ""}<p>点击棋子固定详情 · 点击空处或按 Esc 收起</p>`;
 }

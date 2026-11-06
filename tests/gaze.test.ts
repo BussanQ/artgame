@@ -4,8 +4,9 @@ import {castSkill,damage,gainMana,type CombatContext} from "../src/engine/abilit
 import {gazeTarget,advanceGazes} from "../src/engine/gaze";
 import {GAZE,skillDescription,skillRole} from "../src/data/skills";
 import {GAZE_DEMO} from "../src/data/gaze-demo";
+import {unitCost} from "../src/data/catalog";
 import {unitDefinition} from "../src/data/unit-stats";
-import {UNITS,RULES} from "../src/data/units";
+import {UNITS,RULES,COPIES} from "../src/data/units";
 import {COMBAT_VERSIONS,CURRENT_COMBAT_VERSION,type CombatVersion,type Fighter,type Piece} from "../src/engine/types";
 import {analyzeBattle} from "../src/engine/battle-analysis";
 import {battleAnalysisMarkup} from "../src/ui/battle-analysis";
@@ -26,7 +27,7 @@ function fighter(id:string,uid:number,side:0|1,star=1,x=3,y=4){
   const f=army([piece(id,uid,star)],side)[0];Object.assign(f,{x,y,mana:100});return f;
 }
 const context=(...fighters:Fighter[]):CombatContext=>({fighters,tick:10,events:[],effects:[]});
-const demo=simulate(GAZE_DEMO.left,GAZE_DEMO.right);
+const demo=simulate(GAZE_DEMO.left,GAZE_DEMO.right,"gaze");
 function version(name:string):CombatVersion{const v=COMBAT_VERSIONS.find(v=>v===name);if(!v)throw Error(name);return v;}
 
 describe("眼虫随机单控与削能",()=>{
@@ -121,8 +122,8 @@ describe("眼虫随机单控与削能",()=>{
 describe("凝视画面、分析与版本兼容",()=>{
   it("同一二对二展示两次长控、实际削能和控制后的普通攻击；快算与Worker一致",()=>{
     const input=structuredClone(GAZE_DEMO),last=demo.frames.at(-1)!;
-    expect(simulateOutcome(GAZE_DEMO.left,GAZE_DEMO.right).final.fighters).toEqual(last.fighters);
-    const worker=compute({kind:"replay",...GAZE_DEMO,version:CURRENT_COMBAT_VERSION});expect(worker.kind).toBe("replay");if(worker.kind!=="replay")return;
+    expect(simulateOutcome(GAZE_DEMO.left,GAZE_DEMO.right,"gaze").final.fighters).toEqual(last.fighters);
+    const worker=compute({kind:"replay",...GAZE_DEMO,version:"gaze"});expect(worker.kind).toBe("replay");if(worker.kind!=="replay")return;
     expect(worker.battle).toEqual(demo);expect(GAZE_DEMO).toEqual(input);
     expect(last.fighters.find(f=>f.uid===101)!.gaze).toEqual({selections:2,controls:2,manaDrained:100});
     expect(demo.frames.some(f=>f.fighters.some(t=>t.gazed)&&f.events.some(e=>e.attacker===101&&!e.skill))).toBe(true);
@@ -167,7 +168,7 @@ describe("凝视画面、分析与版本兼容",()=>{
   });
 
   it("缺目录存档补回rifle旧目录，不凭空改变一费池份数",()=>{
-    const game=createGame(1,"classic");game.combatVersion="rifle";delete game.catalogVersion;
+    const game=createGame(1,"classic");game.combatVersion="rifle";for(const u of UNITS)game.pool[u.id]+=COPIES[unitCost(u.id,"rifle")]-COPIES[unitCost(u.id)];delete game.catalogVersion;
     const decoded=decodeSave(JSON.stringify({schema:66,rules:"singleplayer-0.67",savedAt:1,revision:1,game,playback:{time:0,speed:1,paused:false}}));
     expect(decoded.status).toBe("migrated");expect(decoded.data!.game.catalogVersion).toBe("rifle");expect(validGame(decoded.data!.game)).toBe(true);
   });

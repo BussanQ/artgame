@@ -1,5 +1,9 @@
 # 赤潮网页自走棋：资料与开发方案
 
+最新能力：[0.71长生鹿多目标双防](design/spirit-ward.md) · [原始资料与适配](research/spirit-ward-history.json) · [验证记录](analysis/spirit-ward-v071-validation.json)。可中断连线、双防、真实减伤归功、AI和schema70已接入；70项相关检查、构建及桌面／390px同一三对三通过。43版旧定义和旧两费目录保留，新局四费；数列、目标数、公式换算与时序不冒称同一原卡。
+
+最新能力：[0.70盾兵护甲盾阵](design/bulwark.md) · [逐字段资料与适配](research/bulwark-history.json) · [验证记录](analysis/bulwark-v070-validation.json)。限时护甲、相邻转火、可见盾阵、AI、独立统计和schema69已接入；109项直接相关检查、构建及桌面／390px通过。同一旧蜂群局面40秒平局变为19秒结束，42版旧定义和旧局一费目录保持；新局两费，未确证数列不标为原版值。
+
 最新能力：[0.69杀人蜂蜂群双环](design/hive.md) · [原始字段与适配](research/hive-history.json) · [内置ImageGen完整提示词](research/hive-assets.json) · [验证记录](analysis/hive-v069-validation.json)。双圈伤害、蓄力反制、三针连射、AI、独立统计及schema68已接入，60项必要检查、构建和桌面／390px同一小局面通过；41版旧定义与回放保留，未知时序和半径坐标不冒称原版已确证。
 
 最新能力：[0.68眼虫凝视](design/gaze.md) · [原始资料与适配](research/gaze-history.json) · [验证清单](analysis/gaze-v068-validation.json)。随机单控、逐秒削能、驱散、眼纹画面、AI和schema67已接入，并补完神枪手桌面／手机验收和图鉴间隔修复。45项必要检查、构建与同一二对二局面通过；未新增整局或批量采样，跨期数据和未知原卡参数继续保留边界。

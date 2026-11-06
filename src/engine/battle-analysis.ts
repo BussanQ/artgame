@@ -4,6 +4,8 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  spiritWard?:Pick<NonNullable<Fighter["spiritWard"]>,"formed"|"protected"|"severed"|"interrupted"|"mitigated"|"physicalSaved"|"magicSaved">;
+  bulwark?:Pick<NonNullable<Fighter["bulwark"]>,"formations"|"taunts">;
   hive?:Pick<NonNullable<Fighter["hive"]>,"volleys"|"needles"|"explosions"|"innerHits"|"outerHits"|"interrupted">;
   gaze?:Fighter["gaze"];
   rifle?:Fighter["rifle"];
@@ -55,6 +57,9 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.spiritWard?{spiritWard:{formed:f.spiritWard.formed,protected:f.spiritWard.protected,severed:f.spiritWard.severed,
+      interrupted:f.spiritWard.interrupted,mitigated:f.spiritWard.mitigated,physicalSaved:f.spiritWard.physicalSaved,magicSaved:f.spiritWard.magicSaved}}:{}),
+    ...(f.bulwark?{bulwark:{formations:f.bulwark.formations,taunts:f.bulwark.taunts}}:{}),
     ...(f.hive?{hive:{volleys:f.hive.volleys,needles:f.hive.needles,explosions:f.hive.explosions,
       innerHits:f.hive.innerHits,outerHits:f.hive.outerHits,interrupted:f.hive.interrupted}}:{}),
     ...(f.gaze?{gaze:{...f.gaze}}:{}),

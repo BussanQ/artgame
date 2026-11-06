@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasBulwarkRules,
+  hasSpiritWardRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -161,6 +163,8 @@ const oldVineGuard: UnitDef = { ...oldVine, traits:previousTraits.vine };
 const oldInfantry:UnitDef={...UNIT.infantry,hp:480,attack:58,armor:2,interval:3,skill:"精准射击"};
 const oldEyeBug:UnitDef={...UNIT.eyebug,hp:450,attack:28,armor:1,range:3,interval:4};
 const oldWasp:UnitDef={...UNIT.wasp,hp:850,attack:100,armor:3,interval:3,skill:"毒针风暴"};
+const oldGuard:UnitDef={...UNIT.guard,cost:1,hp:800,attack:36,armor:7,skill:"震荡重击"};
+const oldDeer:UnitDef={...UNIT.deer,cost:2,hp:650,attack:38,armor:2,range:3,interval:4};
 /** Keep the original portrait available to in-flight battles and historical reports. */
 export function unitSprite(
   id: string,
@@ -187,6 +191,8 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "deer" && !hasSpiritWardRules(version)) return oldDeer;
+  if (id === "guard" && !hasBulwarkRules(version)) return oldGuard;
   if (id === "wasp" && !hasHiveRules(version)) return oldWasp;
   if (id === "eyebug" && !hasGazeRules(version)) return oldEyeBug;
   if (id === "infantry" && !hasRifleRules(version)) return oldInfantry;

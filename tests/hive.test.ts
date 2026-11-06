@@ -4,8 +4,9 @@ import {attackInterval,castSkill,gainMana,type CombatContext} from "../src/engin
 import {advanceHiveAction,advanceHiveSkills,expireHiveStates,hiveBand,startHiveBurst} from "../src/engine/hive";
 import {HIVE,skillDescription,skillRole} from "../src/data/skills";
 import {HIVE_DEMO} from "../src/data/hive-demo";
+import {unitCost} from "../src/data/catalog";
 import {unitDefinition,unitSprite,unitMinimumAttackInterval} from "../src/data/unit-stats";
-import {UNITS,RULES} from "../src/data/units";
+import {UNITS,RULES,COPIES} from "../src/data/units";
 import {COMBAT_VERSIONS,CURRENT_COMBAT_VERSION,type CombatVersion,type Fighter,type Piece} from "../src/engine/types";
 import {skillReady} from "../src/engine/triggers";
 import {analyzeBattle} from "../src/engine/battle-analysis";
@@ -32,7 +33,7 @@ function fighter(id:string,uid:number,side:0|1,star=1,x=3,y=4){
   const f=army([piece(id,uid,star)],side)[0];Object.assign(f,{x,y,mana:100});return f;
 }
 const context=(...fighters:Fighter[]):CombatContext=>({fighters,tick:10,events:[],effects:[]});
-const demo=simulate(HIVE_DEMO.left,HIVE_DEMO.right);
+const demo=simulate(HIVE_DEMO.left,HIVE_DEMO.right,"hive");
 function version(name:string):CombatVersion{const v=COMBAT_VERSIONS.find(v=>v===name);if(!v)throw Error(name);return v;}
 
 describe("杀人蜂分圈震荡",()=>{
@@ -136,8 +137,8 @@ describe("三针普通连射",()=>{
 describe("蜂群画面、AI与旧局兼容",()=>{
   it("同一个二对二真实打出内圈408、外圈204；快算和Worker相同且不修改输入",()=>{
     const input=structuredClone(HIVE_DEMO),last=demo.frames.at(-1)!;
-    expect(simulateOutcome(HIVE_DEMO.left,HIVE_DEMO.right).final.fighters).toEqual(last.fighters);
-    const worker=compute({kind:"replay",...HIVE_DEMO,version:CURRENT_COMBAT_VERSION});expect(worker.kind).toBe("replay");if(worker.kind!=="replay")return;
+    expect(simulateOutcome(HIVE_DEMO.left,HIVE_DEMO.right,"hive").final.fighters).toEqual(last.fighters);
+    const worker=compute({kind:"replay",...HIVE_DEMO,version:"hive"});expect(worker.kind).toBe("replay");if(worker.kind!=="replay")return;
     expect(worker.battle).toEqual(demo);expect(HIVE_DEMO).toEqual(input);
     expect(demo.frames.find(f=>f.tick===4)!.events.filter(e=>e.attacker===101&&e.skill).map(e=>[e.target,e.amount])).toEqual([[201,408],[202,204]]);
     expect(last.fighters.find(f=>f.uid===101)!.hive).toMatchObject({volleys:3,needles:8,explosions:1,innerHits:1,outerHits:1});
@@ -161,7 +162,7 @@ describe("蜂群画面、AI与旧局兼容",()=>{
 
   it("41版旧定义保持，其余单位不因本次变更，异虫双合仍有效",()=>{
     expect(frozen.definitions).toHaveLength(41);for(const row of frozen.definitions)expect(unitDefinition("wasp",version(row.version))).toEqual(row.unit);
-    for(const u of UNITS.filter(u=>u.id!=="wasp"))expect(unitDefinition(u.id)).toEqual(unitDefinition(u.id,"gaze"));
+    for(const u of UNITS.filter(u=>u.id!=="wasp"))expect(unitDefinition(u.id,"hive")).toEqual(unitDefinition(u.id,"gaze"));
     expect(mergeCount([piece("eyebug",1),piece("spider",2)],"eyebug",1)).toBe(2);
     const a=army([piece("wasp",1)],0,"gaze")[0],b=army([piece("guard",2)],1,"gaze")[0];a.mana=100;
     const ctx=context(a,b);Object.assign(b,{x:a.x+1,y:a.y});castSkill(ctx,a,b);expect(a.hive).toBeUndefined();expect(ctx.events.some(e=>e.skill)).toBe(true);
@@ -187,7 +188,7 @@ describe("蜂群画面、AI与旧局兼容",()=>{
   });
 
   it("缺目录存档补为gaze，不改动经营费用和卡池",()=>{
-    const game=createGame(1,"classic");game.combatVersion="gaze";delete game.catalogVersion;
+    const game=createGame(1,"classic");game.combatVersion="gaze";for(const u of UNITS)game.pool[u.id]+=COPIES[unitCost(u.id,"gaze")]-COPIES[unitCost(u.id)];delete game.catalogVersion;
     const decoded=decodeSave(JSON.stringify({schema:67,rules:"singleplayer-0.68",savedAt:1,revision:1,game,playback:{time:0,speed:1,paused:false}}));
     expect(decoded.status).toBe("migrated");expect(decoded.data!.game.catalogVersion).toBe("gaze");expect(validGame(decoded.data!.game)).toBe(true);
   });

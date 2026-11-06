@@ -1,0 +1,821 @@
+{
+  "checkedAt": "2026-11-06T23:08:15.711302+00:00",
+  "pointInTime": true,
+  "rules": "singleplayer-0.70",
+  "combatVersion": "bulwark",
+  "saveSchema": 69,
+  "goalTurnClassification": "progress",
+  "previousGoalTurn": {
+    "classification": "progress",
+    "evidence": "应明确push请求提交并推送c265dee到origin/dev，远端SHA核对一致。"
+  },
+  "scope": "替换盾兵反复补盾原型，恢复护甲与相邻嘲讽定位；未知数值公开适配，完整单机目标继续进行。",
+  "tests": {
+    "passed": 109,
+    "failed": 0,
+    "related": {
+      "command": "npx vitest run tests/bulwark.test.ts tests/hive.test.ts tests/gaze.test.ts --reporter=json --outputFile=tmp/bulwark-related-tests.json",
+      "passed": 94,
+      "suites": [
+        {
+          "path": "tests/bulwark.test.ts",
+          "passed": 34
+        },
+        {
+          "path": "tests/gaze.test.ts",
+          "passed": 27
+        },
+        {
+          "path": "tests/hive.test.ts",
+          "passed": 33
+        }
+      ]
+    },
+    "sharedTaunt": {
+      "command": "npx vitest run tests/wushi-control.test.ts -t '星仅在释放时|有效嘲讽阻止|残魂、火种|使嘲讽立即失效|范围外灵鱼|后释放的武僧|不撤销嘲讽施加前|普通横斩保留' --reporter=json --outputFile=tmp/bulwark-wushi-tests.json",
+      "passed": 15,
+      "skipped": 159,
+      "note": "只选择15项直接相关单元检查，跳过完整经营迁移及历史批量回放。"
+    },
+    "initialFailures": [
+      "新缺目录测试用当前两费池伪装成旧一费目录，故被正确拒绝。按各单位旧费用恢复测试池总份数后通过，未修改生产校验来放行不合法存档。",
+      "武僧旧测试用当前已改为被动的神枪手验证恢复主动施法，先前假设已失效。将0.57控制fixture固定为wushi-control版本后通过，共用嘲讽逻辑不因该断言改变。"
+    ],
+    "historicalTestScope": "眼虫与蜂群历史演示固定在gaze/hive版本；跨版本定义断言只比较各自能力引入时点，旧目录fixture按真实旧费用构造。",
+    "fullTestSuiteRun": false
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 156,
+    "js": "index-BVo8y4vF.js",
+    "worker": "worker-4WpSTkMi.js",
+    "css": "index-0iwQsGQW.css",
+    "artifacts": [
+      {
+        "path": "dist/assets/index-BVo8y4vF.js",
+        "bytes": 392840,
+        "sha256": "0cedeea5f0105bbe87fd08955b8a0a06bff5dda09b09efc69f8f5590fe1dd016"
+      },
+      {
+        "path": "dist/assets/worker-4WpSTkMi.js",
+        "bytes": 194511,
+        "sha256": "a205291a8bd38418880ae59169098c2c6e35d6958559d4492bbdca8a800c537a"
+      },
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      }
+    ]
+  },
+  "compatibility": {
+    "oldDefinitionCount": 42,
+    "frozenSmallReplays": [
+      {
+        "version": "legacy",
+        "sha256": "9cb835ae0bf5cebaee1ad7bdffae556ae23c801ec666b4c4039fd51e2fa5373e",
+        "frames": 79,
+        "winner": 0
+      },
+      {
+        "version": "hive",
+        "sha256": "84f4bb83e9556e32d6b887fc9ca759888176b7ba94b4bb2b2ae3ffe387dc0f75",
+        "frames": 161,
+        "winner": null
+      }
+    ],
+    "oldCost": 1,
+    "newCost": 2,
+    "missingCatalogFallback": "hive",
+    "ongoingOldBattlePreserved": true,
+    "preparationUpgradesCombatOnly": true,
+    "catalogAndPoolPreserved": true,
+    "playbackPreserved": true
+  },
+  "scenes": {
+    "shieldStalemateBefore": {
+      "version": "hive",
+      "tick": 160,
+      "seconds": 40,
+      "winner": null,
+      "shieldApplications": 19,
+      "guards": [
+        {
+          "uid": 102,
+          "hp": 2050,
+          "shield": 383,
+          "signatureCasts": 11
+        },
+        {
+          "uid": 201,
+          "hp": 1299,
+          "shield": 442,
+          "signatureCasts": 8
+        }
+      ]
+    },
+    "sameHiveAfter": {
+      "frames": 77,
+      "tick": 76,
+      "winner": 1,
+      "guards": [
+        {
+          "uid": 102,
+          "hp": 0,
+          "shield": 0,
+          "state": {
+            "formations": 1,
+            "taunts": 1,
+            "start": 18,
+            "until": 0,
+            "armor": 0
+          }
+        },
+        {
+          "uid": 201,
+          "hp": 0,
+          "shield": 0,
+          "state": {
+            "formations": 1,
+            "taunts": 2,
+            "start": 9,
+            "until": 0,
+            "armor": 0
+          }
+        }
+      ],
+      "casts": [
+        {
+          "tick": 9,
+          "effects": [
+            {
+              "source": 201,
+              "target": 201,
+              "kind": "cast",
+              "amount": 0,
+              "name": "刺盾之阵",
+              "from": {
+                "x": 3,
+                "y": 3
+              },
+              "to": {
+                "x": 3,
+                "y": 3
+              }
+            },
+            {
+              "source": 201,
+              "target": 201,
+              "kind": "fortify",
+              "name": "刺盾之阵",
+              "amount": 16,
+              "from": {
+                "x": 3,
+                "y": 3
+              },
+              "to": {
+                "x": 3,
+                "y": 3
+              }
+            },
+            {
+              "source": 201,
+              "target": 101,
+              "kind": "taunt",
+              "name": "盾阵嘲讽",
+              "amount": 1.5,
+              "from": {
+                "x": 3,
+                "y": 3
+              },
+              "to": {
+                "x": 3,
+                "y": 4
+              }
+            },
+            {
+              "source": 201,
+              "target": 102,
+              "kind": "taunt",
+              "name": "盾阵嘲讽",
+              "amount": 1.5,
+              "from": {
+                "x": 3,
+                "y": 3
+              },
+              "to": {
+                "x": 4,
+                "y": 3
+              }
+            }
+          ]
+        },
+        {
+          "tick": 18,
+          "effects": [
+            {
+              "source": 102,
+              "target": 102,
+              "kind": "cast",
+              "amount": 0,
+              "name": "刺盾之阵",
+              "from": {
+                "x": 4,
+                "y": 3
+              },
+              "to": {
+                "x": 4,
+                "y": 3
+              }
+            },
+            {
+              "source": 102,
+              "target": 102,
+              "kind": "fortify",
+              "name": "刺盾之阵",
+              "amount": 16,
+              "from": {
+                "x": 4,
+                "y": 3
+              },
+              "to": {
+                "x": 4,
+                "y": 3
+              }
+            },
+            {
+              "source": 102,
+              "target": 201,
+              "kind": "taunt",
+              "name": "盾阵嘲讽",
+              "amount": 1.5,
+              "from": {
+                "x": 4,
+                "y": 3
+              },
+              "to": {
+                "x": 3,
+                "y": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "bulwarkDemo": {
+      "frames": 58,
+      "tick": 57,
+      "winner": 1,
+      "guards": [
+        {
+          "uid": 102,
+          "hp": 0,
+          "shield": 0,
+          "state": {
+            "formations": 1,
+            "taunts": 2,
+            "start": 9,
+            "until": 0,
+            "armor": 0
+          }
+        },
+        {
+          "uid": 201,
+          "hp": 859,
+          "shield": 0,
+          "state": {
+            "formations": 1,
+            "taunts": 1,
+            "start": 17,
+            "until": 0,
+            "armor": 0
+          }
+        }
+      ],
+      "casts": [
+        {
+          "tick": 9,
+          "effects": [
+            {
+              "source": 102,
+              "target": 102,
+              "kind": "cast",
+              "amount": 0,
+              "name": "刺盾之阵",
+              "from": {
+                "x": 4,
+                "y": 4
+              },
+              "to": {
+                "x": 4,
+                "y": 4
+              }
+            },
+            {
+              "source": 102,
+              "target": 102,
+              "kind": "fortify",
+              "name": "刺盾之阵",
+              "amount": 16,
+              "from": {
+                "x": 4,
+                "y": 4
+              },
+              "to": {
+                "x": 4,
+                "y": 4
+              }
+            },
+            {
+              "source": 102,
+              "target": 201,
+              "kind": "taunt",
+              "name": "盾阵嘲讽",
+              "amount": 1.5,
+              "from": {
+                "x": 4,
+                "y": 4
+              },
+              "to": {
+                "x": 4,
+                "y": 3
+              }
+            },
+            {
+              "source": 102,
+              "target": 202,
+              "kind": "taunt",
+              "name": "盾阵嘲讽",
+              "amount": 1.5,
+              "from": {
+                "x": 4,
+                "y": 4
+              },
+              "to": {
+                "x": 3,
+                "y": 4
+              }
+            }
+          ]
+        },
+        {
+          "tick": 17,
+          "effects": [
+            {
+              "source": 201,
+              "target": 201,
+              "kind": "cast",
+              "amount": 0,
+              "name": "刺盾之阵",
+              "from": {
+                "x": 4,
+                "y": 3
+              },
+              "to": {
+                "x": 4,
+                "y": 3
+              }
+            },
+            {
+              "source": 201,
+              "target": 201,
+              "kind": "fortify",
+              "name": "刺盾之阵",
+              "amount": 16,
+              "from": {
+                "x": 4,
+                "y": 3
+              },
+              "to": {
+                "x": 4,
+                "y": 3
+              }
+            },
+            {
+              "source": 201,
+              "target": 102,
+              "kind": "taunt",
+              "name": "盾阵嘲讽",
+              "amount": 1.5,
+              "from": {
+                "x": 4,
+                "y": 3
+              },
+              "to": {
+                "x": 4,
+                "y": 4
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "commitmentProof": {
+      "firstFormationTick": 9,
+      "firstTargetsBeforeTaunt": {
+        "flametrooperUid": 202,
+        "ordinaryTarget": 101
+      },
+      "tick13": {
+        "newOrdinaryTarget": 102,
+        "alreadyCommittedFlameTarget": 101
+      },
+      "note": "新的普攻转向盾兵，已启动喷火不被撤销；没有为演示结果调整伤害参数或装备。"
+    },
+    "limits": "只验证两个小局面；不据此宣称全阵容时长或总体难度完成。"
+  },
+  "browser": {
+    "rawRecord": "../../tmp/bulwark-v070-ui.json",
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "mobileLayout": {
+      "viewport": 390,
+      "width": 390
+    },
+    "analysisCloseAfterScroll": {
+      "height": 44,
+      "width": 44,
+      "x": 298.25,
+      "y": 92.296875
+    },
+    "sourceAt3_25Seconds": {
+      "hp": 1097,
+      "maxHp": 1500,
+      "mana": 45,
+      "attack": 114,
+      "intervalSeconds": 1,
+      "actualArmor": 18,
+      "stanceArmor": 16,
+      "remainingSeconds": 4,
+      "cooldownSeconds": 14,
+      "formations": 1,
+      "taunts": 2,
+      "infantryArmorBreak": 3
+    },
+    "tauntInspection": "盾阵嘲讽 0.5s · 转向盾兵",
+    "historyBeforeFormation": "2秒时两枚盾兵举盾／嘲讽均为0，3.25秒己方为1／2、敌方仍0／0。",
+    "codex": {
+      "star": 3,
+      "hp": 3000,
+      "attack": 228,
+      "armor": 5,
+      "intervalSeconds": 1,
+      "observedCost": 1,
+      "reason": "正式页面为secret-orb旧目录，对局费用冻结；新目录两费由模块验证，未重置正式局来获取新价格截图。"
+    },
+    "resourcesUnchanged": {
+      "armory": true,
+      "commander": true,
+      "recruitment": true
+    },
+    "formalGameRestored": true,
+    "viewportOverrideReset": true,
+    "logs": [],
+    "screenshots": [
+      "../../tmp/bulwark-v070-initial-desktop.jpg",
+      "../../tmp/bulwark-v070-analysis-desktop.jpg",
+      "../../tmp/bulwark-v070-stance-desktop.jpg",
+      "../../tmp/bulwark-v070-inspection-desktop.jpg",
+      "../../tmp/bulwark-v070-inspection-mobile390.jpg",
+      "../../tmp/bulwark-v070-stance-mobile390.jpg",
+      "../../tmp/bulwark-v070-taunt-mobile390.jpg",
+      "../../tmp/bulwark-v070-analysis-mobile390.jpg",
+      "../../tmp/bulwark-v070-analysis-scrolled-mobile390.jpg",
+      "../../tmp/bulwark-v070-codex-mobile390.jpg"
+    ],
+    "finishedAt": "2026-11-06T23:04:26.677Z",
+    "realDevicePerformanceVerified": false
+  },
+  "sourceReview": {
+    "record": "../research/bulwark-history.json",
+    "reviewedIds": [
+      "S04",
+      "S05",
+      "S64",
+      "S67"
+    ],
+    "bodyCostAndCd": "S04原图本轮目视，30–84攻击取均值57。",
+    "armorTaunt": "S05原作者索引正文支持护甲与1格嘲讽，数列和精确时序没有完整原卡。",
+    "lateNameOnly": "S67实际正文仅用于后期技能名；不采用2020新增效果。",
+    "unifiedHistoricalClientBuildConfirmed": false
+  },
+  "art": {
+    "asset": {
+      "path": "public/assets/units/guard.png",
+      "bytes": 2133452,
+      "sha256": "e5de0d0515a06df295960ffd59e5ed14fcd8e7ff96caf67964f5b20e49e05155"
+    },
+    "reusedExistingImageGenPortrait": true,
+    "newImageGenerationCalls": 0,
+    "rasterEditing": false,
+    "newCanvasEffects": [
+      "举盾姿态",
+      "护甲环与盾徽",
+      "指向来源的嘲讽线"
+    ]
+  },
+  "sampling": {
+    "newFullCampaigns": 0,
+    "newBulkBattleSamples": 0,
+    "distinctCurrentSmallScenes": 2,
+    "oldFrozenSmallReplays": 2,
+    "note": "模块、快算和Worker复核同一输入，不视为独立平衡样本；没有运行武僧模块的经营整局或批量回放。"
+  },
+  "git": {
+    "branch": "dev",
+    "baseCommit": "c265dee",
+    "committedThisTurn": false,
+    "pushedThisTurn": false
+  },
+  "remainingGoalRequirements": [
+    "其余原型能力及统一历史字段／公式",
+    "整体难度与高星经营、多构筑完整体验",
+    "真实触屏与弱设备性能",
+    "全目标按要求逐项审计，当前未达到完成条件"
+  ],
+  "sourceFingerprints": [
+    {
+      "path": "src/data/bulwark-demo.ts",
+      "bytes": 475,
+      "sha256": "272cc8ee749fed25378ff885ba379387f9c3e35798636aabbaa62b48309c5d76"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 20961,
+      "sha256": "815f2d8c705ba9ad0a6c96cfe1361592910134c68930d8aba220b267783761d7"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "bytes": 72101,
+      "sha256": "0da9b37de5b9ac8ea4893d15f0c1b457e777eda6b936ce1786acc5ee13aceaea"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "bytes": 9070,
+      "sha256": "912ef9320718462e2389e48eb7cf76c2bd9c175aaec99e965b287dab985ba333"
+    },
+    {
+      "path": "src/data/catalog.ts",
+      "bytes": 917,
+      "sha256": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d"
+    },
+    {
+      "path": "src/engine/bulwark.ts",
+      "bytes": 1748,
+      "sha256": "9ff99ec3f1b53d32b5ed9317c084e25cb0618640fc814dd50080ac1250e8356e"
+    },
+    {
+      "path": "src/engine/taunt.ts",
+      "bytes": 1177,
+      "sha256": "b4f0c1a70d745ecd270180f82bee46b4fe84b04126f0adbb342fa2188b113233"
+    },
+    {
+      "path": "src/engine/wushi.ts",
+      "bytes": 4800,
+      "sha256": "f1d2545789ec054eaf551e27b3b9eaef1ccdeac3977fc20d3982ad4259739e96"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 21518,
+      "sha256": "56509338f2728c76d0dd7886a9cd0f8de7cda1913a5408263374d165ed0797aa"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 30895,
+      "sha256": "c0eb4fe5c45d010f9b2c0c775568d2a11084a469794fd835466c7a80fca44481"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "bytes": 60375,
+      "sha256": "2a68e4e8041307091770b59c0cf72c5e6b134a880e564b5faf68f97a8b827898"
+    },
+    {
+      "path": "src/engine/triggers.ts",
+      "bytes": 5072,
+      "sha256": "582f1020c6a70249fad408b71f9db67dfc55118a5501970a1974c4738acc1531"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "bytes": 51700,
+      "sha256": "1b0a0498eea07742a5f366a9ee6de29bb9f2629d7720df2fd2699f1f3770f2d6"
+    },
+    {
+      "path": "src/engine/equipment.ts",
+      "bytes": 7496,
+      "sha256": "69042b32b11584df1ed629ea32dab05bf5d073f6bbfbae029257912b7b8bc767"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "bytes": 9638,
+      "sha256": "71213e26e77011b5468004765828395e4a680c64abd94c789b9072ca63dce440"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 36984,
+      "sha256": "b4cbd7c82db87943d327d3af7441ef1e60a96343ff9d60a2be46f73388259c0a"
+    },
+    {
+      "path": "src/render/bulwark.ts",
+      "bytes": 2411,
+      "sha256": "a563e3e24c0e581a98ead54c3136c51bf3b9bf719d00c409a789973275b05736"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "bytes": 37947,
+      "sha256": "405f169ebfd4749b2ee45c79124bea36ad0f9799b15d121bfa9a9cfc84ae0c75"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "bytes": 44408,
+      "sha256": "db99e5535d6e565a7ff9c9eabb5c90d1372bed7d1a693e168c27fadd688e0dce"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "bytes": 4500,
+      "sha256": "1436d7803504beddb98a298a067af0befd9d20b89f9749bd6188a27cb55ef2a3"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "bytes": 9207,
+      "sha256": "4070b7261f5a2b832934090f9f405afc2f702f23c131b60d48a6de0068045279"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 78578,
+      "sha256": "9793a131291558c3a783a737be37d5c976b5cc831e41f5d88513e6198bc6804e"
+    },
+    {
+      "path": "tests/bulwark.test.ts",
+      "bytes": 15790,
+      "sha256": "395baf665d73fd807203f063d45969aee8edb64202409b53e7f6393322f38a94"
+    },
+    {
+      "path": "tests/hive.test.ts",
+      "bytes": 16051,
+      "sha256": "47d938a83c9247e7dc9117a5c964fca48ba099078456e1b2e4bf2b9f923796cd"
+    },
+    {
+      "path": "tests/gaze.test.ts",
+      "bytes": 14206,
+      "sha256": "3afe12720446754656305839b02f29d0e38ac9143621043bf7a2fa0f4f53a878"
+    },
+    {
+      "path": "tests/wushi-control.test.ts",
+      "bytes": 12031,
+      "sha256": "ca8d34b9889ed32bdf58be1b26cdd7dcced4833c072089e52b1c7981a5d3265e"
+    },
+    {
+      "path": "tests/fixtures/pre-v070-bulwark-replays.json",
+      "bytes": 18528,
+      "sha256": "a5727342e440c6660bc5df824d429b68b3d2e7841e7e68ad5d7bb0f0fc4e5793"
+    },
+    {
+      "path": "docs/research/bulwark-history.json",
+      "bytes": 5001,
+      "sha256": "a45ed46d715e26ba888928f596d51b0b7f68cf6c86e9a6ce74b08ad5c93d1760"
+    },
+    {
+      "path": "docs/research/sources.json",
+      "bytes": 53332,
+      "sha256": "d9766f54e3e905b8033d7f31bd4d611f654a3ea48139cf506d0850d6fd26dce6"
+    },
+    {
+      "path": "docs/research/sources.md",
+      "bytes": 24471,
+      "sha256": "2d39915c55f7d8be80330862e7f047a2a9ba9df47e81e921ac22c4ee73546f12"
+    },
+    {
+      "path": "docs/design/bulwark.md",
+      "bytes": 2916,
+      "sha256": "f91221e0c6c50b1fb33b23e0fcd7d616de24e3456e6db0214f24d9f9cf07896b"
+    },
+    {
+      "path": "docs/design/roadmap.md",
+      "bytes": 28655,
+      "sha256": "b31a3dd11a74aa5cb43f08074b0ba32f00f168d3207a2049e2d1842210e69229"
+    },
+    {
+      "path": "docs/design/single-player-plan.md",
+      "bytes": 36331,
+      "sha256": "b32386d985e7a74cf99848d7040f72c3fd82c71e4e78c566a9519ae5aab217fe"
+    },
+    {
+      "path": "README.md",
+      "bytes": 28660,
+      "sha256": "c32b8e6c464992cb39e43a054aacb5284c5e39e23b505e2508755a85ddc2db1e"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 34755,
+      "sha256": "33a1e28c7384beee22c05d2dbb4f2a79ed0e50f0717c4270c7bb0e6d78303c21"
+    },
+    {
+      "path": "package.json",
+      "bytes": 18981,
+      "sha256": "f3ea85f4f8c5578d62cb6071e84462048072645738a7ea996241230c67eec1ff"
+    },
+    {
+      "path": "docs/design/skills.md",
+      "bytes": 10537,
+      "sha256": "bff16619af999bb6cecef546fe6e41acca5f5ae5baa20f796ec45211b71fb2d6"
+    },
+    {
+      "path": "docs/design/thornbind.md",
+      "bytes": 5704,
+      "sha256": "4a157b5299df437fd8e2f20ac3ae4a9a1ca049fe20ea4bc3b4a118ede859af0f"
+    }
+  ],
+  "localArtifactFingerprints": [
+    {
+      "path": "tmp/bulwark-module-tests.json",
+      "bytes": 12222,
+      "sha256": "3d6925beda774c18cc60dd3dab2747396090557716779687e3ffb52c5c58878f"
+    },
+    {
+      "path": "tmp/bulwark-related-tests.json",
+      "bytes": 30618,
+      "sha256": "79aa81f409fa2efb03331f3a19f50107f1d51ef6ad4fa679d007f03ee980321f"
+    },
+    {
+      "path": "tmp/bulwark-wushi-tests.json",
+      "bytes": 47839,
+      "sha256": "c8cf57b79c8f54d3653208c8de200d508de16822e5b22b4a9e936795613593aa"
+    },
+    {
+      "path": "tmp/bulwark-v070-scene.json",
+      "bytes": 388264,
+      "sha256": "b393decdca791a3cdc1249740fe739e32cd2b56d6c1afcb5e89c5b3c5bfc4e84"
+    },
+    {
+      "path": "tmp/bulwark-v070-probe.json",
+      "bytes": 11243,
+      "sha256": "1ed3d082dc4853fe60a07a96ce1cadec376b2e74328586c089b35a0330fe4d71"
+    },
+    {
+      "path": "tmp/bulwark-v070-ui.json",
+      "bytes": 10380,
+      "sha256": "0e6c84548b84ea07cd6c4a90d8113a1187843592b3b07f8a0a2d5f218962145d"
+    },
+    {
+      "path": "tmp/bulwark-v070-initial-desktop.jpg",
+      "bytes": 145825,
+      "sha256": "0c448fc4e7bf04168f8d09873177b54aeb35c06ab9dbdc105ada62fc06de6c9b"
+    },
+    {
+      "path": "tmp/bulwark-v070-analysis-desktop.jpg",
+      "bytes": 52729,
+      "sha256": "0feb9dc78c76642ea249e543c6496398744cbaf2dbc6eccbf54633d5963bcac4"
+    },
+    {
+      "path": "tmp/bulwark-v070-stance-desktop.jpg",
+      "bytes": 146214,
+      "sha256": "cde80c5a05653effa4908c33f5c0c39ffe5239341745716ef97601de42768343"
+    },
+    {
+      "path": "tmp/bulwark-v070-inspection-desktop.jpg",
+      "bytes": 143637,
+      "sha256": "ac96318d48d9f8cb0b44950188ba0b956768fc32f37e2a973ddfde0b051c7d6f"
+    },
+    {
+      "path": "tmp/bulwark-v070-inspection-mobile390.jpg",
+      "bytes": 48714,
+      "sha256": "74f8aa802a29e6c8990045f86eaafde5faf10464ca419069d3fa15270d079415"
+    },
+    {
+      "path": "tmp/bulwark-v070-stance-mobile390.jpg",
+      "bytes": 51327,
+      "sha256": "fd8f3ee7adc32766e6f2d6519a7a095aecb7e7e605a75d0614271c8bc0868fc5"
+    },
+    {
+      "path": "tmp/bulwark-v070-taunt-mobile390.jpg",
+      "bytes": 49426,
+      "sha256": "38868fee2b0ee770930fe5f927380ff2d7aa49e356d12b91ad701d54ac9bc612"
+    },
+    {
+      "path": "tmp/bulwark-v070-analysis-mobile390.jpg",
+      "bytes": 32853,
+      "sha256": "61ec080c5c4057cea6cb968da488c6c7fbd7f153a967644151a39a6baa3fe2c9"
+    },
+    {
+      "path": "tmp/bulwark-v070-analysis-scrolled-mobile390.jpg",
+      "bytes": 41591,
+      "sha256": "1bbce0d0cea2f622c58798aea827e743c1fe43dea0ee936f3d30297a3cfc4305"
+    },
+    {
+      "path": "tmp/bulwark-v070-codex-mobile390.jpg",
+      "bytes": 55499,
+      "sha256": "3875be91223acc4d54659974feb7fff9b308cee8dd12ed2a767820cfcad79246"
+    }
+  ],
+  "documentationFollowup": "技能总览更新当前0.70与历史原型边界；0.66藤妖文档中的盾兵打断示例注明只适用于0.66–0.69。未改写此前回放、历史测量表或原验证报告。"
+}

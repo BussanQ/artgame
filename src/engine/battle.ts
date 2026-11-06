@@ -14,7 +14,10 @@ import {advanceHiveAction,advanceHiveSkills,expireHiveStates,startHiveBurst} fro
 import { advanceShurikenCast, advanceShurikenFields, expireShurikenCasts } from "./shuriken";
 import { advanceSecretOrbAction, advanceSecretOrbPulses, expireSecretOrbs } from "./secret-orb";
 import { advanceJungleLandings, jungleContains } from "./jungle";
-import { advanceWushi, expireWushi, expireWushiTaunts, wushiStrike, wushiTauntTarget } from "./wushi";
+import { advanceWushi, expireWushi, wushiStrike } from "./wushi";
+import {tauntTarget,expireTaunts} from "./taunt";
+import {expireBulwarks} from "./bulwark";
+import {advanceSpiritWards,advanceSpiritWardAction,expireSpiritWards} from "./spirit-ward";
 import { bladeStrike, seedBladeStrikes } from "./bladethrall";
 import { recordStaffAttack, retargetStaff } from "./staffthrall";
 import { advanceBladeStorm } from "./swordthrall";
@@ -22,6 +25,8 @@ import { unitArmor, unitDefinition,unitAttackInterval,unitMinimumAttackInterval 
 import { seedAssassinStrikes } from "./assassins";
 import {
   CURRENT_COMBAT_VERSION,
+  hasBulwarkRules,
+  hasSpiritWardRules,
   hasBoneBlastRules,
   hasThornBindRules,
   hasHiveRules,
@@ -143,6 +148,8 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasSpiritWardRules(definitionVersion) && d.id === "deer" ? {spiritWard:{formed:0,protected:0,severed:0,interrupted:0,mitigated:0,physicalSaved:0,magicSaved:0}} : {}),
+        ...(hasBulwarkRules(definitionVersion) && d.id === "guard" ? {bulwark:{formations:0,taunts:0,start:0,until:0,armor:0}} : {}),
         ...(hasRifleRules(definitionVersion) && d.id === "infantry" ? {rifle:{shots:0}} : {}),
         ...(hasGazeRules(definitionVersion) && d.id === "eyebug" ? {gaze:{selections:0,controls:0,manaDrained:0}} : {}),
         ...(hasHiveRules(definitionVersion) && d.id === "wasp" ? {hive:{volleys:0,needles:0,explosions:0,innerHits:0,outerHits:0,interrupted:0}} : {}),
@@ -554,7 +561,8 @@ function runBattle(
     const effects: CombatEffect[] = [];
     const context = { fighters, tick, events, effects };
     expireWushi(context);
-    expireWushiTaunts(context);
+    expireBulwarks(context);
+    expireTaunts(context);
     expireShurikenCasts(context);
     for (const f of fighters) {
       f.flash = false;
@@ -583,6 +591,7 @@ function runBattle(
       }
     }
     expireUndying(context);
+    advanceSpiritWards(context);
     hatchPhoenix(context);
     expireWarcry(context);
     advanceJungleLandings(context);
@@ -627,6 +636,7 @@ function runBattle(
           f.shuriken?.casting ||
           f.secretOrb?.casting || f.secretOrb?.channel ||
           f.wildfire?.casting || f.wildfire?.channel || f.thornbind?.channel ||
+          f.spiritWard?.channel || f.spiritWard?.actedAt===tick ||
           f.hive?.casting || f.hive?.burst || f.hive?.actedAt===tick ||
           f.combo ||
           f.bird?.draw) &&
@@ -640,6 +650,7 @@ function runBattle(
       if (advanceSecretOrbAction(context, f)) continue;
       if (advanceWildfireAction(context, f)) continue;
       if (advanceThornBindAction(context, f)) continue;
+      if (advanceSpiritWardAction(context, f)) continue;
       if (advanceHiveAction(context, f)) continue;
       if (advanceFaithArrow(context, f)) continue;
       if (advanceHawkCombo(context, f)) continue;
@@ -653,8 +664,8 @@ function runBattle(
           distance(f, a) - distance(f, b) ||
           a.uid - b.uid,
       );
-      const tauntTarget = wushiTauntTarget(context, f);
-      const target = tauntTarget ??
+      const forcedTarget = tauntTarget(context, f);
+      const target = forcedTarget ??
         ((f.gale &&
           enemies.find(
             (e) => e.uid === f.gale!.target && distance(f, e) <= f.range,
@@ -677,12 +688,13 @@ function runBattle(
         );
       const jungleTarget = f.jungle ? enemies.find((enemy) => jungleContains(f, enemy)) : undefined;
       const canCast =
-        !tauntTarget &&
+        !forcedTarget &&
         skillReady(f) &&
         (f.defId !== "monk" || !!f.secretOrb || injuredAlly) &&
         (distance(f, target) <= f.range ||
           !!jungleTarget ||
           !!f.wushi ||
+          !!f.bulwark ||
           (f.defId === "axethrall" && distance(f, target) <= AXE_THROW.range) ||
           (f.defId === "venombeast" &&
             distance(f, target) <= ACID_POLLUTION.range) ||
@@ -781,7 +793,9 @@ function runBattle(
         f.cooldown += attackInterval(f, tick);
       }
     }
-    expireWushiTaunts(context);
+    expireBulwarks(context);
+    expireTaunts(context);
+    expireSpiritWards(context);
     expireHiveStates(context);
     expireShurikenCasts(context);
     expireSecretOrbs(context);

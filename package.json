@@ -103,7 +103,9 @@
     "test:thornbind": "vitest run tests/thornbind.test.ts tests/boneblast.test.ts tests/immortality.test.ts",
     "test:rifle": "vitest run tests/rifle.test.ts tests/thornbind.test.ts",
     "test:gaze": "vitest run tests/gaze.test.ts tests/rifle.test.ts",
-    "test:hive": "vitest run tests/hive.test.ts tests/gaze.test.ts"
+    "test:hive": "vitest run tests/hive.test.ts tests/gaze.test.ts",
+    "test:bulwark": "vitest run tests/bulwark.test.ts",
+    "test:spirit-ward": "vitest run tests/spirit-ward.test.ts tests/bulwark.test.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

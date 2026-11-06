@@ -13,6 +13,8 @@ import { boneBlastLabels, drawBoneBlastEffect } from "./boneblast";
 import {thornBindLabels} from "./thornbind";
 import {gazeLabels} from "./gaze";
 import {hiveLabels} from "./hive";
+import {bulwarkLabels} from "./bulwark";
+import {spiritWardLabels} from "./spirit-ward";
 import { shieldWaveCells } from "../engine/shieldthrall";
 import { acidCells, corrosionArmor } from "../engine/beasts";
 import { deathSongCells } from "../engine/lingjiu";
@@ -1081,8 +1083,10 @@ export function drawStatuses(
   labels.push(...thornBindLabels(f,time));
   labels.push(...gazeLabels(f,time));
   labels.push(...hiveLabels(f,time));
+  labels.push(...bulwarkLabels(f,time));
+  labels.push(...spiritWardLabels(f,time));
   if(f.rifle)labels.push(`被动射击 · 已开火 ${f.rifle.shots}次 · 无能量技能`);
-  if(f.taunt && f.taunt.until>time)labels.push(`无式嘲讽 ${((f.taunt.until-time)/4).toFixed(1)}s · 转向武僧`);
+  if(f.taunt && f.taunt.until>time)labels.push(`${f.taunt.kind==="bulwark"?"盾阵嘲讽":"无式嘲讽"} ${((f.taunt.until-time)/4).toFixed(1)}s · 转向${f.taunt.kind==="bulwark"?"盾兵":"武僧"}`);
   if (f.air?.cast)
     labels.push(
       f.air.cast.kind === "tornado" ? `龙卷蓄风 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "warcry" ? `战吼蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "terminator" ? `终结者装填 · 余${f.air.cast.remaining}弹 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "bombardment" ? `机群起飞 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "jungle" ? `丛林蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "storm" ? `雷暴蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "ark"

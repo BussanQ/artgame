@@ -18,6 +18,8 @@ import {
   DEATH_SONG,
   PANGOLIN_BURROW,
   SKILLS,
+  BULWARK,
+  SPIRIT_WARD,
   AURORA,
   ARHAT_QI,
   MOTOR_TAR,
@@ -80,7 +82,6 @@ export function abilityCredit(
   if (
     [
       "fish",
-      "deer",
       "repair",
       "medic",
       "acolyte",
@@ -118,6 +119,13 @@ export function abilityCredit(
   utility +=
     (CONTROL_SECONDS[p.defId] ?? 0) * (skill.radius > 0 ? 1.8 : 1) * 0.035;
   switch (p.defId) {
+    case "deer":
+      attacks=0;utility=SPIRIT_WARD.armor[p.star-1]*0.003+SPIRIT_WARD.resist[p.star-1]*0.1;
+      break;
+    case "guard":
+      // One short personal stance and partial adjacent redirection, without fictitious skill damage.
+      attacks=0;utility=BULWARK.armor[p.star-1]*0.008+BULWARK.tauntDuration/4*0.035;
+      break;
     case "wasp":
       attacks=(HIVE.innerDamage[p.star-1]+HIVE.outerDamage[p.star-1]*1.2)*0.75/(u.attack*2**(p.star-1));
       utility=0;
@@ -297,6 +305,15 @@ export function abilityCredit(
 export function pieceStrength(p: Piece): number {
   return strengthWithOpening(p, 0);
 }
+/** Discounted protection for actual available allies; overlapping deer are not summed. */
+export function wardSupportCredit(pieces:Piece[]){
+  return Math.max(0,...pieces.filter(p=>p.defId==="deer").map(source=>{
+    const gear=equipmentStats(source.items),readiness=0.65+Math.min(100,gear.mana)*0.0035;
+    const allies=pieces.filter(p=>p.uid!==source.uid).map(pieceStrength).sort((a,b)=>b-a)
+      .slice(0,SPIRIT_WARD.targets[source.star-1]).reduce((n,v)=>n+v,0);
+    return Math.min(pieceStrength(source)*0.4,allies*(SPIRIT_WARD.armor[source.star-1]*0.002+SPIRIT_WARD.resist[source.star-1]*0.12)*0.55)*readiness;
+  }));
+}
 function strengthWithOpening(p: Piece, openingMana: number): number {
   const u = UNIT[p.defId],
     scale = 2 ** (p.star - 1),
@@ -370,7 +387,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   // A modest, bounded credit for nearby ally healing. Damage-based self-healing (wolf)
   // is deliberately excluded; it does not heal allies or scale from the caster's HP.
   const support = pieces.reduce((n, p) => {
-    if (!["fish", "deer", "repair", "medic"].includes(p.defId))
+    if (!["fish", "repair", "medic"].includes(p.defId))
       return n;
     const skill = SKILLS[p.defId],
       gear = equipmentStats(p.items);
@@ -403,7 +420,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
         )
       );
     }
-    const recipients = Math.min(pieces.length, p.defId === "deer" ? 2 : 3);
+    const recipients = Math.min(pieces.length, 3);
     return (
       n +
       Math.min(
@@ -516,6 +533,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   return (
     (base * (1 + bonus + teamBonus) +
       support +
+      wardSupportCredit(pieces) +
       energySupport +
       coordination +
       sustain +

@@ -1,4 +1,7 @@
-import { beginWushi, wushiTauntTarget } from "./wushi";
+import { beginWushi } from "./wushi";
+import {tauntTarget} from "./taunt";
+import {beginBulwark} from "./bulwark";
+import {beginSpiritWard,spiritWardTargets,spiritWardBuff,stopSpiritWard} from "./spirit-ward";
 import { beginShuriken } from "./shuriken";
 import { beginSecretOrb } from "./secret-orb";
 import { beginWildfire } from "./wildfire";
@@ -27,6 +30,7 @@ import {
   skillReady,
   usesEnergy,
   effectiveArmor,
+  effectiveMagicResist,
   attackTargets,
 } from "./triggers";
 import { isUndying, enterUndying } from "./immortality";
@@ -62,6 +66,8 @@ import {
   THORNBIND_SKILL,
   GAZE_SKILL,
   HIVE,HIVE_SKILL,
+  BULWARK_SKILL,
+  SPIRIT_WARD_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -290,9 +296,23 @@ export function damage(
     type === "physical"
       ? 100 / (100 + armor * 6)
       : type === "magic"
-        ? 1 - target.magicResist
+        ? 1 - effectiveMagicResist(target,ctx.tick,ctx.fighters)
         : 1;
   const total = Math.max(1, Math.round(raw * mitigation));
+  const ward=spiritWardBuff(target,ctx.tick,ctx.fighters);
+  let protection:CombatEvent["ward"];
+  if(ward&&type!=="true"){
+    const unwardedArmor=Math.max(0,effectiveArmor(target,ctx.tick,ctx.fighters)-ward.armor-
+      (target.armorBreakUntil>ctx.tick?target.armorBreak:0)-(type==="physical"?(source.armorPenetration??0):0))*(1-penetration);
+    const without=Math.max(1,Math.round(raw*(type==="physical"?100/(100+unwardedArmor*6):1-target.magicResist)));
+    const capacity=target.hp+target.shield,prevented=Math.max(0,Math.min(capacity,without)-Math.min(capacity,total));
+    const owner=ctx.fighters.find(f=>f.uid===ward.source);
+    if(prevented>0&&owner?.spiritWard){
+      owner.spiritWard.mitigated+=prevented;
+      if(type==="physical")owner.spiritWard.physicalSaved+=prevented;else owner.spiritWard.magicSaved+=prevented;
+      protection={source:owner.uid,prevented};
+    }
+  }
   const absorbed = Math.min(target.shield, total);
   target.shield -= absorbed;
   target.absorbed += absorbed;
@@ -321,6 +341,7 @@ export function damage(
   ctx.events.push({
     ...(reflected ? { reflected: true } : {}),
     ...(periodic ? { periodic: true } : {}),
+    ...(protection?{ward:protection}:{}),
     attacker: source.uid,
     target: target.uid,
     amount,
@@ -583,10 +604,11 @@ export function interruptAirSkill(ctx: CombatContext, source: Fighter) {
     !source.windup &&
     !source.combo &&
     !source.bird?.draw &&
-    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting
+    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting && !source.spiritWard?.channel
   )
     return;
   const wasDrawing = !!source.bird?.draw;
+  if(source.spiritWard?.channel)stopSpiritWard(ctx,source,true);
   if(source.hive?.casting){source.hive.interrupted++;source.hive.actedAt=ctx.tick;delete source.hive.casting;}
   if(source.thornbind?.channel){source.thornbind.interrupted++;delete source.thornbind.channel;}
   if (source.boneblast && source.air?.cast?.kind === "boneblast") source.boneblast.interrupted++;
@@ -825,8 +847,8 @@ export function castSkill(
   target: Fighter,
 ) {
   if (source.gospelAura || source.rifle) return false;
-  if (wushiTauntTarget(ctx, source)) return false;
-  const s = source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  if (tauntTarget(ctx, source)) return false;
+  const s = source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -841,6 +863,11 @@ export function castSkill(
               : SKILLS[source.defId];
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
+  const wardTargets=source.spiritWard?spiritWardTargets(ctx,source):[];
+  if(source.spiritWard&&(source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||
+    (source.skillReadyAt??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source)||!wardTargets.length))return false;
+  if(source.bulwark&&(source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||
+    (source.skillReadyAt??0)>ctx.tick||!attackTargets(source,ctx.fighters,ctx.tick).some(f=>f.uid===target.uid)))return false;
   if(source.hive&&(source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||
     (source.skillReadyAt??0)>ctx.tick||!hiveCanCast(ctx,source)))return false;
   if(source.gaze){
@@ -1063,7 +1090,7 @@ export function castSkill(
     if (dashTo(ctx, source, farthest)) target = farthest;
     else if (distance(source, target) > source.range) return false;
   }
-  if (source.defId === "ironrooster" || source.wushi) target = source;
+  if (source.defId === "ironrooster" || source.wushi || source.bulwark || source.spiritWard) target = source;
   source.mana = 0;
   if (source.signature) {
     source.signature.casts++;
@@ -1662,6 +1689,7 @@ export function castSkill(
       }
       break;
     case "deer":
+      if(source.spiritWard){beginSpiritWard(ctx,source,wardTargets);break;}
       for (const ally of ctx.fighters
         .filter(
           (f) =>
@@ -1682,6 +1710,7 @@ export function castSkill(
       hit(target);
       break;
     case "guard":
+      if(source.bulwark){beginBulwark(ctx,source);break;}
       shield(ctx, source, s.shieldRatio, s.duration);
       hit(target);
       stun(ctx, source, target, 4);

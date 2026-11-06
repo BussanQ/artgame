@@ -18,7 +18,8 @@ import frozen from "./fixtures/pre-v057-replays.json";
 import capture from "./fixtures/wushi-control-reserve.json";
 
 const piece = (defId:string,uid:number,star=1,position=35):Piece => ({defId,uid,star,position});
-function setup(star=1,version:CombatVersion=CURRENT_COMBAT_VERSION) {
+// Keep the 0.57 control fixture independent of later passive-infantry/body corrections.
+function setup(star=1,version:CombatVersion="wushi-control") {
   const master=army([piece("master",1,star)],0,version)[0];master.x=3;master.y=3;master.mana=100;
   const enemies=army([piece("infantry",101),piece("infantry",102),piece("infantry",103)],1,version);
   enemies.forEach((f,i)=>{f.x=[3,4,6][i];f.y=4;});

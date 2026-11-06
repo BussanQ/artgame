@@ -14,6 +14,9 @@ import { drawBoneBlasts, boneBlastPose } from "./boneblast";
 import {drawThornBinds,thornBindPose} from "./thornbind";
 import {drawGazes,gazePose} from "./gaze";
 import {drawHives,hivePose} from "./hive";
+import {drawBulwarks,bulwarkPose} from "./bulwark";
+import {drawSpiritWards,spiritWardPose} from "./spirit-ward";
+import {bulwarkActive} from "../engine/bulwark";
 import { drawShuriken } from "./shuriken";
 import { drawSecretOrbs, secretOrbPose } from "./secret-orb";
 import { drawJungleTelegraphs, jungleChargePose } from "./jungle";
@@ -536,6 +539,8 @@ export class BattleScene {
       drawThornBinds(c,fs,s.time,this.motionReduced);
       drawGazes(c,fs,s.time,this.motionReduced);
       drawHives(c,fs,s.time,this.motionReduced);
+      drawBulwarks(c,fs,s.time,this.motionReduced);
+      drawSpiritWards(c,fs,s.time,this.motionReduced);
       drawShuriken(c, fs, s.time, this.motionReduced, "blades");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
       // Render recent events without skipping any at 2x/4x playback.
@@ -772,6 +777,10 @@ export class BattleScene {
     c.save();
     const pose = isPhoenixEgg(f) || stone
       ? REST_POSE
+      : !this.motionReduced && !death && f.spiritWard?.channel
+        ? spiritWardPose(f,time)
+      : !this.motionReduced && !death && !attack && bulwarkActive(f,time)
+        ? bulwarkPose(f,time)
       : !this.motionReduced && !death && f.hive?.casting
         ? hivePose(f,time)
       : !this.motionReduced && !death && f.gaze && f.flash

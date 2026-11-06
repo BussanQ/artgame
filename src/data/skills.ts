@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasBulwarkRules,
+  hasSpiritWardRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -852,8 +854,20 @@ export const THORNBIND = {
 export const THORNBIND_SKILL=define({name:THORNBIND.name,role:THORNBIND.role,
   multiplier:THORNBIND.multiplier,damageType:"magic",duration:THORNBIND.root,description:THORNBIND.description});
 
-/** S04 marks the one-cost infantry/sniper as passive; name and star-rate ladder are local. */
-/** The measured body/CD and observed control are historical; star ladder/drain are local. */
+/** S04 body/CD and S05 one-star armor/resistance; all connection timing and later ladders are local. */
+export const SPIRIT_WARD={
+  name:"长生庇护",role:"维持多目标双防",cooldown:100,windup:2,range:4,targets:[3,5,7],armor:[15,20,25],resist:[0.4,0.5,0.6],duration:[20,24,28],
+  description:"初始能量0。满能量且25秒冷却结束时，锁定4格内生命比例最低的3/5/7名其他存活友军，蓄灵0.5秒后连接并维持5/6/7秒（一/二/三星），提供15/20/25护甲和40/50/60个百分点法术减伤，最终法术减伤最高75%。生命比例相同优先近处，再按稳定编号选取；满生命友军也可受到保护，不保护自身、残魂或涅槃火种。蓄灵和维持期间不能移动、普攻或另行施法。眩晕、沉默、魅惑、阵亡或进入残魂会中断并撤回全部连线，不返还能量或冷却；友军死亡、成为敌军或走出4格只断开该条连线，不重新选人，全部失效则结束。多枚长生鹿的庇护不叠加，只采用最强的一条；较弱但仍维持的连线可在强庇护结束后继续生效。灵鱼驱散负面状态不会移除这项友方增益。法强不增加双防、目标数或时长；技能不治疗、补盾或直接造成伤害。防护减伤比较本次伤害在有无庇护时对现有生命与护盾的实际消耗，排除闪避、免疫和过量部分；只归功给本次生效的来源，不计入治疗或护盾吸收。收束当帧不附带普攻。冷却从蓄灵开始计算。",
+} as const;
+export const SPIRIT_WARD_SKILL=define({name:SPIRIT_WARD.name,role:SPIRIT_WARD.role,multiplier:0,description:SPIRIT_WARD.description});
+
+/** S04 body/CD and S05 armor/adjacent taunt; numeric stance ladders are disclosed local choices. */
+export const BULWARK={
+  name:"刺盾之阵",role:"护甲盾阵与相邻嘲讽",cooldown:60,armor:[8,16,24],duration:[16,20,24],tauntRadius:1,tauntDuration:6,
+  description:"初始能量0。满能量且15秒冷却结束时举盾，获得8/16/24额外护甲，持续4/5/6秒（一/二/三星）；同时嘲讽相邻1格可见敌军1.5秒，使其后续行动转向盾兵，不能新施放技能。范围按横纵相邻计算，不含斜角；嘲讽只在举盾时施加一次，不持续拉住后来靠近的敌人。举盾期间可正常移动和普攻，眩晕与沉默不撤回已获得的护甲。不会生成护盾、恢复生命、盾击伤害或眩晕，技能强度不增加护甲、范围或时长；回能不能绕过个人冷却。来源阵亡、成为友军、失去可选中状态或盾阵结束时释放嘲讽，灵鱼可驱散嘲讽；不影响已出手的投射物和维持中的技能。狂舞免控、残魂和涅槃火种不受嘲讽。附近无敌人时仍可举盾抵挡远程攻击，但不会隔空嘲讽。",
+} as const;
+export const BULWARK_SKILL=define({name:BULWARK.name,role:BULWARK.role,multiplier:0,description:BULWARK.description});
+
 /** Circle sizes normalize the original 9/11/14 and 20/22/25 units to this board. */
 export const HIVE = {
   name:"蜂群震荡",role:"三针连射与双圈爆发",cooldown:80,windup:3,
@@ -863,12 +877,14 @@ export const HIVE = {
 } as const;
 export const HIVE_SKILL=define({name:HIVE.name,role:HIVE.role,multiplier:0,damageType:"magic",description:HIVE.description});
 
+/** The measured body/CD and observed control are historical; star ladder/drain are local. */
 export const GAZE = {
   name:"凝视",role:"随机单控与削能",cooldown:60,duration:[16,20,24],drainInterval:4,drain:10,
   description:"初始能量0。满能量且15秒冷却结束时，随机选择4格内一名可见且可受控制的敌人，立即使其眩晕4/5/6秒（一/二/三星），期间不能移动、普攻或施法，每秒削减最多10能量，最后一跳在控制结束时结算。凝视不直接造成伤害，不触发吸血、破甲或反伤，技能强度不增加控制或削能；已满护盾不能阻挡。沉默、眩晕、魅惑或阵亡时不能开始施法，无合法目标时保留能量；不会选中狂舞免控、残魂或涅槃火种。施放后可恢复行动，已施加的控制和削能不依赖眼虫存活或持续引导；灵鱼可驱散并终止后续削能。多个凝视不叠加削能，保留较晚到期的一次。无能量技能的敌人可被控制，但不被削能；削减不封锁后续回能，也不将能量转给眼虫。冷却从成功施放开始计算。",
 } as const;
 export const GAZE_SKILL=define({name:GAZE.name,role:GAZE.role,multiplier:0,description:GAZE.description});
 
+/** S04 marks the one-cost infantry/sniper as passive; name and star-rate ladder are local. */
 export const RIFLE = {
   name:"快速射击",role:"被动普攻核心",intervals:[4,3,2],
   description:"被动：依靠快速普通攻击持续输出，一/二/三星基础攻击间隔为1/0.75/0.5秒。每次普攻按当前攻击力结算一次物理伤害，受护甲、闪避、护盾、狙击穿透、普攻破甲、吸血和反伤影响；射击动作中的多道曳光不追加伤害。升星同时提升生命与攻击。攻速装备和野兽增益进一步缩短攻击间隔，减速会延长间隔，最快每0.25秒一次。不会积累、消耗能量或施放主动破甲技能，能量和技能强度装备不提高这项被动。沉默与封能不影响射击；眩晕、石化、阵亡或没有合法射程目标时停止攻击，魅惑期间仍可攻击原队友。",
@@ -878,6 +894,8 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (hasSpiritWardRules(version) && id === "deer") return SPIRIT_WARD.description;
+  if (hasBulwarkRules(version) && id === "guard") return BULWARK.description;
   if (hasHiveRules(version) && id === "wasp") return HIVE.description;
   if (hasGazeRules(version) && id === "eyebug") return GAZE.description;
   if (hasRifleRules(version) && id === "infantry") return RIFLE.description;
@@ -1006,6 +1024,8 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.name :
+  id === "guard" && hasBulwarkRules(version) ? BULWARK.name :
   id === "wasp" && hasHiveRules(version) ? HIVE.name :
   id === "eyebug" && hasGazeRules(version) ? GAZE.name :
   id === "infantry" && hasRifleRules(version) ? RIFLE.name :
@@ -1065,6 +1085,8 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.role :
+  id === "guard" && hasBulwarkRules(version) ? BULWARK.role :
   id === "wasp" && hasHiveRules(version) ? HIVE.role :
   id === "eyebug" && hasGazeRules(version) ? GAZE.role :
   id === "infantry" && hasRifleRules(version) ? RIFLE.role :
