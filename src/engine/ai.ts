@@ -31,6 +31,8 @@ import {
   SECRET_ORB,
   BOMBARDMENT,
   TERMINATOR,
+  WARCRY,
+  TORNADO,
 } from "../data/skills";
 import { RETINUE, SPIRIT_WOLF } from "./summons";
 import { equipmentStats } from "../data/items";
@@ -57,7 +59,6 @@ const CONTROL_SECONDS: Record<string, number> = {
   vine: 1.5,
   bonedragon: 1,
   treant: 2,
-  winddragon: 1.5,
 };
 
 /** Expected first-cast contribution, deliberately below perfect multi-target uptime.
@@ -111,6 +112,17 @@ export function abilityCredit(
   utility +=
     (CONTROL_SECONDS[p.defId] ?? 0) * (skill.radius > 0 ? 1.8 : 1) * 0.035;
   switch (p.defId) {
+    case "winddragon":
+      // A dodgeable strip through a few units, not a target-centered circle or a full team.
+      attacks=TORNADO.damage[p.star-1]*1.8*0.75/(u.attack*2**(p.star-1));
+      utility=(TORNADO.flight+TORNADO.stun[p.star-1])/4*1.8*0.035*0.75;
+      break;
+    case "lion":
+      // A partial cone and six received hits, never a guaranteed full 20s of damage.
+      attacks=WARCRY.damage[p.star-1]*1.6*0.75/(u.attack*2**(p.star-1));
+      utility=WARCRY.petrify[p.star-1]/4*1.6*0.035 +
+        WARCRY.reflection[p.star-1]*6*1.25/(u.attack*2**(p.star-1))*0.04;
+      break;
     case "monk":
       // A vulnerable maintained spell: credit four of seven hits on 1.6 targets.
       attacks=SECRET_ORB.damage[p.star-1]*4/7*1.6/(u.attack*2**(p.star-1));

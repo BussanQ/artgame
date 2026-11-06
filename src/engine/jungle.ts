@@ -55,7 +55,9 @@ export function advanceJungleLandings(ctx: CombatContext) {
       if (!source) return false;
       interruptAirSkill(ctx, target);
       target.stunUntil = Math.max(target.stunUntil, ctx.tick + landing.duration);
-      if (source.jungle) source.jungle.landings++;
+      if (landing.kind === "tornado") {
+        if (source.tornado) source.tornado.landings++;
+      } else if (source.jungle) source.jungle.landings++;
       ctx.effects.push({ source: source.uid, target: target.uid, kind: "stun", amount: landing.duration / 4,
         name: "落地眩晕", from: { x: source.x, y: source.y }, to: { x: target.x, y: target.y } });
       return false;

@@ -6,6 +6,9 @@ import { drawGospelField } from "./gospel";
 import { drawThunderstorm } from "./thunderstorm";
 import { drawBombardments, bombardmentPose } from "./bombardment";
 import { drawTerminators, terminatorPose } from "./terminator";
+import { drawWarcryTelegraphs, warcryPose, warcryTarget } from "./warcry";
+import { petrified } from "../engine/warcry";
+import { drawTornadoes, tornadoPose } from "./tornado";
 import { drawShuriken } from "./shuriken";
 import { drawSecretOrbs, secretOrbPose } from "./secret-orb";
 import { drawJungleTelegraphs, jungleChargePose } from "./jungle";
@@ -439,6 +442,8 @@ export class BattleScene {
       drawThunderstorm(c, fs, s.time, this.motionReduced, "area");
       drawBombardments(c, fs, s.time, this.motionReduced, "area");
       drawTerminators(c, fs, s.time, this.motionReduced, "area");
+      drawWarcryTelegraphs(c,fs,s.time,this.motionReduced);
+      drawTornadoes(c,fs,s.time,this.motionReduced,"area");
       drawShuriken(c, fs, s.time, this.motionReduced, "area");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "area");
       drawJungleTelegraphs(c, fs, s.time, this.motionReduced);
@@ -507,7 +512,7 @@ export class BattleScene {
           now,
           s.selected,
           death,
-          (f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
+          (f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
           hit && fraction < 0.35,
           s.time,
           f.transformation ?? undefined,
@@ -518,6 +523,7 @@ export class BattleScene {
       drawBombardments(c, fs, s.time, this.motionReduced, "planes",
         fs.some(f => f.bombardment?.raids.length) ? picture("ghostjet") : null);
       drawTerminators(c, fs, s.time, this.motionReduced, "missiles");
+      drawTornadoes(c,fs,s.time,this.motionReduced,"vortex");
       drawShuriken(c, fs, s.time, this.motionReduced, "blades");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
       // Render recent events without skipping any at 2x/4x playback.
@@ -717,6 +723,8 @@ export class BattleScene {
     const throwCast = f.shuriken?.casting;
     const throwBlade = f.shuriken?.blades.find(blade=>time-blade.start<1.8);
     const secretTarget=f.secretOrb?.casting?.to??f.secretOrb?.channel;
+    const roarTarget=warcryTarget(f,time), stone=petrified(f,time);
+    const windTarget=f.air?.cast?.kind==="tornado"?f.air.cast.to:undefined;
     const c = this.ctx,
       p = project(f.x + 0.5, f.y + 0.65),
       depth = 0.78 + f.y * 0.035,
@@ -744,10 +752,14 @@ export class BattleScene {
     c.ellipse(0, 0, 30 * scale, 10 * scale, 0, 0, Math.PI * 2);
     c.stroke();
     c.shadowBlur = 0;
-    const sway = this.motionReduced ? 0 : Math.sin(now * 0.002 + f.uid) * 1.2;
+    const sway = this.motionReduced || stone ? 0 : Math.sin(now * 0.002 + f.uid) * 1.2;
     c.save();
-    const pose = isPhoenixEgg(f)
+    const pose = isPhoenixEgg(f) || stone
       ? REST_POSE
+      : !this.motionReduced && !death && windTarget
+        ? tornadoPose(f,time)
+      : !this.motionReduced && !death && roarTarget
+        ? warcryPose(f,time)
       : !this.motionReduced && !death && secretTarget
         ? secretOrbPose(f,time)
       : !this.motionReduced && !death && throwCast
@@ -836,6 +848,10 @@ export class BattleScene {
         : p;
     const destination = transformation?.moving
       ? project(transformation.to.x + 0.5, transformation.to.y + 0.5)
+      : windTarget
+        ? project(windTarget.x+0.5,windTarget.y+0.5)
+      : roarTarget
+        ? project(roarTarget.x+0.5,roarTarget.y+0.5)
       : secretTarget
         ? project(secretTarget.x+0.5,secretTarget.y+0.5)
       : throwCast || throwBlade
@@ -847,7 +863,7 @@ export class BattleScene {
       dy = destination.y - origin.y,
       length = Math.hypot(dx, dy) || 1;
     const facing =
-      (attack || transformation || throwCast || throwBlade || secretTarget) && Math.abs(dx) > 1
+      (attack || transformation || throwCast || throwBlade || secretTarget || roarTarget || windTarget) && Math.abs(dx) > 1
         ? Math.sign(dx)
         : f.side === 0
           ? 1
@@ -860,7 +876,7 @@ export class BattleScene {
         knockupLift(f, time, this.motionReduced) * scale -
         sway -
         (f.air?.flying
-          ? 7 + (this.motionReduced ? 0 : Math.sin(now * 0.002 + f.uid) * 3)
+          ? 7 + (this.motionReduced || stone ? 0 : Math.sin(now * 0.002 + f.uid) * 3)
           : 0),
     );
     c.rotate(facing * pose.rotation + (this.motionReduced ? 0 : death * 1.3));
@@ -873,6 +889,7 @@ export class BattleScene {
     ) => {
       c.save();
       c.globalAlpha *= alpha;
+      if(stone)c.filter="grayscale(1) brightness(0.85) contrast(1.1)";
       const size = 130 * scale * (SPRITE_SCALES[spriteId] ?? SPRITE_SCALES[f.defId] ?? 1) * enlarge,
         w = (size * sprite.width) / Math.max(sprite.width, sprite.height),
         h = (size * sprite.height) / Math.max(sprite.width, sprite.height);
@@ -905,6 +922,7 @@ export class BattleScene {
       !transformation &&
       !this.motionReduced &&
       !death &&
+      !stone && !roarTarget &&
       attack &&
       f.air?.cast?.kind !== "ironape" &&
       !wushiActive(f,time) &&

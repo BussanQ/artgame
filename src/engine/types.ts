@@ -28,12 +28,14 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "terminator";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "tornado";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
+export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
+export const hasWarcryRules = (version: CombatVersion) => hasRuleSince(version,"warcry");
 export const hasTerminatorRules = (version: CombatVersion) => hasRuleSince(version,"terminator");
 export const hasBombardmentRules = (version: CombatVersion) => hasRuleSince(version,"bombardment");
 export const hasShurikenRules = (version: CombatVersion) => hasRuleSince(version,"shuriken");
@@ -171,6 +173,20 @@ export interface RoundReport {
   inventory?: string[];
 }
 export interface Fighter {
+  /** Released, moving cyclones retain their launch side and cast-time spell power. */
+  tornado?: {
+    launched: number; contacts: number; knockups: number; landings: number;
+    vortices: { start: number; from: { x: number; y: number }; dx: number; dy: number;
+      traveled: number; damage: number; side: 0 | 1; hit: number[] }[];
+  };
+  /** Personal retaliation is separate from the psychic team reflection bonus. */
+  warcry?: {
+    roars: number; petrified: number; retaliations: number;
+    retaliationDamage: number; retaliationShield: number;
+    until: number; reflection: number;
+    roar?: { start: number; from: { x: number; y: number }; to: { x: number; y: number } };
+  };
+  petrifyUntil?: number;
   /** Two separately launched artillery rounds; control cancels only unfired rounds. */
   terminator?: {
     smallLaunched: number; largeLaunched: number; detonated: number; hits: number;
@@ -234,7 +250,7 @@ export interface Fighter {
   /** Released forest waves and actual two-stage control applications, battle-local only. */
   jungle?: { waves: number; hits: number; knockups: number; landings: number };
   /** A committed knockup lands even after its caster dies; cleansing removes the pending stun. */
-  jungleLandings?: { source: number; at: number; duration: number }[];
+  jungleLandings?: { source: number; at: number; duration: number; kind?: "tornado" }[];
   /** Versioned traveling thunderstorm; committed bolts survive death and crowd control. */
   storm?: {
     launched: number;
@@ -370,6 +386,8 @@ export interface Fighter {
         | "ark"
         | "bombardment"
         | "terminator"
+        | "warcry"
+        | "tornado"
         | "eel"
         | "phoenix"
         | "whale"

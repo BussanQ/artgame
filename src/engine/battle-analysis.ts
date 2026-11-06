@@ -4,6 +4,8 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  tornado?: Pick<NonNullable<Fighter["tornado"]>, "launched" | "contacts" | "knockups" | "landings">;
+  warcry?: Pick<NonNullable<Fighter["warcry"]>, "roars" | "petrified" | "retaliations" | "retaliationDamage" | "retaliationShield">;
   terminator?: Pick<NonNullable<Fighter["terminator"]>, "smallLaunched" | "largeLaunched" | "detonated" | "hits">;
   bombardment?: Pick<NonNullable<Fighter["bombardment"]>, "launched" | "hits">;
   secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>,"formed"|"pulses"|"hits"|"energyRemoved"|"interrupted">;
@@ -47,6 +49,11 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.tornado ? {tornado:{launched:f.tornado.launched,contacts:f.tornado.contacts,
+      knockups:f.tornado.knockups,landings:f.tornado.landings}} : {}),
+    ...(f.warcry ? {warcry:{roars:f.warcry.roars,petrified:f.warcry.petrified,
+      retaliations:f.warcry.retaliations,retaliationDamage:f.warcry.retaliationDamage,
+      retaliationShield:f.warcry.retaliationShield}} : {}),
     ...(f.terminator ? { terminator: { smallLaunched: f.terminator.smallLaunched,
       largeLaunched: f.terminator.largeLaunched, detonated: f.terminator.detonated, hits: f.terminator.hits } } : {}),
     ...(f.bombardment ? { bombardment: { launched: f.bombardment.launched, hits: f.bombardment.hits } } : {}),

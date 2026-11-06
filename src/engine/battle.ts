@@ -4,6 +4,8 @@ import { advanceGospel } from "./gospel";
 import { advanceStormBolts } from "./thunderstorm";
 import { advanceBombardments } from "./bombardment";
 import { advanceTerminatorMissiles } from "./terminator";
+import { expireWarcry } from "./warcry";
+import { advanceTornadoes } from "./tornado";
 import { advanceShurikenCast, advanceShurikenFields, expireShurikenCasts } from "./shuriken";
 import { advanceSecretOrbAction, advanceSecretOrbPulses, expireSecretOrbs } from "./secret-orb";
 import { advanceJungleLandings, jungleContains } from "./jungle";
@@ -15,6 +17,8 @@ import { unitArmor, unitDefinition } from "../data/unit-stats";
 import { seedAssassinStrikes } from "./assassins";
 import {
   CURRENT_COMBAT_VERSION,
+  hasTornadoRules,
+  hasWarcryRules,
   hasTerminatorRules,
   hasBombardmentRules,
   hasShurikenRules,
@@ -128,6 +132,10 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasTornadoRules(definitionVersion) && d.id === "winddragon"
+          ? {tornado:{launched:0,contacts:0,knockups:0,landings:0,vortices:[]}} : {}),
+        ...(hasWarcryRules(definitionVersion) && d.id === "lion"
+          ? {warcry:{roars:0,petrified:0,retaliations:0,retaliationDamage:0,retaliationShield:0,until:0,reflection:0}} : {}),
         ...(hasTerminatorRules(definitionVersion) && d.id === "titan"
           ? { terminator: { smallLaunched: 0, largeLaunched: 0, detonated: 0, hits: 0, missiles: [] } } : {}),
         ...(hasBombardmentRules(definitionVersion) && d.id === "ark"
@@ -555,6 +563,7 @@ function runBattle(
     }
     expireUndying(context);
     hatchPhoenix(context);
+    expireWarcry(context);
     advanceJungleLandings(context);
     advanceSonic(context);
     advanceBurn(context);
@@ -562,6 +571,7 @@ function runBattle(
     advanceStormBolts(context);
     advanceBombardments(context);
     advanceTerminatorMissiles(context);
+    advanceTornadoes(context);
     advanceShurikenFields(context);
     advanceSecretOrbPulses(context);
     advanceGospel(context);

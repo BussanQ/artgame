@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "collectedAt": "2026-11-06",
+  "collectedAt": "2026-11-07",
   "lightningReview": "0.51重新目视S04-1第42行，并读取S50物理装备建议及S53原始公告锁链衰减段落。原图和HTML指纹、跨期边界、未找到的技能卡及本地上限/选敌明确记录于lightning-history.json；未用转载补齐未知参数。",
   "sources": [
     {
@@ -631,7 +631,7 @@
       "author": "战争艺术无限进化（页面署名，嘉宾香草糕）",
       "kind": "publisher-authored-article-and-embedded-client-card",
       "status": "original-html-and-client-image-reviewed",
-      "accessedAt": "2026-11-06",
+      "accessedAt": "2026-11-07",
       "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/qfYCXIbnCjisgfv.jpg",
       "image": "images/stormcaller-thunderstorm-client.jpg",
       "imageSha256": "698bcf28f72abb267b159d0a1eeb17ca6c4e8b79768608ea9b571d778926c4c2",
@@ -645,7 +645,21 @@
         "note": "同一原HTML中的树妖卡；五费、圆形4格、100/200/300、30秒、击飞后眩晕1/1.5/2秒。保留天师原字段，不覆盖其原图。"
       },
       "bombardmentReview": "0.60核对无第三方AI摘要的既有原始HTML，并重新取得、目视方舟原始JPEG客户端卡：四费、空军/攻城、集团轰炸、14秒及250/400/650；卡面无宽度/速度/起手，见bombardment-history.json。当前网页含第三方AI摘要横幅，不以它替代原卡。",
-      "terminatorReview": "0.61重新取得并目视铁巨神原始客户端JPEG：五费、装甲/爆破、终结者、半径3格、小弹100/200/300、大弹250/350/450、一星14秒；正文两次轰炸和精确时序边界分开记录，见terminator-history.json。"
+      "terminatorReview": "0.61重新取得并目视铁巨神原始客户端JPEG：五费、装甲/爆破、终结者、半径3格、小弹100/200/300、大弹250/350/450、一星14秒；正文两次轰炸和精确时序边界分开记录，见terminator-history.json。",
+      "warcryReview": {
+        "image": "images/lion-warcry-client-dec2019.jpg",
+        "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/owxvcmbnCjiseFy.jpg",
+        "imageSha256": "bf24bb39b02b7a98c58b0f541ba8a55683c574bd03fc56a6b536f8fd2fc97c9a",
+        "details": "warcry-history.json",
+        "note": "0.62重新读取正文并目视客户端卡：三费、野兽/护卫、30秒、30/50/80、石化3/3.5/4秒、反伤10/20/30和20秒。半径、角度、起手和反伤交互另列为本地适配；身板采用跨期S04社区表第29行。"
+      },
+      "tornadoReview": {
+        "image": "images/winddragon-tornado-client-dec2019.jpg",
+        "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/tfvogrbnCjisehz.jpg",
+        "imageSha256": "b9d616c2204b0f92689f3e27fd4223fd57213d2672a975a682e0e278565540e0",
+        "details": "tornado-history.json",
+        "note": "0.63目视翔龙原始客户端卡：四费、龙/攻城、20秒、150/200/250与落地眩晕1.5/2/3秒，沿途移动/击飞。早期陆行者目录保留；后期龙族真伤未混入。宽度、速度、行程、起手、空中时间与法术分类均另记适配。"
+      }
     },
     {
       "id": "S56",

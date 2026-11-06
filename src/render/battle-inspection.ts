@@ -6,18 +6,19 @@ import { isPhoenixEgg } from "../engine/phoenix";
 import { project } from "./projection";
 import { taotieScale } from "./taotie";
 import { wushiScale } from "./wushi";
+import { petrified } from "../engine/warcry";
 
 /** Only urgent, short labels belong beside every combatant. Full effects live in its inspector. */
 export function compactBattleLabels(f: Fighter, time: number) {
   const labels: string[] = [];
   if (f.stunUntil > time)
-    labels.push(f.knockup && f.knockup.until > time ? "击飞" : "眩晕");
+    labels.push(petrified(f,time) ? "石化" : f.knockup && f.knockup.until > time ? "击飞" : "眩晕");
   if (f.charm) labels.push("魅惑");
   if (f.taunt && f.taunt.until > time) labels.push("嘲讽");
   if ((f.silenceUntil ?? 0) > time) labels.push("沉默");
   if (isPhoenixEgg(f)) labels.push("涅槃");
   if (f.bladeStorm && f.bladeStorm.until > time) labels.push("狂舞免伤");
-  if (f.air?.cast) labels.push(f.air.cast.kind === "terminator" ? "双轮装填" : f.air.cast.kind === "bombardment" ? "机群起飞" : "施法中");
+  if (f.air?.cast) labels.push(f.air.cast.kind === "tornado" ? "龙卷蓄风" : f.air.cast.kind === "warcry" ? "战吼蓄力" : f.air.cast.kind === "terminator" ? "双轮装填" : f.air.cast.kind === "bombardment" ? "机群起飞" : "施法中");
   if (f.windup) labels.push("蓄力");
   if (f.shuriken?.casting) labels.push("飞镖蓄力");
   if (f.secretOrb?.casting) labels.push("秘法蓄力");

@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasTornadoRules,
+  hasWarcryRules,
   hasTerminatorRules,
   hasBombardmentRules,
   hasShurikenRules,
@@ -794,10 +796,31 @@ export const TERMINATOR = {
 export const TERMINATOR_SKILL = define({name:TERMINATOR.name,role:TERMINATOR.role,
   damageType:"magic",radius:TERMINATOR.radius,description:TERMINATOR.description});
 
+/** S55 client card: all three ranks and durations. Cone geometry/startup are local. */
+export const WARCRY = {
+  name: "战吼", role: "扇形石化与个人反伤",
+  damage: [30, 50, 80], petrify: [12, 14, 16], reflection: [10, 20, 30],
+  reflectionDuration: 80, cooldown: 120, windup: 2, radius: 3, angle: 120,
+  description: "初始能量0。满能量且30秒冷却结束时，朝1格内可见敌人的当前位置蓄吼0.5秒，锁定方向，对前方120度、圆形半径3格的扇形内敌人造成30/50/80基础法术伤害，并石化3/3.5/4秒（一/二/三星）。石化禁止移动、普攻和施法，可被驱散；狂舞免控、残魂与涅槃火种不会石化。释放后自身获得20秒战吼反伤：每次受到敌方非反伤伤害（含破盾）时，向仍存活的伤害来源反弹10/20/30固定真实伤害，普通致死一击也可触发。反伤不受攻击力或技能强度放大，不被护甲或魔抗减伤，但仍受护盾和技能免伤影响；不反弹闪避、免伤或其他反伤，无法攻击已阵亡的来源。与灵能反伤分别结算，灵能先结算，来源已阵亡则不再触发个人反伤。技能强度只增加咆哮法伤，不增加控制、持续时间和反伤。蓄吼期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会打断，不退还能量和冷却；已释放的咆哮会结算整个扇形，狂狮阵亡后不再获得反伤。冷却从蓄吼开始计算。",
+} as const;
+export const WARCRY_SKILL = define({name:WARCRY.name,role:WARCRY.role,
+  damageType:"magic",radius:WARCRY.radius,description:WARCRY.description});
+
+/** S55 client damage, landing stun and cooldown. Travel geometry and flight timing are local. */
+export const TORNADO = {
+  name: "龙卷风", role: "路径击飞与落地眩晕", damage: [150,200,250], stun: [6,8,12],
+  cooldown: 80, windup: 3, flight: 2, width: 1.5, length: 8, speed: 0.75,
+  description: "初始能量0。满能量且20秒冷却结束时，朝4格内可见敌人的当前位置蓄风0.75秒，发出直径1.5格的龙卷风，沿起手锁定的方向每秒移动3格，中心最多前进8格，出界部分无效。每次龙卷对同一敌人只接触一次，造成150/200/250基础法术伤害（一/二/三星），击飞0.5秒，落地后再眩晕1.5/2/3秒。范围可波及隐蔽和飞行敌军，不伤友军；敌人可以移动走出路径。技能强度放大起手冻结的技能伤害，攻击力不增加该伤害。狂舞免控、残魂、涅槃火种不被击飞；落地前获得免控或被位面观测驱散可阻止后续眩晕，其他击飞会推迟落地。蓄风期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会打断，不返还能量和冷却；已发出的龙卷保留原阵营和伤害，施法者阵亡后仍会前进，已施加的落地控制也不依赖施法者存活。释放后恢复行动，战斗结束就停止。陆行者连携只转换普攻，龙卷风仍按法术结算。冷却从蓄风开始计算。",
+} as const;
+export const TORNADO_SKILL = define({name:TORNADO.name,role:TORNADO.role,
+  damageType:"magic",description:TORNADO.description});
+
 export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (hasTornadoRules(version) && id === "winddragon") return TORNADO.description;
+  if (hasWarcryRules(version) && id === "lion") return WARCRY.description;
   if (hasTerminatorRules(version) && id === "titan") return TERMINATOR.description;
   if (hasBombardmentRules(version) && id === "ark") return BOMBARDMENT.description;
   if (hasSecretOrbRules(version) && id === "monk") return SECRET_ORB.description;
@@ -918,6 +941,8 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "winddragon" && hasTornadoRules(version) ? TORNADO.name :
+  id === "lion" && hasWarcryRules(version) ? WARCRY.name :
   id === "titan" && hasTerminatorRules(version) ? TERMINATOR.name :
   id === "ark" && hasBombardmentRules(version) ? BOMBARDMENT.name :
   id === "monk" && hasSecretOrbRules(version) ? SECRET_ORB.name :
@@ -969,6 +994,8 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "winddragon" && hasTornadoRules(version) ? TORNADO.role :
+  id === "lion" && hasWarcryRules(version) ? WARCRY.role :
   id === "titan" && hasTerminatorRules(version) ? TERMINATOR.role :
   id === "ark" && hasBombardmentRules(version) ? BOMBARDMENT.role :
   id === "monk" && hasSecretOrbRules(version) ? SECRET_ORB.role :

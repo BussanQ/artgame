@@ -1,0 +1,129 @@
+{
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.62",
+  "combatVersion": "warcry",
+  "unitId": "lion",
+  "scope": "恢复三费前排战吼；七月社区实测表与十二月客户端卡分别记录，不声称来自统一官方构建。",
+  "sources": [
+    {
+      "id": "S55",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml?_platform=PC",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名）",
+      "kind": "publisher-byline-article-with-original-client-card",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "review": "本次重新读取正文，确认向前扇形石化与释放后20秒真实反伤；重新目视原始客户端JPEG，精确数列只取卡面。客户端构建号未知。"
+    },
+    {
+      "id": "S04-1",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measured-attribute-table",
+      "row": 29,
+      "name": "狂狮",
+      "fields": {
+        "cost": 3,
+        "hp": 700,
+        "attackRange": [
+          45,
+          54
+        ],
+        "armor": 10,
+        "range": 1,
+        "attackIntervalSeconds": 1.5,
+        "skillCooldownSeconds": [
+          30
+        ]
+      },
+      "review": "本次重新目视完整原图第29行并核对既有转录；攻击采用均值49.5。社区测量不是官方逐版本属性表。"
+    }
+  ],
+  "image": {
+    "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/owxvcmbnCjiseFy.jpg",
+    "path": "images/lion-warcry-client-dec2019.jpg",
+    "sha256": "bf24bb39b02b7a98c58b0f541ba8a55683c574bd03fc56a6b536f8fd2fc97c9a",
+    "format": "JPEG",
+    "size": [
+      640,
+      296
+    ],
+    "bytes": 25811,
+    "visuallyReviewed": true,
+    "clientBuild": "unknown",
+    "download": "公开原图直接请求取得真正JPEG；未经过重编码或栅格处理。"
+  },
+  "confirmedClientCard": {
+    "cost": 3,
+    "traits": [
+      "野兽",
+      "护卫"
+    ],
+    "skill": "战吼",
+    "shape": "forward-cone",
+    "cooldownSeconds": 30,
+    "damage": [
+      30,
+      50,
+      80
+    ],
+    "petrifySeconds": [
+      3,
+      3.5,
+      4
+    ],
+    "trueRetaliation": [
+      10,
+      20,
+      30
+    ],
+    "retaliationSeconds": 20
+  },
+  "localChoices": {
+    "radiusTiles": 3,
+    "angleDegrees": 120,
+    "windupSeconds": 0.5,
+    "initialMana": 0,
+    "targetLock": "起手锁定1格内可见敌人的方向及起点，释放时按当前位置检查欧氏扇形；包含边界，可波及飞行和隐藏敌军。",
+    "petrification": "复用既有stunUntil禁止移动/普攻/施法，以petrifyUntil区分石化显示；释放帧加12/14/16帧，结束时刻不含自身，不改旧眩晕额外帧。真实位面观测驱散可立即恢复。",
+    "immunity": "狂舞免控、残魂与涅槃火种不石化；伤害仍独立经过既有魔抗、护盾与技能免伤。",
+    "power": "只把施法时技能强度乘入咆哮法伤。反伤、控制和持续时间不受法强/攻击力加成。",
+    "retaliation": "实际扣血或破盾的敌方非反伤包触发，按当前阵营判断，眩晕/沉默不关闭已释放个人反伤；普通致死一击可反弹，转残魂/火种不触发，已阵亡来源不再受反伤。",
+    "reflectionStack": "与灵能作为两个真实伤害包相加，灵能先结算；若来源已被击杀，个人包不再触发。反伤包不得再次反弹；技能免伤和护盾仍可挡反伤。",
+    "commitment": "眩晕/沉默/魅惑/死亡打断蓄吼；已释放声音即使因第一目标反伤阵亡仍结算其他目标，死者不再获得个人反伤。",
+    "magicResistance": "沿用引擎通用默认20%；原表未提供该字段，不称为狂狮已确认固有被动。",
+    "ai": "有限1.6目标、75%有效范围折扣与六次受击反伤估计，不假设全队命中或完整20秒持续挨打；未据批量对局调参。"
+  },
+  "art": {
+    "action": "reuse-existing-imagegen-asset",
+    "path": "../../public/assets/units/lion.png",
+    "sha256": "833f364dd4c2321c813b0b56ca29130962d4ffa1bfbc9ef3a756055d205b9d9c",
+    "newImageGenerated": false,
+    "rasterPostprocessing": false,
+    "presentation": "Canvas蓄吼/释放姿态、扇形声波、灰石滤镜、石片和个人反伤连线；原金鬃装甲狮与跃身爪击保留。"
+  },
+  "compatibility": {
+    "previousRules": "singleplayer-0.61",
+    "previousCombatVersion": "terminator",
+    "saveSchema": 61,
+    "oldDefinition": {
+      "cost": 2,
+      "hp": 950,
+      "attack": 52,
+      "armor": 5,
+      "range": 1,
+      "intervalTicks": 3,
+      "skill": "怒吼"
+    },
+    "historicalDefinitions": 34,
+    "frozenBattles": "../../tests/fixtures/pre-v062-lion-replays.json",
+    "frozenSha256": "7d91fd33fea197c89a00cfb1b163981edb1b34c69e289698a4e00eea45fd287b",
+    "catalog": "新局三费25份，旧比赛二费30份与报价/出售规则保留；准备期升级能力，不改历史或资源。"
+  },
+  "remaining": [
+    "历史全部字段与公式的统一构建依据",
+    "其他仍待核对的原型能力",
+    "整体难度、多构筑和高星经营",
+    "真实触屏与弱设备性能"
+  ]
+}

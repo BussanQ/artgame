@@ -1,6 +1,10 @@
 # 赤潮网页自走棋：资料与开发方案
 
-最新能力：[0.61铁巨神终结者](design/terminator.md) · [原卡、字段与适配](research/terminator-history.json) · [内置ImageGen提示词与形象](research/terminator-assets.json) · [验证记录](analysis/terminator-v061-validation.json)。远程双轮轰炸、逐弹反制、独立动作和schema60已接入；57项相关检查、构建与桌面/390px演示通过，未新增整局或批量采样。以下为各轮当时记录。
+最新能力：[0.63翔龙龙卷风](design/tornado.md) · [原卡与适配](research/tornado-history.json) · [内置ImageGen完整提示词](research/tornado-assets.json) · [验证记录](analysis/tornado-v063-validation.json)。移动路径、两段控制、实际驱散／树妖重叠、阵亡后持续、独立统计与schema62已接入；73项相关检查、构建及桌面／390px演示通过。当前早期陆行者目录保留，后期龙族未混入；以下为各轮历史记录。
+
+0.62能力记录：[0.62狂狮战吼](design/warcry.md) · [原卡、字段与适配](research/warcry-history.json) · [验证记录](analysis/warcry-v062-validation.json)。三费扇形石化、20秒个人反伤、现有ImageGen形象的新咆哮表现、真实驱散、统计和schema61已接入；69项相关检查、构建及桌面／390px演示通过。手机分析固定标题与44px关闭入口，旧二费30份目录保持。本轮没有新增完整经营局或批量采样；以下保留历史记录。
+
+0.61能力记录：[0.61铁巨神终结者](design/terminator.md) · [原卡、字段与适配](research/terminator-history.json) · [内置ImageGen提示词与形象](research/terminator-assets.json) · [验证记录](analysis/terminator-v061-validation.json)。远程双轮轰炸、逐弹反制、独立动作和schema60已接入；57项相关检查、构建与桌面/390px演示通过，未新增整局或批量采样。以下为各轮当时记录。
 
 0.60能力记录：[0.60方舟集团轰炸](design/bombardment.md) · [原卡、字段与适配](research/bombardment-history.json) · [验证记录](analysis/bombardment-v060-validation.json)。矩形机群、阵亡后持续、统计和schema59已接入；26项相关模块检查与构建通过，本次不做批量对战或完整经营局采样。此前版本的记录保留。
 

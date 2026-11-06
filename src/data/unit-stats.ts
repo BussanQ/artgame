@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasTornadoRules,
+  hasWarcryRules,
   hasTerminatorRules,
   hasBombardmentRules,
   hasShurikenRules,
@@ -131,11 +133,19 @@ const oldTitan: UnitDef = {
   skill: "天坠",
 };
 const oldTitanGuard: UnitDef = { ...oldTitan, traits: previousTraits.titan };
+const oldLion: UnitDef = {
+  ...UNIT.lion, cost: 2, hp: 950, attack: 52, armor: 5, range: 1, interval: 3, skill: "怒吼",
+};
+const oldWinddragon: UnitDef = {
+  ...UNIT.winddragon, hp: 1100, attack: 75, range: 3, interval: 4,
+  initialMana: 50, magicResist: undefined, skill: "游龙卷风",
+};
 /** Keep the original portrait available to in-flight battles and historical reports. */
 export function unitSprite(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
+  if (id === "winddragon" && hasTornadoRules(version)) return "winddragon-tornado";
   if (id === "titan" && hasTerminatorRules(version)) return "titan-terminator";
   if (id === "monk" && hasSecretOrbRules(version)) return "monk-orb";
   if (id === "panda" && hasShurikenRules(version)) return "panda-shuriken";
@@ -150,6 +160,8 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "winddragon" && !hasTornadoRules(version)) return oldWinddragon;
+  if (id === "lion" && !hasWarcryRules(version)) return oldLion;
   if (id === "titan" && !hasTerminatorRules(version)) return hasLineageRules(version) ? oldTitan : oldTitanGuard;
   if (id === "ark" && !hasBombardmentRules(version)) return oldArk;
   if (id === "monk" && !hasSecretOrbRules(version)) return hasLineageRules(version) ? oldMonk : oldMonkGuard;

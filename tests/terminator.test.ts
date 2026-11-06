@@ -194,7 +194,8 @@ describe("铁巨神终结者", () => {
 describe("终结者版本与存档",()=>{
   it("此前33版本铁巨神身板/职业保持，其他兵种、连携、异虫双合继承",()=>{
     for(const entry of frozen.definitions)expect(unitDefinition("titan",oldVersion(entry.version))).toEqual(entry.unit);
-    for(const u of UNITS.filter(u=>u.id!=="titan"))expect(unitDefinition(u.id)).toEqual(unitDefinition(u.id,"bombardment"));
+    // Compare the 0.61 introduction boundary, independently of later unit changes.
+    for(const u of UNITS.filter(u=>u.id!=="titan"))expect(unitDefinition(u.id,"terminator")).toEqual(unitDefinition(u.id,"bombardment"));
     expect(traitTiers(CURRENT_COMBAT_VERSION)).toEqual(traitTiers("bombardment"));
     const party=["ark","master","panda","monk","stormcaller","acolyte","thunderlord"].map((id,i)=>({...piece(id,i+1),position:32+i}));
     expect(army(party,0)).toEqual(army(party,0,"bombardment"));
