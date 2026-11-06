@@ -4,6 +4,8 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  rifle?:Fighter["rifle"];
+  thornbind?:Pick<NonNullable<Fighter["thornbind"]>,"pulses"|"hits"|"roots"|"healing"|"retargets"|"interrupted">;
   boneblast?: Pick<NonNullable<Fighter["boneblast"]>, "launched" | "detonated" | "hits" | "stuns" | "interrupted">;
   wildfire?: Pick<NonNullable<Fighter["wildfire"]>, "formed" | "pulses" | "hits" | "interrupted" | "eggs" | "hatches" | "brokenEggs">;
   tornado?: Pick<NonNullable<Fighter["tornado"]>, "launched" | "contacts" | "knockups" | "landings">;
@@ -51,6 +53,9 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.rifle?{rifle:{shots:f.rifle.shots}}:{}),
+    ...(f.thornbind?{thornbind:{pulses:f.thornbind.pulses,hits:f.thornbind.hits,roots:f.thornbind.roots,
+      healing:f.thornbind.healing,retargets:f.thornbind.retargets,interrupted:f.thornbind.interrupted}}:{}),
     ...(f.boneblast ? {boneblast:{launched:f.boneblast.launched,detonated:f.boneblast.detonated,
       hits:f.boneblast.hits,stuns:f.boneblast.stuns,interrupted:f.boneblast.interrupted}} : {}),
     ...(f.wildfire ? {wildfire:{formed:f.wildfire.formed,pulses:f.wildfire.pulses,hits:f.wildfire.hits,

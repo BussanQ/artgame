@@ -1,6 +1,10 @@
 # 赤潮网页自走棋：资料与开发方案
 
-最新能力：[0.65骨龙骨爆](design/boneblast.md) · [来源与适配](research/boneblast-history.json) · [内置ImageGen完整提示词](research/boneblast-assets.json) · [验证记录](analysis/boneblast-v065-validation.json)。蓄力、飞行、固定圆形落点、打断、独立统计和schema64已接入，92项相关模块与构建通过。新形象浏览器画面待补，未新增整局或批量采样；未知数值未冒称原版参数。
+最新能力：[0.67神枪手被动火力](design/rifle.md) · [资料与适配](research/rifle-history.json) · [内置ImageGen完整提示词](research/rifle-assets.json) · [验证清单](analysis/rifle-v067-validation.json)。升星射速、装备／AI、无能量普攻、开火统计和schema66已接入；106项相关模块与构建通过。39版旧定义及回放保持，本次未新增整局或批量采样，实际浏览器专项画面待补。
+
+最新能力：[0.66藤妖荆棘缠绕](design/thornbind.md) · [原始资料与适配](research/thornbind-history.json) · [验证清单](analysis/thornbind-v066-validation.json)。分段汲取、剩余段数转火、段间反制、藤蔓画面与schema65已接入；骨龙间隔纠正为2.2秒，88项相关检查与构建通过，桌面／390px已核对。38版旧定义和回放保持，未知原版参数、完整单机难度和真实设备继续推进。
+
+最新能力：[0.65骨龙骨爆](design/boneblast.md) · [来源与适配](research/boneblast-history.json) · [内置ImageGen完整提示词](research/boneblast-assets.json) · [验证记录](analysis/boneblast-v065-validation.json)。蓄力、飞行、固定圆形落点、打断、独立统计和schema64已接入，92项相关模块与构建通过。桌面／390px新图、三个阶段、历史统计和退出资源已补验，未新增整局或批量采样；未知数值未冒称原版参数。
 
 最新能力：[0.64不死鸟燎原与涅槃](design/wildfire.md) · [原卡与适配边界](research/wildfire-history.json) · [内置ImageGen形态与完整提示词](research/wildfire-assets.json) · [验证记录](analysis/wildfire-v064-validation.json)。三费持续法伤、15秒冷却、分星级形象、打断／重生／破蛋统计及schema63已接入；99项相关模块、3项历史目录检查、构建与桌面／390px演示通过，未新增整局或批量采样。全程引导、逐跳总量和孵化时间等仍明确标记为本地解释，完整目标继续推进。
 

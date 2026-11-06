@@ -62,10 +62,17 @@
       "url": "https://www.taptap.cn/moment/15216144952591652",
       "publishedAt": null,
       "kind": "community",
-      "status": "partial-text-reviewed",
-      "accessedAt": "2026-11-04",
+      "status": "original-body-reviewed",
+      "accessedAt": "2026-11-07",
       "targetVersion": null,
-      "note": "本轮核对铁狗分段控制和技能空窗描述：目标死亡后剩余控制可作用于新目标，段间可能施放瞬发技能。没有完整技能名称/分星伤害，不作精确官方参数。"
+      "note": "原文藤妖段描述多段控制、每段回血、目标死亡后的剩余段数转火及可施放瞬发技能的段间空隙，并以铁狗式控制作比较；没有给出完整分星伤害或精确时序。",
+      "modifiedAt": "2019-07-15",
+      "thornbindReview": {
+        "record": "thornbind-history.json",
+        "originalHtmlSha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+        "method": "ordinary public HTTP GET; body text reviewed",
+        "note": "网页工具复访405后，普通HTTP取得完整302211字节原文；不把失败响应当正文证据。"
+      }
     },
     {
       "id": "S06",
@@ -758,6 +765,28 @@
       "note": "实际目视为RTS Yaoguai兵种选择画面，不是自走棋技能卡；不作为第二份客户端数值证据。",
       "imagePath": "images/panda-monk-client-may2019.png",
       "imageSha256": "27f04a628d457697c96508da1accd8d3e561d0d3030cd07b199145396ed7324b"
+    },
+    {
+      "id": "S62",
+      "title": "战争艺术 6月10日停服维护更新公告",
+      "url": "https://news.17173.com/z/zzq/content/06102021/180944537.shtml?_platform=PC",
+      "publishedAt": "2021-06-10",
+      "author": "战争艺术AOW（页面署名，来源微信公众号）",
+      "kind": "publisher-byline-update",
+      "status": "relevant-original-body-reviewed",
+      "accessedAt": "2026-11-07",
+      "targetVersion": "2021-06-10; not the current early roster",
+      "note": "藤妖技能名荆棘缠绕、施放能量藤蔓束缚后新增5/7/9护甲。仅确认名称与后期改动边界，不将新增护甲当2019能力，也不推断早期段数、伤害、回血比例。"
+    },
+    {
+      "id": "S63",
+      "title": "新版本最强性价比兵种以及阵容",
+      "url": "https://www.taptap.cn/moment/15212919167910486?group_id=42979",
+      "publishedAt": "2019-05-15",
+      "kind": "original-player-post",
+      "status": "text-and-two-client-images-reviewed",
+      "targetVersion": null,
+      "review": "一费神枪手、攻速装备和三星六步兵四野兽构筑；目测一秒三枪不证明单次普攻三段伤害或裸装星级射速梯度。详见rifle-history.json。"
     }
   ],
   "gospelReview": "0.52字段与置信边界见gospel-history.json；客户端三星能量末位被水印遮挡，10为暂定本地值。",
@@ -798,5 +827,7 @@
     "record": "wildfire-history.json",
     "primaryEvidence": "S55原始客户端卡与S04-1第32行实测表已目视，原卡/实测/二手正文分级记录。",
     "boundary": "保留当前早期职业目录；未把七月异能、后期法术与早期吸血当作同一机制。引导、总量解释、频率与孵化时长未确证。"
-  }
+  },
+  "thornbindReview": "0.66依据S05原作者正文与S04第36行补入分段束缚和逐段汲取，S62名称跨期引用但后期护甲不混入；本地数值边界见thornbind-history.json。重新目视S04第34行，修正0.65代码的骨龙攻击间隔1.2→2.2秒，原始转录表不改动。",
+  "rifleReview": "0.67保留S04首行名称映射推断及S63构筑观察的限制；星级射速和快速射击名称为本地适配。"
 }

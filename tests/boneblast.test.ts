@@ -131,8 +131,8 @@ describe("骨爆版本与真实引擎接入",()=>{
   it("37个旧定义冻结，其余单位保持，当前四费本体和图像路由一致",()=>{
     expect(frozen.definitions).toHaveLength(37);
     for(const entry of frozen.definitions)expect(unitDefinition("bonedragon",version(entry.version))).toEqual(entry.unit);
-    for(const u of UNITS.filter(u=>u.id!=="bonedragon"))expect(unitDefinition(u.id)).toEqual(unitDefinition(u.id,"wildfire"));
-    expect(unitDefinition("bonedragon")).toMatchObject({cost:4,hp:950,attack:129,armor:5,range:4,interval:4.8,skill:"骨爆"});
+    for(const u of UNITS.filter(u=>u.id!=="bonedragon"))expect(unitDefinition(u.id,"boneblast")).toEqual(unitDefinition(u.id,"wildfire"));
+    expect(unitDefinition("bonedragon","boneblast")).toMatchObject({cost:4,hp:950,attack:129,armor:5,range:4,interval:4.8,skill:"骨爆"});
     expect(unitSprite("bonedragon")).toBe("bonedragon-boneblast");expect(fighterSprite(setup().source)).toBe("bonedragon-boneblast");
     expect(unitSprite("bonedragon","wildfire")).toBe("bonedragon");expect(skillDescription("bonedragon")).toContain("25秒");
     expect(BONEBLAST.cooldown/4).toBe(25);

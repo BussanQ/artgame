@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasRifleRules,
+  hasThornBindRules,
   hasBoneBlastRules,
   hasWildfireRules,
   hasTornadoRules,
@@ -839,10 +841,27 @@ export const BONEBLAST_SKILL = define({name:BONEBLAST.name,role:BONEBLAST.role,
   multiplier:BONEBLAST.multiplier,damageType:"magic",radius:BONEBLAST.radius,
   duration:BONEBLAST.stun,description:BONEBLAST.description});
 
+/** Early player account confirms segmented control/drain/retarget; exact amounts and cadence are local. */
+export const THORNBIND = {
+  name:"荆棘缠绕",role:"分段单控与汲取",
+  cooldown:240,windup:2,interval:3,pulses:3,root:2,multiplier:1.6,
+  description:"初始能量25。满能量且60秒冷却结束时，锁定1格内可见敌人并原地施法。起手0.5秒后开始三段能量藤蔓，每隔0.75秒缠绕一次，每段眩晕0.5秒，段间有0.25秒可行动空隙。三段合计造成起手160%攻击的法术伤害，每段按实际扣除生命等量回复自身生命；破盾、免伤、过量伤害和溢出治疗不提供回复。攻击与技能强度在起手冻结，每段独立读取当前魔抗和护盾。原目标死亡、离开1格、隐蔽或成为友军后，剩余段数转向1格内最近可见敌人；没有合法目标则终止。维持时不能移动、普攻或再次施法，眩晕、沉默、魅惑、阵亡或残魂到期会终止剩余段数，不返还能量与冷却。残魂可施法但不能回血。狂舞、残魂和涅槃火种不受缠绕控制，火种仍可受伤；灵鱼可驱散已施加的短控制，后续段数仍可再次施加。冷却从起手计算。",
+} as const;
+export const THORNBIND_SKILL=define({name:THORNBIND.name,role:THORNBIND.role,
+  multiplier:THORNBIND.multiplier,damageType:"magic",duration:THORNBIND.root,description:THORNBIND.description});
+
+/** S04 marks the one-cost infantry/sniper as passive; name and star-rate ladder are local. */
+export const RIFLE = {
+  name:"快速射击",role:"被动普攻核心",intervals:[4,3,2],
+  description:"被动：依靠快速普通攻击持续输出，一/二/三星基础攻击间隔为1/0.75/0.5秒。每次普攻按当前攻击力结算一次物理伤害，受护甲、闪避、护盾、狙击穿透、普攻破甲、吸血和反伤影响；射击动作中的多道曳光不追加伤害。升星同时提升生命与攻击。攻速装备和野兽增益进一步缩短攻击间隔，减速会延长间隔，最快每0.25秒一次。不会积累、消耗能量或施放主动破甲技能，能量和技能强度装备不提高这项被动。沉默与封能不影响射击；眩晕、石化、阵亡或没有合法射程目标时停止攻击，魅惑期间仍可攻击原队友。",
+} as const;
+
 export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (hasRifleRules(version) && id === "infantry") return RIFLE.description;
+  if (hasThornBindRules(version) && id === "vine") return THORNBIND.description;
   if (hasBoneBlastRules(version) && id === "bonedragon") return BONEBLAST.description;
   if (hasWildfireRules(version) && id === "phoenix") return WILDFIRE.description;
   if (hasTornadoRules(version) && id === "winddragon") return TORNADO.description;
@@ -967,6 +986,8 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "infantry" && hasRifleRules(version) ? RIFLE.name :
+  id === "vine" && hasThornBindRules(version) ? THORNBIND.name :
   id === "bonedragon" && hasBoneBlastRules(version) ? BONEBLAST.name :
   id === "phoenix" && hasWildfireRules(version) ? WILDFIRE.name :
   id === "winddragon" && hasTornadoRules(version) ? TORNADO.name :
@@ -1022,6 +1043,8 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "infantry" && hasRifleRules(version) ? RIFLE.role :
+  id === "vine" && hasThornBindRules(version) ? THORNBIND.role :
   id === "bonedragon" && hasBoneBlastRules(version) ? BONEBLAST.role :
   id === "phoenix" && hasWildfireRules(version) ? WILDFIRE.role :
   id === "winddragon" && hasTornadoRules(version) ? TORNADO.role :

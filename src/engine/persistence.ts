@@ -40,7 +40,7 @@ import type { Game, Piece, RoundReport } from "./types";
 export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
-export const SAVE_SCHEMA = 64;
+export const SAVE_SCHEMA = 66;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -919,8 +919,22 @@ export function decodeSave(raw: string | null): {
     }
     if (v.schema === 63 && v.rules === "singleplayer-0.64" && record(v.game)) {
       if (v.game.catalogVersion === undefined) v.game.catalogVersion = "wildfire";
-      if (v.game.phase === "prepare") v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      if (v.game.phase === "prepare") v.game.combatVersion = "boneblast";
       v.schema = 64;
+      v.rules = "singleplayer-0.65";
+      migrated = true;
+    }
+    if (v.schema === 64 && v.rules === "singleplayer-0.65" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "boneblast";
+      if (v.game.phase === "prepare") v.game.combatVersion = "thornbind";
+      v.schema = 65;
+      v.rules = "singleplayer-0.66";
+      migrated = true;
+    }
+    if (v.schema === 65 && v.rules === "singleplayer-0.66" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "thornbind";
+      if (v.game.phase === "prepare") v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      v.schema = 66;
       v.rules = RULES.version;
       migrated = true;
     }

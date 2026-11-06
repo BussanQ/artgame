@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { compute } from "../src/compute/job";
+import {advanceThornBinds} from "../src/engine/thornbind";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
   damage,
@@ -101,8 +102,10 @@ describe("不朽生命周期与控制", () => {
     damage(c, enemy, vine, 10000, "true");
     vine.mana = 100;
     expect(castSkill(c, vine, enemy)).toBe(true);
+    c.tick=12;
+    advanceThornBinds(c);
     expect(enemy.hp).toBeLessThan(enemy.maxHp);
-    expect(enemy.stunUntil).toBe(17);
+    expect(enemy.stunUntil).toBe(14);
     c.tick = 25;
     expireUndying(c);
     expect(isUndying(vine)).toBe(true);

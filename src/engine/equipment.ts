@@ -5,10 +5,11 @@ import {
   hasGospelRules,
   hasWushiRules,
   hasShurikenRules,
+  hasRifleRules,
 } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
-import { unitDefinition } from "../data/unit-stats";
+import { unitDefinition,unitAttackInterval } from "../data/unit-stats";
 import {
   BLADE_CRITICAL,
   STAFF_GALE,
@@ -108,7 +109,8 @@ export function itemScore(
   const wushi = hasWushiRules(version) && piece.defId === "master";
   const lightning = hasLightningRules(version) && piece.defId === "thunderlord";
   const gospel = hasGospelRules(version) && piece.defId === "acolyte";
-  const expectedAttack = lightning
+  const rifle=hasRifleRules(version)&&piece.defId==="infantry";
+  const expectedAttack = rifle ? 4/unitAttackInterval(unitDefinition(piece.defId,version),piece.star,version) : lightning
     ? 1 +
       Math.min(
         0.6,
@@ -154,7 +156,7 @@ export function itemScore(
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
     (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
-      (lightning || gospel || wushi
+      (lightning || gospel || wushi || rifle
         ? 0
         : (version === "signature" ||
               version === "summons" ||
@@ -181,7 +183,7 @@ export function itemScore(
             ? 300
             : 100) +
     (s.mana ?? 0) *
-      (lightning || gospel
+      (lightning || gospel || rifle
         ? 0
         : (version === "signature" ||
               version === "summons" ||
@@ -221,7 +223,8 @@ export function equipBot(g: Game, p: Player) {
     while (canCraft(p, item.id)) craft(g, p, item.id);
   for (let index = p.inventory.length - 1; index >= 0; index--) {
     const candidates = p.pieces
-      .filter((x) => x.position !== null && (x.items?.length ?? 0) < 3)
+      .filter((x) => x.position !== null && (x.items?.length ?? 0) < 3 &&
+        (!hasRifleRules(g.combatVersion)||itemScore(x,p.inventory[index],g.combatVersion)>0))
       .sort(
         (a, b) =>
           itemScore(b, p.inventory[index], g.combatVersion) * b.star -

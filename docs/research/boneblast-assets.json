@@ -57,8 +57,8 @@
   },
   "review": {
     "nativeImageViewed": true,
-    "browserCanvasReviewed": false,
-    "note": "新图原生输出已目视；实际Canvas上的边缘和缩小可读性尚未补验。"
+    "browserCanvasReviewed": true,
+    "note": "原生输出与实际Canvas均已目视，桌面及390px无矩形背景；小尺寸保持可辨骨骼轮廓，见boneblast-v065-validation.json。"
   },
   "routing": "boneblast及以后使用新形象，37个旧战斗版本保留旧图"
 }

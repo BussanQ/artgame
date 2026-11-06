@@ -1,5 +1,5 @@
 import { catalogCost, catalogUnit } from "../data/catalog";
-import { unitArmor } from "../data/unit-stats";
+import { unitArmor,unitAttackInterval } from "../data/unit-stats";
 import { CURRENT_COMBAT_VERSION, hasGospelRules } from "./types";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { army, simulateOutcome } from "./battle";
@@ -35,6 +35,7 @@ import {
   TORNADO,
   WILDFIRE,
   BONEBLAST,
+  THORNBIND,
 } from "../data/skills";
 import { RETINUE, SPIRIT_WOLF } from "./summons";
 import { equipmentStats } from "../data/items";
@@ -70,6 +71,7 @@ export function abilityCredit(
   gear = equipmentStats(p.items),
   openingMana = 0,
 ): number {
+  if(p.defId==="infantry")return 0;
   const u = UNIT[p.defId],
     skill = SKILLS[p.defId];
   // Team healing, charging and retinues are already credited separately below.
@@ -114,6 +116,11 @@ export function abilityCredit(
   utility +=
     (CONTROL_SECONDS[p.defId] ?? 0) * (skill.radius > 0 ? 1.8 : 1) * 0.035;
   switch (p.defId) {
+    case "vine":
+      // Credit two of three interruptible pulses and partial useful self-healing.
+      attacks=THORNBIND.multiplier*2/3;
+      utility=THORNBIND.root/4*2*0.035+attacks*u.attack/u.hp*0.25;
+      break;
     case "bonedragon":
       // A delayed, dodgeable small circle; the long cooldown does not promise a second cast.
       attacks=BONEBLAST.multiplier*1.8*0.75;
@@ -304,7 +311,7 @@ function strengthWithOpening(p: Piece, openingMana: number): number {
   return (
     Math.sqrt(
       ((u.hp * scale + gear.hp) * (u.attack * scale + gear.attack)) /
-        Math.max(1, u.interval * (1 - gear.haste)),
+        Math.max(1, unitAttackInterval(u,p.star) * (1 - gear.haste)),
     ) *
       (1 + (unitArmor(u, p.star) + gear.armor) * 0.025) *
       (p.defId === "phoenix" && p.star >= 2 ? 1.12 : 1) *

@@ -2,6 +2,7 @@ import { beginWushi, wushiTauntTarget } from "./wushi";
 import { beginShuriken } from "./shuriken";
 import { beginSecretOrb } from "./secret-orb";
 import { beginWildfire } from "./wildfire";
+import { beginThornBind } from "./thornbind";
 import { releaseBoneBlast } from "./boneblast";
 import { releaseBombardment } from "./bombardment";
 import { launchTerminator } from "./terminator";
@@ -56,6 +57,7 @@ import {
   WILDFIRE_SKILL,
   BONEBLAST,
   BONEBLAST_SKILL,
+  THORNBIND_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -577,10 +579,11 @@ export function interruptAirSkill(ctx: CombatContext, source: Fighter) {
     !source.windup &&
     !source.combo &&
     !source.bird?.draw &&
-    !source.wildfire?.casting && !source.wildfire?.channel
+    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel
   )
     return;
   const wasDrawing = !!source.bird?.draw;
+  if(source.thornbind?.channel){source.thornbind.interrupted++;delete source.thornbind.channel;}
   if (source.boneblast && source.air?.cast?.kind === "boneblast") source.boneblast.interrupted++;
   if (source.wildfire?.casting || source.wildfire?.channel) {
     source.wildfire.interrupted++;
@@ -816,9 +819,9 @@ export function castSkill(
   source: Fighter,
   target: Fighter,
 ) {
-  if (source.gospelAura) return false;
+  if (source.gospelAura || source.rifle) return false;
   if (wushiTauntTarget(ctx, source)) return false;
-  const s = source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  const s = source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -833,6 +836,9 @@ export function castSkill(
               : SKILLS[source.defId];
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
+  if (source.thornbind && (source.charm || source.stunUntil>ctx.tick ||
+    (source.skillReadyAt??0)>ctx.tick || distance(source,target)>source.range ||
+    !attackTargets(source,ctx.fighters,ctx.tick).some(f=>f.uid===target.uid))) return false;
   if (source.boneblast && (!source.air || source.charm || source.stunUntil > ctx.tick ||
     (source.skillReadyAt ?? 0) > ctx.tick || distance(source, target) > source.range ||
     (source.x === target.x && source.y === target.y) ||
@@ -1439,6 +1445,7 @@ export function castSkill(
       break;
     }
     case "vine":
+      if(source.thornbind){beginThornBind(ctx,source,target);break;}
       hit(target);
       stun(ctx, source, target, s.duration);
       break;
@@ -1626,6 +1633,7 @@ export function castSkill(
           f.side === source.side && f.hp > 0 && distance(source, f) <= s.radius,
       )) {
         ally.stunUntil = 0;
+        delete ally.thornRoot;
         ally.armorBreak = 0;
         ally.armorBreakUntil = 0;
         delete ally.corrosion;

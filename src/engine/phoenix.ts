@@ -17,6 +17,7 @@ export function enterPhoenixEgg(ctx: CombatContext, fighter: Fighter) {
   fighter.shield = 0;
   fighter.mana = 0;
   fighter.stunUntil = 0;
+  delete fighter.thornRoot;
   fighter.manaLockUntil = 0;
   delete fighter.silenceUntil;
   delete fighter.burn;

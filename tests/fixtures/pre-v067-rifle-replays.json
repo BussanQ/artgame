@@ -1,0 +1,845 @@
+{
+  "capturedBeforeRules": "singleplayer-0.67",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "tornado",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "wildfire",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "boneblast",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    },
+    {
+      "version": "thornbind",
+      "unit": {
+        "id": "infantry",
+        "name": "神枪手",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 480,
+        "attack": 58,
+        "armor": 2,
+        "range": 4,
+        "interval": 3,
+        "skill": "精准射击",
+        "color": "#75bcb8",
+        "glyph": "⌖"
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "infantry",
+          "star": 2,
+          "position": 59,
+          "items": [
+            "crystal",
+            "blade"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "hash": "3a020312f52e6cb894fdec694dd20e88074c8414cd1c0911c9c1b333722f9c31",
+      "casts": 2,
+      "frames": 34
+    },
+    {
+      "version": "thornbind",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "infantry",
+          "star": 2,
+          "position": 59,
+          "items": [
+            "crystal",
+            "blade"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "hash": "a2eeb15c0061283d0d4ca7008bf4ebeb792bf282a4be87f31c1f37ea493fb766",
+      "casts": 2,
+      "frames": 34
+    }
+  ]
+}

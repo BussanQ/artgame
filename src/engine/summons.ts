@@ -17,6 +17,7 @@ export function fighterSprite(
     Fighter,
     "defId" | "summon" | "hawkForm" | "phoenix" | "aurora" | "qiSkill" | "gospelAura" | "jungle" | "wushi"
   > & { storm?: Pick<NonNullable<Fighter["storm"]>, "launched">;
+    rifle?:Pick<NonNullable<Fighter["rifle"]>,"shots">;
     boneblast?: Pick<NonNullable<Fighter["boneblast"]>, "launched">;
     wildfire?: Pick<NonNullable<Fighter["wildfire"]>, "formed">; star?: number;
     tornado?: Pick<NonNullable<Fighter["tornado"]>, "launched">;
@@ -25,6 +26,7 @@ export function fighterSprite(
     secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>, "formed"> },
 ) {
   if (isPhoenixEgg(f)) return "phoenix-egg";
+  if(!f.summon&&f.defId==="infantry"&&f.rifle)return "infantry-rifle";
   if (!f.summon && f.defId === "bonedragon" && f.boneblast) return "bonedragon-boneblast";
   if (!f.summon && f.defId === "phoenix" && f.wildfire)
     return (f.star ?? 1) >= 3 ? "phoenix-wildfire-gold" : f.star === 2 ? "phoenix" : "phoenix-wildfire-blue";

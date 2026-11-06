@@ -1,4 +1,4 @@
-import { unitArmor, unitDefinition, unitSprite } from "../data/unit-stats";
+import { unitArmor, unitDefinition, unitSprite,unitAttackInterval } from "../data/unit-stats";
 import { CURRENT_COMBAT_VERSION } from "../engine/types";
 import { salePrice } from "../engine/progression";
 import { traitTiers } from "../data/traits";
@@ -26,7 +26,7 @@ export function pieceDetails(
     magicResist: Math.round(((u.magicResist ?? 0.2) + gear.magicResist) * 100),
     regeneration: u.regeneration ?? 0,
     range: u.range,
-    interval: Math.max(1, u.interval * (1 - gear.haste)) * RULES.tickSeconds,
+    interval: Math.max(1, unitAttackInterval(u,piece.star,version) * (1 - gear.haste)) * RULES.tickSeconds,
     items: (piece.items ?? []).map((id) => ITEM[id]),
     skillPower: Math.round(gear.skillPower * 100),
     skill: skillName(u.id, version),

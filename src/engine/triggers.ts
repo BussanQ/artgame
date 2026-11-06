@@ -7,6 +7,7 @@ import type { Fighter } from "./types";
 const distance = (a: Fighter, b: Fighter) =>
   Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export function usesEnergy(f: Fighter) {
+  if(f.rifle)return false;
   if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return false;
   if (f.lightningChain || f.gospelAura) return false;
   if (
@@ -27,6 +28,8 @@ export function usesEnergy(f: Fighter) {
   return !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
+  if(f.rifle)return false;
+  if(f.thornbind?.channel)return false;
   if (f.wildfire?.casting || f.wildfire?.channel) return false;
   if (f.secretOrb?.casting || f.secretOrb?.channel) return false;
   if (f.shuriken?.casting) return false;

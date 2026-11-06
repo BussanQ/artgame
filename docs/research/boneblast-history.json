@@ -28,10 +28,10 @@
         ],
         "armor": 5,
         "range": 4,
-        "attackIntervalSeconds": 1.2,
+        "attackIntervalSeconds": 2.2,
         "cooldownSeconds": 25
       },
-      "review": "平均攻击129，间隔转为4.8模拟步。与六月卡跨期，不宣称同一客户端构建。"
+      "review": "0.66重新目视确认攻击间隔2.2秒、129/2.2约为58.6 DPS。原始historical-tables.json一直正确；0.65实现与本记录曾误用1.2秒，已在新局纠正并冻结旧回放。与六月卡跨期，不宣称同一客户端构建。"
     },
     {
       "id": "S52",
@@ -99,5 +99,11 @@
     "固定落点与追踪规则",
     "发射后死亡/控制/魅惑交互",
     "统一客户端构建及通用抗性与伤害公式"
-  ]
+  ],
+  "correctionV066": {
+    "field": "attackIntervalSeconds",
+    "previousImplementation": 1.2,
+    "sourceAndCurrent": 2.2,
+    "oldBoneblastReplaysPreserved": true
+  }
 }

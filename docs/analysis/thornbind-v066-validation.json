@@ -1,0 +1,430 @@
+{
+  "checkedAt": "2026-11-07",
+  "rules": "singleplayer-0.66",
+  "combatVersion": "thornbind",
+  "saveSchema": 65,
+  "goalTurnClassification": "progress",
+  "scope": "藤妖分段缠绕、汲取、转火与反制；骨龙攻击间隔纠错；补完0.65画面证据。完整单机目标保持进行中。",
+  "tests": {
+    "command": "npm run test:thornbind -- --reporter=json --outputFile=tmp/thornbind-module-tests.json",
+    "passed": 88,
+    "failed": 0,
+    "suites": [
+      {
+        "path": "tests/boneblast.test.ts",
+        "count": 33,
+        "status": "passed"
+      },
+      {
+        "path": "tests/immortality.test.ts",
+        "count": 13,
+        "status": "passed"
+      },
+      {
+        "path": "tests/thornbind.test.ts",
+        "count": 42,
+        "status": "passed"
+      }
+    ],
+    "rawReport": "../../tmp/thornbind-module-tests.json",
+    "finalCopyCheck": {
+      "command": "npx --no-install vitest run tests/thornbind.test.ts -t '38版藤妖' --reporter=json --outputFile=tmp/thornbind-copy-check.json",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 41,
+      "rawReport": "../../tmp/thornbind-copy-check.json",
+      "reason": "最终只调整技能说明文字，单独复核该用例；功能模块结果为88项，不把重复的一项计为89个独立用例。"
+    }
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 145,
+    "artifacts": [
+      "dist/assets/index-C8UQyZaa.js",
+      "dist/assets/worker-BRn3SvmR.js",
+      "dist/assets/index-0iwQsGQW.css"
+    ]
+  },
+  "compatibility": {
+    "versionCount": 38,
+    "unitsPerVersion": 2,
+    "frozenUnitDefinitions": 76,
+    "frozenSmallReplays": 2,
+    "fixture": "../../tests/fixtures/pre-v066-thornbind-replays.json",
+    "oldCastsCovered": true,
+    "oldSoulCovered": true,
+    "allVersionFullBattleMatrix": false,
+    "previousBoneBlastChecks": 33
+  },
+  "scene": {
+    "fixture": "../../src/data/thornbind-demo.ts",
+    "size": "2v2",
+    "fullFastAndWorkerEqual": true,
+    "inputUnchanged": true,
+    "winner": 1,
+    "lastSeconds": 20.5,
+    "rawProbe": "../../tmp/thornbind-v066-scene.json",
+    "pulseTicks": [
+      10,
+      13,
+      16
+    ],
+    "actualHealingByPulse": [
+      113,
+      113,
+      112
+    ],
+    "actualHealingTotal": 338,
+    "normalEconomicBalanceSample": false
+  },
+  "browser": {
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "screenshots": [
+      "../../tmp/thornbind-v066-active-desktop.jpg",
+      "../../tmp/thornbind-v066-analysis-desktop.jpg",
+      "../../tmp/thornbind-v066-bone-correction-mobile.jpg",
+      "../../tmp/thornbind-v066-gap-mobile390.jpg",
+      "../../tmp/thornbind-v066-healing-desktop.jpg",
+      "../../tmp/thornbind-v066-mobile-analysis.jpg",
+      "../../tmp/thornbind-v066-mobile390.jpg"
+    ],
+    "rawRecord": "../../tmp/thornbind-v066-ui.json",
+    "resourcesIdentical": true,
+    "mobileClose": {
+      "height": 44,
+      "right": 342.25,
+      "top": 92.296875,
+      "width": 44
+    },
+    "logs": [
+      {
+        "level": "error",
+        "message": "SyntaxError: The requested module '/src/engine/triggers.ts?t=1793998501164' does not provide an export named 'combatAttack'",
+        "timestamp": "2026-11-06T20:55:01.252Z",
+        "url": "http://127.0.0.1:5174/src/engine/thornbind.ts"
+      }
+    ],
+    "mobile": {
+      "width": 390,
+      "scrollWidth": 390
+    },
+    "textChecks": {
+      "at4ThreePulses": true,
+      "at4Healing338": true,
+      "at325TwoPulses": true,
+      "at3OnePulse": true,
+      "vineCodexInterval1_7": true,
+      "boneCodexInterval2_2": true
+    },
+    "consoleClassification": {
+      "rawErrors": 1,
+      "resolvedDevelopmentErrors": 1,
+      "newErrorsDuringVerifiedFlow": 0,
+      "explanation": "保留了20:55:01 UTC编辑中临时从triggers导入combatAttack的错误。已在21:00:47必要模块完成前改从abilities导入；21:04起实际画面、21:08退出及最终构建均正常。原始日志不删除、不冒称从未出现错误。"
+    },
+    "observedStages": {
+      "seconds4": {
+        "pulses": 3,
+        "hits": 3,
+        "roots": 3,
+        "healing": 338
+      },
+      "seconds3_25": {
+        "pulses": 2,
+        "healing": 226,
+        "rootCoilsVisible": true
+      },
+      "seconds3": {
+        "pulses": 1,
+        "healing": 113,
+        "rootCoilsAbsent": true
+      }
+    },
+    "codex": {
+      "vine": {
+        "hp": 650,
+        "attack": 120,
+        "intervalSeconds": 1.7
+      },
+      "bonedragon": {
+        "hp": 950,
+        "attack": 129,
+        "intervalSeconds": 2.2
+      }
+    },
+    "realTouchValidated": false,
+    "weakHardwareValidated": false
+  },
+  "reusedVineAsset": {
+    "path": "public/assets/units/vine.png",
+    "sha256": "7f45ebc52cb288da297c46eef51c0566d56488b64b81619470e0a57f0ae71d97",
+    "bytes": 1615487,
+    "mtimeUtc": "2026-11-03T15:37:16.252925+00:00"
+  },
+  "s04Image": {
+    "path": "docs/research/images/s04-skytoad-attributes.jpg",
+    "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+    "bytes": 283542,
+    "mtimeUtc": "2026-11-05T17:00:40.097578+00:00"
+  },
+  "previousBoneDragonUi": "boneblast-v065-validation.json",
+  "sourceFingerprints": [
+    {
+      "path": "src/data/units.ts",
+      "sha256": "842cc53a8c719ac1c28c5215c6cad1dcb3bd8f738fba5c612af1e0d22d8c8591",
+      "bytes": 20960,
+      "mtimeUtc": "2026-11-06T20:54:24.790082+00:00"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "sha256": "af3e87187a3ad60e8aea5d670c93feb00bc70bec8fff4f07c55e194ecc161b27",
+      "bytes": 7725,
+      "mtimeUtc": "2026-11-06T20:54:24.790360+00:00"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "sha256": "e6012cacc1d58622398d9ee1bac976af019aec901e3985430b428ff31263fef9",
+      "bytes": 66197,
+      "mtimeUtc": "2026-11-06T21:07:12.621366+00:00"
+    },
+    {
+      "path": "src/data/thornbind-demo.ts",
+      "sha256": "ba75db487fab0c6af1dd6a1f7c3f222d9c54091e332425c2ec1e535ce4e3225e",
+      "bytes": 465,
+      "mtimeUtc": "2026-11-06T20:56:02.104082+00:00"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "sha256": "394a91d2ab621e4d0711c9d308d2395d7fd2117daf5ac08d02233f3ea7170b89",
+      "bytes": 20167,
+      "mtimeUtc": "2026-11-06T20:56:40.471719+00:00"
+    },
+    {
+      "path": "src/engine/thornbind.ts",
+      "sha256": "856a017d098b965ad916bc5cfaf49d3637fcc1a3686fb897de0073a644b4ecb3",
+      "bytes": 3620,
+      "mtimeUtc": "2026-11-06T20:56:40.471338+00:00"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "sha256": "9e20ac557054167de10d6e5f5b451033712b3c5caca93d9a773293c7926ee290",
+      "bytes": 59003,
+      "mtimeUtc": "2026-11-06T20:55:01.128566+00:00"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "sha256": "b4fbf16a8ceeb507272d907e56309c547838e4be7bd948d0dab86d58cf86ec3a",
+      "bytes": 29577,
+      "mtimeUtc": "2026-11-06T20:55:01.064734+00:00"
+    },
+    {
+      "path": "src/engine/immortality.ts",
+      "sha256": "2aa004bc56331644fee8a2fed9f454913683771b4dfadadedd6987e007f8ecd2",
+      "bytes": 1567,
+      "mtimeUtc": "2026-11-06T20:55:01.065306+00:00"
+    },
+    {
+      "path": "src/engine/phoenix.ts",
+      "sha256": "e4444ca910aeab62785d10a307267db57fd84ed8305eeab57a2a1609b7e42465",
+      "bytes": 3312,
+      "mtimeUtc": "2026-11-06T20:55:01.065532+00:00"
+    },
+    {
+      "path": "src/engine/triggers.ts",
+      "sha256": "e6e991ed5a14b756112931712792c38e70e0f7f78eba245621023c70bbe50fe9",
+      "bytes": 4890,
+      "mtimeUtc": "2026-11-06T20:55:01.065050+00:00"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "sha256": "1da0eb9afcba761a240b5a76b868cfe444436fb7cfda8aa568410e7a587c1566",
+      "bytes": 35712,
+      "mtimeUtc": "2026-11-06T20:55:01.065878+00:00"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "sha256": "6410e94f02ec2c4f4f20cddc4ccdbc92f44c9038095dd57212cdf216ccd9ab91",
+      "bytes": 51038,
+      "mtimeUtc": "2026-11-06T20:55:01.066264+00:00"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "sha256": "2c0da6702fd5cdd963ad792d12f1b6fca43856dbf9a849e3fc833812597996e5",
+      "bytes": 9022,
+      "mtimeUtc": "2026-11-06T20:56:40.472000+00:00"
+    },
+    {
+      "path": "src/render/thornbind.ts",
+      "sha256": "c6f9b6ebd02ea692d282dde581e0f3861be6de954cb0d4346a1551cdf899cd7d",
+      "bytes": 3155,
+      "mtimeUtc": "2026-11-06T20:56:02.103833+00:00"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "sha256": "80810af1b8d15eadc25c142fe5daf001b8b9fcc25c92fc4bb3b36868d007ae37",
+      "bytes": 37342,
+      "mtimeUtc": "2026-11-06T20:56:40.538018+00:00"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "sha256": "9861684d5b2a3a02909715cd4d478f5b556b031dbe41102b9fd2e9f42c9b84f1",
+      "bytes": 44002,
+      "mtimeUtc": "2026-11-06T20:56:40.472879+00:00"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "sha256": "d9c933483b4822f89f54043be9490f3d6c1f6f0c2d2f68a97c9fa9bd2711350e",
+      "bytes": 4206,
+      "mtimeUtc": "2026-11-06T20:56:40.473125+00:00"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "sha256": "7c3e4434e9335a32ea416983927cca21ff93869e35453114cae0981eac41033f",
+      "bytes": 8648,
+      "mtimeUtc": "2026-11-06T20:56:40.538591+00:00"
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "83576a2b2058d2bf8cd2238083d95bc832e3b92f2fde42aad8a86f16d8bea177",
+      "bytes": 77418,
+      "mtimeUtc": "2026-11-06T20:56:40.538436+00:00"
+    },
+    {
+      "path": "tests/thornbind.test.ts",
+      "sha256": "d89d7365bac1c2104aa78f941023df7d812fa2594f848859e8baad35ae76a0e3",
+      "bytes": 15063,
+      "mtimeUtc": "2026-11-06T21:07:12.621553+00:00"
+    },
+    {
+      "path": "tests/boneblast.test.ts",
+      "sha256": "f7737053c6734b1c606418bea194cf3ccfe9ac8258c7c5d66aaca3e10b31d3b6",
+      "bytes": 12882,
+      "mtimeUtc": "2026-11-06T20:58:33.616378+00:00"
+    },
+    {
+      "path": "tests/immortality.test.ts",
+      "sha256": "59a784fc36e1a8e52e351d72152fc59735da0a71cf5155c4dcaa743048b14c93",
+      "bytes": 12028,
+      "mtimeUtc": "2026-11-06T21:00:03.006633+00:00"
+    },
+    {
+      "path": "tests/fixtures/pre-v066-thornbind-replays.json",
+      "sha256": "64edf6089a27f2de820f6266afcda0737ba929857dccf3461319ce7603d2cdd7",
+      "bytes": 35886,
+      "mtimeUtc": "2026-11-06T20:52:25.271915+00:00"
+    },
+    {
+      "path": "docs/research/thornbind-history.json",
+      "sha256": "20036aaccf4296c8b9db017b42ed6cea43d3b77f1b42883443db14b1d315bea0",
+      "bytes": 4626,
+      "mtimeUtc": "2026-11-06T21:09:51.458265+00:00"
+    },
+    {
+      "path": "docs/research/sources.json",
+      "sha256": "811b1eb17c3ea393aaec20847642f092272e816b602aac09438d37646a475017",
+      "bytes": 48830,
+      "mtimeUtc": "2026-11-06T21:03:33.507611+00:00"
+    },
+    {
+      "path": "package.json",
+      "sha256": "2cd3349c0edf1623d14c2862a6952e700e21f3183ebcad1ec9688868b3feb701",
+      "bytes": 18710,
+      "mtimeUtc": "2026-11-06T20:58:33.664245+00:00"
+    }
+  ],
+  "rawArtifacts": [
+    {
+      "path": "tmp/thornbind-v066-active-desktop.jpg",
+      "sha256": "3e34c64cdf52c8fecd535cfca052b543c7cfd4be5376c4b2baee00a3b78ec3ff",
+      "bytes": 145772,
+      "mtimeUtc": "2026-11-06T21:04:10.884433+00:00"
+    },
+    {
+      "path": "tmp/thornbind-v066-analysis-desktop.jpg",
+      "sha256": "6527d2977e7e74f9eaf6cbee92cc0ce8161b6072d7b8abd7064272a69a5d8501",
+      "bytes": 53114,
+      "mtimeUtc": "2026-11-06T21:03:47.422310+00:00"
+    },
+    {
+      "path": "tmp/thornbind-v066-bone-correction-mobile.jpg",
+      "sha256": "be2a7e4f50a24fae54637c10cf6859b4bfdbea64c0e1bfb38647bc811c8752cb",
+      "bytes": 55579,
+      "mtimeUtc": "2026-11-06T21:07:59.727965+00:00"
+    },
+    {
+      "path": "tmp/thornbind-v066-gap-mobile390.jpg",
+      "sha256": "2deb9c9b7deaa671651397514a7bfda360cc81b6c48012b1b3304e181d7e4386",
+      "bytes": 50855,
+      "mtimeUtc": "2026-11-06T21:06:04.546536+00:00"
+    },
+    {
+      "path": "tmp/thornbind-v066-healing-desktop.jpg",
+      "sha256": "b2ddfd5c0efaf25ddd898f1713a685337ec586576463b78139ba508f8c603fd7",
+      "bytes": 51802,
+      "mtimeUtc": "2026-11-06T21:05:43.116782+00:00"
+    },
+    {
+      "path": "tmp/thornbind-v066-mobile-analysis.jpg",
+      "sha256": "9b52ef269838bff7255860c612fcaf18b42d3c186144285756886aa6f51e735d",
+      "bytes": 38172,
+      "mtimeUtc": "2026-11-06T21:05:43.412205+00:00"
+    },
+    {
+      "path": "tmp/thornbind-v066-mobile390.jpg",
+      "sha256": "5409ce71af51812f9c25cc548906265a4ede46ba8561d30b6ad29fd36493ed7e",
+      "bytes": 50981,
+      "mtimeUtc": "2026-11-06T21:06:03.716318+00:00"
+    },
+    {
+      "path": "tmp/thornbind-module-tests.json",
+      "sha256": "6d8a19c11dcfa1ffb8b98c1642a3e58b87bf3e8344742241f49d78c466412eab",
+      "bytes": 28599,
+      "mtimeUtc": "2026-11-06T21:00:47.004375+00:00"
+    },
+    {
+      "path": "tmp/thornbind-copy-check.json",
+      "sha256": "cea2692ee426a3fdf36eb582c792485c3a54e277029a489e41e881ab214f195b",
+      "bytes": 12096,
+      "mtimeUtc": "2026-11-06T21:08:45.917858+00:00"
+    },
+    {
+      "path": "tmp/thornbind-v066-ui.json",
+      "sha256": "c60962f1e2aed1d87bf39d96bf94d06c1432bb225344ea9d2c86a2e4ac9038bd",
+      "bytes": 31119,
+      "mtimeUtc": "2026-11-06T21:08:00.073033+00:00"
+    },
+    {
+      "path": "tmp/thornbind-v066-scene.json",
+      "sha256": "9dc5135d2e79afeb4bbffa59b12cc2a76354c0d332bead1549f397102f7719e4",
+      "bytes": 8123,
+      "mtimeUtc": "2026-11-06T21:01:13.549055+00:00"
+    }
+  ],
+  "sampling": {
+    "newCompleteCampaigns": 0,
+    "newBulkBalanceSampling": 0,
+    "fullTestSuiteRun": false
+  },
+  "remaining": [
+    "早期藤妖技能原卡、各星精确伤害/回复/控制数列",
+    "统一历史切片及通用伤害/回能公式",
+    "其他仍使用原型能力的兵种",
+    "整体单机难度与多构筑高星体验",
+    "真实触摸与弱设备性能"
+  ],
+  "git": {
+    "branch": "dev",
+    "commitCreatedThisTurn": false,
+    "pushPerformedThisTurn": false
+  }
+}

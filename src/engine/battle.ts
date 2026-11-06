@@ -8,6 +8,7 @@ import { expireWarcry } from "./warcry";
 import { advanceTornadoes } from "./tornado";
 import { advanceWildfireAction, advanceWildfirePulses, expireWildfires } from "./wildfire";
 import { advanceBoneBlasts } from "./boneblast";
+import {advanceThornBindAction,advanceThornBinds} from "./thornbind";
 import { advanceShurikenCast, advanceShurikenFields, expireShurikenCasts } from "./shuriken";
 import { advanceSecretOrbAction, advanceSecretOrbPulses, expireSecretOrbs } from "./secret-orb";
 import { advanceJungleLandings, jungleContains } from "./jungle";
@@ -15,11 +16,13 @@ import { advanceWushi, expireWushi, expireWushiTaunts, wushiStrike, wushiTauntTa
 import { bladeStrike, seedBladeStrikes } from "./bladethrall";
 import { recordStaffAttack, retargetStaff } from "./staffthrall";
 import { advanceBladeStorm } from "./swordthrall";
-import { unitArmor, unitDefinition } from "../data/unit-stats";
+import { unitArmor, unitDefinition,unitAttackInterval } from "../data/unit-stats";
 import { seedAssassinStrikes } from "./assassins";
 import {
   CURRENT_COMBAT_VERSION,
   hasBoneBlastRules,
+  hasThornBindRules,
+  hasRifleRules,
   hasWildfireRules,
   hasTornadoRules,
   hasWarcryRules,
@@ -136,6 +139,9 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasRifleRules(definitionVersion) && d.id === "infantry" ? {rifle:{shots:0}} : {}),
+        ...(hasThornBindRules(definitionVersion) && d.id === "vine"
+          ? {thornbind:{pulses:0,hits:0,roots:0,healing:0,retargets:0,interrupted:0}} : {}),
         ...(hasBoneBlastRules(definitionVersion) && d.id === "bonedragon"
           ? {boneblast:{launched:0,detonated:0,hits:0,stuns:0,interrupted:0,orbs:[]}} : {}),
         ...(hasWildfireRules(definitionVersion) && d.id === "phoenix"
@@ -340,11 +346,12 @@ export function army(
         range: d.range,
         interval: Math.max(
           1,
-          d.interval * (1 - gear.haste) -
+          unitAttackInterval(d,p.star,definitionVersion) * (1 - gear.haste) -
             (version === "legacy" ? (has("野兽") ? 1 : 0) : sum("interval")),
         ),
         cooldown: 0,
         mana:
+          (hasRifleRules(definitionVersion) && d.id === "infantry") ||
           (hasGospelRules(definitionVersion) && d.id === "acolyte") ||
           (hasLightningRules(definitionVersion) && d.id === "thunderlord") ||
           ["birdrider", "bladethrall", "staffthrall"].includes(d.id)
@@ -581,6 +588,7 @@ function runBattle(
     advanceTerminatorMissiles(context);
     advanceTornadoes(context);
     advanceBoneBlasts(context);
+    advanceThornBinds(context);
     advanceShurikenFields(context);
     advanceSecretOrbPulses(context);
     advanceWildfirePulses(context);
@@ -610,7 +618,7 @@ function runBattle(
           f.wushi?.casting ||
           f.shuriken?.casting ||
           f.secretOrb?.casting || f.secretOrb?.channel ||
-          f.wildfire?.casting || f.wildfire?.channel ||
+          f.wildfire?.casting || f.wildfire?.channel || f.thornbind?.channel ||
           f.combo ||
           f.bird?.draw) &&
         f.cooldown > 0
@@ -622,6 +630,7 @@ function runBattle(
       if (advanceShurikenCast(context, f)) continue;
       if (advanceSecretOrbAction(context, f)) continue;
       if (advanceWildfireAction(context, f)) continue;
+      if (advanceThornBindAction(context, f)) continue;
       if (advanceFaithArrow(context, f)) continue;
       if (advanceHawkCombo(context, f)) continue;
       if (advanceWindup(context, f)) continue;
@@ -732,6 +741,7 @@ function runBattle(
       } else {
         if (spinning) continue;
         if (f.signature) f.signature.attacks++;
+        if(f.rifle)f.rifle.shots++;
         if (f.damageManaBonus && usesEnergy(f)) f.attackManaReady = true;
         gainMana(f, ATTACK_MANA, tick);
         const gale = recordStaffAttack(f, target);

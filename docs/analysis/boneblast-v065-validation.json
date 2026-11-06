@@ -38,16 +38,66 @@
     "boneOrbsActuallyHit": true
   },
   "browser": {
-    "newBoneDragonArtReviewed": false,
-    "reason": "本次推送仅完成必要模块与构建验证；没有补做浏览器画面验收。",
-    "previousPhoenixEvidence": "wildfire-v064-validation.json"
+    "newBoneDragonArtReviewed": true,
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "screenshots": [
+      "../../tmp/boneblast-v065-start.jpg",
+      "../../tmp/boneblast-v065-charge.jpg",
+      "../../tmp/boneblast-v065-flight.jpg",
+      "../../tmp/boneblast-v065-impact.jpg",
+      "../../tmp/boneblast-v065-analysis-desktop.jpg",
+      "../../tmp/boneblast-v065-mobile390.jpg",
+      "../../tmp/boneblast-v065-mobile-analysis.jpg"
+    ],
+    "rawRecord": "../../tmp/boneblast-v065-ui.json",
+    "resourcesIdentical": true,
+    "mobile": {
+      "canvas": {
+        "height": 363.375,
+        "left": -97.5,
+        "right": 487.5,
+        "width": 585
+      },
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "mobileClose": {
+      "height": 44,
+      "right": 342.25,
+      "top": 92.296875,
+      "width": 44
+    },
+    "logs": [],
+    "timeSlices": {
+      "chargingSeconds": 3.5,
+      "flightSeconds": 4.25,
+      "impactSeconds": 4.75,
+      "analysisSeconds": 20
+    },
+    "observedBoneDragonAt20": {
+      "skillDamage": 1272,
+      "launched": 1,
+      "detonated": 1,
+      "hits": 2,
+      "stuns": 2
+    },
+    "previousPhoenixEvidence": "wildfire-v064-validation.json",
+    "limitation": "Mobile viewport and mouse control only; real touch and weak hardware remain unverified."
   },
   "sampling": {
     "newCampaigns": 0,
     "newBulkBalanceSampling": 0
   },
   "remaining": [
-    "骨龙新形象实际Canvas验收",
     "完整历史伤害/控制数列和统一公式",
     "完整单机平衡与真实设备验收"
   ]

@@ -28,13 +28,15 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "boneblast";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "rifle";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
+export const hasThornBindRules = (version: CombatVersion) => hasRuleSince(version,"thornbind");
+export const hasRifleRules = (version: CombatVersion) => hasRuleSince(version,"rifle");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
 export const hasWarcryRules = (version: CombatVersion) => hasRuleSince(version,"warcry");
@@ -175,6 +177,15 @@ export interface RoundReport {
   inventory?: string[];
 }
 export interface Fighter {
+  /** Passive rifle training: one real hit per ordinary attack, no energy skill. */
+  rifle?:{shots:number};
+  /** Maintained, segmented life drain; the short root has a real gap before the next pulse. */
+  thornbind?: {
+    pulses:number; hits:number; roots:number; healing:number; retargets:number; interrupted:number;
+    actedAt?:number;
+    channel?:{start:number;next:number;remaining:number;target:number;to:{x:number;y:number};damage:number;side:0|1};
+  };
+  thornRoot?:{source:number;until:number};
   /** Fixed-point bone orbs continue after launch; stun applications are counted separately from damage. */
   boneblast?: {
     launched: number; detonated: number; hits: number; stuns: number; interrupted: number;

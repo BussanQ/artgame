@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasRifleRules,
+  hasThornBindRules,
   hasBoneBlastRules,
   hasWildfireRules,
   hasTornadoRules,
@@ -23,6 +25,7 @@ import {
   type UnitDef,
 } from "../engine/types";
 import { UNIT } from "./units";
+import {RIFLE} from "./skills";
 
 /** Preserve the pre-0.45 professions for in-flight battles and all historical reports. */
 const previousTraits: Record<string, UnitDef["traits"]> = {
@@ -150,12 +153,17 @@ const oldBoneDragon: UnitDef = {
   skill: "冥霜吐息",
 };
 const oldBoneDragonBlast: UnitDef = { ...oldBoneDragon, traits: previousTraits.bonedragon };
+const boneDragonV065: UnitDef = { ...UNIT.bonedragon, interval: 4.8 };
+const oldVine: UnitDef = { ...UNIT.vine, hp:820, attack:44, interval:4, skill:"枯藤缠身" };
+const oldVineGuard: UnitDef = { ...oldVine, traits:previousTraits.vine };
+const oldInfantry:UnitDef={...UNIT.infantry,hp:480,attack:58,armor:2,interval:3,skill:"精准射击"};
 /** Keep the original portrait available to in-flight battles and historical reports. */
 export function unitSprite(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
   star = 1,
 ) {
+  if (id === "infantry" && hasRifleRules(version)) return "infantry-rifle";
   if (id === "bonedragon" && hasBoneBlastRules(version)) return "bonedragon-boneblast";
   if (id === "phoenix" && hasWildfireRules(version))
     return star >= 3 ? "phoenix-wildfire-gold" : star === 2 ? "phoenix" : "phoenix-wildfire-blue";
@@ -174,6 +182,10 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "infantry" && !hasRifleRules(version)) return oldInfantry;
+  if (id === "vine" && !hasThornBindRules(version))
+    return hasLineageRules(version) ? oldVine : oldVineGuard;
+  if (id === "bonedragon" && hasBoneBlastRules(version) && !hasThornBindRules(version)) return boneDragonV065;
   if (id === "bonedragon" && !hasBoneBlastRules(version))
     return hasLineageRules(version) ? oldBoneDragon : oldBoneDragonBlast;
   if (id === "phoenix" && !hasWildfireRules(version)) return oldPhoenix;
@@ -199,6 +211,9 @@ export function unitDefinition(
     : UNIT[id];
 }
 /** Permanent star growth, excluding gear and battle-only formations. */
+export function unitAttackInterval(unit:Pick<UnitDef,"id"|"interval">,star:number,version:CombatVersion=CURRENT_COMBAT_VERSION){
+  return unit.id==="infantry"&&hasRifleRules(version)?(RIFLE.intervals[star-1]??unit.interval):unit.interval;
+}
 export function unitArmor(
   unit: Pick<UnitDef, "armor" | "armorPerStar">,
   star: number,

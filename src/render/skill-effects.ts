@@ -10,6 +10,7 @@ import { petrified } from "../engine/warcry";
 import { tornadoLabels } from "./tornado";
 import { wildfireLabels } from "./wildfire";
 import { boneBlastLabels, drawBoneBlastEffect } from "./boneblast";
+import {thornBindLabels} from "./thornbind";
 import { shieldWaveCells } from "../engine/shieldthrall";
 import { acidCells, corrosionArmor } from "../engine/beasts";
 import { deathSongCells } from "../engine/lingjiu";
@@ -30,6 +31,7 @@ export function drawSkillEffect(
   if (drawWarcryEffect(c,e,age,reducedMotion)) return;
   if (drawBoneBlastEffect(c,e,age,reducedMotion)) return;
   if (e.name === "燎原烈焰") return; // Draw the actual maintained area once, not one overlay per pulse.
+  if(e.name==="荆棘缠绕")return; // The real maintained link and short root are drawn from fighter state.
   if (drawTerminatorEffect(c,e,age,reducedMotion)) return;
   if (drawBombardmentEffect(c,e,age,reducedMotion)) return;
   // The startup marker and delayed landing are drawn from committed spell state.
@@ -1074,6 +1076,8 @@ export function drawStatuses(
   labels.push(...tornadoLabels(f,time));
   labels.push(...wildfireLabels(f,time));
   labels.push(...boneBlastLabels(f,time));
+  labels.push(...thornBindLabels(f,time));
+  if(f.rifle)labels.push(`被动射击 · 已开火 ${f.rifle.shots}次 · 无能量技能`);
   if(f.taunt && f.taunt.until>time)labels.push(`无式嘲讽 ${((f.taunt.until-time)/4).toFixed(1)}s · 转向武僧`);
   if (f.air?.cast)
     labels.push(

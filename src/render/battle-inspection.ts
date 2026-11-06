@@ -25,6 +25,9 @@ export function compactBattleLabels(f: Fighter, time: number) {
   if (f.secretOrb?.channel) labels.push("维持秘法球");
   if (f.wildfire?.casting) labels.push("燎原蓄焰");
   if (f.wildfire?.channel) labels.push("持续喷火");
+  if(f.thornbind?.channel)labels.push("维持藤蔓");
+  if(f.rifle)labels.push("快速射击");
+  if(f.thornRoot&&f.thornRoot.until>time&&f.stunUntil>time)labels.push("藤蔓束缚");
   if (f.wushi?.casting) labels.push("无式蓄力");
   if (f.hp > 0 && f.wushi && f.wushi.until > time) labels.push("无式变身");
   if (taotieScale(f, time) > 1) labels.push("饕餮狂暴");

@@ -11,6 +11,7 @@ import { petrified } from "../engine/warcry";
 import { drawTornadoes, tornadoPose } from "./tornado";
 import { drawWildfires, wildfirePose, wildfirePalette } from "./wildfire";
 import { drawBoneBlasts, boneBlastPose } from "./boneblast";
+import {drawThornBinds,thornBindPose} from "./thornbind";
 import { drawShuriken } from "./shuriken";
 import { drawSecretOrbs, secretOrbPose } from "./secret-orb";
 import { drawJungleTelegraphs, jungleChargePose } from "./jungle";
@@ -516,7 +517,7 @@ export class BattleScene {
           now,
           s.selected,
           death,
-          (f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
+          (f.thornbind || f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
           hit && fraction < 0.35,
           s.time,
           f.transformation ?? undefined,
@@ -530,6 +531,7 @@ export class BattleScene {
       drawTornadoes(c,fs,s.time,this.motionReduced,"vortex");
       drawWildfires(c,fs,s.time,this.motionReduced,"breath");
       drawBoneBlasts(c,fs,s.time,this.motionReduced,"orb");
+      drawThornBinds(c,fs,s.time,this.motionReduced);
       drawShuriken(c, fs, s.time, this.motionReduced, "blades");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
       // Render recent events without skipping any at 2x/4x playback.
@@ -734,6 +736,7 @@ export class BattleScene {
     const windTarget=f.air?.cast?.kind==="tornado"?f.air.cast.to:undefined;
     const wildfireTarget=f.wildfire?.casting?.to??f.wildfire?.channel?.to;
     const boneTarget=f.air?.cast?.kind==="boneblast"?f.air.cast.to:undefined;
+    const thornTarget=f.thornbind?.channel?.to;
     const c = this.ctx,
       p = project(f.x + 0.5, f.y + 0.65),
       depth = 0.78 + f.y * 0.035,
@@ -765,6 +768,8 @@ export class BattleScene {
     c.save();
     const pose = isPhoenixEgg(f) || stone
       ? REST_POSE
+      : !this.motionReduced && !death && thornTarget
+        ? thornBindPose(f,time)
       : !this.motionReduced && !death && boneTarget
         ? boneBlastPose(f,time)
       : !this.motionReduced && !death && wildfireTarget
@@ -863,6 +868,8 @@ export class BattleScene {
       ? project(transformation.to.x + 0.5, transformation.to.y + 0.5)
       : boneTarget
         ? project(boneTarget.x+0.5,boneTarget.y+0.5)
+      : thornTarget
+        ? project(thornTarget.x+0.5,thornTarget.y+0.5)
       : wildfireTarget
         ? project(wildfireTarget.x+0.5,wildfireTarget.y+0.5)
       : windTarget
@@ -880,7 +887,7 @@ export class BattleScene {
       dy = destination.y - origin.y,
       length = Math.hypot(dx, dy) || 1;
     const facing =
-      (attack || transformation || throwCast || throwBlade || secretTarget || roarTarget || windTarget || wildfireTarget || boneTarget) && Math.abs(dx) > 1
+      (attack || transformation || throwCast || throwBlade || secretTarget || roarTarget || windTarget || wildfireTarget || boneTarget || thornTarget) && Math.abs(dx) > 1
         ? Math.sign(dx)
         : f.side === 0
           ? 1
