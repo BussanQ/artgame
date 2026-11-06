@@ -11,6 +11,8 @@ import { tornadoLabels } from "./tornado";
 import { wildfireLabels } from "./wildfire";
 import { boneBlastLabels, drawBoneBlastEffect } from "./boneblast";
 import {thornBindLabels} from "./thornbind";
+import {gazeLabels} from "./gaze";
+import {hiveLabels} from "./hive";
 import { shieldWaveCells } from "../engine/shieldthrall";
 import { acidCells, corrosionArmor } from "../engine/beasts";
 import { deathSongCells } from "../engine/lingjiu";
@@ -1077,6 +1079,8 @@ export function drawStatuses(
   labels.push(...wildfireLabels(f,time));
   labels.push(...boneBlastLabels(f,time));
   labels.push(...thornBindLabels(f,time));
+  labels.push(...gazeLabels(f,time));
+  labels.push(...hiveLabels(f,time));
   if(f.rifle)labels.push(`被动射击 · 已开火 ${f.rifle.shots}次 · 无能量技能`);
   if(f.taunt && f.taunt.until>time)labels.push(`无式嘲讽 ${((f.taunt.until-time)/4).toFixed(1)}s · 转向武僧`);
   if (f.air?.cast)

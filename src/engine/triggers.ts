@@ -28,6 +28,7 @@ export function usesEnergy(f: Fighter) {
   return !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
+  if(f.hive?.casting||f.hive?.burst)return false;
   if(f.rifle)return false;
   if(f.thornbind?.channel)return false;
   if (f.wildfire?.casting || f.wildfire?.channel) return false;

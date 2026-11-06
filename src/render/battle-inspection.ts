@@ -11,6 +11,9 @@ import { petrified } from "../engine/warcry";
 /** Only urgent, short labels belong beside every combatant. Full effects live in its inspector. */
 export function compactBattleLabels(f: Fighter, time: number) {
   const labels: string[] = [];
+  if(f.hive?.casting)labels.push("蜂群蓄能");
+  if(f.hive?.burst)labels.push("三针连射");
+  if(f.gazed&&f.gazed.until>time&&f.stunUntil>time)labels.push("凝视压制");
   if (f.stunUntil > time)
     labels.push(petrified(f,time) ? "石化" : f.knockup && f.knockup.until > time ? "击飞" : "眩晕");
   if (f.charm) labels.push("魅惑");

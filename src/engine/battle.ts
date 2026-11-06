@@ -9,6 +9,8 @@ import { advanceTornadoes } from "./tornado";
 import { advanceWildfireAction, advanceWildfirePulses, expireWildfires } from "./wildfire";
 import { advanceBoneBlasts } from "./boneblast";
 import {advanceThornBindAction,advanceThornBinds} from "./thornbind";
+import {advanceGazes} from "./gaze";
+import {advanceHiveAction,advanceHiveSkills,expireHiveStates,startHiveBurst} from "./hive";
 import { advanceShurikenCast, advanceShurikenFields, expireShurikenCasts } from "./shuriken";
 import { advanceSecretOrbAction, advanceSecretOrbPulses, expireSecretOrbs } from "./secret-orb";
 import { advanceJungleLandings, jungleContains } from "./jungle";
@@ -16,12 +18,14 @@ import { advanceWushi, expireWushi, expireWushiTaunts, wushiStrike, wushiTauntTa
 import { bladeStrike, seedBladeStrikes } from "./bladethrall";
 import { recordStaffAttack, retargetStaff } from "./staffthrall";
 import { advanceBladeStorm } from "./swordthrall";
-import { unitArmor, unitDefinition,unitAttackInterval } from "../data/unit-stats";
+import { unitArmor, unitDefinition,unitAttackInterval,unitMinimumAttackInterval } from "../data/unit-stats";
 import { seedAssassinStrikes } from "./assassins";
 import {
   CURRENT_COMBAT_VERSION,
   hasBoneBlastRules,
   hasThornBindRules,
+  hasHiveRules,
+  hasGazeRules,
   hasRifleRules,
   hasWildfireRules,
   hasTornadoRules,
@@ -140,6 +144,8 @@ export function army(
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
         ...(hasRifleRules(definitionVersion) && d.id === "infantry" ? {rifle:{shots:0}} : {}),
+        ...(hasGazeRules(definitionVersion) && d.id === "eyebug" ? {gaze:{selections:0,controls:0,manaDrained:0}} : {}),
+        ...(hasHiveRules(definitionVersion) && d.id === "wasp" ? {hive:{volleys:0,needles:0,explosions:0,innerHits:0,outerHits:0,interrupted:0}} : {}),
         ...(hasThornBindRules(definitionVersion) && d.id === "vine"
           ? {thornbind:{pulses:0,hits:0,roots:0,healing:0,retargets:0,interrupted:0}} : {}),
         ...(hasBoneBlastRules(definitionVersion) && d.id === "bonedragon"
@@ -345,7 +351,7 @@ export function army(
           (version === "legacy" ? (has("装甲") ? 4 : 0) : sum("armor")),
         range: d.range,
         interval: Math.max(
-          1,
+          unitMinimumAttackInterval(d,definitionVersion),
           unitAttackInterval(d,p.star,definitionVersion) * (1 - gear.haste) -
             (version === "legacy" ? (has("野兽") ? 1 : 0) : sum("interval")),
         ),
@@ -588,7 +594,9 @@ function runBattle(
     advanceTerminatorMissiles(context);
     advanceTornadoes(context);
     advanceBoneBlasts(context);
+    advanceHiveSkills(context);
     advanceThornBinds(context);
+    advanceGazes(context);
     advanceShurikenFields(context);
     advanceSecretOrbPulses(context);
     advanceWildfirePulses(context);
@@ -619,6 +627,7 @@ function runBattle(
           f.shuriken?.casting ||
           f.secretOrb?.casting || f.secretOrb?.channel ||
           f.wildfire?.casting || f.wildfire?.channel || f.thornbind?.channel ||
+          f.hive?.casting || f.hive?.burst || f.hive?.actedAt===tick ||
           f.combo ||
           f.bird?.draw) &&
         f.cooldown > 0
@@ -631,6 +640,7 @@ function runBattle(
       if (advanceSecretOrbAction(context, f)) continue;
       if (advanceWildfireAction(context, f)) continue;
       if (advanceThornBindAction(context, f)) continue;
+      if (advanceHiveAction(context, f)) continue;
       if (advanceFaithArrow(context, f)) continue;
       if (advanceHawkCombo(context, f)) continue;
       if (advanceWindup(context, f)) continue;
@@ -746,6 +756,7 @@ function runBattle(
         gainMana(f, ATTACK_MANA, tick);
         const gale = recordStaffAttack(f, target);
         if (
+          !startHiveBurst(context,f,target) &&
           !startFaithArrow(context, f, target) &&
           !startHawkCombo(context, f, target) &&
           !lightningStrike(context, f, target) &&
@@ -771,6 +782,7 @@ function runBattle(
       }
     }
     expireWushiTaunts(context);
+    expireHiveStates(context);
     expireShurikenCasts(context);
     expireSecretOrbs(context);
     expireWildfires(context);

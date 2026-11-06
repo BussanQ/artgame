@@ -59,8 +59,8 @@
   },
   "review": {
     "nativeImageViewed": true,
-    "browserCanvasReviewed": false,
-    "note": "原生最终输出已目视，头盔、枪口及双脚完整。当前推送前未新增浏览器专项验收；不能将模块中的图片路由断言当作实际Canvas验收。"
+    "browserCanvasReviewed": true,
+    "note": "已目视最终原生输出及1280×720／390×844实际Canvas射击、状态与图鉴；完整头盔、枪口和双脚，无矩形底；见rifle-v067-validation.json。"
   },
   "routing": "rifle及以后使用新图；39个旧战斗版本仍使用原infantry.png。"
 }

@@ -3,6 +3,8 @@ import { beginShuriken } from "./shuriken";
 import { beginSecretOrb } from "./secret-orb";
 import { beginWildfire } from "./wildfire";
 import { beginThornBind } from "./thornbind";
+import {applyGaze,gazeTarget} from "./gaze";
+import {beginHiveCast,hiveCanCast} from "./hive";
 import { releaseBoneBlast } from "./boneblast";
 import { releaseBombardment } from "./bombardment";
 import { launchTerminator } from "./terminator";
@@ -58,6 +60,8 @@ import {
   BONEBLAST,
   BONEBLAST_SKILL,
   THORNBIND_SKILL,
+  GAZE_SKILL,
+  HIVE,HIVE_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -76,7 +80,7 @@ export const distance = (
 ) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export const attackInterval = (f: Fighter, tick: number) =>
   Math.max(
-    1,
+    f.hive ? HIVE.needlesPerAttack*HIVE.needleInterval : 1,
     (f.interval / (1 + staffSpeed(f) + (f.formationHaste ?? 0))) *
       (f.hasteUntil > tick ? 0.7 : 1) *
       (f.slow && f.slow.until > tick ? f.slow.multiplier : 1),
@@ -579,10 +583,11 @@ export function interruptAirSkill(ctx: CombatContext, source: Fighter) {
     !source.windup &&
     !source.combo &&
     !source.bird?.draw &&
-    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel
+    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting
   )
     return;
   const wasDrawing = !!source.bird?.draw;
+  if(source.hive?.casting){source.hive.interrupted++;source.hive.actedAt=ctx.tick;delete source.hive.casting;}
   if(source.thornbind?.channel){source.thornbind.interrupted++;delete source.thornbind.channel;}
   if (source.boneblast && source.air?.cast?.kind === "boneblast") source.boneblast.interrupted++;
   if (source.wildfire?.casting || source.wildfire?.channel) {
@@ -821,7 +826,7 @@ export function castSkill(
 ) {
   if (source.gospelAura || source.rifle) return false;
   if (wushiTauntTarget(ctx, source)) return false;
-  const s = source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  const s = source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -836,6 +841,13 @@ export function castSkill(
               : SKILLS[source.defId];
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
+  if(source.hive&&(source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||
+    (source.skillReadyAt??0)>ctx.tick||!hiveCanCast(ctx,source)))return false;
+  if(source.gaze){
+    if(source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||
+      (source.skillReadyAt??0)>ctx.tick)return false;
+    const selected=gazeTarget(ctx,source);if(!selected)return false;target=selected;
+  }
   if (source.thornbind && (source.charm || source.stunUntil>ctx.tick ||
     (source.skillReadyAt??0)>ctx.tick || distance(source,target)>source.range ||
     !attackTargets(source,ctx.fighters,ctx.tick).some(f=>f.uid===target.uid))) return false;
@@ -1004,7 +1016,7 @@ export function castSkill(
   if (source.packCall) return callWolfPack(ctx, source);
   if (source.summoning) return callRetinue(ctx, source);
   if (
-    source.defId === "wasp" &&
+    source.defId === "wasp" && !source.hive &&
     !ctx.fighters.some(
       (f) =>
         f.hp > 0 && f.side !== source.side && distance(source, f) <= s.radius,
@@ -1570,6 +1582,7 @@ export function castSkill(
       }
       break;
     case "eyebug":
+      if(source.gaze){applyGaze(ctx,source,target);break;}
       hit(target);
       stun(ctx, source, target, 6);
       break;
@@ -1587,6 +1600,7 @@ export function castSkill(
       }
       break;
     case "wasp":
+      if(source.hive){beginHiveCast(ctx,source);break;}
       for (const f of enemies().filter((f) => distance(source, f) <= s.radius))
         hit(f, f.uid === target.uid);
       break;
@@ -1634,6 +1648,7 @@ export function castSkill(
       )) {
         ally.stunUntil = 0;
         delete ally.thornRoot;
+        delete ally.gazed;
         ally.armorBreak = 0;
         ally.armorBreakUntil = 0;
         delete ally.corrosion;

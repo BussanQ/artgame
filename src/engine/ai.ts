@@ -36,6 +36,8 @@ import {
   WILDFIRE,
   BONEBLAST,
   THORNBIND,
+  GAZE,
+  HIVE,
 } from "../data/skills";
 import { RETINUE, SPIRIT_WOLF } from "./summons";
 import { equipmentStats } from "../data/items";
@@ -116,6 +118,13 @@ export function abilityCredit(
   utility +=
     (CONTROL_SECONDS[p.defId] ?? 0) * (skill.radius > 0 ? 1.8 : 1) * 0.035;
   switch (p.defId) {
+    case "wasp":
+      attacks=(HIVE.innerDamage[p.star-1]+HIVE.outerDamage[p.star-1]*1.2)*0.75/(u.attack*2**(p.star-1));
+      utility=0;
+      break;
+    case "eyebug":
+      attacks=0;utility=GAZE.duration[p.star-1]/4*0.035+0.04;
+      break;
     case "vine":
       // Credit two of three interruptible pulses and partial useful self-healing.
       attacks=THORNBIND.multiplier*2/3;
@@ -310,8 +319,8 @@ function strengthWithOpening(p: Piece, openingMana: number): number {
     : 0;
   return (
     Math.sqrt(
-      ((u.hp * scale + gear.hp) * (u.attack * scale + gear.attack)) /
-        Math.max(1, unitAttackInterval(u,p.star) * (1 - gear.haste)),
+      ((u.hp * scale + gear.hp) * (u.attack * scale + gear.attack)) * (p.defId === "wasp" ? 2.5 : 1) /
+        Math.max(p.defId === "wasp" ? HIVE.needlesPerAttack*HIVE.needleInterval : 1, unitAttackInterval(u,p.star) * (1 - gear.haste)),
     ) *
       (1 + (unitArmor(u, p.star) + gear.armor) * 0.025) *
       (p.defId === "phoenix" && p.star >= 2 ? 1.12 : 1) *

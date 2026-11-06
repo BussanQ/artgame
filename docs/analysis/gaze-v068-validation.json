@@ -1,0 +1,429 @@
+{
+  "checkedAt": "2026-11-06T22:01:47.292Z",
+  "rules": "singleplayer-0.68",
+  "combatVersion": "gaze",
+  "saveSchema": 67,
+  "goalTurnClassification": "progress",
+  "scope": "补齐神枪手实际界面并修复三星图鉴间隔；加入眼虫长单控、削能和完整交互、表现、AI、统计与旧局兼容。完整单机目标仍进行中。",
+  "tests": {
+    "command": "npm run test:gaze -- --reporter=json --outputFile=tmp/gaze-module-tests.json",
+    "passed": 45,
+    "failed": 0,
+    "suites": [
+      {
+        "path": "../../tests/gaze.test.ts",
+        "count": 27,
+        "status": "passed"
+      },
+      {
+        "path": "../../tests/rifle.test.ts",
+        "count": 18,
+        "status": "passed"
+      }
+    ],
+    "rawReport": "../../tmp/gaze-module-tests.json",
+    "initialFailures": [
+      "测试误把40初始能量法杖当作15初始能量晶体的两倍，改为验证不含法强收益的实际80分与旧版比较。",
+      "旧原型通用眩晕有按来源星级加步数的既有行为，原断言误少一步；保持旧代码及原先冻结SHA，修正断言为17。"
+    ],
+    "note": "仅两个直接相关模块；27项眼虫及18项神枪手。不执行全套测试或完整经营局。"
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 149,
+    "js": "index-BvQAAsAt.js",
+    "worker": "worker-BFwveZtA.js",
+    "css": "index-0iwQsGQW.css"
+  },
+  "compatibility": {
+    "previousDefinitions": 40,
+    "fixture": "../../tests/fixtures/pre-v068-gaze-replays.json",
+    "replays": [
+      {
+        "version": "legacy",
+        "frames": 135,
+        "oldEyeCasts": 6,
+        "sha256": "c08cb821758386117ad5fa8645bef9b502774b9d8961c636475c853ec3c87a31"
+      },
+      {
+        "version": "rifle",
+        "frames": 161,
+        "oldEyeCasts": 8,
+        "sha256": "ca11575b1f9ab7e93bd25c4a91dd89ccd3e2b253628e2f876adea11e96c08abc"
+      }
+    ],
+    "migrationPhases": [
+      "prepare",
+      "battle",
+      "result",
+      "finished"
+    ],
+    "preserved": "经营资源、旧目录、历史和回放进度；进行中的旧战斗保持原规则，仅准备阶段升级；缺目录存档补为rifle。",
+    "insectDoubleMerge": true
+  },
+  "scene": {
+    "description": "同一二对二小场景，无额外免费经济或人口。",
+    "data": "../../src/data/gaze-demo.ts",
+    "frames": 161,
+    "lastTick": 160,
+    "winner": null,
+    "eyeCastTicks": [
+      19,
+      79
+    ],
+    "drains": [
+      {
+        "tick": 23,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 27,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 31,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 35,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 39,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 83,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 87,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 91,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 95,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      },
+      {
+        "tick": 99,
+        "kind": "drain",
+        "target": 201,
+        "amount": 10,
+        "name": "凝视削能"
+      }
+    ],
+    "finalEyeState": {
+      "uid": 101,
+      "hp": 0,
+      "mana": 100,
+      "gaze": {
+        "selections": 2,
+        "controls": 2,
+        "manaDrained": 100
+      }
+    },
+    "notBalanceEvidence": true
+  },
+  "browser": {
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "controlMarkReviewed": true,
+    "targetInspection": "凝视压制 3.0s · 每秒削能10",
+    "sourceInspection": "凝视控制 1人次 · 实际削能 20",
+    "analysis675Seconds": {
+      "controls": 1,
+      "manaDrained": 20,
+      "skillDamage": 0
+    },
+    "analysis1375Seconds": {
+      "controls": 1,
+      "manaDrained": 50,
+      "skillDamage": 0
+    },
+    "mobileCloseAfterScroll": {
+      "height": 44,
+      "width": 44,
+      "x": 298.25,
+      "y": 92.296875
+    },
+    "mobileLayout": {
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "resourcesIdentical": true,
+    "resourceScope": [
+      "commander",
+      "recruitment",
+      "armory"
+    ],
+    "consoleWarningsOrErrors": [],
+    "viewportReset": true,
+    "rawReport": "../../tmp/gaze-v068-ui.json",
+    "screenshots": [
+      "../../tmp/gaze-v068-analysis-desktop.jpg",
+      "../../tmp/gaze-v068-analysis675-desktop.jpg",
+      "../../tmp/gaze-v068-active-desktop.jpg",
+      "../../tmp/gaze-v068-active-mobile390.jpg",
+      "../../tmp/gaze-v068-inspection-mobile390.jpg",
+      "../../tmp/gaze-v068-source-mobile390.jpg",
+      "../../tmp/gaze-v068-analysis-mobile390.jpg",
+      "../../tmp/gaze-v068-codex-mobile390.jpg"
+    ],
+    "observationBoundary": "等待瞬时战斗时钟时被浏览器选择器超时截断；继续检查同一仍在播放的演示，未重启，于13.75秒暂停后用已有回看定位6.75秒。"
+  },
+  "art": {
+    "path": "../../public/assets/units/eyebug.png",
+    "bytes": 1482275,
+    "sha256": "aed39a17885d8feb0a3bc210ccdb0ec3360e842ac3b4f834d2dbb05479ae18a2",
+    "reusedWithoutModification": true,
+    "canvasReviewed": true,
+    "newImageGenCalls": 0
+  },
+  "rifleUiFollowup": {
+    "report": "rifle-v067-validation.json",
+    "fixed": "图鉴共用星级攻击间隔，三星正确显示0.5秒；旧版保持0.75秒。",
+    "relatedCasesIncludedIn45": 18
+  },
+  "sampling": {
+    "newFullCampaigns": 0,
+    "newBulkBattleSamples": 0,
+    "distinctCurrentBattleScene": 1,
+    "frozenOldSmallReplays": 2,
+    "moduleRandomSelections": 12,
+    "note": "12次候选选择仅是局部随机函数检查，不运行12场战斗。"
+  },
+  "remaining": [
+    "尚无完整早期眼虫客户端卡；凝视名称、星级梯度、每秒削能及生命周期等边界见gaze-history.json。",
+    "其他原型能力、统一历史切片和伤害公式仍需核实。",
+    "整体难度、多构筑高星的完整体验与真实触屏／弱设备性能没有由本次小局面证明。"
+  ],
+  "sourceFingerprints": [
+    {
+      "path": "../../src/data/skills.ts",
+      "bytes": 68748,
+      "sha256": "ca7087d8c1af471db5ae4369b3b786c92eb7080e102ca90e3c9f6e0bc4e92a5d"
+    },
+    {
+      "path": "../../src/data/units.ts",
+      "bytes": 20960,
+      "sha256": "8fcb6e7cddd250b4fd60f39d69a7f8bce9e6629f951f2fdc067a161f01f8c194"
+    },
+    {
+      "path": "../../src/data/unit-stats.ts",
+      "bytes": 8435,
+      "sha256": "1eb1e1a43f23e709df4b727d98883534f82253c68cc2488f0a53845802b24ef9"
+    },
+    {
+      "path": "../../src/data/gaze-demo.ts",
+      "bytes": 456,
+      "sha256": "d332e8a94f9d8c58a11a32da9ce130362146c2b77d79478180ae4b316ebbffb7"
+    },
+    {
+      "path": "../../src/engine/types.ts",
+      "bytes": 20696,
+      "sha256": "95c2eac752bd5e4fd0ead50be26fe6f03559e018528903019216c44971e4c487"
+    },
+    {
+      "path": "../../src/engine/gaze.ts",
+      "bytes": 2468,
+      "sha256": "e5f9fb9651c9724c09e7a502647f17af2494f5aa99764513422c0feb0ba7f7a5"
+    },
+    {
+      "path": "../../src/engine/battle.ts",
+      "bytes": 30052,
+      "sha256": "a2822971ce0c03e3ed26bbc1bc83168c33c38cfeb085ace27c517010e292314a"
+    },
+    {
+      "path": "../../src/engine/abilities.ts",
+      "bytes": 59437,
+      "sha256": "88d6f6cc0205df791dc51b5cd6cbc05ae863fe8199053703c00dae0a56d7812f"
+    },
+    {
+      "path": "../../src/engine/persistence.ts",
+      "bytes": 36354,
+      "sha256": "fff3b28c2e1a754f4fa4a32bdcc863c1c9d3ad2bbea158b24b6d79d4cd75e286"
+    },
+    {
+      "path": "../../src/engine/ai.ts",
+      "bytes": 51213,
+      "sha256": "a660fb409693d474e0137636b20fb30e57a2e05f7303dfdab37f0ddefe602808"
+    },
+    {
+      "path": "../../src/engine/equipment.ts",
+      "bytes": 7333,
+      "sha256": "17a8c57fcc7a61a7ebacf78c022d4eb5238edc9ea92b26fdb730b82479eaffa6"
+    },
+    {
+      "path": "../../src/engine/phoenix.ts",
+      "bytes": 3336,
+      "sha256": "8d0839390217b2ab1d8421f3db92372185b6b2872fe9c9341c0e58e8cf9965e9"
+    },
+    {
+      "path": "../../src/engine/battle-analysis.ts",
+      "bytes": 9164,
+      "sha256": "66a73fe81458839389b38005fac32e77ba8f8ab27d8db0c51b2743c8e27a6b54"
+    },
+    {
+      "path": "../../src/main.ts",
+      "bytes": 77987,
+      "sha256": "ab9b16a3e1f4e019e37bd732007527960cc2b9c866efb9bf816bab4fd00a1365"
+    },
+    {
+      "path": "../../src/render/gaze.ts",
+      "bytes": 1815,
+      "sha256": "b639fe52f2f7306d1e9ceb111a61ea654edce306d96d42fca767015146bbd3ca"
+    },
+    {
+      "path": "../../src/render/scene.ts",
+      "bytes": 37514,
+      "sha256": "475b8c38b2c6e528a8ee7901fb02f18218dab1f7e42f70fbd80725458b9f8dc4"
+    },
+    {
+      "path": "../../src/render/skill-effects.ts",
+      "bytes": 44169,
+      "sha256": "9351a60751ca19b2fea9b5bc9107c016f997547189cffa304a291701e030d04e"
+    },
+    {
+      "path": "../../src/render/battle-inspection.ts",
+      "bytes": 4328,
+      "sha256": "b723db07b4d0cc23bc8fbb7f7a42c127822a8bb3a918d7eed8ce9f434ffade7d"
+    },
+    {
+      "path": "../../src/ui/battle-analysis.ts",
+      "bytes": 8810,
+      "sha256": "abe0ac327259e3623eb22d378ce7b1815168f60b80e2d12d0fd1018abc261a8e"
+    },
+    {
+      "path": "../../src/ui/unit-codex.ts",
+      "bytes": 8222,
+      "sha256": "1a3ba7036b5362563a1c5fa01bf3b734d1fbf5fe3adeebfad34702f6c862c6f5"
+    },
+    {
+      "path": "../../tests/gaze.test.ts",
+      "bytes": 14056,
+      "sha256": "633000a75a355006aa5772a5c6945990ddff0514bb4a81de8ccf47c65a4ce66d"
+    },
+    {
+      "path": "../../tests/rifle.test.ts",
+      "bytes": 12853,
+      "sha256": "efb65de394c5a7ae2536401904c5c6609d150f9fae2583cdd0c86a06ac4f0999"
+    },
+    {
+      "path": "../../tests/fixtures/pre-v068-gaze-replays.json",
+      "bytes": 18207,
+      "sha256": "c17570fc219e654715103c801834e5450b8920b5661a563f598fcbe92fd480cf"
+    },
+    {
+      "path": "../../docs/research/gaze-history.json",
+      "bytes": 5358,
+      "sha256": "0d67303968b0cfa0a2a32602d1d06d35b4fb9beb7a821feb053c84812cf30b1a"
+    },
+    {
+      "path": "../../docs/design/gaze.md",
+      "bytes": 2339,
+      "sha256": "afba50cabe50875cc3087f2f74287f5b37cd48a7a32bd47bfa133b3ce80c7b5c"
+    }
+  ],
+  "rawArtifacts": [
+    {
+      "path": "../../tmp/gaze-module-tests.json",
+      "bytes": 16090,
+      "sha256": "2f917cdc3d728e5990f99b562552d5e3a07741b2391d0eedbaa07251cc9a78e0"
+    },
+    {
+      "path": "../../tmp/gaze-v068-ui.json",
+      "bytes": 5287,
+      "sha256": "d53606f7e2d8adb91a7e2db7cd53a196a4da3d41d2465e6afb19f0adf3fa413a"
+    },
+    {
+      "path": "../../tmp/gaze-v068-scene.json",
+      "bytes": 3334,
+      "sha256": "bd4ad8ce8a5c2c75bdfb60c73144041cf3cd2f03dad1a8cce78f0380d5d1ede7"
+    },
+    {
+      "path": "../../tmp/gaze-v068-analysis-desktop.jpg",
+      "bytes": 53228,
+      "sha256": "fbb44e7ab4ce8a3f3eda55292e99c97d13487114a87752c90c8700848e39eb52"
+    },
+    {
+      "path": "../../tmp/gaze-v068-analysis675-desktop.jpg",
+      "bytes": 63874,
+      "sha256": "30cc9b88752b20d5c550260b18bbea7f5aa95ae7bc947225dacd2e2b90e977e9"
+    },
+    {
+      "path": "../../tmp/gaze-v068-active-desktop.jpg",
+      "bytes": 144317,
+      "sha256": "da8f6e3ddbb557c3f040ec4390d2c71b15beed1c4f239f458de35663cbca5380"
+    },
+    {
+      "path": "../../tmp/gaze-v068-active-mobile390.jpg",
+      "bytes": 50783,
+      "sha256": "f977a99c9f842a12c4706bfb207f4122518a2a5cead4de2fae4f33339b94ddc7"
+    },
+    {
+      "path": "../../tmp/gaze-v068-inspection-mobile390.jpg",
+      "bytes": 49738,
+      "sha256": "5e34df3cc1c58fa6e634a633d4c2c44069f304af1b018284178718e437374dd8"
+    },
+    {
+      "path": "../../tmp/gaze-v068-source-mobile390.jpg",
+      "bytes": 50313,
+      "sha256": "c4c0ea65da260b27ef5bc3049dddf4f28e3628ea74bdbd53d2e4e17e6ec885c1"
+    },
+    {
+      "path": "../../tmp/gaze-v068-analysis-mobile390.jpg",
+      "bytes": 41903,
+      "sha256": "c0d71faf829e93afa8a53d9178ed477f5525a9f223f42e0c32e3edda1f51f4e4"
+    },
+    {
+      "path": "../../tmp/gaze-v068-codex-mobile390.jpg",
+      "bytes": 54032,
+      "sha256": "7ccdc13138a723ac6e59b398ce5c053ebe9f20ca51ff2c1be5ab9a80e9a9decc"
+    }
+  ],
+  "git": {
+    "baseCommit": "f2d6ae5",
+    "committedThisTurn": false,
+    "pushedThisTurn": false
+  }
+}

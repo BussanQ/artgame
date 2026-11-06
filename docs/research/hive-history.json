@@ -1,0 +1,139 @@
+{
+  "rules": "singleplayer-0.69",
+  "unit": "wasp",
+  "historicalName": "杀人蜂",
+  "skillName": "蜂群震荡",
+  "skillNameStatus": "沿用本项目技能表名称并统一基础单位字段，尚未取得客户端原卡确认原名。",
+  "sources": [
+    {
+      "id": "S04-1",
+      "url": "https://www.taptap.cn/moment/15213091339897518?group_id=42979",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "original-community-measurement",
+      "row": 24,
+      "review": "本轮实际目视原图第24行，原始转录表不改。攻击29–33采用均值31。",
+      "fields": {
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 450,
+        "attack": [
+          29,
+          33
+        ],
+        "armor": 5,
+        "range": 3,
+        "attackIntervalSeconds": 1.3,
+        "reportedDps": 23.8,
+        "skillCooldownSeconds": 20
+      }
+    },
+    {
+      "id": "S68",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=34",
+      "title": "赤潮自走棋- 4 & 5 元棋子分析",
+      "author": "起落是無常 xyz98997",
+      "publishedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "access": "读取搜索索引中的原作者完整正文；直接打开403，未绕过或声称取得网页原件。",
+      "fields": {
+        "printedName": "女王蜂",
+        "hp": 450,
+        "armor": 5,
+        "range": 3,
+        "reportedDps": 23,
+        "innerRadiusOriginalUnits": [
+          9,
+          11,
+          14
+        ],
+        "outerRadiusOriginalUnits": [
+          20,
+          22,
+          25
+        ],
+        "innerDamage": [
+          200,
+          300,
+          400
+        ],
+        "outerDamage": [
+          100,
+          150,
+          200
+        ],
+        "cooldownSeconds": 20
+      },
+      "review": "四费异虫／远距、属性与双圈定位对应当前杀人蜂，属于地区异名的对应推断，不证明官方别名或统一客户端版本。作者未说明原始半径与棋格单位的换算。"
+    },
+    {
+      "id": "S19",
+      "url": "https://www.taptap.cn/moment/15225619130352356",
+      "kind": "original-player-evaluation",
+      "access": "本轮读取原帖的搜索索引正文。",
+      "review": "作者称实际伤害高于描述，异虫使其容易追星，狙击体系有上场空间；没有给出普攻实际包数，不能据此证明三针。"
+    },
+    {
+      "id": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "modifiedAt": "2019-07-15",
+      "localHtml": "../../tmp/vine-s05-original.html",
+      "review": "本轮复核本地原作者杀人蜂／蜂后段，四费太后且与狙击装备核心竞争；没有精确技能数值。"
+    }
+  ],
+  "localAdaptation": {
+    "radiusConversion": "9个原始范围单位归一为1个棋格；保留9/11/14与20/22/25的相对梯度。这是棋格实现选择，未证实为原作坐标单位。",
+    "innerRadiiTiles": [
+      1,
+      1.2222222222222223,
+      1.5555555555555556
+    ],
+    "outerRadiiTiles": [
+      2.2222222222222223,
+      2.4444444444444446,
+      2.7777777777777777
+    ],
+    "damageBands": "每名目标按爆发时位置仅归属一个圈，边界计入内圈。",
+    "ordinaryNeedlesPerAttack": 3,
+    "ordinaryDamagePerNeedle": 1,
+    "needleGapSeconds": 0.25,
+    "minimumVolleySeconds": 0.75,
+    "ordinaryBurstEvidenceStatus": "三针连射作为本地适配，未将其标为已确证的早期普攻参数。",
+    "energy": "每轮只在首针获得普通攻击能量；后两针独立伤害、吸血和反伤，不额外获得普通攻击能量。",
+    "windupSeconds": 0.75,
+    "initialMana": 0,
+    "damageType": "magic",
+    "center": "蓄力起手自身棋格固定中心，施法时不能移动；爆发时重新读取敌人位置。",
+    "interruption": "蓄力被眩晕、沉默、魅惑或阵亡中断，不退款；普通余针只受硬控、阵营改变、阵亡或目标失效取消。",
+    "reflection": "普通连射致死反伤取消余针；已经释放的同次范围震荡完整结算其余接触。",
+    "ai": "普通连射按2.5针的折扣期望估值；技能按部分内外圈覆盖和75%释放率估计，不视作满场必命中。"
+  },
+  "deferredSecondaryClue": {
+    "url": "https://m.18183.com/zqnews/201908/2332916.html",
+    "kind": "secondary-network-reprint",
+    "claimedEventDate": "2019-08-15",
+    "review": "转载提到杀人蜂普攻由3次伤害改为1次；本轮未找到该条的原始开发方公告，不用其证明早期三针规则，也不把文中的1.4秒或后期63–72攻击并入七月身板。"
+  },
+  "boundaries": [
+    "尚未取得统一客户端版本、完整原卡与原始范围坐标定义。",
+    "零初始能量、三针时序、能量分配、最小轮间隔、起手及释放／反伤交互均属于本地适配。",
+    "六月繁体测量与七月原表分开记录；既有飞行标签继续沿用，不以表格缺少飞行列补造证据。",
+    "未改变四费经营价格、卡池份数或异虫升星门槛。"
+  ],
+  "compatibility": {
+    "previousVersions": 41,
+    "oldBody": {
+      "hp": 850,
+      "attack": 100,
+      "armor": 3,
+      "range": 3,
+      "intervalSeconds": 0.75,
+      "skillField": "毒针风暴"
+    },
+    "oldSkill": "220%攻击、曼哈顿2格法伤，无新增个人20秒冷却；旧形象及回放保持。"
+  }
+}

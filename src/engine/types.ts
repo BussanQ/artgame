@@ -28,15 +28,17 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "rifle";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "hive";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
 export const hasThornBindRules = (version: CombatVersion) => hasRuleSince(version,"thornbind");
 export const hasRifleRules = (version: CombatVersion) => hasRuleSince(version,"rifle");
+export const hasGazeRules = (version: CombatVersion) => hasRuleSince(version,"gaze");
+export const hasHiveRules = (version: CombatVersion) => hasRuleSince(version,"hive");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
 export const hasWarcryRules = (version: CombatVersion) => hasRuleSince(version,"warcry");
@@ -177,6 +179,16 @@ export interface RoundReport {
   inventory?: string[];
 }
 export interface Fighter {
+  hive?: {
+    volleys:number; needles:number; explosions:number; innerHits:number; outerHits:number; interrupted:number;
+    actedAt?:number;
+    burst?:{target:number;next:number;remaining:number;side:0|1};
+    casting?:{start:number;release:number;side:0|1;center:{x:number;y:number};inner:number;outer:number;innerDamage:number;outerDamage:number};
+    pulse?:{start:number;until:number;center:{x:number;y:number};inner:number;outer:number};
+  };
+  /** Instant eye control; its dispellable mark persists without a maintained channel. */
+  gaze?: { selections:number; controls:number; manaDrained:number };
+  gazed?: { source:number; until:number; nextDrain:number; drain:number };
   /** Passive rifle training: one real hit per ordinary attack, no energy skill. */
   rifle?:{shots:number};
   /** Maintained, segmented life drain; the short root has a real gap before the next pulse. */

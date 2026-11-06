@@ -6,6 +6,8 @@ import {
   hasWushiRules,
   hasShurikenRules,
   hasRifleRules,
+  hasGazeRules,
+  hasHiveRules,
 } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
@@ -110,7 +112,8 @@ export function itemScore(
   const lightning = hasLightningRules(version) && piece.defId === "thunderlord";
   const gospel = hasGospelRules(version) && piece.defId === "acolyte";
   const rifle=hasRifleRules(version)&&piece.defId==="infantry";
-  const expectedAttack = rifle ? 4/unitAttackInterval(unitDefinition(piece.defId,version),piece.star,version) : lightning
+  const gaze=hasGazeRules(version)&&piece.defId==="eyebug";
+  const expectedAttack = hasHiveRules(version)&&piece.defId==="wasp" ? 2.5 : rifle ? 4/unitAttackInterval(unitDefinition(piece.defId,version),piece.star,version) : lightning
     ? 1 +
       Math.min(
         0.6,
@@ -156,7 +159,7 @@ export function itemScore(
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
     (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
-      (lightning || gospel || wushi || rifle
+      (lightning || gospel || wushi || rifle || gaze
         ? 0
         : (version === "signature" ||
               version === "summons" ||

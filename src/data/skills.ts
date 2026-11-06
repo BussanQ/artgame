@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasHiveRules,
+  hasGazeRules,
   hasRifleRules,
   hasThornBindRules,
   hasBoneBlastRules,
@@ -851,6 +853,22 @@ export const THORNBIND_SKILL=define({name:THORNBIND.name,role:THORNBIND.role,
   multiplier:THORNBIND.multiplier,damageType:"magic",duration:THORNBIND.root,description:THORNBIND.description});
 
 /** S04 marks the one-cost infantry/sniper as passive; name and star-rate ladder are local. */
+/** The measured body/CD and observed control are historical; star ladder/drain are local. */
+/** Circle sizes normalize the original 9/11/14 and 20/22/25 units to this board. */
+export const HIVE = {
+  name:"蜂群震荡",role:"三针连射与双圈爆发",cooldown:80,windup:3,
+  inner:[1,11/9,14/9],outer:[20/9,22/9,25/9],innerDamage:[200,300,400],outerDamage:[100,150,200],
+  needlesPerAttack:3,needleInterval:1,
+  description:"初始能量0。普通攻击为三针连射，每针造成100%当前攻击的物理伤害，后两针各间隔0.25秒；每针独立计算护甲、闪避、护盾、穿透、吸血和反伤，每轮只在首针恢复普通攻击能量。攻速缩短两轮连射的间隔，不缩短针间距；未完成连射时不会开始下一轮，每轮最快0.75秒。目标死亡、隐蔽、出射程、变为友军，或自身眩晕、阵亡、阵营改变时取消余针；沉默和封能不阻止普通连射。满能量、20秒冷却结束且爆发范围内有可见敌人时，原地蓄力0.75秒后震荡：内圈200/300/400法伤，外圈100/150/200法伤（一/二/三星），每名敌人只受一个圈的伤害。内圈半径1/1.22/1.56格、外圈2.22/2.44/2.78格；星级提高范围，技能强度只放大法伤。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会中断，不返还能量或冷却。爆发时按当前位置判定，可波及飞行及隐蔽敌军，敌人可在蓄力时走出范围；不附带控制、持续毒伤或减甲。已释放的同次震荡完整结算，不因反伤击杀来源而跳过余下目标。冷却从蓄力开始计算。",
+} as const;
+export const HIVE_SKILL=define({name:HIVE.name,role:HIVE.role,multiplier:0,damageType:"magic",description:HIVE.description});
+
+export const GAZE = {
+  name:"凝视",role:"随机单控与削能",cooldown:60,duration:[16,20,24],drainInterval:4,drain:10,
+  description:"初始能量0。满能量且15秒冷却结束时，随机选择4格内一名可见且可受控制的敌人，立即使其眩晕4/5/6秒（一/二/三星），期间不能移动、普攻或施法，每秒削减最多10能量，最后一跳在控制结束时结算。凝视不直接造成伤害，不触发吸血、破甲或反伤，技能强度不增加控制或削能；已满护盾不能阻挡。沉默、眩晕、魅惑或阵亡时不能开始施法，无合法目标时保留能量；不会选中狂舞免控、残魂或涅槃火种。施放后可恢复行动，已施加的控制和削能不依赖眼虫存活或持续引导；灵鱼可驱散并终止后续削能。多个凝视不叠加削能，保留较晚到期的一次。无能量技能的敌人可被控制，但不被削能；削减不封锁后续回能，也不将能量转给眼虫。冷却从成功施放开始计算。",
+} as const;
+export const GAZE_SKILL=define({name:GAZE.name,role:GAZE.role,multiplier:0,description:GAZE.description});
+
 export const RIFLE = {
   name:"快速射击",role:"被动普攻核心",intervals:[4,3,2],
   description:"被动：依靠快速普通攻击持续输出，一/二/三星基础攻击间隔为1/0.75/0.5秒。每次普攻按当前攻击力结算一次物理伤害，受护甲、闪避、护盾、狙击穿透、普攻破甲、吸血和反伤影响；射击动作中的多道曳光不追加伤害。升星同时提升生命与攻击。攻速装备和野兽增益进一步缩短攻击间隔，减速会延长间隔，最快每0.25秒一次。不会积累、消耗能量或施放主动破甲技能，能量和技能强度装备不提高这项被动。沉默与封能不影响射击；眩晕、石化、阵亡或没有合法射程目标时停止攻击，魅惑期间仍可攻击原队友。",
@@ -860,6 +878,8 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (hasHiveRules(version) && id === "wasp") return HIVE.description;
+  if (hasGazeRules(version) && id === "eyebug") return GAZE.description;
   if (hasRifleRules(version) && id === "infantry") return RIFLE.description;
   if (hasThornBindRules(version) && id === "vine") return THORNBIND.description;
   if (hasBoneBlastRules(version) && id === "bonedragon") return BONEBLAST.description;
@@ -986,6 +1006,8 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "wasp" && hasHiveRules(version) ? HIVE.name :
+  id === "eyebug" && hasGazeRules(version) ? GAZE.name :
   id === "infantry" && hasRifleRules(version) ? RIFLE.name :
   id === "vine" && hasThornBindRules(version) ? THORNBIND.name :
   id === "bonedragon" && hasBoneBlastRules(version) ? BONEBLAST.name :
@@ -1043,6 +1065,8 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "wasp" && hasHiveRules(version) ? HIVE.role :
+  id === "eyebug" && hasGazeRules(version) ? GAZE.role :
   id === "infantry" && hasRifleRules(version) ? RIFLE.role :
   id === "vine" && hasThornBindRules(version) ? THORNBIND.role :
   id === "bonedragon" && hasBoneBlastRules(version) ? BONEBLAST.role :

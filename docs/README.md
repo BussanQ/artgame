@@ -1,6 +1,10 @@
 # 赤潮网页自走棋：资料与开发方案
 
-最新能力：[0.67神枪手被动火力](design/rifle.md) · [资料与适配](research/rifle-history.json) · [内置ImageGen完整提示词](research/rifle-assets.json) · [验证清单](analysis/rifle-v067-validation.json)。升星射速、装备／AI、无能量普攻、开火统计和schema66已接入；106项相关模块与构建通过。39版旧定义及回放保持，本次未新增整局或批量采样，实际浏览器专项画面待补。
+最新能力：[0.69杀人蜂蜂群双环](design/hive.md) · [原始字段与适配](research/hive-history.json) · [内置ImageGen完整提示词](research/hive-assets.json) · [验证记录](analysis/hive-v069-validation.json)。双圈伤害、蓄力反制、三针连射、AI、独立统计及schema68已接入，60项必要检查、构建和桌面／390px同一小局面通过；41版旧定义与回放保留，未知时序和半径坐标不冒称原版已确证。
+
+最新能力：[0.68眼虫凝视](design/gaze.md) · [原始资料与适配](research/gaze-history.json) · [验证清单](analysis/gaze-v068-validation.json)。随机单控、逐秒削能、驱散、眼纹画面、AI和schema67已接入，并补完神枪手桌面／手机验收和图鉴间隔修复。45项必要检查、构建与同一二对二局面通过；未新增整局或批量采样，跨期数据和未知原卡参数继续保留边界。
+
+最新能力：[0.67神枪手被动火力](design/rifle.md) · [资料与适配](research/rifle-history.json) · [内置ImageGen完整提示词](research/rifle-assets.json) · [验证清单](analysis/rifle-v067-validation.json)。升星射速、装备／AI、无能量普攻、开火统计和schema66已接入；106项相关模块与构建通过。39版旧定义及回放保持，本次未新增整局或批量采样，桌面／390px实际射击、回看、图鉴与退出资源已补验，三星图鉴射速显示已修正。
 
 最新能力：[0.66藤妖荆棘缠绕](design/thornbind.md) · [原始资料与适配](research/thornbind-history.json) · [验证清单](analysis/thornbind-v066-validation.json)。分段汲取、剩余段数转火、段间反制、藤蔓画面与schema65已接入；骨龙间隔纠正为2.2秒，88项相关检查与构建通过，桌面／390px已核对。38版旧定义和回放保持，未知原版参数、完整单机难度和真实设备继续推进。
 

@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasHiveRules,
+  hasGazeRules,
   hasRifleRules,
   hasThornBindRules,
   hasBoneBlastRules,
@@ -25,7 +27,7 @@ import {
   type UnitDef,
 } from "../engine/types";
 import { UNIT } from "./units";
-import {RIFLE} from "./skills";
+import {RIFLE,HIVE} from "./skills";
 
 /** Preserve the pre-0.45 professions for in-flight battles and all historical reports. */
 const previousTraits: Record<string, UnitDef["traits"]> = {
@@ -157,12 +159,15 @@ const boneDragonV065: UnitDef = { ...UNIT.bonedragon, interval: 4.8 };
 const oldVine: UnitDef = { ...UNIT.vine, hp:820, attack:44, interval:4, skill:"枯藤缠身" };
 const oldVineGuard: UnitDef = { ...oldVine, traits:previousTraits.vine };
 const oldInfantry:UnitDef={...UNIT.infantry,hp:480,attack:58,armor:2,interval:3,skill:"精准射击"};
+const oldEyeBug:UnitDef={...UNIT.eyebug,hp:450,attack:28,armor:1,range:3,interval:4};
+const oldWasp:UnitDef={...UNIT.wasp,hp:850,attack:100,armor:3,interval:3,skill:"毒针风暴"};
 /** Keep the original portrait available to in-flight battles and historical reports. */
 export function unitSprite(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
   star = 1,
 ) {
+  if (id === "wasp" && hasHiveRules(version)) return "wasp-hive";
   if (id === "infantry" && hasRifleRules(version)) return "infantry-rifle";
   if (id === "bonedragon" && hasBoneBlastRules(version)) return "bonedragon-boneblast";
   if (id === "phoenix" && hasWildfireRules(version))
@@ -182,6 +187,8 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "wasp" && !hasHiveRules(version)) return oldWasp;
+  if (id === "eyebug" && !hasGazeRules(version)) return oldEyeBug;
   if (id === "infantry" && !hasRifleRules(version)) return oldInfantry;
   if (id === "vine" && !hasThornBindRules(version))
     return hasLineageRules(version) ? oldVine : oldVineGuard;
@@ -211,6 +218,9 @@ export function unitDefinition(
     : UNIT[id];
 }
 /** Permanent star growth, excluding gear and battle-only formations. */
+export function unitMinimumAttackInterval(unit:Pick<UnitDef,"id">,version:CombatVersion=CURRENT_COMBAT_VERSION){
+  return unit.id==="wasp"&&hasHiveRules(version)?HIVE.needlesPerAttack*HIVE.needleInterval:1;
+}
 export function unitAttackInterval(unit:Pick<UnitDef,"id"|"interval">,star:number,version:CombatVersion=CURRENT_COMBAT_VERSION){
   return unit.id==="infantry"&&hasRifleRules(version)?(RIFLE.intervals[star-1]??unit.interval):unit.interval;
 }

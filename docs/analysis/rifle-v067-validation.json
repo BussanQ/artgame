@@ -26,13 +26,20 @@
       }
     ],
     "initialFailure": "旧测试引用不存在的piercer装备，改为直接设置既有attackShred状态验证伤害链；未因此改动生产装备目录。",
-    "rawReport": "../../tmp/push-module-tests.json"
+    "rawReport": "../../tmp/push-module-tests.json",
+    "finalUiFix": {
+      "command": "npx --no-install vitest run tests/rifle.test.ts --reporter=json --outputFile=tmp/rifle-ui-fix-tests.json",
+      "passed": 18,
+      "failed": 0,
+      "rawReport": "../../tmp/rifle-ui-fix-tests.json",
+      "note": "复用既有18项神枪手用例，为三个星级及旧版图鉴补断言，不把重复检查合计为124个独立用例。"
+    }
   },
   "build": {
     "command": "npm run build",
     "passed": true,
     "modules": 146,
-    "js": "index-D25Prf8A.js",
+    "js": "index-BeJuL8hp.js",
     "worker": "worker-D_iEBIQq.js",
     "css": "index-0iwQsGQW.css"
   },
@@ -57,13 +64,87 @@
     "scene": "复用同一四对二演示核对三星级射击节奏、沉默、完整／快速／Worker一致；一个微型硬控对照及两个冻结旧回放。"
   },
   "browser": {
-    "rifleSpecializedReview": false,
+    "rifleSpecializedReview": true,
+    "checkedAt": "2026-11-06T21:45:25.606Z",
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "nativeAssetComplete": true,
+    "battleAt425Seconds": {
+      "shotsByStar": [
+        5,
+        6,
+        9
+      ],
+      "casts": [
+        0,
+        0,
+        0
+      ],
+      "skillDamage": [
+        0,
+        0,
+        0
+      ]
+    },
+    "laterAnalysisSeconds": 12.75,
+    "laterShotsByStar": [
+      12,
+      16,
+      26
+    ],
+    "inspection": "三星0.50秒、9次开火、沉默、零能量；4.25秒射击与状态已实际显示。",
+    "fixedIssue": "三星图鉴属性行原显示基础1秒；改用unitAttackInterval后实际显示0.5秒，旧thornbind仍0.75秒。",
+    "screenshots": [
+      "../../tmp/rifle-v067-initial-desktop.jpg",
+      "../../tmp/rifle-v067-firing-desktop.jpg",
+      "../../tmp/rifle-v067-analysis-desktop.jpg",
+      "../../tmp/rifle-v067-analysis-mobile390.jpg",
+      "../../tmp/rifle-v067-analysis-mobile-scrolled.jpg",
+      "../../tmp/rifle-v067-firing-mobile390.jpg",
+      "../../tmp/rifle-v067-inspection-mobile390.jpg",
+      "../../tmp/rifle-v067-codex-mobile390.jpg",
+      "../../tmp/rifle-v067-codex-mobile390-fixed.jpg"
+    ],
+    "rawReport": "../../tmp/rifle-v067-ui.json",
+    "mobileLayout": {
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "mobileCloseAfterScroll": {
+      "height": 44,
+      "width": 44,
+      "x": 298.25,
+      "y": 92.296875
+    },
+    "resourcesIdentical": true,
+    "resourcesAfterFixIdentical": true,
+    "consoleWarningsOrErrors": [],
+    "viewportReset": true,
+    "waitBoundary": "首次等待4秒以上的短时钟范围超时，未重启演示；继续检查同一演示并于12.75秒暂停，再通过分析回看4.25秒。",
     "thornbindPreviousReview": "thornbind-v066-validation.json",
-    "note": "0.66画面报告是该版本的时间点记录，不将旧演示的结果冒充0.67实测。"
+    "note": "0.66藤妖画面报告保留为该版本的时间点记录。"
   },
   "remaining": [
     "神枪手星级射速与技能名仍是本地适配，身份映射存在名称差异。",
-    "本次新增神枪手的实际浏览器画面尚未专项验收。",
     "完整单机的统一历史版本、整体难度、多构筑与真实设备体验继续推进。"
+  ],
+  "goalTurnClassification": "progress",
+  "sourceFingerprints": [
+    {
+      "path": "../../src/ui/unit-codex.ts",
+      "sha256": "1a3ba7036b5362563a1c5fa01bf3b734d1fbf5fe3adeebfad34702f6c862c6f5"
+    },
+    {
+      "path": "../../tests/rifle.test.ts",
+      "sha256": "81a65da4dd16d8cc0794d68245c58de17ddc33014e3ec4da5591325deceed1a7"
+    }
   ]
 }

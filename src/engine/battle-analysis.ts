@@ -4,6 +4,8 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  hive?:Pick<NonNullable<Fighter["hive"]>,"volleys"|"needles"|"explosions"|"innerHits"|"outerHits"|"interrupted">;
+  gaze?:Fighter["gaze"];
   rifle?:Fighter["rifle"];
   thornbind?:Pick<NonNullable<Fighter["thornbind"]>,"pulses"|"hits"|"roots"|"healing"|"retargets"|"interrupted">;
   boneblast?: Pick<NonNullable<Fighter["boneblast"]>, "launched" | "detonated" | "hits" | "stuns" | "interrupted">;
@@ -53,6 +55,9 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.hive?{hive:{volleys:f.hive.volleys,needles:f.hive.needles,explosions:f.hive.explosions,
+      innerHits:f.hive.innerHits,outerHits:f.hive.outerHits,interrupted:f.hive.interrupted}}:{}),
+    ...(f.gaze?{gaze:{...f.gaze}}:{}),
     ...(f.rifle?{rifle:{shots:f.rifle.shots}}:{}),
     ...(f.thornbind?{thornbind:{pulses:f.thornbind.pulses,hits:f.thornbind.hits,roots:f.thornbind.roots,
       healing:f.thornbind.healing,retargets:f.thornbind.retargets,interrupted:f.thornbind.interrupted}}:{}),

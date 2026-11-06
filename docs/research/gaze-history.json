@@ -1,0 +1,120 @@
+{
+  "rules": "singleplayer-0.68",
+  "unit": "eyebug",
+  "historicalName": "眼虫",
+  "skillNameStatus": "沿用本项目凝视名称；尚未取得早期技能客户端卡确认原名。",
+  "sources": [
+    {
+      "id": "S04-1",
+      "url": "https://www.taptap.cn/moment/15213091339897518?group_id=42979",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "original-community-measurement",
+      "row": 21,
+      "review": "本轮再次目视原图，名称眼虫，无身份改名推断。原表保留不改，攻击均值50.5在程序取整为51。",
+      "fields": {
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 500,
+        "attack": [
+          48,
+          53
+        ],
+        "armor": 0,
+        "range": 4,
+        "attackIntervalSeconds": 1.5,
+        "skillCooldownSeconds": 15
+      }
+    },
+    {
+      "id": "S65",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=30",
+      "title": "赤潮自走棋-1元棋子分析(5/30更新版本)",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "access": "已读取搜索索引中的原作者正文；直接打开403，未绕过，也未取得网页原件。",
+      "fields": {
+        "printedName": "Oculus理財章魚",
+        "hp": 500,
+        "armor": 0,
+        "range": 4,
+        "reportedDps": 33,
+        "controlSeconds": 4,
+        "skillCooldownSeconds": 15,
+        "target": "随机单体"
+      },
+      "review": "繁体版本命名不同，以异虫／专家、一费、属性和控制定位作辅助对应；不将其当作统一大陆客户端技能卡或完整星级梯度。"
+    },
+    {
+      "id": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "modifiedAt": "2019-07-15",
+      "kind": "original-player-evaluation",
+      "localHtml": "../../tmp/vine-s05-original.html",
+      "sha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "review": "本轮复核已保存的原作者眼虫段，并读取搜索索引；直接重开405。原作者称零护甲、主要提供硬控，并提新增控制期间减蓝；没有给出削能量、跳数、是否引导和完整星级控制时长。"
+    },
+    {
+      "id": "S66",
+      "url": "https://www.taptap.cn/moment/15204184005542801",
+      "title": "[G爱玩]赤潮自走棋之艺术就是爆炸！虫群才是主角",
+      "author": "老G不寄",
+      "publishedAt": "2019-04-30",
+      "kind": "original-player-strategy",
+      "access": "直接打开并读取原作者正文。",
+      "review": "眼虫用于保护后排、压制突入的高伤害目标，异虫以控制和快速成型提供价值；没有精确技能数值。"
+    }
+  ],
+  "localAdaptation": {
+    "attackMeanRounded": 51,
+    "skillName": "凝视",
+    "initialMana": 0,
+    "skillRangeTiles": 4,
+    "starControlSeconds": [
+      4,
+      5,
+      6
+    ],
+    "manaDrainPerSecond": 10,
+    "directDamage": 0,
+    "targetSelection": "合法候选按uid稳定排序，用来源uid、成功施放次数、战斗步生成局部确定性抽取；不使用经营随机流。",
+    "lifecycle": "立即施加控制标记；之后来源可恢复行动，已施加标记不要求来源持续施法或存活。",
+    "timing": "每秒扣能，首跳为命中后1秒；在控制自然到期时结算最后一跳，再移除标记。",
+    "stack": "同类标记只保留较晚到期的一次，削能不叠加；同到期时后施加者替换。",
+    "counterplay": "只选择可见且可受控制的射程内敌人；排除残魂、火种和狂舞免控。灵鱼驱散同时移除标记与余下削能；控制时长与削能均不受法强放大。"
+  },
+  "boundaries": [
+    "15秒冷却和基础属性有七月原始表支持，随机四秒控制有繁体原作者测量支持，持续削能有七月原作者文字支持；这些不是同一已核实客户端版本。",
+    "二／三星5／6秒、每秒10能量、能力射程、零直接伤害、非引导生命周期与叠加规则均为本地适配，不声称已还原原卡。",
+    "既有飞行标签与美术继续沿用，S04表不提供足以新增或校正飞行机制的证据。",
+    "本次没有修改经营费用、卡池份数或异虫对子升星。"
+  ],
+  "deferredGuardResearch": [
+    {
+      "id": "S64",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=29",
+      "review": "5/30标题的原作者长盾兵测量为二费750生命、单体控制和5秒CD；与S04七月护卫兵15秒CD及S05重做加甲／嘲讽不一致。"
+    },
+    {
+      "id": "S67",
+      "url": "https://news.17173.com/z/zzq/content/05142020/160934052.shtml?_platform=PC",
+      "review": "2020开发方署名公告确认刺盾之阵新增技能防御和受击增伤，但不是2019完整原卡。本轮不据此混配盾兵技能。"
+    }
+  ],
+  "compatibility": {
+    "previousVersions": 40,
+    "oldDefinition": {
+      "hp": 450,
+      "attack": 28,
+      "armor": 1,
+      "range": 3,
+      "attackIntervalSeconds": 1
+    },
+    "oldSkill": "130%攻击法伤及通用短眩晕；原来的按星级追加时长行为保留。"
+  }
+}

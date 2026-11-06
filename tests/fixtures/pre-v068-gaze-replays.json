@@ -1,0 +1,933 @@
+{
+  "capturedBeforeRules": "singleplayer-0.68",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "tornado",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "wildfire",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "boneblast",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "thornbind",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    },
+    {
+      "version": "rifle",
+      "unit": {
+        "id": "eyebug",
+        "name": "眼虫",
+        "cost": 1,
+        "traits": [
+          "异虫",
+          "异能"
+        ],
+        "hp": 450,
+        "attack": 28,
+        "armor": 1,
+        "range": 3,
+        "interval": 4,
+        "skill": "凝视",
+        "color": "#a9d789",
+        "glyph": "◉",
+        "flying": true
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "eyebug",
+          "star": 2,
+          "position": 59,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "hash": "c08cb821758386117ad5fa8645bef9b502774b9d8961c636475c853ec3c87a31",
+      "casts": 6,
+      "frames": 135
+    },
+    {
+      "version": "rifle",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "eyebug",
+          "star": 2,
+          "position": 59,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "hash": "ca11575b1f9ab7e93bd25c4a91dd89ccd3e2b253628e2f876adea11e96c08abc",
+      "casts": 8,
+      "frames": 161
+    }
+  ]
+}

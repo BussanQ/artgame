@@ -1,0 +1,425 @@
+{
+  "checkedAt": "2026-11-06T22:35:09.595Z",
+  "rules": "singleplayer-0.69",
+  "combatVersion": "hive",
+  "saveSchema": 68,
+  "goalTurnClassification": "progress",
+  "scope": "在保留未提交0.68改动的基础上，补入杀人蜂双圈伤害、蓄力反制、三针适配、新ImageGen形象、AI与独立统计；完整单机目标仍进行中。",
+  "tests": {
+    "command": "npm run test:hive -- --reporter=json --outputFile=tmp/hive-module-tests.json",
+    "passed": 60,
+    "failed": 0,
+    "suites": [
+      {
+        "path": "../../tests/gaze.test.ts",
+        "count": 27,
+        "status": "passed"
+      },
+      {
+        "path": "../../tests/hive.test.ts",
+        "count": 33,
+        "status": "passed"
+      }
+    ],
+    "rawReport": "../../tmp/hive-module-tests.json",
+    "initialFailure": "装备持有人测试没有给杀人蜂任何装备，因此该面板正确地没有渲染持有人图片。给该测试棋子配置已有合金刃后通过，未为断言修改生产逻辑。",
+    "note": "仅两个直接相关模块：33项蜂群、27项眼虫，不执行全套测试。"
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 152,
+    "js": "index-Bh5SjUjb.js",
+    "worker": "worker-B81rdQuV.js",
+    "css": "index-0iwQsGQW.css"
+  },
+  "compatibility": {
+    "previousDefinitions": 41,
+    "fixture": "../../tests/fixtures/pre-v069-hive-replays.json",
+    "replays": [
+      {
+        "version": "legacy",
+        "frames": 52,
+        "oldWaspCasts": 3,
+        "sha256": "4ce700a184d5118aad5d8e1a0b5f8ce1ed2a71988c449b66431d73221e9f8b9d"
+      },
+      {
+        "version": "gaze",
+        "frames": 52,
+        "oldWaspCasts": 3,
+        "sha256": "dd79124e0f16982ac146e5ab312f68d9dd1ec1faa78f6f8fd47ef8d4ee83cef0"
+      }
+    ],
+    "migrationPhases": [
+      "prepare",
+      "battle",
+      "result",
+      "finished"
+    ],
+    "preserved": "旧目录、经营资源、历史和播放进度；旧战斗保持原规则，到准备期再升级。缺目录存档补为gaze。",
+    "insectDoubleMerge": true,
+    "previousReports": "0.68及更早报告保持其捕获版本的记录，不将旧源码指纹视为当前0.69源码。"
+  },
+  "scene": {
+    "description": "同一二对二，蓄力来源与内圈近敌、外圈远程目标；演示装备按真实装备属性结算，不作为经济或平衡样本。",
+    "data": "../../src/data/hive-demo.ts",
+    "frames": 161,
+    "lastTick": 160,
+    "winner": null,
+    "castTicks": [
+      1
+    ],
+    "firstReleaseTick": 4,
+    "firstInnerLifeDamage": 408,
+    "firstOuterLifeDamage": 204,
+    "firstSkillLifeDamage": 612,
+    "finalHive": {
+      "uid": 101,
+      "hp": 0,
+      "mana": 100,
+      "hive": {
+        "volleys": 3,
+        "needles": 8,
+        "explosions": 1,
+        "innerHits": 1,
+        "outerHits": 1,
+        "interrupted": 0,
+        "actedAt": 4
+      }
+    },
+    "firstNeedleTicks": [
+      7,
+      8
+    ],
+    "notBalanceEvidence": true
+  },
+  "browser": {
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "phasesReviewed": {
+      "windupSeconds": 0.75,
+      "pulseSeconds": 1,
+      "ordinaryNeedleSeconds": 2
+    },
+    "laterAnalysisSeconds": 15.5,
+    "laterAnalysis": {
+      "skillDamage": 612,
+      "volleys": 3,
+      "needles": 8,
+      "innerContacts": 1,
+      "outerContacts": 1
+    },
+    "oneSecondAnalysis": {
+      "skillDamage": 612,
+      "volleys": 0,
+      "needles": 0,
+      "innerContacts": 1,
+      "outerContacts": 1
+    },
+    "inspectionAtTwoSeconds": {
+      "shots": "连射 1轮 · 发针 2次",
+      "bands": "震荡 1次 · 内圈 1次 / 外圈 1次",
+      "remaining": "连射余针 1"
+    },
+    "mobileLayout": {
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "mobileCloseAfterScroll": {
+      "height": 44,
+      "width": 44,
+      "x": 298.25,
+      "y": 92.296875
+    },
+    "resourcesIdentical": true,
+    "resourceScope": [
+      "commander",
+      "recruitment",
+      "armory"
+    ],
+    "consoleWarningsOrErrors": [],
+    "viewportReset": true,
+    "rawReport": "../../tmp/hive-v069-ui.json",
+    "screenshots": [
+      "../../tmp/hive-v069-initial-desktop.jpg",
+      "../../tmp/hive-v069-analysis-desktop.jpg",
+      "../../tmp/hive-v069-volley-desktop.jpg",
+      "../../tmp/hive-v069-volley-mobile390.jpg",
+      "../../tmp/hive-v069-inspection-mobile390.jpg",
+      "../../tmp/hive-v069-analysis-mobile390.jpg",
+      "../../tmp/hive-v069-pulse-mobile390.jpg",
+      "../../tmp/hive-v069-pulse-desktop.jpg",
+      "../../tmp/hive-v069-charge-desktop.jpg",
+      "../../tmp/hive-v069-charge-mobile390.jpg",
+      "../../tmp/hive-v069-codex-mobile390.jpg"
+    ],
+    "note": "只使用同一次播放，再按已有分析时间从15.5→2→1→0.75秒依次回看，没有重启战斗。三星图鉴核对1800生命、124攻击、5甲、3格、1.3秒及新技能说明。"
+  },
+  "art": {
+    "manifest": "../research/hive-assets.json",
+    "newAsset": {
+      "path": "../../public/assets/units/wasp-hive.png",
+      "bytes": 1099327,
+      "sha256": "b2e38d29c6b00d55d86fd04dab08040c03e90828a6d26d5ab847ed3813deab95"
+    },
+    "priorAsset": {
+      "path": "../../public/assets/units/wasp.png",
+      "bytes": 2284320,
+      "sha256": "9fe200a3bd72efcb51152561f7ea17b4cbd71576b6f18831a5c784a5f1f0eb11"
+    },
+    "newImageGenCalls": 2,
+    "mode": "built-in edit",
+    "rasterPostprocessing": false,
+    "canvasReviewed": true,
+    "priorAlreadyTransparent": true
+  },
+  "sourceReview": {
+    "table": "../research/images/s04-skytoad-attributes.jpg",
+    "tableRow": 24,
+    "tableActuallyViewed": true,
+    "doubleRingSource": "S68",
+    "doubleRingAccess": "indexed-original-text-reviewed-direct-open-403",
+    "ordinaryThreePackets": "local-adaptation-not-verified-original-rule",
+    "details": "../research/hive-history.json"
+  },
+  "sampling": {
+    "newFullCampaigns": 0,
+    "newBulkBattleSamples": 0,
+    "distinctCurrentBattleScenes": 1,
+    "oldFrozenSmallReplays": 2,
+    "sceneAdjustedOnce": "首次布局忽略敌方x轴镜像，只有外圈接触；修正演示棋格后同一设计同时覆盖内圈和外圈。没有更改伤害算法来迁就场景。"
+  },
+  "remaining": [
+    "缺完整早期客户端卡；普攻三针、坐标换算、起手及生命周期等仍保留本地适配边界。",
+    "统一历史切片与伤害公式、其他原型字段仍需核对。",
+    "本次单一演示不证明整体难度、多构筑高星的完整体验或真实设备性能。"
+  ],
+  "sourceFingerprints": [
+    {
+      "path": "../../src/data/skills.ts",
+      "bytes": 70615,
+      "sha256": "6eac16571a86976f845bdf7d77c109a4808fa7e1e322174dad9d10d71a752fc9"
+    },
+    {
+      "path": "../../src/data/units.ts",
+      "bytes": 20961,
+      "sha256": "027735a552d4972058bb8b825d97e2150a5112c74ac844290dc36363d343c937"
+    },
+    {
+      "path": "../../src/data/unit-stats.ts",
+      "bytes": 8890,
+      "sha256": "bf4d842bfe1e74487438430b6e18eb8742e2b2fa2b40972f49b86751274dc1ed"
+    },
+    {
+      "path": "../../src/data/hive-demo.ts",
+      "bytes": 472,
+      "sha256": "c262923b44b42e48a489fa5674b9ebe364521b0e71c0f28012bc14442adc1797"
+    },
+    {
+      "path": "../../src/engine/types.ts",
+      "bytes": 21241,
+      "sha256": "75e300a4bb945a9fd593b49101b64d6b49891648ba9c7c44b4be8b011d208897"
+    },
+    {
+      "path": "../../src/engine/hive.ts",
+      "bytes": 3886,
+      "sha256": "45aed949c882ada0600f4462facaaed000e5c1ec9802405a3e1db8415076da85"
+    },
+    {
+      "path": "../../src/engine/battle.ts",
+      "bytes": 30616,
+      "sha256": "816cd78ae0a8bba8168b9c0dea325dd68ade96f33749f56e579b0a7d4ca6bc76"
+    },
+    {
+      "path": "../../src/engine/abilities.ts",
+      "bytes": 59969,
+      "sha256": "efc454f209a3fff2ca6f078b2e5b1f0d19ed0ee0d07380dc5d086efc4a8c08f3"
+    },
+    {
+      "path": "../../src/engine/triggers.ts",
+      "bytes": 4994,
+      "sha256": "989e034fb89cc72b40e337451df708282c8ed039e3edac58dc603db975053827"
+    },
+    {
+      "path": "../../src/engine/persistence.ts",
+      "bytes": 36669,
+      "sha256": "4c6d959f91956bba47dd095a727a38b9ce708c35c699e9ddb7f683908ed49bb1"
+    },
+    {
+      "path": "../../src/engine/ai.ts",
+      "bytes": 51471,
+      "sha256": "445b25e7536b403976f064187a8b75ccb0ca743eb61f635f7d9c07bf12296d0a"
+    },
+    {
+      "path": "../../src/engine/equipment.ts",
+      "bytes": 7401,
+      "sha256": "18cf4df867a90e161283be9de0d2a2c909d98641e978fc537665bc2c5f831bc6"
+    },
+    {
+      "path": "../../src/engine/summons.ts",
+      "bytes": 12047,
+      "sha256": "90c14ccd097bb818e3c84a066cd17b33c8a4d0e24fe2e9094a38a987a8bab739"
+    },
+    {
+      "path": "../../src/engine/battle-analysis.ts",
+      "bytes": 9475,
+      "sha256": "1a432d81973c69e53f3376c415c50f1d14b1649d084812843dba221208be4a79"
+    },
+    {
+      "path": "../../src/main.ts",
+      "bytes": 78266,
+      "sha256": "a689199e90adbf898a3e52207800077cdbfbcd2dd2620a522e4448bb07a0d481"
+    },
+    {
+      "path": "../../src/render/hive.ts",
+      "bytes": 2752,
+      "sha256": "d9a48a9d814a918cae00a362260be1a10b0dad4159fa4ab3180ffae875f7f0cd"
+    },
+    {
+      "path": "../../src/render/scene.ts",
+      "bytes": 37690,
+      "sha256": "4025e880ece01e4fed57312e17f847599752663b682ea3a2d8b41a4a1bc4b780"
+    },
+    {
+      "path": "../../src/render/skill-effects.ts",
+      "bytes": 44242,
+      "sha256": "2326cadfc635ada7de4b6aa09f8c03578024e763d443854b6aa5a6b24e1c7524"
+    },
+    {
+      "path": "../../src/render/battle-inspection.ts",
+      "bytes": 4426,
+      "sha256": "e34b53561a089e0aa311a1da77b383343b886d5d79292ff3c0ae88f9b8f6b026"
+    },
+    {
+      "path": "../../src/ui/bench-tooltip.ts",
+      "bytes": 9058,
+      "sha256": "723c5abd90c905a2cfd3db73edb3237da0f8cc4eb6f01d90a51832323fa78eda"
+    },
+    {
+      "path": "../../src/ui/battle-analysis.ts",
+      "bytes": 9098,
+      "sha256": "0609249b6ffb95d7ed7c338a37f6728c0464e8d6e77141c542a0f3367496238a"
+    },
+    {
+      "path": "../../tests/hive.test.ts",
+      "bytes": 15902,
+      "sha256": "adb50b74fc936c133a053e8cc75d98562f3a7cf591a1ec0e59ad32efdf95d701"
+    },
+    {
+      "path": "../../tests/gaze.test.ts",
+      "bytes": 14063,
+      "sha256": "538048a144e205c07a17abfd5e9c549d4f8eb795f0523e0f89244f2a7753334e"
+    },
+    {
+      "path": "../../tests/fixtures/pre-v069-hive-replays.json",
+      "bytes": 18349,
+      "sha256": "caf6614a07848b331d611f115f28d2d1e550f9133e19cd9d4e78717c25aa6060"
+    },
+    {
+      "path": "../../public/assets/units/wasp-hive.png",
+      "bytes": 1099327,
+      "sha256": "b2e38d29c6b00d55d86fd04dab08040c03e90828a6d26d5ab847ed3813deab95"
+    },
+    {
+      "path": "../../docs/design/hive.md",
+      "bytes": 2874,
+      "sha256": "f7d65859fbfe9ef54f1c5b51f8c4a5a9d643f25eec8ff2fde7aa7fb985748d20"
+    },
+    {
+      "path": "../../docs/research/hive-history.json",
+      "bytes": 5568,
+      "sha256": "c2249d57b8a90dee2ad0fcc796eef1b70bcbd9fae5fbf47e425e80d63d8f1db7"
+    },
+    {
+      "path": "../../docs/research/hive-assets.json",
+      "bytes": 5911,
+      "sha256": "83192bdda10a6fab0312424bb3e5001719af230b2896ee9d82072998e43ec37a"
+    }
+  ],
+  "rawArtifacts": [
+    {
+      "path": "../../tmp/hive-module-tests.json",
+      "bytes": 20077,
+      "sha256": "5b3e75a676ea5f146513b3f3e04c91c7fc6a76271ac51ae98bfed56e6dae6bd2"
+    },
+    {
+      "path": "../../tmp/hive-v069-ui.json",
+      "bytes": 5434,
+      "sha256": "22acdf063f4e2b87731f12f61fc6610e504df5b6209463024222a569afbf4eb5"
+    },
+    {
+      "path": "../../tmp/hive-v069-scene.json",
+      "bytes": 2498,
+      "sha256": "7119905750caaeeb76c2173f0e542137cfbe97af1fd42643f51719fc5bbbfab2"
+    },
+    {
+      "path": "../../tmp/hive-v069-initial-desktop.jpg",
+      "bytes": 144355,
+      "sha256": "9a14b5eb8da1d5be86268fb3d8474ec0c20647b33906fba96f6234228ed771f9"
+    },
+    {
+      "path": "../../tmp/hive-v069-analysis-desktop.jpg",
+      "bytes": 53472,
+      "sha256": "7cb08daf9eaa0667db924335f10dd2c7dd66afc47b483283da5e7da78690f696"
+    },
+    {
+      "path": "../../tmp/hive-v069-volley-desktop.jpg",
+      "bytes": 145214,
+      "sha256": "c435f7cdf540fd15adf3f10e2cc1dbce0a972ec71c2c8c2487c41a081b420e30"
+    },
+    {
+      "path": "../../tmp/hive-v069-volley-mobile390.jpg",
+      "bytes": 51600,
+      "sha256": "c107bf6687e457d65907ea58daed1543f5f196d1ac5059b9221dabc78b5eb03a"
+    },
+    {
+      "path": "../../tmp/hive-v069-inspection-mobile390.jpg",
+      "bytes": 49696,
+      "sha256": "fb72f405ff722266dfcbad7da0d44ed952f38bef418ac957ad746b1a64720bdd"
+    },
+    {
+      "path": "../../tmp/hive-v069-analysis-mobile390.jpg",
+      "bytes": 32024,
+      "sha256": "7d2fa4bf4aeebacdb29d4218275d7f4ae965eb9198fd0f30b38639eb9134230f"
+    },
+    {
+      "path": "../../tmp/hive-v069-pulse-mobile390.jpg",
+      "bytes": 52389,
+      "sha256": "e3ef40aae5fb2a1758b933b30711e10257922ad989907317869c5586842e06a6"
+    },
+    {
+      "path": "../../tmp/hive-v069-pulse-desktop.jpg",
+      "bytes": 145982,
+      "sha256": "bc502a214b0e0aaa7eabb6223c8294f301688b5efeecda1b353b346a84ee0268"
+    },
+    {
+      "path": "../../tmp/hive-v069-charge-desktop.jpg",
+      "bytes": 145469,
+      "sha256": "7bd48c9f23bf5c859ddb0de99133cba98a804ca4391ba6fe9e1f9443d0213748"
+    },
+    {
+      "path": "../../tmp/hive-v069-charge-mobile390.jpg",
+      "bytes": 51834,
+      "sha256": "1132cc414ed49b501e704e2fe49a571012536161242fe714cda7fb9b855f066c"
+    },
+    {
+      "path": "../../tmp/hive-v069-codex-mobile390.jpg",
+      "bytes": 61151,
+      "sha256": "08c430886b226adcc93ea5387ac7678020b89abe8946a09842216ba61f322a2b"
+    }
+  ],
+  "git": {
+    "baseCommit": "f2d6ae5",
+    "previousUncommittedV068Preserved": true,
+    "committedThisTurn": false,
+    "pushedThisTurn": false
+  }
+}

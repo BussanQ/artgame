@@ -36,6 +36,9 @@ describe("神枪手被动火力",()=>{
     const p=piece("infantry",1,star),f=army([p],0)[0];
     expect(f).toMatchObject({hp,attack,armor:5,range:4,interval:interval*4,mana:0,rifle:{shots:0}});
     expect(pieceDetails(p)).toMatchObject({hp,attack,armor:5,interval});expect(unitAttackInterval(unitDefinition("infantry"),star)/4).toBe(interval);
+    const filters={...codexFilters};
+    try{Object.assign(codexFilters,{query:"神枪手",star});expect(codexCards()).toContain(`间隔 ${interval} 秒`);expect(codexCards({combatVersion:"thornbind"})).toContain("间隔 0.75 秒");}
+    finally{Object.assign(codexFilters,filters);}
     expect(shots(uid).slice(0,4).map(s=>s.tick)).toEqual(ticks);
     const final=demo.frames.at(-1)!.fighters.find(f=>f.uid===uid)!;expect(final.rifle!.shots).toBe(shots(uid).length);
     expect(demo.frames.flatMap(frame=>frame.events).filter(e=>e.attacker===uid&&e.skill&&!e.reflected)).toHaveLength(0);
@@ -100,7 +103,7 @@ describe("神枪手被动火力",()=>{
 describe("图像、回看与旧局兼容",()=>{
   it("39版旧定义保持，其余单位与异虫双合不变，旧主动破甲仍可重建",()=>{
     expect(frozen.definitions).toHaveLength(39);for(const e of frozen.definitions)expect(unitDefinition("infantry",version(e.version))).toEqual(e.unit);
-    for(const u of UNITS.filter(u=>u.id!=="infantry"))expect(unitDefinition(u.id)).toEqual(unitDefinition(u.id,"thornbind"));
+    for(const u of UNITS.filter(u=>u.id!=="infantry"))expect(unitDefinition(u.id,"rifle")).toEqual(unitDefinition(u.id,"thornbind"));
     expect(unitDefinition("infantry")).toMatchObject({cost:1,hp:400,attack:36,armor:5,range:4,interval:4,skill:"快速射击"});
     expect(skillRole("infantry")).toContain("被动");expect(skillName("infantry","thornbind")).toBe("精准射击");
     expect(mergeCount([piece("eyebug",1),piece("spider",2)],"eyebug",1)).toBe(2);

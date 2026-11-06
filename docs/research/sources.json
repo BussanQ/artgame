@@ -787,6 +787,61 @@
       "status": "text-and-two-client-images-reviewed",
       "targetVersion": null,
       "review": "一费神枪手、攻速装备和三星六步兵四野兽构筑；目测一秒三枪不证明单次普攻三段伤害或裸装星级射速梯度。详见rifle-history.json。"
+    },
+    {
+      "id": "S64",
+      "title": "赤潮自走棋-2元棋子分析(5/30更新版本)",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=29",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "status": "indexed-original-text-reviewed",
+      "targetVersion": null,
+      "review": "长盾兵早期单控5秒CD与七月护卫兵15秒CD及后期重做不同，本轮保留研究边界，未修改盾兵。"
+    },
+    {
+      "id": "S65",
+      "title": "赤潮自走棋-1元棋子分析(5/30更新版本)",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=30",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "status": "indexed-original-text-reviewed-direct-open-403",
+      "targetVersion": null,
+      "review": "Oculus一费500生命0甲4格、随机四秒单控及15秒CD；异名与星级梯度边界见gaze-history.json。"
+    },
+    {
+      "id": "S66",
+      "title": "[G爱玩]赤潮自走棋之艺术就是爆炸！虫群才是主角",
+      "url": "https://www.taptap.cn/moment/15204184005542801",
+      "author": "老G不寄",
+      "publishedAt": "2019-04-30",
+      "kind": "original-player-strategy",
+      "status": "direct-original-text-reviewed",
+      "targetVersion": null,
+      "review": "眼虫用于保护后排、压制突入目标；未给精确技能数值。"
+    },
+    {
+      "id": "S67",
+      "title": "战争艺术 更新公告 | 5月14日不停服维护内容介绍",
+      "url": "https://news.17173.com/z/zzq/content/05142020/160934052.shtml?_platform=PC",
+      "author": "战争艺术AOW（页面署名，来源微信公众号）",
+      "publishedAt": "2020-05-14",
+      "kind": "publisher-byline-update",
+      "status": "text-reviewed-deferred",
+      "targetVersion": null,
+      "review": "护盾兵刺盾之阵新增技能防御与受击增伤，是2020更新而非2019原卡；本轮未混入。"
+    },
+    {
+      "id": "S68",
+      "title": "赤潮自走棋- 4 & 5 元棋子分析",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=34",
+      "author": "起落是無常 xyz98997",
+      "publishedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "status": "indexed-original-text-reviewed-direct-open-403",
+      "targetVersion": null,
+      "review": "女王蜂450生命5甲3格，内外圈半径和伤害随星级提升、20秒CD；地区异名及棋格换算限制见hive-history.json。"
     }
   ],
   "gospelReview": "0.52字段与置信边界见gospel-history.json；客户端三星能量末位被水印遮挡，10为暂定本地值。",
@@ -829,5 +884,7 @@
     "boundary": "保留当前早期职业目录；未把七月异能、后期法术与早期吸血当作同一机制。引导、总量解释、频率与孵化时长未确证。"
   },
   "thornbindReview": "0.66依据S05原作者正文与S04第36行补入分段束缚和逐段汲取，S62名称跨期引用但后期护甲不混入；本地数值边界见thornbind-history.json。重新目视S04第34行，修正0.65代码的骨龙攻击间隔1.2→2.2秒，原始转录表不改动。",
-  "rifleReview": "0.67保留S04首行名称映射推断及S63构筑观察的限制；星级射速和快速射击名称为本地适配。"
+  "rifleReview": "0.67保留S04首行名称映射推断及S63构筑观察的限制；星级射速和快速射击名称为本地适配。",
+  "gazeReview": "0.68再次目视S04眼虫行，以S65测量及S05／S66原作者文字交叉记录。4/5/6秒梯度、10削能、零直接伤害、选敌和生命周期均保留适配边界。",
+  "hiveReview": "0.69重新目视S04-1第24行，并读取S68原作者测量。三针普攻、9单位归一棋格、起手与交互均明确为本地适配；8月转载线索未冒充开发方原公告。"
 }
