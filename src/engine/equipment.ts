@@ -1,8 +1,20 @@
-import { CURRENT_COMBAT_VERSION, hasAmbushRules } from "./types";
+import {
+  CURRENT_COMBAT_VERSION,
+  hasAmbushRules,
+  hasLightningRules,
+  hasGospelRules,
+  hasWushiRules,
+  hasShurikenRules,
+} from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
 import { unitDefinition } from "../data/unit-stats";
-import { BLADE_CRITICAL, STAFF_GALE, SKILLS } from "../data/skills";
+import {
+  BLADE_CRITICAL,
+  STAFF_GALE,
+  SKILLS,
+  THUNDER_CHAIN,
+} from "../data/skills";
 import { random } from "./random";
 import type { Game, Player, Piece, CombatVersion } from "./types";
 
@@ -93,8 +105,19 @@ export function itemScore(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): number {
-  const expectedAttack =
-    piece.defId === "bladethrall"
+  const wushi = hasWushiRules(version) && piece.defId === "master";
+  const lightning = hasLightningRules(version) && piece.defId === "thunderlord";
+  const gospel = hasGospelRules(version) && piece.defId === "acolyte";
+  const expectedAttack = lightning
+    ? 1 +
+      Math.min(
+        0.6,
+        Array.from(
+          { length: THUNDER_CHAIN.hits[piece.star - 1] - 1 },
+          (_, i) => THUNDER_CHAIN.retention ** (i + 1),
+        ).reduce((a, b) => a + b, 0) * 0.7,
+      )
+    : piece.defId === "bladethrall"
       ? 1 +
         BLADE_CRITICAL.chance * (BLADE_CRITICAL.multiplier[piece.star - 1] - 1)
       : piece.defId === "staffthrall"
@@ -109,6 +132,7 @@ export function itemScore(
       u.id === "irondog" ||
       u.id === "ironape",
     caster =
+      (hasShurikenRules(version) && u.id === "panda") ||
       [
         "wolf",
         "adept",
@@ -125,61 +149,65 @@ export function itemScore(
       SKILLS[u.id].healRatio > 0;
   return (
     (s.attack ?? 0) * (u.range > 1 ? 2 : 1) * expectedAttack +
-    (s.hp ?? 0) * (tank ? 0.2 : 0.08) +
-    (s.armor ?? 0) * (tank ? 10 : 4) +
+    (s.hp ?? 0) * (gospel ? 0.2 : tank ? 0.2 : 0.08) +
+    (s.armor ?? 0) * (gospel ? 8 : tank ? 10 : 4) +
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
     (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
-      ((version === "signature" ||
-        version === "summons" ||
-        version === "legions" ||
-        version === "brood" ||
-        version === "airsea" ||
-        version === "fleet" ||
-        version === "metamorph" ||
-        version === "infantry" ||
-        version === "armored" ||
-        version === "puppets" ||
-        version === "wildfront" ||
-        hasAmbushRules(version)) &&
-      [
-        "turtle",
-        "birdrider",
-        "bladethrall",
-        "staffthrall",
-        "ironrooster",
-        "venombeast",
-      ].includes(u.id)
+      (lightning || gospel || wushi
         ? 0
-        : caster
-          ? 300
-          : 100) +
+        : (version === "signature" ||
+              version === "summons" ||
+              version === "legions" ||
+              version === "brood" ||
+              version === "airsea" ||
+              version === "fleet" ||
+              version === "metamorph" ||
+              version === "infantry" ||
+              version === "armored" ||
+              version === "puppets" ||
+              version === "wildfront" ||
+              hasAmbushRules(version)) &&
+            [
+              "turtle",
+              "birdrider",
+              "bladethrall",
+              "staffthrall",
+              "ironrooster",
+              "venombeast",
+            ].includes(u.id)
+          ? 0
+          : caster
+            ? 300
+            : 100) +
     (s.mana ?? 0) *
-      ((version === "signature" ||
-        version === "summons" ||
-        version === "legions" ||
-        version === "brood" ||
-        version === "airsea" ||
-        version === "fleet" ||
-        version === "metamorph" ||
-        version === "infantry" ||
-        version === "armored" ||
-        version === "puppets" ||
-        version === "wildfront" ||
-        hasAmbushRules(version)) &&
-      [
-        "cavalry",
-        "turtle",
-        "tiger",
-        "blastbug",
-        "birdrider",
-        "bladethrall",
-        "staffthrall",
-      ].includes(u.id)
+      (lightning || gospel
         ? 0
-        : caster
-          ? 2
-          : 1) +
+        : (version === "signature" ||
+              version === "summons" ||
+              version === "legions" ||
+              version === "brood" ||
+              version === "airsea" ||
+              version === "fleet" ||
+              version === "metamorph" ||
+              version === "infantry" ||
+              version === "armored" ||
+              version === "puppets" ||
+              version === "wildfront" ||
+              hasAmbushRules(version)) &&
+            [
+              "cavalry",
+              "turtle",
+              "tiger",
+              "blastbug",
+              "birdrider",
+              "bladethrall",
+              "staffthrall",
+            ].includes(u.id)
+          ? 0
+          : caster
+            ? 2
+            : 1) +
     (s.magicResist ?? 0) * 200
   );
 }

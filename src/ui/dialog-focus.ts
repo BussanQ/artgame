@@ -8,6 +8,7 @@ function selector(element: Element | null): string | null {
     "data-jump",
     "data-buy",
     "data-equip",
+    "data-equipment-owner",
     "data-unequip",
     "data-craft",
     "data-codex",
@@ -81,9 +82,16 @@ export class DialogFocus {
         preventScroll: true,
       });
     } else if (this.open && this.returnTo) {
-      this.root
-        .querySelector<HTMLElement>(this.returnTo)
-        ?.focus({ preventScroll: true });
+      // Shared actions can have a hidden battlefield launcher and a visible intel launcher.
+      let target: HTMLElement | null =
+        Array.from(this.root.querySelectorAll<HTMLElement>(this.returnTo)).find(
+          (element) =>
+            element.getClientRects().length > 0 && !element.matches(":disabled"),
+        ) ?? null;
+      // Mobile menus close while a dialog is open; restore a visible launcher.
+      if (!target?.getClientRects().length)
+        target = this.root.querySelector<HTMLElement>('[data-action="mobile-tools"]');
+      target?.focus({ preventScroll: true });
     }
     if (!modal && !this.open && this.active) {
       let target = this.root.querySelector<HTMLElement>(this.active);

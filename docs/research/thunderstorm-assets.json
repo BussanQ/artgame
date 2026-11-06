@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-11-06",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "stormcaller-thunderstorm",
+      "unitId": "stormcaller",
+      "name": "天师 · 雷暴",
+      "prompt": "Use case: stylized-concept. Asset type: a single transparent full-body miniature sprite for an isometric Chinese science-fantasy auto-chess game. Primary request: the Thunderstorm Hierophant (天师), an alien psychic automaton with an imposing ivory and dark bronze segmented armored body. Its small head has a long pointed angular helmet, a narrow luminous cyan face slit, and no human face, beard, hair or skin. Large flared crescent shoulder plates frame an open rib-like armored chest containing a bright compact cyan lightning core. A floating segmented waist and tapered separated lower armor plates form a levitating lower body, with no normal human feet. Two long armored arms end in slender metallic claws: one open claw cradles a compact blue-white spherical energy pulse, the other extends slightly outward. Restrained gold circular joints and cyan seams. Keep the torso and energy core dominant and immediately legible at small size, noble and mysterious rather than bulky. Style/medium: polished hand-painted 3D strategy-game miniature, sculpted readable volumes, fine ivory metal and weathered dark bronze materials matching existing game sprites. Composition: whole character centered, three-quarter front view facing viewer-right, slightly elevated isometric camera, all shoulder plates, claws and floating lower plates visible with 12 percent padding. Soft key light and compact cyan rim lighting; no sprawling particle effect. Constraints: real transparent alpha background; no floor, cast shadow, pedestal, scenery, text, letters, UI, border, watermark, companions or separate props. This is a nonhuman armored energy construct, not a human Taoist wizard or a hooded robed mage.",
+      "path": "public/assets/units/stormcaller-thunderstorm.png",
+      "generatedFile": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-62ba407f-ba59-4c99-9c81-e11749f2316c.png",
+      "kind": "transparent-unit-sprite",
+      "width": 1220,
+      "height": 1289,
+      "bytes": 1349707,
+      "transparentBackground": true,
+      "sha256": "c82d0a57364d61c39a88ad2dfede7119e7fb5752b52912bc866d3c07745f7e8e",
+      "legacyPath": "public/assets/units/stormcaller.png",
+      "combatVersion": "thunderstorm",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "processing": "原样复制内置生成输出，保留透明通道和旧人形文件。"
+    }
+  ]
+}

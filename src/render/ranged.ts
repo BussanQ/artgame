@@ -1,11 +1,21 @@
 import { REST_POSE, type AttackPose } from "./melee";
 import {
   CURRENT_COMBAT_VERSION,
+  hasShurikenRules,
+  hasSecretOrbRules,
   hasAuroraRules,
   hasQiRules,
+  hasGospelRules,
+  hasStormRules,
   type CombatVersion,
 } from "../engine/types";
 export const RANGED_ACTIONS = {
+  monk: {
+    name:"转杖凝珠推出",duration:4.8,fireAt:0.38,impactAt:0.75,color:"#97ead6",
+  },
+  panda: {
+    name: "拧腰扬臂掷镖", duration: 3.8, fireAt: 0.34, impactAt: 0.73, color: "#b8edec",
+  },
   lingjiu: {
     name: "展鳍俯身鸣击",
     duration: 4.8,
@@ -260,8 +270,9 @@ export const RANGED_ACTIONS = {
   },
 } as const;
 export type RangedId = keyof typeof RANGED_ACTIONS;
-export function isRanged(id: string): id is RangedId {
-  return Object.hasOwn(RANGED_ACTIONS, id);
+export function isRanged(id: string, version: CombatVersion = CURRENT_COMBAT_VERSION): id is RangedId {
+  return Object.hasOwn(RANGED_ACTIONS, id) && (id !== "panda" || hasShurikenRules(version)) &&
+    (id !== "monk" || hasSecretOrbRules(version));
 }
 const pulse = (t: number, a: number, b: number) =>
   t <= a || t >= b ? 0 : Math.sin((Math.PI * (t - a)) / (b - a));
@@ -269,6 +280,8 @@ export function rangedActionName(
   id: RangedId,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
+  if (id === "stormcaller" && hasStormRules(version)) return "晶核聚能推波";
+  if (id === "acolyte" && hasGospelRules(version)) return "悬壳晶核脉冲";
   if (id === "skycrab" && !hasAuroraRules(version)) return "合钳聚能弹";
   if (id === "arhat" && hasQiRules(version)) return "晶核掌击";
   return RANGED_ACTIONS[id].name;
@@ -278,9 +291,27 @@ export function rangedPose(
   t: number,
   skill = false,
   qi = false,
+  gospel = false,
+  thunderstorm = false,
 ): AttackPose {
   if (t <= 0 || t >= 1) return { ...REST_POSE };
   const p = { ...REST_POSE };
+  if (id === "stormcaller" && thunderstorm) {
+    const gather=pulse(t,0,0.45),release=pulse(t,0.4,0.85);
+    p.lift=7*gather;p.forward=-12*gather+20*release;
+    p.rotation=-0.06*gather+0.04*release;
+    p.scaleX=1-0.07*gather+0.08*release;p.scaleY=1+0.06*gather;
+    return p;
+  }
+  if (id === "acolyte" && gospel) {
+    const gather = pulse(t, 0, 0.35), release = pulse(t, 0.3, 0.82);
+    p.lift = 5 * gather + 2 * release;
+    p.forward = -5 * gather + 12 * release;
+    p.rotation = -0.04 * gather + 0.07 * release;
+    p.scaleX = 1 + 0.04 * gather - 0.04 * release;
+    p.scaleY = 1 - 0.03 * gather + 0.06 * release;
+    return p;
+  }
   if (id === "arhat" && qi) {
     const draw = pulse(t, 0, 0.4),
       release = pulse(t, 0.38, 0.88);
@@ -292,6 +323,23 @@ export function rangedPose(
     return p;
   }
   switch (id) {
+    case "monk": {
+      const gather=pulse(t,0,0.42),push=pulse(t,0.34,0.86);
+      p.rotation=-0.055*gather+0.045*push;p.forward=-7*gather+(skill?19:13)*push;
+      p.scaleX=1-0.045*gather+0.045*push;p.scaleY=1+0.025*gather;
+      p.lift=2.5*gather;p.trail=0.15*push;
+      break;
+    }
+    case "panda": {
+      const windup = pulse(t,0,0.38), release = pulse(t,0.3,0.82);
+      p.rotation = -0.17 * windup + 0.13 * release;
+      p.forward = -13 * windup + (skill ? 23 : 16) * release;
+      p.lift = 4 * windup + 2 * release;
+      p.scaleX = 1 - 0.08 * windup + 0.06 * release;
+      p.scaleY = 1 - 0.025 * release;
+      p.trail = 0.3 * release;
+      break;
+    }
     case "lingjiu": {
       const draw = pulse(t, 0, 0.35),
         release = pulse(t, 0.25, 0.76),
@@ -620,6 +668,30 @@ export function drawRangedAttack(
     c.restore();
   };
   switch (id) {
+    case "monk": {
+      const u=(t-profile.fireAt)/(profile.impactAt-profile.fireAt);
+      if(u>=0&&u<=1){const p=projectilePoint(from,to,u,8);
+        c.save();c.fillStyle="#bfffe9";c.shadowColor=profile.color;c.shadowBlur=12;
+        c.beginPath();c.arc(p.x,p.y,6,0,Math.PI*2);c.fill();c.lineWidth=1.2;
+        c.beginPath();c.ellipse(p.x,p.y,10,5,t*6,0,Math.PI*2);c.stroke();c.restore();}
+      sparks((t-profile.impactAt)/0.25,5);break;
+    }
+    case "panda": {
+      const u = (t-profile.fireAt)/(profile.impactAt-profile.fireAt);
+      if (u >= 0 && u <= 1) {
+        const p = projectilePoint(from,to,u,16);
+        c.save(); c.translate(p.x,p.y); c.rotate(t*22);
+        c.fillStyle="#def7f2"; c.strokeStyle=profile.color; c.lineWidth=1.5;
+        c.beginPath();
+        for(let i=0;i<8;i++) {
+          const a=i*Math.PI/4,r=i%2?3:11;
+          if(i)c.lineTo(Math.cos(a)*r,Math.sin(a)*r);else c.moveTo(Math.cos(a)*r,Math.sin(a)*r);
+        }
+        c.closePath();c.fill();c.stroke();c.restore();
+      }
+      sparks((t-profile.impactAt)/0.27,4);
+      break;
+    }
     case "lingjiu": {
       if (skill) {
         for (let i = 0; i < 3; i++) {

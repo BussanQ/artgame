@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-06",
+  "rules": "singleplayer-0.50",
+  "unit": "motorcycle",
+  "sources": [
+    {
+      "id": "S38",
+      "url": "https://news.17173.com/z/zzq/content/05302019/085535417.shtml?_platform=PC",
+      "publishedAt": "2019-05-30",
+      "evidence": "官方署名公告：焦油弹替换决斗，按星级向1/2/3名敌人脚下依次投放，3秒后小范围爆炸。"
+    },
+    {
+      "id": "S53",
+      "title": "赤潮自走棋 6月13日更新内容介绍",
+      "url": "https://news.17173.com/z/zzq/content/06132019/183201371.shtml",
+      "publishedAt": "2019-06-13",
+      "author": "官方（17173页面标注）",
+      "kind": "official-announcement-reprint",
+      "status": "original-html-body-reviewed",
+      "accessedAt": "2026-11-06",
+      "originalHtmlSha256": "0dedc8dcdaf7ac25178d1154f70b6cc72683a49d2427e3edef07b4e59d8d3189",
+      "note": "Web带参数的缓存包含第三方AI摘要提示；本轮另取无参数原始HTML，正文无摘要，核对摩托生命、攻击区间及焦油弹溅射80→120。原文未给中心伤害和完整黏附边界。"
+    },
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "transcription": "historical-tables.json, S04-1 row 8",
+      "evidence": "三费、骑兵/爆破、55–60攻击、1.5秒、500生命、5甲、射程3、10秒冷却。本轮复用既有转录，未重新声称目视核验原表。"
+    }
+  ],
+  "printedFields": {
+    "may30": {
+      "name": "焦油弹",
+      "targets": [
+        1,
+        2,
+        3
+      ],
+      "delaySeconds": 3
+    },
+    "june13": {
+      "hp": [
+        500,
+        1000,
+        2000
+      ],
+      "attackRanges": [
+        [
+          55,
+          60
+        ],
+        [
+          102,
+          112
+        ],
+        [
+          196,
+          215
+        ]
+      ],
+      "splashDamageBefore": 80,
+      "splashDamageAfter": 120
+    },
+    "julyTable": {
+      "cost": 3,
+      "hp": 500,
+      "attackRange": [
+        55,
+        60
+      ],
+      "attackIntervalSeconds": 1.5,
+      "armor": 5,
+      "range": 3,
+      "cooldownSeconds": 10
+    }
+  },
+  "implemented": {
+    "combatVersion": "tar",
+    "saveSchema": 49,
+    "hp": 750,
+    "attack": 72,
+    "attackIntervalTicks": 4,
+    "initialMana": 50,
+    "targets": [
+      1,
+      2,
+      3
+    ],
+    "launchIntervalTicks": 2,
+    "delayTicks": 12,
+    "cooldownTicks": 40,
+    "centerDamage": [
+      300,
+      400,
+      500
+    ],
+    "splashDamage": 120,
+    "radius": "Manhattan distance <=1",
+    "attachment": "Follows a living carrier until its first death; then stays at its last location and does not attach again after resurrection.",
+    "team": "At detonation use the caster's current side, consistent with the local allegiance model.",
+    "lifecycle": "Unlaunched rounds cancel on stun/silence/charm/death/target exhaustion; committed bombs survive caster death while the battle still continues.",
+    "damage": "Direct magic damage, frozen skill power at cast start; shield/resistance/immunity/reflection/siege resolve normally. No added slow or burn."
+  },
+  "localAdaptations": [
+    "750生命/72攻击/1秒普攻沿用0.21校准的单机配置。恢复原表身板的初版12局309回合没有玩家代理部署摩托，相关失败采样保留，不将单机身板称为史料值。",
+    "黏附跟随移动是对粘性和脚下倒计时的本地解释，公告未提供完整边界。初版固定落点在含摩托对阵中经常落空，已替换。",
+    "中心300/400/500未恢复到原版参数，是单机暂定值。邻格120由六月公告给出，将其用于全部星级、区分中心与邻格、法伤分类和曼哈顿范围均为本地适配。",
+    "初始能量50、0.5秒投放、最近目标及UID排序、取消条件、死亡掉落、阵营变化、施法强度冻结均为本地边界。",
+    "五月能力、六月公告、七月测量表和当前单机平衡字段分别保留，不宣称统一原版客户端复原。"
+  ],
+  "compatibility": {
+    "fixture": "../../tests/fixtures/pre-v050-replays.json",
+    "sha256": "a303d45e02338068f41b0c0104c29ecac45f5bf99eb76a7532534de7df94cb37",
+    "frozen049Replays": 80,
+    "policy": "Only prepare upgrades to tar. Battle/result/finished and prior reports keep their version, prices, pool, items, resources, bans, seed and paused playback."
+  },
+  "art": {
+    "policy": "Reuse the existing built-in ImageGen motorcycle sprite; no new generation or raster editing in this increment.",
+    "manifest": "motorcycle-assets.json",
+    "sprite": "../../public/assets/units/motorcycle.png"
+  },
+  "initialReports": [
+    "../analysis/tar-v050-initial-armor.json",
+    "../analysis/tar-v050-initial-fleet.json",
+    "../analysis/tar-v050-initial-combat.json"
+  ],
+  "reports": [
+    "../analysis/tar-v050-armor.json",
+    "../analysis/tar-v050-fleet.json"
+  ],
+  "remaining": [
+    "原版焦油弹中心伤害和精确黏附、飞行边界尚无原始配置证明。",
+    "其他同版本技能和费用、多构筑当前目录完整人工局、标准/挑战难度、真实手机及弱设备仍待继续验收。"
+  ]
+}

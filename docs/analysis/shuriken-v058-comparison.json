@@ -1,0 +1,342 @@
+{
+  "createdAt": "2026-11-06T05:10:31.282Z",
+  "rules": "singleplayer-0.58",
+  "combatVersion": "shuriken",
+  "kind": "paired-normal-paid-standard-proxy-versus-selected-opponent-difficulty",
+  "limitations": [
+    "Two seed families across three opponent difficulties and two pool modes; not 12 independent seeds.",
+    "Commander proxy stays standard; preference is diagnostic and can persist through bans.",
+    "No resource, reroll, unit or reward injection. Cost/body/skill/AI valuation changed together, altering RNG choices.",
+    "AI usage counts all prepared lineups, not only directly encountered battles; not a human win-rate estimate.",
+    "Before ninja was a one-cost melee prototype. Before shuriken counters are absent and treated as zero, not measured failed casts."
+  ],
+  "files": [
+    {
+      "profile": "pandas",
+      "seed": 173,
+      "before": {
+        "path": "docs/analysis/wushi-control-v057-pandas.json",
+        "sha256": "38b77a5fe89d34e841c0fefce215b5dd7d5d9de40e4cd23b5ae9f9e3adbe0f83",
+        "rules": "singleplayer-0.57",
+        "comparedToPreChangeSourceFiles": 67,
+        "differences": []
+      },
+      "after": {
+        "path": "docs/analysis/shuriken-v058-pandas.json",
+        "sha256": "9605a93efa87edb80dc7a34b061d7631f2fb694b2ac3053491f3598609cd0932",
+        "rules": "singleplayer-0.58",
+        "currentSourceFiles": 70,
+        "differences": []
+      }
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "before": {
+        "path": "docs/analysis/wushi-control-v057-beasts.json",
+        "sha256": "8d0cf00070ca82924d5b8b9a7517ef9046f88592002f2ae0f2911d17f73c90f3",
+        "rules": "singleplayer-0.57",
+        "comparedToPreChangeSourceFiles": 67,
+        "differences": []
+      },
+      "after": {
+        "path": "docs/analysis/shuriken-v058-beasts.json",
+        "sha256": "4a9897de44ba97664894ea90f99f86be38f32bd98af3ec1fe9bc12b17422207d",
+        "rules": "singleplayer-0.58",
+        "currentSourceFiles": 70,
+        "differences": []
+      }
+    }
+  ],
+  "before": {
+    "games": 12,
+    "rounds": 318,
+    "averageRank": {
+      "relaxed": 1,
+      "standard": 4,
+      "veteran": 6
+    },
+    "gamesWithThreeStar": 4,
+    "uniqueThreeStars": 5,
+    "ninja": {
+      "games": 8,
+      "rounds": 59,
+      "stars": [
+        19,
+        40,
+        0
+      ],
+      "casts": 132,
+      "damage": 62714,
+      "launched": 0,
+      "landings": 0,
+      "pulses": 0,
+      "hits": 0,
+      "interrupted": 0,
+      "aiPreparedUnitRounds": 680
+    }
+  },
+  "after": {
+    "games": 12,
+    "rounds": 327,
+    "averageRank": {
+      "relaxed": 1,
+      "standard": 3.75,
+      "veteran": 5.25
+    },
+    "gamesWithThreeStar": 4,
+    "uniqueThreeStars": 6,
+    "ninja": {
+      "games": 3,
+      "rounds": 31,
+      "stars": [
+        6,
+        21,
+        4
+      ],
+      "casts": 30,
+      "damage": 60092.5,
+      "launched": 28,
+      "landings": 28,
+      "pulses": 136,
+      "hits": 220,
+      "interrupted": 2,
+      "aiPreparedUnitRounds": 29
+    }
+  },
+  "paired": [
+    {
+      "profile": "pandas",
+      "seed": 173,
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "before": {
+        "rank": 1,
+        "rounds": 28,
+        "threeStars": 1,
+        "ninjaRounds": 6
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 26,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "rankDelta": 0
+    },
+    {
+      "profile": "pandas",
+      "seed": 173,
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "before": {
+        "rank": 1,
+        "rounds": 30,
+        "threeStars": 2,
+        "ninjaRounds": 11
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 27,
+        "threeStars": 1,
+        "ninjaRounds": 0
+      },
+      "rankDelta": 0
+    },
+    {
+      "profile": "pandas",
+      "seed": 173,
+      "mode": "classic",
+      "difficulty": "standard",
+      "before": {
+        "rank": 1,
+        "rounds": 30,
+        "threeStars": 0,
+        "ninjaRounds": 6
+      },
+      "after": {
+        "rank": 2,
+        "rounds": 30,
+        "threeStars": 1,
+        "ninjaRounds": 0
+      },
+      "rankDelta": 1
+    },
+    {
+      "profile": "pandas",
+      "seed": 173,
+      "mode": "rotation",
+      "difficulty": "standard",
+      "before": {
+        "rank": 5,
+        "rounds": 24,
+        "threeStars": 0,
+        "ninjaRounds": 14
+      },
+      "after": {
+        "rank": 7,
+        "rounds": 21,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "rankDelta": 2
+    },
+    {
+      "profile": "pandas",
+      "seed": 173,
+      "mode": "classic",
+      "difficulty": "veteran",
+      "before": {
+        "rank": 6,
+        "rounds": 27,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "after": {
+        "rank": 5,
+        "rounds": 30,
+        "threeStars": 2,
+        "ninjaRounds": 17
+      },
+      "rankDelta": -1
+    },
+    {
+      "profile": "pandas",
+      "seed": 173,
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "before": {
+        "rank": 8,
+        "rounds": 22,
+        "threeStars": 0,
+        "ninjaRounds": 10
+      },
+      "after": {
+        "rank": 4,
+        "rounds": 30,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "rankDelta": -4
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "before": {
+        "rank": 1,
+        "rounds": 27,
+        "threeStars": 0,
+        "ninjaRounds": 4
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 26,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "rankDelta": 0
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "before": {
+        "rank": 1,
+        "rounds": 26,
+        "threeStars": 1,
+        "ninjaRounds": 0
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 24,
+        "threeStars": 0,
+        "ninjaRounds": 3
+      },
+      "rankDelta": 0
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "classic",
+      "difficulty": "standard",
+      "before": {
+        "rank": 3,
+        "rounds": 28,
+        "threeStars": 0,
+        "ninjaRounds": 5
+      },
+      "after": {
+        "rank": 3,
+        "rounds": 30,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "rankDelta": 0
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "rotation",
+      "difficulty": "standard",
+      "before": {
+        "rank": 7,
+        "rounds": 19,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "after": {
+        "rank": 3,
+        "rounds": 30,
+        "threeStars": 2,
+        "ninjaRounds": 0
+      },
+      "rankDelta": -4
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "classic",
+      "difficulty": "veteran",
+      "before": {
+        "rank": 4,
+        "rounds": 30,
+        "threeStars": 1,
+        "ninjaRounds": 3
+      },
+      "after": {
+        "rank": 4,
+        "rounds": 30,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "rankDelta": 0
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "before": {
+        "rank": 6,
+        "rounds": 27,
+        "threeStars": 0,
+        "ninjaRounds": 0
+      },
+      "after": {
+        "rank": 8,
+        "rounds": 23,
+        "threeStars": 0,
+        "ninjaRounds": 11
+      },
+      "rankDelta": 2
+    }
+  ],
+  "frozenBaseline": {
+    "path": "tests/fixtures/pre-v058-replays.json",
+    "sha256": "60b70985f1b8be6bae9d56de636535c00954d1106e903e2ddf66a9de95249246",
+    "cases": 158
+  }
+}

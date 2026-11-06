@@ -1,0 +1,90 @@
+{
+  "reviewedAt": "2026-11-06",
+  "rules": "singleplayer-0.54",
+  "unitId": "treant",
+  "combatVersion": "jungle",
+  "scope": "逐字段恢复树妖，不把七月玩家测量与十二月客户端配图认定为同一历史构建。",
+  "sources": [
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measurement-image",
+      "locator": "S04-1，第38行",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "fields": {
+        "cost": 5,
+        "hp": 950,
+        "attack": [40, 49],
+        "armor": 5,
+        "range": 1,
+        "attackIntervalSeconds": 1.7,
+        "cooldownSeconds": 30,
+        "regenerationPerSecond": 5
+      },
+      "accessBoundary": "已目视归档原表并核对原始转录；本轮没有成功通过Web重新读取TapTap全文。"
+    },
+    {
+      "id": "S55",
+      "title": "战争艺术 吃鸡宝典丨最强AOE英雄名单大盘点",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名，嘉宾香草糕）",
+      "kind": "publisher-authored-article-and-embedded-client-card",
+      "status": "original-html-and-client-image-reviewed",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/mrqGIQbnCjisdvn.jpg",
+      "image": "images/treant-jungle-client.webp",
+      "imageSha256": "e07f71bfcf9bfda4418071c87626f360ae7f3295317b9d018d89ad822253ee1c",
+      "actualImageFormat": "WEBP",
+      "actualImageSize": [640, 296],
+      "review": "正文确认圆形半径4格、击飞及落地眩晕；实际目视客户端卡确认五费、不朽者/先锋、丛林之怒、100/200/300技能伤害、30秒冷却及1/1.5/2秒眩晕。图中未给出击飞时长或前摇秒数。",
+      "accessBoundary": "Web打开失败；直接HTTP取得原HTML。图片首响应是JavaScript文本，没有作为图片接入或执行；带来源页Referer及常规浏览器图片请求头重取后，按真实WEBP格式归档。"
+    }
+  ],
+  "confirmedClientCard": {
+    "source": "S55",
+    "name": "丛林之怒",
+    "cost": 5,
+    "traits": ["不朽者", "先锋"],
+    "radiusInTiles": 4,
+    "shape": "circle",
+    "skillDamage": [100, 200, 300],
+    "displayedCooldownSeconds": 30,
+    "controlStages": ["knockup", "landing-stun"],
+    "landingStunSeconds": [1, 1.5, 2],
+    "windupSeconds": null,
+    "knockupSeconds": null
+  },
+  "clientSilhouette": {
+    "source": "S55 embedded client card",
+    "appearance": "矮壮驼背的树石巨兽，小型棱角面甲嵌于宽阔尖肩之间，长粗根臂、根爪和短粗腿；不采用旧生成图的白须人脸与宽鹿角树冠。",
+    "runtimeAsset": "../../public/assets/units/treant-jungle.png",
+    "assetRecord": "jungle-assets.json",
+    "originalGameImageUsedAsRuntimeAsset": false
+  },
+  "localAdaptations": [
+    "跨期字段组合，未证明统一客户端版本；继续保留其他尚未核实的单机身板、能力与经济规则。",
+    "攻击40–49用确定性取整均值45；生命和攻击每升一星翻倍，自然回复保持每秒5。",
+    "技能归类法术伤害，乘施法时技能强度，遵循单机护盾、法术减伤和反伤结算；原卡没有明确伤害类型。",
+    "初始能量50；0.25秒一个tick；可打断前摇1秒、击飞1秒，30秒冷却从前摇开始计算。",
+    "以施法开始时棋格中心固定欧氏半径4格圆，释放时按敌人当前位置判定；启动需可见合法敌人，范围伤害可波及隐蔽与飞行目标，不改变飞行属性。",
+    "范围波释放后固定目标集合并完成伤害；反伤击杀施法者不会截断后续目标。已击飞目标的落地阶段可在来源死亡或改变阵营后继续。",
+    "技能免伤、残魂和火种不受控制；死亡、化残魂、化蛋清理待落地控制，灵鱼驱散同时移除击飞与待落地记录。重叠击飞等到实际落地，眩晕按最晚结束时间合并，不相加。",
+    "不附加旧原型自身护盾。新局与旧局均保持各自整局价格目录，树妖五费、10份是本地共享池配置，不是该客户端卡证明的池容量。",
+    "AI只按有限首波覆盖和打断风险估价，不赋予隐藏战斗加成，不把演示胜负或小样本名次当作平衡结论。"
+  ],
+  "compatibility": {
+    "schema": 53,
+    "migrations": ["51→52固定thunderstorm及singleplayer-0.53", "52→53仅准备阶段升级jungle"],
+    "oldBattlesAndHistoryPreserved": true,
+    "oldBody": {"hp": 1550, "attack": 90, "armor": 7, "attackIntervalSeconds": 1, "skill": "古木震荡", "sprite": "treant.png"},
+    "resourcesAndCatalogPreserved": true
+  },
+  "unresolved": [
+    "统一历史构建及未公开的伤害、回能、选敌、前摇与击飞公式。",
+    "当前正常经营树妖覆盖很少，不能由独立演示证明五费控制位的构筑价值。",
+    "当前目录多构筑完整人工对局、整体难度及真实触屏/弱设备表现。"
+  ]
+}

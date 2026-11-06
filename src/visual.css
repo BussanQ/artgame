@@ -1915,6 +1915,20 @@ footer {
 body.has-modal {
   overflow: hidden;
 }
+.restart-modal {
+  width: min(460px, calc(100vw - 32px));
+  padding: 24px;
+}
+.restart-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+.restart-actions button {
+  flex: 1;
+  min-height: 44px;
+  padding: 10px;
+}
 :root[data-reduced-motion="true"] *,
 :root[data-reduced-motion="true"] *::before,
 :root[data-reduced-motion="true"] *::after {
@@ -1925,6 +1939,65 @@ body.has-modal {
 .settings-modal,
 .piece-info-modal {
   width: min(560px, calc(100vw - 32px));
+}
+.piece-info-modal {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.piece-info-header {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  gap: 8px;
+}
+.piece-info-header h2 {
+  margin-bottom: 16px;
+}
+.piece-info-header .close {
+  position: static;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+}
+.piece-info-body {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+}
+.manual-modal {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.manual-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.manual-header h2 {
+  margin: 8px 0 12px;
+}
+.manual-header .close {
+  position: static;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+}
+.manual-body {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
 }
 .setting-row {
   display: flex;
@@ -2005,6 +2078,8 @@ body.has-modal {
   border-color: #61714f;
 }
 .bench-info {
+  position: relative;
+  z-index: 3;
   width: 100%;
   margin-top: 3px;
 }

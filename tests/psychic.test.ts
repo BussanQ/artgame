@@ -159,8 +159,8 @@ describe("灵能反伤与能量体系", () => {
       expect(pieces).toHaveLength(3);
     }
   });
-  it("童子优先充能最高攻击的两个合格友军，受封能压制且上限100", () => {
-    const a = f("acolyte", 1),
+  it("旧版童子优先充能最高攻击的两个合格友军，受封能压制且上限100", () => {
+    const a = army([p("acolyte", 1)], 0, "lightning")[0],
       g = f("guard", 2),
       b = f("bonedragon", 3),
       t = f("thunderlord", 4),
@@ -179,14 +179,14 @@ describe("灵能反伤与能量体系", () => {
     a.mana = 100;
     const c = ctx(a, g, b, t, other, enemy);
     expect(castSkill(c, a, enemy)).toBe(true);
-    expect(t.mana).toBe(100);
+    expect(t.mana).toBe(90);
     expect(b.mana).toBe(78.75);
-    expect(g.mana).toBe(60);
+    expect(g.mana).toBe(85);
     expect(other.mana).toBe(60);
     expect(a.mana).toBe(0);
     expect(
       c.effects.filter((e) => e.kind === "energize").map((e) => e.amount),
-    ).toEqual([10, 18.75]);
+    ).toEqual([18.75, 25]);
     t.manaLockUntil = 20;
     b.manaLockUntil = 20;
     g.manaLockUntil = 20;
@@ -208,8 +208,8 @@ describe("灵能反伤与能量体系", () => {
     a.mana = 100;
     expect(castSkill(c, a, e)).toBe(false);
   });
-  it("天师法球只命中目标两格内敌人", () => {
-    const s = f("stormcaller", 1),
+  it("旧版天师法球只命中目标两格内敌人", () => {
+    const s = Object.assign(army([p("stormcaller", 1)], 0, "gospel")[0], { x: 3, y: 3 }),
       a = f("guard", 2, 1),
       b = f("guard", 3, 1),
       c = f("guard", 4, 1),
@@ -230,7 +230,7 @@ describe("灵能反伤与能量体系", () => {
     expect(ally.hp).toBe(ally.maxHp);
   });
   it("连锁最多四个不同目标，距离与UID决定跳跃，倍率衰减", () => {
-    const s = f("thunderlord", 1);
+    const s = army([p("thunderlord", 1)], 0, "tar")[0];
     s.mana = 100;
     const es = [2, 3, 4, 5, 6].map((id) => f("guard", id, 1));
     es.forEach((x, i) => {

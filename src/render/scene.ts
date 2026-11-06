@@ -1,4 +1,15 @@
 import { taotieScale } from "./taotie";
+import { wushiPose, wushiScale } from "./wushi";
+import { wushiActive } from "../engine/wushi";
+import { drawTarBombs } from "./tar";
+import { drawGospelField } from "./gospel";
+import { drawThunderstorm } from "./thunderstorm";
+import { drawShuriken } from "./shuriken";
+import { drawSecretOrbs, secretOrbPose } from "./secret-orb";
+import { drawJungleTelegraphs, jungleChargePose } from "./jungle";
+import { JUNGLE } from "../data/skills";
+import { unitDefinition, unitSprite } from "../data/unit-stats";
+import { CURRENT_COMBAT_VERSION, type CombatVersion } from "../engine/types";
 import { isPhoenixEgg } from "../engine/phoenix";
 import { pickBattleFighter, fighterBattleMarkup } from "./battle-inspection";
 import { knockupLift, burrowPose } from "./beast-presentation";
@@ -40,6 +51,7 @@ import { project, cellAt } from "./projection";
 import { UNIT } from "../data/units";
 import type { Battle, Fighter, Piece, CombatEvent } from "../engine/types";
 export interface SceneState {
+  version?: CombatVersion;
   pieces: Piece[];
   selected: number | null;
   inspected?: number | null;
@@ -54,6 +66,12 @@ const W = 1280,
   H = 800;
 // Wide fins and wings should remain readable without covering neighboring pieces.
 const SPRITE_SCALES: Record<string, number> = {
+  "acolyte-gospel": 0.76,
+  "stormcaller-thunderstorm": 0.94,
+  "treant-jungle": 0.9,
+  "master-wushi": 0.92,
+  "panda-shuriken": 0.92,
+  "monk-orb": 0.88,
   fish: 0.72,
   dragonfly: 0.85,
   deer: 0.9,
@@ -415,6 +433,14 @@ export class BattleScene {
         .sort((a, b) => a.y - b.y);
       this.paintedFighters = fs;
       for (const f of fs) drawAirTelegraph(c, f, s.time, this.motionReduced);
+      drawTarBombs(c, fs, s.time, this.motionReduced, "area");
+      drawThunderstorm(c, fs, s.time, this.motionReduced, "area");
+      drawShuriken(c, fs, s.time, this.motionReduced, "area");
+      drawSecretOrbs(c, fs, s.time, this.motionReduced, "area");
+      drawJungleTelegraphs(c, fs, s.time, this.motionReduced);
+      for (const f of fs)
+        drawGospelField(c, f, s.time, this.motionReduced,
+          f.uid === (this.pinnedFighter ?? this.hoverFighter));
       for (const f of fs) {
         const death = deathFade(battle, f.uid, index, s.time);
         if (death >= 1) continue;
@@ -428,12 +454,12 @@ export class BattleScene {
         let attack: { event: CombatEvent; progress: number } | undefined;
         const duration = f.hawkForm?.active
           ? 1
-          : isMelee(f.defId)
+          : isMelee(f.defId, s.version)
             ? Math.min(
                 MELEE_ACTIONS[f.defId].duration,
                 attackInterval(f, s.time),
               )
-            : isRanged(f.defId)
+            : isRanged(f.defId, s.version)
               ? Math.min(
                   RANGED_ACTIONS[f.defId].duration,
                   attackInterval(f, s.time),
@@ -477,12 +503,16 @@ export class BattleScene {
           now,
           s.selected,
           death,
-          attack,
+          (f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
           hit && fraction < 0.35,
           s.time,
           f.transformation ?? undefined,
         );
       }
+      drawTarBombs(c, fs, s.time, this.motionReduced, "labels");
+      drawThunderstorm(c, fs, s.time, this.motionReduced, "bolts");
+      drawShuriken(c, fs, s.time, this.motionReduced, "blades");
+      drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
       // Render recent events without skipping any at 2x/4x playback.
       for (let n = Math.max(1, index - 7); n <= index; n++)
         for (const e of battle.frames[n].events) {
@@ -496,14 +526,14 @@ export class BattleScene {
           const attacker = battle.frames[n].fighters.find(
             (f) => f.uid === e.attacker,
           )!;
-          const rangedId = isRanged(attacker.defId) ? attacker.defId : null;
+          const rangedId = isRanged(attacker.defId, s.version) ? attacker.defId : null;
           const duration = rangedId
             ? Math.min(
                 RANGED_ACTIONS[rangedId].duration,
                 attackInterval(attacker, n),
               )
             : 1;
-          const impactAge = rangedId
+          const impactAge = (attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
           if (
@@ -511,7 +541,8 @@ export class BattleScene {
             e.ranged &&
             rangedId &&
             e.primary &&
-            !((attacker.qiSkill || attacker.taotie) && e.skill)
+            !attacker.lightningChain &&
+            !((attacker.secretOrb || attacker.shuriken || attacker.qiSkill || attacker.taotie || attacker.tar || attacker.storm) && e.skill)
           )
             drawRangedAttack(
               c,
@@ -612,7 +643,8 @@ export class BattleScene {
       for (const p of [...s.pieces]
         .filter((p) => p.position !== null)
         .sort((a, b) => a.position! - b.position!)) {
-        const d = UNIT[p.defId];
+        const version = s.version ?? CURRENT_COMBAT_VERSION;
+        const d = unitDefinition(p.defId, version);
         this.unit(
           {
             uid: p.uid,
@@ -630,6 +662,9 @@ export class BattleScene {
           0,
           undefined,
           false,
+          0,
+          undefined,
+          unitSprite(p.defId, version),
         );
       }
       if (!s.pieces.some((p) => p.position !== null)) {
@@ -668,17 +703,23 @@ export class BattleScene {
     hit: boolean,
     time = 0,
     transformation?: BullTransformation,
+    spriteId = fighterSprite(f),
   ) {
+    if (f.wushi) picture("master-wushi");
+    const version = this.state().version;
+    const throwCast = f.shuriken?.casting;
+    const throwBlade = f.shuriken?.blades.find(blade=>time-blade.start<1.8);
+    const secretTarget=f.secretOrb?.casting?.to??f.secretOrb?.channel;
     const c = this.ctx,
       p = project(f.x + 0.5, f.y + 0.65),
       depth = 0.78 + f.y * 0.035,
       d = UNIT[f.defId],
-      im = picture(fighterSprite(f)),
+      im = picture(spriteId),
       scale =
         (1 + (f.star - 1) * 0.12) *
         depth *
         (f.summon ? 0.7 : 1) *
-        taotieScale(f, time);
+        taotieScale(f, time) * wushiScale(f, time);
     const transformed = f.defId === "bull" ? picture("bull-charge") : null;
     c.save();
     c.globalAlpha = (1 - death) * (f.immortal?.spent && f.hp > 0 ? 0.62 : 1);
@@ -700,12 +741,27 @@ export class BattleScene {
     c.save();
     const pose = isPhoenixEgg(f)
       ? REST_POSE
+      : !this.motionReduced && !death && secretTarget
+        ? secretOrbPose(f,time)
+      : !this.motionReduced && !death && throwCast
+        ? rangedPose("panda",Math.max(0.01,Math.min(0.33,(time-throwCast.start)/2*0.33)),true)
+      : !this.motionReduced && !death && throwBlade
+        ? rangedPose("panda",Math.min(0.95,0.35+(time-throwBlade.start)/1.8*0.6),true)
+      : !this.motionReduced && !death && f.wushi?.casting
+        ? wushiPose(1-(f.wushi.casting.until-time)/4,true)
+      : !this.motionReduced && !death && attack && wushiActive(f,time)
+        ? wushiPose(attack.progress)
       : transformation
         ? bullFormPose(transformation, this.motionReduced)
         : !this.motionReduced && !death && f.burrowSkill && attack?.event.skill
           ? burrowPose(attack.progress)
           : !this.motionReduced && !death && f.bladeStorm
             ? bladeStormPose(time)
+            : !this.motionReduced && !death && f.jungle && f.air?.cast?.kind === "jungle"
+              ? jungleChargePose(1 - (f.air.cast.next - time) / JUNGLE.windup)
+            : !this.motionReduced && !death && f.storm && f.air?.cast?.kind === "storm"
+              ? rangedPose("stormcaller", Math.max(0, Math.min(0.44,
+                  (1 - (f.air.cast.next - time) / 4) * 0.44)), true, false, false, true)
             : !this.motionReduced && !death && f.air?.cast?.kind === "ironape"
               ? ironapeChargePose(1 - (f.air.cast.next - time) / 3)
               : !this.motionReduced && !death && f.qiSkill && f.windup
@@ -741,7 +797,7 @@ export class BattleScene {
                     : !this.motionReduced &&
                         !death &&
                         attack &&
-                        isMelee(f.defId)
+                        isMelee(f.defId, version)
                       ? meleePose(
                           f.defId,
                           attack.progress,
@@ -752,12 +808,14 @@ export class BattleScene {
                       : !this.motionReduced &&
                           !death &&
                           attack &&
-                          isRanged(f.defId)
+                          isRanged(f.defId, version)
                         ? rangedPose(
                             f.defId,
                             attack.progress,
                             attack.event.skill || !!attack.event.empowered,
                             !!f.qiSkill,
+                            !!f.gospelAura,
+                            !!f.storm,
                           )
                         : REST_POSE;
     const origin = transformation?.moving
@@ -767,6 +825,10 @@ export class BattleScene {
         : p;
     const destination = transformation?.moving
       ? project(transformation.to.x + 0.5, transformation.to.y + 0.5)
+      : secretTarget
+        ? project(secretTarget.x+0.5,secretTarget.y+0.5)
+      : throwCast || throwBlade
+        ? project((throwCast??throwBlade)!.to.x+0.5,(throwCast??throwBlade)!.to.y+0.5)
       : attack
         ? project(attack.event.to.x + 0.5, attack.event.to.y + 0.5)
         : p;
@@ -774,7 +836,7 @@ export class BattleScene {
       dy = destination.y - origin.y,
       length = Math.hypot(dx, dy) || 1;
     const facing =
-      (attack || transformation) && Math.abs(dx) > 1
+      (attack || transformation || throwCast || throwBlade || secretTarget) && Math.abs(dx) > 1
         ? Math.sign(dx)
         : f.side === 0
           ? 1
@@ -800,7 +862,7 @@ export class BattleScene {
     ) => {
       c.save();
       c.globalAlpha *= alpha;
-      const size = 130 * scale * (SPRITE_SCALES[f.defId] ?? 1) * enlarge,
+      const size = 130 * scale * (SPRITE_SCALES[spriteId] ?? SPRITE_SCALES[f.defId] ?? 1) * enlarge,
         w = (size * sprite.width) / Math.max(sprite.width, sprite.height),
         h = (size * sprite.height) / Math.max(sprite.width, sprite.height);
       if (hit) {
@@ -834,7 +896,8 @@ export class BattleScene {
       !death &&
       attack &&
       f.air?.cast?.kind !== "ironape" &&
-      isMelee(f.defId)
+      !wushiActive(f,time) &&
+      isMelee(f.defId, version)
     ) {
       c.save();
       c.scale(facing, 1);

@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectedAt": "2026-11-05",
+  "collectedAt": "2026-11-06",
+  "lightningReview": "0.51重新目视S04-1第42行，并读取S50物理装备建议及S53原始公告锁链衰减段落。原图和HTML指纹、跨期边界、未找到的技能卡及本地上限/选敌明确记录于lightning-history.json；未用转载补齐未知参数。",
   "sources": [
     {
       "id": "S01",
@@ -49,7 +50,10 @@
       "accessedAt": "2026-11-03",
       "targetVersion": "2019-07-08玩家测量；客户端版本未知",
       "note": "56行兵种属性与35个护甲减伤样本已逐图录入，含来源图片与行号。未提供技能伤害和商店概率。见historical-tables.json。",
-      "qiReview": "0.48重新下载并目视S04-2第11行，SHA与先前转录一致，采用550生命、5护甲、5格、2.2秒及153–166区间取整均值160。原始字段保持不变；本次页面正文未成功重新获取，不能称全文复核。见qi-history.json。"
+      "qiReview": "0.48重新下载并目视S04-2第11行，SHA与先前转录一致，采用550生命、5护甲、5格、2.2秒及153–166区间取整均值160。原始字段保持不变；本次页面正文未成功重新获取，不能称全文复核。见qi-history.json。",
+      "gospelReview": "0.52采用第40行二费、600生命、40–45攻击、5甲、4格、1.7秒及被动定位，原始表格不改写。",
+      "thunderstormReview": "0.53采用S04-1第39行的一费、400生命、36–44攻击、5甲、4格、1.1秒与5/4/3秒冷却。攻击取均值40；原始表格字段不改写，S55客户端卡的伤害与路径宽度分期记录。",
+      "jungleReview": "0.54采用S04-1第38行五费、950生命、40–49攻击、5甲、1格、1.7秒、30秒及每秒回血5；确定攻击取45，原始转录不改写。"
     },
     {
       "id": "S05",
@@ -355,7 +359,8 @@
       "status": "text-reviewed",
       "accessedAt": "2026-11-03",
       "targetVersion": null,
-      "note": "页面标注来源原作官方，确认军医属于一费治疗角色；亦将武僧熊猫列为一费肉盾。"
+      "note": "页面标注来源原作官方，确认军医属于一费治疗角色；亦将武僧熊猫列为一费肉盾。",
+      "gospelReview": "0.52核对官方署名正文的周边充能定位及内嵌异形角色图，见gospel-history.json。"
     },
     {
       "id": "S33",
@@ -423,7 +428,9 @@
       "status": "html-text-reviewed",
       "accessedAt": "2026-11-04",
       "targetVersion": "2019-05-30",
-      "note": "页面作者和来源均标官方；Web直读超时后，用公开HTTP读取HTML成功核对正文。鸟骑兵振翅改信仰之箭，6/5/4次普攻后的下一箭短蓄力、300%暴击；攻击区间及1.5秒间隔可提取。无精确蓄力时长、闪避和取消规则；同时包含摩托焦油弹等改动，不代表当前全部配置为同版本。"
+      "note": "页面作者和来源均标官方；Web直读超时后，用公开HTTP读取HTML成功核对正文。鸟骑兵振翅改信仰之箭，6/5/4次普攻后的下一箭短蓄力、300%暴击；攻击区间及1.5秒间隔可提取。无精确蓄力时长、闪避和取消规则；同时包含摩托焦油弹等改动，不代表当前全部配置为同版本。",
+      "tarReview": "0.50 target counts and three-second delay reviewed in the original announcement; see tar-history.json.",
+      "gospelReview": "0.52核对原始HTML中的一费改二费、分星600/1200/2400生命；不把所有配置当作统一五月版本。"
     },
     {
       "id": "S39",
@@ -587,6 +594,168 @@
       "accessedAt": "2026-11-05",
       "targetVersion": "May 9/16 changes discussed; exact client build unknown",
       "note": "原作者指出罗汉前摇期间不能普攻，没有给精确时长。由S51系列链接定位原帖。本文混有两个五月版本，0.48只采用该行为方向，不宣称1秒来自原文。见qi-history.json。"
+    },
+    {
+      "id": "S53",
+      "title": "赤潮自走棋 6月13日更新内容介绍",
+      "url": "https://news.17173.com/z/zzq/content/06132019/183201371.shtml",
+      "publishedAt": "2019-06-13",
+      "author": "官方（17173页面标注）",
+      "kind": "official-announcement-reprint",
+      "status": "original-html-body-reviewed",
+      "accessedAt": "2026-11-06",
+      "originalHtmlSha256": "0dedc8dcdaf7ac25178d1154f70b6cc72683a49d2427e3edef07b4e59d8d3189",
+      "note": "Web带参数的缓存包含第三方AI摘要提示；本轮另取无参数原始HTML，正文无摘要，核对摩托生命、攻击区间及焦油弹溅射80→120。原文未给中心伤害和完整黏附边界。"
+    },
+    {
+      "id": "S54",
+      "title": "童子福音客户端技能卡（8090文章内嵌）",
+      "url": "https://www.8090.com/news/xinqing/article_328412.html",
+      "imageUrl": "https://www.8090.com/uploads/allimg/190509/293517-1Z50914263O26.png",
+      "publishedAt": "2019-05-09（文章标注，非已核定图片客户端日期）",
+      "kind": "embedded-client-screenshot",
+      "status": "image-reviewed-with-obscured-field",
+      "accessedAt": "2026-11-06",
+      "image": "images/acolyte-gospel-client.png",
+      "imageSha256": "11626537d3b55d1041104bcfe6774fc911f96ab1ec127cecb812a98fa0a2c5b6",
+      "note": "原始客户端图确认福音、圆形15、60秒标签和每秒4/7，三星末位被水印遮挡；10暂作本地梯度，未将攻略转述当原始证明。页面一费正文与二费截图混期，不能归并历史版本。"
+    },
+    {
+      "id": "S55",
+      "title": "战争艺术 吃鸡宝典丨最强AOE英雄名单大盘点",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名，嘉宾香草糕）",
+      "kind": "publisher-authored-article-and-embedded-client-card",
+      "status": "original-html-and-client-image-reviewed",
+      "accessedAt": "2026-11-06",
+      "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/qfYCXIbnCjisgfv.jpg",
+      "image": "images/stormcaller-thunderstorm-client.jpg",
+      "imageSha256": "698bcf28f72abb267b159d0a1eeb17ca6c4e8b79768608ea9b571d778926c4c2",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "note": "正文确认一费、雷暴、路径命中与20削能；实际目视客户端卡确认宽1格及150/250/350，卡面冷却5秒。原图客户端构建日期未标明，不能把十二月文章与七月测量表当统一历史版本。",
+      "jungleReview": {
+        "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/mrqGIQbnCjisdvn.jpg",
+        "image": "images/treant-jungle-client.webp",
+        "imageSha256": "e07f71bfcf9bfda4418071c87626f360ae7f3295317b9d018d89ad822253ee1c",
+        "details": "jungle-history.json",
+        "note": "同一原HTML中的树妖卡；五费、圆形4格、100/200/300、30秒、击飞后眩晕1/1.5/2秒。保留天师原字段，不覆盖其原图。"
+      }
+    },
+    {
+      "id": "S56",
+      "title": "战争艺术 以天师为核心的灵能爆破完美克制步狙流",
+      "url": "https://news.17173.com/z/zzq/content/12032019/183708432.shtml",
+      "publishedAt": "2019-12-03",
+      "author": "牛牛手游平台（页面署名）",
+      "kind": "secondary-guide-with-primary-client-image",
+      "status": "original-html-and-client-portrait-reviewed",
+      "accessedAt": "2026-11-06",
+      "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/wtsRNKbnBfkbakr.jpg",
+      "image": "images/stormcaller-client-dec03.jpg",
+      "imageSha256": "ea904b24766a4664f2f2a7ae9d597182451932e30afcc1e2bb86e099a2ee85f3",
+      "originalHtmlSha256": "2d8e857a4b1253c1410095696f6aa368f83ae325c2b1685395ceab99414c1933",
+      "note": "客户端原图用于确认一费、灵能者/爆破、雷暴和无脸装甲晶核轮廓。正文为二手攻略，提到蓄力与弹道难命中、4/3秒和命中后大量回能；后者未获客户端字段证明，没有按无依据比例实现自回能。"
+    },
+    {
+      "id": "S57",
+      "title": "赤潮自走棋 5月16日停服内容介绍",
+      "url": "https://news.17173.com/z/zzq/content/05162019/161225352.shtml?_platform=PC",
+      "publishedAt": "2019-05-16",
+      "author": "官方",
+      "sourceByline": "官方",
+      "kind": "publisher-authored-update",
+      "status": "original-html-reviewed",
+      "accessedAt": "2026-11-06",
+      "note": "Web全文读取失败但检索正文命中；直接HTTP取得原HTML，并核对作者/来源均为官方。无式增加护甲6/12/18、持续8/10/12秒、变身后范围普攻；不把八月社区嘲讽说法当作本公告字段。",
+      "archivedHtmlSha256": "7d9727113f013f6fd3b73315b29c09efdf65185e4d50764f2f7bdf70328071a7",
+      "secretOrbReview": {
+        "reviewedAt": "2026-11-06T06:11:31.944Z",
+        "confirmed": "七次技能伤害，每次减少3能量；其余字段见secret-orb-history.json。",
+        "htmlSha256": "7d9727113f013f6fd3b73315b29c09efdf65185e4d50764f2f7bdf70328071a7"
+      }
+    },
+    {
+      "id": "S58",
+      "title": "战争艺术 更新公告丨6月11日不停服更新内容一览",
+      "url": "https://news.17173.com/z/zzq/content/06112020/182740162.shtml?_platform=PC",
+      "publishedAt": "2020-06-11",
+      "author": "战争艺术AOW",
+      "kind": "publisher-authored-update-search-excerpt",
+      "status": "relevant-search-text-reviewed",
+      "accessedAt": "2026-11-06",
+      "note": "检索正文为战争艺术AOW署名、来源微信公众号；公告将无式10/15/20%吸血写为新增。用于标记后期差异，不混入本次2019核心适配；未声称直读全文。",
+      "secretOrbBoundary": "后期文本760/1000/1300→800/1100/1400；页面含AI摘要提示，不覆盖2019原始客户端卡760/1200/1300。"
+    },
+    {
+      "id": "S59",
+      "url": "https://news.17173.com/z/zzq/content/08022019/112747368.shtml?_platform=PC",
+      "publishedAt": "2019-08-02",
+      "author": "赤潮最爱科先生",
+      "sourceByline": "今日头条",
+      "kind": "original-client-cards-embedded-in-community-article",
+      "status": "full-article-and-all-three-original-images-reviewed",
+      "limits": "The article is community-authored. Numerical/qualitative fields below were read from the actual client screenshot, not attributed to an official prose guide. Screenshot build is unknown."
+    },
+    {
+      "id": "S60",
+      "title": "战争艺术 4月2日不停服更新内容一览",
+      "url": "https://news.17173.com/z/zzq/content/04022020/174456266.shtml?_platform=PC",
+      "publishedAt": "2020-04-02",
+      "author": "战争艺术AOW",
+      "sourceByline": "微信公众号",
+      "kind": "publisher-authored-later-update",
+      "status": "web-full-text-reviewed",
+      "accessedAt": "2026-11-06",
+      "facts": [
+        "忍者风魔之刃由150/250/350调整至160/270/380",
+        "修复飞镖应有5次伤害的问题"
+      ],
+      "limits": "0.58保留S59的2019伤害；2020新伤害不并入，仅以五次命中说明交叉核对语义。客户端首跳与几何未获证实。"
+    },
+    {
+      "id": "S61",
+      "title": "禅师熊猫二手介绍与不适用配图",
+      "url": "https://www.8090.com/news/xinqing/article_328406.html",
+      "publishedAt": "2019-05-09",
+      "kind": "secondary-guide-with-RTS-illustration",
+      "status": "illustration-rejected-for-autochess-numeric-proof",
+      "note": "实际目视为RTS Yaoguai兵种选择画面，不是自走棋技能卡；不作为第二份客户端数值证据。",
+      "imagePath": "images/panda-monk-client-may2019.png",
+      "imageSha256": "27f04a628d457697c96508da1accd8d3e561d0d3030cd07b199145396ed7324b"
     }
-  ]
+  ],
+  "gospelReview": "0.52字段与置信边界见gospel-history.json；客户端三星能量末位被水印遮挡，10为暂定本地值。",
+  "thunderstormReview": "0.53来源、原图SHA与跨期/本地适配边界见thunderstorm-history.json。",
+  "jungleReview": "0.54树妖客户端卡、S04第38行及跨期/本地适配见jungle-history.json。",
+  "wushiReview": {
+    "reviewedAt": "2026-11-06",
+    "history": "wushi-history.json",
+    "notes": "S57原始官方署名更新与S32一费介绍已核对；S04原表复看；S58后期吸血按不同年代保留。"
+  },
+  "wushiControlReview": {
+    "reviewedAt": "2026-11-06T03:49:56.388Z",
+    "record": "wushi-control-history.json",
+    "fields": [
+      "maximum 3 ordinary attack targets",
+      "nearby taunt"
+    ],
+    "localFields": [
+      "2-tile radius",
+      "2-second duration",
+      "exact interactions"
+    ]
+  },
+  "shurikenReview": {
+    "rules": "singleplayer-0.58",
+    "record": "shuriken-history.json",
+    "primaryEvidence": "S59原始客户端技能卡已重新目视，S04原表行已重新目视，S60开发方署名公告重读。",
+    "boundary": "本体/技能跨期；保留2019伤害，后期五次命中仅交叉核对，全部本地参数单列。"
+  },
+  "secretOrbReview": {
+    "rules": "singleplayer-0.59",
+    "record": "secret-orb-history.json",
+    "primaryEvidence": "S59原始客户端卡与S04原表重新目视，S57官方署名HTML重新核对。",
+    "boundary": "跨期、后期差异、不适用配图与本地参数分开记录。"
+  }
 }

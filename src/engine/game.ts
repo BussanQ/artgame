@@ -1,8 +1,8 @@
-import { catalogCost, catalogVersion } from "../data/catalog";
+import { catalogCost } from "../data/catalog";
 import { availableUnits, isRecruitable, randomBans } from "./rotation";
 import { CURRENT_COMBAT_VERSION } from "./types";
-import { mergePieces, pieceCopies, salePrice } from "./progression";
-import { previewPurchase } from "./recruitment";
+import { mergePieces, pieceCopies } from "./progression";
+import { previewPurchase, previewSale } from "./recruitment";
 import { income } from "./economy";
 export { income } from "./economy";
 import { prepareBot } from "./ai";
@@ -145,14 +145,12 @@ export function move(
   return true;
 }
 export function sell(g: Game, p: Player, uid: number): boolean {
-  if (g.phase !== "prepare") return false;
-  const piece = p.pieces.find((x) => x.uid === uid);
-  if (!piece) return false;
-  const copies = pieceCopies(piece);
-  p.gold += salePrice(piece, catalogVersion(g));
-  g.pool[piece.defId] += copies;
-  p.inventory.push(...(piece.items ?? []));
-  p.pieces = p.pieces.filter((x) => x.uid !== uid);
+  const quote=previewSale(g,p,uid);
+  if(!quote)return false;
+  p.gold=quote.after.gold;
+  p.inventory=quote.after.inventory;
+  p.pieces=quote.after.pieces;
+  g.pool[quote.defId]+=quote.copies;
   return true;
 }
 export function addXp(p: Player, amount: number) {
@@ -250,7 +248,11 @@ export function settle(g: Game, result: RoundResult): void {
   )
     return;
   const previousHp = g.players[0].hp,
-    previousGold = g.players[0].gold;
+    previousGold = g.players[0].gold,
+    inventory = [...g.players[0].inventory],
+    bench = structuredClone(
+      g.players[0].pieces.filter((piece) => piece.position === null),
+    );
   for (const o of result.outcomes) {
     const p = g.players[o.playerId];
     p.hp = Math.max(0, p.hp - o.damage);
@@ -282,6 +284,8 @@ export function settle(g: Game, result: RoundResult): void {
     gold: g.players[0].gold,
     left: structuredClone(result.left),
     right: structuredClone(result.right),
+    bench,
+    inventory,
   });
   g.message = won
     ? "防守成功。金币与经验已结算。"
@@ -320,11 +324,14 @@ export function settle(g: Game, result: RoundResult): void {
 }
 export function nextRound(g: Game) {
   if (g.phase !== "result" || g.reward) return;
+  const previousVersion = g.combatVersion;
   g.round++;
   g.combatVersion = CURRENT_COMBAT_VERSION;
   g.phase = "prepare";
-  for (const p of g.players.filter((p) => p.hp > 0))
+  for (const p of g.players.filter((p) => p.hp > 0)) {
+    if (previousVersion !== CURRENT_COMBAT_VERSION) mergePieces(p, g.combatVersion);
     if (!p.locked) roll(g, p, false);
+  }
 }
 export function rankings(g: Game) {
   return [...g.players].sort(

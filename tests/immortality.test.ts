@@ -116,9 +116,9 @@ describe("不朽生命周期与控制", () => {
     heal(c, enemy, vine, 100);
     expect(vine.hp).toBe(0);
   });
-  it("藤妖单控、骨龙范围及树妖自身范围准确，不命中友军", () => {
+  it("0.53藤妖单控、骨龙范围及原型树妖自身范围/护盾保持，不命中友军", () => {
     for (const id of IMMORTAL_ADDITIONS) {
-      const a = f(id, 1),
+      const a = army([p(id, 1)], 0, "thunderstorm")[0],
         b = f("guard", 2, 1),
         near = f("guard", 3, 1),
         far = f("guard", 4, 1),

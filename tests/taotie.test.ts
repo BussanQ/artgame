@@ -97,6 +97,7 @@ const legacyGame = () => {
   g.catalogVersion = "qi";
   g.combatVersion = "qi";
   g.pool.skytoad = COPIES[4];
+  g.pool.thunderlord = COPIES[5];
   return g;
 };
 const encode = (game: ReturnType<typeof createGame>) =>
@@ -553,7 +554,7 @@ describe("整局价格目录", () => {
     expect(salePrice(piece("skytoad", 3), "qi")).toBe(36);
     expect(salePrice(piece("skytoad", 3), "taotie")).toBe(45);
     const fresh = createGame(137, "classic");
-    expect(fresh.catalogVersion).toBe("taotie");
+    expect(fresh.catalogVersion).toBe(CURRENT_COMBAT_VERSION);
     expect(
       fresh.pool.skytoad +
         fresh.players.reduce(
@@ -614,7 +615,7 @@ describe("整局价格目录", () => {
     expect(restored).toEqual({
       ...before,
       catalogVersion: "qi",
-      combatVersion: "taotie",
+      combatVersion: CURRENT_COMBAT_VERSION,
     });
     expect(
       restored.pool.skytoad +
@@ -685,7 +686,7 @@ describe("整局价格目录", () => {
         expect(r).toEqual({
           ...before,
           catalogVersion: "qi",
-          combatVersion: phase === "prepare" ? "taotie" : "qi",
+          combatVersion: phase === "prepare" ? CURRENT_COMBAT_VERSION : "qi",
         });
         expect(validGame(r)).toBe(true);
         if (phase === "battle")
@@ -693,7 +694,7 @@ describe("整局价格目录", () => {
         if (phase === "result") {
           if (r.reward) claimReward(r, 0);
           nextRound(r);
-          expect(r.combatVersion).toBe("taotie");
+          expect(r.combatVersion).toBe(CURRENT_COMBAT_VERSION);
           expect(r.catalogVersion).toBe("qi");
         }
       });

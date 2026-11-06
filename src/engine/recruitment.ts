@@ -1,8 +1,24 @@
-import { catalogCost } from "../data/catalog";
+import { catalogCost, catalogVersion } from "../data/catalog";
 import { isRecruitable } from "./rotation";
 import { RULES, UNIT } from "../data/units";
-import { isInsect, mergePieces } from "./progression";
+import { isInsect, mergePieces, pieceCopies, salePrice } from "./progression";
 import type { Game, Piece, Player } from "./types";
+
+/** Shared, read-only sale quote for real transactions and concrete reserve swaps. */
+export function previewSale(
+  game:Pick<Game,"phase"|"combatVersion"|"catalogVersion">,
+  player:Player,
+  uid:number,
+) {
+  if(game.phase!=="prepare")return null;
+  const piece=player.pieces.find(piece=>piece.uid===uid);
+  if(!piece)return null;
+  const after=structuredClone(player),price=salePrice(piece,catalogVersion(game));
+  after.gold+=price;
+  after.inventory.push(...(piece.items??[]));
+  after.pieces=after.pieces.filter(piece=>piece.uid!==uid);
+  return {after,price,defId:piece.defId,copies:pieceCopies(piece)};
+}
 
 export interface PurchasePreview {
   allowed: boolean;

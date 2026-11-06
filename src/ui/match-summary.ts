@@ -10,9 +10,17 @@ export function matchSummaryMarkup(game: Game): string {
   const summary = matchSummary(game);
   if (!summary) return "";
   const last = game.history.at(-1)!;
-  const traits = synergies(summary.lineup, last.combatVersion).filter(
-    (s) => s.active,
+  const traits = synergies(
+    [...summary.lineup, ...(summary.bench ?? [])],
+    last.combatVersion,
+  ).filter(
+    (s) => s.active && (s.trait !== "异虫" || summary.bench !== undefined),
   );
+  const traitDescription = traits.length
+    ? traits.map((s) => `${s.trait} ${s.count} · ${s.tier} 档`).join("　/　")
+    : summary.bench === undefined
+      ? "无可确认的上阵连携"
+      : "未激活阵容连携";
   const reason =
     summary.reason === "eliminated"
       ? `第 ${summary.rounds} 回合生命耗尽，本局演习结束。`
@@ -39,7 +47,7 @@ export function matchSummaryMarkup(game: Game): string {
       })
       .join(
         "",
-      )}</div><p class="match-traits">${traits.length ? traits.map((s) => `${s.trait} ${s.count} · ${s.tier} 档`).join("　/　") : "未激活阵容连携"}</p><h3>回合历程 <small>点击回合可回放</small></h3><div class="match-timeline">${game.history
+      )}</div><p class="match-traits">${traitDescription}</p>${summary.bench === undefined ? '<p class="micro">旧战报未保存备战席；本处仅还原上阵连携，异虫进化档位无法确认。</p>' : ""}<h3>回合历程 <small>点击回合可回放</small></h3><div class="match-timeline">${game.history
       .map((r) => {
         const outcome =
           r.winner === 0 ? "胜利" : r.winner === 1 ? "失败" : "平局";

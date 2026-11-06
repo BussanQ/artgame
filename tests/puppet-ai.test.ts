@@ -16,7 +16,9 @@ import {
   startRound,
   settle,
   resumeRound,
+  nextRound,
 } from "../src/engine/game";
+import { claimReward } from "../src/engine/equipment";
 import { decodeSave, SAVE_SCHEMA, validGame } from "../src/engine/persistence";
 import { availableUnits, isRecruitable } from "../src/engine/rotation";
 import { synergies } from "../src/engine/synergies";
@@ -254,13 +256,19 @@ describe("0.36策略存档升级", () => {
         p.shop = [null, null, null, null, null];
       }
       const me = g.players[0];
-      me.shop[0] = phase === "finished" ? "fish" : "guard";
+      // A terminal fixture must not assume which current unit loses the first PvE.
+      me.shop[0] = phase === "finished" ? "acolyte" : "guard";
       g.pool[me.shop[0]]--;
       expect(buy(g, me, 0)).toBe(true);
       expect(move(g, me, me.pieces[0].uid, 35)).toBe(true);
       if (phase === "finished") me.hp = 1;
       const result = phase === "prepare" ? null : startRound(g);
       if (phase === "result" || phase === "finished") settle(g, result!);
+      for (let rounds=0;phase==="finished"&&g.phase!=="finished"&&rounds<30;rounds++) {
+        if(g.reward)claimReward(g,0);
+        nextRound(g);
+        settle(g,startRound(g)!);
+      }
       expect(g.phase).toBe(phase);
       const before = structuredClone(g);
       const decoded = decodeSave(

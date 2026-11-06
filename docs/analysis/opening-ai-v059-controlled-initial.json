@@ -1,0 +1,416 @@
+{
+  "createdAt": "2026-11-06T06:47:10.177Z",
+  "kind": "actual-paid-capture-repreparation-not-new-campaigns",
+  "rows": [
+    {
+      "source": "tmp/opening-ai-v059-reserve-standard-rotation-1.json",
+      "beforeStatic": 1997.3950419049775,
+      "probe": {
+        "improves": false,
+        "trials": 0,
+        "baseline": null,
+        "best": null,
+        "sellUid": null
+      },
+      "report": {
+        "controlPurchaseTrials": 7,
+        "scoutedPurchases": [],
+        "deploymentTrials": 0
+      },
+      "trades": [
+        {
+          "kind": "sell",
+          "uid": 4,
+          "id": "pangolin",
+          "income": 3
+        },
+        {
+          "kind": "buy",
+          "id": "panda",
+          "spent": 3
+        },
+        {
+          "kind": "sell",
+          "uid": 168,
+          "id": "repair",
+          "income": 1
+        },
+        {
+          "kind": "buy",
+          "id": "cannon",
+          "spent": 4
+        },
+        {
+          "kind": "sell",
+          "uid": 201,
+          "id": "repair",
+          "income": 1
+        },
+        {
+          "kind": "buy",
+          "id": "panda",
+          "spent": 3
+        }
+      ],
+      "after": {
+        "gold": 18,
+        "lineup": [
+          {
+            "id": "master",
+            "star": 2
+          },
+          {
+            "id": "elephant",
+            "star": 2
+          },
+          {
+            "id": "wolf",
+            "star": 1
+          },
+          {
+            "id": "acolyte",
+            "star": 2
+          },
+          {
+            "id": "dragonfly",
+            "star": 1
+          },
+          {
+            "id": "cannon",
+            "star": 1
+          },
+          {
+            "id": "cannon",
+            "star": 1
+          }
+        ],
+        "bench": [
+          {
+            "id": "elephant",
+            "star": 2
+          },
+          {
+            "id": "venombeast",
+            "star": 1
+          },
+          {
+            "id": "deer",
+            "star": 1
+          },
+          {
+            "id": "deer",
+            "star": 1
+          },
+          {
+            "id": "ark",
+            "star": 1
+          },
+          {
+            "id": "dragonfly",
+            "star": 1
+          },
+          {
+            "id": "panda",
+            "star": 1
+          },
+          {
+            "id": "panda",
+            "star": 1
+          }
+        ]
+      }
+    },
+    {
+      "source": "tmp/opening-ai-v059-reserve-veteran-classic-2.json",
+      "beforeStatic": 2197.239388952941,
+      "probe": {
+        "improves": true,
+        "trials": 16,
+        "baseline": 168.56375273756225,
+        "best": 10395.92648484855,
+        "sellUid": 255
+      },
+      "report": {
+        "controlPurchaseTrials": 16,
+        "scoutedPurchases": [
+          "monk"
+        ],
+        "deploymentTrials": 9
+      },
+      "trades": [
+        {
+          "kind": "sell",
+          "uid": 255,
+          "id": "bull",
+          "income": 3
+        },
+        {
+          "kind": "buy",
+          "id": "monk",
+          "spent": 4
+        }
+      ],
+      "after": {
+        "gold": 32,
+        "lineup": [
+          {
+            "id": "guard",
+            "star": 2
+          },
+          {
+            "id": "master",
+            "star": 2
+          },
+          {
+            "id": "panda",
+            "star": 1
+          },
+          {
+            "id": "bull",
+            "star": 2
+          },
+          {
+            "id": "lion",
+            "star": 1
+          },
+          {
+            "id": "sniper",
+            "star": 1
+          },
+          {
+            "id": "monk",
+            "star": 1
+          }
+        ],
+        "bench": [
+          {
+            "id": "guard",
+            "star": 1
+          },
+          {
+            "id": "ark",
+            "star": 1
+          },
+          {
+            "id": "shieldthrall",
+            "star": 1
+          },
+          {
+            "id": "vajra",
+            "star": 1
+          },
+          {
+            "id": "fish",
+            "star": 1
+          },
+          {
+            "id": "fish",
+            "star": 1
+          },
+          {
+            "id": "guard",
+            "star": 1
+          },
+          {
+            "id": "ark",
+            "star": 1
+          }
+        ]
+      }
+    },
+    {
+      "source": "tmp/opening-ai-v059-reserve-veteran-classic-3.json",
+      "beforeStatic": 2197.239388952941,
+      "probe": {
+        "improves": true,
+        "trials": 16,
+        "baseline": 110.88146258503401,
+        "best": 10395.92648484855,
+        "sellUid": 161
+      },
+      "report": {
+        "controlPurchaseTrials": 16,
+        "scoutedPurchases": [
+          "monk"
+        ],
+        "deploymentTrials": 9
+      },
+      "trades": [
+        {
+          "kind": "sell",
+          "uid": 198,
+          "id": "fish",
+          "income": 1
+        },
+        {
+          "kind": "buy",
+          "id": "monk",
+          "spent": 4
+        }
+      ],
+      "after": {
+        "gold": 30,
+        "lineup": [
+          {
+            "id": "guard",
+            "star": 2
+          },
+          {
+            "id": "master",
+            "star": 2
+          },
+          {
+            "id": "panda",
+            "star": 1
+          },
+          {
+            "id": "bull",
+            "star": 2
+          },
+          {
+            "id": "lion",
+            "star": 1
+          },
+          {
+            "id": "sniper",
+            "star": 1
+          },
+          {
+            "id": "monk",
+            "star": 1
+          }
+        ],
+        "bench": [
+          {
+            "id": "guard",
+            "star": 1
+          },
+          {
+            "id": "ark",
+            "star": 1
+          },
+          {
+            "id": "shieldthrall",
+            "star": 1
+          },
+          {
+            "id": "vajra",
+            "star": 1
+          },
+          {
+            "id": "fish",
+            "star": 1
+          },
+          {
+            "id": "guard",
+            "star": 1
+          },
+          {
+            "id": "ark",
+            "star": 1
+          },
+          {
+            "id": "panda",
+            "star": 1
+          }
+        ]
+      }
+    },
+    {
+      "source": "tmp/opening-ai-v059-reserve-veteran-classic-4.json",
+      "beforeStatic": 2307.880834950757,
+      "probe": {
+        "improves": true,
+        "trials": 16,
+        "baseline": 168.56375273756225,
+        "best": 10395.92648484855,
+        "sellUid": 257
+      },
+      "report": {
+        "controlPurchaseTrials": 16,
+        "scoutedPurchases": [],
+        "deploymentTrials": 7
+      },
+      "trades": [
+        {
+          "kind": "sell",
+          "uid": 160,
+          "id": "sniper",
+          "income": 2
+        },
+        {
+          "kind": "buy",
+          "id": "dragonfly",
+          "spent": 3
+        }
+      ],
+      "after": {
+        "gold": 29,
+        "lineup": [
+          {
+            "id": "guard",
+            "star": 2
+          },
+          {
+            "id": "bull",
+            "star": 2
+          },
+          {
+            "id": "lion",
+            "star": 1
+          },
+          {
+            "id": "shieldthrall",
+            "star": 1
+          },
+          {
+            "id": "vajra",
+            "star": 1
+          },
+          {
+            "id": "ark",
+            "star": 1
+          },
+          {
+            "id": "bonedragon",
+            "star": 1
+          }
+        ],
+        "bench": [
+          {
+            "id": "guard",
+            "star": 1
+          },
+          {
+            "id": "master",
+            "star": 2
+          },
+          {
+            "id": "panda",
+            "star": 1
+          },
+          {
+            "id": "ark",
+            "star": 1
+          },
+          {
+            "id": "fish",
+            "star": 1
+          },
+          {
+            "id": "guard",
+            "star": 1
+          },
+          {
+            "id": "panda",
+            "star": 1
+          },
+          {
+            "id": "dragonfly",
+            "star": 1
+          }
+        ]
+      }
+    }
+  ]
+}

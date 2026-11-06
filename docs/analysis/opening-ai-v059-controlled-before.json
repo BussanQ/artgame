@@ -1,0 +1,230 @@
+{
+  "createdAt": "2026-11-06T06:39:46.721Z",
+  "kind": "public-score-projections-of-real-paid-round14-states-not-added-campaigns",
+  "rows": [
+    {
+      "path": "tmp/opening-ai-v059-reserve-standard-rotation-1.json",
+      "sha256": "415c1da07fc4862e367895b97b578c760e64fac7e1c637b7cc941b13b57569ae",
+      "stage": "after actual paid refresh",
+      "difficulty": "standard",
+      "mode": "rotation",
+      "round": 14,
+      "level": 7,
+      "gold": 29,
+      "hp": 43,
+      "held": [
+        {
+          "id": "master",
+          "star": 2,
+          "position": 36
+        }
+      ],
+      "baseline": {
+        "lineup": [
+          "master2",
+          "elephant2",
+          "venombeast1",
+          "wolf1",
+          "acolyte2",
+          "deer1",
+          "cannon1"
+        ],
+        "static": 1997.3950419049775,
+        "tactical": 10110.09111111111
+      },
+      "combo": null,
+      "quoteCost": 4,
+      "hypotheticalSaleUid": 275
+    },
+    {
+      "path": "tmp/opening-ai-v059-reserve-veteran-classic-2.json",
+      "sha256": "c24220cf5a67a1e400739d4600b0ec79b40b5d25e56deafc2d0dc0f370fd3a82",
+      "stage": "after actual paid refresh",
+      "difficulty": "veteran",
+      "mode": "classic",
+      "round": 14,
+      "level": 7,
+      "gold": 37,
+      "hp": 81,
+      "held": [
+        {
+          "id": "master",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "id": "panda",
+          "star": 1,
+          "position": null
+        }
+      ],
+      "baseline": {
+        "lineup": [
+          "guard2",
+          "shieldthrall1",
+          "lion1",
+          "vajra1",
+          "bull2",
+          "sniper1",
+          "master2"
+        ],
+        "static": 2197.239388952941,
+        "tactical": -10276.737345160287
+      },
+      "combo": {
+        "lineup": [
+          "master2",
+          "panda1",
+          "monk1",
+          "bull2",
+          "guard2",
+          "lion1",
+          "sniper1"
+        ],
+        "static": 1940.1368770099364,
+        "tactical": 264.86311151241125,
+        "winner": null,
+        "seconds": 40,
+        "monk": {
+          "formed": 2,
+          "pulses": 14,
+          "hits": 47,
+          "energyRemoved": 87,
+          "interrupted": 0
+        }
+      },
+      "quoteCost": 4,
+      "hypotheticalSaleUid": 255
+    },
+    {
+      "path": "tmp/opening-ai-v059-reserve-veteran-classic-3.json",
+      "sha256": "c335c8907fa9cb73872222744a8830ee30157690e42527ed31d2431d58486b10",
+      "stage": "after actual paid purchase",
+      "difficulty": "veteran",
+      "mode": "classic",
+      "round": 14,
+      "level": 7,
+      "gold": 37,
+      "hp": 81,
+      "held": [
+        {
+          "id": "master",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "id": "panda",
+          "star": 1,
+          "position": null
+        },
+        {
+          "id": "panda",
+          "star": 1,
+          "position": null
+        }
+      ],
+      "baseline": {
+        "lineup": [
+          "guard2",
+          "shieldthrall1",
+          "lion1",
+          "vajra1",
+          "bull2",
+          "sniper1",
+          "master2"
+        ],
+        "static": 2197.239388952941,
+        "tactical": -10276.737345160287
+      },
+      "combo": {
+        "lineup": [
+          "master2",
+          "panda1",
+          "monk1",
+          "bull2",
+          "guard2",
+          "lion1",
+          "sniper1"
+        ],
+        "static": 1940.1368770099364,
+        "tactical": 264.86311151241125,
+        "winner": null,
+        "seconds": 40,
+        "monk": {
+          "formed": 2,
+          "pulses": 14,
+          "hits": 47,
+          "energyRemoved": 87,
+          "interrupted": 0
+        }
+      },
+      "quoteCost": 4,
+      "hypotheticalSaleUid": 161
+    },
+    {
+      "path": "tmp/opening-ai-v059-reserve-veteran-classic-4.json",
+      "sha256": "72d4a15a70dabd402026625cea8fae91f5ab58e2a229cf5aad158b7b1e9f3910",
+      "stage": "after actual paid purchase",
+      "difficulty": "veteran",
+      "mode": "classic",
+      "round": 14,
+      "level": 7,
+      "gold": 34,
+      "hp": 81,
+      "held": [
+        {
+          "id": "master",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "id": "panda",
+          "star": 1,
+          "position": null
+        },
+        {
+          "id": "panda",
+          "star": 1,
+          "position": null
+        }
+      ],
+      "baseline": {
+        "lineup": [
+          "guard2",
+          "bull2",
+          "lion1",
+          "ark1",
+          "shieldthrall1",
+          "vajra1",
+          "bonedragon1"
+        ],
+        "static": 2307.880834950757,
+        "tactical": 10333.518922305766
+      },
+      "combo": {
+        "lineup": [
+          "master2",
+          "panda1",
+          "monk1",
+          "bull2",
+          "guard2",
+          "lion1",
+          "sniper1"
+        ],
+        "static": 1940.1368770099364,
+        "tactical": 264.86311151241125,
+        "winner": null,
+        "seconds": 40,
+        "monk": {
+          "formed": 2,
+          "pulses": 14,
+          "hits": 47,
+          "energyRemoved": 87,
+          "interrupted": 0
+        }
+      },
+      "quoteCost": 4,
+      "hypotheticalSaleUid": 257
+    }
+  ]
+}

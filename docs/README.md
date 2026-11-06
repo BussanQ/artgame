@@ -1,6 +1,42 @@
 # 赤潮网页自走棋：资料与开发方案
 
-当前增量：[0.48罗汉气波掌](design/qi.md) · [史料与本地适配](research/qi-history.json) · [ImageGen形象及完整提示词](research/qi-assets.json) · [默认采样](analysis/qi-v048.json) · [步兵采样](analysis/qi-v048-infantry.json)。375项必要检查、71组旧回放、24局617回合完成；当前仍为63种，完整单机目标继续推进。
+当前界面改进：[0.59中期流程与备战装备提示](design/manual-campaign-v059.md) · [实际检查点与核算](analysis/manual-campaign-v059.json)。R10–18正常经营、合成装备及多种三/四费二星已验证，22项相关检查及构建通过；用户要求减少对战测试后停在R19准备并保存，未宣称完成整局。后续优先功能开发，避免重复完整局和大批采样。
+
+当前策略：[0.59开场组合经营](design/opening-ai.md) · [四策略配对](analysis/opening-ai-v059-comparison.json) · [真实满席事务](analysis/opening-ai-v059-controlled-selected.json) · [售前比较修正](analysis/opening-ai-v059-sale-baseline.json) · [正常界面](analysis/opening-ai-v059-ui.json) · [必要验证](analysis/opening-ai-v059-validation.json)。395项必要用例及构建通过，当前24局628轮有正式AI三熊猫与PvP施法，正常对局已至第10轮准备。仍未完成整体平衡、当前目录多构筑长局与真实设备验收；以下记录保留当时状态。
+
+最新能力：[0.59禅师秘法球](design/secret-orb.md) · [原始字段与边界](research/secret-orb-history.json) · [内置ImageGen提示词/资产](research/secret-orb-assets.json) · [经营对照](analysis/secret-orb-v059-comparison.json) · [32版本路由](analysis/inheritance-v059.json) · [实际界面](analysis/secret-orb-v059-ui.json) · [验证清单](analysis/secret-orb-v059-validation.json)。1125项必要检查、197组旧完整回放、普通四费购买/穿戴/刷新恢复与六轮流程完成。正式AI禅师覆盖仍为0，整体平衡和完整目标未完成；下方历史状态保留。
+
+最新能力：[0.58风魔之刃](design/shuriken.md) · [历史字段与适配](research/shuriken-history.json) · [内置ImageGen提示词及资产](research/shuriken-assets.json) · [经营对照](analysis/shuriken-v058-comparison.json) · [31版本路由](analysis/inheritance-v058.json) · [界面证据](analysis/shuriken-v058-ui.json) · [验证清单](analysis/shuriken-v058-validation.json)。892项必要检查与158组旧完整回放通过，普通三费购买/穿戴/刷新、阵亡后刃阵继续及手机详情已验收。禅师仍为原型，AI熊猫覆盖和完整目标未完成；下方各轮状态按当时版本保留。
+
+当前修正：[0.57无式三目标与嘲讽](design/wushi-control.md) · [客户端原图和字段](research/wushi-control-history.json) · [30版本路由](analysis/inheritance-v057.json) · [正常经营配对](analysis/wushi-control-v057-comparison.json) · [界面证据](analysis/wushi-control-v057-ui.json) · [验证清单](analysis/wushi-control-v057-validation.json)。688项必要检查和152条0.56旧完整战斗SHA通过，174项最终文案复核不重复计数；新旧回放、资源保留、转火详情及390/320px已核对。总体难度与完整目标仍未验收，以下保留历史状态。
+
+当前能力增量：[0.56武僧无式](design/wushi.md) · [历史字段](research/wushi-history.json) · [生成资产](research/wushi-assets.json) · [29版本路由](analysis/inheritance-v056.json) · [正常经营对照](analysis/wushi-v056-comparison.json) · [界面证据](analysis/wushi-v056-ui.json) · [验证清单](analysis/wushi-v056-validation.json)。514项必要检查和173条旧战斗SHA通过；自然二星、装备保留与正常前三轮已有直接证据。标准/挑战代理名次退步，整体目标保持进行中；以下段落保留各轮历史状态。
+
+当前策略增量：[公开对手布阵与控制位经营](design/scouting.md) · [受控选阵](analysis/scouting-v055-controlled.json) · [正常经营对照](analysis/scouting-v055-comparison.json) · [计算测量](analysis/scouting-v055-performance.json) · [界面证据](analysis/scouting-v055-ui.json) · [验证清单](analysis/scouting-v055-validation.json)。442项必要检查和前三轮正常UI流程通过；当前目录图鉴/连携及320px长弹窗关闭已补验。三星样本和正式AI树妖覆盖仍下降，整体目标继续推进。以下规则与能力段落保留各轮当时状态。
+
+当前修复：[0.55连携与进化继承](design/continuity.md) · [28版本路由审计](analysis/inheritance-v055.json) · [三版本经营对比](analysis/continuity-v055-comparison.json) · [验证清单](analysis/continuity-v055-validation.json)。701项必要检查、146组0.54旧回放及12局307轮完成；自然三星恢复至2局，标准/挑战名次退步，玩家树妖仍无覆盖。0.54原报告保留，连携/进化回退使其不能仅用于解释树妖或AI估值。
+当前能力增量：[0.54树妖丛林之怒](design/jungle.md) · [原卡与适配](research/jungle-history.json) · [内置ImageGen提示词](research/jungle-assets.json) · [经营对比](analysis/jungle-v054-comparison.json) · [界面边界](analysis/jungle-v054-ui.json) · [最终验证](analysis/jungle-v054-validation.json)。376项必要检查、123组旧回放通过，12局318轮有对手树妖两段控制；玩家树妖与自然三星缺样本。浏览器超时后的新局图鉴/退出演示复核待补，多构筑与真实设备等完整目标继续推进。
+最新整局验收：[0.53 标准对局与终局装备回顾](design/manual-campaign-v053.md) · [80个检查点、26条战报与独立核算](analysis/manual-campaign-v053.json)。第26回合第4名，十人口、两种四费二星，野怪7/7；没有自然三星或五费二星。新增上轮分析、修复可见入口焦点与淘汰后的装备/持有人回顾，57项必要检查及构建通过。多构筑、总体难度、统一历史能力与真实设备仍待推进。
+
+当前能力增量：[0.53天师雷暴](design/thunderstorm.md) · [史料与适配](research/thunderstorm-history.json) · [ImageGen提示词](research/thunderstorm-assets.json) · [经营对比](analysis/thunderstorm-v053-comparison.json) · [界面证据](analysis/thunderstorm-v053-ui.json)。360项必要检查、111组旧回放通过；一费贯穿削能、新晶核形象及正常首轮购买/结算/恢复已验收。标准档采样退步、多构筑完整局与真实设备仍需继续。
+
+此前增量：[童子福音](design/gospel.md)及[0.52经营对比](analysis/gospel-v052-comparison.json)。
+
+此前整局验收：[0.51 当前目录完整UI对局与重开确认](design/manual-campaign-v051.md) · [78个检查点和30条战报](analysis/manual-campaign-v051.json)。标准局第1名，三枚自然三星、二星五费与十人口，野怪7/8；修复终局备战异虫漏计，59项必要检查及构建通过。新目录图鉴、终局恢复、首末轮回放与窄屏入口已补验，整体目标继续推进。
+
+0.51能力记录：[0.51雷神锁链](design/lightning.md) · [史料与本地适配](research/lightning-history.json) · [经营对比](analysis/chain-v051-comparison.json) · [已完成及缺失的界面证据](analysis/lightning-v051-ui.json)。474项必要检查、167组旧回放与新版12局316回合完成；三费物理核心有自然三星样本，挑战档、同版本能力和完整人工／真实设备体验仍需继续。
+
+0.50能力记录：[0.50摩托焦油弹](design/tar.md) · [原公告与适配边界](research/tar-history.json) · [正常经营对比](analysis/tar-v050-comparison.json) · [界面记录](analysis/tar-v050-ui.json)。黏附倒计时、延迟范围爆炸、独立演示和历史兼容已接入；352项必要检查、156组旧回放及12局304回合完成，整体难度和最终体验仍需推进。
+
+此前界面验收：[0.49完整长局与面板对调](design/manual-campaign-v049.md) · [102个界面检查点和30条战报](analysis/manual-campaign-v049.json)。旧目录标准局第3名，三星爆裂虫/蜘蛛/天师及五费二星铁巨神自然成型，8/8野怪通过；修复手机详情点击遮挡与长弹窗关闭。18项必要模块及构建通过；新目录长局和真实设备仍待验收。
+
+最新经营修正：[高费核心收集与取舍](design/ai-core-collection.md)。134项必要模块、前后对照及构筑覆盖共36局924回合；当前24局中10局出现自然三星、12局上过五费二星，整体难度和真实设备体验仍需继续验收。
+
+当前经营修正：[后期追星与投入策略](design/ai-progression.md)。130项必要模块检查及前后24局634回合对比；自然三星已有正常经济样本，高费核心和整体难度仍继续推进。
+
+当前增量：[0.49饕餮与整局价格目录](design/taotie.md) · [公告、原表与适配](research/taotie-history.json) · [正常经营采样](analysis/taotie-v049.json) · [兽群偏好采样](analysis/taotie-v049-beasts.json)。本轮补齐证据并修正旧局禁用概率及分析标题；178项必要检查、76组旧回放与12局321回合完成。自然三星、高费核心和整体单机验收仍未完成。
+
+上一增量：[0.48罗汉气波掌](design/qi.md) · [史料与本地适配](research/qi-history.json) · [ImageGen形象及完整提示词](research/qi-assets.json) · [默认采样](analysis/qi-v048.json) · [步兵采样](analysis/qi-v048-infantry.json)。375项必要检查、71组旧回放、24局617回合完成；当前仍为63种，完整单机目标继续推进。
 上一增量：[0.47空蟹极光成长](design/aurora.md) · [客户端卡与取舍](research/aurora-history.json) · [新ImageGen形象及提示词](research/aurora-assets.json) · [默认风格采样](analysis/aurora-v047.json) · [舰队风格采样](analysis/aurora-v047-fleet.json)。370项必要检查、64组旧回放与24局596回合验证完成；自然三星、高阶构筑、其他历史能力和整体体验仍在推进。
 
 [0.46 空援协同](design/coalitions.md)：修正八项羁绊的门槛、累计与受益范围，补齐13种族随机禁用（含骑兵）；新增九对九演示、陆行者冲突提示及手机详情独立滚动。777项必要检查、58组旧回放与36局940回合通过。自然最高档构筑、兵种同版本能力、高星与难度、真实设备体验继续推进。 [原图与边界](research/coalitions-history.json) · [正常经济采样](analysis/coalitions-v046.json)。

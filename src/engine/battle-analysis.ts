@@ -4,6 +4,14 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>,"formed"|"pulses"|"hits"|"energyRemoved"|"interrupted">;
+  shuriken?: Pick<NonNullable<Fighter["shuriken"]>, "launched" | "landings" | "pulses" | "hits" | "interrupted">;
+  wushi?: Fighter["wushi"];
+  jungle?: Fighter["jungle"];
+  storm?: Pick<NonNullable<Fighter["storm"]>, "launched" | "hits" | "energyRemoved">;
+  gospelAura?: Fighter["gospelAura"];
+  lightning?: { attacks: number; bounces: number; damage: number };
+  tar?: Pick<NonNullable<Fighter["tar"]>, "launched" | "detonated">;
   taotie?: Fighter["taotie"];
   aurora?: Fighter["aurora"];
   qiSkill?: true;
@@ -37,6 +45,21 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.secretOrb ? {secretOrb:{formed:f.secretOrb.formed,pulses:f.secretOrb.pulses,
+      hits:f.secretOrb.hits,energyRemoved:f.secretOrb.energyRemoved,interrupted:f.secretOrb.interrupted}} : {}),
+    ...(f.shuriken ? { shuriken: { launched:f.shuriken.launched,landings:f.shuriken.landings,
+      pulses:f.shuriken.pulses,hits:f.shuriken.hits,interrupted:f.shuriken.interrupted } } : {}),
+    ...(f.wushi ? { wushi: structuredClone(f.wushi) } : {}),
+    ...(f.jungle ? { jungle: { ...f.jungle } } : {}),
+    ...(f.storm ? { storm: { launched: f.storm.launched, hits: f.storm.hits,
+      energyRemoved: f.storm.energyRemoved } } : {}),
+    ...(f.gospelAura ? { gospelAura: structuredClone(f.gospelAura) } : {}),
+    ...(f.lightningChain
+      ? { lightning: { attacks: 0, bounces: 0, damage: 0 } }
+      : {}),
+    ...(f.tar
+      ? { tar: { launched: f.tar.launched, detonated: f.tar.detonated } }
+      : {}),
     ...(f.taotie ? { taotie: structuredClone(f.taotie) } : {}),
     ...(f.aurora ? { aurora: { ...f.aurora } } : {}),
     ...(f.qiSkill ? { qiSkill: true as const } : {}),
@@ -87,6 +110,13 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
       const source = units.get(event.attacker),
         target = units.get(event.target);
       if (source) {
+        if (source.lightning && event.chainHop !== undefined) {
+          if (event.chainHop === 0) source.lightning.attacks++;
+          else {
+            source.lightning.bounces++;
+            source.lightning.damage += event.amount;
+          }
+        }
         if (source.peakGale !== undefined)
           source.peakGale = Math.max(source.peakGale, event.gale ?? 0);
         source.damage += event.amount;
@@ -117,7 +147,7 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
       const source = units.get(effect.source);
       if (source && effect.kind === "cast") source.casts++;
       if (source && effect.kind === "silence") {
-        if (["施法中断", "蓄力中断"].includes(effect.name))
+        if (["施法中断", "蓄力中断", "飞镖蓄力中断", "秘法球中断"].includes(effect.name))
           source.interruptions++;
         if (effect.name === "目标丢失") source.lostTargets++;
       }

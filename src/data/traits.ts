@@ -1,4 +1,4 @@
-import type { CombatVersion, Trait } from "../engine/types";
+import { hasCoalitionRules, type CombatVersion, type Trait } from "../engine/types";
 export interface TraitBonus {
   airGroundBonus?: number;
   damageMana?: number;
@@ -344,10 +344,9 @@ export const WILDFRONT_TRAIT_TIERS: Record<Trait, TraitTier[]> = {
   })),
 };
 export function traitTiers(version: CombatVersion) {
-  return version === "coalitions" ||
-    version === "aurora" ||
-    version === "qi" ||
-    version === "taotie"
+  // Preserve 0.54's accidental fallback in already recorded battles. Newer
+  // versions inherit the recovered table through the central capability guard.
+  return hasCoalitionRules(version) && version !== "jungle"
     ? COALITION_TRAIT_TIERS
     : version === "lineages"
       ? LINEAGE_TRAIT_TIERS

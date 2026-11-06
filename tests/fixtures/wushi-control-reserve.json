@@ -1,0 +1,3929 @@
+{
+  "rules": "singleplayer-0.56",
+  "source": {
+    "kind": "actual-paid-standard-proxy-prepare",
+    "path": "tmp/wushi-v056-pandas-standard-classic-173.json",
+    "profile": "pandas",
+    "seed": 173,
+    "round": 20,
+    "sha256": "e339b2bfb55efb6080814190a53ae2ec729b78b87836a6f293b8de042a977f04",
+    "report": "docs/analysis/wushi-v056-pandas.json"
+  },
+  "game": {
+    "seed": 1020778782,
+    "catalogVersion": "wushi",
+    "combatVersion": "wushi",
+    "difficulty": "standard",
+    "nextUid": 391,
+    "round": 20,
+    "phase": "prepare",
+    "players": [
+      {
+        "id": 0,
+        "name": "你 · 指挥官",
+        "hp": 43,
+        "gold": 60,
+        "level": 8,
+        "xp": 6,
+        "streak": -2,
+        "pieces": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": 44,
+            "items": [
+              "staff",
+              "staff"
+            ]
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 245,
+            "defId": "ark",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 269,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 311,
+            "defId": "bull",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 321,
+            "defId": "deer",
+            "star": 2,
+            "position": 43,
+            "items": []
+          },
+          {
+            "uid": 377,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 379,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "shop": [
+          "venombeast",
+          "thunderlord",
+          "bull",
+          "deer",
+          "winddragon"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 1,
+        "name": "北境哨兵",
+        "aiProfile": "psychic",
+        "hp": 31,
+        "gold": 16,
+        "level": 9,
+        "xp": 5,
+        "streak": 1,
+        "pieces": [
+          {
+            "uid": 5,
+            "defId": "birdrider",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 43,
+            "defId": "stormcaller",
+            "star": 3,
+            "position": 63,
+            "items": [
+              "crystal",
+              "staff",
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 140,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 141,
+            "defId": "birdrider",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 248,
+            "defId": "adept",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 273,
+            "defId": "wasp",
+            "star": 2,
+            "position": 56,
+            "copies": 2,
+            "items": []
+          },
+          {
+            "uid": 274,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 59,
+            "items": []
+          },
+          {
+            "uid": 276,
+            "defId": "thunderlord",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 278,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 57,
+            "items": []
+          },
+          {
+            "uid": 326,
+            "defId": "ironape",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 334,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 335,
+            "defId": "phoenix",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 336,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 61,
+            "items": []
+          },
+          {
+            "uid": 337,
+            "defId": "thunderlord",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 338,
+            "defId": "adept",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 380,
+            "defId": "shark",
+            "star": 1,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "shop": [
+          "eel",
+          "birdrider",
+          "spider",
+          "fish",
+          "shieldthrall"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 2,
+        "name": "渡鸦",
+        "aiProfile": "fleet",
+        "hp": 19,
+        "gold": 28,
+        "level": 9,
+        "xp": 5,
+        "streak": -4,
+        "pieces": [
+          {
+            "uid": 143,
+            "defId": "skycrab",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "warblade",
+              "staff"
+            ]
+          },
+          {
+            "uid": 211,
+            "defId": "turtle",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 213,
+            "defId": "bull",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 235,
+            "defId": "chariot",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 249,
+            "defId": "chariot",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 250,
+            "defId": "wolf",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 251,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 61,
+            "items": []
+          },
+          {
+            "uid": 253,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 279,
+            "defId": "eel",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 328,
+            "defId": "skycrab",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 329,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 59,
+            "items": []
+          },
+          {
+            "uid": 342,
+            "defId": "eel",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 343,
+            "defId": "eel",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 344,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 57,
+            "items": []
+          },
+          {
+            "uid": 364,
+            "defId": "skycrab",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 365,
+            "defId": "bull",
+            "star": 1,
+            "position": 37,
+            "items": []
+          }
+        ],
+        "shop": [
+          "bladethrall",
+          "ark",
+          "winddragon",
+          "shieldthrall",
+          "ironape"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 3,
+        "name": "荒原旅者",
+        "aiProfile": "armor",
+        "hp": 35,
+        "gold": 19,
+        "level": 9,
+        "xp": 5,
+        "streak": 1,
+        "pieces": [
+          {
+            "uid": 19,
+            "defId": "stormcaller",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 146,
+            "defId": "ironape",
+            "star": 2,
+            "position": 34,
+            "items": [
+              "plate",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 148,
+            "defId": "wolf",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 167,
+            "defId": "blastbug",
+            "star": 2,
+            "position": 36,
+            "copies": 2,
+            "items": []
+          },
+          {
+            "uid": 176,
+            "defId": "motorcycle",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "blade",
+              "bloodblade"
+            ]
+          },
+          {
+            "uid": 178,
+            "defId": "stormcaller",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 214,
+            "defId": "ark",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 219,
+            "defId": "chariot",
+            "star": 1,
+            "position": 61,
+            "items": []
+          },
+          {
+            "uid": 255,
+            "defId": "bomber",
+            "star": 2,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 282,
+            "defId": "chariot",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 283,
+            "defId": "irondog",
+            "star": 2,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 284,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 59,
+            "items": []
+          },
+          {
+            "uid": 330,
+            "defId": "ironape",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 366,
+            "defId": "titan",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 383,
+            "defId": "motorcycle",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 386,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "shop": [
+          "whale",
+          "irondog",
+          "bull",
+          "bull",
+          "ark"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 4,
+        "name": "零号机",
+        "aiProfile": "pandas",
+        "hp": 73,
+        "gold": 52,
+        "level": 8,
+        "xp": 31,
+        "streak": 2,
+        "pieces": [
+          {
+            "uid": 22,
+            "defId": "panda",
+            "star": 2,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 55,
+            "defId": "guard",
+            "star": 2,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 57,
+            "defId": "fish",
+            "star": 2,
+            "position": 61,
+            "items": [
+              "blade",
+              "sage"
+            ]
+          },
+          {
+            "uid": 59,
+            "defId": "axethrall",
+            "star": 2,
+            "position": 45,
+            "items": []
+          },
+          {
+            "uid": 89,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 124,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 179,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 194,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 220,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 223,
+            "defId": "grenadier",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 240,
+            "defId": "monk",
+            "star": 2,
+            "position": 47,
+            "items": []
+          },
+          {
+            "uid": 241,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 258,
+            "defId": "dragonfly",
+            "star": 2,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 314,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 55,
+            "items": []
+          },
+          {
+            "uid": 388,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "shop": [
+          "arhat",
+          "wasp",
+          "wasp",
+          "turtle",
+          "cavalry"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 5,
+        "name": "白夜",
+        "aiProfile": "beasts",
+        "hp": 55,
+        "gold": 25,
+        "level": 8,
+        "xp": 31,
+        "streak": 3,
+        "pieces": [
+          {
+            "uid": 92,
+            "defId": "elephant",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "bloodhawk",
+            "star": 2,
+            "position": 34,
+            "items": [
+              "plate"
+            ]
+          },
+          {
+            "uid": 127,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 128,
+            "defId": "flametrooper",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 129,
+            "defId": "lion",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 154,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 156,
+            "defId": "phoenix",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 242,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 261,
+            "defId": "bull",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 289,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 294,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 353,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 354,
+            "defId": "venombeast",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 369,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 389,
+            "defId": "shark",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 390,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "shop": [
+          "chariot",
+          "vajra",
+          "bloodhawk",
+          "grenadier",
+          "vajra"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 6,
+        "name": "深海回声",
+        "aiProfile": "insects",
+        "hp": 0,
+        "gold": 4,
+        "level": 8,
+        "xp": 25,
+        "streak": -1,
+        "pieces": [],
+        "shop": [],
+        "locked": false,
+        "inventory": [],
+        "eliminatedRound": 19
+      },
+      {
+        "id": 7,
+        "name": "铁幕",
+        "aiProfile": "infantry",
+        "hp": 44,
+        "gold": 29,
+        "level": 9,
+        "xp": 0,
+        "streak": 6,
+        "pieces": [
+          {
+            "uid": 32,
+            "defId": "vajra",
+            "star": 2,
+            "position": 46,
+            "items": [
+              "core",
+              "warblade"
+            ]
+          },
+          {
+            "uid": 33,
+            "defId": "lion",
+            "star": 2,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 70,
+            "defId": "sniper",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 72,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 230,
+            "defId": "turtle",
+            "star": 2,
+            "position": 47,
+            "items": []
+          },
+          {
+            "uid": 244,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 44,
+            "items": []
+          },
+          {
+            "uid": 265,
+            "defId": "vajra",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 267,
+            "defId": "cannon",
+            "star": 1,
+            "position": 63,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 308,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 309,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 319,
+            "defId": "staffthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 320,
+            "defId": "shieldthrall",
+            "star": 1,
+            "position": 52,
+            "items": []
+          },
+          {
+            "uid": 332,
+            "defId": "wolf",
+            "star": 1,
+            "position": 45,
+            "items": []
+          },
+          {
+            "uid": 360,
+            "defId": "specialist",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 373,
+            "defId": "vajra",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 374,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "shop": [
+          "deer",
+          "ghostjet",
+          "lion",
+          "motorcycle",
+          "cannon"
+        ],
+        "locked": false,
+        "inventory": []
+      }
+    ],
+    "pool": {
+      "lingjiu": 30,
+      "elephant": 43,
+      "venombeast": 27,
+      "staffthrall": 14,
+      "shieldthrall": 12,
+      "bladethrall": 22,
+      "swordthrall": 30,
+      "axethrall": 42,
+      "infantry": 45,
+      "guard": 36,
+      "pangolin": 45,
+      "panda": 35,
+      "sniper": 27,
+      "lion": 25,
+      "chariot": 25,
+      "monk": 22,
+      "wolf": 15,
+      "cannon": 13,
+      "master": 39,
+      "titan": 9,
+      "cavalry": 28,
+      "dragonfly": 22,
+      "shadowblade": 10,
+      "turtle": 10,
+      "tiger": 10,
+      "bull": 16,
+      "fish": 37,
+      "deer": 23,
+      "adept": 28,
+      "shark": 13,
+      "eyebug": 45,
+      "blastbug": 28,
+      "spider": 24,
+      "wasp": 11,
+      "repair": 45,
+      "bomber": 27,
+      "ghostjet": 24,
+      "ark": 11,
+      "skycrab": 25,
+      "eel": 19,
+      "vine": 30,
+      "bonedragon": 10,
+      "treant": 10,
+      "acolyte": 30,
+      "stormcaller": 30,
+      "thunderlord": 22,
+      "bat": 24,
+      "bloodhawk": 16,
+      "skytoad": 10,
+      "vajra": 23,
+      "arhat": 24,
+      "winddragon": 8,
+      "phoenix": 8,
+      "whale": 9,
+      "medic": 43,
+      "flametrooper": 26,
+      "grenadier": 11,
+      "motorcycle": 20,
+      "irondog": 41,
+      "specialist": 24,
+      "birdrider": 38,
+      "ironape": 24,
+      "ironrooster": 12
+    },
+    "message": "防守失利。调整站位与羁绊，再战一轮。",
+    "history": [
+      {
+        "round": 1,
+        "combatVersion": "wushi",
+        "opponentId": -1,
+        "opponentName": "荒原斥候",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 5,
+        "hp": 100,
+        "gold": 10,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": 43,
+            "items": []
+          },
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 32,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 900000100,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 35,
+            "encounterPower": 0.35,
+            "items": []
+          },
+          {
+            "uid": 900000101,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 37,
+            "encounterPower": 0.35,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 4,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "crystal"
+      },
+      {
+        "round": 2,
+        "combatVersion": "wushi",
+        "opponentId": -1,
+        "opponentName": "幽影狼群",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 5,
+        "hp": 100,
+        "gold": 6,
+        "left": [
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "crystal"
+            ]
+          }
+        ],
+        "right": [
+          {
+            "uid": 900000200,
+            "defId": "wolf",
+            "star": 1,
+            "position": 34,
+            "encounterPower": 0.5,
+            "items": []
+          },
+          {
+            "uid": 900000201,
+            "defId": "wolf",
+            "star": 1,
+            "position": 37,
+            "encounterPower": 0.5,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 41,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "coil"
+      },
+      {
+        "round": 3,
+        "combatVersion": "wushi",
+        "opponentId": -1,
+        "opponentName": "狮王营地",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 5,
+        "hp": 100,
+        "gold": 7,
+        "left": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "crystal"
+            ]
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil"
+            ]
+          }
+        ],
+        "right": [
+          {
+            "uid": 900000300,
+            "defId": "lion",
+            "star": 1,
+            "position": 35,
+            "encounterPower": 0.75,
+            "items": []
+          },
+          {
+            "uid": 900000301,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 34,
+            "encounterPower": 0.5,
+            "items": []
+          },
+          {
+            "uid": 900000302,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 37,
+            "encounterPower": 0.5,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 78,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "crystal"
+      },
+      {
+        "round": 4,
+        "combatVersion": "wushi",
+        "opponentId": 4,
+        "opponentName": "零号机",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 8,
+        "income": 5,
+        "hp": 92,
+        "gold": 11,
+        "left": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "staff"
+            ]
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil"
+            ]
+          }
+        ],
+        "right": [
+          {
+            "uid": 22,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 23,
+            "defId": "repair",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "crystal"
+            ]
+          },
+          {
+            "uid": 55,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 78,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 5,
+        "combatVersion": "wushi",
+        "opponentId": 5,
+        "opponentName": "白夜",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 7,
+        "hp": 92,
+        "gold": 18,
+        "left": [
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "staff"
+            ]
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil"
+            ]
+          }
+        ],
+        "right": [
+          {
+            "uid": 63,
+            "defId": "sniper",
+            "star": 1,
+            "position": 56,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 91,
+            "defId": "cavalry",
+            "star": 1,
+            "position": 35,
+            "items": [
+              "plate"
+            ]
+          },
+          {
+            "uid": 92,
+            "defId": "elephant",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 78,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 6,
+        "combatVersion": "wushi",
+        "opponentId": 6,
+        "opponentName": "深海回声",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 9,
+        "hp": 92,
+        "gold": 24,
+        "left": [
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "staff"
+            ]
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil"
+            ]
+          }
+        ],
+        "right": [
+          {
+            "uid": 65,
+            "defId": "chariot",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 68,
+            "defId": "vajra",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 96,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "core"
+            ]
+          },
+          {
+            "uid": 110,
+            "defId": "birdrider",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "warblade"
+            ]
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 78,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 112,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 113,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 7,
+        "combatVersion": "wushi",
+        "opponentId": 7,
+        "opponentName": "铁幕",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 6,
+        "income": 8,
+        "hp": 86,
+        "gold": 24,
+        "left": [
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "staff"
+            ]
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 138,
+            "defId": "cavalry",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 32,
+            "defId": "vajra",
+            "star": 1,
+            "position": 34,
+            "items": [
+              "core"
+            ]
+          },
+          {
+            "uid": 33,
+            "defId": "lion",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 75,
+            "defId": "birdrider",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "warblade"
+            ]
+          },
+          {
+            "uid": 135,
+            "defId": "skycrab",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 163,
+            "defId": "lion",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 78,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 113,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 8,
+        "combatVersion": "wushi",
+        "opponentId": 1,
+        "opponentName": "北境哨兵",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 10,
+        "hp": 86,
+        "gold": 33,
+        "left": [
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "staff"
+            ]
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 36,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 138,
+            "defId": "cavalry",
+            "star": 1,
+            "position": 34,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 6,
+            "defId": "irondog",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 7,
+            "defId": "axethrall",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "rageblade",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 9,
+            "defId": "ironape",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 43,
+            "defId": "stormcaller",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 140,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 78,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 9,
+        "combatVersion": "wushi",
+        "opponentId": 2,
+        "opponentName": "渡鸦",
+        "kind": "pvp",
+        "winner": null,
+        "damage": 3,
+        "income": 9,
+        "hp": 83,
+        "gold": 38,
+        "left": [
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "staff"
+            ]
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 36,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 34,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 11,
+            "defId": "fish",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "crystal",
+              "warblade"
+            ]
+          },
+          {
+            "uid": 13,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 14,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 143,
+            "defId": "skycrab",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 175,
+            "defId": "deer",
+            "star": 1,
+            "position": 44,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 78,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 138,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 171,
+            "defId": "axethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 10,
+        "combatVersion": "wushi",
+        "opponentId": -1,
+        "opponentName": "遗迹守军",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 9,
+        "hp": 83,
+        "gold": 37,
+        "left": [
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "staff"
+            ]
+          },
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 36,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 138,
+            "defId": "cavalry",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 34,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 900001000,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "encounterPower": 1,
+            "items": []
+          },
+          {
+            "uid": 900001001,
+            "defId": "guard",
+            "star": 2,
+            "position": 36,
+            "encounterPower": 1,
+            "items": []
+          },
+          {
+            "uid": 900001002,
+            "defId": "chariot",
+            "star": 2,
+            "position": 59,
+            "encounterPower": 0.85,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 2,
+            "defId": "venombeast",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 183,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 184,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "crystal"
+      },
+      {
+        "round": 11,
+        "combatVersion": "wushi",
+        "opponentId": 4,
+        "opponentName": "零号机",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 9,
+        "income": 11,
+        "hp": 74,
+        "gold": 40,
+        "left": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 1,
+            "position": 35,
+            "items": [
+              "staff",
+              "crystal"
+            ]
+          }
+        ],
+        "right": [
+          {
+            "uid": 22,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 55,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 57,
+            "defId": "fish",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "sage"
+            ]
+          },
+          {
+            "uid": 59,
+            "defId": "axethrall",
+            "star": 2,
+            "position": 39,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 220,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 223,
+            "defId": "grenadier",
+            "star": 1,
+            "position": 56,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 138,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 184,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 204,
+            "defId": "monk",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 12,
+        "combatVersion": "wushi",
+        "opponentId": 5,
+        "opponentName": "白夜",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 12,
+        "hp": 74,
+        "gold": 37,
+        "left": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "crystal",
+              "staff"
+            ]
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 1,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 91,
+            "defId": "cavalry",
+            "star": 1,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 128,
+            "defId": "flametrooper",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "rageblade",
+              "plate"
+            ]
+          },
+          {
+            "uid": 154,
+            "defId": "wolf",
+            "star": 1,
+            "position": 47,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 156,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 242,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 77,
+            "defId": "medic",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 184,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 204,
+            "defId": "monk",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 13,
+        "combatVersion": "wushi",
+        "opponentId": 6,
+        "opponentName": "深海回声",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 12,
+        "hp": 74,
+        "gold": 40,
+        "left": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "staff",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "wolf",
+            "star": 1,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 96,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "core"
+            ]
+          },
+          {
+            "uid": 110,
+            "defId": "birdrider",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "warblade"
+            ]
+          },
+          {
+            "uid": 157,
+            "defId": "arhat",
+            "star": 1,
+            "position": 61,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 160,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 169,
+            "defId": "bat",
+            "star": 1,
+            "position": 59,
+            "items": []
+          },
+          {
+            "uid": 227,
+            "defId": "grenadier",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 264,
+            "defId": "monk",
+            "star": 1,
+            "position": 43,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 204,
+            "defId": "monk",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 245,
+            "defId": "ark",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 246,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 14,
+        "combatVersion": "wushi",
+        "opponentId": 7,
+        "opponentName": "铁幕",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 10,
+        "income": 12,
+        "hp": 64,
+        "gold": 47,
+        "left": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "crystal",
+              "staff"
+            ]
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 32,
+            "defId": "vajra",
+            "star": 2,
+            "position": 53,
+            "items": [
+              "core"
+            ]
+          },
+          {
+            "uid": 33,
+            "defId": "lion",
+            "star": 2,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 70,
+            "defId": "sniper",
+            "star": 1,
+            "position": 61,
+            "items": []
+          },
+          {
+            "uid": 75,
+            "defId": "birdrider",
+            "star": 2,
+            "position": 62,
+            "items": [
+              "blade",
+              "warblade"
+            ]
+          },
+          {
+            "uid": 182,
+            "defId": "motorcycle",
+            "star": 1,
+            "position": 55,
+            "items": []
+          },
+          {
+            "uid": 230,
+            "defId": "turtle",
+            "star": 2,
+            "position": 47,
+            "items": []
+          },
+          {
+            "uid": 267,
+            "defId": "cannon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 245,
+            "defId": "ark",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 246,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 269,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 15,
+        "combatVersion": "wushi",
+        "opponentId": -1,
+        "opponentName": "狂兽围猎",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 12,
+        "hp": 64,
+        "gold": 47,
+        "left": [
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 45,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 2,
+            "position": 47,
+            "items": [
+              "coil",
+              "staff",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 2,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 245,
+            "defId": "ark",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 311,
+            "defId": "bull",
+            "star": 1,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 312,
+            "defId": "ghostjet",
+            "star": 1,
+            "position": 55,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 900001500,
+            "defId": "lion",
+            "star": 2,
+            "position": 35,
+            "encounterPower": 1.2,
+            "items": []
+          },
+          {
+            "uid": 900001501,
+            "defId": "wolf",
+            "star": 2,
+            "position": 34,
+            "encounterPower": 1,
+            "items": []
+          },
+          {
+            "uid": 900001502,
+            "defId": "wolf",
+            "star": 2,
+            "position": 37,
+            "encounterPower": 1,
+            "items": []
+          },
+          {
+            "uid": 900001503,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 43,
+            "encounterPower": 1,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 36,
+            "defId": "infantry",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 269,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "crystal"
+      },
+      {
+        "round": 16,
+        "combatVersion": "wushi",
+        "opponentId": 2,
+        "opponentName": "渡鸦",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 15,
+        "hp": 64,
+        "gold": 54,
+        "left": [
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 45,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 2,
+            "position": 47,
+            "items": [
+              "staff",
+              "staff",
+              "coil"
+            ]
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 245,
+            "defId": "ark",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 311,
+            "defId": "bull",
+            "star": 1,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 321,
+            "defId": "deer",
+            "star": 1,
+            "position": 55,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 143,
+            "defId": "skycrab",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "staff",
+              "warblade"
+            ]
+          },
+          {
+            "uid": 213,
+            "defId": "bull",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 250,
+            "defId": "wolf",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 251,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 61,
+            "items": []
+          },
+          {
+            "uid": 253,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 279,
+            "defId": "eel",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 329,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 59,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 269,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 322,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 17,
+        "combatVersion": "wushi",
+        "opponentId": 3,
+        "opponentName": "荒原旅者",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 16,
+        "hp": 64,
+        "gold": 56,
+        "left": [
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil",
+              "staff",
+              "staff"
+            ]
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 245,
+            "defId": "ark",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 311,
+            "defId": "bull",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 321,
+            "defId": "deer",
+            "star": 1,
+            "position": 43,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 146,
+            "defId": "ironape",
+            "star": 2,
+            "position": 46,
+            "items": [
+              "plate",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 148,
+            "defId": "wolf",
+            "star": 1,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 167,
+            "defId": "blastbug",
+            "star": 2,
+            "position": 47,
+            "copies": 2,
+            "items": []
+          },
+          {
+            "uid": 176,
+            "defId": "motorcycle",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "blade",
+              "bloodblade"
+            ]
+          },
+          {
+            "uid": 214,
+            "defId": "ark",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 219,
+            "defId": "chariot",
+            "star": 1,
+            "position": 61,
+            "items": []
+          },
+          {
+            "uid": 255,
+            "defId": "bomber",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 284,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 55,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 269,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 322,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 18,
+        "combatVersion": "wushi",
+        "opponentId": 4,
+        "opponentName": "零号机",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 8,
+        "income": 15,
+        "hp": 56,
+        "gold": 61,
+        "left": [
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "staff",
+              "staff",
+              "coil"
+            ]
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 245,
+            "defId": "ark",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 311,
+            "defId": "bull",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 321,
+            "defId": "deer",
+            "star": 1,
+            "position": 43,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 22,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 55,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 57,
+            "defId": "fish",
+            "star": 2,
+            "position": 44,
+            "items": [
+              "sage",
+              "blade"
+            ]
+          },
+          {
+            "uid": 59,
+            "defId": "axethrall",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 223,
+            "defId": "grenadier",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 240,
+            "defId": "monk",
+            "star": 2,
+            "position": 43,
+            "items": []
+          },
+          {
+            "uid": 258,
+            "defId": "dragonfly",
+            "star": 1,
+            "position": 59,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 269,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 322,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 363,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 19,
+        "combatVersion": "wushi",
+        "opponentId": 5,
+        "opponentName": "白夜",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 13,
+        "income": 15,
+        "hp": 43,
+        "gold": 60,
+        "left": [
+          {
+            "uid": 35,
+            "defId": "guard",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 39,
+            "defId": "fish",
+            "star": 2,
+            "position": 44,
+            "items": [
+              "staff",
+              "staff"
+            ]
+          },
+          {
+            "uid": 170,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 205,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil"
+            ]
+          },
+          {
+            "uid": 231,
+            "defId": "bonedragon",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 245,
+            "defId": "ark",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 311,
+            "defId": "bull",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 321,
+            "defId": "deer",
+            "star": 2,
+            "position": 43,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 92,
+            "defId": "elephant",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "bloodhawk",
+            "star": 2,
+            "position": 34,
+            "items": [
+              "plate"
+            ]
+          },
+          {
+            "uid": 129,
+            "defId": "lion",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 154,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "coil",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 156,
+            "defId": "phoenix",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 242,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 261,
+            "defId": "bull",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 294,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 33,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 40,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 114,
+            "defId": "panda",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 207,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 232,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "master",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 269,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 377,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 379,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      }
+    ],
+    "encountersFromRound": 1,
+    "reward": null
+  }
+}

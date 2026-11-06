@@ -1,7 +1,7 @@
 import { catalogCost } from "../data/catalog";
 import { isRecruitable, validBans } from "./rotation";
 import { isAiProfileId } from "../data/ai-profiles";
-import { CURRENT_COMBAT_VERSION } from "./types";
+import { COMBAT_VERSIONS, CURRENT_COMBAT_VERSION } from "./types";
 import { ITEM, COMPONENTS } from "../data/items";
 import {
   LINGJIU_ADDITIONS,
@@ -34,13 +34,13 @@ import {
   IRONAPE_ADDITIONS,
   IRONROOSTER_ADDITIONS,
 } from "../data/units";
-import { isInsect, pieceCopies } from "./progression";
+import { isInsect, mergePieces, pieceCopies } from "./progression";
 import type { Game, Piece, RoundReport } from "./types";
 
 export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
-export const SAVE_SCHEMA = 48;
+export const SAVE_SCHEMA = 58;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -108,6 +108,14 @@ function validLineup(v: unknown): v is Piece[] {
     new Set(v.map((p) => p.uid)).size === v.length
   );
 }
+function validBench(v: unknown): v is Piece[] {
+  return (
+    Array.isArray(v) &&
+    v.length <= RULES.bench &&
+    v.every((piece) => validPiece(piece) && piece.position === null) &&
+    new Set(v.map((piece) => piece.uid)).size === v.length
+  );
+}
 function validReport(v: unknown): v is RoundReport {
   return (
     record(v) &&
@@ -126,36 +134,16 @@ function validReport(v: unknown): v is RoundReport {
     validLineup(v.left) &&
     v.left.length > 0 &&
     validLineup(v.right) &&
-    new Set([...v.left, ...v.right].map((p) => p.uid)).size ===
-      v.left.length + v.right.length
+    (v.bench === undefined || validBench(v.bench)) &&
+    (v.inventory === undefined || validItems(v.inventory, 200)) &&
+    new Set([...v.left, ...v.right, ...(v.bench ?? [])].map((p) => p.uid))
+      .size ===
+      v.left.length + v.right.length + (v.bench?.length ?? 0)
   );
 }
 const validCombatVersion = (version: unknown) =>
   typeof version === "string" &&
-  [
-    "legacy",
-    "tactics",
-    "balanced",
-    "signature",
-    "summons",
-    "legions",
-    "brood",
-    "airsea",
-    "fleet",
-    "metamorph",
-    "infantry",
-    "armored",
-    "puppets",
-    "wildfront",
-    "ambush",
-    "formations",
-    "counterplay",
-    "lineages",
-    "coalitions",
-    "aurora",
-    "qi",
-    "taotie",
-  ].includes(version);
+  COMBAT_VERSIONS.some(known => known === version);
 /** Reject broken money/population/card-pool state before it reaches the engine or UI. */
 export function validGame(value: unknown): value is Game {
   if (!record(value)) return false;
@@ -290,7 +278,7 @@ export function decodeSave(raw: string | null): {
   try {
     const v: unknown = JSON.parse(raw);
     if (!record(v)) return { data: null, status: "damaged" };
-    let migrated = false;
+    let migrated = false, reconcileEvolution = false;
     if (
       integer(v.schema, 1, 47) &&
       record(v.game) &&
@@ -815,9 +803,82 @@ export function decodeSave(raw: string | null): {
       migrated = true;
     }
     if (v.schema === 47 && v.rules === "singleplayer-0.48" && record(v.game)) {
-      if (v.game.phase === "prepare")
-        v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      if (v.game.phase === "prepare") v.game.combatVersion = "taotie";
       v.schema = 48;
+      v.rules = "singleplayer-0.49";
+      migrated = true;
+    }
+    if (v.schema === 48 && v.rules === "singleplayer-0.49" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "taotie";
+      if (v.game.phase === "prepare") v.game.combatVersion = "tar";
+      v.schema = 49;
+      v.rules = "singleplayer-0.50";
+      migrated = true;
+    }
+    if (v.schema === 49 && v.rules === "singleplayer-0.50" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "tar";
+      if (v.game.phase === "prepare") v.game.combatVersion = "lightning";
+      v.schema = 50;
+      v.rules = "singleplayer-0.51";
+      migrated = true;
+    }
+    if (v.schema === 50 && v.rules === "singleplayer-0.51" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "lightning";
+      if (v.game.phase === "prepare")
+        v.game.combatVersion = "gospel";
+      v.schema = 51;
+      v.rules = "singleplayer-0.52";
+      migrated = true;
+    }
+    if (v.schema === 51 && v.rules === "singleplayer-0.52" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "gospel";
+      if (v.game.phase === "prepare") v.game.combatVersion = "thunderstorm";
+      v.schema = 52;
+      v.rules = "singleplayer-0.53";
+      migrated = true;
+    }
+    if (v.schema === 52 && v.rules === "singleplayer-0.53" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "thunderstorm";
+      if (v.game.phase === "prepare") v.game.combatVersion = "jungle";
+      v.schema = 53;
+      v.rules = "singleplayer-0.54";
+      migrated = true;
+    }
+    if (v.schema === 53 && v.rules === "singleplayer-0.54" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "jungle";
+      if (v.game.phase === "prepare") {
+        v.game.combatVersion = "continuity";
+        reconcileEvolution = true;
+      }
+      v.schema = 54;
+      v.rules = "singleplayer-0.55";
+      migrated = true;
+    }
+    if (v.schema === 54 && v.rules === "singleplayer-0.55" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "continuity";
+      if (v.game.phase === "prepare") v.game.combatVersion = "wushi";
+      v.schema = 55;
+      v.rules = "singleplayer-0.56";
+      migrated = true;
+    }
+    if (v.schema === 55 && v.rules === "singleplayer-0.56" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "wushi";
+      if (v.game.phase === "prepare") v.game.combatVersion = "wushi-control";
+      v.schema = 56;
+      v.rules = "singleplayer-0.57";
+      migrated = true;
+    }
+    if (v.schema === 56 && v.rules === "singleplayer-0.57" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "wushi-control";
+      if (v.game.phase === "prepare") v.game.combatVersion = "shuriken";
+      v.schema = 57;
+      v.rules = "singleplayer-0.58";
+      migrated = true;
+    }
+    if (v.schema === 57 && v.rules === "singleplayer-0.58" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "shuriken";
+      if (v.game.phase === "prepare") v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      v.schema = 58;
       v.rules = RULES.version;
       migrated = true;
     }
@@ -836,6 +897,13 @@ export function decodeSave(raw: string | null): {
       typeof v.playback.paused !== "boolean"
     )
       return { data: null, status: "damaged" };
+    // Validate the untrusted record before reconciling pairs that 0.54 left
+    // unmerged. Actual pool copies and every item survive the normal merge path.
+    if (reconcileEvolution) {
+      for (const player of v.game.players.filter(player => player.hp > 0))
+        mergePieces(player, v.game.combatVersion);
+      if (!validGame(v.game)) return { data: null, status: "damaged" };
+    }
     return {
       data: v as unknown as SaveData,
       status: migrated ? "migrated" : "saved",

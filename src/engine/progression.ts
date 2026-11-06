@@ -1,5 +1,5 @@
 import { unitCost } from "../data/catalog";
-import { CURRENT_COMBAT_VERSION } from "./types";
+import { CURRENT_COMBAT_VERSION, hasInsectEvolutionRules } from "./types";
 import { UNIT, UNITS } from "../data/units";
 import type { CombatVersion, Piece, Player } from "./types";
 export const isInsect = (id: string) =>
@@ -21,25 +21,7 @@ export function mergeCount(
   star: number,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
-  if (
-    (version !== "brood" &&
-      version !== "airsea" &&
-      version !== "fleet" &&
-      version !== "metamorph" &&
-      version !== "infantry" &&
-      version !== "armored" &&
-      version !== "puppets" &&
-      version !== "wildfront" &&
-      version !== "ambush" &&
-      version !== "formations" &&
-      version !== "counterplay" &&
-      version !== "lineages" &&
-      version !== "coalitions" &&
-      version !== "aurora" &&
-      version !== "qi" &&
-      version !== "taotie") ||
-    !isInsect(id)
-  )
+  if (!hasInsectEvolutionRules(version) || !isInsect(id))
     return 3;
   const kinds = insectCount(pieces);
   return kinds >= (star === 1 ? 2 : 4) ? 2 : 3;

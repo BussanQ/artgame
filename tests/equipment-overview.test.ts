@@ -6,7 +6,9 @@ import {
   equipmentMarkup,
   equipmentOverview,
   equipmentOverviewMarkup,
+  equipmentView,
 } from "../src/ui/equipment";
+import { pieceInfoMarkup } from "../src/ui/bench-tooltip";
 
 function setup() {
   const game = createGame(123, "classic");
@@ -25,6 +27,25 @@ function setup() {
   ];
   player.inventory = ["blade", "blade", "core"];
   return { game, player };
+}
+
+function finished() {
+  const { game, player } = setup();
+  // Presentation fixture: the final record survives, live ownership is gone.
+  game.phase = "finished";
+  game.history = [{
+    round: 1, combatVersion: game.combatVersion, opponentId: -1,
+    opponentName: "守军", kind: "pve", winner: 1, hp: 0, gold: 10,
+    damage: 100, income: 0,
+    left: structuredClone(player.pieces.filter((p) => p.position !== null)),
+    right: [],
+    bench: structuredClone(player.pieces.filter((p) => p.position === null)),
+    inventory: [...player.inventory],
+  }];
+  player.hp = 0;
+  player.pieces = [];
+  player.inventory = [];
+  return { game, player, last: game.history[0] };
 }
 
 describe("装备工坊总览", () => {
@@ -166,5 +187,77 @@ describe("装备工坊总览", () => {
     expect(workshop).toContain("盾兵 ★ · 备战席 2");
     expect(workshop).toContain("合金刃 ×2");
     expect(workshop).toContain('data-equipment-owner="104"');
+  });
+
+  it("淘汰终局仍展示出战、备战和重复装备，不恢复当前所有权或卡池", () => {
+    const { game, player } = finished(), before = structuredClone(game);
+    const view = equipmentView(game);
+    expect(view).toMatchObject({isFinal: true, inventoryKnown: true, reservesKnown: true});
+    expect(equipmentOverview(view.player).reduce((sum, entry) => sum + entry.total, 0)).toBe(7);
+    const html = equipmentOverviewMarkup(game, true);
+    expect(html).toContain("终局持有 7 件 · 背包 3 件 · 装备中 4 件");
+    expect(html).toContain("查看盾兵1星备战席 2的装备");
+    expect(html).toContain('data-equipment-owner="101"');
+    expect(html).toContain('data-equipment-owner="102"');
+    expect(html).toContain('data-equipment-owner="104"');
+    expect(html).toContain("点击持有人查看最后的星级、装备与阵位");
+    const workshop = equipmentMarkup(game, 101, false);
+    expect(workshop).toContain("3 背包 · 4 已装");
+    expect(workshop).toContain("合成配方 · 10 种</summary>");
+    expect(workshop).not.toContain("种可合成");
+    expect(workshop).not.toContain("data-unequip=");
+    expect(workshop).not.toContain("挑战野怪获取装备");
+    for (const button of workshop.match(/<button[^>]+data-(?:equip|craft)="[^>]+>/g) ?? [])
+      expect(button).toMatch(/\bdisabled\b/);
+    expect(player.pieces).toEqual([]);
+    expect(player.inventory).toEqual([]);
+    expect(equip(game, view.player, 2, 101)).toBe(false);
+    expect(unequip(game, view.player, 101, 0)).toBe(false);
+    expect(craft(game, view.player, "warblade")).toBe(false);
+    expect(game).toEqual(before);
+  });
+
+  it("旧淘汰终局明确标记未知背包和备战，不把未记录误报为零件或未持有", () => {
+    const { game, last } = finished();
+    delete last.inventory;
+    let html = equipmentOverviewMarkup(game, true);
+    expect(html).toContain("已记录 4 件 · 背包 未记录 · 装备中 4 件");
+    expect(html).toContain("本局未保留终局背包");
+    expect(html).not.toContain("背包 0 件");
+    expect(equipmentOverviewMarkup(game)).toContain("暂无持有记录");
+    delete last.bench;
+    html = equipmentOverviewMarkup(game, true);
+    expect(html).toContain("已记录 2 件 · 背包 未记录 · 已记录穿戴 2 件");
+    expect(html).toContain("本局未保留终局备战席");
+    expect(html).not.toContain('data-equipment-owner="102"');
+    expect(equipmentMarkup(game, null, false)).toContain("背包未记录 · 2 已记录穿戴");
+  });
+
+  it("旧存活终局从最后的实时背包和备战恢复；明确记录的空快照优先", () => {
+    const { game, player, last } = finished();
+    player.hp = 40;
+    player.pieces = last.bench!;
+    player.inventory = ["core"];
+    delete last.bench;
+    delete last.inventory;
+    expect(equipmentOverviewMarkup(game, true)).toContain("终局持有 5 件 · 背包 1 件 · 装备中 4 件");
+    last.bench = [];
+    last.inventory = [];
+    expect(equipmentOverviewMarkup(game, true)).toContain("终局持有 2 件 · 背包 0 件 · 装备中 2 件");
+  });
+
+  it("终局持有人详情使用该战报的版本与形象，保持只读", () => {
+    const { game, last } = finished();
+    last.combatVersion = "gospel";
+    last.left[0].defId = "stormcaller";
+    const view = equipmentView(game);
+    expect(view.version).toBe("gospel");
+    expect(equipmentOverviewMarkup(game, true)).toContain('/assets/units/stormcaller.png');
+    expect(equipmentOverviewMarkup(game, true)).not.toContain('stormcaller-thunderstorm.png');
+    const detail = pieceInfoMarkup(view.player.pieces[0], view.version, view.version, true);
+    expect(detail).toContain('aria-label="终局棋子详情"');
+    expect(detail).toContain('终局回顾 · 场上 C5');
+    expect(detail).toContain('stormcaller.png');
+    expect(detail).not.toMatch(/data-(?:equip|unequip|sell|craft)=/);
   });
 });

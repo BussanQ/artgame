@@ -21,6 +21,8 @@ export function enterPhoenixEgg(ctx: CombatContext, fighter: Fighter) {
   delete fighter.burn;
   delete fighter.corrosion;
   delete fighter.knockup;
+  delete fighter.jungleLandings;
+  delete fighter.taunt;
   fighter.armorBreak = 0;
   fighter.armorBreakUntil = 0;
   delete fighter.slow;

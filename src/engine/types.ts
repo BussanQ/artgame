@@ -21,56 +21,58 @@ export type Trait =
   | "灵能"
   | "猛禽"
   | "陆行者";
-export type CombatVersion =
-  | "legacy"
-  | "tactics"
-  | "balanced"
-  | "signature"
-  | "summons"
-  | "legions"
-  | "brood"
-  | "airsea"
-  | "fleet"
-  | "metamorph"
-  | "infantry"
-  | "armored"
-  | "puppets"
-  | "wildfront"
-  | "ambush"
-  | "formations"
-  | "counterplay"
-  | "lineages"
-  | "coalitions"
-  | "aurora"
-  | "qi"
-  | "taotie";
-export const CURRENT_COMBAT_VERSION: CombatVersion = "taotie";
+/** Ordered introductions: later rules inherit earlier capabilities. Keep legacy
+ * exceptions explicit at their consumer rather than forgetting a new allowlist. */
+export const COMBAT_VERSIONS = [
+  "legacy", "tactics", "balanced", "signature", "summons", "legions",
+  "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
+  "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
+  "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb",
+] as const;
+export type CombatVersion = typeof COMBAT_VERSIONS[number];
+export const CURRENT_COMBAT_VERSION: CombatVersion = "secret-orb";
+const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
+  COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
+export const hasShurikenRules = (version: CombatVersion) => hasRuleSince(version,"shuriken");
+export const hasSecretOrbRules = (version: CombatVersion) => hasRuleSince(version,"secret-orb");
+export const hasWushiRules = (version: CombatVersion) => hasRuleSince(version,"wushi");
+export const hasWushiControlRules = (version: CombatVersion) => hasRuleSince(version,"wushi-control");
+export const hasJungleRules = (version: CombatVersion) => hasRuleSince(version,"jungle");
+export const hasStormRules = (version: CombatVersion) => hasRuleSince(version,"thunderstorm");
+export const hasGospelRules = (version: CombatVersion) => hasRuleSince(version,"gospel");
+export const hasLightningRules = (version: CombatVersion) =>
+  hasRuleSince(version,"lightning");
+export const hasTarRules = (version: CombatVersion) =>
+  hasRuleSince(version,"tar");
+export const hasTaotieRules = (version: CombatVersion) =>
+  hasRuleSince(version,"taotie");
 export function hasQiRules(version: CombatVersion) {
-  return version === "qi" || version === "taotie";
+  return hasRuleSince(version,"qi");
 }
 /** Sky-crab's recovered spell and versioned portrait. */
 export function hasAuroraRules(version: CombatVersion) {
-  return version === "aurora" || hasQiRules(version);
+  return hasRuleSince(version,"aurora");
 }
 /** Early air/support/summon/siege rules, retained by subsequent unit updates. */
 export function hasCoalitionRules(version: CombatVersion) {
-  return version === "coalitions" || hasAuroraRules(version);
+  return hasRuleSince(version,"coalitions");
 }
 /** Corrected April/May professions and abnormal lifesteal. */
 export function hasLineageRules(version: CombatVersion) {
-  return version === "lineages" || hasCoalitionRules(version);
+  return hasRuleSince(version,"lineages");
 }
 /** The cavalry recovery penalty and cumulative sniper/sea/psychic rules. */
 export function hasCounterplayRules(version: CombatVersion) {
-  return version === "counterplay" || hasLineageRules(version);
+  return hasRuleSince(version,"counterplay");
 }
 /** Pangolin's corrected definition, burrow skill and independent assassin opening jump. */
 export function hasAmbushRules(version: CombatVersion) {
-  return (
-    version === "ambush" ||
-    version === "formations" ||
-    hasCounterplayRules(version)
-  );
+  return hasRuleSince(version,"ambush");
+}
+/** 0.54 accidentally omitted evolution. Freeze its old results; 0.55 restores it. */
+export function hasInsectEvolutionRules(version: CombatVersion) {
+  return version !== "jungle" && hasRuleSince(version,"brood");
 }
 export type Difficulty = "relaxed" | "standard" | "veteran";
 export interface UnitDef {
@@ -161,8 +163,91 @@ export interface RoundReport {
   gold: number;
   left: Piece[];
   right: Piece[];
+  /** Player reserves at settlement, before elimination returns them to the pool. Older reports omit this snapshot. */
+  bench?: Piece[];
+  /** Unequipped items at settlement, before elimination clears them. Older reports omit this snapshot. */
+  inventory?: string[];
 }
 export interface Fighter {
+  /** Maintained forward orb; caster interruption cancels startup and remaining pulses. */
+  secretOrb?: {
+    formed: number; pulses: number; hits: number; energyRemoved: number; interrupted: number;
+    casting?: {
+      start: number; until: number; damage: number; radius: number; side: 0 | 1;
+      from: { x: number; y: number }; to: { x: number; y: number };
+    };
+    channel?: {
+      x: number; y: number; start: number; until: number; nextIndex: number;
+      damage: number; radius: number; side: 0 | 1;
+    };
+  };
+  /** Locked ground spell; released blades and fields retain their launch allegiance. */
+  shuriken?: {
+    launched: number; landings: number; pulses: number; hits: number; interrupted: number;
+    casting?: {
+      start: number; until: number; damage: number; radius: number; side: 0 | 1;
+      from: { x: number; y: number }; to: { x: number; y: number };
+    };
+    blades: {
+      start: number; until: number; damage: number; radius: number; side: 0 | 1;
+      from: { x: number; y: number }; to: { x: number; y: number };
+    }[];
+    fields: {
+      x: number; y: number; start: number; until: number; next: number;
+      remaining: number; damage: number; radius: number; side: 0 | 1;
+    }[];
+  };
+  /** Timed personal armor and ordinary cleaves; absent from historical sweep masters. */
+  wushi?: {
+    /** Present only after the client-card correction: capped cleaves and taunt applications. */
+    taunts?: number;
+    forms: number;
+    sweeps: number;
+    splashHits: number;
+    interrupted: number;
+    until: number;
+    armor: number;
+    casting?: { start: number; until: number };
+  };
+  /** Short forced aggression; source death, invalid allegiance or cleanse releases it. */
+  taunt?: { source: number; until: number };
+  /** Released forest waves and actual two-stage control applications, battle-local only. */
+  jungle?: { waves: number; hits: number; knockups: number; landings: number };
+  /** A committed knockup lands even after its caster dies; cleansing removes the pending stun. */
+  jungleLandings?: { source: number; at: number; duration: number }[];
+  /** Versioned traveling thunderstorm; committed bolts survive death and crowd control. */
+  storm?: {
+    launched: number;
+    hits: number;
+    energyRemoved: number;
+    bolts: {
+      x: number; y: number; dx: number; dy: number;
+      traveled: number; damage: number; side: 0 | 1; hit: number[];
+    }[];
+  };
+  /** Battle-local passive field; absent from historical active-charging acolytes. */
+  gospelAura?: {
+    pulses: number;
+    peakTargets: number;
+    lastTick: number;
+    targets: number[];
+  };
+  /** Ordinary physical chain attacks, absent from historical active-spell fighters. */
+  lightningChain?: true;
+  /** Sticky charges follow living carriers; committed explosives survive interruption and caster death. */
+  tar?: {
+    launched: number;
+    detonated: number;
+    bombs: {
+      target: number;
+      x: number;
+      y: number;
+      until: number;
+      damage: number;
+      splash: number;
+      attached: boolean;
+    }[];
+  };
   taotie?: { feasts: number; rage?: { until: number; attack: number } };
   innateRegen?: true;
   /** Client-card qi palm; absent on earlier arhat fighters. */
@@ -268,10 +353,15 @@ export interface Fighter {
         | "whale"
         | "medic"
         | "motorcycle"
+        | "tar"
         | "ironape"
         | "irondog"
-        | "specialist";
+        | "specialist"
+        | "storm"
+        | "jungle";
       target?: number; // Unit lock for specialist aiming; area spells keep only coordinates.
+      marked?: number[];
+      splash?: number;
       next: number;
       remaining: number;
       damage: number;
@@ -342,20 +432,24 @@ export interface Fighter {
 }
 export type DamageType = "physical" | "magic" | "true";
 export interface CombatEffect {
+  chainHop?: number;
   source: number;
   target: number;
   kind:
+    | "taunt"
     | "slow"
     | "sonic"
     | "burn"
     | "flame"
     | "grenade"
+    | "tar"
     | "windup"
     | "devour"
     | "transform"
     | "rebirth"
     | "reflect"
     | "energize"
+    | "drain"
     | "chain"
     | "immortal"
     | "cast"
@@ -376,6 +470,10 @@ export interface CombatEffect {
   to: { x: number; y: number };
 }
 export interface CombatEvent {
+  /** Secondary ordinary physical contact made by the transformed panda's cleave. */
+  wushiSplash?: true;
+  /** Zero is the initiating attack; later hops remain ordinary physical damage. */
+  chainHop?: number;
   assassinCritical?: boolean;
   /** Strengthened ordinary attack; still subject to attack defenses and lifesteal. */
   empowered?: boolean;

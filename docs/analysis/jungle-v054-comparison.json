@@ -1,0 +1,599 @@
+{
+  "checkedAt": "2026-11-06",
+  "rules": "singleplayer-0.54",
+  "baselineRules": "singleplayer-0.53",
+  "policy": "Paid standard commander keeps the explicitly requested preference for each classic/rotation pair, even when its main series is banned; this is a diagnostic preference, not the formal new-game profile allocation. Only available units can be bought; opponents follow chosen difficulty. No free money, units, rerolls or reward injection. Roster changes alter RNG choices; not a pure causal skill or human-win-rate estimate.",
+  "reportArtifacts": {
+    "docs/analysis/jungle-v053-psychic.json": "d4405ddc1de366bd9e583a92e0ea9e04c490c8b0c8da4bae7d5f219b960ec576",
+    "docs/analysis/jungle-v053-beasts.json": "81c12848dd83c6a9db549725f8060b8d97c7cc778ef16bc3a32ff4eb88c7a093",
+    "docs/analysis/jungle-v054-psychic.json": "e8ec3ab19f9fd1baad0d1663c05fe9c080c7263b5091475ac2a8082646381db2",
+    "docs/analysis/jungle-v054-beasts.json": "32c196a3f3c386924e149f7325785f5a96d39a2d7e02168da789e47b557276e6"
+  },
+  "before": {
+    "games": 12,
+    "rounds": 313,
+    "gamesWithNaturalThreeStars": 2,
+    "averageRankByDifficulty": {
+      "relaxed": 1.0,
+      "standard": 5.0,
+      "veteran": 6.5
+    },
+    "playerTreant": {
+      "games": 3,
+      "unitRounds": 16,
+      "starUnitRounds": [
+        7,
+        9,
+        0
+      ],
+      "casts": 33,
+      "lifeDamage": 25066.5,
+      "waves": null,
+      "contacts": null,
+      "landingStuns": null
+    },
+    "allAIPreparedTreantUnitRounds": 48,
+    "opponentJungleInPlayerBattles": null
+  },
+  "after": {
+    "games": 12,
+    "rounds": 318,
+    "gamesWithNaturalThreeStars": 0,
+    "averageRankByDifficulty": {
+      "relaxed": 1.0,
+      "standard": 3.75,
+      "veteran": 6.25
+    },
+    "playerTreant": {
+      "games": 0,
+      "unitRounds": 0,
+      "starUnitRounds": [
+        0,
+        0,
+        0
+      ],
+      "casts": 0,
+      "lifeDamage": 0,
+      "waves": 0,
+      "contacts": 0,
+      "landingStuns": 0
+    },
+    "allAIPreparedTreantUnitRounds": 5,
+    "opponentJungleInPlayerBattles": {
+      "rounds": 2,
+      "waves": 2,
+      "hits": 11,
+      "knockups": 11,
+      "landings": 11
+    }
+  },
+  "pairs": [
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "bannedSeries": [],
+      "available": 63,
+      "before": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": 27,
+        "uniqueThreeStars": 1,
+        "peakThreeStars": 1
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "bannedSeries": [
+        "海神",
+        "不朽",
+        "猛禽"
+      ],
+      "available": 50,
+      "before": {
+        "rank": 1,
+        "rounds": 28,
+        "firstThreeStar": 28,
+        "uniqueThreeStars": 1,
+        "peakThreeStars": 1
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "standard",
+      "bannedSeries": [],
+      "available": 63,
+      "before": {
+        "rank": 8,
+        "rounds": 20,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 3,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 2,
+        "waves": 2,
+        "hits": 11,
+        "knockups": 11,
+        "landings": 11
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "bannedSeries": [
+        "海神",
+        "不朽",
+        "猛禽"
+      ],
+      "available": 50,
+      "before": {
+        "rank": 6,
+        "rounds": 24,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 7,
+        "rounds": 20,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "bannedSeries": [],
+      "available": 63,
+      "before": {
+        "rank": 7,
+        "rounds": 24,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 8,
+        "rounds": 22,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": {
+        "rounds": 5,
+        "stars": [
+          5,
+          0,
+          0
+        ],
+        "casts": 15,
+        "damage": 7812.5,
+        "criticalHits": 0,
+        "peakGale": 0,
+        "fullGaleAttacks": 0,
+        "armorApplications": 0,
+        "knockups": 0,
+        "peakAurora": 0,
+        "auroraUpgrades": 0,
+        "qiReleases": 0,
+        "taotieFeasts": 0,
+        "taotieHealing": 0,
+        "tarLaunched": 0,
+        "tarDetonated": 0,
+        "tarCenterHits": 0,
+        "tarSplashHits": 0,
+        "chainAttacks": 0,
+        "chainBounces": 0,
+        "chainDamage": 0,
+        "chainEvades": 0,
+        "stormLaunched": 0,
+        "stormHits": 0,
+        "stormEnergyRemoved": 0,
+        "gospelPulses": 0,
+        "peakGospelTargets": 0,
+        "energyGiven": 280,
+        "interruptions": 0,
+        "lostTargets": 0
+      },
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "bannedSeries": [
+        "海神",
+        "不朽",
+        "猛禽"
+      ],
+      "available": 50,
+      "before": {
+        "rank": 8,
+        "rounds": 18,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 4,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "bannedSeries": [],
+      "available": 63,
+      "before": {
+        "rank": 1,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "bannedSeries": [
+        "步兵",
+        "空军",
+        "猛禽"
+      ],
+      "available": 47,
+      "before": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 26,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": {
+        "rounds": 6,
+        "stars": [
+          0,
+          6,
+          0
+        ],
+        "casts": 6,
+        "damage": 7423,
+        "criticalHits": 0,
+        "peakGale": 0,
+        "fullGaleAttacks": 0,
+        "armorApplications": 0,
+        "knockups": 0,
+        "peakAurora": 0,
+        "auroraUpgrades": 0,
+        "qiReleases": 0,
+        "taotieFeasts": 0,
+        "taotieHealing": 0,
+        "tarLaunched": 0,
+        "tarDetonated": 0,
+        "tarCenterHits": 0,
+        "tarSplashHits": 0,
+        "chainAttacks": 0,
+        "chainBounces": 0,
+        "chainDamage": 0,
+        "chainEvades": 0,
+        "stormLaunched": 0,
+        "stormHits": 0,
+        "stormEnergyRemoved": 0,
+        "gospelPulses": 0,
+        "peakGospelTargets": 0,
+        "energyGiven": 0,
+        "interruptions": 0,
+        "lostTargets": 0
+      },
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "standard",
+      "bannedSeries": [],
+      "available": 63,
+      "before": {
+        "rank": 2,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 3,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "bannedSeries": [
+        "步兵",
+        "空军",
+        "猛禽"
+      ],
+      "available": 47,
+      "before": {
+        "rank": 4,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 2,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "bannedSeries": [],
+      "available": 63,
+      "before": {
+        "rank": 5,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 8,
+        "rounds": 21,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": {
+        "rounds": 5,
+        "stars": [
+          2,
+          3,
+          0
+        ],
+        "casts": 12,
+        "damage": 9831,
+        "criticalHits": 0,
+        "peakGale": 0,
+        "fullGaleAttacks": 0,
+        "armorApplications": 0,
+        "knockups": 0,
+        "peakAurora": 0,
+        "auroraUpgrades": 0,
+        "qiReleases": 0,
+        "taotieFeasts": 0,
+        "taotieHealing": 0,
+        "tarLaunched": 0,
+        "tarDetonated": 0,
+        "tarCenterHits": 0,
+        "tarSplashHits": 0,
+        "chainAttacks": 0,
+        "chainBounces": 0,
+        "chainDamage": 0,
+        "chainEvades": 0,
+        "stormLaunched": 0,
+        "stormHits": 0,
+        "stormEnergyRemoved": 0,
+        "gospelPulses": 0,
+        "peakGospelTargets": 0,
+        "energyGiven": 0,
+        "interruptions": 0,
+        "lostTargets": 0
+      },
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "bannedSeries": [
+        "步兵",
+        "空军",
+        "猛禽"
+      ],
+      "available": 47,
+      "before": {
+        "rank": 6,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "after": {
+        "rank": 5,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "beforeTreant": null,
+      "afterTreant": null,
+      "opponentJungle": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    }
+  ],
+  "sourceFingerprintMismatches": {
+    "docs/analysis/jungle-v054-psychic.json": [],
+    "docs/analysis/jungle-v054-beasts.json": []
+  },
+  "sameSeedRepeat": {
+    "psychic": {
+      "initialReport": "jungle-v054-initial-psychic.json",
+      "finalReport": "jungle-v054-psychic.json",
+      "identicalRuns": true,
+      "extraIndependentSamples": 0
+    },
+    "beasts": {
+      "initialReport": "jungle-v054-initial-beasts.json",
+      "finalReport": "jungle-v054-beasts.json",
+      "identicalRuns": true,
+      "extraIndependentSamples": 0
+    }
+  },
+  "limits": [
+    "标准付费玩家代理，不是人工UI局或人类胜率；诊断偏好保持不变，不等于正式新局禁用后的AI风格分配。",
+    "两种偏好、两个种子；身板、技能、估值和随机经营路径共同变化，非单参数因果试验。",
+    "自然三星2局降至0局，旧树妖3局16单位轮次，新树妖玩家覆盖0局；不以平均名次改善替代构筑价值验证。",
+    "旧报告未采集新控制计数，保留null；部署次数可由完整unitUsage确定为0，和未采集是不同情况。",
+    "opponentJungle只包括与玩家战斗的敌方，aiUsage是七名AI准备阵容的单位轮次，不是同一统计范围。",
+    "初版/最终0.54经营轨迹一致，不能重复计入样本；当前报告源码指纹与经营相关源码一致。"
+  ]
+}

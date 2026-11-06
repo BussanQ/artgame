@@ -5,6 +5,20 @@ import {
   type CombatVersion,
   type Player,
 } from "../engine/types";
+
+/** Keep equipment ownership visible when a formation sends its wearer to reserve. */
+export function reserveEquipmentHint(player: Pick<Player, "pieces">): string {
+  const carriers = player.pieces.filter(
+    (piece) => piece.position === null && piece.items?.length,
+  );
+  if (!carriers.length) return "";
+  const count = carriers.reduce((total, piece) => total + piece.items!.length, 0);
+  const owner = carriers.length === 1
+    ? UNIT[carriers[0].defId].name
+    : `${carriers.length} 枚备战棋子`;
+  return ` ${owner}仍携带 ${count} 件装备留在备战席，可在装备工坊调整。`;
+}
+
 export function deploymentMarkup(
   player: Player,
   selected: number | null,

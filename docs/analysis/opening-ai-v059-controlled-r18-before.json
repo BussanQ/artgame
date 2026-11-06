@@ -1,0 +1,140 @@
+{
+  "createdAt": "2026-11-06T06:43:27.867Z",
+  "kind": "public-score-projections-of-real-paid-round14-states-not-added-campaigns",
+  "rows": [
+    {
+      "path": "tmp/opening-ai-v059-reserve-r18-relaxed-classic-1.json",
+      "sha256": "b9711bf7ede4c7bc3085cbc7bd420baeb144962fa68adfcd8cb21259ea24e889",
+      "stage": "after actual paid refresh",
+      "difficulty": "relaxed",
+      "mode": "classic",
+      "round": 18,
+      "level": 8,
+      "gold": 44,
+      "hp": 90,
+      "held": [],
+      "baseline": {
+        "lineup": [
+          "medic2",
+          "deer2",
+          "dragonfly1",
+          "fish2",
+          "guard2",
+          "cavalry2",
+          "shadowblade1",
+          "winddragon1"
+        ],
+        "static": 2747.9252943621786,
+        "tactical": 10996.946153846155
+      },
+      "combo": null,
+      "quoteCost": 4,
+      "hypotheticalSaleUid": 3
+    },
+    {
+      "path": "tmp/opening-ai-v059-reserve-r18-standard-classic-2.json",
+      "sha256": "a633bc40f84fa43b9710d618d7622e0fd71e6f4956c05f6060469e2a2cfb4042",
+      "stage": "round14 initial",
+      "difficulty": "standard",
+      "mode": "classic",
+      "round": 18,
+      "level": 8,
+      "gold": 59,
+      "hp": 64,
+      "held": [
+        {
+          "id": "panda",
+          "star": 1,
+          "position": null
+        }
+      ],
+      "baseline": {
+        "lineup": [
+          "fish2",
+          "dragonfly1",
+          "cavalry2",
+          "vajra2",
+          "shark1",
+          "shark1",
+          "turtle1",
+          "lion1"
+        ],
+        "static": 2878.255299589001,
+        "tactical": -401.8275600901051
+      },
+      "combo": null,
+      "quoteCost": 4,
+      "hypotheticalSaleUid": 234
+    },
+    {
+      "path": "tmp/opening-ai-v059-reserve-r18-standard-classic-3.json",
+      "sha256": "a82c034a97711ff0adfbb6a3d50e1152b20294d23ebc1614f22ab0bc90e9e739",
+      "stage": "after actual paid purchase",
+      "difficulty": "standard",
+      "mode": "classic",
+      "round": 18,
+      "level": 8,
+      "gold": 58,
+      "hp": 64,
+      "held": [
+        {
+          "id": "panda",
+          "star": 1,
+          "position": null
+        }
+      ],
+      "baseline": {
+        "lineup": [
+          "cavalry2",
+          "vajra2",
+          "fish2",
+          "turtle1",
+          "shark1",
+          "lion1",
+          "dragonfly1",
+          "shark1"
+        ],
+        "static": 2878.2552995890005,
+        "tactical": -415.73500237895644
+      },
+      "combo": null,
+      "quoteCost": 4,
+      "hypotheticalSaleUid": null
+    },
+    {
+      "path": "tmp/opening-ai-v059-reserve-r18-standard-classic-4.json",
+      "sha256": "79ae56aea5ee1ac26a5b822155b296101b5a11f8615b3687e35d8a0ce7b8972f",
+      "stage": "after actual paid purchase",
+      "difficulty": "standard",
+      "mode": "classic",
+      "round": 18,
+      "level": 8,
+      "gold": 55,
+      "hp": 64,
+      "held": [
+        {
+          "id": "panda",
+          "star": 1,
+          "position": null
+        }
+      ],
+      "baseline": {
+        "lineup": [
+          "cavalry2",
+          "vajra2",
+          "fish2",
+          "turtle1",
+          "shark1",
+          "lion1",
+          "dragonfly1",
+          "shark1"
+        ],
+        "static": 2878.2552995890005,
+        "tactical": -415.73500237895644
+      },
+      "combo": null,
+      "quoteCost": 4,
+      "hypotheticalSaleUid": 383
+    }
+  ]
+}

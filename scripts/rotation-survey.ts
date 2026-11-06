@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
 import { createHash } from "node:crypto";
 import {
   createGame,
@@ -17,6 +17,8 @@ import { AI_PROFILES, profileFor } from "../src/data/ai-profiles";
 import { claimReward, itemScore } from "../src/engine/equipment";
 import { validGame } from "../src/engine/persistence";
 import { RULES } from "../src/data/units";
+import { catalogCost } from "../src/data/catalog";
+import { pieceCopies } from "../src/engine/progression";
 import { synergies } from "../src/engine/synergies";
 import type { Difficulty, AiProfileId } from "../src/engine/types";
 const args = process.argv.slice(2);
@@ -30,6 +32,17 @@ if (
   !AI_PROFILES.some((p) => p.id === requestedProfile && p.id !== "free")
 )
   throw Error("Unknown player survey profile");
+const captureArg = args.findIndex((arg) => arg.startsWith("--capture-round="));
+const captureRound =
+  captureArg < 0
+    ? undefined
+    : Number(args.splice(captureArg, 1)[0].slice("--capture-round=".length));
+if (
+  captureRound !== undefined &&
+  (!Number.isInteger(captureRound) || captureRound < 1 || captureRound > 30)
+)
+  throw Error("Capture round must be between 1 and 30");
+if (captureRound !== undefined) mkdirSync("tmp", { recursive: true });
 const label =
   args[0] && !/^\d+$/.test(args[0])
     ? args.shift()!
@@ -81,6 +94,25 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
         lostTargets: 0,
       };
       const opponentTaotie = { rounds: 0, starts: 0, feasts: 0, healing: 0 };
+      const opponentTar = { rounds: 0, launched: 0, detonated: 0 };
+      const opponentLightning = {
+        rounds: 0,
+        attacks: 0,
+        bounces: 0,
+        damage: 0,
+      };
+      const opponentGospel = { rounds: 0, pulses: 0, energy: 0, peakTargets: 0 };
+      const opponentStorm = { rounds: 0, launched: 0, hits: 0, energyRemoved: 0 };
+      const opponentJungle = { rounds: 0, waves: 0, hits: 0, knockups: 0, landings: 0 };
+      const opponentSecretOrb = { rounds:0,formed:0,pulses:0,hits:0,energyRemoved:0,interrupted:0 };
+      const opponentSecretOrbByKind = {
+        pvp: { ...opponentSecretOrb },
+        pve: { ...opponentSecretOrb },
+      };
+      const aiOpeningUsage = g.players.slice(1).map(player=>({
+        playerId:player.id,profile:profileFor(player).id,rounds:0,
+        completeRounds:0,firstCompleteRound:null as number|null,monkRounds:0,
+      }));
       const aiPuppetUsage = g.players.slice(1).map((p) => ({
         playerId: p.id,
         profile: profileFor(p).id,
@@ -89,6 +121,9 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
         peakCount: 0,
         firstFourRound: null as number | null,
         firstSixRound: null as number | null,
+        firstThreeStarRound: null as number | null,
+        threeStarRounds: 0,
+        unitStars: {} as Record<string, number[]>,
         history: [] as {
           round: number;
           count: number;
@@ -119,6 +154,37 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
           qiReleases: number;
           taotieFeasts: number;
           taotieHealing: number;
+          tarLaunched: number;
+          tarDetonated: number;
+          tarCenterHits: number;
+          tarSplashHits: number;
+          chainAttacks: number;
+          chainBounces: number;
+          chainDamage: number;
+          chainEvades: number;
+          stormLaunched: number;
+          stormHits: number;
+          stormEnergyRemoved: number;
+          wushiForms: number;
+          wushiSweeps: number;
+          wushiSplashHits: number;
+          wushiTaunts: number;
+          shurikenLaunched: number;
+          shurikenLandings: number;
+          shurikenPulses: number;
+          shurikenHits: number;
+          shurikenInterrupted: number;
+          secretOrbFormed: number;
+          secretOrbPulses: number;
+          secretOrbHits: number;
+          secretOrbEnergyRemoved: number;
+          secretOrbInterrupted: number;
+          jungleWaves: number;
+          jungleHits: number;
+          jungleLandings: number;
+          gospelPulses: number;
+          peakGospelTargets: number;
+          energyGiven: number;
           interruptions: number;
           lostTargets: number;
         }
@@ -166,11 +232,90 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
       };
       while (g.phase !== "finished") {
         const p = g.players[0];
+        if (g.round === captureRound)
+          writeFileSync(
+            `tmp/${label}-${difficulty}-${mode}-${seed}.json`,
+            JSON.stringify({ game: g, profile }, null, 2),
+          );
+        const economy = {
+          startGold: p.gold,
+          purchases: 0,
+          refreshes: 0,
+          xpBuys: 0,
+          sales: 0,
+          spent: 0,
+          saleIncome: 0,
+          trades: [] as {
+            kind: "buy" | "sell";
+            id: string;
+            starsBefore: number[];
+            price: number;
+          }[],
+          offers: [p.shop.slice()],
+        };
+        const actions = {
+          buy(game: typeof g, player: typeof p, index: number) {
+            const id = player.shop[index];
+            const cost = id ? catalogCost(game, id) : 0;
+            const starsBefore = player.pieces
+              .filter((piece) => piece.defId === id)
+              .map((piece) => piece.star);
+            const ok = buy(game, player, index);
+            if (ok) {
+              economy.purchases++;
+              economy.spent += cost;
+              economy.trades.push({
+                kind: "buy",
+                id: id!,
+                starsBefore,
+                price: cost,
+              });
+            }
+            return ok;
+          },
+          roll(game: typeof g, player: typeof p) {
+            const ok = roll(game, player);
+            if (ok) {
+              economy.refreshes++;
+              economy.spent += RULES.reroll;
+              economy.offers.push(player.shop.slice());
+            }
+            return ok;
+          },
+          buyXp(game: typeof g, player: typeof p) {
+            const ok = buyXp(game, player);
+            if (ok) {
+              economy.xpBuys++;
+              economy.spent += 5;
+            }
+            return ok;
+          },
+          sell(game: typeof g, player: typeof p, uid: number) {
+            const before = player.gold;
+            const piece = player.pieces.find((piece) => piece.uid === uid);
+            const starsBefore = player.pieces
+              .filter((other) => other.defId === piece?.defId)
+              .map((piece) => piece.star);
+            const ok = sell(game, player, uid);
+            if (ok) {
+              economy.sales++;
+              economy.saleIncome += player.gold - before;
+              economy.trades.push({
+                kind: "sell",
+                id: piece!.defId,
+                starsBefore,
+                price: player.gold - before,
+              });
+            }
+            return ok;
+          },
+        };
+        let preparation:ReturnType<typeof prepareBot>;
         p.id = 1;
         p.aiProfile = profile;
         g.difficulty = "standard";
         try {
-          prepareBot(g, p, { buy, sell, roll, buyXp });
+          preparation=prepareBot(g, p, actions);
         } finally {
           p.id = 0;
           delete p.aiProfile;
@@ -294,6 +439,72 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
         formationUsage.vanguard[vanguards?.tier ?? 0]++;
         puppetTierRounds[puppets?.tier ?? 0]++;
         rounds++;
+        const opposingRiders = result.battle.frames
+          .at(-1)!
+          .fighters.filter((f) => (f.homeSide ?? f.side) === 1 && f.tar);
+        if (opposingRiders.length) opponentTar.rounds++;
+        const opposingThunder = result.battle.frames[0].fighters.filter(
+          (f) => f.side === 1 && f.lightningChain,
+        );
+        if (opposingThunder.length) opponentLightning.rounds++;
+        const opposingStorm = result.battle.frames.at(-1)!.fighters.filter(
+          f => (f.homeSide ?? f.side) === 1 && f.storm);
+        if (opposingStorm.length) opponentStorm.rounds++;
+        const opposingOrbs=result.battle.frames.at(-1)!.fighters.filter(
+          f=>(f.homeSide??f.side)===1&&f.secretOrb);
+        if(opposingOrbs.length)opponentSecretOrb.rounds++;
+        const orbKind=opponentSecretOrbByKind[result.kind];
+        if(opposingOrbs.length)orbKind.rounds++;
+        for(const f of opposingOrbs){
+          opponentSecretOrb.formed+=f.secretOrb!.formed;
+          opponentSecretOrb.pulses+=f.secretOrb!.pulses;
+          opponentSecretOrb.hits+=f.secretOrb!.hits;
+          opponentSecretOrb.energyRemoved+=f.secretOrb!.energyRemoved;
+          opponentSecretOrb.interrupted+=f.secretOrb!.interrupted;
+          for(const key of ["formed","pulses","hits","energyRemoved","interrupted"] as const)
+            orbKind[key]+=f.secretOrb![key];
+        }
+        for (const f of opposingStorm) {
+          opponentStorm.launched += f.storm!.launched;
+          opponentStorm.hits += f.storm!.hits;
+          opponentStorm.energyRemoved += f.storm!.energyRemoved;
+        }
+        const opposingTrees = result.battle.frames.at(-1)!.fighters.filter(
+          f => (f.homeSide ?? f.side) === 1 && f.jungle);
+        if (opposingTrees.length) opponentJungle.rounds++;
+        for (const f of opposingTrees) {
+          opponentJungle.waves += f.jungle!.waves;
+          opponentJungle.hits += f.jungle!.hits;
+          opponentJungle.knockups += f.jungle!.knockups;
+          opponentJungle.landings += f.jungle!.landings;
+        }
+        const opposingAcolytes = result.battle.frames.at(-1)!.fighters.filter(
+          (f) => (f.homeSide ?? f.side) === 1 && f.gospelAura,
+        );
+        if (opposingAcolytes.length) opponentGospel.rounds++;
+        for (const f of opposingAcolytes) {
+          opponentGospel.pulses += f.gospelAura!.pulses;
+          opponentGospel.peakTargets = Math.max(opponentGospel.peakTargets, f.gospelAura!.peakTargets);
+        }
+        for (const frame of result.battle.frames)
+          for (const effect of frame.effects)
+            if (effect.kind === "energize" && opposingAcolytes.some((f) => f.uid === effect.source))
+              opponentGospel.energy += effect.amount;
+        for (const frame of result.battle.frames)
+          for (const e of frame.events) {
+            if (
+              e.chainHop === undefined ||
+              !opposingThunder.some((f) => f.uid === e.attacker)
+            )
+              continue;
+            if (e.chainHop === 0) opponentLightning.attacks++;
+            else opponentLightning.bounces++;
+            opponentLightning.damage += e.amount;
+          }
+        for (const f of opposingRiders) {
+          opponentTar.launched += f.tar!.launched;
+          opponentTar.detonated += f.tar!.detonated;
+        }
         for (const piece of result.left) {
           const usage = (unitUsage[piece.defId] ??= {
             rounds: 0,
@@ -310,10 +521,76 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
             qiReleases: 0,
             taotieFeasts: 0,
             taotieHealing: 0,
+            tarLaunched: 0,
+            tarDetonated: 0,
+            tarCenterHits: 0,
+            tarSplashHits: 0,
+            chainAttacks: 0,
+            chainBounces: 0,
+            chainDamage: 0,
+            chainEvades: 0,
+            stormLaunched: 0,
+            stormHits: 0,
+            stormEnergyRemoved: 0,
+            wushiForms: 0,
+            wushiSweeps: 0,
+            wushiSplashHits: 0,
+            wushiTaunts: 0,
+            shurikenLaunched: 0,
+            shurikenLandings: 0,
+            shurikenPulses: 0,
+            shurikenHits: 0,
+            shurikenInterrupted: 0,
+            secretOrbFormed: 0,
+            secretOrbPulses: 0,
+            secretOrbHits: 0,
+            secretOrbEnergyRemoved: 0,
+            secretOrbInterrupted: 0,
+            jungleWaves: 0,
+            jungleHits: 0,
+            jungleLandings: 0,
+            gospelPulses: 0,
+            peakGospelTargets: 0,
+            energyGiven: 0,
             interruptions: 0,
             lostTargets: 0,
           });
           usage.rounds++;
+          const rider = result.battle.frames
+            .at(-1)!
+            .fighters.find((f) => f.uid === piece.uid);
+          usage.tarLaunched += rider?.tar?.launched ?? 0;
+          usage.tarDetonated += rider?.tar?.detonated ?? 0;
+          usage.stormLaunched += rider?.storm?.launched ?? 0;
+          usage.stormHits += rider?.storm?.hits ?? 0;
+          usage.stormEnergyRemoved += rider?.storm?.energyRemoved ?? 0;
+          usage.wushiForms += rider?.wushi?.forms ?? 0;
+          usage.wushiSweeps += rider?.wushi?.sweeps ?? 0;
+          usage.wushiSplashHits += rider?.wushi?.splashHits ?? 0;
+          usage.wushiTaunts += rider?.wushi?.taunts ?? 0;
+          usage.shurikenLaunched += rider?.shuriken?.launched ?? 0;
+          usage.shurikenLandings += rider?.shuriken?.landings ?? 0;
+          usage.shurikenPulses += rider?.shuriken?.pulses ?? 0;
+          usage.shurikenHits += rider?.shuriken?.hits ?? 0;
+          usage.shurikenInterrupted += rider?.shuriken?.interrupted ?? 0;
+          usage.secretOrbFormed += rider?.secretOrb?.formed ?? 0;
+          usage.secretOrbPulses += rider?.secretOrb?.pulses ?? 0;
+          usage.secretOrbHits += rider?.secretOrb?.hits ?? 0;
+          usage.secretOrbEnergyRemoved += rider?.secretOrb?.energyRemoved ?? 0;
+          usage.secretOrbInterrupted += rider?.secretOrb?.interrupted ?? 0;
+          usage.jungleWaves += rider?.jungle?.waves ?? 0;
+          usage.jungleHits += rider?.jungle?.hits ?? 0;
+          usage.jungleLandings += rider?.jungle?.landings ?? 0;
+          usage.gospelPulses += rider?.gospelAura?.pulses ?? 0;
+          usage.peakGospelTargets = Math.max(usage.peakGospelTargets, rider?.gospelAura?.peakTargets ?? 0);
+          if (rider?.tar)
+            for (const frame of result.battle.frames)
+              for (const e of frame.events) {
+                if (e.attacker !== piece.uid || !e.skill || e.reflected)
+                  continue;
+                if (e.primary) usage.tarCenterHits++;
+                else usage.tarSplashHits++;
+              }
           usage.peakAurora = Math.max(
             usage.peakAurora,
             ...result.battle.frames.map(
@@ -356,8 +633,18 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
             (e) => e.gale === 10,
           ).length;
           for (const frame of result.battle.frames)
+            for (const e of frame.events) {
+              if (e.attacker !== piece.uid || e.chainHop === undefined)
+                continue;
+              if (e.chainHop === 0) usage.chainAttacks++;
+              else usage.chainBounces++;
+              usage.chainDamage += e.amount;
+              if (e.evaded) usage.chainEvades++;
+            }
+          for (const frame of result.battle.frames)
             for (const effect of frame.effects) {
               if (effect.source !== piece.uid) continue;
+              if (effect.kind === "energize") usage.energyGiven += effect.amount;
               if (effect.kind === "break" && effect.name === "酸性减甲")
                 usage.armorApplications++;
               if (effect.kind === "stun" && effect.name === "击飞")
@@ -385,7 +672,25 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
         }
         for (const bot of g.players.slice(1).filter((p) => p.hp > 0)) {
           const usage = aiPuppetUsage.find((u) => u.playerId === bot.id)!;
+          const deployed = bot.pieces.filter(
+            (piece) => piece.position !== null,
+          );
+          if (deployed.some((piece) => piece.star === 3)) {
+            usage.threeStarRounds++;
+            usage.firstThreeStarRound ??= g.round;
+          }
+          for (const piece of deployed) {
+            const stars = (usage.unitStars[piece.defId] ??= [0, 0, 0]);
+            stars[piece.star - 1]++;
+          }
           const botFormations = synergies(bot.pieces, g.combatVersion);
+          const opening=aiOpeningUsage.find(usage=>usage.playerId===bot.id)!;
+          opening.rounds++;
+          opening.monkRounds+=deployed.filter(piece=>piece.defId==="monk").length;
+          if((botFormations.find(s=>s.trait==="熊猫")?.tier??0)>0){
+            opening.completeRounds++;
+            opening.firstCompleteRound??=g.round;
+          }
           if (botFormations.some((s) => s.trait === "陆行者" && s.conflicted))
             aiLandwalkerConflictRounds++;
           for (const [key, trait] of COUNTER_FORMATIONS)
@@ -445,6 +750,14 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
             }),
           ),
           round: g.round,
+          economy,
+          bench: p.pieces
+            .filter((piece) => piece.position === null)
+            .map((piece) => ({
+              id: piece.defId,
+              star: piece.star,
+              copies: pieceCopies(piece),
+            })),
           puppetCount: puppets?.count ?? 0,
           puppetTier: puppets?.tier ?? 0,
           infantryCount: infantry?.count ?? 0,
@@ -455,6 +768,7 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
           vanguardTier: vanguards?.tier ?? 0,
           assassinCount: assassins?.count ?? 0,
           assassinTier: assassins?.tier ?? 0,
+          planning: preparation ?? null,
           gold: p.gold,
           level: p.level,
           hp: p.hp,
@@ -481,6 +795,13 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
       const run = {
         catalogVersion: g.catalogVersion,
         opponentTaotie,
+        opponentTar,
+        opponentLightning,
+        opponentGospel,
+        opponentStorm,
+        opponentJungle,
+        opponentSecretOrb,
+        opponentSecretOrbByKind,
         opponentQi,
         opponentAurora,
         summonEnergy,
@@ -506,6 +827,7 @@ for (const difficulty of ["relaxed", "standard", "veteran"] as Difficulty[])
         formationUsage,
         aiFormationUsage,
         aiUsage,
+        aiOpeningUsage,
         aiPuppetUsage: aiPuppetUsage.map((usage) => ({
           ...usage,
           rank: rankings(g).findIndex((p) => p.id === usage.playerId) + 1,

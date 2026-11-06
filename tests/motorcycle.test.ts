@@ -27,7 +27,7 @@ const p = (
   position: number | null = 35,
 ): Piece => ({ defId, uid, star, position });
 const f = (id: string, uid: number, side: 0 | 1 = 0, star = 1): Fighter =>
-  Object.assign(army([p(id, uid, star)], side)[0], {
+  Object.assign(army([p(id, uid, star)], side, "taotie")[0], {
     x: 3,
     y: side ? 3 : 4,
     mana: 100,
@@ -174,13 +174,13 @@ describe("摩托骑兵集成", () => {
   it("完整、快速、Worker回放一致，冷却间隔和普攻窗口实际生效", () => {
     const left = [p("motorcycle", 1, 3, 51), p("guard", 2, 3, 35)],
       right = [p("turtle", 3, 3, 35), p("medic", 4, 3, 43)];
-    const b = simulate(left, right),
-      fast = simulateOutcome(left, right),
+    const b = simulate(left, right, "taotie"),
+      fast = simulateOutcome(left, right, "taotie"),
       job = compute({
         kind: "replay",
         left,
         right,
-        version: CURRENT_COMBAT_VERSION,
+        version: "taotie",
       });
     expect(fast.winner).toBe(b.winner);
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
@@ -224,7 +224,7 @@ describe("摩托骑兵集成", () => {
       if (phase !== "prepare") {
         const pl = g.players[0];
         if (pl.shop[0]) g.pool[pl.shop[0]]++;
-        pl.shop[0] = phase === "finished" ? "fish" : "guard";
+        pl.shop[0] = phase === "finished" ? "acolyte" : "guard";
         g.pool[pl.shop[0]]--;
         buy(g, pl, 0);
         pl.pieces[0].position = 35;

@@ -1,0 +1,207 @@
+{
+  "reviewedAt": "2026-11-06",
+  "oldFinished": {
+    "round": 30,
+    "hp": 25,
+    "gold": 77,
+    "level": 10,
+    "rank": 1,
+    "acolyteSprite": "/assets/units/acolyte.png"
+  },
+  "checks": [
+    {
+      "kind": "desktop-fixed-detail",
+      "text": "×\n童子 己方 · ★★\n生命\n1450 / 1450\n能量\n被动供能\n攻击\n86\n间隔\n1.70 秒\n护甲\n7.0\n法术减伤\n20%\n支援阵亡 · 治疗200 / 回能10\n回能压制 −3\n灵能反伤 20\n福音 7 能量/秒\n圆形3格 · 同目标取最高星级\n最近供能 1 人 · 最多 4 人\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起"
+    },
+    {
+      "kind": "mobile-390-fixed-detail",
+      "layout": {
+        "detail": "×童子 己方 · ★★生命 1450 / 1450能量 被动供能攻击 86间隔 1.70 秒护甲 7.0法术减伤 20%支援阵亡 · 治疗200 / 回能10回能压制 −3灵能反伤 20福音 7 能量/秒圆形3格 · 同目标取最高星级最近供能 1 人 · 最多 4 人步兵减甲 −3点击棋子固定详情 · 点击空处或按 Esc 收起",
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    {
+      "kind": "mobile-320-fixed-detail",
+      "layout": {
+        "detail": "×童子 己方 · ★★生命 1450 / 1450能量 被动供能攻击 86间隔 1.70 秒护甲 7.0法术减伤 20%支援阵亡 · 治疗200 / 回能10回能压制 −3灵能反伤 20福音 7 能量/秒圆形3格 · 同目标取最高星级最近供能 1 人 · 最多 4 人步兵减甲 −3点击棋子固定详情 · 点击空处或按 Esc 收起",
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    {
+      "kind": "analysis-15.25s",
+      "rows": [
+        {
+          "image": "/assets/units/acolyte-gospel.png",
+          "text": "童子★★ · 生命 1450/1450474普攻 474 · 技能 0 · 破盾 122承伤 20 · 治疗 0 · 承盾 0 · 供能 123 · 施法 0 次 · 福音脉冲 15 次 · 最多供能 4 人"
+        },
+        {
+          "image": "/assets/units/acolyte-gospel.png",
+          "text": "童子★ · 生命 600/600120普攻 120 · 技能 0 · 破盾 150承伤 20 · 治疗 0 · 承盾 0 · 供能 5 · 施法 0 次 · 福音脉冲 15 次 · 最多供能 1 人"
+        }
+      ]
+    },
+    {
+      "kind": "analysis-at-zero",
+      "rows": [
+        "童子★★ · 生命 1450/14500普攻 0 · 技能 0 · 破盾 0承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 福音脉冲 0 次 · 最多供能 0 人",
+        "童子★ · 生命 600/6000普攻 0 · 技能 0 · 破盾 0承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 福音脉冲 0 次 · 最多供能 0 人"
+      ]
+    },
+    {
+      "kind": "exit-demo-preserves-terminal",
+      "text": "云海之巅",
+      "commander": "COMMANDER难度休闲标准挑战AI 会攒息、追星、组成羁绊并在低血量时投入金币。指挥官 0125生命值77金币等级 10MAX购买经验 5 金 / 5 XP本轮基础奖励+15 金已达基础奖励上限预计利息 +5 金 · 连胜 3",
+      "acolyteSprite": "/assets/units/acolyte.png"
+    },
+    {
+      "kind": "new-match",
+      "rotation": "本局禁用禁用3步兵灵能陆行者可招募 49 / 63 种 查看影响 ▾本局禁用：步兵 · 灵能 · 陆行者开局随机禁用 3 个种族，整场固定，玩家与 7 名 AI 共用。双种族棋子命中任一禁用系列即移出招募池；野怪、召唤物与演示不受影响。同费用内候选减少，更容易刷到同名棋子。费用档概率与升星规则不变，实际概率仍受等级、剩余份数和对手持有影响。禁用棋子 · 14 种神枪手1 金 · 步兵 / 狙击盾兵1 金 · 步兵 / 护卫神射手2 金 · 步兵 / 狙击真人2 金 · 傀儡 / 召唤 / 灵能童子2 金 · 灵能 / 支援天师3 金 · 灵能 / 爆破雷震子3 金 · 灵能 / 狙击金刚2 金 · 陆行者 / 护卫罗汉3 金 · 陆行者 / 狙击翔龙4 金 · 陆行者 / 攻城军医1 金 · 步兵 / 支援火焰兵2 金 · 步兵 / 先锋投弹手4 金 · 步兵 / 异能特种兵3 金 · 步兵 / 狙击同费单卡初始占比费用候选数占比变化1 金12 → 98.3% → 11.1%2 金17 → 125.9% → 8.3%3 金15 → 116.7% → 9.1%4 金13 → 117.7% → 9.1%5 金6 → 616.7% → 16.7%按初始同费卡池等份估算，尚未扣除八人商店和持有棋子；不是每个商店格的最终概率。受影响的羁绊陆行者0/3 种可用1档不可达灵能0/4 种可用2档不可达 · 4档不可达攻城9/10 种可用3档可达 · 6档可达爆破7/8 种可用3档可达 · 6档可达异能6/7 种可用2档可达 · 4档可达 · 6档可达召唤2/3 种可用3档不可达傀儡6/7 种可用2档可达 · 4档可达 · 6档可达支援4/6 种可用2档可达 · 4档可达步兵0/7 种可用2档不可达 · 4档不可达 · 6档不可达护卫5/7 种可用2档可达 · 4档可达狙击5/10 种可用3档可达 · 6档不可达先锋9/10 种可用3档可达 · 6档可达对手从仍有核心成员的风格中分配，可能出现相同偏好。刷新页面与进入下一回合不会重新抽取禁用。"
+    },
+    {
+      "kind": "new-catalog-acolyte",
+      "text": "×\nFIELD MANUAL\n棋子图鉴\n\n63 种棋子各有独立技能。星级提升生命与攻击，护盾和治疗按技能说明计算。以下采用单机平衡数值。\n\n搜索棋子与能力\n招募范围\n全部棋子\n本局可招募\n本局禁用\n费用\n全部费用\n1 金\n2 金\n3 金\n4 金\n5 金\n羁绊\n全部羁绊\n猛禽\n陆行者\n灵能\n不朽\n步兵\n装甲\n野兽\n熊猫\n护卫\n狙击\n先锋\n刺杀\n骑兵\n支援\n召唤\n傀儡\n异虫\n空军\n海神\n攻城\n爆破\n异能\n星级\n1 星\n2 星\n3 星\n攻击方式\n全部方式\n近战\n远程\n飞行\n排序\n费用从低到高\n攻击从高到低\n生命从高到低\n射程从远到近\n\n找到 1 / 63 种棋子 · 本局可招募 49 种\n\n重置图鉴\n本局禁用\n童子 ★\n2 金 · 地面 · 灵能 / 支援 · 持续供能\n\n生命 600 · 攻击 43\n护甲 5 · 射程 4 · 间隔 1.7 秒\n\n福音\n\n被动：童子存活时维持福音能量场，从开战后第1秒起，每秒为圆形3格内所有能使用能量的友军回复4/7/10能量（一/二/三星）。多个童子覆盖同一友军时只取最高星级供能，不叠加；能量已满、封能中的单位和无能量技能单位不会获得供能，也不储存溢出。供能受骑兵回能压制影响，不受攻速或技能强度加成。童子自身不积累能量；眩晕、沉默不关闭光环，被魅惑期间暂停，恢复后继续，阵亡后停止。\n\n羁绊梯度 · 同名仅计一次，异虫包含备战席",
+      "sprite": "/assets/units/acolyte-gospel.png",
+      "layout": {
+        "scrollWidth": 1280,
+        "width": 1280
+      }
+    },
+    {
+      "kind": "new-catalog-three-star",
+      "text": "×\nFIELD MANUAL\n棋子图鉴\n\n63 种棋子各有独立技能。星级提升生命与攻击，护盾和治疗按技能说明计算。以下采用单机平衡数值。\n\n搜索棋子与能力\n招募范围\n全部棋子\n本局可招募\n本局禁用\n费用\n全部费用\n1 金\n2 金\n3 金\n4 金\n5 金\n羁绊\n全部羁绊\n猛禽\n陆行者\n灵能\n不朽\n步兵\n装甲\n野兽\n熊猫\n护卫\n狙击\n先锋\n刺杀\n骑兵\n支援\n召唤\n傀儡\n异虫\n空军\n海神\n攻城\n爆破\n异能\n星级\n1 星\n2 星\n3 星\n攻击方式\n全部方式\n近战\n远程\n飞行\n排序\n费用从低到高\n攻击从高到低\n生命从高到低\n射程从远到近\n\n找到 1 / 63 种棋子 · 本局可招募 49 种\n\n重置图鉴\n本局禁用\n童子 ★★★\n2 金 · 地面 · 灵能 / 支援 · 持续供能\n\n生命 2400 · 攻击 172\n护甲 5 · 射程 4 · 间隔 1.7 秒\n\n福音\n\n被动：童子存活时维持福音能量场，从开战后第1秒起，每秒为圆形3格内所有能使用能量的友军回复4/7/10能量（一/二/三星）。多个童子覆盖同一友军时只取最高星级供能，不叠加；能量已满、封能中的单位和无能量技能单位不会获得供能，也不储存溢出。供能受骑兵回能压制影响，不受攻速或技能强度加成。童子自身不积累能量；眩晕、沉默不关闭光环，被魅惑期间暂停，恢复后继续，阵亡后停止。\n\n羁绊梯度 · 同名仅计一次，异虫包含备战席"
+    },
+    {
+      "kind": "banned-acolyte-excluded-from-available",
+      "imageCount": 0
+    },
+    {
+      "kind": "mobile-320-banned-codex",
+      "imageCount": 1,
+      "layout": {
+        "scrollWidth": 320,
+        "width": 320
+      }
+    }
+  ],
+  "screenshots": [
+    "tmp/gospel-v052-desktop.jpg",
+    "tmp/gospel-v052-mobile.jpg",
+    "tmp/gospel-v052-analysis.jpg",
+    "tmp/gospel-v052-codex.jpg"
+  ],
+  "console": [],
+  "limits": [
+    "UI供能分析停在15.25秒，未将片段当整场结果。",
+    "新局随机禁用灵能，未重抽禁用寻找童子；二费购买和共享份数由模块验证，此局仅验图鉴与禁用过滤。",
+    "旧终局25生命/77金币/等级10、历史形象和演示退出保持；未替代多构筑完整新目录对局。",
+    "仅在新局标签导出控制台，演示标签关闭前未单独导出日志；未验证真实触屏或弱设备。"
+  ],
+  "screenshotSha256": {
+    "tmp/gospel-v052-desktop.jpg": "473abed518736b8d9c86f2631fb3f9ce6350286688178242e0d2439ec4b91937",
+    "tmp/gospel-v052-mobile.jpg": "ef3c975709edb886f9712a98739eeae2f1ad96a0b4496f4ac3003ecb2d78340c",
+    "tmp/gospel-v052-analysis.jpg": "f91f5e517d3113317c7127e608927904ea8bba28ed0e8b99a94da71b20c8a67c",
+    "tmp/gospel-v052-codex.jpg": "9a75ec381c339f1be12903d90f6b6270a439996803de981e1fae05863e29801d"
+  },
+  "sourceSha256": {
+    "src/audio/cues.ts": "816e3b8ea3d14abe8e891922c2aa3891148085b69d62c30e3825af81eb61ebb4",
+    "src/audio/player.ts": "960e64d2e4eb7430f207d2167079ba185cbff04d1d7915151b6b3d5770b7797f",
+    "src/audio/synthesis.ts": "6ed1834796d5494be3b8de8a93981f8b78c391b2f9db1af2334eff9c74944779",
+    "src/compute/client.ts": "1ba053bfc7b10c15d57197a3bd1233d7f82712d8eb261efc1ff30a515ad0eb4c",
+    "src/compute/job.ts": "7d1b782399973ecd901400186e89861458f215acb09b95692bc1c60fe268df0a",
+    "src/compute/worker.ts": "671d1a2536b8bb707604fcc2a1667dbbcff1ab70b09e3efb98ecccdab569ebc2",
+    "src/data/abnormal-demo.ts": "f39d89a4975f0c8f0221c4a336f9f28200aedd2568841e6d3424bb94a79740fc",
+    "src/data/ai-profiles.ts": "94692ba49058d48cf237c058e3705b733f12ef79e990e3714dc2df20f6587645",
+    "src/data/assassin-demo.ts": "26bd337f77404cb2df4ec15f0db8dde0ac82a96a4672d9510417e6485fccace5",
+    "src/data/aurora-demo.ts": "5d536911cfd14c7f76045377bcf6ce05556ed3189614261805774cc0f1ec0a5f",
+    "src/data/axethrall-demo.ts": "e753f888f6d7181cbe02cacf7f6eba7b490124edf8bc757509944108fabf8e23",
+    "src/data/beast-frontline-demo.ts": "0dca9d8b86da4ce5f52fef6fdece66e35ed0436ec37de53628b2aead11c50fde",
+    "src/data/bladethrall-demo.ts": "330e4fd8764f9f3bce79d3d415c58f328185209d0bd9379e68ade93a6814084b",
+    "src/data/catalog.ts": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d",
+    "src/data/coalition-demo.ts": "c39f5517f8db652c11bd9695731d1ec8c5a5d99808ecace12ed66328e17087fc",
+    "src/data/counterplay-demo.ts": "89bba4fb7c61733cc52a840430feda6d11a4228ce286b3a60e752334ee34756f",
+    "src/data/encounters.ts": "762f649bd560004bb14a6b23f9ca51005c08dc8bde37db9e4ab481fb584ae62d",
+    "src/data/gospel-demo.ts": "670ac143a73933448f9a2567828e8bfb3e78eae76c927fd4e934c8a4e83b6a67",
+    "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba",
+    "src/data/lightning-demo.ts": "70d16396b91c19fb7033d527d6ff54bddce783eff754300d026b2127cc97e3c8",
+    "src/data/lingjiu-demo.ts": "7ff2b2d29a20c7dc068f794efe167ac61574e53751dbc9f51417dac0d47e54da",
+    "src/data/shieldthrall-demo.ts": "bb6b29064083db4cf3c07a0341c1a1253df0ab40511e62bce8eb6351761d20ab",
+    "src/data/skills.ts": "085a71caa2722a7161e4604092cb084fc5c6273c67bcf0503198feafd10c64fc",
+    "src/data/staffthrall-demo.ts": "a0d4b22ddab5ea7c7e72fddcd4c8ea26396a7ce501dffab9e138b570bb9eb1a9",
+    "src/data/swordthrall-demo.ts": "8c21b7b290e54f2c7c77ef43bf2f9ff925e14ac50db2169571c701b0420f1d53",
+    "src/data/taotie-demo.ts": "96f77913390241f2358063f580d9a6b68088613596f07eccfbd6fb4cbc1656cb",
+    "src/data/tar-demo.ts": "a571dbc675508f04ea6f782d7c5fb9eb4d0e2ff54283b5151606e221ff70267c",
+    "src/data/traits.ts": "500c0a3d6dede1ba389fc195f18f6d02a59e5f9c228452035a2bec06576af32e",
+    "src/data/unit-stats.ts": "d074eb49a2c07c4cc5a309a7f4067f873e48a077124c04d32ae33614872c9813",
+    "src/data/units.ts": "5e4cd0aaa3719139ec00f3d141e607f9a470e37328420b529882d3f5cb3f4307",
+    "src/data/wildfront-demo.ts": "17f963e214eed3069e0c255652007e39255cdee924b494b63a93c1a3fb694b50",
+    "src/engine/abilities.ts": "f9338bd0d2f4163e55ed266b5bcd1e95ae7ad759ca29c8be02962bef56c1292d",
+    "src/engine/ai.ts": "d6e09d578dda579b7257b3c8c193a09ba0321bfc27a2e060d80e7167b4a407e8",
+    "src/engine/assassins.ts": "e88609c81bae44956d4aa39c1e8b32d4414f0d1f8f16bab7106076955011bc01",
+    "src/engine/battle-analysis.ts": "0e468274e28a6e8973cb059b8e80ebcae062d273aec243830898b44eba011601",
+    "src/engine/battle.ts": "3ce5b0fdc8a3dfc173081e0cc60afb0ea0c9fada76600f3f11358c30db6ab4cd",
+    "src/engine/beasts.ts": "cc44ac5d85a62711af58c72ee35f8c29722ee48df68d5069f395fd41a5dc62b7",
+    "src/engine/birdrider.ts": "61a81c9c3a0da3c07e047eb28278f2597361c13706f8c029417a7d3018015878",
+    "src/engine/bladethrall.ts": "24a15ea431ad5ec67aed56f867b203c38b3f4f0110369541442a857726bb1424",
+    "src/engine/economy.ts": "3d7e8b88ac2f16e4cdeb01fbe9ae58549a774070ed1173c2a5e666ed0a9dcd71",
+    "src/engine/equipment.ts": "8096c1c22a4637b4085eeb4a1ce699208988f207067937810ddd36167603f61d",
+    "src/engine/game.ts": "06d32a57606afa4ed1de56c9ce7a370d6a5d29710bb94e4fe5aa67019470416c",
+    "src/engine/gospel.ts": "638a6351fcfa6d3ebf703b4b0ea96cab43bd6ee4bef777994a917d64654aea66",
+    "src/engine/immortality.ts": "609e1ab25259d8fb717fec982517e59bcb175bf13283398dbfcf97acad534b12",
+    "src/engine/infantry-skills.ts": "d9f63278972aca474b1a912cad8951c31349b0520c21ce5c909355203191914a",
+    "src/engine/ironrooster.ts": "5835565b2b5097b8ecdb524c5855f4e767e19910f1657e8c52cf8b72a7fb2c06",
+    "src/engine/lightning.ts": "a0dfd157419807e8133fc4b1b3da5a30468a3f260db4a83663da86ba7beeaf58",
+    "src/engine/lingjiu.ts": "e34c520d075d8d93bde0ebbbf5dcbb767f7ebc086872ddac4dced5aabbb8548e",
+    "src/engine/match-summary.ts": "f37da56f91e939b94248e9fad59b79f05156a8f18715a441b3cefd3df57a8929",
+    "src/engine/metamorphosis.ts": "d70ce056ac8dec6f62255df57b6633f72abc61be6a39adb6f0bbde3307f116f8",
+    "src/engine/persistence.ts": "6d787d74cd957081d8b54ba55512631271113d28635a2b6fdc44ad7ae46e4571",
+    "src/engine/phoenix.ts": "6a939267ad567d7e21819a1d4b7eea44d41f2afb1565877f4f6e8063e459e05c",
+    "src/engine/progression.ts": "b779dcc24017f98e9fb40159d4e2afcbe442650d630edda0f47eb970c8049a33",
+    "src/engine/random.ts": "ba0d5984534fdd513fac5e9d54bc586c1e8dfb65736af189f048ade4c34d0b21",
+    "src/engine/recruitment.ts": "8c98a6758811b74e5920360e6c780ce76b8bd73f5ad64c4c484ec10fd2d59927",
+    "src/engine/rotation.ts": "31004f784695125cd6b187409d022748a397f8b153593f748de0bf5d469f48d3",
+    "src/engine/sea-ward.ts": "c7205db3f8643c82ed374411931b096a7ee17421515b59fc3c9dd4f58aea1cab",
+    "src/engine/shieldthrall.ts": "e34e99dda3213eb00418ca6775fdc68409a7c84b71f16465e35aaaf9865001bb",
+    "src/engine/staffthrall.ts": "208b898b1fc9586409b2661d9ad1f2b65b176dc2107d50e62ca8a059c13b1f70",
+    "src/engine/summons.ts": "6994b4eaf7c1581156ec803312ac5537ac0f5af65d133aff0ee24759479a171a",
+    "src/engine/swordthrall.ts": "4531a8b9625f4ce71e6972f3e63075afaef51cb482df7decd879e1b197253d00",
+    "src/engine/synergies.ts": "e1e26d4536e5d24e27a93f78872ff63dc448ea777e5f55325b4a782ae7bf8662",
+    "src/engine/tar.ts": "c6f8d5196114e17e0010d4f9ce494ae7fed7cf163bb7922c34a34a47e69dbba9",
+    "src/engine/triggers.ts": "420ecc2ee33df93b3b97e764ab0412c6679ef3fb74550b9a3b36b8b8d7fd27d9",
+    "src/engine/types.ts": "a21d0b04868276697e481ca127203cdf2c074f2628fa0aacef87a6492e03c120",
+    "src/engine/wild-skills.ts": "040807f4b6a071893c82b4d52babded5ea6ab454b50799d9578dd6635929a63a",
+    "src/main.ts": "0f48068462fc83fc65f70afe3fd90ef5232ec3c6d2400949490412cc381e51a4",
+    "src/render/battle-inspection.ts": "6ce8e764c9e41a89b746d5d1d792279608edbe8911249e6eba9e01df4ed8b70f",
+    "src/render/beast-presentation.ts": "1cb537e0501b012f371d246f3f9e56b30481c517233f8c19d555e8d92606c95f",
+    "src/render/combat-presentation.ts": "f81e666b0bc4194630db22e17b7f1096098e9eb4bd6a5660778b415da6da3f1d",
+    "src/render/frame-policy.ts": "3f61e3f19bedaf435d268206a02b51d560d045f93aa54a554bac6acf2dc08b4b",
+    "src/render/gospel.ts": "af5dd52c1d94325f403655e87719ddeae7c90b3deec44ec5f480f10d89a6cfa6",
+    "src/render/melee.ts": "a2ea403ebe26badcb3784536f2b048ad32a6476ef0533d3a1d3aaa69906c08a7",
+    "src/render/metamorph-presentation.ts": "f8912c1c6959a5e483384721143c1b029ac99a2fe6c62ffc36223d99afe5130a",
+    "src/render/projection.ts": "6471ef351ac21e83821aed776721c8ee4ae2995ce207fe9b7cfb9220f2872c5a",
+    "src/render/ranged.ts": "d4485c9d42c8fa219cfa6e01e9d830562ad9aa90301cc1d1a19997f02bd1ee6e",
+    "src/render/scene.ts": "ae5638a1cc1dfea617e3305bb1a11be8fae64be6f524aace6d13eed170880b70",
+    "src/render/skill-effects.ts": "3040defda50d751c59d0651fbc62b9b097fe562bf37f984f04dcb34a8a0c2441",
+    "src/render/taotie.ts": "74c27f041bce7dea321a65770b7820ceb3e6b49c91cd83cb465a25ef7b80c2f4",
+    "src/render/tar.ts": "22a3958fe2ea57ffa545553fc6e1ce04344405d9b3aeeca2a08103bf6f9536c6",
+    "src/ui/battle-analysis.ts": "8480ad21f412667aa0d66e9b9075b460859372d23899e37665f00dbbe37fdcf3",
+    "src/ui/battle-result.ts": "6e5303ecc37dccfba402d28ac3bc5cefaccf6d0b8301bc8a027a7564b67352f9",
+    "src/ui/bench-tooltip.ts": "7af5cc6699a88009cfce6a6cef68d61f188a2df802460ed9f8fb6f2a561e6aec",
+    "src/ui/deployment.ts": "69cc637f5682376f75789d48eb7b2c7aa158bfc65d4d87daeebda042a1a450df",
+    "src/ui/dialog-focus.ts": "99193eb4d1b292f6ce3d6cb6f2125109a115d0f62b921e5b0f2514be18e57528",
+    "src/ui/equipment.ts": "f6cde98baf0661c45573cfaab5e22e625382298d92153a2506e0f3f38501e7de",
+    "src/ui/income.ts": "bb7442bb53dc263b3caee0c61370e5ab51ffc649379060c206a8da64b5485e95",
+    "src/ui/match-history.ts": "11e685149acc3aad0f6fb1115e4d529a63d3476c567bd0edad68e16da4a36634",
+    "src/ui/match-summary.ts": "a450f13dedefe2c72c4184853f3bbf81cd3d3cce10ed2fff46911ab485cbd057",
+    "src/ui/pausable-delay.ts": "2aacf33ac3f0d97c72f453dd63c8981a343d7be336d8a43ab5d4884aad1a0dab",
+    "src/ui/preferences.ts": "846f40bbafc86ec3931a8754ffd254fc418e0dacd9af8e7a1fe59bcdd3131a0d",
+    "src/ui/recruitment.ts": "0e1f7c9644245efd5251138fb12b8b3fd2703d8b4c6d1098d216f4148924940e",
+    "src/ui/restart.ts": "5af4950651b613bd12698a1d1b08fd75d3fb16de7569a479a4bb953628692abf",
+    "src/ui/rotation.ts": "b5f01d1bd577e7d743520019e33ad457ac020b8c188f30fb358497f1f2fd0fe3",
+    "src/ui/save-notice.ts": "a0b9e766baa1050c66099f21fa641ce3d35f1b413f2581d52c072384af452e6e",
+    "src/ui/scouting.ts": "560e6c0f4e0a3670b02d574d61d10c9b4f6a1f944606556d4700e71017d70b1e",
+    "src/ui/synergies.ts": "df682a52e687fd00b547f3c3a388aecce293ab31c2c1f28006afabc5155471be",
+    "src/ui/unit-codex.ts": "18b0d80e1fbaeaf685ab0f69c96beecf914b081fc16d86fc76d873db3320e9ae"
+  }
+}

@@ -15,13 +15,21 @@ export function fighterName(
 export function fighterSprite(
   f: Pick<
     Fighter,
-    "defId" | "summon" | "hawkForm" | "phoenix" | "aurora" | "qiSkill"
-  >,
+    "defId" | "summon" | "hawkForm" | "phoenix" | "aurora" | "qiSkill" | "gospelAura" | "jungle" | "wushi"
+  > & { storm?: Pick<NonNullable<Fighter["storm"]>, "launched">;
+    shuriken?: Pick<NonNullable<Fighter["shuriken"]>, "launched">;
+    secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>, "formed"> },
 ) {
   if (isPhoenixEgg(f)) return "phoenix-egg";
   if (f.hawkForm?.active) return "bloodhawk-ground";
+  if (f.wushi && f.wushi.until > 0) return "master-wushi";
   if (f.summon?.kind === "puppet") return "puppet-spirit";
   if (f.summon?.kind === "sentinel") return "shield-servant";
+  if (!f.summon && f.defId === "monk" && f.secretOrb) return "monk-orb";
+  if (!f.summon && f.defId === "panda" && f.shuriken) return "panda-shuriken";
+  if (!f.summon && f.defId === "treant" && f.jungle) return "treant-jungle";
+  if (!f.summon && f.defId === "stormcaller" && f.storm) return "stormcaller-thunderstorm";
+  if (!f.summon && f.defId === "acolyte" && f.gospelAura) return "acolyte-gospel";
   if (!f.summon && f.defId === "skycrab" && f.aurora) return "skycrab-aurora";
   if (!f.summon && f.defId === "arhat" && f.qiSkill) return "arhat-qi";
   return f.summon ? "wolf-spirit" : f.defId;

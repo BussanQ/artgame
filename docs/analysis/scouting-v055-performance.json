@@ -1,0 +1,126 @@
+{
+  "checkedAt": "2026-11-06T01:54:48.622Z",
+  "rules": "singleplayer-0.55",
+  "method": "Normal paid-proxy preparation captures. One warmup and seven synchronous compute(deploy) measurements each; includes Game cloning and public planning. Excludes browser Worker startup/transfer, UI drawing and real phone performance. No overlapping benchmark or survey process was running.",
+  "sources": {
+    "src/compute/job.ts": "ad6b61f3163b76c0459385516e454d88c98bb900f2f06b5e19a70e89f8bbfa62",
+    "src/engine/ai.ts": "c13b05e47f4438de1bfb7931a28957698cd40c1784f71ff6fca08b23ec59e682",
+    "src/engine/deployment.ts": "7b3536cdf128ec7b10b9142a864ac529750120c13ff9f6f9d1ffbbd4cff08393",
+    "src/engine/battle.ts": "ac58ed002f4c009215bd5092f78296ad966746f30916742a2afc01d9afc86230",
+    "src/engine/recruitment.ts": "e052d1a3ba95aa783a330eb324ae316c4fe5eb73859dc8fd48b2ff983fcbb8ab",
+    "scripts/scouting-performance.ts": "f8136c2290d9dc74189f6b4a6d5985fcf26556d3d9e19fa13891ecd3ced2b1d8"
+  },
+  "cases": [
+    {
+      "input": {
+        "path": "tests/fixtures/scouted-control-reserve.json",
+        "sha256": "de9da12fa882ff7918647176a78a9bd17c24987d7daff1d29a9ee1ef4c493b3c",
+        "jsonBytes": 41561,
+        "round": 23,
+        "level": 9,
+        "owned": 17,
+        "bench": 8,
+        "history": 22,
+        "difficulty": "standard"
+      },
+      "samples": [
+        51.77125000000001,
+        46.24866700000001,
+        46.80033300000002,
+        43.27541600000001,
+        45.13358399999993,
+        43.51195900000005,
+        41.77520900000002
+      ],
+      "medianMs": 45.13358399999993,
+      "maximumMs": 51.77125000000001,
+      "trials": 7,
+      "opponent": {
+        "id": 4,
+        "name": "零号机",
+        "kind": "pvp"
+      },
+      "scores": {
+        "current": -10153.664755244756,
+        "static": -10488.619073647871,
+        "recommended": -10153.664755244756
+      },
+      "inputUnchanged": true,
+      "legalPlacement": true
+    },
+    {
+      "input": {
+        "path": "tmp/scouting-v055-psychic-standard-classic-173.json",
+        "sha256": "6baee681d06f5ecc6eaffd4926d2bbc382394e369e240010c8063764beb6b20f",
+        "jsonBytes": 37292,
+        "round": 20,
+        "level": 8,
+        "owned": 16,
+        "bench": 8,
+        "history": 19,
+        "difficulty": "standard"
+      },
+      "samples": [
+        26.15079199999991,
+        25.82904099999996,
+        23.40833400000008,
+        22.497333000000026,
+        21.8799580000001,
+        24.477709000000004,
+        24.103624999999965
+      ],
+      "medianMs": 24.103624999999965,
+      "maximumMs": 26.15079199999991,
+      "trials": 7,
+      "opponent": {
+        "id": -1,
+        "name": "铁壁防线",
+        "kind": "pve"
+      },
+      "scores": {
+        "current": 10208.659583333334,
+        "static": -10352.725833333334,
+        "recommended": 10253.549824561404
+      },
+      "inputUnchanged": true,
+      "legalPlacement": true
+    },
+    {
+      "input": {
+        "path": "tmp/scouting-v055-beasts-veteran-rotation-311.json",
+        "sha256": "2188fc09984319b74ea07b9d6337469f178f4d393bf5f149fd19c4d2ffba9798",
+        "jsonBytes": 42361,
+        "round": 23,
+        "level": 9,
+        "owned": 17,
+        "bench": 8,
+        "history": 22,
+        "difficulty": "veteran"
+      },
+      "samples": [
+        38.159791999999925,
+        36.86054200000001,
+        36.254542000000015,
+        37.369459000000006,
+        36.54445899999996,
+        35.969125000000076,
+        35.62583299999983
+      ],
+      "medianMs": 36.54445899999996,
+      "maximumMs": 38.159791999999925,
+      "trials": 7,
+      "opponent": {
+        "id": 6,
+        "name": "深海回声",
+        "kind": "pvp"
+      },
+      "scores": {
+        "current": -10055.375252525253,
+        "static": -10233.983995840761,
+        "recommended": 10137.507692307692
+      },
+      "inputUnchanged": true,
+      "legalPlacement": true
+    }
+  ]
+}

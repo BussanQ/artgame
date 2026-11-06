@@ -7,6 +7,8 @@ import type { Fighter } from "./types";
 const distance = (a: Fighter, b: Fighter) =>
   Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export function usesEnergy(f: Fighter) {
+  if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return false;
+  if (f.lightningChain || f.gospelAura) return false;
   if (
     ["birdrider", "bladethrall", "staffthrall"].includes(f.defId) ||
     f.bladeStorm
@@ -25,6 +27,10 @@ export function usesEnergy(f: Fighter) {
   return !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
+  if (f.secretOrb?.casting || f.secretOrb?.channel) return false;
+  if (f.shuriken?.casting) return false;
+  if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return false;
+  if (f.lightningChain || f.gospelAura) return false;
   if (
     ["birdrider", "bladethrall", "staffthrall"].includes(f.defId) ||
     f.bladeStorm
@@ -69,7 +75,8 @@ export function effectiveArmor(f: Fighter, tick: number, fighters?: Fighter[]) {
       commandBonuses(f, tick).armor,
     ) +
     carapaceArmor(f, tick) +
-    galeArmor
+    galeArmor +
+    (f.hp > 0 && f.wushi && f.wushi.until > tick ? f.wushi.armor : 0)
   );
 }
 /** Bodyguards conceal fish; enemy fish reveal nearby targets. AoE still hits. */
@@ -101,6 +108,9 @@ export function attackTargets(source: Fighter, fighters: Fighter[], tick = 0) {
   );
 }
 export function skillGauge(f: Fighter) {
+  if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return { progress: 0, color: "#b5e9b7" };
+  if (f.gospelAura) return { progress: 0, color: "#8effe6" };
+  if (f.lightningChain) return { progress: 0, color: "#b8e8ff" };
   if (f.gale)
     return { progress: f.gale.stacks / STAFF_GALE.maxStacks, color: "#85c8ff" };
   // Chance is not a charge meter; do not imply a guaranteed next critical hit.

@@ -185,8 +185,11 @@ describe("策略存档、迁移与Worker", () => {
       for (const p of g.players) delete p.aiProfile;
       let result: ReturnType<typeof startRound> = null;
       if (phase !== "prepare") {
+        // Exercise legacy-phase preservation with the pre-gospel unit definitions.
+        g.combatVersion = "infantry";
         offers(g, me, [
-          phase === "finished" ? "fish" : "guard",
+          // The historical acolyte loses this opening; current gospel stats need not.
+          phase === "finished" ? "acolyte" : "guard",
           null,
           null,
           null,

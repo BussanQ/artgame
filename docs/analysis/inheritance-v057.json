@@ -1,0 +1,4784 @@
+{
+  "checkedAt": "2026-11-06T03:55:26.844Z",
+  "rules": "singleplayer-0.57",
+  "combatVersion": "wushi-control",
+  "kind": "offline-rule-routing-and-deterministic-frame-audit-not-browser-evidence",
+  "sourceFingerprints": {
+    "src/engine/types.ts": "6a0ff4f8eed197487e029acc4d56a32772e1ee77adf087d1e8023e7b456f8c07",
+    "src/data/traits.ts": "8e34a024ccecbb57c06e2978e7f5a30b184ba96ab30d488f06a7222c36c9940f",
+    "src/data/units.ts": "d136be59f0c80ac0874669b587e554f5a785ab5f3c11a7cc6512da73b9c18900",
+    "src/engine/progression.ts": "351d3b922cef649a626f293e95da3b9b5e32d2f24df1cefef6160770a71b9f12",
+    "src/engine/persistence.ts": "0cc6f2a170c61ef9724751866d1596b47308fae11707e78f47e31870f3caf210",
+    "src/engine/game.ts": "e4ebe95b0da39ae3a77fa9a9190c64a7c5c328507e132a4693cfe722b62a299b",
+    "src/engine/ai.ts": "b3d0d3b00b68e3be30e62950c691c7391c91f9af6efd5d1978bb838812701155",
+    "src/engine/battle.ts": "9b869a51b29443536b3cb252ff6b9738aeebf519c6b4db3fd9ae5991e29b9614",
+    "src/engine/wushi.ts": "82b734e1bdc121c343ab55714998fc0e74b120b526e677aedb2442e4c672900a",
+    "src/data/skills.ts": "ca09c1969b7b275532adce5ae2355e41c38acf9313c7bfc534bf26d13b2ea289",
+    "src/data/jungle-demo.ts": "617775bd9b74ca1db4254caff2572830e09646a6510a5bb9d5fa962bcdb61bf9",
+    "src/data/wushi-demo.ts": "2ca089c25ee3aed2b4fa426b2ec309181cfc2070617980bd5a34de9745ff963a",
+    "scripts/inheritance-audit.ts": "b2789c334999a1d6f06b7c5382c3dacc70f599556a66ca13b2ff6a210eb3011b"
+  },
+  "versions": [
+    {
+      "version": "legacy",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": false
+      },
+      "traitTableSha256": "e65dfb512d1e97073c6d7a7000734bec6d6b5c6ecb0b710efdad9be38f103d56",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 3,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 3
+      }
+    },
+    {
+      "version": "tactics",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": false
+      },
+      "traitTableSha256": "5993547859d9c005c3104e3135af14d982af3be19c030883602fa2098987dd43",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 3,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 3
+      }
+    },
+    {
+      "version": "balanced",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": false
+      },
+      "traitTableSha256": "e65dfb512d1e97073c6d7a7000734bec6d6b5c6ecb0b710efdad9be38f103d56",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 3,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 3
+      }
+    },
+    {
+      "version": "signature",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": false
+      },
+      "traitTableSha256": "e65dfb512d1e97073c6d7a7000734bec6d6b5c6ecb0b710efdad9be38f103d56",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 3,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 3
+      }
+    },
+    {
+      "version": "summons",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": false
+      },
+      "traitTableSha256": "e65dfb512d1e97073c6d7a7000734bec6d6b5c6ecb0b710efdad9be38f103d56",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 3,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 3
+      }
+    },
+    {
+      "version": "legions",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": false
+      },
+      "traitTableSha256": "e65dfb512d1e97073c6d7a7000734bec6d6b5c6ecb0b710efdad9be38f103d56",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 3,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 3
+      }
+    },
+    {
+      "version": "brood",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "e65dfb512d1e97073c6d7a7000734bec6d6b5c6ecb0b710efdad9be38f103d56",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "airsea",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "e65dfb512d1e97073c6d7a7000734bec6d6b5c6ecb0b710efdad9be38f103d56",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "fleet",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "b6cf847cba558efdaaa582415a1f314ab3e8be7c8f546514cd23eead22736c19",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3,
+          6
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "metamorph",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "b6cf847cba558efdaaa582415a1f314ab3e8be7c8f546514cd23eead22736c19",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3,
+          6
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "infantry",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "ea09b33d2f7b56790c51d9eb1fb93ca66068af9d10693a2e9c93d7c53ab9d888",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "armored",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "ddd517f37ba08ab6e2312f5981afd7f503d3d47d9b739233b4a43e5313ff5f8b",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "puppets",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "b9e48efa3cc6fbba77ae8f2c790178e8367168394c4c5deb8a9de783f9241adb",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "wildfront",
+      "capabilities": {
+        "ambush": false,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "d94ac903a399c68cde6ee17be30cce590199af11eb41e4db41276c5ba47a7aab",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "ambush",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "307c4fb51155827535aa28abbd4a40cedd778dd304854f6c4872c3c947d5557b",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "formations",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "58bdd2706fcb749eb89f9834d691f72daf419ff89d99ce03942a3fc4b6070e31",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "counterplay",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "3f78cfbf03b0b40a8f229cdc8bbc4f61c2c17a121ec003878aea9eb523cac66d",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "lineages",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": false,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "cb1c0b1b6043186cfea4073576e026279f82d3fbe6efd0b32196439ca8ee3c4c",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "coalitions",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "aurora",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "qi",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "taotie",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "tar",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "lightning",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": false,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "gospel",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": true,
+        "storm": false,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": true,
+        "storm": true,
+        "jungle": false,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "jungle",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": true,
+        "storm": true,
+        "jungle": true,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": false
+      },
+      "traitTableSha256": "e65dfb512d1e97073c6d7a7000734bec6d6b5c6ecb0b710efdad9be38f103d56",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          3
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          3
+        ],
+        "装甲": [
+          2,
+          3
+        ],
+        "野兽": [
+          2,
+          3
+        ],
+        "熊猫": [
+          2,
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          2,
+          4
+        ],
+        "先锋": [
+          2
+        ],
+        "刺杀": [
+          2
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          3
+        ],
+        "召唤": [
+          2,
+          3
+        ],
+        "傀儡": [
+          2
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3
+        ],
+        "异能": [
+          2
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 3,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 3
+      }
+    },
+    {
+      "version": "continuity",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": true,
+        "storm": true,
+        "jungle": true,
+        "wushi": false,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "wushi",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": true,
+        "storm": true,
+        "jungle": true,
+        "wushi": true,
+        "wushiControl": false,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    },
+    {
+      "version": "wushi-control",
+      "capabilities": {
+        "ambush": true,
+        "coalitions": true,
+        "gospel": true,
+        "storm": true,
+        "jungle": true,
+        "wushi": true,
+        "wushiControl": true,
+        "insectEvolution": true
+      },
+      "traitTableSha256": "285809b848737635c043bbbf81baed779672496e9cf549c4189f9008509ddb76",
+      "traitThresholds": {
+        "猛禽": [
+          2,
+          4
+        ],
+        "陆行者": [
+          1
+        ],
+        "灵能": [
+          2,
+          4
+        ],
+        "不朽": [
+          2,
+          3
+        ],
+        "步兵": [
+          2,
+          4,
+          6
+        ],
+        "装甲": [
+          2,
+          4
+        ],
+        "野兽": [
+          2,
+          4,
+          6
+        ],
+        "熊猫": [
+          3
+        ],
+        "护卫": [
+          2,
+          4
+        ],
+        "狙击": [
+          3,
+          6
+        ],
+        "先锋": [
+          3,
+          6
+        ],
+        "刺杀": [
+          3,
+          6
+        ],
+        "骑兵": [
+          2
+        ],
+        "支援": [
+          2,
+          4
+        ],
+        "召唤": [
+          3
+        ],
+        "傀儡": [
+          2,
+          4,
+          6
+        ],
+        "异虫": [
+          2,
+          4
+        ],
+        "空军": [
+          2,
+          4
+        ],
+        "海神": [
+          2,
+          4
+        ],
+        "攻城": [
+          3,
+          6
+        ],
+        "爆破": [
+          3,
+          6
+        ],
+        "异能": [
+          2,
+          4,
+          6
+        ]
+      },
+      "insectMergeCounts": {
+        "twoKindsOneStar": 2,
+        "twoKindsTwoStar": 3,
+        "fourKindsTwoStar": 2
+      }
+    }
+  ],
+  "currentTraitTable": {
+    "猛禽": [
+      {
+        "count": 2,
+        "description": "全部空中友军对地普攻伤害 +15%（累计总量；落地失效，技能不增加）",
+        "bonus": {
+          "airGroundBonus": 0.15
+        }
+      },
+      {
+        "count": 4,
+        "description": "全部空中友军对地普攻伤害 +35%（累计总量；落地失效，技能不增加）",
+        "bonus": {
+          "airGroundBonus": 0.35
+        }
+      }
+    ],
+    "陆行者": [
+      {
+        "count": 1,
+        "exclusive": true,
+        "description": "上阵仅1种陆行者时，该种棋子的普攻为真实伤害；同名可重复，多种陆行者同时上阵则失效",
+        "bonus": {
+          "trueAttack": true
+        }
+      }
+    ],
+    "灵能": [
+      {
+        "count": 2,
+        "description": "全体友军受击反弹 20 点真实伤害（累计总量，含残魂与召唤物；不减免原伤害、不再次反弹）",
+        "bonus": {
+          "reflection": 20
+        }
+      },
+      {
+        "count": 4,
+        "description": "全体友军受击反弹 50 点真实伤害（累计总量，含残魂与召唤物；不减免原伤害、不再次反弹）",
+        "bonus": {
+          "reflection": 50
+        }
+      }
+    ],
+    "不朽": [
+      {
+        "count": 2,
+        "description": "不朽首次阵亡化为残魂继续战斗 4 秒，不能治疗，不增加战后扣血",
+        "bonus": {
+          "immortal": 16
+        }
+      },
+      {
+        "count": 3,
+        "description": "不朽首次阵亡化为残魂继续战斗 6 秒，不能治疗，不增加战后扣血",
+        "bonus": {
+          "immortal": 24
+        }
+      }
+    ],
+    "空军": [
+      {
+        "count": 2,
+        "description": "全部空中友军普攻闪避 15%（累计总量；落地失效，技能不闪避）",
+        "bonus": {
+          "evasion": 0.15
+        }
+      },
+      {
+        "count": 4,
+        "description": "全部空中友军普攻闪避 35%（累计总量；落地失效，技能不闪避）",
+        "bonus": {
+          "evasion": 0.35
+        }
+      }
+    ],
+    "海神": [
+      {
+        "count": 2,
+        "description": "空中友军法术减伤 +20 个百分点（累计总量；与装备、召唤叠加后最多75%，爆破另行削减；落地失效）",
+        "bonus": {
+          "seaWard": 0.2
+        }
+      },
+      {
+        "count": 4,
+        "description": "空中友军法术减伤 +40 个百分点（累计总量；与装备、召唤叠加后最多75%，爆破另行削减；落地失效）",
+        "bonus": {
+          "seaWard": 0.4
+        }
+      }
+    ],
+    "攻城": [
+      {
+        "count": 3,
+        "description": "全军对装甲、空军、傀儡、海神、异虫、不朽的直接伤害 +25%（累计总量，含普攻与直接技能；不增加反伤和持续伤害）",
+        "bonus": {
+          "siege": 0.25,
+          "siegeDirect": true
+        }
+      },
+      {
+        "count": 6,
+        "description": "全军对装甲、空军、傀儡、海神、异虫、不朽的直接伤害 +50%（累计总量，含普攻与直接技能；不增加反伤和持续伤害）",
+        "bonus": {
+          "siege": 0.5,
+          "siegeDirect": true
+        }
+      }
+    ],
+    "爆破": [
+      {
+        "count": 3,
+        "description": "全体敌人法术减伤降低 20 个百分点（累计总量，最低−25%；含后续召唤物）",
+        "bonus": {
+          "magicBreak": 0.2
+        }
+      },
+      {
+        "count": 6,
+        "description": "全体敌人法术减伤降低 50 个百分点（累计总量，最低−25%；含后续召唤物）",
+        "bonus": {
+          "magicBreak": 0.5
+        }
+      }
+    ],
+    "异虫": [
+      {
+        "count": 2,
+        "description": "持有2种不同异虫（含备战席），两枚同名一星异虫合成二星；二星升三星仍需三枚",
+        "bonus": {}
+      },
+      {
+        "count": 4,
+        "description": "持有4种不同异虫（含备战席），两枚同名同星异虫即可升星，最高三星",
+        "bonus": {}
+      }
+    ],
+    "异能": [
+      {
+        "count": 2,
+        "description": "全体友军普攻吸血 5%（累计总量；按实际生命伤害回复，含后续召唤物，与装备相加；技能、反伤不触发）",
+        "bonus": {
+          "teamLifesteal": 0.05
+        }
+      },
+      {
+        "count": 4,
+        "description": "全体友军普攻吸血 10%（累计总量；按实际生命伤害回复，含后续召唤物，与装备相加；技能、反伤不触发）",
+        "bonus": {
+          "teamLifesteal": 0.1
+        }
+      },
+      {
+        "count": 6,
+        "description": "全体友军普攻吸血 20%（累计总量；按实际生命伤害回复，含后续召唤物，与装备相加；技能、反伤不触发）",
+        "bonus": {
+          "teamLifesteal": 0.2
+        }
+      }
+    ],
+    "召唤": [
+      {
+        "count": 3,
+        "description": "全体友军普攻造成生命伤害时的回能 +40%（每次攻击最多一次；不增加受击、支援或充能回能，不附赠法术减伤）",
+        "bonus": {
+          "damageMana": 0.4
+        }
+      }
+    ],
+    "傀儡": [
+      {
+        "count": 2,
+        "description": "傀儡攻击 +10%（不传递给召唤物）",
+        "bonus": {
+          "attack": 0.1
+        }
+      },
+      {
+        "count": 4,
+        "description": "傀儡攻击 +25%（10%+15%累计，不传递给召唤物）",
+        "bonus": {
+          "attack": 0.25
+        }
+      },
+      {
+        "count": 6,
+        "description": "傀儡攻击 +45%，其他友军及后续召唤物 +20%（累计；开战锁定）",
+        "bonus": {
+          "attack": 0.25,
+          "teamAttack": 0.2
+        }
+      }
+    ],
+    "骑兵": [
+      {
+        "count": 2,
+        "description": "敌方全军每次回能减少 3（倍率后扣除，最低为零；含后续召唤物，不影响初始能量）",
+        "bonus": {
+          "enemyManaPenalty": 3
+        }
+      }
+    ],
+    "支援": [
+      {
+        "count": 2,
+        "description": "支援阵亡时，全体存活友军恢复200生命和10能量（含召唤物；不能复活）",
+        "bonus": {
+          "supportHeal": 200,
+          "supportMana": 10
+        }
+      },
+      {
+        "count": 4,
+        "description": "支援阵亡时，全体存活友军恢复500生命和20能量（累计总量，含召唤物；不能复活）",
+        "bonus": {
+          "supportHeal": 500,
+          "supportMana": 20
+        }
+      }
+    ],
+    "步兵": [
+      {
+        "count": 2,
+        "description": "全体敌人护甲降低 3 点（累计总量；整场生效，含后续召唤物；护甲减伤最低为零）",
+        "bonus": {
+          "enemyArmor": 3
+        }
+      },
+      {
+        "count": 4,
+        "description": "全体敌人护甲降低 9 点（累计总量；整场生效，含后续召唤物；护甲减伤最低为零）",
+        "bonus": {
+          "enemyArmor": 9
+        }
+      },
+      {
+        "count": 6,
+        "description": "全体敌人护甲降低 18 点（累计总量；整场生效，含后续召唤物；护甲减伤最低为零）",
+        "bonus": {
+          "enemyArmor": 18
+        }
+      }
+    ],
+    "装甲": [
+      {
+        "count": 2,
+        "description": "装甲每秒恢复 15 生命（取最高档；阵亡不再恢复）",
+        "bonus": {
+          "regen": 3.75
+        }
+      },
+      {
+        "count": 4,
+        "description": "装甲每秒恢复 50 生命（取最高档；阵亡不再恢复）",
+        "bonus": {
+          "regen": 12.5
+        }
+      }
+    ],
+    "野兽": [
+      {
+        "count": 2,
+        "description": "野兽攻速 +15%（不传递给召唤物）",
+        "bonus": {
+          "haste": 0.15
+        }
+      },
+      {
+        "count": 4,
+        "description": "野兽攻速 +40%，其他友军及后续召唤物 +25%（累计；开战锁定）",
+        "bonus": {
+          "haste": 0.15,
+          "teamHaste": 0.25
+        }
+      },
+      {
+        "count": 6,
+        "description": "野兽攻速 +75%，其他友军及后续召唤物 +60%（累计；开战锁定）",
+        "bonus": {
+          "haste": 0.15,
+          "teamHaste": 0.6
+        }
+      }
+    ],
+    "熊猫": [
+      {
+        "count": 3,
+        "description": "3种熊猫开战满能量（不额外增加技能强度）",
+        "bonus": {
+          "mana": 100
+        }
+      }
+    ],
+    "护卫": [
+      {
+        "count": 2,
+        "description": "护卫获得 250 开战护盾",
+        "bonus": {
+          "shield": 250
+        }
+      },
+      {
+        "count": 4,
+        "description": "护卫获得 600 开战护盾",
+        "bonus": {
+          "shield": 600
+        }
+      }
+    ],
+    "狙击": [
+      {
+        "count": 3,
+        "description": "狙击物理伤害无视 4 点护甲（累计总量；不使目标减甲，不额外增加攻击）",
+        "bonus": {
+          "armorPenetration": 4
+        }
+      },
+      {
+        "count": 6,
+        "description": "狙击物理伤害无视 12 点护甲（累计总量；不使目标减甲，不额外增加攻击）",
+        "bonus": {
+          "armorPenetration": 12
+        }
+      }
+    ],
+    "先锋": [
+      {
+        "count": 3,
+        "description": "先锋护甲 +6（累计总量；不额外增加生命或回复）",
+        "bonus": {
+          "armor": 6
+        }
+      },
+      {
+        "count": 6,
+        "description": "先锋护甲 +14（累计总量；不额外增加生命或回复）",
+        "bonus": {
+          "armor": 14
+        }
+      }
+    ],
+    "刺杀": [
+      {
+        "count": 3,
+        "description": "刺杀普攻有 10% 概率造成4.5倍暴击；技能不触发。单名刺杀即可开战跳后排",
+        "bonus": {
+          "criticalChance": 0.1,
+          "criticalMultiplier": 4.5,
+          "jump": true
+        }
+      },
+      {
+        "count": 6,
+        "description": "刺杀普攻有 20% 概率造成4.5倍暴击（六档总概率）；技能不触发。单名刺杀即可开战跳后排",
+        "bonus": {
+          "criticalChance": 0.2,
+          "criticalMultiplier": 4.5,
+          "jump": true
+        }
+      }
+    ]
+  },
+  "demo": {
+    "winner": null,
+    "finalFrame": 160,
+    "battleSha256": "139896015f10c0abaf797c1a127f2f0440e0c5c90a3a5d596a4e92f384bf3e51",
+    "initial": {
+      "index": 0,
+      "seconds": 0,
+      "complete": false,
+      "sides": [
+        {
+          "side": 0,
+          "fighters": [
+            {
+              "jungle": {
+                "waves": 0,
+                "hits": 0,
+                "knockups": 0,
+                "landings": 0
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 101,
+              "defId": "treant",
+              "star": 3,
+              "side": 0,
+              "hp": 3800,
+              "maxHp": 3800,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "jungle": {
+                "waves": 0,
+                "hits": 0,
+                "knockups": 0,
+                "landings": 0
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 102,
+              "defId": "treant",
+              "star": 2,
+              "side": 0,
+              "hp": 1900,
+              "maxHp": 1900,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 103,
+              "defId": "vine",
+              "star": 2,
+              "side": 0,
+              "hp": 1640,
+              "maxHp": 1640,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 104,
+              "defId": "bonedragon",
+              "star": 2,
+              "side": 0,
+              "hp": 2000,
+              "maxHp": 2000,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "gospelAura": {
+                "pulses": 0,
+                "peakTargets": 0,
+                "lastTick": -4,
+                "targets": []
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 105,
+              "defId": "acolyte",
+              "star": 2,
+              "side": 0,
+              "hp": 1200,
+              "maxHp": 1200,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 106,
+              "defId": "medic",
+              "star": 2,
+              "side": 0,
+              "hp": 1000,
+              "maxHp": 1000,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            }
+          ],
+          "survivors": 6,
+          "souls": 0,
+          "damage": 0,
+          "received": 0,
+          "healing": 0,
+          "absorbed": 0
+        },
+        {
+          "side": 1,
+          "fighters": [
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 201,
+              "defId": "guard",
+              "star": 3,
+              "side": 1,
+              "hp": 3200,
+              "maxHp": 3200,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 202,
+              "defId": "shieldthrall",
+              "star": 2,
+              "side": 1,
+              "hp": 2100,
+              "maxHp": 2100,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 203,
+              "defId": "swordthrall",
+              "star": 2,
+              "side": 1,
+              "hp": 1200,
+              "maxHp": 1200,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "storm": {
+                "launched": 0,
+                "hits": 0,
+                "energyRemoved": 0
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 204,
+              "defId": "stormcaller",
+              "star": 2,
+              "side": 1,
+              "hp": 800,
+              "maxHp": 800,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 205,
+              "defId": "medic",
+              "star": 2,
+              "side": 1,
+              "hp": 1000,
+              "maxHp": 1000,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 206,
+              "defId": "fish",
+              "star": 2,
+              "side": 1,
+              "hp": 900,
+              "maxHp": 900,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            }
+          ],
+          "survivors": 6,
+          "souls": 0,
+          "damage": 0,
+          "received": 0,
+          "healing": 0,
+          "absorbed": 0
+        }
+      ]
+    },
+    "final": {
+      "index": 160,
+      "seconds": 40,
+      "complete": true,
+      "winner": null,
+      "sides": [
+        {
+          "side": 0,
+          "fighters": [
+            {
+              "jungle": {
+                "waves": 1,
+                "hits": 6,
+                "knockups": 6,
+                "landings": 6
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 101,
+              "defId": "treant",
+              "star": 3,
+              "side": 0,
+              "hp": 0,
+              "maxHp": 3800,
+              "damage": 1994,
+              "normalDamage": 554,
+              "skillDamage": 1440,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 1402,
+              "received": 4585,
+              "healing": 85,
+              "absorbed": 0,
+              "casts": 1,
+              "evades": 0
+            },
+            {
+              "jungle": {
+                "waves": 1,
+                "hits": 4,
+                "knockups": 4,
+                "landings": 4
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 102,
+              "defId": "treant",
+              "star": 2,
+              "side": 0,
+              "hp": 0,
+              "maxHp": 1900,
+              "damage": 906,
+              "normalDamage": 202,
+              "skillDamage": 704,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 806,
+              "received": 2015,
+              "healing": 115,
+              "absorbed": 0,
+              "casts": 1,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 103,
+              "defId": "vine",
+              "star": 2,
+              "side": 0,
+              "hp": 0,
+              "maxHp": 1640,
+              "damage": 2536,
+              "normalDamage": 1632,
+              "skillDamage": 904,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 68,
+              "received": 1640,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 8,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "undying": true,
+              "uid": 104,
+              "defId": "bonedragon",
+              "star": 2,
+              "side": 0,
+              "hp": 0,
+              "maxHp": 2000,
+              "damage": 1240,
+              "normalDamage": 620,
+              "skillDamage": 620,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 5580,
+              "received": 3580,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 9,
+              "evades": 0
+            },
+            {
+              "gospelAura": {
+                "pulses": 40,
+                "peakTargets": 4,
+                "lastTick": 160,
+                "targets": [
+                  104
+                ]
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 105,
+              "defId": "acolyte",
+              "star": 2,
+              "side": 0,
+              "hp": 1200,
+              "maxHp": 1200,
+              "damage": 381,
+              "normalDamage": 381,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 510,
+              "shieldDamage": 1098,
+              "received": 480,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 106,
+              "defId": "medic",
+              "star": 2,
+              "side": 0,
+              "hp": 420,
+              "maxHp": 1000,
+              "damage": 70,
+              "normalDamage": 70,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 560,
+              "received": 2000,
+              "healing": 4180,
+              "absorbed": 0,
+              "casts": 7,
+              "evades": 0
+            }
+          ],
+          "survivors": 2,
+          "souls": 1,
+          "damage": 7127,
+          "received": 14300,
+          "healing": 4380,
+          "absorbed": 0
+        },
+        {
+          "side": 1,
+          "fighters": [
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 201,
+              "defId": "guard",
+              "star": 3,
+              "side": 1,
+              "hp": 881,
+              "maxHp": 3200,
+              "damage": 2892,
+              "normalDamage": 1677,
+              "skillDamage": 1215,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 2427,
+              "healing": 0,
+              "absorbed": 9014,
+              "casts": 11,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 202,
+              "defId": "shieldthrall",
+              "star": 2,
+              "side": 1,
+              "hp": 898,
+              "maxHp": 2100,
+              "damage": 4231,
+              "normalDamage": 2288,
+              "skillDamage": 1943,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 3350,
+              "healing": 0,
+              "absorbed": 250,
+              "casts": 4,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 203,
+              "defId": "swordthrall",
+              "star": 2,
+              "side": 1,
+              "hp": 1020,
+              "maxHp": 1200,
+              "damage": 2600,
+              "normalDamage": 1240,
+              "skillDamage": 1360,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 488,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 3,
+              "evades": 0
+            },
+            {
+              "storm": {
+                "launched": 6,
+                "hits": 13,
+                "energyRemoved": 187
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 204,
+              "defId": "stormcaller",
+              "star": 2,
+              "side": 1,
+              "hp": 800,
+              "maxHp": 800,
+              "damage": 3200,
+              "normalDamage": 1065,
+              "skillDamage": 2135,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 312,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 6,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 205,
+              "defId": "medic",
+              "star": 2,
+              "side": 1,
+              "hp": 1000,
+              "maxHp": 1000,
+              "damage": 387,
+              "normalDamage": 387,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 488,
+              "healing": 2204,
+              "absorbed": 0,
+              "casts": 5,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 206,
+              "defId": "fish",
+              "star": 2,
+              "side": 1,
+              "hp": 900,
+              "maxHp": 900,
+              "damage": 990,
+              "normalDamage": 990,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 62,
+              "healing": 1222,
+              "absorbed": 250,
+              "casts": 7,
+              "evades": 0
+            }
+          ],
+          "survivors": 6,
+          "souls": 0,
+          "damage": 14300,
+          "received": 7127,
+          "healing": 3426,
+          "absorbed": 9514
+        }
+      ]
+    }
+  },
+  "wushiDemo": {
+    "kind": "unequal-budget-showcase-not-normal-economy",
+    "winner": 0,
+    "finalFrame": 58,
+    "battleSha256": "2f641dc19d86a69a035c5c6a0256477ce00181a6a14e5bbc87c08fe7f8833a8d",
+    "firstFormTick": 5,
+    "initial": {
+      "index": 0,
+      "seconds": 0,
+      "complete": false,
+      "sides": [
+        {
+          "side": 0,
+          "fighters": [
+            {
+              "wushi": {
+                "forms": 0,
+                "sweeps": 0,
+                "splashHits": 0,
+                "interrupted": 0,
+                "until": 0,
+                "armor": 0,
+                "taunts": 0
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 101,
+              "defId": "master",
+              "star": 2,
+              "side": 0,
+              "hp": 1400,
+              "maxHp": 1400,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "knockups": 0,
+              "uid": 102,
+              "defId": "elephant",
+              "star": 2,
+              "side": 0,
+              "hp": 1300,
+              "maxHp": 1300,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 103,
+              "defId": "panda",
+              "star": 2,
+              "side": 0,
+              "hp": 1060,
+              "maxHp": 1060,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 104,
+              "defId": "monk",
+              "star": 2,
+              "side": 0,
+              "hp": 2200,
+              "maxHp": 2200,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 105,
+              "defId": "medic",
+              "star": 1,
+              "side": 0,
+              "hp": 500,
+              "maxHp": 500,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 106,
+              "defId": "infantry",
+              "star": 2,
+              "side": 0,
+              "hp": 960,
+              "maxHp": 960,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            }
+          ],
+          "survivors": 6,
+          "souls": 0,
+          "damage": 0,
+          "received": 0,
+          "healing": 0,
+          "absorbed": 0
+        },
+        {
+          "side": 1,
+          "fighters": [
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 201,
+              "defId": "guard",
+              "star": 2,
+              "side": 1,
+              "hp": 1600,
+              "maxHp": 1600,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 202,
+              "defId": "swordthrall",
+              "star": 2,
+              "side": 1,
+              "hp": 1200,
+              "maxHp": 1200,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 203,
+              "defId": "vine",
+              "star": 2,
+              "side": 1,
+              "hp": 1640,
+              "maxHp": 1640,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 204,
+              "defId": "infantry",
+              "star": 2,
+              "side": 1,
+              "hp": 960,
+              "maxHp": 960,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "storm": {
+                "launched": 0,
+                "hits": 0,
+                "energyRemoved": 0
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 205,
+              "defId": "stormcaller",
+              "star": 2,
+              "side": 1,
+              "hp": 800,
+              "maxHp": 800,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 206,
+              "defId": "medic",
+              "star": 1,
+              "side": 1,
+              "hp": 500,
+              "maxHp": 500,
+              "damage": 0,
+              "normalDamage": 0,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 0,
+              "evades": 0
+            }
+          ],
+          "survivors": 6,
+          "souls": 0,
+          "damage": 0,
+          "received": 0,
+          "healing": 0,
+          "absorbed": 0
+        }
+      ]
+    },
+    "final": {
+      "index": 58,
+      "seconds": 14.5,
+      "complete": true,
+      "winner": 0,
+      "sides": [
+        {
+          "side": 0,
+          "fighters": [
+            {
+              "wushi": {
+                "forms": 1,
+                "sweeps": 5,
+                "splashHits": 8,
+                "interrupted": 0,
+                "until": 0,
+                "armor": 0,
+                "taunts": 4
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 101,
+              "defId": "master",
+              "star": 2,
+              "side": 0,
+              "hp": 0,
+              "maxHp": 1400,
+              "damage": 1385,
+              "normalDamage": 1385,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 103,
+              "received": 1659,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 1,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "knockups": 1,
+              "uid": 102,
+              "defId": "elephant",
+              "star": 2,
+              "side": 0,
+              "hp": 0,
+              "maxHp": 1300,
+              "damage": 323,
+              "normalDamage": 163,
+              "skillDamage": 160,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 59,
+              "received": 1468,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 1,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 103,
+              "defId": "panda",
+              "star": 2,
+              "side": 0,
+              "hp": 740,
+              "maxHp": 1060,
+              "damage": 3000,
+              "normalDamage": 1884,
+              "skillDamage": 1116,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 318,
+              "received": 870,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 6,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 104,
+              "defId": "monk",
+              "star": 2,
+              "side": 0,
+              "hp": 2200,
+              "maxHp": 2200,
+              "damage": 467,
+              "normalDamage": 467,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 468,
+              "healing": 1370,
+              "absorbed": 0,
+              "casts": 2,
+              "evades": 0
+            },
+            {
+              "interruptions": 1,
+              "lostTargets": 0,
+              "uid": 105,
+              "defId": "medic",
+              "star": 1,
+              "side": 0,
+              "hp": 186,
+              "maxHp": 500,
+              "damage": 138,
+              "normalDamage": 138,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 689,
+              "healing": 450,
+              "absorbed": 0,
+              "casts": 2,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 106,
+              "defId": "infantry",
+              "star": 2,
+              "side": 0,
+              "hp": 960,
+              "maxHp": 960,
+              "damage": 2340,
+              "normalDamage": 1644,
+              "skillDamage": 696,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 0,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 3,
+              "evades": 0
+            }
+          ],
+          "survivors": 4,
+          "souls": 0,
+          "damage": 7653,
+          "received": 5154,
+          "healing": 1820,
+          "absorbed": 0
+        },
+        {
+          "side": 1,
+          "fighters": [
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 201,
+              "defId": "guard",
+              "star": 2,
+              "side": 1,
+              "hp": 0,
+              "maxHp": 1600,
+              "damage": 373,
+              "normalDamage": 272,
+              "skillDamage": 101,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 1825,
+              "healing": 0,
+              "absorbed": 480,
+              "casts": 1,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 202,
+              "defId": "swordthrall",
+              "star": 2,
+              "side": 1,
+              "hp": 0,
+              "maxHp": 1200,
+              "damage": 998,
+              "normalDamage": 278,
+              "skillDamage": 720,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 1200,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 1,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 203,
+              "defId": "vine",
+              "star": 2,
+              "side": 1,
+              "hp": 0,
+              "maxHp": 1640,
+              "damage": 556,
+              "normalDamage": 330,
+              "skillDamage": 226,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 1640,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 2,
+              "evades": 0
+            },
+            {
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 204,
+              "defId": "infantry",
+              "star": 2,
+              "side": 1,
+              "hp": 0,
+              "maxHp": 960,
+              "damage": 1852,
+              "normalDamage": 1258,
+              "skillDamage": 594,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 1110,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 3,
+              "evades": 0
+            },
+            {
+              "storm": {
+                "launched": 2,
+                "hits": 5,
+                "energyRemoved": 50
+              },
+              "interruptions": 0,
+              "lostTargets": 0,
+              "uid": 205,
+              "defId": "stormcaller",
+              "star": 2,
+              "side": 1,
+              "hp": 0,
+              "maxHp": 800,
+              "damage": 1267,
+              "normalDamage": 422,
+              "skillDamage": 845,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 1175,
+              "healing": 0,
+              "absorbed": 0,
+              "casts": 2,
+              "evades": 0
+            },
+            {
+              "interruptions": 1,
+              "lostTargets": 0,
+              "uid": 206,
+              "defId": "medic",
+              "star": 1,
+              "side": 1,
+              "hp": 0,
+              "maxHp": 500,
+              "damage": 108,
+              "normalDamage": 108,
+              "skillDamage": 0,
+              "reflectedDamage": 0,
+              "energyGiven": 0,
+              "shieldDamage": 0,
+              "received": 703,
+              "healing": 953,
+              "absorbed": 0,
+              "casts": 2,
+              "evades": 0
+            }
+          ],
+          "survivors": 0,
+          "souls": 0,
+          "damage": 5154,
+          "received": 7653,
+          "healing": 953,
+          "absorbed": 480
+        }
+      ]
+    }
+  }
+}

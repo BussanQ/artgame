@@ -24,7 +24,9 @@ export class BattleSoundTrack {
       const casters = new Set<number>();
       for (const effect of frame.effects) {
         if (
-          !["cast", "pulse", "immortal", "rebirth"].includes(effect.kind) ||
+          !["cast", "pulse", "tar", "immortal", "rebirth"].includes(
+            effect.kind,
+          ) ||
           casters.has(effect.source)
         )
           continue;
@@ -38,35 +40,38 @@ export class BattleSoundTrack {
           "repair",
           "acolyte",
           "medic",
-        ].includes(f.defId);
+        ].includes(f.defId) && !f.secretOrb;
         this.cues.push({
           time: index,
           kind:
             effect.kind === "immortal" || effect.kind === "rebirth"
               ? "chime"
-              : f.aurora
-                ? "beam"
-                : f.burrowSkill ||
-                    ["shieldthrall", "elephant"].includes(f.defId)
-                  ? "impact"
-                  : f.defId === "venombeast"
-                    ? "cast"
-                    : ["axethrall", "swordthrall"].includes(f.defId)
-                      ? "blade"
-                      : ["ironrooster", "lingjiu"].includes(f.defId)
-                        ? "chime"
-                        : effect.kind === "pulse"
-                          ? [
-                              "bomber",
-                              "phoenix",
-                              "irondog",
-                              "ironape",
-                            ].includes(f.defId)
-                            ? "blast"
-                            : "beam"
-                          : support
-                            ? "heal"
-                            : "cast",
+              : effect.kind === "tar"
+                ? "blast"
+                : f.aurora
+                  ? "beam"
+                  : f.burrowSkill ||
+                      ["shieldthrall", "elephant"].includes(f.defId)
+                    ? "impact"
+                    : f.defId === "venombeast"
+                      ? "cast"
+                      : ["axethrall", "swordthrall"].includes(f.defId)
+                        ? "blade"
+                        : ["ironrooster", "lingjiu"].includes(f.defId)
+                          ? "chime"
+                          : effect.kind === "pulse"
+                            ? [
+                                "bomber",
+                                "motorcycle",
+                                "phoenix",
+                                "irondog",
+                                "ironape",
+                              ].includes(f.defId)
+                              ? "blast"
+                              : "beam"
+                            : support
+                              ? "heal"
+                              : "cast",
           pan: (effect.from.x / 7) * 1.4 - 0.7,
           priority: 2,
         });
@@ -77,11 +82,13 @@ export class BattleSoundTrack {
         const fighter = fighters.get(event.attacker);
         if (!fighter || !UNIT[fighter.defId]) continue;
         const id = fighter.defId;
+        const version = id === "panda" && !fighter.shuriken ? "wushi-control" :
+          id === "monk" && !fighter.secretOrb ? "shuriken" : undefined;
         const offset = event.strike
           ? 0.28
-          : isRanged(id)
+          : isRanged(id,version)
             ? RANGED_ACTIONS[id].duration * RANGED_ACTIONS[id].fireAt
-            : isMelee(id)
+            : isMelee(id,version)
               ? MELEE_ACTIONS[id].duration * 0.28
               : 0;
         this.cues.push({

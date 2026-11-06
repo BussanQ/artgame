@@ -1,4 +1,10 @@
+import { beginWushi, wushiTauntTarget } from "./wushi";
+import { beginShuriken } from "./shuriken";
+import { beginSecretOrb } from "./secret-orb";
 import { setFlight } from "./sea-ward";
+import { advanceTarLaunch } from "./tar";
+import { releaseStorm } from "./thunderstorm";
+import { releaseJungle, jungleContains } from "./jungle";
 import { releaseShieldWave } from "./shieldthrall";
 import { rollAssassinCritical } from "./assassins";
 import { staffSpeed } from "./staffthrall";
@@ -24,6 +30,15 @@ import {
   QI_SKILL,
   TAOTIE,
   TAOTIE_SKILL,
+  MOTOR_TAR,
+  TAR_SKILL,
+  THUNDERSTORM,
+  STORM_SKILL,
+  JUNGLE,
+  JUNGLE_SKILL,
+  WUSHI_SKILL,
+  SHURIKEN_SKILL,
+  SECRET_ORB_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -117,11 +132,13 @@ export function damage(
   periodic = false,
   empowered = false,
   gale = 0,
+  committed = false,
 ) {
   if (
     (source.hp <= 0 &&
       !reflected &&
       !periodic &&
+      !committed &&
       !(deathBurst && source.deathBurst === "spent")) ||
     target.hp <= 0
   )
@@ -365,6 +382,10 @@ export function damage(
         true,
       );
   }
+  if (target.hp === 0) {
+    delete target.jungleLandings;
+    delete target.taunt;
+  }
   if (target.hp === 0 && !enterPhoenixEgg(ctx, target))
     enterUndying(ctx, target);
   reflectHit();
@@ -529,7 +550,7 @@ export function lineTargets(
     })
     .sort((a, b) => distance(source, a) - distance(source, b) || a.uid - b.uid);
 }
-function interruptAirSkill(ctx: CombatContext, source: Fighter) {
+export function interruptAirSkill(ctx: CombatContext, source: Fighter) {
   if (
     !source.air?.cast &&
     !source.windup &&
@@ -559,7 +580,7 @@ export function advanceAirSkills(ctx: CombatContext, source: Fighter): boolean {
     source.hp <= 0 ||
     source.charm ||
     source.stunUntil > ctx.tick ||
-    (["irondog", "specialist", "ironape"].includes(pending.kind) &&
+    (["irondog", "specialist", "ironape", "tar", "storm", "jungle"].includes(pending.kind) &&
       (source.silenceUntil ?? 0) > ctx.tick)
   ) {
     interruptAirSkill(ctx, source);
@@ -585,6 +606,18 @@ export function advanceAirSkills(ctx: CombatContext, source: Fighter): boolean {
     return true;
   }
   if (pending.next > ctx.tick) return true;
+  if (pending.kind === "jungle") {
+    releaseJungle(ctx, source);
+    return true;
+  }
+  if (pending.kind === "storm") {
+    releaseStorm(source);
+    return true;
+  }
+  if (pending.kind === "tar") {
+    advanceTarLaunch(ctx, source);
+    return true;
+  }
   if (pending.kind === "motorcycle") {
     const target = attackTargets(source, ctx.fighters, ctx.tick)
       .filter((f) => distance(source, f) <= source.range)
@@ -735,19 +768,38 @@ export function castSkill(
   source: Fighter,
   target: Fighter,
 ) {
-  const s = source.taotie
-    ? TAOTIE_SKILL
-    : source.qiSkill
-      ? QI_SKILL
-      : source.aurora
-        ? AURORA_SKILL
-        : source.burrowSkill
-          ? BURROW_SKILL
-          : source.hawkForm
-            ? HAWK_METAMORPH
-            : SKILLS[source.defId];
+  if (source.gospelAura) return false;
+  if (wushiTauntTarget(ctx, source)) return false;
+  const s = source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+    ? TAR_SKILL
+    : source.taotie
+      ? TAOTIE_SKILL
+      : source.qiSkill
+        ? QI_SKILL
+        : source.aurora
+          ? AURORA_SKILL
+          : source.burrowSkill
+            ? BURROW_SKILL
+            : source.hawkForm
+              ? HAWK_METAMORPH
+              : SKILLS[source.defId];
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
+  if (source.secretOrb && (source.charm || source.stunUntil>ctx.tick ||
+    (source.skillReadyAt??0)>ctx.tick || distance(source,target)>source.range ||
+    !attackTargets(source,ctx.fighters,ctx.tick).some(f=>f.uid===target.uid)))return false;
+  if (source.shuriken && (source.charm || source.stunUntil > ctx.tick ||
+    (source.skillReadyAt ?? 0) > ctx.tick || distance(source,target) > source.range ||
+    !attackTargets(source,ctx.fighters,ctx.tick).some(f => f.uid === target.uid))) return false;
+  if (source.wushi && (source.charm || source.stunUntil > ctx.tick || (source.skillReadyAt ?? 0) > ctx.tick)) return false;
+  if (source.jungle && (!source.air || source.air.cast || source.charm || source.stunUntil > ctx.tick ||
+    (source.skillReadyAt ?? 0) > ctx.tick || !jungleContains(source, target) ||
+    !attackTargets(source, ctx.fighters, ctx.tick).some((f) => f.uid === target.uid))) return false;
+  if (source.storm && (!source.air || source.charm || source.stunUntil > ctx.tick ||
+    (source.skillReadyAt ?? 0) > ctx.tick || distance(source, target) > source.range ||
+    (source.x === target.x && source.y === target.y) ||
+    !attackTargets(source, ctx.fighters, ctx.tick).some((f) => f.uid === target.uid))) return false;
+  if (source.tar && (source.charm || source.stunUntil > ctx.tick)) return false;
   if ((source.silenceUntil ?? 0) > ctx.tick && usesEnergy(source)) return false;
   if (
     (source.aurora || source.qiSkill) &&
@@ -898,7 +950,7 @@ export function castSkill(
     target = victim;
   }
   if (
-    source.defId === "panda" ||
+    (source.defId === "panda" && !source.shuriken) ||
     source.defId === "wolf" ||
     source.defId === "ghostjet" ||
     (source.defId === "bloodhawk" && !source.hawkForm)
@@ -921,7 +973,7 @@ export function castSkill(
     if (dashTo(ctx, source, farthest)) target = farthest;
     else if (distance(source, target) > source.range) return false;
   }
-  if (source.defId === "ironrooster") target = source;
+  if (source.defId === "ironrooster" || source.wushi) target = source;
   source.mana = 0;
   if (source.signature) {
     source.signature.casts++;
@@ -1072,10 +1124,16 @@ export function castSkill(
     case "motorcycle":
       source.skillReadyAt = ctx.tick + 40;
       source.air!.cast = {
-        kind: "motorcycle",
+        kind: source.tar ? "tar" : "motorcycle",
         next: ctx.tick + 2,
-        remaining: 3,
-        damage: 100 * 2 ** (source.star - 1) * source.skillPower,
+        remaining: source.tar ? source.star : 3,
+        damage:
+          (source.tar
+            ? MOTOR_TAR.damage[source.star - 1]
+            : 100 * 2 ** (source.star - 1)) * source.skillPower,
+        ...(source.tar
+          ? { marked: [], splash: MOTOR_TAR.splash * source.skillPower }
+          : {}),
         from: { x: source.x, y: source.y },
         to: { x: target.x, y: target.y },
       };
@@ -1255,6 +1313,14 @@ export function castSkill(
       }
       break;
     case "stormcaller":
+      if (source.storm) {
+        source.skillReadyAt = ctx.tick + THUNDERSTORM.cooldown[source.star - 1];
+        source.air!.cast = { kind: "storm", next: ctx.tick + THUNDERSTORM.windup,
+          remaining: 1, damage: THUNDERSTORM.damage[source.star - 1] * source.skillPower,
+          from: { x: source.x, y: source.y }, to: { x: target.x, y: target.y } };
+        effect(ctx, source, target, "windup", 1, THUNDERSTORM.name);
+        break;
+      }
       for (const enemy of enemies().filter(
         (f) => distance(f, target) <= s.radius,
       ))
@@ -1302,6 +1368,13 @@ export function castSkill(
       }
       break;
     case "treant":
+      if (source.jungle && source.air) {
+        source.skillReadyAt = ctx.tick + JUNGLE.cooldown;
+        source.air.cast = { kind: "jungle", next: ctx.tick + JUNGLE.windup, remaining: 1,
+          target: target.uid, damage: JUNGLE.damage[source.star - 1] * source.skillPower,
+          from: { x: source.x, y: source.y }, to: { x: source.x, y: source.y } };
+        break;
+      }
       shield(ctx, source, 0.2, 16);
       for (const enemy of enemies().filter(
         (f) => distance(f, source) <= s.radius,
@@ -1460,6 +1533,8 @@ export function castSkill(
         ally.armorBreakUntil = 0;
         delete ally.corrosion;
         delete ally.knockup;
+        delete ally.jungleLandings;
+        delete ally.taunt;
         ally.manaLockUntil = 0;
         delete ally.silenceUntil;
         effect(ctx, source, ally, "cleanse", 0, "驱散");
@@ -1525,6 +1600,7 @@ export function castSkill(
       }
       break;
     case "panda":
+      if (source.shuriken) return beginShuriken(ctx,source,target);
       hit(target);
       break;
     case "wolf": {
@@ -1551,6 +1627,7 @@ export function castSkill(
       }
       break;
     case "monk":
+      if (source.secretOrb) return beginSecretOrb(ctx,source,target);
       for (const f of ctx.fighters
         .filter(
           (f) =>
@@ -1570,6 +1647,7 @@ export function castSkill(
       }
       break;
     case "master": {
+      if (source.wushi) return beginWushi(ctx, source);
       const targets = enemies().filter((f) => distance(source, f) <= s.radius);
       for (const f of targets) {
         hit(f, f.uid === target.uid);

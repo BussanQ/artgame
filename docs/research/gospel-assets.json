@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-11-06",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "acolyte-gospel",
+      "unitId": "acolyte",
+      "name": "童子 · 福音",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for an isometric Chinese science-fantasy auto-chess game. Primary request: create the Gospel Acolyte (童子), a small non-humanoid alien energy-support creature, based on this clearly defined silhouette: one large smooth pear/seed-shaped chalk-white organic shell crown, small electric-blue luminous eyes and cyan glowing seams, compact midnight-blue segmented underside, four slim bent chitinous spider-like legs and two small curled grasping appendages. A pale blue luminous core inside its shell suggests a continuous supportive energy field. Quiet, gentle, mysterious, slightly hovering posture. This is a compact alien creature, not a human child, not a robed Taoist, and not a large crab or insect swarm. Style/medium: polished hand-painted 3D strategy-game miniature, readable sculpted volumes and premium game asset materials matching existing fantasy miniature sprites. Composition/framing: single whole creature, three-quarter front view facing viewer-right, slightly elevated isometric camera, centered, body and all limbs fully visible with 12 percent clear padding, strong readable silhouette at small game-board size. Lighting: soft key light, restrained cyan rim light localized to the creature. Palette: ivory white, deep cobalt blue, electric cyan; subtle organic surface texture. Constraints: actual transparent background with clean alpha, no scenery, floor, pedestal, cast shadow, caption, letters, UI, frame, watermark, extra characters or separate props. Keep glow compact so the cutout remains crisp.",
+      "path": "public/assets/units/acolyte-gospel.png",
+      "generatedFile": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-a49ad74b-d7b0-4d3f-b96e-0a3af07fa61a.png",
+      "kind": "transparent-unit-sprite",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1061586,
+      "transparentBackground": true,
+      "colorMode": "RGBA",
+      "sha256": "5fab3eaaab9de64fe4776e90899202fbc23637cccfd1f026fe309f278032b743",
+      "references": [
+        "S32客户端原始形象；仅作目视设计参考，未把来源图作为正式角色资产"
+      ],
+      "combatVersion": "gospel",
+      "legacyPath": "public/assets/units/acolyte.png",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "processing": "内置生成输出原样复制，未通过脚本编辑；保留旧人形文件供历史回放。"
+    }
+  ]
+}

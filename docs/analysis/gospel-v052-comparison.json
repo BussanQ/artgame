@@ -1,0 +1,1399 @@
+{
+  "reviewedAt": "2026-11-06",
+  "rules": "singleplayer-0.52",
+  "method": "Two seed/preference pairs (173 psychic,311 armor), full/rotation pools, three opponent difficulties. Player uses the paid standard policy; initial 0.52 has the same spell/rates/catalog but predates field-aware placement. No free resources.",
+  "independentSeedCount": 2,
+  "summaries": {
+    "before": {
+      "games": 12,
+      "rounds": 317,
+      "rankByDifficulty": {
+        "relaxed": 1.0,
+        "standard": 4.25,
+        "veteran": 5.75
+      },
+      "gamesWithNaturalThreeStar": 4,
+      "playerAcolyte": {
+        "games": 8,
+        "rounds": 59,
+        "stars": [
+          5,
+          54,
+          0
+        ],
+        "casts": 73,
+        "pulses": null,
+        "energy": null,
+        "peakTargets": null
+      },
+      "encounteredOpponentGospel": null
+    },
+    "initial": {
+      "games": 12,
+      "rounds": 305,
+      "rankByDifficulty": {
+        "relaxed": 1.0,
+        "standard": 4.75,
+        "veteran": 6.5
+      },
+      "gamesWithNaturalThreeStar": 2,
+      "playerAcolyte": {
+        "games": 8,
+        "rounds": 19,
+        "stars": [
+          11,
+          8,
+          0
+        ],
+        "casts": 0,
+        "pulses": 237,
+        "energy": 947,
+        "peakTargets": 2
+      },
+      "encounteredOpponentGospel": {
+        "rounds": 7,
+        "pulses": 90,
+        "energy": 676,
+        "peakTargets": 6
+      }
+    },
+    "after": {
+      "games": 12,
+      "rounds": 300,
+      "rankByDifficulty": {
+        "relaxed": 1.0,
+        "standard": 4.0,
+        "veteran": 7.25
+      },
+      "gamesWithNaturalThreeStar": 3,
+      "playerAcolyte": {
+        "games": 8,
+        "rounds": 30,
+        "stars": [
+          10,
+          20,
+          0
+        ],
+        "casts": 0,
+        "pulses": 427,
+        "energy": 5305,
+        "peakTargets": 6
+      },
+      "encounteredOpponentGospel": {
+        "rounds": 5,
+        "pulses": 66,
+        "energy": 662,
+        "peakTargets": 5
+      }
+    }
+  },
+  "pairs": [
+    {
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "seed": 173,
+      "before": {
+        "rank": 1,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": null
+      },
+      "initial": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 7,
+          "stars": [
+            3,
+            4,
+            0
+          ],
+          "casts": 0,
+          "damage": 3101,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 140,
+          "peakGospelTargets": 2,
+          "energyGiven": 620,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 7,
+          "stars": [
+            3,
+            4,
+            0
+          ],
+          "casts": 0,
+          "damage": 3062,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 142,
+          "peakGospelTargets": 4,
+          "energyGiven": 989,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      }
+    },
+    {
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "seed": 173,
+      "before": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": 27,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 6,
+          "stars": [
+            1,
+            5,
+            0
+          ],
+          "casts": 8,
+          "damage": 1570,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "initial": {
+        "rank": 1,
+        "rounds": 26,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": null
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 26,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": null
+      }
+    },
+    {
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "standard",
+      "seed": 173,
+      "before": {
+        "rank": 3,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 4,
+          "stars": [
+            4,
+            0,
+            0
+          ],
+          "casts": 8,
+          "damage": 693,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "initial": {
+        "rank": 8,
+        "rounds": 17,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 2,
+          "stars": [
+            2,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 572,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 18,
+          "peakGospelTargets": 0,
+          "energyGiven": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "after": {
+        "rank": 8,
+        "rounds": 17,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": null
+      }
+    },
+    {
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "seed": 173,
+      "before": {
+        "rank": 4,
+        "rounds": 26,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": null
+      },
+      "initial": {
+        "rank": 3,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": null
+      },
+      "after": {
+        "rank": 3,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": null
+      }
+    },
+    {
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "seed": 173,
+      "before": {
+        "rank": 4,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": null
+      },
+      "initial": {
+        "rank": 6,
+        "rounds": 22,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": null
+      },
+      "after": {
+        "rank": 7,
+        "rounds": 19,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": null
+      }
+    },
+    {
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "seed": 173,
+      "before": {
+        "rank": 8,
+        "rounds": 19,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 8,
+          "stars": [
+            0,
+            8,
+            0
+          ],
+          "casts": 3,
+          "damage": 3433,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "initial": {
+        "rank": 8,
+        "rounds": 24,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": null
+      },
+      "after": {
+        "rank": 8,
+        "rounds": 26,
+        "firstThreeStar": 26,
+        "bannedSeries": [
+          "海神",
+          "不朽",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 201,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 9,
+          "peakGospelTargets": 4,
+          "energyGiven": 60,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      }
+    },
+    {
+      "profile": "armor",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "seed": 311,
+      "before": {
+        "rank": 1,
+        "rounds": 28,
+        "firstThreeStar": 26,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 18,
+          "stars": [
+            0,
+            18,
+            0
+          ],
+          "casts": 25,
+          "damage": 9844,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "initial": {
+        "rank": 1,
+        "rounds": 26,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 132,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 6,
+          "peakGospelTargets": 2,
+          "energyGiven": 32,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 26,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 99,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 5,
+          "peakGospelTargets": 2,
+          "energyGiven": 28,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      }
+    },
+    {
+      "profile": "armor",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "seed": 311,
+      "before": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": 21,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 5,
+          "stars": [
+            0,
+            5,
+            0
+          ],
+          "casts": 0,
+          "damage": 2091,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "initial": {
+        "rank": 1,
+        "rounds": 26,
+        "firstThreeStar": 26,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 49,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 3,
+          "peakGospelTargets": 2,
+          "energyGiven": 24,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 26,
+        "firstThreeStar": 26,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 49,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 3,
+          "peakGospelTargets": 2,
+          "energyGiven": 24,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      }
+    },
+    {
+      "profile": "armor",
+      "mode": "classic",
+      "difficulty": "standard",
+      "seed": 311,
+      "before": {
+        "rank": 6,
+        "rounds": 22,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 8,
+          "stars": [
+            0,
+            8,
+            0
+          ],
+          "casts": 13,
+          "damage": 1900,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "initial": {
+        "rank": 5,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 132,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 6,
+          "peakGospelTargets": 2,
+          "energyGiven": 32,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "after": {
+        "rank": 1,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 99,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 5,
+          "peakGospelTargets": 2,
+          "energyGiven": 28,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      }
+    },
+    {
+      "profile": "armor",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "seed": 311,
+      "before": {
+        "rank": 4,
+        "rounds": 26,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": null
+      },
+      "initial": {
+        "rank": 3,
+        "rounds": 29,
+        "firstThreeStar": 27,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 5,
+          "stars": [
+            1,
+            4,
+            0
+          ],
+          "casts": 0,
+          "damage": 2162,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 55,
+          "peakGospelTargets": 2,
+          "energyGiven": 183,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "after": {
+        "rank": 4,
+        "rounds": 24,
+        "firstThreeStar": 11,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 17,
+          "stars": [
+            1,
+            16,
+            0
+          ],
+          "casts": 0,
+          "damage": 9687,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 255,
+          "peakGospelTargets": 6,
+          "energyGiven": 4124,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      }
+    },
+    {
+      "profile": "armor",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "seed": 311,
+      "before": {
+        "rank": 7,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 8,
+          "stars": [
+            0,
+            8,
+            0
+          ],
+          "casts": 16,
+          "damage": 5180,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "initial": {
+        "rank": 5,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 132,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 6,
+          "peakGospelTargets": 2,
+          "energyGiven": 32,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "after": {
+        "rank": 7,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "bannedSeries": [],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 99,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 5,
+          "peakGospelTargets": 2,
+          "energyGiven": 28,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      }
+    },
+    {
+      "profile": "armor",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "seed": 311,
+      "before": {
+        "rank": 4,
+        "rounds": 30,
+        "firstThreeStar": 27,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 2,
+          "stars": [
+            0,
+            2,
+            0
+          ],
+          "casts": 0,
+          "damage": 365,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "initial": {
+        "rank": 7,
+        "rounds": 22,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 49,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 3,
+          "peakGospelTargets": 2,
+          "energyGiven": 24,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      },
+      "after": {
+        "rank": 7,
+        "rounds": 22,
+        "firstThreeStar": null,
+        "bannedSeries": [
+          "步兵",
+          "空军",
+          "猛禽"
+        ],
+        "acolyte": {
+          "rounds": 1,
+          "stars": [
+            1,
+            0,
+            0
+          ],
+          "casts": 0,
+          "damage": 49,
+          "criticalHits": 0,
+          "peakGale": 0,
+          "fullGaleAttacks": 0,
+          "armorApplications": 0,
+          "knockups": 0,
+          "peakAurora": 0,
+          "auroraUpgrades": 0,
+          "qiReleases": 0,
+          "taotieFeasts": 0,
+          "taotieHealing": 0,
+          "tarLaunched": 0,
+          "tarDetonated": 0,
+          "tarCenterHits": 0,
+          "tarSplashHits": 0,
+          "chainAttacks": 0,
+          "chainBounces": 0,
+          "chainDamage": 0,
+          "chainEvades": 0,
+          "gospelPulses": 3,
+          "peakGospelTargets": 2,
+          "energyGiven": 24,
+          "interruptions": 0,
+          "lostTargets": 0
+        }
+      }
+    }
+  ],
+  "files": {
+    "docs/analysis/gospel-v051-psychic.json": "67390ffe580b4ff9752b89e3656c38436e01a925ba83cb09a689d3e1091023d1",
+    "docs/analysis/gospel-v051-armor.json": "688d4e0ed07206cbb59dc380c46021cb84421b26527579f010be81d1e03e98d1",
+    "docs/analysis/gospel-v052-initial-psychic.json": "bf97054b55670880f0c2530035d958d3637a9678939fb675664fe153775b4eb2",
+    "docs/analysis/gospel-v052-initial-armor.json": "049baa1794a29b384ea8c2a5ccc1758c48793176c9239c7ed41dde2e87b94cd3",
+    "docs/analysis/gospel-v052-psychic.json": "a969aa159ce169d113d5cbd9f3ec007c415c30cf2ae488b607e3a311394028bc",
+    "docs/analysis/gospel-v052-armor.json": "66bc036ccef9f43ad2a7738dcf0e29f26b5a8ef4d6ab0831ac25affa7205d46d"
+  },
+  "finalEngineAndDataFingerprintsMatch": true,
+  "placementRegression": {
+    "fixture": "tests/fixtures/gospel-uncovered-field.json",
+    "before": {
+      "winner": 1,
+      "tick": 87,
+      "positions": [
+        {
+          "id": "bull",
+          "uid": 132,
+          "position": 35
+        },
+        {
+          "id": "shark",
+          "uid": 213,
+          "position": 36
+        },
+        {
+          "id": "turtle",
+          "uid": 214,
+          "position": 37
+        },
+        {
+          "id": "adept",
+          "uid": 215,
+          "position": 56
+        },
+        {
+          "id": "wolf",
+          "uid": 261,
+          "position": 34
+        },
+        {
+          "id": "vajra",
+          "uid": 316,
+          "position": 33
+        },
+        {
+          "id": "acolyte",
+          "uid": 332,
+          "position": 63
+        }
+      ],
+      "supply": [
+        {
+          "uid": 332,
+          "energy": 0,
+          "pulses": 2,
+          "peakTargets": 0
+        }
+      ]
+    },
+    "spread": {
+      "winner": 0,
+      "tick": 71,
+      "positions": [
+        {
+          "id": "bull",
+          "uid": 132,
+          "position": 35
+        },
+        {
+          "id": "shark",
+          "uid": 213,
+          "position": 36
+        },
+        {
+          "id": "turtle",
+          "uid": 214,
+          "position": 37
+        },
+        {
+          "id": "adept",
+          "uid": 215,
+          "position": 56
+        },
+        {
+          "id": "wolf",
+          "uid": 261,
+          "position": 34
+        },
+        {
+          "id": "vajra",
+          "uid": 316,
+          "position": 33
+        },
+        {
+          "id": "acolyte",
+          "uid": 332,
+          "position": 50
+        }
+      ],
+      "supply": [
+        {
+          "uid": 332,
+          "energy": 16,
+          "pulses": 2,
+          "peakTargets": 4
+        }
+      ]
+    },
+    "compact": {
+      "winner": 1,
+      "tick": 65,
+      "positions": [
+        {
+          "id": "bull",
+          "uid": 132,
+          "position": 47
+        },
+        {
+          "id": "shark",
+          "uid": 213,
+          "position": 46
+        },
+        {
+          "id": "turtle",
+          "uid": 214,
+          "position": 45
+        },
+        {
+          "id": "adept",
+          "uid": 215,
+          "position": 63
+        },
+        {
+          "id": "wolf",
+          "uid": 261,
+          "position": 53
+        },
+        {
+          "id": "vajra",
+          "uid": 316,
+          "position": 52
+        },
+        {
+          "id": "acolyte",
+          "uid": 332,
+          "position": 62
+        }
+      ],
+      "supply": [
+        {
+          "uid": 332,
+          "energy": 83,
+          "pulses": 16,
+          "peakTargets": 5
+        }
+      ]
+    }
+  },
+  "limits": [
+    "The 36 diagnostic runs are not 36 independent human samples.",
+    "The 0.51 baseline lacks energy instrumentation; missing values are unknown, not zero.",
+    "Price, bodies, spell, pool shares, valuation and RNG paths changed together between versions; no single-parameter causal claim.",
+    "Encountered AI totals omit all AI internal battles.",
+    "Final current-catalog multi-doctrine UI matches, global difficulty and real weak/mobile hardware remain unverified.",
+    "Isolated spread placement changed the captured battle from loss to win with16 energy; compact produced83 energy but still lost. This does not prove global optimality."
+  ]
+}

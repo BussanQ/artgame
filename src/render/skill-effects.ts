@@ -1,8 +1,12 @@
 import { compactBattleLabels } from "./battle-inspection";
+import { drawJungleEffect } from "./jungle";
+import { drawWushiEffect, wushiLabels } from "./wushi";
+import { shurikenLabels } from "./shuriken";
+import { secretOrbLabels } from "./secret-orb";
 import { shieldWaveCells } from "../engine/shieldthrall";
 import { acidCells, corrosionArmor } from "../engine/beasts";
 import { deathSongCells } from "../engine/lingjiu";
-import { AURORA, ARHAT_QI, STAFF_GALE } from "../data/skills";
+import { AURORA, ARHAT_QI, STAFF_GALE, GOSPEL } from "../data/skills";
 import { commandBonuses } from "../engine/ironrooster";
 import { flameCells } from "../engine/infantry-skills";
 import { isPhoenixEgg, phoenixFlameCells } from "../engine/phoenix";
@@ -16,10 +20,67 @@ export function drawSkillEffect(
   age: number,
   reducedMotion = false,
 ) {
+  // The startup marker and delayed landing are drawn from committed spell state.
+  if (e.kind === "cast" && ["风魔之刃","秘法球"].includes(e.name)) return;
+  if (drawWushiEffect(c,e,age,reducedMotion)) return;
+  if (drawJungleEffect(c, e, age, reducedMotion)) return;
+  if (e.chainHop !== undefined) {
+    age -= e.chainHop * 0.18;
+    if (age < 0 || age > 3) return;
+    const a = project(e.from.x + 0.5, e.from.y + 0.5);
+    const b = project(e.to.x + 0.5, e.to.y + 0.5);
+    c.save();
+    c.globalAlpha =
+      Math.max(0, 1 - age / 3) * Math.max(0.45, 1 - e.chainHop * 0.07);
+    c.strokeStyle = reducedMotion ? "#b8e8ff" : "#d6f7ff";
+    c.lineWidth = Math.max(1.3, 3.4 - e.chainHop * 0.3);
+    c.shadowColor = "#71cfff";
+    c.shadowBlur = reducedMotion ? 0 : 14;
+    c.beginPath();
+    c.moveTo(a.x, a.y - 45);
+    for (let i = 1; i <= 9; i++) {
+      const t = i / 9;
+      const jitter = reducedMotion
+        ? 0
+        : Math.sin(i * 2.7 + age * 3 + e.chainHop) * 11 * Math.sin(t * Math.PI);
+      c.lineTo(
+        a.x + (b.x - a.x) * t + jitter * 0.3,
+        a.y - 45 + (b.y - a.y) * t + jitter,
+      );
+    }
+    c.stroke();
+    c.restore();
+    return;
+  }
   if (age < 0 || age > 4) return;
+  if (e.kind === "tar") {
+    const a = project(e.from.x + 0.5, e.from.y + 0.5);
+    const b = project(e.to.x + 0.5, e.to.y + 0.5);
+    const t = Math.min(1, age / 2);
+    c.save();
+    c.fillStyle = "#ffc173";
+    c.strokeStyle = "#fff0ba";
+    c.globalAlpha = Math.max(0, 1 - age / 4);
+    c.beginPath();
+    c.arc(
+      a.x + (b.x - a.x) * t,
+      a.y -
+        35 +
+        (b.y - a.y + 35) * t -
+        (reducedMotion ? 0 : Math.sin(t * Math.PI) * 65),
+      6,
+      0,
+      Math.PI * 2,
+    );
+    c.fill();
+    c.stroke();
+    c.restore();
+    return;
+  }
   const p = project(e.to.x + 0.5, e.to.y + 0.5),
     origin = project(e.from.x + 0.5, e.from.y + 0.5);
   const colors = {
+    taunt: "#edbc76",
     rebirth: "#ffe5a1",
     transform: "#ffb4a0",
     slow: "#d9ca9b",
@@ -27,10 +88,12 @@ export function drawSkillEffect(
     burn: "#ffb365",
     flame: "#ffad68",
     grenade: "#c9a2ff",
+    tar: "#ffc173",
     windup: "#ffe3a2",
     devour: "#c4ed9c",
     reflect: "#d9b4ff",
     energize: "#8effe6",
+    drain: "#c9a4ff",
     chain: "#b8e8ff",
     immortal: "#b8ffe4",
     cast: "#ffe0a0",
@@ -48,7 +111,7 @@ export function drawSkillEffect(
   };
   if (reducedMotion) {
     c.save();
-    c.fillStyle = colors[e.kind];
+    c.fillStyle = e.name === "焦油引爆" ? "#ffbc63" : colors[e.kind];
     c.font = "bold 13px sans-serif";
     c.textAlign = "center";
     c.fillText(
@@ -61,10 +124,10 @@ export function drawSkillEffect(
   }
   c.save();
   c.globalAlpha = Math.max(0, 1 - age / 4);
-  c.strokeStyle = colors[e.kind];
-  c.fillStyle = colors[e.kind];
+  c.strokeStyle = e.name === "焦油引爆" ? "#ffbc63" : colors[e.kind];
+  c.fillStyle = e.name === "焦油引爆" ? "#ffbc63" : colors[e.kind];
   c.lineWidth = 2;
-  c.shadowColor = colors[e.kind];
+  c.shadowColor = e.name === "焦油引爆" ? "#ffbc63" : colors[e.kind];
   c.shadowBlur = 12;
   if (e.kind === "pulse" && e.name === ARHAT_QI.name) {
     c.strokeStyle = "#8cecff";
@@ -454,7 +517,7 @@ export function drawSkillEffect(
     c.font = "bold 15px sans-serif";
     c.textAlign = "center";
     c.fillText("吞噬", p.x, p.y - 105);
-  } else if (["reflect", "energize", "chain"].includes(e.kind)) {
+  } else if (["reflect", "energize", "drain", "chain"].includes(e.kind)) {
     const start = { x: origin.x, y: origin.y - 45 },
       end = { x: p.x, y: p.y - 45 };
     c.beginPath();
@@ -476,7 +539,7 @@ export function drawSkillEffect(
       c.font = "bold 12px sans-serif";
       c.textAlign = "center";
       c.fillText(
-        e.kind === "energize" ? "+" + Math.round(e.amount) + " 能量" : "反伤",
+        e.kind === "energize" ? "+" + Math.round(e.amount) + " 能量" : e.kind === "drain" ? "−" + Math.round(e.amount) + " 能量" : "反伤",
         p.x,
         p.y - 90 - age * 6,
       );
@@ -891,6 +954,11 @@ export function drawStatuses(
   }
   if (f.qiSkill && (f.skillReadyAt ?? 0) > time)
     labels.push(`气波掌冷却 ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`);
+  if (f.jungle) {
+    if ((f.skillReadyAt ?? 0) > time)
+      labels.push(`丛林冷却 ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`);
+    labels.push(`自然恢复 ${f.regeneration * 4} 生命/秒`);
+  }
   if (
     [
       "elephant",
@@ -940,6 +1008,11 @@ export function drawStatuses(
   }
   if (f.slow && f.slow.until > time) labels.push("攻速降低");
   if (f.sonic?.length) labels.push("声波侵蚀");
+  if (f.gospelAura) {
+    labels.push(f.charm ? "福音暂停（魅惑）" : `福音 ${GOSPEL.energy[f.star - 1]} 能量/秒`);
+    labels.push(`圆形${GOSPEL.radius}格 · 同目标取最高星级`);
+    labels.push(`最近供能 ${f.gospelAura.targets.length} 人 · 最多 ${f.gospelAura.peakTargets} 人`);
+  }
   if (f.taotie) {
     labels.push(`成功吞噬 ${f.taotie.feasts} 次`);
     if (f.taotie.rage && f.taotie.rage.until > time) {
@@ -955,6 +1028,10 @@ export function drawStatuses(
     if ((f.skillReadyAt ?? 0) > time)
       labels.push(`饕餮冷却 ${((f.skillReadyAt! - time) / 4).toFixed(1)}s`);
     labels.push(`自然恢复 ${f.regeneration * 4} 生命/秒`);
+  }
+  if (f.tar) {
+    labels.push(`投弹 ${f.tar.launched}枚 · 引爆 ${f.tar.detonated}枚`);
+    if (f.tar.bombs.length) labels.push(`待爆 ${f.tar.bombs.length}枚`);
   }
   if (f.devourSpent) labels.push("吞噬已用");
   if (f.stunUntil > time) {
@@ -973,9 +1050,15 @@ export function drawStatuses(
       c.fill();
     }
   }
+  if (f.storm) labels.push(`雷暴发出 ${f.storm.launched}球 · 接触 ${f.storm.hits}次 · 削能 ${Math.round(f.storm.energyRemoved)}`);
+  if (f.jungle) labels.push(`丛林波 ${f.jungle.waves}次 · 波及 ${f.jungle.hits}次 · 击飞 ${f.jungle.knockups}次 · 落地眩晕 ${f.jungle.landings}次`);
+  labels.push(...wushiLabels(f,time));
+  labels.push(...shurikenLabels(f,time));
+  labels.push(...secretOrbLabels(f,time));
+  if(f.taunt && f.taunt.until>time)labels.push(`无式嘲讽 ${((f.taunt.until-time)/4).toFixed(1)}s · 转向武僧`);
   if (f.air?.cast)
     labels.push(
-      f.air.cast.kind === "ark"
+      f.air.cast.kind === "jungle" ? `丛林蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "storm" ? `雷暴蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "ark"
         ? "重炮蓄力"
         : f.air.cast.kind === "ironape"
           ? `震爆蓄力 · ${Math.max(0, (f.air.cast.next - time) / 4).toFixed(2)}s`
@@ -983,13 +1066,15 @@ export function drawStatuses(
             ? `锁定 · ${Math.max(0, (f.air.cast.next - time) / 4).toFixed(2)}s`
             : f.air.cast.kind === "irondog"
               ? `震荡 · 余${f.air.cast.remaining}次`
-              : f.air.cast.kind === "motorcycle"
-                ? `连发 · 余${f.air.cast.remaining}发`
-                : f.air.cast.kind === "medic"
-                  ? `治疗 · 余${f.air.cast.remaining}次`
-                  : f.air.cast.kind === "whale"
-                    ? `潮汐 · 余${f.air.cast.remaining}次`
-                    : "持续施法",
+              : f.air.cast.kind === "tar"
+                ? `投弹 · 余${f.air.cast.remaining}枚`
+                : f.air.cast.kind === "motorcycle"
+                  ? `连发 · 余${f.air.cast.remaining}发`
+                  : f.air.cast.kind === "medic"
+                    ? `治疗 · 余${f.air.cast.remaining}次`
+                    : f.air.cast.kind === "whale"
+                      ? `潮汐 · 余${f.air.cast.remaining}次`
+                      : "持续施法",
     );
   const command = commandBonuses(f, time);
   if (command.attack || command.armor)
@@ -1058,7 +1143,7 @@ export function drawAirTelegraph(
   reducedMotion = false,
 ) {
   const cast = f.air?.cast;
-  if (!cast || f.hp <= 0) return;
+  if (!cast || f.hp <= 0 || cast.kind === "storm" || cast.kind === "jungle") return;
   c.save();
   c.strokeStyle = f.side === 0 ? "#9edaff" : "#ffb590";
   c.fillStyle = f.side === 0 ? "#7ccfff16" : "#ff8c6616";
@@ -1088,13 +1173,13 @@ export function drawAirTelegraph(
     c.moveTo(b.x, b.y - 40 - r - 6);
     c.lineTo(b.x, b.y - 40 + r + 6);
     c.stroke();
-  } else if (cast.kind === "motorcycle") {
+  } else if (cast.kind === "motorcycle" || cast.kind === "tar") {
     const p = project(f.x + 0.5, f.y + 0.5);
     c.setLineDash([]);
     c.strokeStyle = "#ffc173";
     c.fillStyle = "#ffc173";
     // Ammo markers, not an AoE footprint: each round selects one target independently.
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < (cast.kind === "tar" ? f.star : 3); i++) {
       const x = p.x - 16 + i * 12;
       c.strokeRect(x, p.y + 8, 8, 14);
       if (i < cast.remaining) c.fillRect(x + 2, p.y + 10, 4, 10);

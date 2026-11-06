@@ -1,10 +1,20 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasShurikenRules,
+  hasSecretOrbRules,
   hasAmbushRules,
   hasLineageRules,
   hasCoalitionRules,
   hasAuroraRules,
   hasQiRules,
+  hasTaotieRules,
+  hasTarRules,
+  hasLightningRules,
+  hasGospelRules,
+  hasStormRules,
+  hasJungleRules,
+  hasWushiRules,
+  hasWushiControlRules,
 } from "../engine/types";
 import type { DamageType, CombatVersion } from "../engine/types";
 
@@ -30,6 +40,65 @@ const define = (
   shieldRatio: 0,
   healRatio: 0,
   ...skill,
+});
+/** Client field and visible 4/7 rates; the obscured third rate (10), geometry and cadence are local. */
+export const GOSPEL = {
+  name: "福音",
+  role: "持续供能",
+  energy: [4, 7, 10],
+  radius: 3,
+  interval: 4,
+  description:
+    "被动：童子存活时维持福音能量场，从开战后第1秒起，每秒为圆形3格内所有能使用能量的友军回复4/7/10能量（一/二/三星）。多个童子覆盖同一友军时只取最高星级供能，不叠加；能量已满、封能中的单位和无能量技能单位不会获得供能，也不储存溢出。供能受骑兵回能压制影响，不受攻速或技能强度加成。童子自身不积累能量；眩晕、沉默不关闭光环，被魅惑期间暂停，恢复后继续，阵亡后停止。",
+} as const;
+/** S55 client-card damage, path width and drain; S04 star cooldowns. Timing/speed/range are local. */
+export const THUNDERSTORM = {
+  name: "雷暴", role: "穿行削能", damage: [150, 250, 350],
+  cooldown: [20, 16, 12], drain: 20, width: 1,
+  windup: 4, speed: 0.75, range: 10,
+  description: "初始能量0。满能量且冷却结束时向4格内可见目标当前方向蓄力1秒，发出宽1格的雷暴球，沿固定直线穿行最多10格，对路径敌人造成150/250/350法伤并削减最多20能量，每球对同一棋子只命中一次。冷却5/4/3秒从蓄力开始计算，伤害按施法时技能强度确定。蓄力期间不能普攻或移动，眩晕、沉默、魅惑或阵亡会打断；已发出的球继续飞行并保留发射时阵营，敌人可以移动避开。护盾受损也可削能，技能免伤、残魂或无能量棋子不会被削能。削能在受击回能后结算，不封锁后续回能，也不把能量转给天师。",
+} as const;
+export const STORM_SKILL = define({name: THUNDERSTORM.name, role: THUNDERSTORM.role,
+  damageType: "magic", description: THUNDERSTORM.description});
+/** S55 client damage/radius/landing stun/cooldown; windup and flight duration are local. */
+export const JUNGLE = {
+  name: "丛林之怒", role: "大范围两段控制", radius: 4,
+  damage: [100, 200, 300], stun: [4, 6, 8], cooldown: 120,
+  windup: 4, flight: 4,
+  description: "初始能量50。满能量且冷却结束时，周围圆形4格内有可见敌人即可在原地蓄力1秒；随后对锁定圆形范围内的所有敌人造成100/200/300法术伤害，击飞1秒，落地后再眩晕1/1.5/2秒（一/二/三星）。冷却30秒从蓄力开始计，伤害按施法时技能强度确定。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡可打断；已击飞的敌人仍会落地眩晕，驱散可解除两段控制。技能免伤、残魂和涅槃火种不受控制；不附加自身护盾。",
+} as const;
+export const JUNGLE_SKILL = define({ name: JUNGLE.name, role: JUNGLE.role,
+  damageType: "magic", radius: JUNGLE.radius, duration: JUNGLE.stun[0],
+  description: JUNGLE.description });
+/** S04 passive physical role and June 13 decay; hop limits/geometry are local adaptations. */
+export const THUNDER_CHAIN = {
+  name: "雷神锁链",
+  role: "物理弹射核心",
+  hits: [3, 5, 7],
+  retention: 0.5,
+  radius: 3,
+  description:
+    "被动：每次普通攻击发出雷电，一/二/三星最多命中3/5/7次（含首击），每次弹射伤害比上一跳降低50%。从上一目标跳向3格内最近的其他可见敌人，可在不同敌人之间往返。首击被闪避时不弹射，后续闪避仍可传导；无下一目标或自身阵亡、眩晕、阵营改变时结束。所有命中均为普通物理伤害，受护甲、狙击穿透、吸血和攻击增益影响，不受技能强度加成；不积累能量，也不受沉默限制。",
+} as const;
+/** May 30 target counts/delay and June 13 splash; center damage and geometry are local. */
+export const MOTOR_TAR = {
+  name: "焦油弹",
+  role: "延迟范围爆破",
+  damage: [300, 400, 500],
+  splash: 120,
+  delay: 12,
+  interval: 2,
+  cooldown: 40,
+  radius: 1,
+  description:
+    "初始能量50。满能量且10秒冷却结束时，依次向3格内1/2/3名不同可见敌人（一/二/三星）脚下投放焦油弹，每0.5秒一枚。焦油弹黏附并跟随目标移动，投放3秒后爆炸：中心300/400/500法伤，相邻一格120法伤，均按施法时技能强度计算。带弹目标远离队友可减少溅射；目标阵亡后弹留在其最后位置，范围仍可命中隐蔽和飞行敌人。眩晕、沉默、魅惑、阵亡或无新目标会取消未投出的弹；已落地弹继续倒计时，按爆炸时施法者阵营判敌，不附带减速或灼烧。投放期间不能普攻或移动，冷却从施法开始计；战斗结束后不再引爆。",
+} as const;
+export const TAR_SKILL = define({
+  name: MOTOR_TAR.name,
+  role: MOTOR_TAR.role,
+  damageType: "magic",
+  radius: MOTOR_TAR.radius,
+  description: MOTOR_TAR.description,
 });
 /** S50 client card: flat star damage, 13s cooldown and three 25% attack stacks. */
 export const AURORA = {
@@ -658,11 +727,65 @@ export const SKILLS: Record<string, SkillDef> = {
       "重击目标及其周围 2 格敌人，造成 220% 攻击的法术伤害，并眩晕 1.5 秒。",
   }),
 };
+/** S57 May 16 armor/duration/area attacks; startup and tile geometry are local. */
+export const WUSHI = {
+  name: "无式",
+  role: "护甲变身与横斩",
+  armor: [6, 12, 18],
+  duration: [32, 40, 48],
+  cooldown: 80,
+  windup: 4,
+  splashRadius: 1,
+  description: "初始能量0。满能量且20秒冷却结束时，在原地蓄力1秒后变身，护甲增加6/12/18，持续8/10/12秒（一/二/三星）。变身期间每次普通攻击同时横斩主目标周围1格的敌人，每名目标独立结算普通物理伤害、护甲、闪避、护盾、吸血和反伤。护甲和持续时间不受技能强度放大。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会中断，能量和冷却不退还。冷却从蓄力开始计算；变身期间不积累能量，结束后可再次充能。",
+} as const;
+export const WUSHI_SKILL = define({name:WUSHI.name,role:WUSHI.role,
+  radius:WUSHI.splashRadius,description:WUSHI.description});
+/** S59 client card caps ordinary cleaves at three and confirms nearby taunt.
+ * The two-tile, two-second one-time taunt is a disclosed local conversion. */
+export const WUSHI_CONTROL = {
+  maxTargets: 3, tauntRadius: 2, tauntDuration: 8,
+  role: "护甲变身与嘲讽",
+  description: WUSHI.description.replace(
+    "同时横斩主目标周围1格的敌人",
+    "横斩主目标及其周围1格的敌人，总共最多3名（含主目标）",
+  ) + "变身完成时，嘲讽周围2格内合格敌人2秒：强制将后续普攻和追击转向武僧，期间不能开始新技能；已开始的施法和已发出的攻击不撤销。技能免控、残魂和涅槃火种不受嘲讽，灵鱼可驱散；武僧阵亡、形态结束或双方变为友军时解除。仅在变身完成时施加一次，后施加的嘲讽覆盖前者。",
+} as const;
+
+/** S59 client values; 6/8/10 world radii become 1.2/1.6/2 tiles locally. */
+export const SHURIKEN = {
+  name: "风魔之刃", role: "持续范围飞镖",
+  damage: [150, 250, 350], radius: [1.2, 1.6, 2],
+  duration: 20, pulseInterval: 4, pulses: 5, cooldown: 80, windup: 2, speed: 1,
+  description: "初始能量0。满能量且20秒冷却结束时，向射程3格内的可见敌人当前位置蓄力0.5秒并投出巨大飞镖。落点固定，飞行速度每秒4格；抵达后形成持续5秒的圆形刃阵，每秒造成150/250/350法术伤害，共5次，半径1.2/1.6/2格（一/二/三星）。首跳在落地1秒后，敌人可走出范围躲避；伤害受技能强度增益，范围与时长不受影响。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会中断，能量与冷却不退还。冷却从蓄力开始计算。飞镖发出后可继续行动，已发出的飞镖与刃阵在本场战斗内不因施法者阵亡或受控而消失，按发出时的阵营结算。",
+} as const;
+export const SHURIKEN_SKILL = define({ name: SHURIKEN.name, role: SHURIKEN.role,
+  damageType: "magic", radius: SHURIKEN.radius[0], description: SHURIKEN.description });
+
+/** S59 totals/durations and S57 seven hits/three energy; geometry and startup are local. */
+export const SECRET_ORB = {
+  name: "秘法球", role: "维持范围法伤与削能",
+  damage: [760,1200,1300], duration: [24,26,28], radius: [2,2.5,3],
+  pulses: 7, drain: 3, cooldown: 120, windup: 3, forward: 3,
+  description: "初始能量0，自然回复每秒5生命。满能量且30秒冷却结束时，面向射程5格内的可见敌人原地蓄力0.75秒，在前方最多3格、朝向目标的固定位置凝聚秘法球。圆形半径2/2.5/3格，持续6/6.5/7秒（一/二/三星），在持续时间内分7次造成累计基础法术伤害760/1200/1300，每次有效伤害额外削减目标3点能量。每跳按目标当时的位置、法术减伤和护盾结算；技能强度增加伤害，不放大削能、范围或时长。受击回能仍按普通规则先结算，再扣除实际可削能量。蓄力及维持期间不能移动、普攻或施放其他技能；眩晕、沉默、魅惑或阵亡会中断并移除秘法球，未发生的跳数不再结算，能量与冷却不退还。冷却从开始蓄力计算；敌人可走出范围躲避，已开始的维持不因嘲讽而取消。",
+} as const;
+export const SECRET_ORB_SKILL = define({name:SECRET_ORB.name,role:SECRET_ORB.role,
+  damageType:"magic",radius:SECRET_ORB.radius[0],description:SECRET_ORB.description});
+
 export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
-  if (version === "taotie" && id === "skytoad") return TAOTIE.description;
+  if (hasSecretOrbRules(version) && id === "monk") return SECRET_ORB.description;
+  if (hasShurikenRules(version) && id === "panda") return SHURIKEN.description;
+  if (hasWushiControlRules(version) && id === "master") return WUSHI_CONTROL.description;
+  if (hasWushiRules(version) && id === "master") return WUSHI.description;
+  if (hasJungleRules(version) && id === "treant") return JUNGLE.description;
+  if (hasStormRules(version) && id === "stormcaller") return THUNDERSTORM.description;
+  if (hasGospelRules(version) && id === "acolyte") return GOSPEL.description;
+  if (hasLightningRules(version) && id === "thunderlord")
+    return THUNDER_CHAIN.description;
+  if (hasTarRules(version) && id === "motorcycle") return MOTOR_TAR.description;
+  if (hasTaotieRules(version) && id === "skytoad") return TAOTIE.description;
   if (hasQiRules(version) && id === "arhat") return ARHAT_QI.description;
   if (hasAuroraRules(version) && id === "skycrab") return AURORA.description;
   if (hasCoalitionRules(version) && ["wolf", "adept", "shark"].includes(id))
@@ -770,67 +893,98 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
-  id === "skytoad" && version === "taotie"
-    ? TAOTIE.name
-    : id === "arhat" && hasQiRules(version)
-      ? ARHAT_QI.name
-      : id === "skycrab" && hasAuroraRules(version)
-        ? AURORA.name
-        : id === "pangolin" && hasAmbushRules(version)
-          ? PANGOLIN_BURROW.name
-          : id === "bloodhawk" &&
-              (version === "metamorph" ||
-                version === "infantry" ||
-                version === "armored" ||
-                version === "puppets" ||
-                version === "wildfront" ||
-                hasAmbushRules(version))
-            ? HAWK_METAMORPH.name
-            : (version === "summons" ||
-                  version === "legions" ||
-                  version === "brood" ||
-                  version === "airsea" ||
-                  version === "fleet" ||
-                  version === "metamorph" ||
-                  version === "infantry" ||
-                  version === "armored" ||
-                  version === "puppets" ||
-                  version === "wildfront" ||
-                  hasAmbushRules(version)) &&
-                id === "wolf"
-              ? "幽狼召唤"
-              : SKILLS[id].name;
+  id === "monk" && hasSecretOrbRules(version) ? SECRET_ORB.name :
+  id === "panda" && hasShurikenRules(version) ? SHURIKEN.name :
+  id === "master" && hasWushiRules(version) ? WUSHI.name :
+  id === "treant" && hasJungleRules(version)
+    ? JUNGLE.name
+    :
+  id === "stormcaller" && hasStormRules(version)
+    ? THUNDERSTORM.name
+    :
+  id === "acolyte" && hasGospelRules(version)
+    ? GOSPEL.name
+    : id === "thunderlord" && hasLightningRules(version)
+    ? THUNDER_CHAIN.name
+    : id === "motorcycle" && hasTarRules(version)
+      ? MOTOR_TAR.name
+      : id === "skytoad" && hasTaotieRules(version)
+        ? TAOTIE.name
+        : id === "arhat" && hasQiRules(version)
+          ? ARHAT_QI.name
+          : id === "skycrab" && hasAuroraRules(version)
+            ? AURORA.name
+            : id === "pangolin" && hasAmbushRules(version)
+              ? PANGOLIN_BURROW.name
+              : id === "bloodhawk" &&
+                  (version === "metamorph" ||
+                    version === "infantry" ||
+                    version === "armored" ||
+                    version === "puppets" ||
+                    version === "wildfront" ||
+                    hasAmbushRules(version))
+                ? HAWK_METAMORPH.name
+                : (version === "summons" ||
+                      version === "legions" ||
+                      version === "brood" ||
+                      version === "airsea" ||
+                      version === "fleet" ||
+                      version === "metamorph" ||
+                      version === "infantry" ||
+                      version === "armored" ||
+                      version === "puppets" ||
+                      version === "wildfront" ||
+                      hasAmbushRules(version)) &&
+                    id === "wolf"
+                  ? "幽狼召唤"
+                  : SKILLS[id].name;
 export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
-  id === "skytoad" && version === "taotie"
-    ? TAOTIE.role
-    : id === "arhat" && hasQiRules(version)
-      ? ARHAT_QI.role
-      : id === "skycrab" && hasAuroraRules(version)
-        ? AURORA.role
-        : id === "pangolin" && hasAmbushRules(version)
-          ? PANGOLIN_BURROW.role
-          : id === "bloodhawk" &&
-              (version === "metamorph" ||
-                version === "infantry" ||
-                version === "armored" ||
-                version === "puppets" ||
-                version === "wildfront" ||
-                hasAmbushRules(version))
-            ? HAWK_METAMORPH.role
-            : (version === "summons" ||
-                  version === "legions" ||
-                  version === "brood" ||
-                  version === "airsea" ||
-                  version === "fleet" ||
-                  version === "metamorph" ||
-                  version === "infantry" ||
-                  version === "armored" ||
-                  version === "puppets" ||
-                  version === "wildfront" ||
-                  hasAmbushRules(version)) &&
-                id === "wolf"
-              ? "狼群召唤"
-              : SKILLS[id].role;
+  id === "monk" && hasSecretOrbRules(version) ? SECRET_ORB.role :
+  id === "panda" && hasShurikenRules(version) ? SHURIKEN.role :
+  id === "master" && hasWushiControlRules(version) ? WUSHI_CONTROL.role :
+  id === "master" && hasWushiRules(version) ? WUSHI.role :
+  id === "treant" && hasJungleRules(version)
+    ? JUNGLE.role
+    :
+  id === "stormcaller" && hasStormRules(version)
+    ? THUNDERSTORM.role
+    :
+  id === "acolyte" && hasGospelRules(version)
+    ? GOSPEL.role
+    : id === "thunderlord" && hasLightningRules(version)
+    ? THUNDER_CHAIN.role
+    : id === "motorcycle" && hasTarRules(version)
+      ? MOTOR_TAR.role
+      : id === "skytoad" && hasTaotieRules(version)
+        ? TAOTIE.role
+        : id === "arhat" && hasQiRules(version)
+          ? ARHAT_QI.role
+          : id === "skycrab" && hasAuroraRules(version)
+            ? AURORA.role
+            : id === "pangolin" && hasAmbushRules(version)
+              ? PANGOLIN_BURROW.role
+              : id === "bloodhawk" &&
+                  (version === "metamorph" ||
+                    version === "infantry" ||
+                    version === "armored" ||
+                    version === "puppets" ||
+                    version === "wildfront" ||
+                    hasAmbushRules(version))
+                ? HAWK_METAMORPH.role
+                : (version === "summons" ||
+                      version === "legions" ||
+                      version === "brood" ||
+                      version === "airsea" ||
+                      version === "fleet" ||
+                      version === "metamorph" ||
+                      version === "infantry" ||
+                      version === "armored" ||
+                      version === "puppets" ||
+                      version === "wildfront" ||
+                      hasAmbushRules(version)) &&
+                    id === "wolf"
+                  ? "狼群召唤"
+                  : SKILLS[id].role;

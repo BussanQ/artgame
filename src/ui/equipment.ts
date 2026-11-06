@@ -4,7 +4,38 @@ import { ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
 import { encounterFor, encounterArmy } from "../data/encounters";
 import { canCraft } from "../engine/equipment";
+import { finalPlayerSnapshot } from "../engine/match-summary";
 import type { Game, Player, Piece } from "../engine/types";
+/** Project the final record for display, without changing ownership or the shared pool. */
+export function equipmentView(g: Game) {
+  const final = finalPlayerSnapshot(g);
+  return {
+    player: final
+      ? {
+          ...g.players[0],
+          pieces: [...final.lineup, ...(final.bench ?? [])],
+          inventory: final.inventory ?? [],
+        }
+      : g.players[0],
+    version: final?.combatVersion ?? g.combatVersion,
+    isFinal: g.phase === "finished",
+    inventoryKnown: !final || final.inventory !== undefined,
+    reservesKnown: !final || final.bench !== undefined,
+  };
+}
+function snapshotNote(view: ReturnType<typeof equipmentView>) {
+  const notes = [
+    !view.inventoryKnown
+      ? "本局未保留终局背包，仅展示已记录的装备。"
+      : "",
+    !view.reservesKnown
+      ? "本局未保留终局备战席，持有人仅包含最终出战阵容。"
+      : "",
+  ].filter(Boolean);
+  return notes.length
+    ? `<p class="micro equipment-snapshot-note">${notes.join("")}</p>`
+    : "";
+}
 function itemCounts(ids: string[]) {
   return ids.reduce<Record<string, number>>((counts, id) => {
     counts[id] = (counts[id] ?? 0) + 1;
@@ -42,39 +73,45 @@ function ownerName(piece: Piece, pieces: Piece[]) {
   return `${UNIT[piece.defId].name} ${"★".repeat(piece.star)} · ${equipmentLocation(piece, pieces)}`;
 }
 export function equipmentOverviewMarkup(g: Game, heldOnly = false) {
-  const player = g.players[0],
+  const view = equipmentView(g),
+    { player, isFinal, inventoryKnown, reservesKnown, version } = view,
     entries = equipmentOverview(player),
     held = entries.filter((e) => e.total > 0),
     equippedCount = entries.reduce((n, e) => n + e.equippedCount, 0);
   const shown = heldOnly ? held : entries;
-  return `<div class="modal-backdrop"><section class="modal equipment-overview-modal" role="dialog" aria-modal="true" aria-label="装备总览"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">EQUIPMENT LEDGER</span><h2>装备总览</h2><p class="equipment-ledger-summary">持有 ${player.inventory.length + equippedCount} 件 · 背包 ${player.inventory.length} 件 · 装备中 ${equippedCount} 件</p><div class="equipment-ledger-filters"><button data-action="equipment-all" aria-pressed="${!heldOnly}">全部装备 ${entries.length}</button><button data-action="equipment-held" aria-pressed="${heldOnly}">已持有 ${held.length} 种</button></div><p class="micro">包含你的背包、场上与备战席棋子。点击持有人可选中该棋子并返回工坊；对手装备可在侦察中查看。</p>${[
+  const inventoryLabel = inventoryKnown ? `${player.inventory.length} 件` : "未记录",
+    equippedLabel = reservesKnown ? "装备中" : "已记录穿戴",
+    heldLabel = inventoryKnown && reservesKnown ? (isFinal ? "终局持有" : "持有") : "已记录";
+  return `<div class="modal-backdrop"><section class="modal equipment-overview-modal" role="dialog" aria-modal="true" aria-label="装备总览"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">EQUIPMENT LEDGER</span><h2>${isFinal ? "终局装备总览" : "装备总览"}</h2><p class="equipment-ledger-summary">${heldLabel} ${player.inventory.length + equippedCount} 件 · 背包 ${inventoryLabel} · ${equippedLabel} ${equippedCount} 件</p>${snapshotNote(view)}<div class="equipment-ledger-filters"><button data-action="equipment-all" aria-pressed="${!heldOnly}">全部装备 ${entries.length}</button><button data-action="equipment-held" aria-pressed="${heldOnly}">${isFinal ? (inventoryKnown && reservesKnown ? "终局持有" : "已记录") : "已持有"} ${held.length} 种</button></div><p class="micro">${isFinal ? "终局回顾：点击持有人查看最后的星级、装备与阵位。" : "包含你的背包、场上与备战席棋子。点击持有人可选中该棋子并返回工坊；对手装备可在侦察中查看。"}</p>${[
     false,
     true,
   ]
     .map((crafted) => {
       const rows = shown.filter((e) => !!e.item.recipe === crafted);
       if (!rows.length) return "";
-      return `<section class="equipment-ledger-section"><h3>${crafted ? "合成装备" : "基础装备"} · ${rows.length} 种</h3><div class="equipment-ledger-grid">${rows.map(({ item, inventoryCount, equippedCount, total, owners }) => `<article data-equipment-item="${item.id}" aria-label="${item.name}" class="equipment-ledger-card${total ? " is-owned" : ""}"><h4><span class="item-icon">${item.icon}</span>${item.name}</h4><p>${item.description}</p><p class="equipment-ledger-counts">背包 <b>${inventoryCount}</b> · 装备中 <b>${equippedCount}</b></p><div class="equipment-ledger-owners">${owners.length ? owners.map(({ piece, copies, location }) => `<button data-equipment-owner="${piece.uid}" aria-label="查看${UNIT[piece.defId].name}${piece.star}星${location}的装备"><img src="/assets/units/${unitSprite(piece.defId, g.combatVersion)}.png" alt=""><span>${UNIT[piece.defId].name} ${"★".repeat(piece.star)}<small>${location}${copies > 1 ? ` · ×${copies}` : ""}</small></span></button>`).join("") : `<small>${inventoryCount ? "当前在背包中" : "尚未持有"}</small>`}</div>${item.recipe ? `<small class="equipment-ledger-recipe">配方：${item.recipe.map((id) => ITEM[id].name).join(" + ")}</small>` : '<small class="equipment-ledger-recipe">野怪回合战利品</small>'}</article>`).join("")}</div></section>`;
+      return `<section class="equipment-ledger-section"><h3>${crafted ? "合成装备" : "基础装备"} · ${rows.length} 种</h3><div class="equipment-ledger-grid">${rows.map(({ item, inventoryCount, equippedCount, total, owners }) => `<article data-equipment-item="${item.id}" aria-label="${item.name}" class="equipment-ledger-card${total ? " is-owned" : ""}"><h4><span class="item-icon">${item.icon}</span>${item.name}</h4><p>${item.description}</p><p class="equipment-ledger-counts">背包 <b>${inventoryKnown ? inventoryCount : "未记录"}</b> · ${equippedLabel} <b>${equippedCount}</b></p><div class="equipment-ledger-owners">${owners.length ? owners.map(({ piece, copies, location }) => `<button data-equipment-owner="${piece.uid}" aria-label="查看${UNIT[piece.defId].name}${piece.star}星${location}的装备"><img src="/assets/units/${unitSprite(piece.defId, version)}.png" alt=""><span>${UNIT[piece.defId].name} ${"★".repeat(piece.star)}<small>${location}${copies > 1 ? ` · ×${copies}` : ""}</small></span></button>`).join("") : `<small>${inventoryCount ? (isFinal ? "终局背包中" : "当前在背包中") : !inventoryKnown || !reservesKnown ? "暂无持有记录" : isFinal ? "终局未持有" : "尚未持有"}</small>`}</div>${item.recipe ? `<small class="equipment-ledger-recipe">配方：${item.recipe.map((id) => ITEM[id].name).join(" + ")}</small>` : '<small class="equipment-ledger-recipe">野怪回合战利品</small>'}</article>`).join("")}</div></section>`;
     })
     .join(
       "",
-    )}${!shown.length ? '<p class="empty">尚未持有装备；切换“全部装备”查看属性与配方。</p>' : ""}</section></div>`;
+    )}${!shown.length ? `<p class="empty">${isFinal ? "本局没有可回顾的装备记录" : "尚未持有装备"}；切换“全部装备”查看属性与配方。</p>` : ""}</section></div>`;
 }
 export function equipmentMarkup(
   g: Game,
   selected: number | null,
   disabled: boolean,
 ) {
-  const p = g.players[0],
-    piece = p.pieces.find((x) => x.uid === selected),
+  const view = equipmentView(g),
+    { player: p, isFinal, inventoryKnown, reservesKnown, version } = view,
+    piece = !isFinal ? p.pieces.find((x) => x.uid === selected) : undefined,
     carriers = p.pieces.filter((x) => x.items?.length),
     equippedCount = carriers.reduce((n, x) => n + x.items!.length, 0);
-  return `<section class="panel equipment-panel" id="armory"><div class="section-label"><div><span class="eyebrow">ARMORY</span><h2>装备工坊 <small>${p.inventory.length} 背包 · ${equippedCount} 已装</small></h2></div><span class="micro">选择棋子后点击库存装备 · 每枚最多 3 件</span></div><button class="armory-overview-button" data-action="equipment-overview">全部装备 · ${ITEMS.length} 种<span>查看属性、配方与持有人 →</span></button>${
+  disabled ||= isFinal;
+  return `<section class="panel equipment-panel" id="armory"><div class="section-label"><div><span class="eyebrow">ARMORY</span><h2>装备工坊 <small>${isFinal ? "终局 · " : ""}${inventoryKnown ? `${p.inventory.length} 背包` : "背包未记录"} · ${equippedCount} ${reservesKnown ? "已装" : "已记录穿戴"}</small></h2></div><span class="micro">${isFinal ? "终局回顾 · 点击持有人查看最后阵容" : "选择棋子后点击库存装备 · 每枚最多 3 件"}</span></div>${snapshotNote(view)}<button class="armory-overview-button" data-action="equipment-overview">全部装备 · ${ITEMS.length} 种<span>查看属性、配方与持有人 →</span></button>${
     carriers.length
-      ? `<div class="armory-owner-list"><h3>已穿戴 · ${equippedCount} 件</h3>${carriers
+      ? `<details class="armory-owner-list" data-disclosure="equipment-owners"><summary data-focus="equipment-owners">已穿戴 · ${equippedCount} 件 · ${carriers.length} 枚棋子</summary>${carriers
           .map(
             (x) =>
-              `<button data-equipment-owner="${x.uid}" class="armory-owner${x.uid === selected ? " is-selected" : ""}"><img src="/assets/units/${unitSprite(x.defId, g.combatVersion)}.png" alt=""><span><b>${ownerName(x, p.pieces)}</b><small>${Object.entries(
+              `<button data-equipment-owner="${x.uid}" class="armory-owner${!isFinal && x.uid === selected ? " is-selected" : ""}"><img src="/assets/units/${unitSprite(x.defId, version)}.png" alt=""><span><b>${ownerName(x, p.pieces)}</b><small>${Object.entries(
                 itemCounts(x.items!),
               )
                 .map(
@@ -83,9 +120,9 @@ export function equipmentMarkup(
                 )
                 .join(" · ")}</small></span></button>`,
           )
-          .join("")}</div>`
+          .join("")}</details>`
       : ""
-  }<div class="equipped-slots">${piece ? `<b>${ownerName(piece, p.pieces)} · 已装备 ${(piece.items ?? []).length}/3</b>${(piece.items ?? []).map((id, i) => `<button data-unequip="${i}" ${disabled ? "disabled" : ""} title="${ITEM[id].description}">${ITEM[id].icon} ${ITEM[id].name} <small>卸下</small></button>`).join("")}` : '<span class="micro">可选中场上或备战席棋子；穿戴和卸下不消耗金币。</span>'}</div><div class="inventory-grid">${p.inventory.length ? p.inventory.map((id, i) => `<button data-equip="${i}" title="${ITEM[id].name}：${ITEM[id].description}" ${disabled || !piece || (piece.items?.length ?? 0) >= 3 ? "disabled" : ""}><span class="item-icon">${ITEM[id].icon}</span><b>${ITEM[id].name}</b><small>${ITEM[id].description}</small></button>`).join("") : '<p class="empty">挑战野怪获取装备。胜利可三选一，失利仍可二选一。</p>'}</div><details data-disclosure="recipes"><summary data-focus="recipes">合成配方 · ${ITEMS.filter((i) => i.recipe && canCraft(p, i.id)).length} 种可合成</summary><p class="micro">合成仅使用库存中的材料；已穿戴的材料需先卸下。成装不可拆分。</p><div class="recipe-grid">${ITEMS.filter(
+  }<div class="equipped-slots">${piece ? `<b>${ownerName(piece, p.pieces)} · 已装备 ${(piece.items ?? []).length}/3</b>${(piece.items ?? []).map((id, i) => `<button data-unequip="${i}" ${disabled ? "disabled" : ""} title="${ITEM[id].description}">${ITEM[id].icon} ${ITEM[id].name} <small>卸下</small></button>`).join("")}` : isFinal ? "" : '<span class="micro">可选中场上或备战席棋子；穿戴和卸下不消耗金币。</span>'}</div><div class="inventory-grid">${p.inventory.length ? p.inventory.map((id, i) => `<button data-equip="${i}" title="${ITEM[id].name}：${ITEM[id].description}" ${disabled || !piece || (piece.items?.length ?? 0) >= 3 ? "disabled" : ""}><span class="item-icon">${ITEM[id].icon}</span><b>${ITEM[id].name}</b><small>${ITEM[id].description}</small></button>`).join("") : !inventoryKnown ? "" : `<p class="empty">${isFinal ? "终局背包为空。" : "挑战野怪获取装备。胜利可三选一，失利仍可二选一。"}</p>`}</div><details data-disclosure="recipes"><summary data-focus="recipes">合成配方 · ${ITEMS.filter((i) => i.recipe && (isFinal || canCraft(p, i.id))).length} 种${isFinal ? "" : "可合成"}</summary><p class="micro">${isFinal ? "本局已结束，可查看配方与装备属性。" : "合成仅使用库存中的材料；已穿戴的材料需先卸下。成装不可拆分。"}</p><div class="recipe-grid">${ITEMS.filter(
     (i) => i.recipe,
   )
     .map(

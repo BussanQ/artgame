@@ -1,0 +1,265 @@
+{
+  "checkedAt": "2026-11-06",
+  "preview": "http://localhost:5176/",
+  "evidenceOrigin": "此前成功CUA操作的可见结果及已保存截图；本次重新目视图片，并以当前引擎核对确定性帧。",
+  "rawDOMSnapshotPreserved": false,
+  "legacyBeforeDemo": {
+    "rules": "singleplayer-0.53",
+    "round": 26,
+    "rank": 4,
+    "hp": 0,
+    "gold": 37,
+    "level": 10,
+    "treantDetail": {
+      "sprite": "/assets/units/treant.png",
+      "hp": 1550,
+      "attack": 90,
+      "armor": 7,
+      "intervalSeconds": 1,
+      "skill": "古木震荡"
+    },
+    "finishedReportCopyObserved": "本局已结束，可查看战报、最终阵容与装备，或开始新演习。"
+  },
+  "legacyDuringDemo": {
+    "hp": 0,
+    "gold": 37,
+    "level": 10,
+    "evidence": "tmp/jungle-v054-airborne.jpg"
+  },
+  "zeroTime": {
+    "seconds": 0,
+    "treantCountersAllZero": true,
+    "damageAndHealingZero": true,
+    "source": "此前UI滑块直接观察；当前确定性引擎样本亦一致"
+  },
+  "stages": [
+    {
+      "frame": 4,
+      "seconds": 1,
+      "stage": "windup",
+      "image": "tmp/jungle-v054-windup.jpg"
+    },
+    {
+      "frame": 7,
+      "seconds": 1.75,
+      "stage": "airborne",
+      "image": "tmp/jungle-v054-airborne.jpg"
+    },
+    {
+      "frame": 9,
+      "seconds": 2.25,
+      "stage": "landing-stun",
+      "image": "tmp/jungle-v054-landing.jpg"
+    }
+  ],
+  "finalDemo": {
+    "result": "draw",
+    "seconds": 40,
+    "sliderMaximum": 160,
+    "sliderValue": 160,
+    "left": {
+      "lifeDamage": 7091,
+      "healing": 4517.5,
+      "received": 14177.5,
+      "shieldAbsorbed": 0,
+      "survivors": 2,
+      "souls": 1
+    },
+    "right": {
+      "lifeDamage": 14177.5,
+      "healing": 3626,
+      "received": 7091,
+      "shieldAbsorbed": 9593,
+      "survivors": 6
+    },
+    "treants": [
+      {
+        "jungle": {
+          "waves": 1,
+          "hits": 6,
+          "knockups": 6,
+          "landings": 6
+        },
+        "interruptions": 0,
+        "lostTargets": 0,
+        "uid": 101,
+        "defId": "treant",
+        "star": 3,
+        "side": 0,
+        "hp": 0,
+        "maxHp": 3800,
+        "damage": 1931,
+        "normalDamage": 491,
+        "skillDamage": 1440,
+        "reflectedDamage": 0,
+        "energyGiven": 0,
+        "shieldDamage": 1465,
+        "received": 4592.5,
+        "healing": 92.5,
+        "absorbed": 0,
+        "casts": 1,
+        "evades": 0
+      },
+      {
+        "jungle": {
+          "waves": 1,
+          "hits": 4,
+          "knockups": 4,
+          "landings": 4
+        },
+        "interruptions": 0,
+        "lostTargets": 0,
+        "uid": 102,
+        "defId": "treant",
+        "star": 2,
+        "side": 0,
+        "hp": 0,
+        "maxHp": 1900,
+        "damage": 863,
+        "normalDamage": 159,
+        "skillDamage": 704,
+        "reflectedDamage": 0,
+        "energyGiven": 0,
+        "shieldDamage": 912,
+        "received": 2025,
+        "healing": 125,
+        "absorbed": 0,
+        "casts": 1,
+        "evades": 0
+      }
+    ],
+    "screenshot": "tmp/jungle-v054-analysis.jpg",
+    "fixtureBoundary": "不同预算的6对6表现夹具，不是正常经营或强度测试"
+  },
+  "mobile390": {
+    "viewport": [
+      390,
+      844
+    ],
+    "documentWidth": 390,
+    "analysisModal": {
+      "x": 28.75,
+      "y": 63.296875,
+      "width": 332.5,
+      "height": 717.390625
+    },
+    "pausedFrame": 7,
+    "canvas": {
+      "x": -97.5,
+      "y": 75,
+      "width": 585,
+      "height": 363.375
+    },
+    "evidence": [
+      "tmp/jungle-v054-mobile-analysis.jpg",
+      "tmp/jungle-v054-mobile-airborne.jpg"
+    ]
+  },
+  "mobile320": {
+    "viewport": [
+      320,
+      740
+    ],
+    "documentWidth": 320,
+    "pausedFrame": 7,
+    "canvas": {
+      "x": -80,
+      "y": 75,
+      "width": 480,
+      "height": 297.734375
+    },
+    "evidence": "tmp/jungle-v054-320-airborne.jpg"
+  },
+  "deterministicCrossCheck": {
+    "record": "jungle-v054-demo.json",
+    "sha256": "416e36c66c4fcf7b59c679ebe595a37f82dd29594355fb79bbfa904de6d59cd1",
+    "replacesBrowserVerification": false
+  },
+  "screenshots": {
+    "tmp/jungle-v054-320-airborne.jpg": {
+      "sha256": "db5490e929d710dc0bf7f69632fd048a3c0ed32b95488c80bb3164125d919be7",
+      "bytes": 44934,
+      "size": [
+        320,
+        740
+      ],
+      "capturedAtUTC": "2026-11-06T00:21:20.943044+00:00"
+    },
+    "tmp/jungle-v054-airborne.jpg": {
+      "sha256": "d75e6801c38c9fcdbd2629ac24c256f0eef52ec3d335d0f560c446896e39f2ef",
+      "bytes": 139667,
+      "size": [
+        1280,
+        720
+      ],
+      "capturedAtUTC": "2026-11-06T00:11:24.270626+00:00"
+    },
+    "tmp/jungle-v054-analysis.jpg": {
+      "sha256": "31d26f53f5e35b695643ad2bec6ce76a797c6fce896689be315085b541a1b711",
+      "bytes": 57538,
+      "size": [
+        1280,
+        720
+      ],
+      "capturedAtUTC": "2026-11-06T00:17:54.856772+00:00"
+    },
+    "tmp/jungle-v054-landing.jpg": {
+      "sha256": "284c09551f74bb3309dba922c29ea4cd920a6f42b84dc7834a6973732444a91f",
+      "bytes": 141201,
+      "size": [
+        1280,
+        720
+      ],
+      "capturedAtUTC": "2026-11-06T00:11:23.677458+00:00"
+    },
+    "tmp/jungle-v054-mobile-airborne.jpg": {
+      "sha256": "68b84f5806c94393849b25b519e88da359337982cf2793f14c6f6deea31e20e4",
+      "bytes": 56587,
+      "size": [
+        390,
+        844
+      ],
+      "capturedAtUTC": "2026-11-06T00:21:20.738249+00:00"
+    },
+    "tmp/jungle-v054-mobile-analysis.jpg": {
+      "sha256": "56dfda09957f6e6a7c6f38b5509bc0a059fd73baf7dfb603c3b9e2e877efdf08",
+      "bytes": 33890,
+      "size": [
+        390,
+        844
+      ],
+      "capturedAtUTC": "2026-11-06T00:21:19.131070+00:00"
+    },
+    "tmp/jungle-v054-windup.jpg": {
+      "sha256": "444843c1dd5400755781ddc8771688902d42ede033a8026a68247078dd141f97",
+      "bytes": 139602,
+      "size": [
+        1280,
+        720
+      ],
+      "capturedAtUTC": "2026-11-06T00:08:41.727252+00:00"
+    }
+  },
+  "pending": [
+    "退出演示后的旧终局及默认视口恢复：动作返回超时，完成状态未知，未复核。",
+    "http://localhost:5177/新空白QA标签页创建与新局图鉴：超时，未确认创建成功。",
+    "最后新增图鉴自然回复/减伤行及分析统计说明的桌面/窄屏画面：模块验证通过，浏览器未补验。",
+    "浏览器警告/错误日志未成功留存，不能以先前版本日志为空推断本轮为空。",
+    "真实触屏、减少动态浏览器开关和弱设备性能未在本轮实测。"
+  ],
+  "connectionFailure": {
+    "status": "repeated-observation-timeouts",
+    "tabId": "18",
+    "browserId": "3",
+    "mostRecentInventory": "2026-11-06：IAB 3的18号标签仍列为localhost:5176/#battlefield；后续选取标签/浏览器及读取库存超时。",
+    "servicesRestartedBecauseOfTimeout": false
+  },
+  "changesAfterScreenshots": [
+    "src/ui/unit-codex.ts：显示基础法术减伤和自然回复",
+    "src/ui/battle-analysis.ts：补充自带回复计入治疗的说明；不改变战斗统计"
+  ],
+  "limits": [
+    "截图只存根目录tmp并被Git忽略；JSON中的历史UI事实没有伪造完整原始DOM。",
+    "本次能重新目视截图；当前引擎帧审计不是新的浏览器交互或整局人工验收。"
+  ]
+}

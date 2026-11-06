@@ -1,0 +1,30 @@
+{
+  "id": "treant-jungle",
+  "unitId": "treant",
+  "name": "树妖",
+  "ruleVersion": "singleplayer-0.54",
+  "method": "built-in image_gen",
+  "generatedAt": "2026-11-06",
+  "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit cutout for the existing Red Tides browser auto-chess. Input image 1 is the primary-client reference: use ONLY the treant creature silhouette visible in the right portrait and small model, ignore every UI/text/background element. Input image 2 is the existing generated treant edit target and rendering-style reference. Remodel that unit toward the reference: a squat, massive, stooped undead bark-and-stone forest titan, a small angular root-mask head embedded between enormous jagged shoulders, a low crown of thick broken root horns, disproportionately long huge knotty forearms with clawlike root hands, thick short rooted legs. Dark charcoal olive-gray petrified bark, muted moss seams, restrained pale green soul glow in recessed eyes and cracks, a few tarnished bronze fittings consistent with this game. Retain the polished hand-painted 3D miniature finish and three-quarter front view facing viewer-right, slightly elevated camera. Remove the old white human beard, human elderly facial features, hanging cloth skirt and wide branching antler canopy; the silhouette must read as a compact monstrous forest juggernaut with clear arm/leg separation. Center the complete figure, all root claws and head horns fully inside the frame, 10% clear padding. Actual transparent alpha background. No floor, no base, no scenery, no cast ground shadow, no interface, no text, no watermark, no other units. Keep a readable silhouette at a small chessboard scale.",
+  "referenceRoles": [
+    {
+      "path": "docs/research/images/treant-jungle-client.webp",
+      "role": "primary client silhouette reference only; no UI copied"
+    },
+    {
+      "path": "public/assets/units/treant.png",
+      "role": "existing generated sprite edit target and painting style reference; original preserved"
+    }
+  ],
+  "generatedFile": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-5b22f6c6-ece3-4f41-ada6-737f6adc6c51.png",
+  "asset": "public/assets/units/treant-jungle.png",
+  "transparent": true,
+  "attempts": 1,
+  "sha256": "eb62fa28e2f02de314ebdd5471cb2932d4f1d4355d9470827839afd1fa228301",
+  "width": 1312,
+  "height": 1199,
+  "mode": "RGBA",
+  "alphaZeroPixels": 715233,
+  "alphaOpaquePixels": 186,
+  "previousAssetSha256": "dcaddbb7e1045ebce616fd28b1a7a8672f4df76a50d9d36cc89f9a874d496248"
+}

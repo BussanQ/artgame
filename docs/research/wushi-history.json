@@ -1,0 +1,131 @@
+{
+  "reviewedAt": "2026-11-06",
+  "rules": "singleplayer-0.56",
+  "unitId": "master",
+  "combatVersion": "wushi",
+  "scope": "恢复一费武僧的无式核心；五月官方更新与七月社区测量分期记录，不宣称整套统一客户端数值或全部熊猫能力已还原。",
+  "sources": [
+    {
+      "id": "S57",
+      "title": "赤潮自走棋 5月16日停服内容介绍",
+      "url": "https://news.17173.com/z/zzq/content/05162019/161225352.shtml?_platform=PC",
+      "publishedAt": "2019-05-16",
+      "author": "官方",
+      "sourceByline": "官方",
+      "kind": "publisher-authored-update",
+      "status": "original-html-reviewed",
+      "accessedAt": "2026-11-06",
+      "note": "Web全文读取失败但检索正文命中；直接HTTP取得原HTML，并核对作者/来源均为官方。无式增加护甲6/12/18、持续8/10/12秒、变身后范围普攻；不把八月社区嘲讽说法当作本公告字段。",
+      "archivedHtmlSha256": "7d9727113f013f6fd3b73315b29c09efdf65185e4d50764f2f7bdf70328071a7"
+    },
+    {
+      "id": "S32",
+      "url": "https://news.17173.com/content/05172019/112538567.shtml",
+      "publishedAt": "2019-05-17",
+      "kind": "publisher-attributed-article",
+      "status": "web-full-text-reviewed",
+      "facts": [
+        "一费武僧熊猫为前排肉盾",
+        "生命700",
+        "技能不以直接爆发为定位"
+      ]
+    },
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measurement-image",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "imageSha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "locator": "S04-1 第18行：熊猫武僧",
+      "status": "archived-original-image-visually-rechecked",
+      "fields": {
+        "cost": 1,
+        "hp": 700,
+        "attackMin": 61,
+        "attackMax": 67,
+        "armor": 5,
+        "range": 1,
+        "attackIntervalSeconds": 1.8,
+        "cooldownSeconds": 20
+      }
+    },
+    {
+      "id": "S58",
+      "title": "战争艺术 更新公告丨6月11日不停服更新内容一览",
+      "url": "https://news.17173.com/z/zzq/content/06112020/182740162.shtml?_platform=PC",
+      "publishedAt": "2020-06-11",
+      "author": "战争艺术AOW",
+      "kind": "publisher-authored-update-search-excerpt",
+      "status": "relevant-search-text-reviewed",
+      "accessedAt": "2026-11-06",
+      "note": "检索正文为战争艺术AOW署名、来源微信公众号；公告将无式10/15/20%吸血写为新增。用于标记后期差异，不混入本次2019核心适配；未声称直读全文。"
+    }
+  ],
+  "confirmedPatchFields": {
+    "source": "S57",
+    "name": "无式",
+    "armor": [
+      6,
+      12,
+      18
+    ],
+    "durationSeconds": [
+      8,
+      10,
+      12
+    ],
+    "ordinaryAttacksBecomeAreaAttacks": true
+  },
+  "implemented": {
+    "idPreserved": "master",
+    "costForNewMatches": 1,
+    "poolCopiesForNewMatches": 45,
+    "hp": 700,
+    "attack": 64,
+    "armor": 5,
+    "range": 1,
+    "displayIntervalSeconds": 1.8,
+    "startupSeconds": 1,
+    "cooldownSeconds": 20,
+    "formSeconds": [
+      8,
+      10,
+      12
+    ],
+    "personalArmor": [
+      6,
+      12,
+      18
+    ],
+    "castDamage": 0,
+    "normalAttackArea": "primary target and Manhattan-one neighbouring enemies",
+    "gearSkillPowerAffectsArmorOrCleave": false,
+    "formSprite": "public/assets/units/master-wushi.png"
+  },
+  "localAdaptations": [
+    "攻击区间取确定性均值64；显示1.8秒、战斗按0.25秒tick调度，生命/攻击沿用单机星级成长。",
+    "初始能量0、1秒可打断原地蓄力、冷却从蓄力开始、结束后恢复充能等精确时序为本地适配。",
+    "将未明确几何形状的范围普攻转换为主目标及其曼哈顿1格邻格，主目标与邻格独立结算护甲、闪避、护盾、普攻吸血和反伤；反伤使攻击者阵亡后停止剩余接触。",
+    "护甲作为独立个人增益，与既有护甲强化分别计时；技能强度不放大固定护甲或普通横斩，持续中眩晕/沉默不会延长或移除已经完成的变身。",
+    "新局一费45份属于现有单机共享池配置；公告只证明费用定位和无式字段，不证明45份容量。",
+    "变身放大、玉色长刀和姿态为内置ImageGen及Canvas表现，不使用原游戏模型。"
+  ],
+  "unresolved": [
+    "2019八月社区攻略称变身包含嘲讽，尚未获得同期官方范围/时长或可读客户端卡；本次没有新增强制嘲讽，不把无式核心增量称作全机制复原。",
+    "后期公告新增无式吸血；不跨期加入本次配置。",
+    "忍者熊猫和禅师熊猫仍有原型技能/费用，与四月名称分类齐全是不同层次；后续继续逐个核对。"
+  ],
+  "compatibility": {
+    "saveSchema": 55,
+    "previousBattleVersion": "continuity",
+    "previousPrice": 4,
+    "previousPoolCopies": 15,
+    "prepareUpgrade": "0.55准备期进入wushi，保留原有整局catalogVersion和全部资源。",
+    "inFlight": "0.55战斗、结算、终局保留continuity；下一准备期再进入wushi。",
+    "intermediateMigration": "53→54固定continuity/0.55字面值，54→55独立升级。",
+    "oldReplayFixture": "../../tests/fixtures/pre-v056-replays.json",
+    "oldReplayCount": 173
+  },
+  "assetRecord": "wushi-assets.json"
+}

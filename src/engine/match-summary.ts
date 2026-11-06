@@ -1,9 +1,29 @@
 import { rankings } from "./game";
 import type { Game, RoundReport } from "./types";
 
+/** Historical view only: never restore eliminated pieces or items to live ownership. */
+export function finalPlayerSnapshot(game: Game) {
+  const last = game.history.at(-1);
+  if (game.phase !== "finished" || !last) return null;
+  const player = game.players[0];
+  return {
+    combatVersion: last.combatVersion,
+    lineup: last.left,
+    // Surviving old saves still have their final reserves and inventory.
+    // An eliminated old save cannot recover missing data reliably.
+    bench:
+      last.bench ??
+      (player.hp > 0
+        ? player.pieces.filter((piece) => piece.position === null)
+        : undefined),
+    inventory: last.inventory ?? (player.hp > 0 ? player.inventory : undefined),
+  };
+}
+
 /** Derived from settled history; never awards currency or mutates a finished run. */
 export function matchSummary(game: Game) {
-  if (game.phase !== "finished" || !game.history.length) return null;
+  const final = finalPlayerSnapshot(game);
+  if (!final) return null;
   const standings = rankings(game);
   const rank = standings.findIndex((p) => p.id === 0) + 1;
   const pvp = game.history.filter((r) => r.kind === "pvp");
@@ -36,7 +56,8 @@ export function matchSummary(game: Game) {
     totalIncome: game.history.reduce((n, r) => n + r.income, 0),
     damageTaken: game.history.reduce((n, r) => n + r.damage, 0),
     // Eliminated players have already returned their live pieces to the pool.
-    lineup: game.history.at(-1)!.left,
+    lineup: final.lineup,
+    bench: final.bench,
     standings,
   };
 }

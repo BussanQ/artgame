@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "rules": "singleplayer-0.49",
+  "unit": "skytoad",
+  "sources": [
+    {
+      "id": "S38",
+      "title": "赤潮自走棋 更新公告 5月30日早8点停服维护",
+      "url": "https://news.17173.com/z/zzq/content/05302019/085535417.shtml?_platform=PC",
+      "publishedAt": "2019-05-30",
+      "attribution": "17173 labels both author and source as official; this is a preserved announcement, not client configuration.",
+      "evidence": "Original article body reopened and checked for the skytoad change: per-star healing, flat attack bonus, eight-second duration and shortened per-star cooldown."
+    },
+    {
+      "id": "S04",
+      "title": "数据汇总",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "sourceImage": "S04-1",
+      "row": 35,
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/2b0748a9a1bc237a7a9fbeffb59f101e.jpg/_tap_ugc.jpg",
+      "localArchive": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "evidence": "Archived original image visually checked again; bytes match the earlier table transcription. Player observations, not an official client dump."
+    }
+  ],
+  "printedFields": {
+    "mayAnnouncement": {
+      "skill": "饕餮",
+      "healing": [300, 600, 1200],
+      "flatAttack": [50, 100, 200],
+      "rageSeconds": 8,
+      "oldCooldownSeconds": 60,
+      "cooldownSeconds": [22, 18, 14],
+      "visual": "Body enlarges after swallowing an enemy."
+    },
+    "julyTable": {
+      "cost": 5,
+      "traits": ["猛禽", "异能"],
+      "attackMin": 48,
+      "attackMax": 58,
+      "attackIntervalSeconds": 1.6,
+      "reportedDps": 33.1,
+      "hp": 1000,
+      "armor": 5,
+      "range": 3,
+      "cooldownSeconds": [22, 18, 14],
+      "magicDefensePercent": 40,
+      "healingPerSecond": 5
+    }
+  },
+  "implemented": {
+    "combatVersion": "taotie",
+    "saveSchema": 48,
+    "initialMana": 25,
+    "baseAttack": 53,
+    "attackIntervalTicks": 6.4,
+    "rageTicks": 32,
+    "cooldownTicks": [88, 72, 56],
+    "bodyScale": 1.18,
+    "target": "Highest current HP among visible enemies in range with less current HP than the caster; undying souls excluded.",
+    "damage": "True damage sufficient to remove current shield and HP; ordinary immunity, reflection, death bursts, rebirth and undying transitions still resolve.",
+    "reward": "Flat healing and temporary attack after lethal HP damage only while the source remains alive and is not an undying soul. Healing overflow is excluded; refresh rather than stack.",
+    "catalog": "New matches use five gold and ten copies. Existing matches keep their original prices and copy limits while later preparation phases upgrade combat behavior."
+  },
+  "localAdaptations": [
+    "May ability changes and July player-measured body statistics are separate time slices, not proof of one unified original client version.",
+    "Attack 53 is the mean of 48-58. HP and ordinary attack star doubling remain local rules; skill values use the independent printed arrays.",
+    "Initial mana, the current-HP threshold, Manhattan range, target ordering, true-damage execution, visibility and resurrection interaction are local interpretations, not recovered official boundary rules.",
+    "The eight-second lifetime and flat additions are sourced; 1.18 visual scaling, multiplicative application with other attack bonuses and cooldown/energy scheduling are local choices.",
+    "Five-gold pool size ten, legacy catalog freezing and phase-aware migration are local persistence/economy rules.",
+    "The prior ImageGen skytoad asset is reused unchanged; the source image is a research artifact and is not used as game art."
+  ],
+  "verification": {
+    "frozenPre049Replays": 76,
+    "taotieModuleCases": 120,
+    "normalEconomyReports": ["../analysis/taotie-v049.json", "../analysis/taotie-v049-beasts.json"],
+    "normalEconomyGames": 12,
+    "normalEconomyRounds": 321,
+    "playerNaturalThreeStarGames": 0,
+    "limitations": "Two seeds and two commander policies are diagnostics, not independent human-win-rate evidence. AI deployment counts do not encode every unit's star; puppet-only detailed histories cannot prove overall AI star coverage."
+  }
+}

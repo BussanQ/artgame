@@ -1,4 +1,4 @@
-import { CURRENT_COMBAT_VERSION } from "./types";
+import { CURRENT_COMBAT_VERSION, hasQiRules } from "./types";
 import { TRAITS } from "../data/units";
 import { unitDefinition } from "../data/unit-stats";
 import { traitTiers, type TraitBonus } from "../data/traits";
@@ -22,7 +22,7 @@ export function synergies(
     version === "lineages" ||
     version === "coalitions" ||
     version === "aurora" ||
-    (version === "qi" || version === "taotie")
+    hasQiRules(version)
   )
     version = "fleet";
   const counts = new Map<Trait, number>();

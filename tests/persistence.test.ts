@@ -86,6 +86,61 @@ describe("单机存档与回合恢复", () => {
     settle(loaded, result);
     expect(loaded).toEqual(next);
   });
+  it("战报备战快照可保存恢复，旧战报可缺省，非法快照被拒绝", () => {
+    const { storage, store, game } = setup();
+    expect(buy(game, game.players[0], 1)).toBe(true);
+    const reserve = structuredClone(
+      game.players[0].pieces.filter((piece) => piece.position === null),
+    );
+    expect(reserve).toHaveLength(1);
+    settle(game, startRound(game)!);
+    expect(game.history[0].bench).toEqual(reserve);
+    expect(store.save(game, playback)).toBe("saved");
+    expect(new SaveStore(storage).load().data!.game).toEqual(game);
+    const legacy = structuredClone(game);
+    delete legacy.history[0].bench;
+    expect(validGame(legacy)).toBe(true);
+    for (const bench of [
+      [{ ...reserve[0], position: 63 }],
+      [{ ...reserve[0], uid: game.history[0].left[0].uid }],
+      [{ ...reserve[0], uid: game.history[0].right[0].uid }],
+      [reserve[0], reserve[0]],
+      Array.from({ length: 9 }, (_, i) => ({ ...reserve[0], uid: 10000 + i })),
+      [{ ...reserve[0], items: ["unknown-item"] }],
+    ]) {
+      const broken = structuredClone(game);
+      broken.history[0].bench = bench;
+      expect(validGame(broken)).toBe(false);
+    }
+  });
+  it("结算背包按实物快照保存，旧战报缺省兼容，非法装备与超长背包被拒绝", () => {
+    const { storage, store, game } = setup();
+    // Inventory fixture only; the battle and settlement still run normally.
+    game.players[0].inventory = ["blade", "blade", "core"];
+    settle(game, startRound(game)!);
+    expect(game.history[0].inventory).toEqual(["blade", "blade", "core"]);
+    expect(store.save(game, playback)).toBe("saved");
+    expect(new SaveStore(storage).load().data!.game).toEqual(game);
+    game.players[0].inventory.push("plate");
+    expect(game.history[0].inventory).toEqual(["blade", "blade", "core"]);
+    const legacy = structuredClone(game);
+    delete legacy.history[0].inventory;
+    expect(validGame(legacy)).toBe(true);
+    for (const inventory of [
+      null,
+      "blade",
+      [null],
+      ["unknown-item"],
+      Array(201).fill("blade"),
+    ]) {
+      const broken = structuredClone(game);
+      Object.assign(broken.history[0], { inventory });
+      expect(validGame(broken)).toBe(false);
+    }
+    const boundary = structuredClone(game);
+    boundary.history[0].inventory = Array(200).fill("blade");
+    expect(validGame(boundary)).toBe(true);
+  });
   it("多轮至终局每个检查点可恢复，历史完整且终局不会再发收入", () => {
     const { storage, store, game } = setup();
     for (let round = 0; round < 30 && game.phase !== "finished"; round++) {

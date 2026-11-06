@@ -15,6 +15,8 @@ export function enterUndying(ctx: CombatContext, fighter: Fighter) {
   delete fighter.bladeStorm;
   delete fighter.corrosion;
   delete fighter.knockup;
+  delete fighter.jungleLandings;
+  delete fighter.taunt;
   ctx.effects.push({
     source: fighter.uid,
     target: fighter.uid,

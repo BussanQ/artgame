@@ -1,0 +1,147 @@
+{
+  "reviewedAt": "2026-11-06T03:49:56.388Z",
+  "rules": "singleplayer-0.57",
+  "combatVersion": "wushi-control",
+  "scope": "Client-card correction to Wushi, preserving the earlier wushi battle version; Ninja/Monk cards collected as future capability evidence.",
+  "sources": [
+    {
+      "id": "S59",
+      "url": "https://news.17173.com/z/zzq/content/08022019/112747368.shtml?_platform=PC",
+      "publishedAt": "2019-08-02",
+      "author": "赤潮最爱科先生",
+      "sourceByline": "今日头条",
+      "kind": "original-client-cards-embedded-in-community-article",
+      "status": "full-article-and-all-three-original-images-reviewed",
+      "limits": "The article is community-authored. Numerical/qualitative fields below were read from the actual client screenshot, not attributed to an official prose guide. Screenshot build is unknown."
+    },
+    {
+      "id": "S57",
+      "url": "https://news.17173.com/z/zzq/content/05162019/161225352.shtml?_platform=PC",
+      "kind": "publisher-authored-May-update",
+      "fields": "6/12/18 armor, 8/10/12 seconds, ordinary attacks become area attacks; agrees with later card",
+      "originalHtmlRechecked": true
+    }
+  ],
+  "images": [
+    {
+      "unit": "ninja",
+      "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/txnPfrbnrifDbph.jpg",
+      "path": "images/panda-ninja-client-aug2019.jpg",
+      "sha256": "aa462458aa54883a3dc2a1b1118a202bac760126c6a0583da8b7430696b2075d",
+      "articleImageDate": "2019-08-02",
+      "clientBuild": "unknown",
+      "width": 640,
+      "height": 360,
+      "visuallyReviewed": true
+    },
+    {
+      "unit": "monk",
+      "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/bQFWvlbnrifDbkd.jpg",
+      "path": "images/panda-monk-client-aug2019.jpg",
+      "sha256": "6a84faf6afa69d971935cdc38ee027fb8aff848cb52617e15bbd7c6e79f390eb",
+      "articleImageDate": "2019-08-02",
+      "clientBuild": "unknown",
+      "width": 640,
+      "height": 360,
+      "visuallyReviewed": true
+    },
+    {
+      "unit": "master",
+      "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/frmbzNbnrifDbwr.jpg",
+      "path": "images/panda-master-client-aug2019.jpg",
+      "sha256": "928b784a8b92d948b01147ed32817736c31ef19693b8e985d048d83ef5b0df37",
+      "articleImageDate": "2019-08-02",
+      "clientBuild": "unknown",
+      "width": 640,
+      "height": 360,
+      "visuallyReviewed": true
+    }
+  ],
+  "confirmed": {
+    "master": {
+      "id": "master",
+      "cost": 1,
+      "skill": "无式",
+      "cooldownSeconds": 20,
+      "maximumOrdinaryAttackTargetsIncludingPrimary": 3,
+      "armor": [
+        6,
+        12,
+        18
+      ],
+      "formSeconds": [
+        8,
+        10,
+        12
+      ],
+      "tauntsNearbyEnemies": true,
+      "tauntRadius": null,
+      "tauntDurationSeconds": null
+    },
+    "ninjaFuture": {
+      "id": "panda",
+      "cost": 3,
+      "skill": "风魔之刃",
+      "cooldownSeconds": 20,
+      "radiusInOriginalWorldUnits": [
+        6,
+        8,
+        10
+      ],
+      "damagePerSecond": [
+        150,
+        250,
+        350
+      ],
+      "durationSeconds": 5,
+      "implemented": false
+    },
+    "monkFuture": {
+      "id": "monk",
+      "cost": 4,
+      "skill": "秘法球",
+      "cooldownSeconds": 30,
+      "durationSeconds": [
+        6,
+        6.5,
+        7
+      ],
+      "damageTotals": [
+        null,
+        1200,
+        1300
+      ],
+      "firstDamageGlyphUncertain": true,
+      "energyReductionDescribed": true,
+      "implemented": false
+    }
+  },
+  "localAdaptations": {
+    "maxCleaveTargets": 3,
+    "cleaveGeometry": "primary plus Manhattan-one neighbours ordered by UID, including primary in the cap",
+    "tauntRadiusTiles": 2,
+    "tauntDurationTicks": 8,
+    "tauntGeometry": "Manhattan distance at completed transformation only",
+    "tauntBehavior": "New ordinary attacks/pursuit are forced toward the living visible hostile caster and new active casts are denied for two seconds. Previously committed channels/projectiles continue; no repeated aura refresh.",
+    "release": "caster death/form expiry/invisibility or invalid allegiance, victim death/egg/soul/control immunity, duration expiry, or fish cleanse",
+    "multipleSources": "latest successfully completed transformation replaces the previous source; cleared sources do not revive older taunts",
+    "statistics": "count valid taunt applications, not forced attacks or productive control seconds"
+  },
+  "compatibility": {
+    "saveSchema": 56,
+    "previousSchema": 55,
+    "previousCombat": "wushi",
+    "currentCombat": "wushi-control",
+    "catalogChanged": false,
+    "prepareOnly": true,
+    "frozenBeforeChange": "../../tests/fixtures/pre-v057-replays.json",
+    "frozenCases": 152,
+    "normalCapture": "../../tests/fixtures/wushi-control-reserve.json"
+  },
+  "limits": [
+    "Taunt range/duration and exact interaction rules are a disclosed local conversion; the card does not provide these numbers.",
+    "The card confirms the original target cap and taunt mechanic, not full historical AI/pathfinding/formula equivalence.",
+    "Ninja and monk remain prototypes in 0.57; future evidence is collected without silently changing their current abilities or costs.",
+    "The monk first damage digit needs independent readable evidence before implementation."
+  ]
+}

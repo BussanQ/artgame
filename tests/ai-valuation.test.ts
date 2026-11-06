@@ -19,7 +19,6 @@ describe("技能与装备参与AI选阵", () => {
     for (const id of [
       "whale",
       "ark",
-      "thunderlord",
       "arhat",
       "phoenix",
       "skycrab",

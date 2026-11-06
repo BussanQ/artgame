@@ -1,0 +1,710 @@
+{
+  "checkedAt": "2026-11-06T04:20:19.772Z",
+  "rules": "singleplayer-0.57",
+  "combatVersion": "wushi-control",
+  "saveSchema": 56,
+  "branch": "dev",
+  "head": "35aa310c85a5d99b5bc4a39e7743340316db160a",
+  "goalStatus": "active",
+  "objective": "完整实现单机模式，逼近原版的可玩性和丰富度，优化整体游戏功能",
+  "previousGoalTurn": {
+    "classification": "progress",
+    "evidence": "Previous core work implemented Wushi and produced necessary tests/economic captures. The most recent user turn verified panel swap and mobile routing. This continuation completed 0.56 records, recovered original client cards, implemented the missing target cap/taunt, and advanced actual paid UI play."
+  },
+  "tests": {
+    "necessary": {
+      "command": "npm run test:wushi-control -- --reporter=json --outputFile=tmp/wushi-control-necessary-tests.json",
+      "report": "tmp/wushi-control-necessary-tests.json",
+      "sha256": "01148ec65e2cb6d42fd664cb9e0271cb16d45c20327543fb24c09e6443e66724",
+      "startedAt": "2026-11-06T03:49:56.696Z",
+      "passed": 688,
+      "failed": 0,
+      "moduleCount": 18,
+      "modules": [
+        {
+          "path": "tests/abilities.test.ts",
+          "passed": 11,
+          "status": "passed",
+          "sha256": "021f7f97535970797c94fe48cf069558afbb7a2183da89a345b1c72c89e08186"
+        },
+        {
+          "path": "tests/ai-valuation.test.ts",
+          "passed": 5,
+          "status": "passed",
+          "sha256": "ecfcc7edf4c529a26b80ac5dc593da4f1e923b834f71d1ea8376d7d5b8388a9f"
+        },
+        {
+          "path": "tests/battle-analysis.test.ts",
+          "passed": 11,
+          "status": "passed",
+          "sha256": "b9da8059f967409940fa14936f408cce9e738e13e98fa0d9f65834f4e7b3edd5"
+        },
+        {
+          "path": "tests/battle-inspection.test.ts",
+          "passed": 4,
+          "status": "passed",
+          "sha256": "7149b34cce07a9a8eb3c6d599c2bf1392e076bce00f10c1a56effb125cd12a1f"
+        },
+        {
+          "path": "tests/campaign.test.ts",
+          "passed": 5,
+          "status": "passed",
+          "sha256": "14c02302b07ee39384328c994a7e880217872cee0f0183b6824452374d52e925"
+        },
+        {
+          "path": "tests/catalog-rotation.test.ts",
+          "passed": 3,
+          "status": "passed",
+          "sha256": "67d2bbc0dc615ff6b9d56b9a82894362b56554a2525fea5dab412849c99ef41e"
+        },
+        {
+          "path": "tests/computation.test.ts",
+          "passed": 15,
+          "status": "passed",
+          "sha256": "c78011a14e003dee5bbc830ca32c520f5adba61c029803493a1fef9e4ab9b685"
+        },
+        {
+          "path": "tests/continuity.test.ts",
+          "passed": 159,
+          "status": "passed",
+          "sha256": "1b28b2e61e7e10effdae2493aca29a8ac60360d35a1f53191faa2f56ec154ae8"
+        },
+        {
+          "path": "tests/equipment.test.ts",
+          "passed": 10,
+          "status": "passed",
+          "sha256": "f984276a9e8da787af2777403e13014370ce41b56116d57eebe02add6b79f66e"
+        },
+        {
+          "path": "tests/persistence.test.ts",
+          "passed": 11,
+          "status": "passed",
+          "sha256": "58bcb0a4d334807a28cab08d6dd2cf71cecc10d0ea4c7525ed1ff330cb1008c4"
+        },
+        {
+          "path": "tests/rotation.test.ts",
+          "passed": 34,
+          "status": "passed",
+          "sha256": "6625fdda4253b1b9b7a9023ef4a0859a221035e837e771b5a395e43727296a50"
+        },
+        {
+          "path": "tests/scouting.test.ts",
+          "passed": 13,
+          "status": "passed",
+          "sha256": "237ab41efa9fd5b74e54243c03ab06b3cfb94b7c81cde8b980368d612dc13ec7"
+        },
+        {
+          "path": "tests/strategy.test.ts",
+          "passed": 9,
+          "status": "passed",
+          "sha256": "aa31ed26959eb0e84a358ea9f1a9f9dbf8d8043bf02b4365b177fa0bf484d34c"
+        },
+        {
+          "path": "tests/tactical-ai.test.ts",
+          "passed": 12,
+          "status": "passed",
+          "sha256": "8854c4d46738d0efb39f6fac7ed5fce3ad4de51ca18f0f538d271f9fc181efa3"
+        },
+        {
+          "path": "tests/triggers.test.ts",
+          "passed": 11,
+          "status": "passed",
+          "sha256": "3b9f2e4d6b8bc871792187c38eaeae27553cfeeb8635a44c12c8cc3e874d5ce0"
+        },
+        {
+          "path": "tests/visual.test.ts",
+          "passed": 6,
+          "status": "passed",
+          "sha256": "952c75f1a5f39908ad4ca89ec07bc2157b2226025fed3d27d8d4a60ebc7ca5e2"
+        },
+        {
+          "path": "tests/wushi-control.test.ts",
+          "passed": 174,
+          "status": "passed",
+          "sha256": "1f5ad6f1f46651e31893d0d35c08c541ce97ac4dce07b1388dcfb66da919c095"
+        },
+        {
+          "path": "tests/wushi.test.ts",
+          "passed": 195,
+          "status": "passed",
+          "sha256": "014502af1beb5adcd43b766a89f9f030c875deb573efc0cdfcd40cffc0e13767"
+        }
+      ]
+    },
+    "finalCopyRecheck": {
+      "command": "npx vitest run tests/wushi-control.test.ts --reporter=json --outputFile=tmp/wushi-control-copy-tests.json",
+      "report": "tmp/wushi-control-copy-tests.json",
+      "sha256": "4a38249dc1cbfb64e17efaaec256b3be1ba40d17a235233f291b47a11947b302",
+      "passed": 174,
+      "failed": 0,
+      "overlapsNecessarySuite": true
+    },
+    "fullSuiteRun": false,
+    "sourceDeltaAfterNecessarySuite": {
+      "paths": [
+        "src/data/skills.ts"
+      ],
+      "change": "Removed only the implementation-provenance sentence from the player-facing skill description. Runtime mechanics and all test files stayed unchanged. The final focused run covers this module; both full paid trajectories were reproduced identically and production build reran."
+    },
+    "initialFailure": {
+      "report": "tmp/wushi-control-core-tests.json",
+      "sha256": "71b62380c1f84b186b26302ad904a2b4586b20306f26eb9a8b6e98579f47feb4",
+      "passed": 368,
+      "failed": 1,
+      "correction": "The committed-storm test now inspects the actual air.cast state and uses advanceAirSkills, rather than a nonexistent windup helper. Exhaustive effect colors gained the new taunt kind before the passing suite/build."
+    }
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "moduleCount": 117,
+    "currentSourcesOlderThanFinalBundle": true,
+    "completedAt": "2026-11-06T03:54:17.291Z",
+    "outputs": [
+      {
+        "path": "dist/index.html",
+        "sha256": "898298291814896e7cd9288bf04432023cdcdcec251ed4381dbcaa0469639fb2",
+        "bytes": 596
+      },
+      {
+        "path": "dist/assets/index-CKaE0ZHu.js",
+        "sha256": "53285dce2a3998acb63038bab753440df1c70cb718e016c7341a3c46d6ffbf54",
+        "bytes": 318969
+      },
+      {
+        "path": "dist/assets/index-Cl_s3fRv.css",
+        "sha256": "fb32161ab26bb533506f187edd50741ce940eabf6cf344b41647c31de57d94f3",
+        "bytes": 88424
+      },
+      {
+        "path": "dist/assets/worker-ugtf6Hhp.js",
+        "sha256": "9454d45391a7621fd1d93f146c96b58f8eceda3d89a53a72f9a97c23672fe41e",
+        "bytes": 150781
+      }
+    ]
+  },
+  "historicalReplay": {
+    "path": "tests/fixtures/pre-v057-replays.json",
+    "sha256": "7d49a3b194939db80a9854ea5e85faa31aa676c7c869e580fb8f5187886c5888",
+    "capturedAt": "2026-11-06T03:41:01.131Z",
+    "capturedBefore": "singleplayer-0.57",
+    "currentAtCapture": "singleplayer-0.56",
+    "combatVersion": "wushi",
+    "cases": 152,
+    "distinctInputs": 152,
+    "scope": "Complete JSON frame hash equality for explicitly historical wushi rules, including dense forms, mirrors and normal R20 input. These are controlled inputs, not 152 independently sampled paid games.",
+    "earlierVersions": "The necessary suite still includes the 0.55 and 0.54 frozen-frame checks."
+  },
+  "inheritance": {
+    "report": "docs/analysis/inheritance-v057.json",
+    "versions": 30,
+    "traitKinds": 22,
+    "oldJungleExceptionFrozen": true,
+    "insectCounts": {
+      "twoKindsOneStar": 2,
+      "twoKindsTwoStar": 3,
+      "fourKindsTwoStar": 2
+    },
+    "jungleDemoUnchanged": true
+  },
+  "normalEconomy": {
+    "comparison": "docs/analysis/wushi-control-v057-comparison.json",
+    "before": {
+      "games": 12,
+      "rounds": 319,
+      "averageRankByDifficulty": {
+        "relaxed": 1,
+        "standard": 5,
+        "veteran": 6.25
+      },
+      "gamesWithThreeStars": 3,
+      "uniqueThreeStarPieces": 5,
+      "master": {
+        "gamesDeployed": 9,
+        "unitRounds": 83,
+        "starUnitRounds": [
+          4,
+          67,
+          12
+        ],
+        "forms": 72,
+        "sweeps": 267,
+        "splashHits": 98,
+        "tauntApplications": null,
+        "damage": 54172.5,
+        "casts": 83,
+        "aiSnapshotUnitRounds": 199
+      }
+    },
+    "after": {
+      "games": 12,
+      "rounds": 318,
+      "averageRankByDifficulty": {
+        "relaxed": 1,
+        "standard": 4,
+        "veteran": 6
+      },
+      "gamesWithThreeStars": 4,
+      "uniqueThreeStarPieces": 5,
+      "master": {
+        "gamesDeployed": 10,
+        "unitRounds": 80,
+        "starUnitRounds": [
+          7,
+          73,
+          0
+        ],
+        "forms": 69,
+        "sweeps": 257,
+        "splashHits": 72,
+        "tauntApplications": 138,
+        "damage": 42240.5,
+        "casts": 81,
+        "aiSnapshotUnitRounds": 261
+      }
+    },
+    "independentSeedFamilies": 2,
+    "countsExcludeIdenticalCopyRechecks": true,
+    "limits": [
+      "Two paired seed families, not twelve independent random seeds or a human win-rate estimate.",
+      "Taunt behavior, three-target cap and limited AI utility all change together. This does not isolate the causal effect of taunt.",
+      "The same new one-fee master body, prices and pools are retained from 0.56; ninja/monk remain prototypes.",
+      "Taunt counts mean valid applications, not forced attacks, productive control time or whole-enemy-team stuns.",
+      "Formal AI usage counts all seven public preparation snapshots, not only player encounters.",
+      "Repeated final-copy surveys have identical trajectories and are not counted as additional independent games."
+    ]
+  },
+  "ui": {
+    "report": "docs/analysis/wushi-control-v057-ui.json",
+    "actualDemoVictorySeconds": 14.5,
+    "demoTauntApplications": 4,
+    "actualNormalRoundSevenTauntApplications": 3,
+    "normalRoundSixInterruptedBeforeForm": true,
+    "oldRoundFiveAnalysisIdentical": true,
+    "demoExitResourcesIdentical": true,
+    "currentManualRound": 8,
+    "manualComplete": false,
+    "realDeviceVerified": false,
+    "emulatedViewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        740
+      ]
+    ],
+    "consoleErrors": 0,
+    "viewportReset": true
+  },
+  "research": {
+    "record": "docs/research/wushi-control-history.json",
+    "source": "S59 original three client cards embedded in a community article",
+    "confirmed": [
+      "maximum three ordinary-attack targets including primary",
+      "nearby taunt",
+      "20-second cooldown, 6/12/18 armor and 8/10/12-second form agree with earlier records"
+    ],
+    "localOnly": [
+      "two-tile Manhattan radius",
+      "two-second one-time taunt",
+      "committed actions continue, cleanse/immunity/source-release interactions"
+    ],
+    "futureOnly": [
+      "Ninja card: three cost, area damage projectile; not implemented in this increment",
+      "Monk card: four cost, energy-draining spell ball; first damage glyph remains unresolved"
+    ]
+  },
+  "asset": {
+    "newGenerationThisIncrement": false,
+    "reusedBuiltInImageGenAsset": "public/assets/units/master-wushi.png",
+    "sha256": "13c4ce20577666b271a4dbc0f287a6ac5533f7806ad756896dedd94d7a827461",
+    "generationRecord": "docs/research/wushi-assets.json",
+    "originalBasePreserved": true
+  },
+  "server": {
+    "checkedAt": "2026-11-06T04:17:50.781Z",
+    "url": "http://192.168.31.130:5174",
+    "kind": "read-only-HTTP-source-and-asset-check-not-a-live-5174-browser-claim",
+    "rules": "singleplayer-0.57",
+    "sourceChecks": [
+      {
+        "path": "src/main.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "fc8a7fe52cf0b3edec24ac648ff431c4b0fd253bbecb77c2dcec9a071518f822"
+      },
+      {
+        "path": "src/compact.css",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "685eb660c5f806820019daa1892aa7499ebf9ab249db18cbe0d45ac64cc0d1b8"
+      },
+      {
+        "path": "src/command-layout.css",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "ec56d6e2ccd067ea5cd5a156946888d725976e69cddb43b05186040bb1b15b90"
+      },
+      {
+        "path": "src/data/units.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "d136be59f0c80ac0874669b587e554f5a785ab5f3c11a7cc6512da73b9c18900"
+      },
+      {
+        "path": "src/data/unit-stats.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "9935d78c106642dd49a08bb37019a66b9243640393b1c75c8ca59e8d4b0a0c44"
+      },
+      {
+        "path": "src/data/skills.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "ca09c1969b7b275532adce5ae2355e41c38acf9313c7bfc534bf26d13b2ea289"
+      },
+      {
+        "path": "src/engine/types.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "6a0ff4f8eed197487e029acc4d56a32772e1ee77adf087d1e8023e7b456f8c07"
+      },
+      {
+        "path": "src/engine/wushi.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "82b734e1bdc121c343ab55714998fc0e74b120b526e677aedb2442e4c672900a"
+      },
+      {
+        "path": "src/engine/abilities.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "63acbcefe18336b0d4cbad5fca5bae41eb0c6521bc38706c41db55d1101690b1"
+      },
+      {
+        "path": "src/engine/battle.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "9b869a51b29443536b3cb252ff6b9738aeebf519c6b4db3fd9ae5991e29b9614"
+      },
+      {
+        "path": "src/engine/triggers.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "3bb5b8dd58811a72a4dd07a256d6373a73b3b521ba9ece3b8c69de7247ae1398"
+      },
+      {
+        "path": "src/engine/persistence.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "0cc6f2a170c61ef9724751866d1596b47308fae11707e78f47e31870f3caf210"
+      },
+      {
+        "path": "src/engine/immortality.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "59dd80fe817188e0912dfdfda497c50b572b1cc36c1f7331b813b21b3ec8e9d7"
+      },
+      {
+        "path": "src/engine/phoenix.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "4085baf66bd1c78ad68d551cd8a7d6e2bae3dabaa6ea260971657a26af3c92b6"
+      },
+      {
+        "path": "src/engine/ai.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "b3d0d3b00b68e3be30e62950c691c7391c91f9af6efd5d1978bb838812701155"
+      },
+      {
+        "path": "src/render/wushi.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "9823617ee7371cbee816dcf5a8719bafa5afeb0a26e7220818dc3f47652b2c6a"
+      },
+      {
+        "path": "src/render/scene.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "57ef8c9fdeb60afeca592b83b1795d7b277b6ef8ad540448d9548d5ee46b8afa"
+      },
+      {
+        "path": "src/render/skill-effects.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "0bdfd72cba3af92b37389bab2684806b817042975b052428411771f197cc5d8d"
+      },
+      {
+        "path": "src/render/battle-inspection.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "b480e0fcc3542c7a9f08e0a732fa9f3f74e09a18b1706b11bf9b34b69bbf9cb1"
+      },
+      {
+        "path": "src/ui/battle-analysis.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "ff231a6e465a3c861963fd917df85e4eb25ef920bdd5c2bbb2af53e30cf5dc2b"
+      },
+      {
+        "path": "src/compute/job.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "ad6b61f3163b76c0459385516e454d88c98bb900f2f06b5e19a70e89f8bbfa62"
+      },
+      {
+        "path": "src/compute/worker.ts",
+        "status": 200,
+        "matchesWorkspace": true,
+        "sha256": "671d1a2536b8bb707604fcc2a1667dbbcff1ab70b09e3efb98ecccdab569ebc2"
+      }
+    ],
+    "asset": {
+      "path": "public/assets/units/master-wushi.png",
+      "status": 200,
+      "matchesWorkspace": true,
+      "sha256": "13c4ce20577666b271a4dbc0f287a6ac5533f7806ad756896dedd94d7a827461"
+    },
+    "servicePolicy": "Existing PID 64774 retained; no restart or direct user-game UI actions."
+  },
+  "verified": [
+    "Current three-target cleaves and bounded taunt with valid target redirection, new-cast prevention, cleanup/cleanse/immunity and actual counters.",
+    "New deterministic outcomes agree with full playback, while previous Wushi frames, prices, ownership and resources retain their intended versions.",
+    "Actual paid UI has a natural three-panda formation and three applied taunts in R7, with the loss and economy recorded honestly.",
+    "Small-screen same-frame inspection retains the selected target without horizontal overflow.",
+    "688 necessary checks, 174 overlapping final-copy checks, production build and paired paid reports complete."
+  ],
+  "remaining": [
+    "Ninja and Monk core abilities, costs and suitable visuals still need to be recovered from collected cards.",
+    "No complete current multi-build human campaign or real touch/weak-device acceptance.",
+    "Overall difficulty remains uncalibrated; latest small-seed averages do not establish balance, and three-star master coverage regressed.",
+    "Other historical abilities, uncertain damage/energy/pathfinding formulas and full-goal requirement audit remain."
+  ],
+  "scopePolicy": {
+    "noCommit": true,
+    "noPush": true,
+    "noServiceRestart": true,
+    "noSitesSkill": true,
+    "noSubagents": true,
+    "screenshots": "Ignored root tmp only; original downloaded client-card research images belong to docs/research/images."
+  },
+  "sourceFingerprints": {
+    "src/battle-inspection.css": "f18382187d1caeeef3aec71bb0a73e0d39663cc0b724c3fc23489cf0b80301bb",
+    "src/command-layout.css": "ec56d6e2ccd067ea5cd5a156946888d725976e69cddb43b05186040bb1b15b90",
+    "src/compact.css": "685eb660c5f806820019daa1892aa7499ebf9ab249db18cbe0d45ac64cc0d1b8",
+    "src/equipment-overview.css": "cbb7676c299e3851a84a52e890290927dbd3c21380b1a936f0993475511c4f61",
+    "src/main.ts": "fc8a7fe52cf0b3edec24ac648ff431c4b0fd253bbecb77c2dcec9a071518f822",
+    "src/mobile-navigation.css": "c73f3cdf809a7c8eb225f770bb26f0e197794fcdc9980e7a3faf7f84b2cb2536",
+    "src/recruitment-layout.css": "087464db46615b66c37dfcca4b8ab38404c6a9c07c7b0f0326daf08e4de6e804",
+    "src/style.css": "a5c59f453a0264015c272d7b3a555aa84e26edcfa316bdf3bed06c6efc4e6be4",
+    "src/toolbar.css": "90512043aec74f5cec51fd6e94fb7ad5093745ba590b49652920a70c13a07ec7",
+    "src/visual.css": "6769cf5fd7d0020c0f093d32830d284740b16e09f9b19184a349f6e1242eec53",
+    "src/audio/cues.ts": "816e3b8ea3d14abe8e891922c2aa3891148085b69d62c30e3825af81eb61ebb4",
+    "src/audio/player.ts": "960e64d2e4eb7430f207d2167079ba185cbff04d1d7915151b6b3d5770b7797f",
+    "src/audio/synthesis.ts": "6ed1834796d5494be3b8de8a93981f8b78c391b2f9db1af2334eff9c74944779",
+    "src/compute/client.ts": "6adb98ef59700ed982c40b80fdf9c20dcb18d82cab33d891b7f5372ee101e034",
+    "src/compute/job.ts": "ad6b61f3163b76c0459385516e454d88c98bb900f2f06b5e19a70e89f8bbfa62",
+    "src/compute/worker.ts": "671d1a2536b8bb707604fcc2a1667dbbcff1ab70b09e3efb98ecccdab569ebc2",
+    "src/data/abnormal-demo.ts": "f39d89a4975f0c8f0221c4a336f9f28200aedd2568841e6d3424bb94a79740fc",
+    "src/data/ai-profiles.ts": "94692ba49058d48cf237c058e3705b733f12ef79e990e3714dc2df20f6587645",
+    "src/data/assassin-demo.ts": "26bd337f77404cb2df4ec15f0db8dde0ac82a96a4672d9510417e6485fccace5",
+    "src/data/aurora-demo.ts": "5d536911cfd14c7f76045377bcf6ce05556ed3189614261805774cc0f1ec0a5f",
+    "src/data/axethrall-demo.ts": "e753f888f6d7181cbe02cacf7f6eba7b490124edf8bc757509944108fabf8e23",
+    "src/data/beast-frontline-demo.ts": "0dca9d8b86da4ce5f52fef6fdece66e35ed0436ec37de53628b2aead11c50fde",
+    "src/data/bladethrall-demo.ts": "330e4fd8764f9f3bce79d3d415c58f328185209d0bd9379e68ade93a6814084b",
+    "src/data/catalog.ts": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d",
+    "src/data/coalition-demo.ts": "c39f5517f8db652c11bd9695731d1ec8c5a5d99808ecace12ed66328e17087fc",
+    "src/data/counterplay-demo.ts": "89bba4fb7c61733cc52a840430feda6d11a4228ce286b3a60e752334ee34756f",
+    "src/data/encounters.ts": "762f649bd560004bb14a6b23f9ca51005c08dc8bde37db9e4ab481fb584ae62d",
+    "src/data/gospel-demo.ts": "670ac143a73933448f9a2567828e8bfb3e78eae76c927fd4e934c8a4e83b6a67",
+    "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba",
+    "src/data/jungle-demo.ts": "617775bd9b74ca1db4254caff2572830e09646a6510a5bb9d5fa962bcdb61bf9",
+    "src/data/lightning-demo.ts": "70d16396b91c19fb7033d527d6ff54bddce783eff754300d026b2127cc97e3c8",
+    "src/data/lingjiu-demo.ts": "7ff2b2d29a20c7dc068f794efe167ac61574e53751dbc9f51417dac0d47e54da",
+    "src/data/shieldthrall-demo.ts": "bb6b29064083db4cf3c07a0341c1a1253df0ab40511e62bce8eb6351761d20ab",
+    "src/data/skills.ts": "ca09c1969b7b275532adce5ae2355e41c38acf9313c7bfc534bf26d13b2ea289",
+    "src/data/staffthrall-demo.ts": "a0d4b22ddab5ea7c7e72fddcd4c8ea26396a7ce501dffab9e138b570bb9eb1a9",
+    "src/data/swordthrall-demo.ts": "8c21b7b290e54f2c7c77ef43bf2f9ff925e14ac50db2169571c701b0420f1d53",
+    "src/data/taotie-demo.ts": "96f77913390241f2358063f580d9a6b68088613596f07eccfbd6fb4cbc1656cb",
+    "src/data/tar-demo.ts": "a571dbc675508f04ea6f782d7c5fb9eb4d0e2ff54283b5151606e221ff70267c",
+    "src/data/thunderstorm-demo.ts": "1509a2f6cfe2631e5b265e8f89fd7ab7c9bd288efb06396fd41ab309625960c8",
+    "src/data/traits.ts": "8e34a024ccecbb57c06e2978e7f5a30b184ba96ab30d488f06a7222c36c9940f",
+    "src/data/unit-stats.ts": "9935d78c106642dd49a08bb37019a66b9243640393b1c75c8ca59e8d4b0a0c44",
+    "src/data/units.ts": "d136be59f0c80ac0874669b587e554f5a785ab5f3c11a7cc6512da73b9c18900",
+    "src/data/wildfront-demo.ts": "17f963e214eed3069e0c255652007e39255cdee924b494b63a93c1a3fb694b50",
+    "src/data/wushi-demo.ts": "2ca089c25ee3aed2b4fa426b2ec309181cfc2070617980bd5a34de9745ff963a",
+    "src/engine/abilities.ts": "63acbcefe18336b0d4cbad5fca5bae41eb0c6521bc38706c41db55d1101690b1",
+    "src/engine/ai.ts": "b3d0d3b00b68e3be30e62950c691c7391c91f9af6efd5d1978bb838812701155",
+    "src/engine/assassins.ts": "e88609c81bae44956d4aa39c1e8b32d4414f0d1f8f16bab7106076955011bc01",
+    "src/engine/battle-analysis.ts": "f02ce6f6d623560a0edf782138b96edbe4474118f5d162b2a1d4674530a9bd6d",
+    "src/engine/battle.ts": "9b869a51b29443536b3cb252ff6b9738aeebf519c6b4db3fd9ae5991e29b9614",
+    "src/engine/beasts.ts": "cc44ac5d85a62711af58c72ee35f8c29722ee48df68d5069f395fd41a5dc62b7",
+    "src/engine/birdrider.ts": "61a81c9c3a0da3c07e047eb28278f2597361c13706f8c029417a7d3018015878",
+    "src/engine/bladethrall.ts": "24a15ea431ad5ec67aed56f867b203c38b3f4f0110369541442a857726bb1424",
+    "src/engine/deployment.ts": "7b3536cdf128ec7b10b9142a864ac529750120c13ff9f6f9d1ffbbd4cff08393",
+    "src/engine/economy.ts": "3d7e8b88ac2f16e4cdeb01fbe9ae58549a774070ed1173c2a5e666ed0a9dcd71",
+    "src/engine/equipment.ts": "82c29fc8abe84fd820706ac04858d703f496b70faf7990470662a283d0798c1d",
+    "src/engine/game.ts": "e4ebe95b0da39ae3a77fa9a9190c64a7c5c328507e132a4693cfe722b62a299b",
+    "src/engine/gospel.ts": "638a6351fcfa6d3ebf703b4b0ea96cab43bd6ee4bef777994a917d64654aea66",
+    "src/engine/immortality.ts": "59dd80fe817188e0912dfdfda497c50b572b1cc36c1f7331b813b21b3ec8e9d7",
+    "src/engine/infantry-skills.ts": "d9f63278972aca474b1a912cad8951c31349b0520c21ce5c909355203191914a",
+    "src/engine/ironrooster.ts": "5835565b2b5097b8ecdb524c5855f4e767e19910f1657e8c52cf8b72a7fb2c06",
+    "src/engine/jungle.ts": "c3a4d01c8991664e50c570637c1b7c0b539044a5810be2bf7f42b23e8082e1f5",
+    "src/engine/lightning.ts": "a0dfd157419807e8133fc4b1b3da5a30468a3f260db4a83663da86ba7beeaf58",
+    "src/engine/lingjiu.ts": "e34c520d075d8d93bde0ebbbf5dcbb767f7ebc086872ddac4dced5aabbb8548e",
+    "src/engine/match-summary.ts": "fc0225d87c171a58f3fcf9ea54263d1b9e3b3b2416632d7db63b0fe54bcf3674",
+    "src/engine/metamorphosis.ts": "d70ce056ac8dec6f62255df57b6633f72abc61be6a39adb6f0bbde3307f116f8",
+    "src/engine/persistence.ts": "0cc6f2a170c61ef9724751866d1596b47308fae11707e78f47e31870f3caf210",
+    "src/engine/phoenix.ts": "4085baf66bd1c78ad68d551cd8a7d6e2bae3dabaa6ea260971657a26af3c92b6",
+    "src/engine/progression.ts": "351d3b922cef649a626f293e95da3b9b5e32d2f24df1cefef6160770a71b9f12",
+    "src/engine/random.ts": "ba0d5984534fdd513fac5e9d54bc586c1e8dfb65736af189f048ade4c34d0b21",
+    "src/engine/recruitment.ts": "e052d1a3ba95aa783a330eb324ae316c4fe5eb73859dc8fd48b2ff983fcbb8ab",
+    "src/engine/rotation.ts": "31004f784695125cd6b187409d022748a397f8b153593f748de0bf5d469f48d3",
+    "src/engine/sea-ward.ts": "c7205db3f8643c82ed374411931b096a7ee17421515b59fc3c9dd4f58aea1cab",
+    "src/engine/shieldthrall.ts": "e34e99dda3213eb00418ca6775fdc68409a7c84b71f16465e35aaaf9865001bb",
+    "src/engine/staffthrall.ts": "208b898b1fc9586409b2661d9ad1f2b65b176dc2107d50e62ca8a059c13b1f70",
+    "src/engine/summons.ts": "5981f90b2f18d974c4f4bd638c834788608cee5ffc637b68875c69ae5d153c37",
+    "src/engine/swordthrall.ts": "4531a8b9625f4ce71e6972f3e63075afaef51cb482df7decd879e1b197253d00",
+    "src/engine/synergies.ts": "e1e26d4536e5d24e27a93f78872ff63dc448ea777e5f55325b4a782ae7bf8662",
+    "src/engine/tar.ts": "c6f8d5196114e17e0010d4f9ce494ae7fed7cf163bb7922c34a34a47e69dbba9",
+    "src/engine/thunderstorm.ts": "584bb565b83c5e0a425908cb5295ed464d452c43da83d305f3f291e2aa88abb3",
+    "src/engine/triggers.ts": "3bb5b8dd58811a72a4dd07a256d6373a73b3b521ba9ece3b8c69de7247ae1398",
+    "src/engine/types.ts": "6a0ff4f8eed197487e029acc4d56a32772e1ee77adf087d1e8023e7b456f8c07",
+    "src/engine/wild-skills.ts": "040807f4b6a071893c82b4d52babded5ea6ab454b50799d9578dd6635929a63a",
+    "src/engine/wushi.ts": "82b734e1bdc121c343ab55714998fc0e74b120b526e677aedb2442e4c672900a",
+    "src/render/battle-inspection.ts": "b480e0fcc3542c7a9f08e0a732fa9f3f74e09a18b1706b11bf9b34b69bbf9cb1",
+    "src/render/beast-presentation.ts": "1cb537e0501b012f371d246f3f9e56b30481c517233f8c19d555e8d92606c95f",
+    "src/render/combat-presentation.ts": "f81e666b0bc4194630db22e17b7f1096098e9eb4bd6a5660778b415da6da3f1d",
+    "src/render/frame-policy.ts": "3f61e3f19bedaf435d268206a02b51d560d045f93aa54a554bac6acf2dc08b4b",
+    "src/render/gospel.ts": "af5dd52c1d94325f403655e87719ddeae7c90b3deec44ec5f480f10d89a6cfa6",
+    "src/render/jungle.ts": "b2428fd151b8553700ad6d165ebe0c94c570a1622938ec5c12e2e014dcbbd302",
+    "src/render/melee.ts": "a2ea403ebe26badcb3784536f2b048ad32a6476ef0533d3a1d3aaa69906c08a7",
+    "src/render/metamorph-presentation.ts": "f8912c1c6959a5e483384721143c1b029ac99a2fe6c62ffc36223d99afe5130a",
+    "src/render/projection.ts": "6471ef351ac21e83821aed776721c8ee4ae2995ce207fe9b7cfb9220f2872c5a",
+    "src/render/ranged.ts": "0f76ccb375f384d110350427e32b16fba2582c4174bb8efd1d84b4dec8bf8de2",
+    "src/render/scene.ts": "57ef8c9fdeb60afeca592b83b1795d7b277b6ef8ad540448d9548d5ee46b8afa",
+    "src/render/skill-effects.ts": "0bdfd72cba3af92b37389bab2684806b817042975b052428411771f197cc5d8d",
+    "src/render/taotie.ts": "74c27f041bce7dea321a65770b7820ceb3e6b49c91cd83cb465a25ef7b80c2f4",
+    "src/render/tar.ts": "22a3958fe2ea57ffa545553fc6e1ce04344405d9b3aeeca2a08103bf6f9536c6",
+    "src/render/thunderstorm.ts": "9b61f3fbe10d8aab061cf35c91b299f4fbcbacb825241e89f9d05144588304c4",
+    "src/render/wushi.ts": "9823617ee7371cbee816dcf5a8719bafa5afeb0a26e7220818dc3f47652b2c6a",
+    "src/ui/battle-analysis.ts": "ff231a6e465a3c861963fd917df85e4eb25ef920bdd5c2bbb2af53e30cf5dc2b",
+    "src/ui/battle-result.ts": "6e5303ecc37dccfba402d28ac3bc5cefaccf6d0b8301bc8a027a7564b67352f9",
+    "src/ui/bench-tooltip.ts": "6e7afbba4cf96d598827235599ad76f46d1c8b583e3d249785f0f74c57a3c572",
+    "src/ui/deployment.ts": "69cc637f5682376f75789d48eb7b2c7aa158bfc65d4d87daeebda042a1a450df",
+    "src/ui/dialog-focus.ts": "783123eeb8e0c5d101a9aaab4eb30f5c9503567a5989e436be24c5d227a67d21",
+    "src/ui/equipment.ts": "5602f9c4fb9e6d474fcc9cc42d43ef26a3c9a2815e2fe6acffb49583a3a23bbd",
+    "src/ui/income.ts": "bb7442bb53dc263b3caee0c61370e5ab51ffc649379060c206a8da64b5485e95",
+    "src/ui/match-history.ts": "11e685149acc3aad0f6fb1115e4d529a63d3476c567bd0edad68e16da4a36634",
+    "src/ui/match-summary.ts": "a450f13dedefe2c72c4184853f3bbf81cd3d3cce10ed2fff46911ab485cbd057",
+    "src/ui/pausable-delay.ts": "2aacf33ac3f0d97c72f453dd63c8981a343d7be336d8a43ab5d4884aad1a0dab",
+    "src/ui/preferences.ts": "846f40bbafc86ec3931a8754ffd254fc418e0dacd9af8e7a1fe59bcdd3131a0d",
+    "src/ui/recruitment.ts": "0e1f7c9644245efd5251138fb12b8b3fd2703d8b4c6d1098d216f4148924940e",
+    "src/ui/restart.ts": "5af4950651b613bd12698a1d1b08fd75d3fb16de7569a479a4bb953628692abf",
+    "src/ui/rotation.ts": "b5f01d1bd577e7d743520019e33ad457ac020b8c188f30fb358497f1f2fd0fe3",
+    "src/ui/save-notice.ts": "a0b9e766baa1050c66099f21fa641ce3d35f1b413f2581d52c072384af452e6e",
+    "src/ui/scouting.ts": "560e6c0f4e0a3670b02d574d61d10c9b4f6a1f944606556d4700e71017d70b1e",
+    "src/ui/synergies.ts": "df682a52e687fd00b547f3c3a388aecce293ab31c2c1f28006afabc5155471be",
+    "src/ui/unit-codex.ts": "74b71f1f0361a433a7ee7a7c13d218e0bde8ef8d74661769f867017be5c56fa0",
+    "tests/abilities.test.ts": "021f7f97535970797c94fe48cf069558afbb7a2183da89a345b1c72c89e08186",
+    "tests/ai-valuation.test.ts": "ecfcc7edf4c529a26b80ac5dc593da4f1e923b834f71d1ea8376d7d5b8388a9f",
+    "tests/battle-analysis.test.ts": "b9da8059f967409940fa14936f408cce9e738e13e98fa0d9f65834f4e7b3edd5",
+    "tests/battle-inspection.test.ts": "7149b34cce07a9a8eb3c6d599c2bf1392e076bce00f10c1a56effb125cd12a1f",
+    "tests/campaign.test.ts": "14c02302b07ee39384328c994a7e880217872cee0f0183b6824452374d52e925",
+    "tests/catalog-rotation.test.ts": "67d2bbc0dc615ff6b9d56b9a82894362b56554a2525fea5dab412849c99ef41e",
+    "tests/computation.test.ts": "c78011a14e003dee5bbc830ca32c520f5adba61c029803493a1fef9e4ab9b685",
+    "tests/continuity.test.ts": "1b28b2e61e7e10effdae2493aca29a8ac60360d35a1f53191faa2f56ec154ae8",
+    "tests/equipment.test.ts": "f984276a9e8da787af2777403e13014370ce41b56116d57eebe02add6b79f66e",
+    "tests/persistence.test.ts": "58bcb0a4d334807a28cab08d6dd2cf71cecc10d0ea4c7525ed1ff330cb1008c4",
+    "tests/rotation.test.ts": "6625fdda4253b1b9b7a9023ef4a0859a221035e837e771b5a395e43727296a50",
+    "tests/scouting.test.ts": "237ab41efa9fd5b74e54243c03ab06b3cfb94b7c81cde8b980368d612dc13ec7",
+    "tests/strategy.test.ts": "aa31ed26959eb0e84a358ea9f1a9f9dbf8d8043bf02b4365b177fa0bf484d34c",
+    "tests/tactical-ai.test.ts": "8854c4d46738d0efb39f6fac7ed5fce3ad4de51ca18f0f538d271f9fc181efa3",
+    "tests/triggers.test.ts": "3b9f2e4d6b8bc871792187c38eaeae27553cfeeb8635a44c12c8cc3e874d5ce0",
+    "tests/visual.test.ts": "952c75f1a5f39908ad4ca89ec07bc2157b2226025fed3d27d8d4a60ebc7ca5e2",
+    "tests/wushi-control.test.ts": "1f5ad6f1f46651e31893d0d35c08c541ce97ac4dce07b1388dcfb66da919c095",
+    "tests/wushi.test.ts": "014502af1beb5adcd43b766a89f9f030c875deb573efc0cdfcd40cffc0e13767",
+    "package.json": "16d51fe79b478327706c27677bda2c425ecf50ac906d3211b15daa00bc128594"
+  },
+  "artifacts": [
+    {
+      "path": "docs/design/wushi-control.md",
+      "sha256": "6578f671cafa879f6d76123e5486894a7fc8579468bdd1917264e15d5244f8bb"
+    },
+    {
+      "path": "docs/research/wushi-control-history.json",
+      "sha256": "dd8d6b68aeed8d82e873358845b1189585aabe1071cf5dc4330b007d9d8d5e70"
+    },
+    {
+      "path": "docs/research/images/panda-ninja-client-aug2019.jpg",
+      "sha256": "aa462458aa54883a3dc2a1b1118a202bac760126c6a0583da8b7430696b2075d"
+    },
+    {
+      "path": "docs/research/images/panda-monk-client-aug2019.jpg",
+      "sha256": "6a84faf6afa69d971935cdc38ee027fb8aff848cb52617e15bbd7c6e79f390eb"
+    },
+    {
+      "path": "docs/research/images/panda-master-client-aug2019.jpg",
+      "sha256": "928b784a8b92d948b01147ed32817736c31ef19693b8e985d048d83ef5b0df37"
+    },
+    {
+      "path": "docs/analysis/wushi-control-v057-comparison.json",
+      "sha256": "82ad756ea2bc2eac85217187b259618273c9384c080a543cada755914c5b8d9d"
+    },
+    {
+      "path": "docs/analysis/wushi-control-v057-ui.json",
+      "sha256": "eb3d56063ebd8f3d43dd36e581f531fd1a005074fb5bd8d2f78df8188cbc7cd6"
+    },
+    {
+      "path": "docs/analysis/inheritance-v057.json",
+      "sha256": "7b572e2d4edfcad18545226054bb1c39084b2ab4e9fb06e687cf750e456ac62a"
+    },
+    {
+      "path": "docs/analysis/wushi-control-v057-pandas.json",
+      "sha256": "38b77a5fe89d34e841c0fefce215b5dd7d5d9de40e4cd23b5ae9f9e3adbe0f83"
+    },
+    {
+      "path": "docs/analysis/wushi-control-v057-beasts.json",
+      "sha256": "8d0cf00070ca82924d5b8b9a7517ef9046f88592002f2ae0f2911d17f73c90f3"
+    },
+    {
+      "path": "docs/analysis/wushi-control-v057-pandas-initial.json",
+      "sha256": "129f4367e84c8e0e5d865eacb853a23b9ce3be3943c82e96d1390333518b4329"
+    },
+    {
+      "path": "docs/analysis/wushi-control-v057-beasts-initial.json",
+      "sha256": "6bc3137af3de4e73d41739bd9588051443e61c6d6579cd5d072077c8b54d8a9f"
+    },
+    {
+      "path": "tests/fixtures/pre-v057-replays.json",
+      "sha256": "7d49a3b194939db80a9854ea5e85faa31aa676c7c869e580fb8f5187886c5888"
+    },
+    {
+      "path": "tests/fixtures/wushi-control-reserve.json",
+      "sha256": "37549de218751aad8a88f9b41cab5b94815bd7ad1d507a0889db214223f5a152"
+    },
+    {
+      "path": "scripts/inheritance-audit.ts",
+      "sha256": "b2789c334999a1d6f06b7c5382c3dacc70f599556a66ca13b2ff6a210eb3011b"
+    },
+    {
+      "path": "scripts/rotation-survey.ts",
+      "sha256": "fb87050aa83dc38dd7c2c079f7b2174c3849f811d21cf4d880f08a3f9ce8245c"
+    },
+    {
+      "path": "docs/research/wushi-assets.json",
+      "sha256": "620a6bf499a299f848f230bcb43574a8cde4fe5d7114479c69e2ec8ae50ce4a6"
+    },
+    {
+      "path": "public/assets/units/master-wushi.png",
+      "sha256": "13c4ce20577666b271a4dbc0f287a6ac5533f7806ad756896dedd94d7a827461"
+    }
+  ]
+}

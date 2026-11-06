@@ -1,7 +1,7 @@
 import type { ComputeJob, ComputeReply, ComputeResult } from "./job";
 export class ComputationCancelled extends Error {
   constructor() {
-    super("战斗计算已取消");
+    super("计算已取消");
   }
 }
 export interface WorkerPort {
@@ -36,7 +36,7 @@ export class BattleComputer {
       try {
         worker = this.factory();
       } catch {
-        reject(new Error("无法启动战斗计算，请重试或刷新页面。"));
+        reject(new Error("无法启动计算，请重试或刷新页面。"));
         return;
       }
       const finish = (value?: ComputeResult, error?: Error) => {

@@ -92,8 +92,14 @@ describe("完整单机对局", () => {
       expect(summary.lineup.length).toBeGreaterThan(0);
       const markup = matchSummaryMarkup(game);
       expect(markup).toContain('aria-label="整局总结"');
+      const currentSprites: Record<string, string> = {
+        arhat: "arhat-qi",
+        skycrab: "skycrab-aurora",
+      };
       for (const p of summary.lineup)
-        expect(markup).toContain(`/assets/units/${p.defId}.png`);
+        expect(markup).toContain(
+          `/assets/units/${currentSprites[p.defId] ?? p.defId}.png`,
+        );
       if (game.players[0].hp === 0) {
         expect(game.players[0].pieces).toHaveLength(0);
         expect(summary.reason).toBe("eliminated");

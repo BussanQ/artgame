@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-05",
-  "rules": "singleplayer-0.48",
+  "reviewedAt": "2026-11-06",
+  "rules": "singleplayer-0.59",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
@@ -560,7 +560,17 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.52恢复周边持续供能及原异形轮廓；二费与身板见S04/S38，技能卡S54，三星末位、范围换算等不确定项明确列为本地适配，见gospel-history.json。",
+      "abilityReview": {
+        "sourceIds": [
+          "S04",
+          "S32",
+          "S38",
+          "S54"
+        ],
+        "details": "gospel-history.json",
+        "sameHistoricalBuildProven": false
+      }
     },
     {
       "historicalName": "天师",
@@ -580,7 +590,17 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.53采用一费身板、雷暴贯穿/20削能与无脸晶核装甲形象，按S04/S55/S56逐字段核对；历史切片与本地适配见thunderstorm-history.json。",
+      "mechanismReview": {
+        "rules": "singleplayer-0.53",
+        "sourceIds": [
+          "S04",
+          "S55",
+          "S56"
+        ],
+        "record": "thunderstorm-history.json",
+        "unifiedHistoricalVersion": false
+      }
     },
     {
       "historicalName": "雷震子",
@@ -1126,7 +1146,16 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.54按S04第38行与S55客户端卡分别采用身板和丛林之怒两段范围控制，形象参照树石巨兽；跨期与本地时序明确分开，不等于统一历史版本复原。",
+      "mechanismReview": {
+        "rules": "singleplayer-0.54",
+        "sourceIds": [
+          "S04",
+          "S55"
+        ],
+        "record": "jungle-history.json",
+        "unifiedHistoricalVersion": false
+      }
     },
     {
       "historicalName": "武僧熊猫",
@@ -1146,7 +1175,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "本轮把本地混用名“棍奴熊猫”更正为武僧熊猫，保留master ID和现有四费横扫；历史一费肉盾设计尚未对齐。"
+      "note": "历史原型曾混用“棍奴熊猫”名称；master ID继续兼容，当前能力以implementationNote为准。",
+      "implementationNote": "0.56接入一费无式护甲变身，0.57根据S59客户端卡补齐最多3目标及周围嘲讽；2格/2秒和交互为公开适配，旧目录与战报保留，见wushi-control-history.json。"
     },
     {
       "historicalName": "忍者熊猫",
@@ -1156,7 +1186,10 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S59",
+        "S60"
       ],
       "currentUnitId": "panda",
       "currentName": "忍者熊猫",
@@ -1164,9 +1197,10 @@
         "熊猫",
         "刺杀"
       ],
-      "mapping": "name-only",
+      "mapping": "classification-aligned-local-skill-timing",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.58按S59客户端卡恢复三费风魔之刃，S04补本体；跨期资料与本地几何/时序见implementationNote，不等于统一版本全部复原。",
+      "implementationNote": "三费550生命/66攻击/5甲/3射程/1.2秒，20秒冷却、150/250/350每秒伤害、5秒刃阵。6/8/10世界半径转换为1.2/1.6/2格，0.5秒蓄力与首跳相位等为单机适配，详见shuriken-history.json。旧一费目录及影袭回放保留。"
     },
     {
       "historicalName": "禅师熊猫",
@@ -1176,7 +1210,10 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S57",
+        "S59"
       ],
       "currentUnitId": "monk",
       "currentName": "禅师熊猫",
@@ -1184,9 +1221,9 @@
         "熊猫",
         "异能"
       ],
-      "mapping": "classification-aligned-local-skills",
+      "mapping": "classification-aligned-local-skill-timing",
       "classificationMatches": true,
-      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "note": "0.59恢复四费远程秘法球；卡面、官方七次削能与实测本体分开取证，仍含单机时序/范围适配。",
       "classificationReview": {
         "rules": "singleplayer-0.45",
         "sourceIds": [
@@ -1196,7 +1233,8 @@
           "熊猫",
           "护卫"
         ]
-      }
+      },
+      "implementationNote": "四费850生命/59.5攻击/5甲/5射程/2秒；30秒冷却，6/6.5/7秒维持，七跳总伤760/1200/1300、每跳最多削3能量。0.75秒起手、2/2.5/3格半径与前方3格等为单机适配，见secret-orb-history.json。旧三费目录及气劲回放保留。"
     }
   ],
   "otherCurrentUnits": [

@@ -37,6 +37,11 @@ describe("独立技能结算", () => {
         expect(castSkill(context(source, enemy), source, enemy)).toBe(false);
         continue;
       }
+      if (source.lightningChain || source.gospelAura) {
+        expect(source.mana, u.id).toBe(0);
+        expect(castSkill(context(source, enemy), source, enemy), u.id).toBe(false);
+        continue;
+      }
       source.hp -= 100;
       source.mana = 100;
       const ally = fighter("guard", 3, 0, 4, 4);
@@ -51,7 +56,7 @@ describe("独立技能结算", () => {
         expect(ctx.effects.some((e) => e.kind === "cast")).toBe(true);
         continue;
       }
-      expect(castSkill(ctx, source, enemy)).toBe(true);
+      expect(castSkill(ctx, source, enemy), u.id).toBe(true);
       expect(source.mana).toBe(0);
       expect(ctx.effects.some((e) => e.kind === "cast")).toBe(true);
       if (u.id === "spider") expect(enemy.side).toBe(source.side);
@@ -60,6 +65,8 @@ describe("独立技能结算", () => {
           ctx.events.length +
             ctx.effects.filter((e) => e.kind !== "cast").length +
             (source.air?.cast ||
+            source.shuriken?.casting ||
+            source.secretOrb?.casting || source.secretOrb?.channel ||
             source.bladeStorm ||
             source.sonic ||
             source.windup ||
@@ -264,7 +271,7 @@ describe("独立技能结算", () => {
         for (const f of b.frames[frame.tick - 1].fighters.filter(
           (f) => f.stunUntil > frame.tick,
         )) {
-          expect(frame.events.some((e) => e.attacker === f.uid)).toBe(false);
+          expect(frame.events.some((e) => e.attacker === f.uid && !e.periodic && !e.reflected)).toBe(false);
           expect(
             frame.effects.some((e) => e.kind === "cast" && e.source === f.uid),
           ).toBe(false);
@@ -285,7 +292,7 @@ describe("独立技能结算", () => {
         .filter((e) => e.source === f.uid && e.kind === "heal")
         .reduce((n, e) => n + e.amount, 0);
       // Health conservation observes self-regeneration independently of the regen rate.
-      const regeneration = f.armorRegen
+      const regeneration = f.armorRegen || f.innateRegen
         ? b.frames.slice(1).reduce((total, frame, index) => {
             const previous = b.frames[index].fighters.find(
               (unit) => unit.uid === f.uid,

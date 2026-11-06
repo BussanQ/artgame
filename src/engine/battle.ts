@@ -1,3 +1,11 @@
+import { advanceTarBombs, updateTarBombPositions } from "./tar";
+import { lightningStrike } from "./lightning";
+import { advanceGospel } from "./gospel";
+import { advanceStormBolts } from "./thunderstorm";
+import { advanceShurikenCast, advanceShurikenFields, expireShurikenCasts } from "./shuriken";
+import { advanceSecretOrbAction, advanceSecretOrbPulses, expireSecretOrbs } from "./secret-orb";
+import { advanceJungleLandings, jungleContains } from "./jungle";
+import { advanceWushi, expireWushi, expireWushiTaunts, wushiStrike, wushiTauntTarget } from "./wushi";
 import { bladeStrike, seedBladeStrikes } from "./bladethrall";
 import { recordStaffAttack, retargetStaff } from "./staffthrall";
 import { advanceBladeStorm } from "./swordthrall";
@@ -5,11 +13,21 @@ import { unitArmor, unitDefinition } from "../data/unit-stats";
 import { seedAssassinStrikes } from "./assassins";
 import {
   CURRENT_COMBAT_VERSION,
+  hasShurikenRules,
+  hasSecretOrbRules,
+  hasWushiControlRules,
   hasAmbushRules,
   hasCounterplayRules,
   hasLineageRules,
   hasAuroraRules,
   hasQiRules,
+  hasTaotieRules,
+  hasTarRules,
+  hasLightningRules,
+  hasGospelRules,
+  hasStormRules,
+  hasJungleRules,
+  hasWushiRules,
 } from "./types";
 import { advanceBurn } from "./infantry-skills";
 import { isPhoenixEgg, hatchPhoenix } from "./phoenix";
@@ -106,6 +124,27 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasSecretOrbRules(definitionVersion) && d.id === "monk"
+          ? { secretOrb: { formed:0,pulses:0,hits:0,energyRemoved:0,interrupted:0 },innateRegen:true as const } : {}),
+        ...(hasShurikenRules(definitionVersion) && d.id === "panda"
+          ? { shuriken: { launched: 0, landings: 0, pulses: 0, hits: 0, interrupted: 0,
+            blades: [], fields: [] } } : {}),
+        ...(hasWushiRules(definitionVersion) && d.id === "master"
+          ? { wushi: { forms: 0, sweeps: 0, splashHits: 0, interrupted: 0, until: 0, armor: 0,
+            ...(hasWushiControlRules(definitionVersion) ? { taunts: 0 } : {}) } } : {}),
+        ...(hasJungleRules(definitionVersion) && d.id === "treant"
+          ? { jungle: { waves: 0, hits: 0, knockups: 0, landings: 0 }, innateRegen: true as const } : {}),
+        ...(hasStormRules(definitionVersion) && d.id === "stormcaller"
+          ? { storm: { launched: 0, hits: 0, energyRemoved: 0, bolts: [] } } : {}),
+        ...(hasGospelRules(definitionVersion) && d.id === "acolyte"
+          ? { gospelAura: { pulses: 0, peakTargets: 0, lastTick: -4, targets: [] } }
+          : {}),
+        ...(hasLightningRules(definitionVersion) && d.id === "thunderlord"
+          ? { lightningChain: true as const }
+          : {}),
+        ...(hasTarRules(definitionVersion) && d.id === "motorcycle"
+          ? { tar: { bombs: [], launched: 0, detonated: 0 } }
+          : {}),
         ...(hasQiRules(definitionVersion) && d.id === "arhat"
           ? { qiSkill: true as const }
           : {}),
@@ -174,7 +213,7 @@ export function army(
           ? { trueAttack: true }
           : {}),
         ...(d.id === "skytoad"
-          ? definitionVersion === "taotie"
+          ? hasTaotieRules(definitionVersion)
             ? { taotie: { feasts: 0 }, innateRegen: true as const }
             : { devourSpent: false }
           : {}),
@@ -281,24 +320,31 @@ export function army(
             (version === "legacy" ? (has("野兽") ? 1 : 0) : sum("interval")),
         ),
         cooldown: 0,
-        mana: ["birdrider", "bladethrall", "staffthrall"].includes(d.id)
-          ? 0
-          : (version === "signature" ||
-                version === "summons" ||
-                version === "legions" ||
-                version === "brood" ||
-                version === "airsea" ||
-                version === "fleet") &&
-              ["cavalry", "turtle", "tiger"].includes(p.defId)
+        mana:
+          (hasGospelRules(definitionVersion) && d.id === "acolyte") ||
+          (hasLightningRules(definitionVersion) && d.id === "thunderlord") ||
+          ["birdrider", "bladethrall", "staffthrall"].includes(d.id)
             ? 0
-            : Math.min(
-                100,
-                (version === "legacy" ? (has("熊猫") ? 100 : 0) : sum("mana")) +
-                  gear.mana +
-                  (version === "fleet" && d.id === "bomber"
-                    ? 50
-                    : (d.initialMana ?? 0)),
-              ),
+            : (version === "signature" ||
+                  version === "summons" ||
+                  version === "legions" ||
+                  version === "brood" ||
+                  version === "airsea" ||
+                  version === "fleet") &&
+                ["cavalry", "turtle", "tiger"].includes(p.defId)
+              ? 0
+              : Math.min(
+                  100,
+                  (version === "legacy"
+                    ? has("熊猫")
+                      ? 100
+                      : 0
+                    : sum("mana")) +
+                    gear.mana +
+                    (version === "fleet" && d.id === "bomber"
+                      ? 50
+                      : (d.initialMana ?? 0)),
+                ),
         lifesteal: gear.lifesteal + teamLifesteal,
         skillPower:
           1 + gear.skillPower + (version === "legacy" ? 0 : sum("skillPower")),
@@ -470,6 +516,9 @@ function runBattle(
     const events: CombatEvent[] = [];
     const effects: CombatEffect[] = [];
     const context = { fighters, tick, events, effects };
+    expireWushi(context);
+    expireWushiTaunts(context);
+    expireShurikenCasts(context);
     for (const f of fighters) {
       f.flash = false;
       if (f.bladeStorm && (f.hp <= 0 || f.bladeStorm.until <= tick))
@@ -498,8 +547,14 @@ function runBattle(
     }
     expireUndying(context);
     hatchPhoenix(context);
+    advanceJungleLandings(context);
     advanceSonic(context);
     advanceBurn(context);
+    advanceTarBombs(context);
+    advanceStormBolts(context);
+    advanceShurikenFields(context);
+    advanceSecretOrbPulses(context);
+    advanceGospel(context);
     // Alternate initiative each tick to avoid permanent left-side first-action priority.
     const order =
       tick % 2
@@ -522,6 +577,9 @@ function runBattle(
       if (
         ((version === "fleet" && f.air?.cast) ||
           f.windup ||
+          f.wushi?.casting ||
+          f.shuriken?.casting ||
+          f.secretOrb?.casting || f.secretOrb?.channel ||
           f.combo ||
           f.bird?.draw) &&
         f.cooldown > 0
@@ -529,6 +587,9 @@ function runBattle(
         f.cooldown--;
       const spinning = advanceBladeStorm(context, f);
       if (f.hp <= 0) continue;
+      if (advanceWushi(context, f)) continue;
+      if (advanceShurikenCast(context, f)) continue;
+      if (advanceSecretOrbAction(context, f)) continue;
       if (advanceFaithArrow(context, f)) continue;
       if (advanceHawkCombo(context, f)) continue;
       if (advanceWindup(context, f)) continue;
@@ -541,19 +602,20 @@ function runBattle(
           distance(f, a) - distance(f, b) ||
           a.uid - b.uid,
       );
-      const target =
-        (f.gale &&
+      const tauntTarget = wushiTauntTarget(context, f);
+      const target = tauntTarget ??
+        ((f.gale &&
           enemies.find(
             (e) => e.uid === f.gale!.target && distance(f, e) <= f.range,
           )) ||
-        enemies[0];
+        enemies[0]);
       retargetStaff(f, target);
       if (!target) continue;
       if (f.cooldown > 0) f.cooldown--;
       if (f.cooldown > 0 && !spinning) continue;
       if (f.stunUntil > tick) continue;
       const injuredAlly =
-        f.defId === "monk" &&
+        f.defId === "monk" && !f.secretOrb &&
         fighters.some(
           (a) =>
             a.side === f.side &&
@@ -562,16 +624,20 @@ function runBattle(
             a.hp < a.maxHp &&
             distance(f, a) <= SKILLS.monk.radius,
         );
+      const jungleTarget = f.jungle ? enemies.find((enemy) => jungleContains(f, enemy)) : undefined;
       const canCast =
+        !tauntTarget &&
         skillReady(f) &&
-        (f.defId !== "monk" || injuredAlly) &&
+        (f.defId !== "monk" || !!f.secretOrb || injuredAlly) &&
         (distance(f, target) <= f.range ||
+          !!jungleTarget ||
+          !!f.wushi ||
           (f.defId === "axethrall" && distance(f, target) <= AXE_THROW.range) ||
           (f.defId === "venombeast" &&
             distance(f, target) <= ACID_POLLUTION.range) ||
           (f.burrowSkill && distance(f, target) <= PANGOLIN_BURROW.range) ||
           injuredAlly ||
-          f.defId === "panda" ||
+          (f.defId === "panda" && !f.shuriken) ||
           [
             "wolf",
             "cavalry",
@@ -587,7 +653,7 @@ function runBattle(
             "ghostjet",
             "bloodhawk",
           ].includes(f.defId));
-      if (canCast && castSkill(context, f, target)) {
+      if (canCast && castSkill(context, f, jungleTarget ?? target)) {
         f.cooldown += attackInterval(f, tick);
       } else if (distance(f, target) > f.range) {
         f.cooldown = 0;
@@ -640,6 +706,8 @@ function runBattle(
         if (
           !startFaithArrow(context, f, target) &&
           !startHawkCombo(context, f, target) &&
+          !lightningStrike(context, f, target) &&
+          !wushiStrike(context, f, target) &&
           !bladeStrike(context, f, target)
         )
           damage(
@@ -660,6 +728,10 @@ function runBattle(
         f.cooldown += attackInterval(f, tick);
       }
     }
+    expireWushiTaunts(context);
+    expireShurikenCasts(context);
+    expireSecretOrbs(context);
+    expireSecretOrbs(context);
     for (const f of fighters) {
       if (f.signature) f.signature.concealed = concealed(f, fighters, tick);
       if (f.gale)
@@ -670,6 +742,7 @@ function runBattle(
           ),
         );
     }
+    updateTarBombPositions(context);
     lastTick = tick;
     if (recordFrames)
       frames.push({

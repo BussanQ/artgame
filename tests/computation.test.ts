@@ -155,6 +155,17 @@ describe("异步战斗事务", () => {
       expect((await retried).kind).toBe("round");
     }
   });
+  it("推荐布阵同样支持取消和重试，迟到站位不能覆盖下一次推荐",async()=>{
+    const first=mockWorker(),second=mockWorker();let index=0;
+    const computer=new BattleComputer(()=>[first.port,second.port][index++]);
+    const game=ready(),before=structuredClone(game);
+    const old=computer.run({kind:"deploy",game});
+    const rejected=expect(old).rejects.toBeInstanceOf(ComputationCancelled);
+    const next=computer.run({kind:"deploy",game});await rejected;
+    first.done();second.done();
+    expect((await next).kind).toBe("deployment");expect(game).toEqual(before);
+    expect(first.port.terminate).toHaveBeenCalledTimes(1);expect(second.port.terminate).toHaveBeenCalledTimes(1);
+  });
   it("创建失败、发送失败和规则拒绝以错误返回，不悬挂请求", async () => {
     const failed = new BattleComputer(() => {
       throw new Error("unavailable");
