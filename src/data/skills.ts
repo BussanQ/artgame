@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasTerminatorRules,
+  hasBombardmentRules,
   hasShurikenRules,
   hasSecretOrbRules,
   hasAmbushRules,
@@ -771,10 +773,33 @@ export const SECRET_ORB = {
 export const SECRET_ORB_SKILL = define({name:SECRET_ORB.name,role:SECRET_ORB.role,
   damageType:"magic",radius:SECRET_ORB.radius[0],description:SECRET_ORB.description});
 
+/** Client card: damage and first-rank cooldown; May update/table: star cooldowns.
+ * Width, length, startup and flight speed are explicit local adaptations. */
+export const BOMBARDMENT = {
+  name: "集团轰炸", role: "矩形地毯轰炸",
+  damage: [250, 400, 650], cooldown: [56, 48, 40],
+  windup: 4, width: 3, length: 8, speed: 0.5,
+  description: "满能量且14/12/10秒冷却结束时，朝射程5格内的可见敌人原地聚能1秒，派出三架战机沿施法时锁定的方向进行地毯轰炸。机群每秒推进2格，扫过宽3格、长8格的矩形路径，出界部分无效；每个敌人在同一次轰炸中至多受到一次250/400/650基础法术伤害（一/二/三星），三架战机不会重复叠伤。技能强度增加伤害，普通攻击力不增加轰炸伤害。起手期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会打断，不退还能量与冷却。机群出动后方舟可恢复行动，已经派出的机群保留原阵营和伤害，方舟阵亡或受控也会继续轰炸；敌人可走出路径躲避，战斗结束后不再追加伤害。冷却从开始聚能计算。",
+} as const;
+export const BOMBARDMENT_SKILL = define({name:BOMBARDMENT.name,role:BOMBARDMENT.role,
+  damageType:"magic",description:BOMBARDMENT.description});
+
+/** S55 client card: three-tile circle and two damage ladders. Launch timing is local. */
+export const TERMINATOR = {
+  name: "终结者", role: "双轮范围轰炸",
+  smallDamage: [100, 200, 300], largeDamage: [250, 350, 450],
+  radius: 3, cooldown: [56, 48, 40], windup: 3, launchInterval: 3, flight: 2,
+  description: "满能量且14/12/10秒冷却结束时，锁定射程5格内可见敌人当时的位置，架炮0.75秒发射小导弹，再隔0.75秒发射大导弹。每枚导弹飞行0.5秒，在固定落点周围圆形半径3格爆炸，分别造成100/200/300与250/350/450基础法术伤害（一/二/三星）；每个敌人可分别受到两弹各一次伤害，不附带眩晕。技能强度增加两弹伤害，普通攻击力不增加技能威力。每次落地按敌人当时的位置、阵营、法术减伤、护盾和技能免伤独立结算，目标移动可躲开，隐蔽敌军仍可被爆炸波及。架炮与两次发射之间不能移动或普攻；眩晕、沉默、魅惑或阵亡会中止尚未发出的导弹，不退还已消耗的能量和冷却。已经发射的导弹保留原阵营与起手伤害，施法者受控或阵亡也会继续落地。第二弹发出后可恢复行动，整场战斗结束则不再追加伤害；冷却从开始架炮计算。",
+} as const;
+export const TERMINATOR_SKILL = define({name:TERMINATOR.name,role:TERMINATOR.role,
+  damageType:"magic",radius:TERMINATOR.radius,description:TERMINATOR.description});
+
 export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (hasTerminatorRules(version) && id === "titan") return TERMINATOR.description;
+  if (hasBombardmentRules(version) && id === "ark") return BOMBARDMENT.description;
   if (hasSecretOrbRules(version) && id === "monk") return SECRET_ORB.description;
   if (hasShurikenRules(version) && id === "panda") return SHURIKEN.description;
   if (hasWushiControlRules(version) && id === "master") return WUSHI_CONTROL.description;
@@ -893,6 +918,8 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "titan" && hasTerminatorRules(version) ? TERMINATOR.name :
+  id === "ark" && hasBombardmentRules(version) ? BOMBARDMENT.name :
   id === "monk" && hasSecretOrbRules(version) ? SECRET_ORB.name :
   id === "panda" && hasShurikenRules(version) ? SHURIKEN.name :
   id === "master" && hasWushiRules(version) ? WUSHI.name :
@@ -942,6 +969,8 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "titan" && hasTerminatorRules(version) ? TERMINATOR.role :
+  id === "ark" && hasBombardmentRules(version) ? BOMBARDMENT.role :
   id === "monk" && hasSecretOrbRules(version) ? SECRET_ORB.role :
   id === "panda" && hasShurikenRules(version) ? SHURIKEN.role :
   id === "master" && hasWushiControlRules(version) ? WUSHI_CONTROL.role :

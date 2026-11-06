@@ -17,6 +17,7 @@ export function fighterSprite(
     Fighter,
     "defId" | "summon" | "hawkForm" | "phoenix" | "aurora" | "qiSkill" | "gospelAura" | "jungle" | "wushi"
   > & { storm?: Pick<NonNullable<Fighter["storm"]>, "launched">;
+    terminator?: Pick<NonNullable<Fighter["terminator"]>, "smallLaunched">;
     shuriken?: Pick<NonNullable<Fighter["shuriken"]>, "launched">;
     secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>, "formed"> },
 ) {
@@ -26,6 +27,7 @@ export function fighterSprite(
   if (f.summon?.kind === "puppet") return "puppet-spirit";
   if (f.summon?.kind === "sentinel") return "shield-servant";
   if (!f.summon && f.defId === "monk" && f.secretOrb) return "monk-orb";
+  if (!f.summon && f.defId === "titan" && f.terminator) return "titan-terminator";
   if (!f.summon && f.defId === "panda" && f.shuriken) return "panda-shuriken";
   if (!f.summon && f.defId === "treant" && f.jungle) return "treant-jungle";
   if (!f.summon && f.defId === "stormcaller" && f.storm) return "stormcaller-thunderstorm";

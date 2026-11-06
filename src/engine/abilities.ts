@@ -1,6 +1,8 @@
 import { beginWushi, wushiTauntTarget } from "./wushi";
 import { beginShuriken } from "./shuriken";
 import { beginSecretOrb } from "./secret-orb";
+import { releaseBombardment } from "./bombardment";
+import { launchTerminator } from "./terminator";
 import { setFlight } from "./sea-ward";
 import { advanceTarLaunch } from "./tar";
 import { releaseStorm } from "./thunderstorm";
@@ -39,6 +41,10 @@ import {
   WUSHI_SKILL,
   SHURIKEN_SKILL,
   SECRET_ORB_SKILL,
+  BOMBARDMENT,
+  BOMBARDMENT_SKILL,
+  TERMINATOR,
+  TERMINATOR_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -580,7 +586,7 @@ export function advanceAirSkills(ctx: CombatContext, source: Fighter): boolean {
     source.hp <= 0 ||
     source.charm ||
     source.stunUntil > ctx.tick ||
-    (["irondog", "specialist", "ironape", "tar", "storm", "jungle"].includes(pending.kind) &&
+    (["irondog", "specialist", "ironape", "tar", "storm", "jungle", "bombardment", "terminator"].includes(pending.kind) &&
       (source.silenceUntil ?? 0) > ctx.tick)
   ) {
     interruptAirSkill(ctx, source);
@@ -606,6 +612,14 @@ export function advanceAirSkills(ctx: CombatContext, source: Fighter): boolean {
     return true;
   }
   if (pending.next > ctx.tick) return true;
+  if (pending.kind === "terminator") {
+    launchTerminator(ctx, source);
+    return true;
+  }
+  if (pending.kind === "bombardment") {
+    releaseBombardment(source, ctx.tick);
+    return true;
+  }
   if (pending.kind === "jungle") {
     releaseJungle(ctx, source);
     return true;
@@ -770,7 +784,7 @@ export function castSkill(
 ) {
   if (source.gospelAura) return false;
   if (wushiTauntTarget(ctx, source)) return false;
-  const s = source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  const s = source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -785,6 +799,14 @@ export function castSkill(
               : SKILLS[source.defId];
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
+  if (source.terminator && (!source.air || source.air.cast || source.charm ||
+    source.stunUntil > ctx.tick || (source.skillReadyAt ?? 0) > ctx.tick ||
+    distance(source, target) > source.range ||
+    !attackTargets(source, ctx.fighters, ctx.tick).some(f => f.uid === target.uid))) return false;
+  if (source.bombardment && (!source.air || source.air.cast || source.charm ||
+    source.stunUntil > ctx.tick || (source.skillReadyAt ?? 0) > ctx.tick ||
+    distance(source, target) > source.range || (source.x === target.x && source.y === target.y) ||
+    !attackTargets(source, ctx.fighters, ctx.tick).some(f => f.uid === target.uid))) return false;
   if (source.secretOrb && (source.charm || source.stunUntil>ctx.tick ||
     (source.skillReadyAt??0)>ctx.tick || distance(source,target)>source.range ||
     !attackTargets(source,ctx.fighters,ctx.tick).some(f=>f.uid===target.uid)))return false;
@@ -1452,6 +1474,13 @@ export function castSkill(
     case "bomber":
     case "ark":
     case "eel":
+      if (source.bombardment && source.air) {
+        source.skillReadyAt = ctx.tick + BOMBARDMENT.cooldown[source.star - 1];
+        source.air.cast = { kind: "bombardment", next: ctx.tick + BOMBARDMENT.windup,
+          remaining: 1, damage: BOMBARDMENT.damage[source.star - 1] * source.skillPower,
+          from: { x: source.x, y: source.y }, to: { x: target.x, y: target.y } };
+        break;
+      }
       if (source.air) {
         if (source.defId === "bomber") fortify(ctx, source, source, 8, 12);
         source.air.cast = {
@@ -1682,6 +1711,14 @@ export function castSkill(
       break;
     }
     case "titan":
+      if (source.terminator && source.air) {
+        source.skillReadyAt = ctx.tick + TERMINATOR.cooldown[source.star - 1];
+        source.air.cast = { kind: "terminator", next: ctx.tick + TERMINATOR.windup,
+          remaining: 2, damage: TERMINATOR.smallDamage[source.star - 1] * source.skillPower,
+          secondaryDamage: TERMINATOR.largeDamage[source.star - 1] * source.skillPower,
+          from: { x: source.x, y: source.y }, to: { x: target.x, y: target.y } };
+        break;
+      }
       for (const f of enemies().filter(
         (f) => distance(target, f) <= s.radius,
       )) {

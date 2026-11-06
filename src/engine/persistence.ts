@@ -40,7 +40,7 @@ import type { Game, Piece, RoundReport } from "./types";
 export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
-export const SAVE_SCHEMA = 58;
+export const SAVE_SCHEMA = 60;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -877,8 +877,22 @@ export function decodeSave(raw: string | null): {
     }
     if (v.schema === 57 && v.rules === "singleplayer-0.58" && record(v.game)) {
       if (v.game.catalogVersion === undefined) v.game.catalogVersion = "shuriken";
-      if (v.game.phase === "prepare") v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      if (v.game.phase === "prepare") v.game.combatVersion = "secret-orb";
       v.schema = 58;
+      v.rules = "singleplayer-0.59";
+      migrated = true;
+    }
+    if (v.schema === 58 && v.rules === "singleplayer-0.59" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "secret-orb";
+      if (v.game.phase === "prepare") v.game.combatVersion = "bombardment";
+      v.schema = 59;
+      v.rules = "singleplayer-0.60";
+      migrated = true;
+    }
+    if (v.schema === 59 && v.rules === "singleplayer-0.60" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "bombardment";
+      if (v.game.phase === "prepare") v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      v.schema = 60;
       v.rules = RULES.version;
       migrated = true;
     }

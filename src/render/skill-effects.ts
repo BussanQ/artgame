@@ -3,6 +3,8 @@ import { drawJungleEffect } from "./jungle";
 import { drawWushiEffect, wushiLabels } from "./wushi";
 import { shurikenLabels } from "./shuriken";
 import { secretOrbLabels } from "./secret-orb";
+import { drawBombardmentEffect, bombardmentLabels } from "./bombardment";
+import { drawTerminatorEffect, terminatorLabels } from "./terminator";
 import { shieldWaveCells } from "../engine/shieldthrall";
 import { acidCells, corrosionArmor } from "../engine/beasts";
 import { deathSongCells } from "../engine/lingjiu";
@@ -20,6 +22,8 @@ export function drawSkillEffect(
   age: number,
   reducedMotion = false,
 ) {
+  if (drawTerminatorEffect(c,e,age,reducedMotion)) return;
+  if (drawBombardmentEffect(c,e,age,reducedMotion)) return;
   // The startup marker and delayed landing are drawn from committed spell state.
   if (e.kind === "cast" && ["风魔之刃","秘法球"].includes(e.name)) return;
   if (drawWushiEffect(c,e,age,reducedMotion)) return;
@@ -1055,10 +1059,12 @@ export function drawStatuses(
   labels.push(...wushiLabels(f,time));
   labels.push(...shurikenLabels(f,time));
   labels.push(...secretOrbLabels(f,time));
+  labels.push(...bombardmentLabels(f,time));
+  labels.push(...terminatorLabels(f,time));
   if(f.taunt && f.taunt.until>time)labels.push(`无式嘲讽 ${((f.taunt.until-time)/4).toFixed(1)}s · 转向武僧`);
   if (f.air?.cast)
     labels.push(
-      f.air.cast.kind === "jungle" ? `丛林蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "storm" ? `雷暴蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "ark"
+      f.air.cast.kind === "terminator" ? `终结者装填 · 余${f.air.cast.remaining}弹 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "bombardment" ? `机群起飞 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "jungle" ? `丛林蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "storm" ? `雷暴蓄力 · ${Math.max(0,(f.air.cast.next-time)/4).toFixed(2)}s` : f.air.cast.kind === "ark"
         ? "重炮蓄力"
         : f.air.cast.kind === "ironape"
           ? `震爆蓄力 · ${Math.max(0, (f.air.cast.next - time) / 4).toFixed(2)}s`
@@ -1143,7 +1149,7 @@ export function drawAirTelegraph(
   reducedMotion = false,
 ) {
   const cast = f.air?.cast;
-  if (!cast || f.hp <= 0 || cast.kind === "storm" || cast.kind === "jungle") return;
+  if (!cast || f.hp <= 0 || ["storm","jungle","bombardment","terminator"].includes(cast.kind)) return;
   c.save();
   c.strokeStyle = f.side === 0 ? "#9edaff" : "#ffb590";
   c.fillStyle = f.side === 0 ? "#7ccfff16" : "#ff8c6616";

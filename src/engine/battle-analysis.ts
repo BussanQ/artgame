@@ -4,6 +4,8 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  terminator?: Pick<NonNullable<Fighter["terminator"]>, "smallLaunched" | "largeLaunched" | "detonated" | "hits">;
+  bombardment?: Pick<NonNullable<Fighter["bombardment"]>, "launched" | "hits">;
   secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>,"formed"|"pulses"|"hits"|"energyRemoved"|"interrupted">;
   shuriken?: Pick<NonNullable<Fighter["shuriken"]>, "launched" | "landings" | "pulses" | "hits" | "interrupted">;
   wushi?: Fighter["wushi"];
@@ -45,6 +47,9 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.terminator ? { terminator: { smallLaunched: f.terminator.smallLaunched,
+      largeLaunched: f.terminator.largeLaunched, detonated: f.terminator.detonated, hits: f.terminator.hits } } : {}),
+    ...(f.bombardment ? { bombardment: { launched: f.bombardment.launched, hits: f.bombardment.hits } } : {}),
     ...(f.secretOrb ? {secretOrb:{formed:f.secretOrb.formed,pulses:f.secretOrb.pulses,
       hits:f.secretOrb.hits,energyRemoved:f.secretOrb.energyRemoved,interrupted:f.secretOrb.interrupted}} : {}),
     ...(f.shuriken ? { shuriken: { launched:f.shuriken.launched,landings:f.shuriken.landings,

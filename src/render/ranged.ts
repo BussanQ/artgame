@@ -1,6 +1,7 @@
 import { REST_POSE, type AttackPose } from "./melee";
 import {
   CURRENT_COMBAT_VERSION,
+  hasTerminatorRules,
   hasShurikenRules,
   hasSecretOrbRules,
   hasAuroraRules,
@@ -10,6 +11,7 @@ import {
   type CombatVersion,
 } from "../engine/types";
 export const RANGED_ACTIONS = {
+  titan: { name: "架炮装填与主炮后坐", duration: 4.2, fireAt: 0.28, impactAt: 0.68, color: "#ffc080" },
   monk: {
     name:"转杖凝珠推出",duration:4.8,fireAt:0.38,impactAt:0.75,color:"#97ead6",
   },
@@ -272,7 +274,7 @@ export const RANGED_ACTIONS = {
 export type RangedId = keyof typeof RANGED_ACTIONS;
 export function isRanged(id: string, version: CombatVersion = CURRENT_COMBAT_VERSION): id is RangedId {
   return Object.hasOwn(RANGED_ACTIONS, id) && (id !== "panda" || hasShurikenRules(version)) &&
-    (id !== "monk" || hasSecretOrbRules(version));
+    (id !== "monk" || hasSecretOrbRules(version)) && (id !== "titan" || hasTerminatorRules(version));
 }
 const pulse = (t: number, a: number, b: number) =>
   t <= a || t >= b ? 0 : Math.sin((Math.PI * (t - a)) / (b - a));
@@ -323,6 +325,13 @@ export function rangedPose(
     return p;
   }
   switch (id) {
+    case "titan": {
+      const brace = pulse(t, 0, 0.34), recoil = pulse(t, 0.25, 0.7);
+      p.forward = -4 * brace - 18 * recoil; p.lift = -3 * brace + 2 * recoil;
+      p.rotation = -0.035 * brace + 0.07 * recoil; p.scaleY = 1 - 0.045 * brace;
+      p.scaleX = 1 + 0.025 * recoil;
+      break;
+    }
     case "monk": {
       const gather=pulse(t,0,0.42),push=pulse(t,0.34,0.86);
       p.rotation=-0.055*gather+0.045*push;p.forward=-7*gather+(skill?19:13)*push;
@@ -668,6 +677,19 @@ export function drawRangedAttack(
     c.restore();
   };
   switch (id) {
+    case "titan": {
+      const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
+      flash(pulse(t, profile.fireAt, profile.fireAt + 0.14));
+      if (u >= 0 && u <= 1) {
+        const at = projectilePoint(from, to, u, 30), tail = projectilePoint(from, to, Math.max(0, u - 0.13), 30);
+        line(tail, at, 4, 0.8); c.save(); c.translate(at.x, at.y); c.rotate(angle);
+        c.fillStyle = "#e0d8b4"; c.fillRect(-7, -3, 12, 6);
+        c.fillStyle = "#ffe7a7"; c.beginPath(); c.moveTo(10, 0); c.lineTo(3, -4); c.lineTo(3, 4); c.closePath(); c.fill();
+        c.restore();
+      }
+      sparks((t - profile.impactAt) / 0.28, 8);
+      break;
+    }
     case "monk": {
       const u=(t-profile.fireAt)/(profile.impactAt-profile.fireAt);
       if(u>=0&&u<=1){const p=projectilePoint(from,to,u,8);

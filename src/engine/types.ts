@@ -28,12 +28,14 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "secret-orb";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "terminator";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
+export const hasTerminatorRules = (version: CombatVersion) => hasRuleSince(version,"terminator");
+export const hasBombardmentRules = (version: CombatVersion) => hasRuleSince(version,"bombardment");
 export const hasShurikenRules = (version: CombatVersion) => hasRuleSince(version,"shuriken");
 export const hasSecretOrbRules = (version: CombatVersion) => hasRuleSince(version,"secret-orb");
 export const hasWushiRules = (version: CombatVersion) => hasRuleSince(version,"wushi");
@@ -169,6 +171,24 @@ export interface RoundReport {
   inventory?: string[];
 }
 export interface Fighter {
+  /** Two separately launched artillery rounds; control cancels only unfired rounds. */
+  terminator?: {
+    smallLaunched: number; largeLaunched: number; detonated: number; hits: number;
+    missiles: {
+      kind: "small" | "large"; start: number; landAt: number;
+      from: { x: number; y: number }; to: { x: number; y: number };
+      damage: number; side: 0 | 1;
+    }[];
+  };
+  /** Released squadrons sweep a fixed rectangle once, even after the carrier dies. */
+  bombardment?: {
+    launched: number;
+    hits: number;
+    raids: {
+      start: number; from: { x: number; y: number }; dx: number; dy: number;
+      traveled: number; damage: number; side: 0 | 1; hit: number[];
+    }[];
+  };
   /** Maintained forward orb; caster interruption cancels startup and remaining pulses. */
   secretOrb?: {
     formed: number; pulses: number; hits: number; energyRemoved: number; interrupted: number;
@@ -348,6 +368,8 @@ export interface Fighter {
       kind:
         | "bomber"
         | "ark"
+        | "bombardment"
+        | "terminator"
         | "eel"
         | "phoenix"
         | "whale"
@@ -362,6 +384,7 @@ export interface Fighter {
       target?: number; // Unit lock for specialist aiming; area spells keep only coordinates.
       marked?: number[];
       splash?: number;
+      secondaryDamage?: number; // Terminator's frozen second round, not a second mana expense.
       next: number;
       remaining: number;
       damage: number;

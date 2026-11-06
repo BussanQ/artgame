@@ -1,0 +1,140 @@
+{
+  "recordedAt": "2026-11-07T01:32:41.335254+08:00",
+  "rules": "singleplayer-0.60",
+  "combatVersion": "bombardment",
+  "saveSchema": 59,
+  "overallGoal": "active; 本记录只证明方舟增量，不宣称完整单机目标或总体平衡完成。",
+  "tests": {
+    "command": "npm run test:bombardment",
+    "file": "../../tests/bombardment.test.ts",
+    "passed": 26,
+    "failed": 0,
+    "sourceSha256": "92965eca98945cd483dea13fe970efe3bb9dcf994f32b10cacd1a6d5f51ea4ee",
+    "rawReport": "../../tmp/bombardment-module-tests.json",
+    "rawReportSha256": "7df0122b9e13ba4863e7a721fc9369c7fb9b7ed9be6fece2bd6be8f57ecdff7c",
+    "scope": "一个相关模块；未运行全量测试或批量对战采样。"
+  },
+  "historicalEvidence": {
+    "fixture": "../../tests/fixtures/pre-v060-ark-replays.json",
+    "fixtureSha256": "6a9feee9c7012303d346ba102bfe88b4e663ec0c88689c49986c47fbabd5839f",
+    "frozenReplayVersions": [
+      "legacy",
+      "fleet",
+      "secret-orb"
+    ],
+    "frozenReplayCount": 3,
+    "historicalArkDefinitionsCompared": 32,
+    "limits": "修改前冻结的三个小局面完整SHA与32份本体定义保持；其他单位定义、连携与一组初始化能力做直接比较，未重跑33版本全战斗矩阵。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 127,
+    "rawLog": "../../tmp/bombardment-v060-build.log",
+    "logSha256": "cd264d1087539eadd448fd14ec20695c4774e2a35615ecd7de202941d629e8c7",
+    "app": "dist/assets/index-ClpCguEf.js",
+    "worker": "dist/assets/worker-DzbTJESw.js",
+    "appSha256": "e261150de21bb919d43f06c90e19f954d581990148afeb6af6acc725ce02f291",
+    "workerSha256": "8d16e9bc245a1ff9a3c798b060abed7565042208cb150625dd48d262e5eb34d0"
+  },
+  "ui": {
+    "url": "http://127.0.0.1:5174/",
+    "desktopViewport": [
+      1280,
+      720
+    ],
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "mobileDocumentWidth": 390,
+    "mobileScrollWidth": 390,
+    "analysisAt4Seconds": {
+      "seconds": 4.0,
+      "arkHp": 0,
+      "damage": 532,
+      "normalDamage": 52,
+      "skillDamage": 480,
+      "shieldDamage": 532,
+      "launched": 1,
+      "hits": 2
+    },
+    "analysisAt625Seconds": {
+      "seconds": 6.25,
+      "arkHp": 0,
+      "damage": 1972,
+      "normalDamage": 52,
+      "skillDamage": 1920,
+      "shieldDamage": 532,
+      "launched": 1,
+      "hits": 5
+    },
+    "persistenceProof": "同一回放里方舟已经阵亡，机群命中由2增加到5，技能伤害由480增加到1920；不是第二次施法。",
+    "resourcesTextUnchanged": true,
+    "resourceFields": [
+      "commander",
+      "recruitment",
+      "armory"
+    ],
+    "consoleErrorsOrWarnings": [],
+    "speedRestoredTo": 1,
+    "viewportOverrideReset": true,
+    "rawEvidence": "../../tmp/bombardment-v060-ui.json",
+    "rawEvidenceSha256": "08745ab14959d4dcb42ec006cbc57978ad119071a13f066d60e1941b12e4633d",
+    "screenshots": [
+      {
+        "path": "../../tmp/bombardment-v060-desktop.jpg",
+        "format": "JPEG",
+        "sha256": "ec9a6224bcaa3802832f52eb35a51cead08ca8d400dad9a50bc3b996e57b66b3"
+      },
+      {
+        "path": "../../tmp/bombardment-v060-mobile390.jpg",
+        "format": "JPEG",
+        "sha256": "8b87d9feb0567c4d130173d90017d36c33faed795a3e2b337a89a0d749e5165d"
+      },
+      {
+        "path": "../../tmp/bombardment-v060-mobile-analysis.jpg",
+        "format": "JPEG",
+        "sha256": "e4267e0e41f0d2be5520b7a627e4859b2ff574595aff7402ba481dc15893470a"
+      }
+    ],
+    "limits": "只有本机浏览器的局部演示、桌面和窄屏画面，不是实机触屏、弱设备基准或正常经济整局验收。"
+  },
+  "sourceFingerprints": {
+    "src/engine/types.ts": "0eb0e2462c482be2ebc72fa239c002f831123b83cf8373c51aa78a8789323076",
+    "src/data/units.ts": "44162d5661b01f884462c21c94aa061d1c4139264c260b739f448cdbcd734b0d",
+    "src/data/skills.ts": "1c0658ac4cef6d6fc11ceabe116025843d37c4f208664c293e1370c9ddc9ec11",
+    "src/data/unit-stats.ts": "09c59115658d1514a88b0011ccaa456af48b773dec671abf972e9b4bdb109b04",
+    "src/engine/abilities.ts": "17f1e26224ed94de7632443db73cc1cbdd98e12684c40175b6e5a30a66af4f90",
+    "src/engine/battle.ts": "8ff11d2e393588486a082a2433260fc486dd1da6dcc00dd9c1f1b253a6a1451f",
+    "src/engine/bombardment.ts": "5c19c12f18b842fd3688a88ca4b8b3b12c0bd622c1e589a6dd5015bf035b6210",
+    "src/engine/persistence.ts": "dab811b940d1621972358599320581594bbbc726e61eef7f1f2dcde9adcf2aeb",
+    "src/engine/ai.ts": "8c899270bf7c2d3c4dc5d360c9756ee832dcbdee0809a12dfca293145c7ec787",
+    "src/engine/battle-analysis.ts": "fd867392523e0489c7db64f35021e8eec4ef9bdbaa8d095f474054b0bbafc099",
+    "src/data/bombardment-demo.ts": "439003c8facbdceb868922c28603dc4f46a9cfecb5edd5203a3439c1349c6ba3",
+    "src/render/bombardment.ts": "c171cd0fbdbd79f9063b82c49dd7198f6618b5efc80eafa1e0508e8701a2a413",
+    "src/render/scene.ts": "74cd0af525ae9ab89701e4b4d9b4879f813bed2bf3813ae045d7f128b6700460",
+    "src/render/skill-effects.ts": "ded9d772ef234b19f1af7aa5a31cfd357c2193d666e3efdde93ea8cab48a63d4",
+    "src/render/battle-inspection.ts": "dbc86f8c3cba3ad716d1f9836facb0ca679b7de07370acda726e9a9368f91297",
+    "src/ui/battle-analysis.ts": "5fa86c5417f9a1f6e2959e4f9058d8c0c1cb7e2d8d092a95163b6f8609ea61c3",
+    "src/main.ts": "4d15340aa4b1e63eff4bded45801ec626813d7ca46456558b017be2e51566c2e"
+  },
+  "notRun": [
+    "全量测试",
+    "批量平衡/阵容对战采样",
+    "新的完整正常经营对局",
+    "真实手机与弱设备性能测试"
+  ],
+  "remaining": [
+    "统一历史构建的全部字段与伤害/回能公式",
+    "其他兵种仍待核对的原型能力",
+    "整体难度与多构筑可玩性",
+    "高星与高费经营的最终体验",
+    "真实触屏和弱设备验证"
+  ],
+  "git": {
+    "branch": "dev",
+    "newCommitCreated": false,
+    "newChangesPushed": false
+  }
+}

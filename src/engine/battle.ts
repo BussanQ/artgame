@@ -2,6 +2,8 @@ import { advanceTarBombs, updateTarBombPositions } from "./tar";
 import { lightningStrike } from "./lightning";
 import { advanceGospel } from "./gospel";
 import { advanceStormBolts } from "./thunderstorm";
+import { advanceBombardments } from "./bombardment";
+import { advanceTerminatorMissiles } from "./terminator";
 import { advanceShurikenCast, advanceShurikenFields, expireShurikenCasts } from "./shuriken";
 import { advanceSecretOrbAction, advanceSecretOrbPulses, expireSecretOrbs } from "./secret-orb";
 import { advanceJungleLandings, jungleContains } from "./jungle";
@@ -13,6 +15,8 @@ import { unitArmor, unitDefinition } from "../data/unit-stats";
 import { seedAssassinStrikes } from "./assassins";
 import {
   CURRENT_COMBAT_VERSION,
+  hasTerminatorRules,
+  hasBombardmentRules,
   hasShurikenRules,
   hasSecretOrbRules,
   hasWushiControlRules,
@@ -124,6 +128,10 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasTerminatorRules(definitionVersion) && d.id === "titan"
+          ? { terminator: { smallLaunched: 0, largeLaunched: 0, detonated: 0, hits: 0, missiles: [] } } : {}),
+        ...(hasBombardmentRules(definitionVersion) && d.id === "ark"
+          ? { bombardment: { launched: 0, hits: 0, raids: [] } } : {}),
         ...(hasSecretOrbRules(definitionVersion) && d.id === "monk"
           ? { secretOrb: { formed:0,pulses:0,hits:0,energyRemoved:0,interrupted:0 },innateRegen:true as const } : {}),
         ...(hasShurikenRules(definitionVersion) && d.id === "panda"
@@ -552,6 +560,8 @@ function runBattle(
     advanceBurn(context);
     advanceTarBombs(context);
     advanceStormBolts(context);
+    advanceBombardments(context);
+    advanceTerminatorMissiles(context);
     advanceShurikenFields(context);
     advanceSecretOrbPulses(context);
     advanceGospel(context);

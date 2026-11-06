@@ -1,5 +1,9 @@
 # 赤潮网页自走棋：资料与开发方案
 
+最新能力：[0.61铁巨神终结者](design/terminator.md) · [原卡、字段与适配](research/terminator-history.json) · [内置ImageGen提示词与形象](research/terminator-assets.json) · [验证记录](analysis/terminator-v061-validation.json)。远程双轮轰炸、逐弹反制、独立动作和schema60已接入；57项相关检查、构建与桌面/390px演示通过，未新增整局或批量采样。以下为各轮当时记录。
+
+0.60能力记录：[0.60方舟集团轰炸](design/bombardment.md) · [原卡、字段与适配](research/bombardment-history.json) · [验证记录](analysis/bombardment-v060-validation.json)。矩形机群、阵亡后持续、统计和schema59已接入；26项相关模块检查与构建通过，本次不做批量对战或完整经营局采样。此前版本的记录保留。
+
 当前界面改进：[0.59中期流程与备战装备提示](design/manual-campaign-v059.md) · [实际检查点与核算](analysis/manual-campaign-v059.json)。R10–18正常经营、合成装备及多种三/四费二星已验证，22项相关检查及构建通过；用户要求减少对战测试后停在R19准备并保存，未宣称完成整局。后续优先功能开发，避免重复完整局和大批采样。
 
 当前策略：[0.59开场组合经营](design/opening-ai.md) · [四策略配对](analysis/opening-ai-v059-comparison.json) · [真实满席事务](analysis/opening-ai-v059-controlled-selected.json) · [售前比较修正](analysis/opening-ai-v059-sale-baseline.json) · [正常界面](analysis/opening-ai-v059-ui.json) · [必要验证](analysis/opening-ai-v059-validation.json)。395项必要用例及构建通过，当前24局628轮有正式AI三熊猫与PvP施法，正常对局已至第10轮准备。仍未完成整体平衡、当前目录多构筑长局与真实设备验收；以下记录保留当时状态。

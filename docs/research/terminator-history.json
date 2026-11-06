@@ -1,0 +1,59 @@
+{
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.61",
+  "combatVersion": "terminator",
+  "unitId": "titan",
+  "scope": "恢复铁巨神远程双轮轰炸；五月公告、七月实测表、十二月客户端卡分开记录，不声明来自同一构建的全部字段。",
+  "sources": [
+    {
+      "id": "S55",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml?_platform=PC",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名）",
+      "kind": "publisher-byline-article-with-original-client-card",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "review": "本次Web正文可读，另复查既有无AI摘要原始HTML并重新下载、目视客户端图。原卡确认五费、装甲/爆破、终结者、14秒、圆形半径3格、小导弹100/200/300、大导弹250/350/450。正文描述接连两次轰炸，卡面只写多次伤害，没有精确发射和飞行时序。",
+      "accessBoundary": "此前同页曾出现第三方AI摘要版本，精确字段只取原图。本次代理请求多次返回伪装JPG的HTML挑战页；对该公开图片请求使用直连后取得真正JPEG，未改变系统代理设置。无效响应只留在忽略的tmp目录。"
+    },
+    {
+      "id": "S35",
+      "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
+      "publishedAt": "2019-05-09",
+      "kind": "update-announcement-byline-not-independently-verified",
+      "originalHtmlSha256": "8abb8a45cc529d7ce184ef2f90f68749f2d74c04bbc440a0e02ab7af5391d781",
+      "review": "复查既有完整HTML：铁巨神终结者冷却调整为14/12/10秒。账号官方标识未独立核验；梯度与S04表相符，一星14秒与S55客户端卡相符。"
+    },
+    {
+      "id": "S04-1",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measured-attribute-table",
+      "row": 13,
+      "name": "铁巨神",
+      "fields": {"cost":5,"hp":900,"attackRange":[100,106],"armor":15,"range":5,"attackIntervalSeconds":1.2,"skillCooldownSeconds":[14,12,10]},
+      "review": "本次重新目视完整原表并核对既有转录，采用攻击均值103。玩家实测表不是官方逐版本属性表。"
+    }
+  ],
+  "image": {
+    "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/oOfAxGbnCjisdEu.jpg",
+    "path": "images/titan-terminator-client-dec2019.jpg",
+    "sha256": "68c1ec6c0dda69d9b4d31e84c1551ea0c6ca3166956f5ecbfc0378aa8d105552",
+    "format": "JPEG", "size": [640,296], "bytes": 26542,
+    "visuallyReviewed": true, "clientBuild": "unknown"
+  },
+  "confirmedClientCard": {"cost":5,"traits":["装甲","爆破"],"skill":"终结者","radiusTiles":3,"shape":"circle","smallDamage":[100,200,300],"largeDamage":[250,350,450],"displayedOneStarCooldownSeconds":14},
+  "localChoices": {
+    "launchesPerCast": ["one-small","one-large"],
+    "launchCountInterpretation": "正文的两次轰炸结合客户端两组伤害，采用一枚小弹后接一枚大弹；卡面没有逐弹数量/时序定义，不把这一组合解释称为原厂完整公式。",
+    "initialMana": 0,
+    "windupSeconds": 0.75,
+    "launchIntervalSeconds": 0.75,
+    "flightSeconds": 0.5,
+    "targetLock": "起手锁定目标位置；每枚导弹落地时检查欧氏圆形半径3格内当前存活敌人的位置与阵营。",
+    "interruption": "控制或死亡取消未发射弹，已发射弹保留原阵营及起手法强；第二弹发出后恢复行动，整个战斗结束则停止追加结算。",
+    "damageRules": "每弹每个目标一次，独立按现有魔抗、护盾、技能免伤与反伤规则处理；新技能没有沿用原型的眩晕。魅惑改变阵营后，处于爆炸范围的原施法者也可能成为自己已发射导弹的敌方目标。",
+    "magicResistance": "沿用引擎通用默认20%；S04铁巨神行未提供该字段，不将其称为已确认的官方固有被动。"
+  },
+  "compatibility": {"previousRules":"singleplayer-0.60","previousCombatVersion":"bombardment","saveSchema":60,"previousDefinition":"1700生命、120攻击、10甲、1格、1秒、天坠；lineages之前另保留护卫职业。","historicalDefinitions":33,"frozenBattles":"../../tests/fixtures/pre-v061-titan-replays.json","catalog":"五费10份不变，既有比赛目录不改。"}
+}

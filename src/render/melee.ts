@@ -1,4 +1,4 @@
-import { CURRENT_COMBAT_VERSION, hasShurikenRules, hasSecretOrbRules, type CombatVersion } from "../engine/types";
+import { CURRENT_COMBAT_VERSION, hasShurikenRules, hasSecretOrbRules, hasTerminatorRules, type CombatVersion } from "../engine/types";
 /** Pure animation sampling; no combat damage or simulation timing changes. */
 export const MELEE_ACTIONS = {
   elephant: { name: "踏步扬鼻挑牙", duration: 3.8, color: "#e5bd83" },
@@ -52,7 +52,7 @@ export const REST_POSE: AttackPose = {
 };
 export function isMelee(id: string, version: CombatVersion = CURRENT_COMBAT_VERSION): id is MeleeId {
   return Object.hasOwn(MELEE_ACTIONS,id) && (id !== "panda" || !hasShurikenRules(version)) &&
-    (id !== "monk" || !hasSecretOrbRules(version));
+    (id !== "monk" || !hasSecretOrbRules(version)) && (id !== "titan" || !hasTerminatorRules(version));
 }
 /** Hold the raised pose until the simulation emits the slam, never show an early impact. */
 export function ironapeChargePose(progress: number): AttackPose {

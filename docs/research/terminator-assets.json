@@ -1,0 +1,38 @@
+{
+  "recordedAt": "2026-11-07",
+  "rules": "singleplayer-0.61",
+  "unitId": "titan",
+  "mode": "built-in",
+  "tool": "image_gen.imagegen",
+  "intent": "precise-object-edit",
+  "transparentBackground": true,
+  "reference": {
+    "path": "public/assets/units/titan.png",
+    "role": "edit-target",
+    "sha256": "18afe973da97b766497e06eb4c197bb0bde8e3484eb7730b337bf9b9bd202542",
+    "visuallyReviewedBeforeEdit": true,
+    "preservedForHistoricalBattles": true
+  },
+  "prompt": "Use case: precise-object-edit.\nAsset type: production transparent full-body auto-chess unit sprite.\nEdit target: the supplied existing Titan robot miniature. Create a sibling ranged-artillery version, keeping the same individual identity, engraved worn bronze and iron armor, bright orange circular chest reactor, narrow orange visor, massive armored boots, red hanging cloth and Eastern science-fantasy painted 3D rendering.\nPrimary change: turn this fist-fighting mech into a long-range missile artillery mech. Replace one oversized fist with a clearly readable long heavy main-cannon arm pointing diagonally forward, and fit the other forearm with a compact small-missile launcher. Add restrained shoulder ammunition housings. Both weapons must look integrated into its existing mechanical joints. Keep two grounded legs, heavy torso and the old helmet/reactor identity. Do not make it a floating ship or a human soldier.\nComposition: exactly one complete robot, elevated three-quarter camera at about 25 degrees, facing toward screen right, braced firing-ready stance. Include the entire cannon muzzle, legs, feet and shoulder housings with 12% transparent padding. Readable at small game size. No detached missiles or attack effects.\nMaterials and lighting: match the reference's detailed painted metal, warm upper-left light, soft cool rim, bronze/steel/orange palette.\nBackground: genuine transparent alpha. No scenery, no floor, no pedestal, no cast background, no text, no interface, no watermark. Preserve actual transparency; keep the reference art style and character identity.",
+  "nativeOutput": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-7c526ed3-eaed-4de4-92b6-8afd6d819140.png",
+  "output": {
+    "path": "public/assets/units/titan-terminator.png",
+    "sha256": "076cb61bb6e970ac17909b7e4c777fa93e4b7382b4cc3e1adf45d4bfc4359f9a",
+    "bytes": 1822111,
+    "width": 1322,
+    "height": 1190,
+    "mode": "RGBA",
+    "alphaZeroPixels": 891767,
+    "alphaOpaquePixels": 742,
+    "alphaBbox": [
+      0,
+      23,
+      1305,
+      1190
+    ],
+    "originalBytesUnmodified": true
+  },
+  "review": "保留旧机甲头盔、橙色反应炉、青铜钢铁装甲与红色布片，加入长主炮和小导弹发射臂；完整角色、武器和双足可见。原生透明通道通过逐像素读取验证，未进行栅格后处理。",
+  "use": "新terminator规则的图鉴、招募/备战详情、战场和战斗分析；旧规则继续使用titan.png。",
+  "limits": "属于ImageGen重释美术；1322×1190原图在现有画布缓存中按显示需求缩小，真实弱设备性能未在本轮验证。"
+}

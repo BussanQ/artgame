@@ -120,11 +120,12 @@
       "id": "S11",
       "title": "双人模式",
       "url": "https://shouyou.gamersky.com/news/201906/1191090_2.shtml?tag=wap",
-      "publishedAt": null,
+      "publishedAt": "2019-06-06",
       "kind": "media",
-      "status": "search-excerpt-reviewed",
-      "accessedAt": "2026-11-02",
-      "targetVersion": null
+      "status": "full-text-reviewed",
+      "accessedAt": "2026-11-07",
+      "targetVersion": "2019-06-06",
+      "note": "本次直接读取原始HTML，确认机群出现后方舟阵亡仍继续结算轰炸。页面来源游民星空[整理]、作者未知；仅作机制定性旁证，不称官方数值表。原文SHA及字段边界见bombardment-history.json。"
     },
     {
       "id": "S12",
@@ -395,7 +396,9 @@
       "targetVersion": "2019-05-09",
       "note": "此次读到公告正文；事件日期五月9日、页面修改日期五月8日，作者署名拉克西丝，未单独核验其官方账号标识。明确猛毒兽酸性污染20秒改为10/8/6秒，并有特种兵射程4改7、装甲15/35再生、先锋6/8护甲、野兽4档起全军等记录。正文核实取代此前仅检索摘要状态；这些梯度仍需在独立战斗版本中逐项对齐。",
       "modifiedAt": "2019-05-08",
-      "wildfrontReview": "0.41再次读取原始HTML正文，确认4野兽起全军生效与先锋改为6/8护甲；配合S03恢复档位。原始HTML指纹及未核验账号标识见wildfront-history.json。"
+      "wildfrontReview": "0.41再次读取原始HTML正文，确认4野兽起全军生效与先锋改为6/8护甲；配合S03恢复档位。原始HTML指纹及未核验账号标识见wildfront-history.json。",
+      "bombardmentReview": "0.60复查既有原始HTML，方舟集团轰炸CD由10/8/6改为14/12/10秒；署名及账号边界保持，原始SHA见bombardment-history.json。",
+      "terminatorReview": "0.61复查既有原始HTML，铁巨神终结者冷却改为14/12/10秒；保留账号标识尚未独立核验的边界，另与S04及S55一星数值互证。"
     },
     {
       "id": "S36",
@@ -640,7 +643,9 @@
         "imageSha256": "e07f71bfcf9bfda4418071c87626f360ae7f3295317b9d018d89ad822253ee1c",
         "details": "jungle-history.json",
         "note": "同一原HTML中的树妖卡；五费、圆形4格、100/200/300、30秒、击飞后眩晕1/1.5/2秒。保留天师原字段，不覆盖其原图。"
-      }
+      },
+      "bombardmentReview": "0.60核对无第三方AI摘要的既有原始HTML，并重新取得、目视方舟原始JPEG客户端卡：四费、空军/攻城、集团轰炸、14秒及250/400/650；卡面无宽度/速度/起手，见bombardment-history.json。当前网页含第三方AI摘要横幅，不以它替代原卡。",
+      "terminatorReview": "0.61重新取得并目视铁巨神原始客户端JPEG：五费、装甲/爆破、终结者、半径3格、小弹100/200/300、大弹250/350/450、一星14秒；正文两次轰炸和精确时序边界分开记录，见terminator-history.json。"
     },
     {
       "id": "S56",

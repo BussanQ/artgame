@@ -29,6 +29,8 @@ import {
   WUSHI_CONTROL,
   SHURIKEN,
   SECRET_ORB,
+  BOMBARDMENT,
+  TERMINATOR,
 } from "../data/skills";
 import { RETINUE, SPIRIT_WOLF } from "./summons";
 import { equipmentStats } from "../data/items";
@@ -50,7 +52,6 @@ const CONTROL_SECONDS: Record<string, number> = {
   guard: 1,
   cavalry: 0.5,
   bull: 1,
-  titan: 1.5,
   eyebug: 1.5,
   bat: 1,
   vine: 1.5,
@@ -206,7 +207,14 @@ export function abilityCredit(
       attacks = skill.multiplier * 2 * 1.8;
       break; // Interrupted channels/targets walking away.
     case "ark":
-      attacks = skill.multiplier * 1.8 * 0.75;
+      // Credit one dodgeable pass on a few targets, not three packets per target or an entire team.
+      attacks = BOMBARDMENT.damage[p.star - 1] * 1.8 * 0.75 / (u.attack * 2 ** (p.star - 1));
+      break;
+    case "titan":
+      // A limited two-round area spell; no invented stun or guaranteed full-team hits.
+      attacks = (TERMINATOR.smallDamage[p.star - 1] + TERMINATOR.largeDamage[p.star - 1]) *
+        1.8 * 0.75 / (u.attack * 2 ** (p.star - 1));
+      utility = 0;
       break;
     case "arhat":
       attacks =

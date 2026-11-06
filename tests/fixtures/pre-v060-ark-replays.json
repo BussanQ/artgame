@@ -1,0 +1,808 @@
+{
+  "capturedBeforeRules": "singleplayer-0.60",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "ark",
+        "name": "方舟",
+        "cost": 4,
+        "traits": [
+          "空军",
+          "攻城"
+        ],
+        "hp": 1050,
+        "attack": 100,
+        "armor": 5,
+        "range": 4,
+        "interval": 4,
+        "skill": "虚空重炮",
+        "color": "#a6dddd",
+        "glyph": "舟",
+        "flying": true
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 102,
+          "defId": "ark",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "crystal"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "medic",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "6d01649a92ae219234e4b4c1065e302a48e92966a382445acff5b9630335b6f7",
+      "arkCasts": 4,
+      "frames": 87
+    },
+    {
+      "version": "fleet",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 102,
+          "defId": "ark",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "crystal"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "medic",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "0aa14b7e26341f5d49d38cefa1d8bd37e890eec5805f886a699982b277501000",
+      "arkCasts": 3,
+      "frames": 66
+    },
+    {
+      "version": "secret-orb",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 102,
+          "defId": "ark",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "crystal"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "medic",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "d7e6a319c07d208697d856edc0d50d180c4bc3e6e2c9669223e98dc3c0296085",
+      "arkCasts": 3,
+      "frames": 64
+    }
+  ]
+}

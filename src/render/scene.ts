@@ -4,6 +4,8 @@ import { wushiActive } from "../engine/wushi";
 import { drawTarBombs } from "./tar";
 import { drawGospelField } from "./gospel";
 import { drawThunderstorm } from "./thunderstorm";
+import { drawBombardments, bombardmentPose } from "./bombardment";
+import { drawTerminators, terminatorPose } from "./terminator";
 import { drawShuriken } from "./shuriken";
 import { drawSecretOrbs, secretOrbPose } from "./secret-orb";
 import { drawJungleTelegraphs, jungleChargePose } from "./jungle";
@@ -435,6 +437,8 @@ export class BattleScene {
       for (const f of fs) drawAirTelegraph(c, f, s.time, this.motionReduced);
       drawTarBombs(c, fs, s.time, this.motionReduced, "area");
       drawThunderstorm(c, fs, s.time, this.motionReduced, "area");
+      drawBombardments(c, fs, s.time, this.motionReduced, "area");
+      drawTerminators(c, fs, s.time, this.motionReduced, "area");
       drawShuriken(c, fs, s.time, this.motionReduced, "area");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "area");
       drawJungleTelegraphs(c, fs, s.time, this.motionReduced);
@@ -503,7 +507,7 @@ export class BattleScene {
           now,
           s.selected,
           death,
-          (f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
+          (f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
           hit && fraction < 0.35,
           s.time,
           f.transformation ?? undefined,
@@ -511,6 +515,9 @@ export class BattleScene {
       }
       drawTarBombs(c, fs, s.time, this.motionReduced, "labels");
       drawThunderstorm(c, fs, s.time, this.motionReduced, "bolts");
+      drawBombardments(c, fs, s.time, this.motionReduced, "planes",
+        fs.some(f => f.bombardment?.raids.length) ? picture("ghostjet") : null);
+      drawTerminators(c, fs, s.time, this.motionReduced, "missiles");
       drawShuriken(c, fs, s.time, this.motionReduced, "blades");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
       // Render recent events without skipping any at 2x/4x playback.
@@ -533,7 +540,7 @@ export class BattleScene {
                 attackInterval(attacker, n),
               )
             : 1;
-          const impactAge = (attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
+          const impactAge = (attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
           if (
@@ -542,7 +549,7 @@ export class BattleScene {
             rangedId &&
             e.primary &&
             !attacker.lightningChain &&
-            !((attacker.secretOrb || attacker.shuriken || attacker.qiSkill || attacker.taotie || attacker.tar || attacker.storm) && e.skill)
+            !((attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken || attacker.qiSkill || attacker.taotie || attacker.tar || attacker.storm) && e.skill)
           )
             drawRangedAttack(
               c,
@@ -757,6 +764,10 @@ export class BattleScene {
           ? burrowPose(attack.progress)
           : !this.motionReduced && !death && f.bladeStorm
             ? bladeStormPose(time)
+            : !this.motionReduced && !death && f.terminator && f.air?.cast?.kind === "terminator"
+              ? terminatorPose(f, time)
+            : !this.motionReduced && !death && f.bombardment && f.air?.cast?.kind === "bombardment"
+              ? bombardmentPose(f, time)
             : !this.motionReduced && !death && f.jungle && f.air?.cast?.kind === "jungle"
               ? jungleChargePose(1 - (f.air.cast.next - time) / JUNGLE.windup)
             : !this.motionReduced && !death && f.storm && f.air?.cast?.kind === "storm"

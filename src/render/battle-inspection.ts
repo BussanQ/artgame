@@ -17,7 +17,7 @@ export function compactBattleLabels(f: Fighter, time: number) {
   if ((f.silenceUntil ?? 0) > time) labels.push("沉默");
   if (isPhoenixEgg(f)) labels.push("涅槃");
   if (f.bladeStorm && f.bladeStorm.until > time) labels.push("狂舞免伤");
-  if (f.air?.cast) labels.push("施法中");
+  if (f.air?.cast) labels.push(f.air.cast.kind === "terminator" ? "双轮装填" : f.air.cast.kind === "bombardment" ? "机群起飞" : "施法中");
   if (f.windup) labels.push("蓄力");
   if (f.shuriken?.casting) labels.push("飞镖蓄力");
   if (f.secretOrb?.casting) labels.push("秘法蓄力");

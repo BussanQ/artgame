@@ -1,3 +1,5 @@
+import { TERMINATOR_DEMO } from "./data/terminator-demo";
+import { BOMBARDMENT_DEMO } from "./data/bombardment-demo";
 import { WUSHI_DEMO } from "./data/wushi-demo";
 import { SHURIKEN_DEMO } from "./data/shuriken-demo";
 import { SECRET_ORB_DEMO, SECRET_ORB_COUNTER_DEMO } from "./data/secret-orb-demo";
@@ -252,6 +254,8 @@ let wushiDemo = false;
 let shurikenDemo = false;
 let secretOrbDemo = false;
 let secretOrbCounterDemo = false;
+let bombardmentDemo = false;
+let terminatorDemo = false;
 let beastDemo = false;
 let staffDemo = false;
 let swordDemo = false;
@@ -373,6 +377,8 @@ function render() {
           ["jungle-demo", "丛林震荡"],
           ["wushi-demo", "武僧无式"],
           ["shuriken-demo", "风魔飞镖"],
+          ["terminator-demo", "终结者轰炸"],
+          ["bombardment-demo", "集团轰炸"],
           ["secret-orb-demo", "秘法削能"],
           ["secret-orb-counter-demo", "秘法反制"],
           ["immortal-demo", "灵能不朽"],
@@ -385,7 +391,7 @@ function render() {
           .join("")}</div></details>`
   }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="restart">重新开始</button></nav><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></header>
  ${computing || computeError ? `<section class="compute-status" role="status" aria-live="polite"><span>${computing ? pendingJob?.label : computeError}</span><div>${!computing ? '<button data-action="retry-compute">重试计算</button>' : ""}<button data-action="cancel-compute">${computing ? "取消计算" : "关闭"}</button></div></section>` : ""}
- <h1 class="toolbar-title">${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : secretOrbCounterDemo ? "秘法反制 · 战术演习" : secretOrbDemo ? "秘法削能 · 战术演习" : shurikenDemo ? "风魔飞镖 · 战术演习" : wushiDemo ? "武僧无式 · 战术演习" : jungleDemo ? "丛林震荡 · 战术演习": thunderstormDemo ? "雷暴削能 · 战术演习" : gospelDemo ? "福音供能 · 战术演习" : lightningDemo ? "雷神锁链 · 战术演习" : tarDemo ? "焦油爆破 · 战术演习" : taotieDemo ? "饕餮狂暴 · 战术演习" : auroraDemo ? "极光成长 · 战术演习" : coalitionDemo ? "空援协同 · 战术演习" : abnormalDemo ? "异能续战 · 战术演习" : counterplayDemo ? "狙骑反制 · 战术演习" : assassinDemo ? "六刺突袭 · 战术演习" : wildfrontDemo ? "荒原先锋 · 战术演习" : lingjiuDemo ? "海神刺杀 · 战术演习" : beastDemo ? "野兽破阵 · 战术演习" : staffDemo ? "疾风棍阵 · 战术演习" : shieldDemo ? "傀儡卫阵 · 战术演习" : bladeDemo ? "傀儡战刃 · 战术演习" : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "赤潮战术演习"}</h1>
+ <h1 class="toolbar-title">${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : terminatorDemo ? "终结者轰炸 · 战术演习" : bombardmentDemo ? "集团轰炸 · 战术演习" : secretOrbCounterDemo ? "秘法反制 · 战术演习" : secretOrbDemo ? "秘法削能 · 战术演习" : shurikenDemo ? "风魔飞镖 · 战术演习" : wushiDemo ? "武僧无式 · 战术演习" : jungleDemo ? "丛林震荡 · 战术演习": thunderstormDemo ? "雷暴削能 · 战术演习" : gospelDemo ? "福音供能 · 战术演习" : lightningDemo ? "雷神锁链 · 战术演习" : tarDemo ? "焦油爆破 · 战术演习" : taotieDemo ? "饕餮狂暴 · 战术演习" : auroraDemo ? "极光成长 · 战术演习" : coalitionDemo ? "空援协同 · 战术演习" : abnormalDemo ? "异能续战 · 战术演习" : counterplayDemo ? "狙骑反制 · 战术演习" : assassinDemo ? "六刺突袭 · 战术演习" : wildfrontDemo ? "荒原先锋 · 战术演习" : lingjiuDemo ? "海神刺杀 · 战术演习" : beastDemo ? "野兽破阵 · 战术演习" : staffDemo ? "疾风棍阵 · 战术演习" : shieldDemo ? "傀儡卫阵 · 战术演习" : bladeDemo ? "傀儡战刃 · 战术演习" : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "赤潮战术演习"}</h1>
  ${!demoBattle ? matchSummaryMarkup(game) : ""}
  <main><aside class="left"><section class="panel commander" id="commander"><span class="eyebrow">COMMANDER</span><label class="difficulty-setting">难度<select data-difficulty aria-label="单机难度" title="仅在第 1 回合开战前选择难度" ${disabled(game.round !== 1 || busy || !!demoBattle)}>${Object.entries(
    DIFFICULTIES,
@@ -833,7 +839,7 @@ app.addEventListener("click", (e) => {
         demoBattle
           ? replayRound
             ? `第 ${replayRound} 回合回放`
-            : secretOrbCounterDemo ? "秘法反制演习" : secretOrbDemo ? "秘法削能演习" : shurikenDemo ? "风魔飞镖演习" : wushiDemo ? "武僧无式演习" : jungleDemo ? "丛林震荡演习": thunderstormDemo ? "雷暴削能演习" : gospelDemo
+            : terminatorDemo ? "终结者轰炸演习" : bombardmentDemo ? "集团轰炸演习" : secretOrbCounterDemo ? "秘法反制演习" : secretOrbDemo ? "秘法削能演习" : shurikenDemo ? "风魔飞镖演习" : wushiDemo ? "武僧无式演习" : jungleDemo ? "丛林震荡演习": thunderstormDemo ? "雷暴削能演习" : gospelDemo
               ? "福音供能演习"
               : lightningDemo
               ? "雷神锁链演习"
@@ -1117,7 +1123,9 @@ app.addEventListener("click", (e) => {
     action === "wushi-demo" ||
     action === "shuriken-demo" ||
     action === "secret-orb-demo" ||
-    action === "secret-orb-counter-demo"
+    action === "secret-orb-counter-demo" ||
+    action === "bombardment-demo" ||
+    action === "terminator-demo"
   ) {
     if (mobileViewport.matches) showMobileView("battlefield");
     resultPresentation = null;
@@ -1155,10 +1163,12 @@ app.addEventListener("click", (e) => {
       shurikenDemo = action === "shuriken-demo";
       secretOrbDemo = action === "secret-orb-demo";
       secretOrbCounterDemo = action === "secret-orb-counter-demo";
+      bombardmentDemo = action === "bombardment-demo";
+      terminatorDemo = action === "terminator-demo";
       beastDemo = action === "beast-demo";
       staffDemo = action === "staff-demo";
       swordDemo = action === "sword-demo";
-      const { left, right } = secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
+      const { left, right } = terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
         ? GOSPEL_DEMO
         : lightningDemo
           ? LIGHTNING_DEMO
