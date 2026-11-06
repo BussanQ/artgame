@@ -33,6 +33,8 @@ import {
   TERMINATOR,
   WARCRY,
   TORNADO,
+  WILDFIRE,
+  BONEBLAST,
 } from "../data/skills";
 import { RETINUE, SPIRIT_WOLF } from "./summons";
 import { equipmentStats } from "../data/items";
@@ -112,6 +114,11 @@ export function abilityCredit(
   utility +=
     (CONTROL_SECONDS[p.defId] ?? 0) * (skill.radius > 0 ? 1.8 : 1) * 0.035;
   switch (p.defId) {
+    case "bonedragon":
+      // A delayed, dodgeable small circle; the long cooldown does not promise a second cast.
+      attacks=BONEBLAST.multiplier*1.8*0.75;
+      utility=BONEBLAST.stun/4*1.8*0.035*0.75;
+      break;
     case "winddragon":
       // A dodgeable strip through a few units, not a target-centered circle or a full team.
       attacks=TORNADO.damage[p.star-1]*1.8*0.75/(u.attack*2**(p.star-1));
@@ -215,9 +222,12 @@ export function abilityCredit(
       break;
     case "bomber":
     case "eel":
-    case "phoenix":
       attacks = skill.multiplier * 2 * 1.8;
       break; // Interrupted channels/targets walking away.
+    case "phoenix":
+      // Partial channel on two targets; never assume a whole team stays inside or an egg hatches.
+      attacks = WILDFIRE.damage[p.star - 1] * 2 * 0.65 / (u.attack * 2 ** (p.star - 1));
+      break;
     case "ark":
       // Credit one dodgeable pass on a few targets, not three packets per target or an entire team.
       attacks = BOMBARDMENT.damage[p.star - 1] * 1.8 * 0.75 / (u.attack * 2 ** (p.star - 1));

@@ -205,7 +205,7 @@ describe("翔龙龙卷风",()=>{
 describe("龙卷风版本与存档",()=>{
   it("35个旧翔龙定义保持，其他单位、既有能力、连携与异虫双合继承",()=>{
     for(const entry of frozen.definitions)expect(unitDefinition("winddragon",oldVersion(entry.version))).toEqual(entry.unit);
-    for(const u of UNITS.filter(u=>u.id!=="winddragon"))expect(unitDefinition(u.id)).toEqual(unitDefinition(u.id,"warcry"));
+    for(const u of UNITS.filter(u=>u.id!=="winddragon"))expect(unitDefinition(u.id,"tornado")).toEqual(unitDefinition(u.id,"warcry"));
     expect(traitTiers(CURRENT_COMBAT_VERSION)).toEqual(traitTiers("warcry"));
     const party=["lion","titan","ark","treant","master","panda","monk","stormcaller"].map((id,i)=>({...piece(id,i+1),position:32+i}));
     expect(army(party,0)).toEqual(army(party,0,"warcry"));expect(mergeCount([piece("eyebug",1),piece("spider",2)],"eyebug",1)).toBe(2);
@@ -230,6 +230,7 @@ describe("龙卷风版本与存档",()=>{
     });
   it("缺失目录的0.62新局回填warcry，狂狮三费与翔龙四费容量不漂移",()=>{
     const game=createGame(1,"classic");game.combatVersion="warcry";delete game.catalogVersion;
+    game.pool.phoenix=COPIES[4]; // A real 0.62 catalogue predates the 0.64 Phoenix price change.
     const decoded=decodeSave(JSON.stringify({schema:61,rules:"singleplayer-0.62",savedAt:1,revision:1,game,playback:{time:0,speed:1,paused:false}}));
     expect(decoded.status).toBe("migrated");expect(decoded.data!.game.catalogVersion).toBe("warcry");
     expect(catalogCost(decoded.data!.game,"lion")).toBe(3);expect(catalogCost(decoded.data!.game,"winddragon")).toBe(4);expect(validGame(decoded.data!.game)).toBe(true);

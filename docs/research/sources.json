@@ -53,7 +53,8 @@
       "qiReview": "0.48重新下载并目视S04-2第11行，SHA与先前转录一致，采用550生命、5护甲、5格、2.2秒及153–166区间取整均值160。原始字段保持不变；本次页面正文未成功重新获取，不能称全文复核。见qi-history.json。",
       "gospelReview": "0.52采用第40行二费、600生命、40–45攻击、5甲、4格、1.7秒及被动定位，原始表格不改写。",
       "thunderstormReview": "0.53采用S04-1第39行的一费、400生命、36–44攻击、5甲、4格、1.1秒与5/4/3秒冷却。攻击取均值40；原始表格字段不改写，S55客户端卡的伤害与路径宽度分期记录。",
-      "jungleReview": "0.54采用S04-1第38行五费、950生命、40–49攻击、5甲、1格、1.7秒、30秒及每秒回血5；确定攻击取45，原始转录不改写。"
+      "jungleReview": "0.54采用S04-1第38行五费、950生命、40–49攻击、5甲、1格、1.7秒、30秒及每秒回血5；确定攻击取45，原始转录不改写。",
+      "wildfireReview": "0.64重新目视S04-1第32行，采用三费、450生命、71–81攻击取均值76、5甲、3格及1.6秒；七月异能与当前早期攻城分类分期保留，原转录不改写。"
     },
     {
       "id": "S05",
@@ -305,10 +306,18 @@
       "status": "text-reviewed",
       "accessedAt": "2026-11-03",
       "targetVersion": "2020 historical version; not the April 2019 roster",
-      "reviewNotes": "矩形持续喷火、二星起化蛋和蛋未破则复活。文中羁绊为猛禽/爆破/法术；本项目采用早期攻城原型映射，属性/倍率/3秒孵化/每战一次均自主配置。属性段出现刀奴笔误，未直接采入。"
+      "reviewNotes": "矩形持续喷火、二星起化蛋和蛋未破则复活。文中羁绊为猛禽/爆破/法术；本项目采用早期攻城原型映射，属性/倍率/3秒孵化/每战一次均自主配置。属性段出现刀奴笔误，未直接采入。",
+      "wildfireReview": "0.64重读二手正文及活动技能配图；800/1600火种生命仅作二手交叉说明，不作为原卡确证。正文有刀奴笔误，400生命与S04的450分期保留；本轮没有取得涅槃被动原卡。"
     },
     {
       "id": "S28",
+      "boneblastReview": {
+        "reviewedAt": "2026-11-07",
+        "publishedAt": "2019-06-04",
+        "status": "body-and-embedded-client-image-reviewed",
+        "record": "boneblast-history.json",
+        "note": "客户端图确认骨爆、25秒、巨大骨球和圆形伤害/眩晕。卡面裁切，不推断伤害与眩晕梯度；正文二手说明与原卡视觉证据分开。"
+      },
       "title": "赤潮自走棋哪些棋子必拿 必拿棋子盘点推荐",
       "url": "https://www.9game.cn/cczzq/3200866.html",
       "publishedAt": null,
@@ -659,6 +668,13 @@
         "imageSha256": "b9d616c2204b0f92689f3e27fd4223fd57213d2672a975a682e0e278565540e0",
         "details": "tornado-history.json",
         "note": "0.63目视翔龙原始客户端卡：四费、龙/攻城、20秒、150/200/250与落地眩晕1.5/2/3秒，沿途移动/击飞。早期陆行者目录保留；后期龙族真伤未混入。宽度、速度、行程、起手、空中时间与法术分类均另记适配。"
+      },
+      "wildfireReview": {
+        "image": "images/phoenix-wildfire-client-dec2019.jpg",
+        "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/oCtXaIbnCjisfew.jpg",
+        "imageSha256": "7c94d5de1aff5a96093cf360647aefae1607fef939e7e790c34314d508b4eeba",
+        "details": "wildfire-history.json",
+        "note": "0.64实际目视原始客户端卡：三费、15秒、450/600/1050、4/5.5/7秒矩形持续伤害、二星解锁涅槃及蓝/红/金缩略图。卡面未给频率、总量/逐秒、全程引导、矩形尺寸或孵化时长；这些均明确记录为本地适配。"
       }
     },
     {
@@ -776,5 +792,11 @@
     "record": "secret-orb-history.json",
     "primaryEvidence": "S59原始客户端卡与S04原表重新目视，S57官方署名HTML重新核对。",
     "boundary": "跨期、后期差异、不适用配图与本地参数分开记录。"
+  },
+  "wildfireReview": {
+    "rules": "singleplayer-0.64",
+    "record": "wildfire-history.json",
+    "primaryEvidence": "S55原始客户端卡与S04-1第32行实测表已目视，原卡/实测/二手正文分级记录。",
+    "boundary": "保留当前早期职业目录；未把七月异能、后期法术与早期吸血当作同一机制。引导、总量解释、频率与孵化时长未确证。"
   }
 }

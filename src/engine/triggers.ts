@@ -27,6 +27,7 @@ export function usesEnergy(f: Fighter) {
   return !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
+  if (f.wildfire?.casting || f.wildfire?.channel) return false;
   if (f.secretOrb?.casting || f.secretOrb?.channel) return false;
   if (f.shuriken?.casting) return false;
   if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return false;

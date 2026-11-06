@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-11-07",
+  "rules": "singleplayer-0.65",
+  "combatVersion": "boneblast",
+  "saveSchema": 64,
+  "tests": {
+    "command": "npm run test:boneblast -- --reporter=json --outputFile=tmp/boneblast-module-tests.json",
+    "passed": 92,
+    "failed": 0,
+    "suites": {
+      "tests/boneblast.test.ts": 33,
+      "tests/immortality.test.ts": 13,
+      "tests/wildfire.test.ts": 46
+    },
+    "rawReport": "../../tmp/boneblast-module-tests.json"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 142,
+    "artifacts": [
+      "dist/assets/index-DmsvAJ94.js",
+      "dist/assets/worker-Buc4o6J9.js",
+      "dist/assets/index-0iwQsGQW.css"
+    ]
+  },
+  "compatibility": {
+    "frozenDefinitions": 37,
+    "frozenSmallReplays": 3,
+    "fixture": "../../tests/fixtures/pre-v065-bonedragon-replays.json",
+    "fullAllVersionBattleMatrix": false
+  },
+  "scene": {
+    "fixture": "../../src/data/boneblast-demo.ts",
+    "size": "3v3",
+    "fullFastAndWorkerEqual": true,
+    "mutatesInput": false,
+    "boneOrbsActuallyHit": true
+  },
+  "browser": {
+    "newBoneDragonArtReviewed": false,
+    "reason": "本次推送仅完成必要模块与构建验证；没有补做浏览器画面验收。",
+    "previousPhoenixEvidence": "wildfire-v064-validation.json"
+  },
+  "sampling": {
+    "newCampaigns": 0,
+    "newBulkBalanceSampling": 0
+  },
+  "remaining": [
+    "骨龙新形象实际Canvas验收",
+    "完整历史伤害/控制数列和统一公式",
+    "完整单机平衡与真实设备验收"
+  ]
+}

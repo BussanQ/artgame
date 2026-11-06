@@ -28,12 +28,14 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "tornado";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "boneblast";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
+export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
+export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
 export const hasWarcryRules = (version: CombatVersion) => hasRuleSince(version,"warcry");
 export const hasTerminatorRules = (version: CombatVersion) => hasRuleSince(version,"terminator");
@@ -173,6 +175,21 @@ export interface RoundReport {
   inventory?: string[];
 }
 export interface Fighter {
+  /** Fixed-point bone orbs continue after launch; stun applications are counted separately from damage. */
+  boneblast?: {
+    launched: number; detonated: number; hits: number; stuns: number; interrupted: number;
+    orbs: { start: number; landAt: number; from: { x: number; y: number };
+      to: { x: number; y: number }; damage: number; side: 0 | 1 }[];
+  };
+  /** Fixed-area fire channel; rebirth does not reset its cooldown or the once-per-fight passive. */
+  wildfire?: {
+    formed: number; pulses: number; hits: number; interrupted: number;
+    eggs: number; hatches: number; brokenEggs: number;
+    casting?: { start: number; until: number; from: { x: number; y: number };
+      to: { x: number; y: number }; damage: number; side: 0 | 1 };
+    channel?: { start: number; until: number; from: { x: number; y: number };
+      to: { x: number; y: number }; damage: number; side: 0 | 1; nextIndex: number; totalPulses: number };
+  };
   /** Released, moving cyclones retain their launch side and cast-time spell power. */
   tornado?: {
     launched: number; contacts: number; knockups: number; landings: number;
@@ -388,6 +405,7 @@ export interface Fighter {
         | "terminator"
         | "warcry"
         | "tornado"
+        | "boneblast"
         | "eel"
         | "phoenix"
         | "whale"

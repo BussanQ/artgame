@@ -6,6 +6,8 @@ import { advanceBombardments } from "./bombardment";
 import { advanceTerminatorMissiles } from "./terminator";
 import { expireWarcry } from "./warcry";
 import { advanceTornadoes } from "./tornado";
+import { advanceWildfireAction, advanceWildfirePulses, expireWildfires } from "./wildfire";
+import { advanceBoneBlasts } from "./boneblast";
 import { advanceShurikenCast, advanceShurikenFields, expireShurikenCasts } from "./shuriken";
 import { advanceSecretOrbAction, advanceSecretOrbPulses, expireSecretOrbs } from "./secret-orb";
 import { advanceJungleLandings, jungleContains } from "./jungle";
@@ -17,6 +19,8 @@ import { unitArmor, unitDefinition } from "../data/unit-stats";
 import { seedAssassinStrikes } from "./assassins";
 import {
   CURRENT_COMBAT_VERSION,
+  hasBoneBlastRules,
+  hasWildfireRules,
   hasTornadoRules,
   hasWarcryRules,
   hasTerminatorRules,
@@ -132,6 +136,10 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasBoneBlastRules(definitionVersion) && d.id === "bonedragon"
+          ? {boneblast:{launched:0,detonated:0,hits:0,stuns:0,interrupted:0,orbs:[]}} : {}),
+        ...(hasWildfireRules(definitionVersion) && d.id === "phoenix"
+          ? {wildfire:{formed:0,pulses:0,hits:0,interrupted:0,eggs:0,hatches:0,brokenEggs:0}} : {}),
         ...(hasTornadoRules(definitionVersion) && d.id === "winddragon"
           ? {tornado:{launched:0,contacts:0,knockups:0,landings:0,vortices:[]}} : {}),
         ...(hasWarcryRules(definitionVersion) && d.id === "lion"
@@ -572,8 +580,10 @@ function runBattle(
     advanceBombardments(context);
     advanceTerminatorMissiles(context);
     advanceTornadoes(context);
+    advanceBoneBlasts(context);
     advanceShurikenFields(context);
     advanceSecretOrbPulses(context);
+    advanceWildfirePulses(context);
     advanceGospel(context);
     // Alternate initiative each tick to avoid permanent left-side first-action priority.
     const order =
@@ -600,6 +610,7 @@ function runBattle(
           f.wushi?.casting ||
           f.shuriken?.casting ||
           f.secretOrb?.casting || f.secretOrb?.channel ||
+          f.wildfire?.casting || f.wildfire?.channel ||
           f.combo ||
           f.bird?.draw) &&
         f.cooldown > 0
@@ -610,6 +621,7 @@ function runBattle(
       if (advanceWushi(context, f)) continue;
       if (advanceShurikenCast(context, f)) continue;
       if (advanceSecretOrbAction(context, f)) continue;
+      if (advanceWildfireAction(context, f)) continue;
       if (advanceFaithArrow(context, f)) continue;
       if (advanceHawkCombo(context, f)) continue;
       if (advanceWindup(context, f)) continue;
@@ -751,7 +763,7 @@ function runBattle(
     expireWushiTaunts(context);
     expireShurikenCasts(context);
     expireSecretOrbs(context);
-    expireSecretOrbs(context);
+    expireWildfires(context);
     for (const f of fighters) {
       if (f.signature) f.signature.concealed = concealed(f, fighters, tick);
       if (f.gale)

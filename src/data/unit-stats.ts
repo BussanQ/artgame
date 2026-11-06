@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasBoneBlastRules,
+  hasWildfireRules,
   hasTornadoRules,
   hasWarcryRules,
   hasTerminatorRules,
@@ -140,11 +142,23 @@ const oldWinddragon: UnitDef = {
   ...UNIT.winddragon, hp: 1100, attack: 75, range: 3, interval: 4,
   initialMana: 50, magicResist: undefined, skill: "游龙卷风",
 };
+const oldPhoenix: UnitDef = {
+  ...UNIT.phoenix, cost: 4, hp: 1000, attack: 85, armor: 4, range: 3, interval: 4,
+};
+const oldBoneDragon: UnitDef = {
+  ...UNIT.bonedragon, hp: 1000, attack: 88, armor: 5, range: 3, interval: 4,
+  skill: "冥霜吐息",
+};
+const oldBoneDragonBlast: UnitDef = { ...oldBoneDragon, traits: previousTraits.bonedragon };
 /** Keep the original portrait available to in-flight battles and historical reports. */
 export function unitSprite(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
+  star = 1,
 ) {
+  if (id === "bonedragon" && hasBoneBlastRules(version)) return "bonedragon-boneblast";
+  if (id === "phoenix" && hasWildfireRules(version))
+    return star >= 3 ? "phoenix-wildfire-gold" : star === 2 ? "phoenix" : "phoenix-wildfire-blue";
   if (id === "winddragon" && hasTornadoRules(version)) return "winddragon-tornado";
   if (id === "titan" && hasTerminatorRules(version)) return "titan-terminator";
   if (id === "monk" && hasSecretOrbRules(version)) return "monk-orb";
@@ -160,6 +174,9 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "bonedragon" && !hasBoneBlastRules(version))
+    return hasLineageRules(version) ? oldBoneDragon : oldBoneDragonBlast;
+  if (id === "phoenix" && !hasWildfireRules(version)) return oldPhoenix;
   if (id === "winddragon" && !hasTornadoRules(version)) return oldWinddragon;
   if (id === "lion" && !hasWarcryRules(version)) return oldLion;
   if (id === "titan" && !hasTerminatorRules(version)) return hasLineageRules(version) ? oldTitan : oldTitanGuard;

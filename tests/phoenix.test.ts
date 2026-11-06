@@ -1,7 +1,11 @@
 import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { advanceSonic } from "../src/engine/wild-skills";
 import { describe, it, expect } from "vitest";
-import { army, simulate, simulateOutcome } from "../src/engine/battle";
+import { army as armyAtVersion, simulate as simulateAtVersion, simulateOutcome as outcomeAtVersion } from "../src/engine/battle";
+// These fixtures describe the original 0.17 prototype, preserved through 0.63.
+const army = (pieces: Piece[], side: 0 | 1) => armyAtVersion(pieces, side, "tornado");
+const simulate = (left: Piece[], right: Piece[]) => simulateAtVersion(left, right, "tornado");
+const simulateOutcome = (left: Piece[], right: Piece[]) => outcomeAtVersion(left, right, "tornado");
 import {
   castSkill,
   damage,
@@ -286,7 +290,7 @@ describe("燎原矩形引导", () => {
       kind: "replay",
       left,
       right,
-      version: CURRENT_COMBAT_VERSION,
+      version: "tornado",
     });
     expect(w.kind).toBe("replay");
     if (w.kind !== "replay") return;

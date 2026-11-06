@@ -1,5 +1,7 @@
 import {
   CURRENT_COMBAT_VERSION,
+  hasBoneBlastRules,
+  hasWildfireRules,
   hasTornadoRules,
   hasWarcryRules,
   hasTerminatorRules,
@@ -815,10 +817,34 @@ export const TORNADO = {
 export const TORNADO_SKILL = define({name:TORNADO.name,role:TORNADO.role,
   damageType:"magic",description:TORNADO.description});
 
+/** S55 client damage, duration and cooldown; cadence, total-budget interpretation,
+ * tile geometry, startup and interruptible channel are explicit local adaptations. */
+export const WILDFIRE = {
+  name: "燎原 / 涅槃", role: "矩形持续法伤与重生",
+  damage: [450, 600, 1050], duration: [16, 22, 28],
+  cooldown: 60, windup: 2, pulseInterval: 2,
+  description: "初始能量25。满能量且15秒冷却结束时，朝射程3格内可见敌人的当前位置蓄焰0.5秒，锁定前方长5格、宽3格的矩形区域，引导4/5.5/7秒（一/二/三星）。每0.5秒一次，分别8/11/14跳，每名始终在范围内的敌人累计受到450/600/1050基础法术伤害，受起手技能强度放大，不取普通攻击力；首跳在引导开始0.5秒后。每跳按当前占位、法术减伤和护盾结算，敌人可走出区域躲避，飞行和隐蔽敌军也可被波及，不伤友军。蓄焰与引导期间不能移动或普攻；眩晕、沉默、魅惑、阵亡或化为火种都会中断，未发生的伤害取消，能量与冷却不退还。二星起首次致死化为800/1600生命的地面火种，占据原格且可被攻击，不能行动、治疗、加盾或回能；3秒未被打破则满血、零能量重生，每战仅一次。一星没有涅槃。火种保留原护甲和装备防御，重生恢复包含装备的本体生命，不计为治疗，不重置燎原冷却。",
+} as const;
+export const WILDFIRE_SKILL = define({name:WILDFIRE.name,role:WILDFIRE.role,
+  damageType:"magic",description:WILDFIRE.description});
+
+/** Client image confirms name, 25s cooldown and a bone orb with circular impact.
+ * Damage/stun retain local prototype values; timing/geometry are local until a full card is found. */
+export const BONEBLAST = {
+  name: "骨爆", role: "骨球范围伤害与眩晕",
+  cooldown: 100, windup: 5, speed: 0.75, radius: 1, multiplier: 2.2, stun: 4,
+  description: "初始能量0。满能量且25秒冷却结束时，锁定射程4格内可见敌人的当前位置，原地蓄力1.25秒后吐出巨大骨球。骨球每秒飞行3格，在固定落点周围圆形半径1格爆炸，造成起手220%攻击的法术伤害，并使仍存活且可被控制的敌人眩晕1秒。起手冻结攻击力与技能强度，落地按当前占位、魔抗、护盾及技能免伤独立结算；可波及飞行和隐蔽敌军，不伤发射阵营的友军。目标可走出落点躲避，蓄力中不能移动或普攻，眩晕、沉默、魅惑或阵亡取消未吐出的骨球，不返还能量与冷却。已经吐出的骨球保留发射阵营和伤害，施法者阵亡、进入残魂或受控后仍会落地；落地反伤击杀来源不会取消同次爆炸的其余目标。狂舞免控、残魂和涅槃火种不受眩晕，火种仍可承受伤害。冷却从蓄力开始计算；战斗结束就停止，不延长等待。",
+} as const;
+export const BONEBLAST_SKILL = define({name:BONEBLAST.name,role:BONEBLAST.role,
+  multiplier:BONEBLAST.multiplier,damageType:"magic",radius:BONEBLAST.radius,
+  duration:BONEBLAST.stun,description:BONEBLAST.description});
+
 export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (hasBoneBlastRules(version) && id === "bonedragon") return BONEBLAST.description;
+  if (hasWildfireRules(version) && id === "phoenix") return WILDFIRE.description;
   if (hasTornadoRules(version) && id === "winddragon") return TORNADO.description;
   if (hasWarcryRules(version) && id === "lion") return WARCRY.description;
   if (hasTerminatorRules(version) && id === "titan") return TERMINATOR.description;
@@ -941,6 +967,8 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "bonedragon" && hasBoneBlastRules(version) ? BONEBLAST.name :
+  id === "phoenix" && hasWildfireRules(version) ? WILDFIRE.name :
   id === "winddragon" && hasTornadoRules(version) ? TORNADO.name :
   id === "lion" && hasWarcryRules(version) ? WARCRY.name :
   id === "titan" && hasTerminatorRules(version) ? TERMINATOR.name :
@@ -994,6 +1022,8 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "bonedragon" && hasBoneBlastRules(version) ? BONEBLAST.role :
+  id === "phoenix" && hasWildfireRules(version) ? WILDFIRE.role :
   id === "winddragon" && hasTornadoRules(version) ? TORNADO.role :
   id === "lion" && hasWarcryRules(version) ? WARCRY.role :
   id === "titan" && hasTerminatorRules(version) ? TERMINATOR.role :

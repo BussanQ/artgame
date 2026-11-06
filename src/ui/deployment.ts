@@ -40,7 +40,7 @@ export function deploymentMarkup(
             const pos = index + 32,
               piece = player.pieces.find((p) => p.position === pos),
               coordinate = `${"ABCDEFGH"[pos % 8]}${Math.floor(pos / 8) + 1}`;
-            return `<button role="gridcell" data-cell="${pos}" aria-label="己方 ${Math.floor(pos / 8) + 1}行${(pos % 8) + 1}列${piece ? `，${UNIT[piece.defId].name} ${piece.star} 星` : "，空位"}" aria-selected="${piece?.uid === selected}" ${busy ? "disabled" : ""} class="${piece ? "occupied" : ""}"><small>${coordinate}</small>${piece ? `<img src="/assets/units/${unitSprite(piece.defId, version)}.png" alt=""><b>${UNIT[piece.defId].name}</b>` : "<span>＋</span>"}</button>`;
+            return `<button role="gridcell" data-cell="${pos}" aria-label="己方 ${Math.floor(pos / 8) + 1}行${(pos % 8) + 1}列${piece ? `，${UNIT[piece.defId].name} ${piece.star} 星` : "，空位"}" aria-selected="${piece?.uid === selected}" ${busy ? "disabled" : ""} class="${piece ? "occupied" : ""}"><small>${coordinate}</small>${piece ? `<img src="/assets/units/${unitSprite(piece.defId, version, piece.star)}.png" alt=""><b>${UNIT[piece.defId].name}</b>` : "<span>＋</span>"}</button>`;
           },
         ).join("")}</div>`
       : ""

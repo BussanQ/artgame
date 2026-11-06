@@ -1,0 +1,935 @@
+{
+  "capturedBeforeRules": "singleplayer-0.65",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "tornado",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    },
+    {
+      "version": "wildfire",
+      "unit": {
+        "id": "bonedragon",
+        "name": "骨龙",
+        "cost": 4,
+        "traits": [
+          "不朽",
+          "攻城",
+          "猛禽"
+        ],
+        "hp": 1000,
+        "attack": 88,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "skill": "冥霜吐息",
+        "color": "#b4e4d7",
+        "glyph": "骨",
+        "flying": true
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "bonedragon",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "hash": "49978adb80ae6c1b778964e379e57f1dbc8b755d20801e9c732c796bd22afc65",
+      "boneCasts": 4,
+      "immortal": false,
+      "frames": 76
+    },
+    {
+      "version": "lineages",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "bonedragon",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "hash": "6e6d743c0efb1361cccde52f565ee799cd654bb686e4172fd8488b5a2c937427",
+      "boneCasts": 3,
+      "immortal": false,
+      "frames": 67
+    },
+    {
+      "version": "wildfire",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "bonedragon",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "cannon",
+          "star": 3,
+          "position": 43
+        }
+      ],
+      "hash": "db6bf12c40bf83a9de7bef67bacb60b609ae3504d9e7b6ab87c7f9a7de523b2b",
+      "boneCasts": 1,
+      "immortal": true,
+      "frames": 34
+    }
+  ]
+}

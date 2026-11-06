@@ -245,7 +245,7 @@ describe("战吼版本、经营与存档",()=>{
   for(const version of ["terminator","warcry"] as const)
     it(`${version}目录的二/三费及30/25份卡池在真实购买和出售中守恒`,()=>{
       const game=createGame(1,"classic"),p=game.players[0],price=version==="warcry"?3:2;
-      game.catalogVersion=version;game.pool.lion=COPIES[price];p.level=5;
+      game.catalogVersion=version;game.pool.lion=COPIES[price];game.pool.phoenix=COPIES[4];p.level=5;
       expect(game.pool.lion).toBe(version==="warcry"?25:30);expect(catalogCost(game,"lion")).toBe(price);
       expect(catalogUnit(game,"lion")).toMatchObject({cost:price,hp:700,skill:"战吼"});
       game.pool[p.shop[0]!]++;p.shop[0]="lion";game.pool.lion--;

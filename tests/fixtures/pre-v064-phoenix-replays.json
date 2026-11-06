@@ -1,0 +1,907 @@
+{
+  "capturedBeforeRules": "singleplayer-0.64",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    },
+    {
+      "version": "tornado",
+      "unit": {
+        "id": "phoenix",
+        "name": "不死鸟",
+        "cost": 4,
+        "traits": [
+          "猛禽",
+          "攻城",
+          "爆破"
+        ],
+        "hp": 1000,
+        "attack": 85,
+        "armor": 4,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 25,
+        "flying": true,
+        "skill": "燎原 / 涅槃",
+        "color": "#f4c382",
+        "glyph": "凰"
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "phoenix",
+          "star": 2,
+          "position": 35
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35
+        }
+      ],
+      "hash": "afe225490b3ac8ffdf5977bf20da7231eea3a0d0d5e42c3aa30493e896118014",
+      "phoenixCasts": 6,
+      "eggs": 1,
+      "hatches": 1,
+      "frames": 143
+    },
+    {
+      "version": "metamorph",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "phoenix",
+          "star": 2,
+          "position": 35
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35
+        }
+      ],
+      "hash": "5be40e0e2cb6e8642be780c336f574030f0f9111be3a0730e429a0ee0f13a1eb",
+      "phoenixCasts": 6,
+      "eggs": 1,
+      "hatches": 1,
+      "frames": 143
+    },
+    {
+      "version": "tornado",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "phoenix",
+          "star": 2,
+          "position": 35
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35
+        }
+      ],
+      "hash": "92aa12beba783a1f16a3fccf69c2c8d6cc22b76c903e8b1cbeddf6b4f9d8407c",
+      "phoenixCasts": 6,
+      "eggs": 1,
+      "hatches": 1,
+      "frames": 143
+    }
+  ]
+}

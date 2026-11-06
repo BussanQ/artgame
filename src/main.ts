@@ -1,6 +1,8 @@
 import { TERMINATOR_DEMO } from "./data/terminator-demo";
 import { WARCRY_DEMO } from "./data/warcry-demo";
 import { TORNADO_DEMO } from "./data/tornado-demo";
+import { WILDFIRE_DEMO } from "./data/wildfire-demo";
+import { BONEBLAST_DEMO } from "./data/boneblast-demo";
 import { BOMBARDMENT_DEMO } from "./data/bombardment-demo";
 import { WUSHI_DEMO } from "./data/wushi-demo";
 import { SHURIKEN_DEMO } from "./data/shuriken-demo";
@@ -260,6 +262,8 @@ let bombardmentDemo = false;
 let terminatorDemo = false;
 let warcryDemo = false;
 let tornadoDemo = false;
+let wildfireDemo = false;
+let boneblastDemo = false;
 let beastDemo = false;
 let staffDemo = false;
 let swordDemo = false;
@@ -278,7 +282,7 @@ const stars = (n: number) => "★".repeat(n);
 function token(p: Piece | Fighter, enemy = false) {
   const u = UNIT[p.defId];
   const fighter = "hp" in p ? p : null;
-  return `<span class="piece ${enemy ? "enemy" : ""} ${fighter?.flash ? "flash" : ""}" style="--unit:${u.color}"><img class="unit-portrait" src="${spriteUrl(fighter ? fighterSprite(fighter) : unitSprite(p.defId, game.combatVersion))}" alt="${u.name}" draggable="false"><span class="piece-name">${u.name}</span><span class="stars">${stars(p.star)}</span>${fighter ? `<span class="health"><i style="width:${Math.max(0, (fighter.hp / fighter.maxHp) * 100)}%"></i></span>` : ""}</span>`;
+  return `<span class="piece ${enemy ? "enemy" : ""} ${fighter?.flash ? "flash" : ""}" style="--unit:${u.color}"><img class="unit-portrait" src="${spriteUrl(fighter ? fighterSprite(fighter) : unitSprite(p.defId, game.combatVersion, p.star))}" alt="${u.name}" draggable="false"><span class="piece-name">${u.name}</span><span class="stars">${stars(p.star)}</span>${fighter ? `<span class="health"><i style="width:${Math.max(0, (fighter.hp / fighter.maxHp) * 100)}%"></i></span>` : ""}</span>`;
 }
 function render() {
   app
@@ -384,6 +388,8 @@ function render() {
           ["terminator-demo", "终结者轰炸"],
           ["warcry-demo", "战吼石化"],
           ["tornado-demo", "龙卷穿阵"],
+          ["wildfire-demo", "燎原涅槃"],
+          ["boneblast-demo", "骨球震爆"],
           ["bombardment-demo", "集团轰炸"],
           ["secret-orb-demo", "秘法削能"],
           ["secret-orb-counter-demo", "秘法反制"],
@@ -397,7 +403,7 @@ function render() {
           .join("")}</div></details>`
   }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="restart">重新开始</button></nav><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></header>
  ${computing || computeError ? `<section class="compute-status" role="status" aria-live="polite"><span>${computing ? pendingJob?.label : computeError}</span><div>${!computing ? '<button data-action="retry-compute">重试计算</button>' : ""}<button data-action="cancel-compute">${computing ? "取消计算" : "关闭"}</button></div></section>` : ""}
- <h1 class="toolbar-title">${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : tornadoDemo ? "龙卷穿阵 · 战术演习" : warcryDemo ? "战吼石化 · 战术演习" : terminatorDemo ? "终结者轰炸 · 战术演习" : bombardmentDemo ? "集团轰炸 · 战术演习" : secretOrbCounterDemo ? "秘法反制 · 战术演习" : secretOrbDemo ? "秘法削能 · 战术演习" : shurikenDemo ? "风魔飞镖 · 战术演习" : wushiDemo ? "武僧无式 · 战术演习" : jungleDemo ? "丛林震荡 · 战术演习": thunderstormDemo ? "雷暴削能 · 战术演习" : gospelDemo ? "福音供能 · 战术演习" : lightningDemo ? "雷神锁链 · 战术演习" : tarDemo ? "焦油爆破 · 战术演习" : taotieDemo ? "饕餮狂暴 · 战术演习" : auroraDemo ? "极光成长 · 战术演习" : coalitionDemo ? "空援协同 · 战术演习" : abnormalDemo ? "异能续战 · 战术演习" : counterplayDemo ? "狙骑反制 · 战术演习" : assassinDemo ? "六刺突袭 · 战术演习" : wildfrontDemo ? "荒原先锋 · 战术演习" : lingjiuDemo ? "海神刺杀 · 战术演习" : beastDemo ? "野兽破阵 · 战术演习" : staffDemo ? "疾风棍阵 · 战术演习" : shieldDemo ? "傀儡卫阵 · 战术演习" : bladeDemo ? "傀儡战刃 · 战术演习" : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "赤潮战术演习"}</h1>
+ <h1 class="toolbar-title">${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : boneblastDemo ? "骨球震爆 · 战术演习" : wildfireDemo ? "燎原涅槃 · 战术演习" : tornadoDemo ? "龙卷穿阵 · 战术演习" : warcryDemo ? "战吼石化 · 战术演习" : terminatorDemo ? "终结者轰炸 · 战术演习" : bombardmentDemo ? "集团轰炸 · 战术演习" : secretOrbCounterDemo ? "秘法反制 · 战术演习" : secretOrbDemo ? "秘法削能 · 战术演习" : shurikenDemo ? "风魔飞镖 · 战术演习" : wushiDemo ? "武僧无式 · 战术演习" : jungleDemo ? "丛林震荡 · 战术演习": thunderstormDemo ? "雷暴削能 · 战术演习" : gospelDemo ? "福音供能 · 战术演习" : lightningDemo ? "雷神锁链 · 战术演习" : tarDemo ? "焦油爆破 · 战术演习" : taotieDemo ? "饕餮狂暴 · 战术演习" : auroraDemo ? "极光成长 · 战术演习" : coalitionDemo ? "空援协同 · 战术演习" : abnormalDemo ? "异能续战 · 战术演习" : counterplayDemo ? "狙骑反制 · 战术演习" : assassinDemo ? "六刺突袭 · 战术演习" : wildfrontDemo ? "荒原先锋 · 战术演习" : lingjiuDemo ? "海神刺杀 · 战术演习" : beastDemo ? "野兽破阵 · 战术演习" : staffDemo ? "疾风棍阵 · 战术演习" : shieldDemo ? "傀儡卫阵 · 战术演习" : bladeDemo ? "傀儡战刃 · 战术演习" : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "赤潮战术演习"}</h1>
  ${!demoBattle ? matchSummaryMarkup(game) : ""}
  <main><aside class="left"><section class="panel commander" id="commander"><span class="eyebrow">COMMANDER</span><label class="difficulty-setting">难度<select data-difficulty aria-label="单机难度" title="仅在第 1 回合开战前选择难度" ${disabled(game.round !== 1 || busy || !!demoBattle)}>${Object.entries(
    DIFFICULTIES,
@@ -845,7 +851,7 @@ app.addEventListener("click", (e) => {
         demoBattle
           ? replayRound
             ? `第 ${replayRound} 回合回放`
-            : tornadoDemo ? "龙卷穿阵演习" : warcryDemo ? "战吼石化演习" : terminatorDemo ? "终结者轰炸演习" : bombardmentDemo ? "集团轰炸演习" : secretOrbCounterDemo ? "秘法反制演习" : secretOrbDemo ? "秘法削能演习" : shurikenDemo ? "风魔飞镖演习" : wushiDemo ? "武僧无式演习" : jungleDemo ? "丛林震荡演习": thunderstormDemo ? "雷暴削能演习" : gospelDemo
+            : boneblastDemo ? "骨球震爆演习" : wildfireDemo ? "燎原涅槃演习" : tornadoDemo ? "龙卷穿阵演习" : warcryDemo ? "战吼石化演习" : terminatorDemo ? "终结者轰炸演习" : bombardmentDemo ? "集团轰炸演习" : secretOrbCounterDemo ? "秘法反制演习" : secretOrbDemo ? "秘法削能演习" : shurikenDemo ? "风魔飞镖演习" : wushiDemo ? "武僧无式演习" : jungleDemo ? "丛林震荡演习": thunderstormDemo ? "雷暴削能演习" : gospelDemo
               ? "福音供能演习"
               : lightningDemo
               ? "雷神锁链演习"
@@ -1133,7 +1139,9 @@ app.addEventListener("click", (e) => {
     action === "bombardment-demo" ||
     action === "terminator-demo" ||
     action === "warcry-demo" ||
-    action === "tornado-demo"
+    action === "tornado-demo" ||
+    action === "wildfire-demo" ||
+    action === "boneblast-demo"
   ) {
     if (mobileViewport.matches) showMobileView("battlefield");
     resultPresentation = null;
@@ -1175,10 +1183,12 @@ app.addEventListener("click", (e) => {
       terminatorDemo = action === "terminator-demo";
       warcryDemo = action === "warcry-demo";
       tornadoDemo = action === "tornado-demo";
+      wildfireDemo = action === "wildfire-demo";
+      boneblastDemo = action === "boneblast-demo";
       beastDemo = action === "beast-demo";
       staffDemo = action === "staff-demo";
       swordDemo = action === "sword-demo";
-      const { left, right } = tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
+      const { left, right } = boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
         ? GOSPEL_DEMO
         : lightningDemo
           ? LIGHTNING_DEMO

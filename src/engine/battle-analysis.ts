@@ -4,6 +4,8 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  boneblast?: Pick<NonNullable<Fighter["boneblast"]>, "launched" | "detonated" | "hits" | "stuns" | "interrupted">;
+  wildfire?: Pick<NonNullable<Fighter["wildfire"]>, "formed" | "pulses" | "hits" | "interrupted" | "eggs" | "hatches" | "brokenEggs">;
   tornado?: Pick<NonNullable<Fighter["tornado"]>, "launched" | "contacts" | "knockups" | "landings">;
   warcry?: Pick<NonNullable<Fighter["warcry"]>, "roars" | "petrified" | "retaliations" | "retaliationDamage" | "retaliationShield">;
   terminator?: Pick<NonNullable<Fighter["terminator"]>, "smallLaunched" | "largeLaunched" | "detonated" | "hits">;
@@ -49,6 +51,10 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.boneblast ? {boneblast:{launched:f.boneblast.launched,detonated:f.boneblast.detonated,
+      hits:f.boneblast.hits,stuns:f.boneblast.stuns,interrupted:f.boneblast.interrupted}} : {}),
+    ...(f.wildfire ? {wildfire:{formed:f.wildfire.formed,pulses:f.wildfire.pulses,hits:f.wildfire.hits,
+      interrupted:f.wildfire.interrupted,eggs:f.wildfire.eggs,hatches:f.wildfire.hatches,brokenEggs:f.wildfire.brokenEggs}} : {}),
     ...(f.tornado ? {tornado:{launched:f.tornado.launched,contacts:f.tornado.contacts,
       knockups:f.tornado.knockups,landings:f.tornado.landings}} : {}),
     ...(f.warcry ? {warcry:{roars:f.warcry.roars,petrified:f.warcry.petrified,

@@ -611,6 +611,7 @@ export function drawRangedAttack(
   to: Point,
   skill: boolean,
   qi = false,
+  wildfireColor?: string,
 ) {
   if (t < 0 || t >= 1) return;
   const profile = RANGED_ACTIONS[id],
@@ -619,7 +620,7 @@ export function drawRangedAttack(
     dy = to.y - from.y,
     angle = Math.atan2(dy, dx);
   c.save();
-  const color = id === "arhat" && qi ? "#93efff" : profile.color;
+  const color = id === "phoenix" && wildfireColor ? wildfireColor : id === "arhat" && qi ? "#93efff" : profile.color;
   c.strokeStyle = color;
   c.fillStyle = color;
   c.shadowColor = color;

@@ -1,6 +1,8 @@
 import { beginWushi, wushiTauntTarget } from "./wushi";
 import { beginShuriken } from "./shuriken";
 import { beginSecretOrb } from "./secret-orb";
+import { beginWildfire } from "./wildfire";
+import { releaseBoneBlast } from "./boneblast";
 import { releaseBombardment } from "./bombardment";
 import { launchTerminator } from "./terminator";
 import { releaseWarcry, retaliateWarcry } from "./warcry";
@@ -51,6 +53,9 @@ import {
   WARCRY_SKILL,
   TORNADO,
   TORNADO_SKILL,
+  WILDFIRE_SKILL,
+  BONEBLAST,
+  BONEBLAST_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -155,6 +160,7 @@ export function damage(
     target.hp <= 0
   )
     return 0;
+  const wasPhoenixEgg = isPhoenixEgg(target);
   const assassinCritical =
     !skill &&
     !reflected &&
@@ -288,6 +294,7 @@ export function damage(
   target.hp -= amount;
   source.damage += amount;
   if (target.hp === 0) {
+    if (wasPhoenixEgg && target.wildfire) target.wildfire.brokenEggs++;
     delete target.bladeStorm;
     delete target.petrifyUntil;
     interruptAirSkill(ctx, target);
@@ -569,10 +576,17 @@ export function interruptAirSkill(ctx: CombatContext, source: Fighter) {
     !source.air?.cast &&
     !source.windup &&
     !source.combo &&
-    !source.bird?.draw
+    !source.bird?.draw &&
+    !source.wildfire?.casting && !source.wildfire?.channel
   )
     return;
   const wasDrawing = !!source.bird?.draw;
+  if (source.boneblast && source.air?.cast?.kind === "boneblast") source.boneblast.interrupted++;
+  if (source.wildfire?.casting || source.wildfire?.channel) {
+    source.wildfire.interrupted++;
+    delete source.wildfire.casting;
+    delete source.wildfire.channel;
+  }
   if (source.bird) delete source.bird.draw;
   if (source.air) delete source.air.cast;
   delete source.windup;
@@ -594,7 +608,7 @@ export function advanceAirSkills(ctx: CombatContext, source: Fighter): boolean {
     source.hp <= 0 ||
     source.charm ||
     source.stunUntil > ctx.tick ||
-    (["irondog", "specialist", "ironape", "tar", "storm", "jungle", "bombardment", "terminator", "warcry", "tornado"].includes(pending.kind) &&
+    (["irondog", "specialist", "ironape", "tar", "storm", "jungle", "bombardment", "terminator", "warcry", "tornado", "boneblast"].includes(pending.kind) &&
       (source.silenceUntil ?? 0) > ctx.tick)
   ) {
     interruptAirSkill(ctx, source);
@@ -620,6 +634,10 @@ export function advanceAirSkills(ctx: CombatContext, source: Fighter): boolean {
     return true;
   }
   if (pending.next > ctx.tick) return true;
+  if (pending.kind === "boneblast") {
+    releaseBoneBlast(source, ctx.tick);
+    return true;
+  }
   if (pending.kind === "tornado") {
     releaseTornado(source,ctx.tick);
     return true;
@@ -800,7 +818,7 @@ export function castSkill(
 ) {
   if (source.gospelAura) return false;
   if (wushiTauntTarget(ctx, source)) return false;
-  const s = source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  const s = source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -815,6 +833,14 @@ export function castSkill(
               : SKILLS[source.defId];
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
+  if (source.boneblast && (!source.air || source.charm || source.stunUntil > ctx.tick ||
+    (source.skillReadyAt ?? 0) > ctx.tick || distance(source, target) > source.range ||
+    (source.x === target.x && source.y === target.y) ||
+    !attackTargets(source, ctx.fighters, ctx.tick).some(f => f.uid === target.uid))) return false;
+  if (source.wildfire && (source.charm || source.stunUntil > ctx.tick ||
+    (source.skillReadyAt ?? 0) > ctx.tick || distance(source, target) > source.range ||
+    (source.x === target.x && source.y === target.y) ||
+    !attackTargets(source, ctx.fighters, ctx.tick).some(f => f.uid === target.uid))) return false;
   if (source.tornado && (!source.air || source.charm || source.stunUntil>ctx.tick ||
     (source.skillReadyAt??0)>ctx.tick || distance(source,target)>source.range ||
     (source.x===target.x && source.y===target.y) ||
@@ -1231,6 +1257,10 @@ export function castSkill(
         };
       break;
     case "phoenix":
+      if (source.wildfire) {
+        beginWildfire(ctx, source, target);
+        break;
+      }
       if (source.air)
         source.air.cast = {
           kind: "phoenix",
@@ -1413,6 +1443,13 @@ export function castSkill(
       stun(ctx, source, target, s.duration);
       break;
     case "bonedragon":
+      if (source.boneblast && source.air) {
+        source.air.cast = {kind:"boneblast",next:ctx.tick+BONEBLAST.windup,remaining:1,
+          damage:combatAttack(source,ctx.tick)*BONEBLAST.multiplier*source.skillPower,
+          from:{x:source.x,y:source.y},to:{x:target.x,y:target.y}};
+        source.skillReadyAt=ctx.tick+BONEBLAST.cooldown;
+        break;
+      }
       for (const enemy of enemies().filter(
         (f) => distance(f, target) <= s.radius,
       )) {

@@ -97,7 +97,9 @@
     "test:bombardment": "vitest run tests/bombardment.test.ts",
     "test:terminator": "vitest run tests/terminator.test.ts tests/bombardment.test.ts",
     "test:warcry": "vitest run tests/warcry.test.ts tests/terminator.test.ts",
-    "test:tornado": "vitest run tests/tornado.test.ts tests/warcry.test.ts"
+    "test:tornado": "vitest run tests/tornado.test.ts tests/warcry.test.ts",
+    "test:wildfire": "vitest run tests/wildfire.test.ts tests/phoenix.test.ts",
+    "test:boneblast": "vitest run tests/boneblast.test.ts tests/immortality.test.ts tests/wildfire.test.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

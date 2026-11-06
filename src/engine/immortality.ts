@@ -1,5 +1,5 @@
 import type { Fighter } from "./types";
-import type { CombatContext } from "./abilities";
+import { interruptAirSkill, type CombatContext } from "./abilities";
 
 /** hp=1 keeps an active soul in targeting and occupancy; it is not restored life. */
 export const isUndying = (fighter: Fighter) =>
@@ -33,6 +33,7 @@ export function expireUndying(ctx: CombatContext) {
     if (!isUndying(fighter) || fighter.immortal!.until > ctx.tick) continue;
     fighter.hp = 0;
     fighter.shield = 0;
+    if (fighter.boneblast) interruptAirSkill(ctx, fighter);
     if (fighter.air) delete fighter.air.cast;
     ctx.effects.push({
       source: fighter.uid,

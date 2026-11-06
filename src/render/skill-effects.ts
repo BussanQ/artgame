@@ -8,6 +8,8 @@ import { drawTerminatorEffect, terminatorLabels } from "./terminator";
 import { drawWarcryEffect, drawWarcryStatus, warcryLabels } from "./warcry";
 import { petrified } from "../engine/warcry";
 import { tornadoLabels } from "./tornado";
+import { wildfireLabels } from "./wildfire";
+import { boneBlastLabels, drawBoneBlastEffect } from "./boneblast";
 import { shieldWaveCells } from "../engine/shieldthrall";
 import { acidCells, corrosionArmor } from "../engine/beasts";
 import { deathSongCells } from "../engine/lingjiu";
@@ -26,10 +28,12 @@ export function drawSkillEffect(
   reducedMotion = false,
 ) {
   if (drawWarcryEffect(c,e,age,reducedMotion)) return;
+  if (drawBoneBlastEffect(c,e,age,reducedMotion)) return;
+  if (e.name === "燎原烈焰") return; // Draw the actual maintained area once, not one overlay per pulse.
   if (drawTerminatorEffect(c,e,age,reducedMotion)) return;
   if (drawBombardmentEffect(c,e,age,reducedMotion)) return;
   // The startup marker and delayed landing are drawn from committed spell state.
-  if (e.kind === "cast" && ["风魔之刃","秘法球","龙卷风"].includes(e.name)) return;
+  if (e.kind === "cast" && ["风魔之刃","秘法球","龙卷风","骨爆"].includes(e.name)) return;
   if (drawWushiEffect(c,e,age,reducedMotion)) return;
   if (drawJungleEffect(c, e, age, reducedMotion)) return;
   if (e.chainHop !== undefined) {
@@ -1068,6 +1072,8 @@ export function drawStatuses(
   labels.push(...terminatorLabels(f,time));
   labels.push(...warcryLabels(f,time));
   labels.push(...tornadoLabels(f,time));
+  labels.push(...wildfireLabels(f,time));
+  labels.push(...boneBlastLabels(f,time));
   if(f.taunt && f.taunt.until>time)labels.push(`无式嘲讽 ${((f.taunt.until-time)/4).toFixed(1)}s · 转向武僧`);
   if (f.air?.cast)
     labels.push(

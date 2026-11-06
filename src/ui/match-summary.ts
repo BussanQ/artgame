@@ -43,7 +43,7 @@ export function matchSummaryMarkup(game: Game): string {
     <div class="match-details"><div><h3>最终出战阵容 <small>${summary.lineup.length} 枚棋子</small></h3><div class="match-lineup">${summary.lineup
       .map((p) => {
         const u = UNIT[p.defId];
-        return `<article style="--unit:${u.color}"><img src="/assets/units/${unitSprite(u.id, last.combatVersion)}.png" alt="${u.name}" loading="lazy"><strong>${u.name}</strong><span class="stars">${"★".repeat(p.star)}</span><small>${(p.items ?? []).map((id) => ITEM[id].name).join(" · ") || "未携带装备"}</small></article>`;
+        return `<article style="--unit:${u.color}"><img src="/assets/units/${unitSprite(u.id, last.combatVersion, p.star)}.png" alt="${u.name}" loading="lazy"><strong>${u.name}</strong><span class="stars">${"★".repeat(p.star)}</span><small>${(p.items ?? []).map((id) => ITEM[id].name).join(" · ") || "未携带装备"}</small></article>`;
       })
       .join(
         "",

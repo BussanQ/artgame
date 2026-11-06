@@ -1,0 +1,103 @@
+{
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.65",
+  "combatVersion": "boneblast",
+  "unitId": "bonedragon",
+  "scope": "确认骨球、圆形控制与25秒冷却，补齐本地蓄力和飞行时序；未读清的数值不作为原版参数。",
+  "sources": [
+    {
+      "id": "S28",
+      "url": "https://www.9game.cn/cczzq/3200866.html",
+      "publishedAt": "2019-06-04",
+      "kind": "secondary-guide-with-original-client-image",
+      "review": "本轮正文和内嵌客户端图已读取。截图确认四费、猛禽/不朽者/攻城、骨爆、25s、巨大骨球及圆形伤害和眩晕。下方裁切且有水印，没有可读的分星级伤害、控制时长或半径，客户端构建号未知。"
+    },
+    {
+      "id": "S04-1",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measured-attribute-table",
+      "row": 34,
+      "fields": {
+        "cost": 4,
+        "hp": 950,
+        "attackRange": [
+          117,
+          141
+        ],
+        "armor": 5,
+        "range": 4,
+        "attackIntervalSeconds": 1.2,
+        "cooldownSeconds": 25
+      },
+      "review": "平均攻击129，间隔转为4.8模拟步。与六月卡跨期，不宣称同一客户端构建。"
+    },
+    {
+      "id": "S52",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "kind": "community-original-review",
+      "review": "原作者描述骨龙前摇较长和范围控制定位，没有精确起手秒数。"
+    },
+    {
+      "id": "S30",
+      "url": "https://news.17173.com/z/zzq/content/05272019/180953197.shtml?_platform=PC",
+      "publishedAt": "2019-05-27",
+      "kind": "publisher-byline-article",
+      "review": "本次复查正文与骨龙相关配图，图中没有可读完整技能卡，不补推伤害或眩晕梯度。"
+    }
+  ],
+  "image": {
+    "url": "https://image.9game.cn/2019/6/4/82313205.jpg",
+    "path": "images/bonedragon-boneblast-client-june2019.png",
+    "format": "PNG",
+    "size": [
+      500,
+      289
+    ],
+    "bytes": 226088,
+    "sha256": "54e492991c2da1c97688c330971a2e28e4dc19abec314fc212cbb1e578e7bb45",
+    "visuallyReviewed": true,
+    "clientBuild": "unknown",
+    "note": "远端URL以jpg结尾，实际原生响应为PNG，按真实格式保存，没有转码。"
+  },
+  "confirmedClientCard": {
+    "cost": 4,
+    "traitsAsPrinted": [
+      "猛禽",
+      "不朽者",
+      "攻城"
+    ],
+    "skill": "骨爆",
+    "cooldownSeconds": 25,
+    "shape": "圆形",
+    "projectile": "巨大骨球",
+    "effect": "技能伤害并眩晕"
+  },
+  "localAdaptation": {
+    "damageMultiplier": 2.2,
+    "stunSeconds": 1,
+    "radiusTiles": 1,
+    "windupSeconds": 1.25,
+    "flightTilesPerSecond": 3,
+    "landing": "fixed at startup",
+    "damageAndSide": "committed after launch",
+    "initialMana": 0,
+    "damageType": "magic",
+    "genericMagicResist": 0.2,
+    "comment": "伤害、眩晕和半径沿用本地原型；飞行、起手及交互是新增适配。攻击采用实测区间均值；未统一历史构建和伤害公式。"
+  },
+  "excluded": [
+    {
+      "url": "https://www.sohu.com/a/421209278_100204787",
+      "reason": "2020转载有后期眩晕调整，非已验证开发方原公告，不混为2019原始梯度。"
+    }
+  ],
+  "unconfirmed": [
+    "分星级技能伤害与眩晕梯度",
+    "精确半径、前摇和飞行速度",
+    "固定落点与追踪规则",
+    "发射后死亡/控制/魅惑交互",
+    "统一客户端构建及通用抗性与伤害公式"
+  ]
+}

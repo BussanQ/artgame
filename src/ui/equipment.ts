@@ -89,7 +89,7 @@ export function equipmentOverviewMarkup(g: Game, heldOnly = false) {
     .map((crafted) => {
       const rows = shown.filter((e) => !!e.item.recipe === crafted);
       if (!rows.length) return "";
-      return `<section class="equipment-ledger-section"><h3>${crafted ? "合成装备" : "基础装备"} · ${rows.length} 种</h3><div class="equipment-ledger-grid">${rows.map(({ item, inventoryCount, equippedCount, total, owners }) => `<article data-equipment-item="${item.id}" aria-label="${item.name}" class="equipment-ledger-card${total ? " is-owned" : ""}"><h4><span class="item-icon">${item.icon}</span>${item.name}</h4><p>${item.description}</p><p class="equipment-ledger-counts">背包 <b>${inventoryKnown ? inventoryCount : "未记录"}</b> · ${equippedLabel} <b>${equippedCount}</b></p><div class="equipment-ledger-owners">${owners.length ? owners.map(({ piece, copies, location }) => `<button data-equipment-owner="${piece.uid}" aria-label="查看${UNIT[piece.defId].name}${piece.star}星${location}的装备"><img src="/assets/units/${unitSprite(piece.defId, version)}.png" alt=""><span>${UNIT[piece.defId].name} ${"★".repeat(piece.star)}<small>${location}${copies > 1 ? ` · ×${copies}` : ""}</small></span></button>`).join("") : `<small>${inventoryCount ? (isFinal ? "终局背包中" : "当前在背包中") : !inventoryKnown || !reservesKnown ? "暂无持有记录" : isFinal ? "终局未持有" : "尚未持有"}</small>`}</div>${item.recipe ? `<small class="equipment-ledger-recipe">配方：${item.recipe.map((id) => ITEM[id].name).join(" + ")}</small>` : '<small class="equipment-ledger-recipe">野怪回合战利品</small>'}</article>`).join("")}</div></section>`;
+      return `<section class="equipment-ledger-section"><h3>${crafted ? "合成装备" : "基础装备"} · ${rows.length} 种</h3><div class="equipment-ledger-grid">${rows.map(({ item, inventoryCount, equippedCount, total, owners }) => `<article data-equipment-item="${item.id}" aria-label="${item.name}" class="equipment-ledger-card${total ? " is-owned" : ""}"><h4><span class="item-icon">${item.icon}</span>${item.name}</h4><p>${item.description}</p><p class="equipment-ledger-counts">背包 <b>${inventoryKnown ? inventoryCount : "未记录"}</b> · ${equippedLabel} <b>${equippedCount}</b></p><div class="equipment-ledger-owners">${owners.length ? owners.map(({ piece, copies, location }) => `<button data-equipment-owner="${piece.uid}" aria-label="查看${UNIT[piece.defId].name}${piece.star}星${location}的装备"><img src="/assets/units/${unitSprite(piece.defId, version, piece.star)}.png" alt=""><span>${UNIT[piece.defId].name} ${"★".repeat(piece.star)}<small>${location}${copies > 1 ? ` · ×${copies}` : ""}</small></span></button>`).join("") : `<small>${inventoryCount ? (isFinal ? "终局背包中" : "当前在背包中") : !inventoryKnown || !reservesKnown ? "暂无持有记录" : isFinal ? "终局未持有" : "尚未持有"}</small>`}</div>${item.recipe ? `<small class="equipment-ledger-recipe">配方：${item.recipe.map((id) => ITEM[id].name).join(" + ")}</small>` : '<small class="equipment-ledger-recipe">野怪回合战利品</small>'}</article>`).join("")}</div></section>`;
     })
     .join(
       "",
@@ -111,7 +111,7 @@ export function equipmentMarkup(
       ? `<details class="armory-owner-list" data-disclosure="equipment-owners"><summary data-focus="equipment-owners">已穿戴 · ${equippedCount} 件 · ${carriers.length} 枚棋子</summary>${carriers
           .map(
             (x) =>
-              `<button data-equipment-owner="${x.uid}" class="armory-owner${!isFinal && x.uid === selected ? " is-selected" : ""}"><img src="/assets/units/${unitSprite(x.defId, version)}.png" alt=""><span><b>${ownerName(x, p.pieces)}</b><small>${Object.entries(
+              `<button data-equipment-owner="${x.uid}" class="armory-owner${!isFinal && x.uid === selected ? " is-selected" : ""}"><img src="/assets/units/${unitSprite(x.defId, version, x.star)}.png" alt=""><span><b>${ownerName(x, p.pieces)}</b><small>${Object.entries(
                 itemCounts(x.items!),
               )
                 .map(
@@ -144,7 +144,7 @@ export function encounterMarkup(g: Game) {
   )
     .map(
       (p) =>
-        `<img src="/assets/units/${unitSprite(p.defId, g.combatVersion)}.png" alt="${UNIT[p.defId].name} ${p.star} 星" title="${UNIT[p.defId].name} ${p.star} 星">`,
+        `<img src="/assets/units/${unitSprite(p.defId, g.combatVersion, p.star)}.png" alt="${UNIT[p.defId].name} ${p.star} 星" title="${UNIT[p.defId].name} ${p.star} 星">`,
     )
     .join(
       "",
