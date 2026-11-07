@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reviewedAt": "2026-11-07",
-  "rules": "singleplayer-0.75",
+  "rules": "singleplayer-0.78",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
@@ -341,7 +341,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "同名角色；属性、技能与费用须单独核对。",
+      "implementationNote": "0.76灵蕴缝合为治疗／回能／独立加速；身板、最高攻击选人、跨期与本地梯度见mending-history.json。"
     },
     {
       "historicalName": "幽灵机",
@@ -351,7 +352,9 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S35"
       ],
       "currentUnitId": "ghostjet",
       "currentName": "幽灵机",
@@ -361,7 +364,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "同名角色；属性、技能与费用须单独核对。",
+      "implementationNote": "0.77无形替换瞬移伤害原型；6秒／16秒与30/40/50%取S35，身板取S04均值，跨期和适配见formless-history.json；S20机械鲨形象重制。"
     },
     {
       "historicalName": "方舟",
@@ -1365,7 +1369,7 @@
         "S06"
       ],
       "status": "outside-april-baseline",
-      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+      "note": "S06图片实际为经典RTS影鱼而非自走棋卡；当前灵鱼仍为待核对本地原型，不能凭该图确认历史能力，见mending-history.json。"
     },
     {
       "currentUnitId": "phoenix",

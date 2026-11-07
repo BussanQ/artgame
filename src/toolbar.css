@@ -300,6 +300,9 @@
 }
 
 /* Restore notices share the HUD; details contain the original recovery actions. */
+.toolbar-save-host {
+  display: contents;
+}
 .toolbar-save {
   min-width: 0;
   flex: 0 1 auto;

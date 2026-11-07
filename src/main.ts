@@ -9,6 +9,8 @@ import {BULWARK_DEMO} from "./data/bulwark-demo";
 import {SIEGE_DEMO} from "./data/siege-demo";
 import {INFERNO_DEMO} from "./data/inferno-demo";
 import {MENDING_DEMO} from "./data/mending-demo";
+import {FORMLESS_DEMO} from "./data/formless-demo";
+import {SUPPORT_ACTIONS_DEMO} from "./data/support-actions-demo";
 import {EXECUTION_DEMO} from "./data/execution-demo";
 import {TORTOISE_SHELL_DEMO,TORTOISE_BREACH_DEMO} from "./data/tortoise-demo";
 import {SPIRIT_WARD_DEMO} from "./data/spirit-ward-demo";
@@ -203,8 +205,9 @@ const restored = saves.load();
 let saveNotice = restored.data
   ? `${restored.status === "recovered" ? "主存档异常，已从备份恢复" : restored.status === "migrated" ? "存档已升级并恢复" : "已恢复上次演习"} · 第 ${restored.data.game.round} 回合`
   : restored.status === "damaged"
-    ? "原存档损坏，已新建对局；损坏数据已保留用于恢复。"
+    ? "原存档无法读取，已打开新对局。"
     : "";
+let renderedSaveNotice = "";
 let saveConflict = false;
 let lastSaveAt = 0;
 let historyOpen = false;
@@ -312,7 +315,7 @@ function render() {
   document.documentElement.dataset.reducedMotion = String(
     preferences.reducedMotion,
   );
-  saveCurrent();
+  saveCurrent(false);
   benchTooltip.hide();
   scene?.destroy();
   const p = me(),
@@ -372,7 +375,9 @@ function render() {
     demoBattle ? demoVersion : game.combatVersion,
   );
   const ranked = rankings(game);
-  app.innerHTML = `<div class="shell" data-mobile-view="${mobileView}"><header class="game-toolbar${saveNotice || saveConflict ? " has-save-notice" : ""}"><a class="brand" href="/" aria-label="赤潮战术演习主页"><span class="brand-mark">赤</span><span>赤潮 <b>RED TIDES</b><small>战 争 艺 术 / AUTO CHESS</small></span></a><div class="mode"><i></i>单人演习 <span>${DIFFICULTIES[game.difficulty].name} · 你 + 7 位 AI</span></div>${!demoBattle ? rotationMarkup(game) : ""}<div class="round"><small>回合</small><strong>${String(replayRound ?? game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? (replayRound ? "历史回放" : "战斗演示") : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "选择战利品" : "回合结算", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? `${(frame * RULES.tickSeconds).toFixed(1)}s` : fighting ? `${(frame * RULES.tickSeconds).toFixed(1)}s` : ""}</small></div>${saveNoticeMarkup(saveNotice, saveConflict)}<button class="mobile-tools-toggle" data-action="mobile-tools" aria-controls="game-tools" aria-expanded="${mobileToolsOpen}">菜单</button><nav id="game-tools" aria-label="演习工具"><button data-jump="recruitment">招募</button>${
+  const saveMarkup = currentSaveNotice();
+  renderedSaveNotice = saveMarkup;
+  app.innerHTML = `<div class="shell" data-mobile-view="${mobileView}"><header class="game-toolbar${saveMarkup ? " has-save-notice" : ""}"><a class="brand" href="/" aria-label="赤潮战术演习主页"><span class="brand-mark">赤</span><span>赤潮 <b>RED TIDES</b><small>战 争 艺 术 / AUTO CHESS</small></span></a><div class="mode"><i></i>单人演习 <span>${DIFFICULTIES[game.difficulty].name} · 你 + 7 位 AI</span></div>${!demoBattle ? rotationMarkup(game) : ""}<div class="round"><small>回合</small><strong>${String(replayRound ?? game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? (replayRound ? "历史回放" : "战斗演示") : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "选择战利品" : "回合结算", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? `${(frame * RULES.tickSeconds).toFixed(1)}s` : fighting ? `${(frame * RULES.tickSeconds).toFixed(1)}s` : ""}</small></div><span class="toolbar-save-host" data-save-notice-host>${saveMarkup}</span><button class="mobile-tools-toggle" data-action="mobile-tools" aria-controls="game-tools" aria-expanded="${mobileToolsOpen}">菜单</button><nav id="game-tools" aria-label="演习工具"><button data-jump="recruitment">招募</button>${
     demoBattle
       ? `<button data-action="demo" ${disabled(computing || fighting || game.phase === "result")}>${replayRound ? "退出回放" : "退出演示"}</button>`
       : `<details class="demo-menu"><summary data-focus="demo-menu">战斗演示</summary><div class="demo-options">${[
@@ -412,6 +417,8 @@ function render() {
           ["siege-demo", "攻城炮台"],
           ["inferno-demo", "炎狱金刚"],
           ["mending-demo", "灵蕴缝合"],
+          ["formless-demo", "无形幽灵机"],
+          ["support-actions-demo", "隐形支援"],
           ["execution-demo", "刑杀勾魂"],
           ["tortoise-shell-demo", "玄龟守御"],
           ["tortoise-breach-demo", "玄龟破壳"],
@@ -533,17 +540,37 @@ function saveLabel() {
     recovered: "已从备份恢复",
     damaged: "存档校验失败 · 暂未保存",
     incompatible: "存档版本不兼容 · 本局暂不保存",
-    unavailable: "本地存储不可用 · 本局暂不保存",
+    unavailable: "本局暂未保存 · 可在顶部重试",
     conflict: "另一窗口已更新 · 等待载入",
   }[saves.status];
 }
-function saveCurrent() {
-  if (saveConflict) return;
-  const status = saves.save(game, {
+function currentPlayback(): PlaybackSave {
+  return {
     time: game.phase === "battle" && !demoBattle ? playbackTime : 0,
     speed: speed as PlaybackSave["speed"],
     paused: game.phase === "battle" && paused,
+  };
+}
+function currentSaveNotice() {
+  return saveNoticeMarkup(saveNotice,saveConflict,{
+    status:saves.status,needsProtection:saves.needsProtection,
+    hasPreservedData:saves.hasPreservedData,busy:computing,
   });
+}
+function syncSaveNotice() {
+  const host=app.querySelector<HTMLElement>("[data-save-notice-host]");
+  const markup=currentSaveNotice();
+  if(!host||markup===renderedSaveNotice)return;
+  const open=host.querySelector<HTMLDetailsElement>("details")?.open??disclosures.get("save-notice")??false;
+  const focused=host.contains(document.activeElement);
+  host.innerHTML=markup;
+  const details=host.querySelector<HTMLDetailsElement>("details");
+  if(details)details.open=open;
+  app.querySelector(".game-toolbar")?.classList.toggle("has-save-notice",!!markup);
+  if(focused)(details?.querySelector<HTMLElement>("summary")??app.querySelector<HTMLElement>(".brand"))?.focus({preventScroll:true});
+  renderedSaveNotice=markup;
+}
+function handleSaveStatus(status: ReturnType<SaveStore["save"]>) {
   lastSaveAt = Date.now();
   if (status === "conflict") {
     cancelComputation();
@@ -554,6 +581,13 @@ function saveCurrent() {
   }
   const label = document.querySelector(".save-status");
   if (label) label.textContent = saveLabel();
+}
+function saveCurrent(updateNotice=true) {
+  if (saveConflict) return "conflict" as const;
+  const status=saves.save(game,currentPlayback());
+  handleSaveStatus(status);
+  if(updateNotice)syncSaveNotice();
+  return status;
 }
 function reset() {
   cancelComputation();
@@ -808,6 +842,7 @@ app.addEventListener("click", (e) => {
       "equipment-held",
       "deployment",
       "dismiss-notice",
+      "export-old-save",
     ].includes(action ?? "") &&
     !target.dataset.jump &&
     !target.dataset.scout &&
@@ -827,6 +862,20 @@ app.addEventListener("click", (e) => {
     window.location.reload();
     return;
   }
+  if (action === "export-old-save") {
+    const raw=saves.exportOldSaves();
+    if(raw===null)saveNotice="旧档暂时无法导出，请检查浏览器存储权限后重试。";
+    else {
+      const url=URL.createObjectURL(new Blob([raw],{type:"application/json"}));
+      const link=document.createElement("a");
+      link.href=url;link.download=`red-tides-old-saves-${new Date().toISOString().replace(/[:.]/g,"-")}.json`;
+      document.body.append(link);link.click();link.remove();
+      window.setTimeout(()=>URL.revokeObjectURL(url),1000);
+      saveNotice="已发起旧档与备份文件下载。";
+    }
+    syncSaveNotice();
+    return;
+  }
   if (
     saveConflict &&
     ![
@@ -840,6 +889,7 @@ app.addEventListener("click", (e) => {
       "equipment-held",
       "deployment",
       "close",
+      "dismiss-notice",
     ].includes(action ?? "") &&
     !target.dataset.unitInfo &&
     !target.dataset.equipmentOwner &&
@@ -847,6 +897,21 @@ app.addEventListener("click", (e) => {
     !target.dataset.pieceInfo
   )
     return;
+  if (action === "protect-save") {
+    const status=saves.protectAndSave(game,currentPlayback());
+    handleSaveStatus(status);
+    saveNotice=status==="saved"?"旧存档已保留，本局已启用自动保存。"
+      :status==="conflict"?"旧存档保留期间，另一窗口更新了进度。"
+      :"旧档保留尚未完成，本局仍未保存。可导出旧档，检查浏览器存储空间后重试。";
+    if(saveConflict)render();else syncSaveNotice();
+    return;
+  }
+  if (action === "retry-save") {
+    const status=saveCurrent();
+    saveNotice=status==="saved"?"本局已恢复自动保存。":"仍未保存成功，请检查浏览器存储空间与权限后重试。";
+    if(saveConflict)render();else syncSaveNotice();
+    return;
+  }
   if (action === "deployment") deploymentOpen = !deploymentOpen;
   if (
     action === "analysis-frame" &&
@@ -1016,7 +1081,14 @@ app.addEventListener("click", (e) => {
       position: null,
     };
   }
-  if (action === "dismiss-notice") saveNotice = "";
+  if (action === "dismiss-notice") {
+    saveNotice="";
+    disclosures.set("save-notice",false);
+    const details=app.querySelector<HTMLDetailsElement>('[data-disclosure="save-notice"]');
+    if(details)details.open=false;
+    syncSaveNotice();
+    return;
+  }
   if (target.dataset.scout !== undefined) {
     closePanels();
     scoutId = Number(target.dataset.scout);
@@ -1177,6 +1249,8 @@ app.addEventListener("click", (e) => {
     action === "siege-demo" ||
     action === "inferno-demo" ||
     action === "mending-demo" ||
+    action === "formless-demo" ||
+    action === "support-actions-demo" ||
     action === "execution-demo" ||
     action === "tortoise-shell-demo" || action === "tortoise-breach-demo" ||
     action === "spirit-ward-demo" ||
@@ -1185,7 +1259,7 @@ app.addEventListener("click", (e) => {
     action === "gaze-demo" ||
     action === "rifle-demo"
   ) {
-    demoTitle=action==="mending-demo"?"灵蕴缝合":action==="inferno-demo"?"炎狱金刚":action==="siege-demo"?"攻城炮台":action==="execution-demo"?"刑杀勾魂":action==="tortoise-shell-demo"?"玄龟守御":action==="tortoise-breach-demo"?"玄龟破壳":"兵种演习";
+    demoTitle=action==="support-actions-demo"?"隐形支援":action==="formless-demo"?"无形幽灵机":action==="mending-demo"?"灵蕴缝合":action==="inferno-demo"?"炎狱金刚":action==="siege-demo"?"攻城炮台":action==="execution-demo"?"刑杀勾魂":action==="tortoise-shell-demo"?"玄龟守御":action==="tortoise-breach-demo"?"玄龟破壳":"兵种演习";
     if (mobileViewport.matches) showMobileView("battlefield");
     resultPresentation = null;
     replayRound = null;
@@ -1237,7 +1311,7 @@ app.addEventListener("click", (e) => {
       beastDemo = action === "beast-demo";
       staffDemo = action === "staff-demo";
       swordDemo = action === "sword-demo";
-      const { left, right } = action === "mending-demo" ? MENDING_DEMO : action === "inferno-demo" ? INFERNO_DEMO : action === "siege-demo" ? SIEGE_DEMO : action === "execution-demo" ? EXECUTION_DEMO : action === "tortoise-shell-demo" ? TORTOISE_SHELL_DEMO : action === "tortoise-breach-demo" ? TORTOISE_BREACH_DEMO : spiritWardDemo ? SPIRIT_WARD_DEMO : bulwarkDemo ? BULWARK_DEMO : hiveDemo ? HIVE_DEMO : gazeDemo ? GAZE_DEMO : rifleDemo ? RIFLE_DEMO : thornbindDemo ? THORNBIND_DEMO : boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
+      const { left, right } = action === "support-actions-demo" ? SUPPORT_ACTIONS_DEMO : action === "formless-demo" ? FORMLESS_DEMO : action === "mending-demo" ? MENDING_DEMO : action === "inferno-demo" ? INFERNO_DEMO : action === "siege-demo" ? SIEGE_DEMO : action === "execution-demo" ? EXECUTION_DEMO : action === "tortoise-shell-demo" ? TORTOISE_SHELL_DEMO : action === "tortoise-breach-demo" ? TORTOISE_BREACH_DEMO : spiritWardDemo ? SPIRIT_WARD_DEMO : bulwarkDemo ? BULWARK_DEMO : hiveDemo ? HIVE_DEMO : gazeDemo ? GAZE_DEMO : rifleDemo ? RIFLE_DEMO : thornbindDemo ? THORNBIND_DEMO : boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
         ? GOSPEL_DEMO
         : lightningDemo
           ? LIGHTNING_DEMO

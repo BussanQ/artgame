@@ -40,7 +40,8 @@ import type { Game, Piece, RoundReport } from "./types";
 export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
-export const SAVE_SCHEMA = 75;
+export const PRESERVED_KEY = `${SAVE_KEY}.preserved`;
+export const SAVE_SCHEMA = 77;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -66,6 +67,10 @@ export type SaveStatus =
 export interface StoragePort {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
+}
+interface PreservedSaves {
+  schema: 1;
+  entries: { savedAt: number; raw: string; backup?: string | null; recovery?: string | null }[];
 }
 const record = (v: unknown): v is Record<string, unknown> =>
   typeof v === "object" && v !== null && !Array.isArray(v);
@@ -999,8 +1004,18 @@ export function decodeSave(raw: string | null): {
     }
     if(v.schema===74&&v.rules==="singleplayer-0.75"&&record(v.game)){
       if(v.game.catalogVersion===undefined)v.game.catalogVersion="inferno";
+      if(v.game.phase==="prepare")v.game.combatVersion="mending";
+      v.schema=75;v.rules="singleplayer-0.76";migrated=true;
+    }
+    if(v.schema===75&&v.rules==="singleplayer-0.76"&&record(v.game)){
+      if(v.game.catalogVersion===undefined)v.game.catalogVersion="mending";
+      if(v.game.phase==="prepare")v.game.combatVersion="formless";
+      v.schema=76;v.rules="singleplayer-0.77";migrated=true;
+    }
+    if(v.schema===76&&v.rules==="singleplayer-0.77"&&record(v.game)){
+      if(v.game.catalogVersion===undefined)v.game.catalogVersion="formless";
       if(v.game.phase==="prepare")v.game.combatVersion=CURRENT_COMBAT_VERSION;
-      v.schema=75;v.rules=RULES.version;migrated=true;
+      v.schema=77;v.rules=RULES.version;migrated=true;
     }
     if (v.schema !== SAVE_SCHEMA || v.rules !== RULES.version)
       return { data: null, status: "incompatible" };
@@ -1039,9 +1054,12 @@ export class SaveStore {
   private previousPayload = "";
   private readOnly = false;
   private revision = 0;
+  private preservedAvailable = false;
   status: SaveStatus = "empty";
   savedAt = 0;
   constructor(private storage: StoragePort | null) {}
+  get needsProtection() { return this.readOnly; }
+  get hasPreservedData() { return this.preservedAvailable; }
   load(): { data: SaveData | null; status: SaveStatus } {
     if (!this.storage) {
       this.status = "unavailable";
@@ -1049,6 +1067,8 @@ export class SaveStore {
     }
     try {
       this.expected = this.storage.getItem(SAVE_KEY);
+      try { this.preservedAvailable = this.storage.getItem(PRESERVED_KEY) !== null || this.storage.getItem(RECOVERY_KEY) !== null; }
+      catch { this.preservedAvailable = false; }
       const primary = decodeSave(this.expected);
       this.readOnly = primary.status === "incompatible";
       let restored = primary;
@@ -1079,7 +1099,7 @@ export class SaveStore {
       if (this.storage.getItem(SAVE_KEY) !== this.expected)
         return (this.status = "conflict");
       const payload = JSON.stringify({ game, playback });
-      if (payload === this.previousPayload) return this.status;
+      if (payload === this.previousPayload) return (this.status = "saved");
       const data: SaveData = {
         schema: SAVE_SCHEMA,
         rules: RULES.version,
@@ -1093,10 +1113,16 @@ export class SaveStore {
       if (this.expected !== null) {
         if (decodeSave(this.expected).data)
           this.storage.setItem(BACKUP_KEY, this.expected);
-        else this.storage.setItem(RECOVERY_KEY, this.expected);
+        else {
+          this.storage.setItem(RECOVERY_KEY, this.expected);
+          this.preservedAvailable = true;
+        }
       }
       // A single replacement contains both the phase and its rewards/history.
       this.storage.setItem(SAVE_KEY, raw);
+      const written = this.storage.getItem(SAVE_KEY);
+      if (written !== raw)
+        return (this.status = written === this.expected ? "unavailable" : "conflict");
       this.expected = raw;
       this.previousPayload = payload;
       this.revision = data.revision;
@@ -1105,6 +1131,79 @@ export class SaveStore {
     } catch {
       return (this.status = "unavailable");
     }
+  }
+  /** Explicit player action: protect unreadable bytes before saving this unchanged run. */
+  protectAndSave(game: Game, playback: PlaybackSave): SaveStatus {
+    if (!this.readOnly) return this.save(game, playback);
+    if (!this.storage) return (this.status = "unavailable");
+    try {
+      if (this.storage.getItem(SAVE_KEY) !== this.expected)
+        return (this.status = "conflict");
+      const payload = JSON.stringify({ game, playback });
+      const data: SaveData = {
+        schema: SAVE_SCHEMA, rules: RULES.version, savedAt: Date.now(),
+        revision: this.revision + 1, game, playback,
+      };
+      const raw = JSON.stringify(data);
+      if (!decodeSave(raw).data) return (this.status = "damaged");
+      const previousArchive = this.storage.getItem(PRESERVED_KEY);
+      let archive: PreservedSaves = { schema: 1, entries: [] };
+      if (previousArchive !== null) {
+        // Unknown/corrupt archives must remain exportable, never silently overwritten.
+        if (previousArchive.length > 6_000_000) return (this.status = "unavailable");
+        const value: unknown = JSON.parse(previousArchive);
+        if (!record(value) || value.schema !== 1 || !Array.isArray(value.entries) ||
+          !value.entries.every(entry => record(entry) && integer(entry.savedAt, 0, Number.MAX_SAFE_INTEGER) && typeof entry.raw === "string" &&
+            (entry.backup === undefined || entry.backup === null || typeof entry.backup === "string") &&
+            (entry.recovery === undefined || entry.recovery === null || typeof entry.recovery === "string")))
+          return (this.status = "unavailable");
+        archive = value as unknown as PreservedSaves;
+      }
+      if (this.expected !== null) {
+        let entry=archive.entries.find(entry => entry.raw === this.expected);
+        if(!entry){entry={savedAt:data.savedAt,raw:this.expected};archive.entries.push(entry);}
+        // Keep the accompanying bytes even after normal autosaves rotate their backup slot.
+        if(!Object.hasOwn(entry,"backup"))entry.backup=this.storage.getItem(BACKUP_KEY);
+        if(!Object.hasOwn(entry,"recovery"))entry.recovery=this.storage.getItem(RECOVERY_KEY);
+      }
+      const archived = JSON.stringify(archive);
+      if (this.storage.getItem(PRESERVED_KEY) !== previousArchive)
+        return (this.status = "conflict");
+      if (archived !== previousArchive) this.storage.setItem(PRESERVED_KEY, archived);
+      // Refuse replacement when preservation was dropped or another window moved ahead.
+      if (this.storage.getItem(PRESERVED_KEY) !== archived)
+        return (this.status = "unavailable");
+      this.preservedAvailable = true;
+      if (this.storage.getItem(SAVE_KEY) !== this.expected)
+        return (this.status = "conflict");
+      this.storage.setItem(SAVE_KEY, raw);
+      const written = this.storage.getItem(SAVE_KEY);
+      if (written !== raw)
+        return (this.status = written === this.expected ? "unavailable" : "conflict");
+      this.expected = raw;
+      this.previousPayload = payload;
+      this.revision = data.revision;
+      this.savedAt = data.savedAt;
+      this.readOnly = false;
+      return (this.status = "saved");
+    } catch {
+      return (this.status = "unavailable");
+    }
+  }
+  /** Download-only envelope: all unknown formats remain exact strings, not executable markup. */
+  exportOldSaves(): string | null {
+    if (!this.storage) return null;
+    try {
+      const preserved = this.storage.getItem(PRESERVED_KEY);
+      const primary = this.readOnly ? this.expected : null;
+      const recovery = this.storage.getItem(RECOVERY_KEY);
+      if (primary === null && preserved === null && recovery === null) return null;
+      return JSON.stringify({
+        format: "red-tides-old-saves", schema: 1, exportedAt: Date.now(),
+        primary, backup: this.storage.getItem(BACKUP_KEY),
+        recovery, preserved,
+      }, null, 2);
+    } catch { return null; }
   }
   /** Only called after the user confirms starting a new run. Keep the previous run as backup. */
   allowReplacement() {

@@ -18,6 +18,7 @@ import {executionLabels} from "./execution";
 import {siegeLabels} from "./siege";
 import {infernoLabels} from "./inferno";
 import {mendingLabels} from "./mending";
+import {formlessLabels} from "./formless";
 import {tortoiseLabels} from "./tortoise";
 import {spiritWardLabels} from "./spirit-ward";
 import { shieldWaveCells } from "../engine/shieldthrall";
@@ -1093,6 +1094,7 @@ export function drawStatuses(
   labels.push(...siegeLabels(f,time));
   labels.push(...infernoLabels(f,time));
   labels.push(...mendingLabels(f,time));
+  labels.push(...formlessLabels(f,time));
   labels.push(...tortoiseLabels(f,time));
   labels.push(...spiritWardLabels(f,time));
   if(f.rifle)labels.push(`被动射击 · 已开火 ${f.rifle.shots}次 · 无能量技能`);

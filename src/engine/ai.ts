@@ -1,6 +1,6 @@
 import { catalogCost, catalogUnit } from "../data/catalog";
 import { unitArmor,unitAttackInterval,unitDefinition } from "../data/unit-stats";
-import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules,hasInfernoRules,hasMendingRules } from "./types";
+import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules,hasInfernoRules,hasMendingRules,hasFormlessRules } from "./types";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { army, simulateOutcome } from "./battle";
 import { usesEnergy } from "./triggers";
@@ -23,6 +23,7 @@ import {
   SIEGE,
   INFERNO,
   MENDING,
+  FORMLESS,
   TORTOISE,
   EXECUTION,
   AURORA,
@@ -83,6 +84,11 @@ export function abilityCredit(
   if(p.defId==="infantry")return 0;
   const u = unitDefinition(p.defId,p.definitionVersion),
     skill = SKILLS[p.defId];
+  if(p.defId==="ghostjet"&&hasFormlessRules(p.definitionVersion??CURRENT_COMBAT_VERSION)){
+    const readiness=0.65+Math.min(100,(u.initialMana??0)+gear.mana+openingMana)*0.0035;
+    // A limited 6/16 window, with no invented spell hit or permanent untargetability.
+    return Math.min(0.6,(FORMLESS.haste[p.star-1]*FORMLESS.duration/FORMLESS.cooldown*0.7+0.12)*readiness);
+  }
   if(p.defId==="vajra"&&hasInfernoRules(p.definitionVersion??CURRENT_COMBAT_VERSION)){
     const readiness=0.65+Math.min(100,(u.initialMana??0)+gear.mana+openingMana)*0.0035;
     // One interruptible shock and a limited rage window; spell power never boosts utility.

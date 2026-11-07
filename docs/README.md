@@ -1,5 +1,11 @@
 # 赤潮网页自走棋：资料与开发方案
 
+当前后续：[保留旧档并恢复本局保存](design/save-protection.md) · [模块验证与待验项目](analysis/save-protection-v078-validation.json)。保存格式仍schema77；旧档与当时备份独立保留，24项新检查和6项回归通过，浏览器验收待补。
+
+最新修复：[0.78 隐形期间的辅助行动](design/support-actions.md) · [必要验证与前后对照](analysis/support-actions-v078-validation.json)。军医、长生鹿等按真实友军目标施法，无目标冷却继续流逝；schema77和旧战斗兼容已接入。
+
+最新能力：[0.77 幽灵机无形](design/formless.md) · [原始资料与适配](research/formless-history.json) · [内置ImageGen提示词](research/formless-assets.json) · [必要验证](analysis/formless-v077-validation.json)。隐形高速普攻、自然回复、schema76与旧版本兼容已接入。
+
 最新能力：[0.76 维修机灵蕴缝合](design/mending.md) · [资料与边界](research/mending-history.json) · [内置ImageGen提示词](research/mending-assets.json) · [必要验证](analysis/mending-v076-validation.json)。治疗／回能／加速、schema75和旧规则兼容已接入。
 
 最新能力：[0.75 金刚炎狱震地](design/inferno.md) · [原始资料和适配边界](research/inferno-history.json) · [内置ImageGen完整提示词](research/inferno-assets.json) · [验证记录](analysis/inferno-v075-validation.json)。双臂形象、一费身板、独立减速、可反制蓄势、狂怒吸血和schema74已接入；65项必要检查、构建及桌面／390px同一小局面通过。

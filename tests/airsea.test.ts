@@ -214,9 +214,9 @@ describe("空海独立技能与中断", () => {
     castSkill(c, repair, enemy);
     expect(strong.attackBoost!.ratio).toBe(0.25);
   });
-  it("幽灵机跃向残血敌人，2秒隐身挡普攻但不挡范围技能", () => {
-    const a = f("ghostjet", 1, 0, 0, 7),
-      b = f("guard", 2, 1, 4, 2),
+  it("旧规则幽灵机跃向残血敌人，2秒隐身挡普攻但不挡范围技能", () => {
+    const a = Object.assign(army([p("ghostjet",1)],0,"mending")[0],{x:0,y:7,mana:100}),
+      b = Object.assign(army([p("guard",2)],1,"mending")[0],{x:4,y:2,mana:100}),
       c = ctx(a, b);
     b.hp = 300;
     expect(castSkill(c, a, b)).toBe(true);

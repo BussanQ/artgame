@@ -14,6 +14,7 @@ import {
   hasSiegeRules,
   hasInfernoRules,
   hasMendingRules,
+  hasFormlessRules,
 } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
@@ -120,6 +121,7 @@ export function itemScore(
   const siege=hasSiegeRules(version)&&piece.defId==="chariot";
   const inferno=hasInfernoRules(version)&&piece.defId==="vajra";
   const mending=hasMendingRules(version)&&piece.defId==="repair";
+  const formless=hasFormlessRules(version)&&piece.defId==="ghostjet";
   const tortoise=hasTortoiseRules(version)&&piece.defId==="turtle";
   const wushi = hasWushiRules(version) && piece.defId === "master";
   const lightning = hasLightningRules(version) && piece.defId === "thunderlord";
@@ -174,7 +176,7 @@ export function itemScore(
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
     (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
-      (mending ? MENDING.healing[piece.star-1]*0.3 : inferno ? INFERNO.damage[piece.star-1]*1.5*0.75 : lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise || siege
+      (mending ? MENDING.healing[piece.star-1]*0.3 : inferno ? INFERNO.damage[piece.star-1]*1.5*0.75 : formless || lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise || siege
         ? 0
         : (version === "signature" ||
               version === "summons" ||

@@ -4,6 +4,7 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  formless?:Pick<NonNullable<Fighter["formless"]>,"activations"|"hits"|"damage"|"shieldDamage">;
   mending?:Pick<NonNullable<Fighter["mending"]>,"completed"|"healing"|"energy"|"hastes"|"interrupted"|"missed">;
   inferno?:Pick<NonNullable<Fighter["inferno"]>,"formed"|"hits"|"slows"|"healing"|"interrupted">;
   siege?:Pick<NonNullable<Fighter["siege"]>,"formed"|"fired"|"impacts"|"splashHits"|"splashDamage"|"interrupted"|"mode">;
@@ -63,6 +64,7 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.formless?{formless:{activations:f.formless.activations,hits:f.formless.hits,damage:f.formless.damage,shieldDamage:f.formless.shieldDamage}}:{}),
     ...(f.mending?{mending:{completed:f.mending.completed,healing:f.mending.healing,energy:f.mending.energy,hastes:f.mending.hastes,interrupted:f.mending.interrupted,missed:f.mending.missed}}:{}),
     ...(f.inferno?{inferno:{formed:f.inferno.formed,hits:f.inferno.hits,slows:f.inferno.slows,healing:f.inferno.healing,interrupted:f.inferno.interrupted}}:{}),
     ...(f.reaper?{reaper:{marks:f.reaper.marks,trueHits:f.reaper.trueHits,trueDamage:f.reaper.trueDamage,executions:f.reaper.executions,enhanced:f.reaper.enhanced,puppets:f.reaper.puppets,interrupted:f.reaper.interrupted,missed:f.reaper.missed}}:{}),

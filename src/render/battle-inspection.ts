@@ -10,10 +10,12 @@ import { wushiScale } from "./wushi";
 import { petrified } from "../engine/warcry";
 import {infernoActive,attackSlowRate} from "../engine/inferno";
 import {mendingHaste} from "../engine/mending";
+import {formlessActive} from "../engine/formless";
 
 /** Only urgent, short labels belong beside every combatant. Full effects live in its inspector. */
 export function compactBattleLabels(f: Fighter, time: number) {
   const labels: string[] = [];
+  if(formlessActive(f,time))labels.push("无形隐身");
   if(f.mending?.casting)labels.push("缝合蓄势");
   if(mendingHaste(f,time)>0)labels.push("灵蕴加速");
   if(f.inferno?.casting)labels.push("炎狱蓄势");

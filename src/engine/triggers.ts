@@ -6,6 +6,7 @@ import { STAFF_GALE } from "../data/skills";
 import type { Fighter } from "./types";
 import {spiritWardBuff} from "./spirit-ward";
 import {tortoiseArmor,tortoiseResist} from "./tortoise";
+import {formlessActive} from "./formless";
 const distance = (a: Fighter, b: Fighter) =>
   Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export function usesEnergy(f: Fighter) {
@@ -108,6 +109,7 @@ export function unwardedMagicResist(f:Fighter){
 }
 /** Bodyguards conceal fish; enemy fish reveal nearby targets. AoE still hits. */
 export function concealed(f: Fighter, fighters: Fighter[], tick = 0) {
+  if(formlessActive(f,tick))return true;
   if(f.hp>0&&f.reaper?.casting)return true;
   if (f.hp > 0 && f.air && f.air.phaseUntil > tick) return true;
   if (!f.signature || f.defId !== "fish" || f.hp <= 0) return false;

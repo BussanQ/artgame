@@ -6,7 +6,6 @@ import {mendingSupportCredit} from "../src/engine/ai";
 import {MENDING,skillName,skillRole,skillDescription} from "../src/data/skills";
 import {unitDefinition,unitSprite} from "../src/data/unit-stats";
 import {MENDING_DEMO} from "../src/data/mending-demo";
-import {RULES} from "../src/data/units";
 import {createGame,buy} from "../src/engine/game";
 import {decodeSave,SAVE_SCHEMA} from "../src/engine/persistence";
 import {compute} from "../src/compute/job";
@@ -98,7 +97,7 @@ describe("版本兼容与必要呈现",()=>{
   const before=structuredClone(game),playback={time:2,speed:2,paused:true};
   const result=decodeSave(JSON.stringify({schema:74,rules:"singleplayer-0.75",savedAt:1,revision:1,game,playback}));
   expect(result.status).toBe("migrated");expect(result.data?.schema).toBe(SAVE_SCHEMA);expect(result.data?.game.combatVersion).toBe(phase==="prepare"?CURRENT_COMBAT_VERSION:"inferno");
-  expect(result.data?.game.catalogVersion).toBe("inferno");expect(result.data?.game.pool).toEqual(before.pool);expect(result.data?.game.players).toEqual(before.players);expect(result.data?.game.history).toEqual(before.history);expect(result.data?.playback).toEqual(playback);expect(RULES.version).toBe("singleplayer-0.76");
+  expect(result.data?.game.catalogVersion).toBe("inferno");expect(result.data?.game.pool).toEqual(before.pool);expect(result.data?.game.players).toEqual(before.players);expect(result.data?.game.history).toEqual(before.history);expect(result.data?.playback).toEqual(playback);
  });
  it("AI支持收益有界，重复维修机不重复叠加估值",()=>{
   const source=piece("repair",1,2),carry=piece("arhat",2,2),credit=mendingSupportCredit([source,carry]);expect(credit).toBeGreaterThan(0);

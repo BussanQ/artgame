@@ -19,6 +19,7 @@ import {drawExecutionMarks,executionPose} from "./execution";
 import {drawSieges,siegePose} from "./siege";
 import {drawInfernos,infernoPose} from "./inferno";
 import {drawMendings,mendingPose} from "./mending";
+import {drawFormless} from "./formless";
 import {drawTortoises,tortoisePose} from "./tortoise";
 import {drawSpiritWards,spiritWardPose} from "./spirit-ward";
 import {bulwarkActive} from "../engine/bulwark";
@@ -550,6 +551,7 @@ export class BattleScene {
       drawSieges(c,fs,s.time,this.motionReduced);
       drawInfernos(c,fs,s.time,this.motionReduced);
       drawMendings(c,fs,s.time,this.motionReduced);
+      drawFormless(c,fs,s.time,this.motionReduced);
       drawSpiritWards(c,fs,s.time,this.motionReduced);
       drawShuriken(c, fs, s.time, this.motionReduced, "blades");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");

@@ -1,6 +1,7 @@
 import {EXECUTION} from "../data/skills";
 import {emptyInferno} from "./inferno";
 import {emptyMending} from "./mending";
+import {emptyFormless} from "./formless";
 import {damage,type CombatContext} from "./abilities";
 import {attackTargets} from "./triggers";
 import {isPhoenixEgg} from "./phoenix";
@@ -79,6 +80,7 @@ export function claimExecutionPuppet(ctx:CombatContext,source:Fighter,victim:Fig
   delete copy.mendHaste;
   if(copy.inferno)copy.inferno=emptyInferno();
   if(copy.mending)copy.mending=emptyMending();
+  if(copy.formless)copy.formless=emptyFormless();
   if(copy.air)delete copy.air.cast;
   if(copy.rifle)copy.rifle.shots=0;
   if(copy.hive)copy.hive={volleys:0,needles:0,explosions:0,innerHits:0,outerHits:0,interrupted:0};

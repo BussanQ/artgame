@@ -1,6 +1,8 @@
 import {emptySiege,advanceSiegeForms,advanceSiegeShells,siegeActionBusy,launchSiegeShell} from "./siege";
 import {emptyInferno,advanceInfernos,infernoActionBusy} from "./inferno";
 import {emptyMending,advanceMendings,mendingActionBusy} from "./mending";
+import {emptyFormless,advanceFormless} from "./formless";
+import {advanceWithoutTarget} from "./support-actions";
 import { advanceTarBombs, updateTarBombPositions } from "./tar";
 import { lightningStrike } from "./lightning";
 import { advanceGospel } from "./gospel";
@@ -37,6 +39,8 @@ import {
   hasSiegeRules,
   hasInfernoRules,
   hasMendingRules,
+  hasFormlessRules,
+  hasSupportActionRules,
   hasBoneBlastRules,
   hasThornBindRules,
   hasHiveRules,
@@ -159,6 +163,7 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasFormlessRules(definitionVersion)&&d.id==="ghostjet"?{formless:emptyFormless(),innateRegen:true as const}:{}),
         ...(hasMendingRules(definitionVersion)&&d.id==="repair"?{mending:emptyMending()}:{}),
         ...(hasInfernoRules(definitionVersion)&&d.id==="vajra"?{inferno:emptyInferno()}:{}),
         ...(hasSiegeRules(definitionVersion)&&d.id==="chariot"?{siege:emptySiege()}:{}),
@@ -609,6 +614,7 @@ function runBattle(
     expireUndying(context);
     advanceInfernos(context);
     advanceMendings(context);
+    advanceFormless(context);
     advanceSiegeForms(context);
     advanceSiegeShells(context);
     advanceExecutions(context);
@@ -701,8 +707,12 @@ function runBattle(
         enemies[0]);
       retargetStaff(f, target);
       if (!target) {
-        // A hidden enemy cannot prevent the new support from repairing a nearby ally.
-        if(f.mending){if(f.cooldown>0)f.cooldown--;if(f.cooldown<=0&&castSkill(context,f,f))f.cooldown+=attackInterval(f,tick);}
+        if(hasSupportActionRules(formationVersion)){
+          advanceWithoutTarget(context,f);
+          continue;
+        }
+        // Hidden enemies cannot prevent allied support or the new personal stealth buff.
+        if(f.mending||f.formless){if(f.cooldown>0)f.cooldown--;if(f.cooldown<=0&&castSkill(context,f,f))f.cooldown+=attackInterval(f,tick);}
         continue;
       }
       if (f.cooldown > 0) f.cooldown--;

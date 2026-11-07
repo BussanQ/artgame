@@ -5,6 +5,7 @@ import {beginSpiritWard,spiritWardTargets,spiritWardBuff,stopSpiritWard} from ".
 import {beginSiege,stopSiege} from "./siege";
 import {beginInferno,stopInferno,infernoCanCast,infernoActive,attackSlowRate} from "./inferno";
 import {beginMending,stopMending,mendingCanCast,mendingTarget,mendingHaste} from "./mending";
+import {beginFormless,formlessCanCast,formlessActive,formlessHaste} from "./formless";
 import {beginTortoise,stopTortoise} from "./tortoise";
 import {beginExecution,executionCanCast,stampExecution,claimExecutionPuppet,stopExecution} from "./execution";
 import {unwardedMagicResist} from "./triggers";
@@ -77,7 +78,7 @@ import {
   SPIRIT_WARD_SKILL,
   SIEGE,SIEGE_SKILL,
   INFERNO,INFERNO_SKILL,
-  MENDING_SKILL,
+  MENDING_SKILL,FORMLESS_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -97,7 +98,7 @@ export const distance = (
 export const attackInterval = (f: Fighter, tick: number) =>
   Math.max(
     f.hive ? HIVE.needlesPerAttack*HIVE.needleInterval : 1,
-    (f.interval / (1 + staffSpeed(f) + (f.formationHaste ?? 0) + (f.siege?.mode?SIEGE.haste:0) + (infernoActive(f,tick)?INFERNO.haste:0) + mendingHaste(f,tick))) *
+    (f.interval / (1 + staffSpeed(f) + (f.formationHaste ?? 0) + (f.siege?.mode?SIEGE.haste:0) + (infernoActive(f,tick)?INFERNO.haste:0) + mendingHaste(f,tick) + formlessHaste(f,tick))) *
       (f.hasteUntil > tick ? 0.7 : 1) *
       Math.max(f.slow && f.slow.until > tick ? f.slow.multiplier : 1,1/(1-attackSlowRate(f,tick))),
   );
@@ -240,7 +241,7 @@ export function damage(
       damageType: type,
       skill,
       primary,
-      ranged: source.range > 1 && source.defId!=="reaper",
+      ranged: (source.range > 1 || !!source.formless) && source.defId!=="reaper",
       ...(empowered ? { empowered: true } : {}),
       ...(assassinCritical ? { assassinCritical: true } : {}),
       ...(gale ? { gale } : {}),
@@ -265,7 +266,7 @@ export function damage(
       damageType: type,
       skill: false,
       primary,
-      ranged: source.range > 1 && source.defId!=="reaper",
+      ranged: (source.range > 1 || !!source.formless) && source.defId!=="reaper",
       ...(empowered ? { empowered: true } : {}),
       ...(assassinCritical ? { assassinCritical: true } : {}),
       ...(gale ? { gale } : {}),
@@ -335,6 +336,9 @@ export function damage(
   const amount = Math.min(target.hp, total - absorbed);
   target.hp -= amount;
   source.damage += amount;
+  if(!skill&&!periodic&&!reflected&&(amount>0||absorbed>0)&&formlessActive(source,ctx.tick)){
+    source.formless!.hits++;source.formless!.damage+=amount;source.formless!.shieldDamage+=absorbed;
+  }
   if(markedTrue&&source.reaper){source.reaper.trueHits++;source.reaper.trueDamage+=amount;}
   if (target.hp === 0) {
     if (wasPhoenixEgg && target.wildfire) target.wildfire.brokenEggs++;
@@ -366,7 +370,7 @@ export function damage(
     damageType: type,
     skill,
     primary,
-    ranged: source.range > 1 && source.defId!=="reaper",
+    ranged: (source.range > 1 || !!source.formless) && source.defId!=="reaper",
     ...(empowered ? { empowered: true } : {}),
     ...(assassinCritical ? { assassinCritical: true } : {}),
     ...(gale ? { gale } : {}),
@@ -571,9 +575,10 @@ function breakArmor(ctx: CombatContext, source: Fighter, target: Fighter) {
 }
 function blink(ctx: CombatContext, source: Fighter, fallback: Fighter) {
   const weakest = ctx.fighters
-    .filter((f) => f.side !== source.side && f.hp > 0)
+    .filter((f) => f.side !== source.side && f.hp > 0 && !formlessActive(f,ctx.tick))
     .sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp || a.uid - b.uid)[0];
-  if (!weakest || distance(source, weakest) === 1) return weakest ?? fallback;
+  if (!weakest) return formlessActive(fallback,ctx.tick) ? null : fallback;
+  if (distance(source, weakest) === 1) return weakest;
   const cells = [
     [0, 1],
     [1, 0],
@@ -876,7 +881,7 @@ export function castSkill(
 ) {
   if (source.gospelAura || source.rifle) return false;
   if (source.taunt?.kind!=="tortoise"&&tauntTarget(ctx, source)) return false;
-  const s = source.mending ? MENDING_SKILL : source.inferno ? INFERNO_SKILL : source.siege ? SIEGE_SKILL : source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  const s = source.formless ? FORMLESS_SKILL : source.mending ? MENDING_SKILL : source.inferno ? INFERNO_SKILL : source.siege ? SIEGE_SKILL : source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -892,6 +897,7 @@ export function castSkill(
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
   const wardTargets=source.spiritWard?spiritWardTargets(ctx,source):[];
+  if(source.formless){if(!formlessCanCast(ctx,source))return false;target=source;}
   if(source.mending){if(!mendingCanCast(ctx,source))return false;target=mendingTarget(ctx,source)!;}
   if(source.inferno&&!infernoCanCast(ctx,source))return false;
   if(source.siege&&(source.siege.mode||source.siege.casting||(source.skillReadyAt??0)>ctx.tick||source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source)))return false;
@@ -1090,6 +1096,7 @@ export function castSkill(
           f.hp > 0 &&
           f.side !== source.side &&
           !f.summon && !f.executionPuppet && !f.reaper?.casting &&
+          !formlessActive(f,ctx.tick) &&
           !f.charm &&
           !isPhoenixEgg(f) &&
           !bladeStormActive(f, ctx.tick) &&
@@ -1102,7 +1109,7 @@ export function castSkill(
   if (
     (source.defId === "panda" && !source.shuriken) ||
     source.defId === "wolf" ||
-    source.defId === "ghostjet" ||
+    (source.defId === "ghostjet" && !source.formless) ||
     (source.defId === "bloodhawk" && !source.hawkForm)
   ) {
     const destination = blink(ctx, source, target);
@@ -1116,10 +1123,11 @@ export function castSkill(
     return false;
   if (source.defId === "shadowblade") {
     const farthest = ctx.fighters
-      .filter((f) => f.side !== source.side && f.hp > 0)
+      .filter((f) => f.side !== source.side && f.hp > 0 && !formlessActive(f,ctx.tick))
       .sort(
         (a, b) => distance(source, b) - distance(source, a) || a.uid - b.uid,
       )[0];
+    if(!farthest)return false;
     if (dashTo(ctx, source, farthest)) target = farthest;
     else if (distance(source, target) > source.range) return false;
   }
@@ -1582,6 +1590,7 @@ export function castSkill(
       break;
     }
     case "ghostjet":
+      if(source.formless){beginFormless(ctx,source);break;}
       hit(target);
       if (source.air) source.air.phaseUntil = ctx.tick + 8;
       break;

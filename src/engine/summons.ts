@@ -20,6 +20,7 @@ export function fighterSprite(
   > & { storm?: Pick<NonNullable<Fighter["storm"]>, "launched">;
     inferno?:Pick<NonNullable<Fighter["inferno"]>,"formed">;
     mending?:Pick<NonNullable<Fighter["mending"]>,"completed">;
+    formless?:Pick<NonNullable<Fighter["formless"]>,"activations">;
     siege?:Pick<NonNullable<Fighter["siege"]>,"mode">;
     tortoise?:Pick<NonNullable<Fighter["tortoise"]>,"mode">;
     rifle?:Pick<NonNullable<Fighter["rifle"]>,"shots">;
@@ -32,6 +33,7 @@ export function fighterSprite(
     secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>, "formed"> },
 ) {
   if (isPhoenixEgg(f)) return "phoenix-egg";
+  if(f.formless)return "ghostjet-formless-v077";
   if(f.mending)return "repair-mending-v076";
   if(f.inferno)return "vajra-inferno-v075";
   if(f.siege?.mode)return "chariot-siege-v074";

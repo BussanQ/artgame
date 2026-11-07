@@ -6,6 +6,7 @@ import {
   hasSiegeRules,
   hasInfernoRules,
   hasMendingRules,
+  hasFormlessRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -40,6 +41,9 @@ export const INFERNO={name:"炎狱之怒",role:"震地减速与狂怒续战",coo
 /** S71 measured 40% haste and ordinary area attacks; other siege tuning is documented locally. */
 export const SIEGE={name:"攻城形态",role:"架设远程物理炮台",cooldown:240,windup:3,haste:0.4,attack:[60,110,160],range:14,radius:1.5,splash:0.4,speed:2,
  description:"初始能量0。满能量且60秒冷却结束时，原地架设0.75秒，成功后本场变为不能自行移动的攻城炮台，射程覆盖棋盘，攻击增加60/110/160，攻速增加40%。此后普通攻击发出实际飞行的炮弹，伤害在发射时确定、落点固定；命中格内敌人承受完整普通攻击，周围1.5格敌人受到40%攻击的普通物理溅射，各自结算护甲、闪避、护盾、吸血和反伤。移动可避开落点，范围可波及隐蔽和飞行敌人，炮弹按发射时阵营判敌，已发出炮弹不因来源受控或阵亡取消；战斗结束后停止结算。架设期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂会中断，不返还能量或冷却。成形后不再施法或回能，沉默不影响炮击，眩晕仅暂停后续发射；魅惑期间仍保留形态并转向攻击原队友。法术强度不提高增攻、攻速或溅射。"} as const;
+/** S35 May 9 announcement: 6s stealth, 16s cooldown and 30/40/50% haste. */
+export const FORMLESS={name:"无形",role:"隐形高速普攻",duration:24,cooldown:64,haste:[0.3,0.4,0.5],
+ description:"初始能量0。满能量且16秒冷却结束时原地进入无形，持续6秒，期间攻击速度提高30/40/50%（一/二/三星）。冷却从施放时开始计算，包含隐形持续时间；不瞬移、不直接造成技能伤害，不受技能强度加成。期间可移动、普攻和回能，普攻仍按物理伤害结算护甲、闪避、护盾、刺杀暴击、吸血与反伤；加速与编队及灵蕴加速相加。隐形使自己无法被敌方定向攻击或技能选中，仍会受到范围伤害、反伤和控制，不是无敌；已锁定并发出的攻击依照各自命中规则处理。眩晕只停止行动，沉默只阻止再次施放，均不删除已获得的无形；魅惑不延长时长，增益随当前阵营继续。死亡、涅槃化蛋或进入残魂会结束无形。没有可见敌人时仍可施放自身增益。自然恢复每秒5生命，仅记录实际回复，不复活或恢复残魂。隐形中的有效普攻命中、生命伤害与破盾单独计入战报。"} as const;
 /** S04 body/CD and S21 post-July healing/energy; exact ladders and timing remain local. */
 export const MENDING={name:"灵蕴缝合",role:"主力回复与攻速辅助",cooldown:48,windup:2,range:4,healing:[200,300,400],energy:[20,30,40],haste:[0.2,0.3,0.4],duration:24,
  description:"初始能量0。满能量且12秒冷却结束时，锁定4格内当前攻击最高的存活友军（可选自身），蓄势0.5秒后回复200/300/400生命、20/30/40能量，并提高其攻击速度20/30/40%，持续6秒（一/二/三星）。攻击相同按稳定编号选人，不按剩余生命选人，满血目标也能获得回能与加速；法强只提高治疗量，不提高能量、攻速或时长。不能选择残魂或涅槃火种；无能量技能的目标仍可治疗和加速，但不获得虚假的能量，能量封锁和骑兵回能削减照常生效。蓄势期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂会打断，不返还能量或冷却。锁定目标阵亡、变为敌军、进入残魂/火种或移出4格时落空，不临时换人。释放后维修机恢复行动，已获得的加速不依赖来源继续存活或保持距离；同类加速只取最强，各自到期，弱效果不延长强效果。受益者死亡、化蛋或进入残魂后清除加速，灵鱼驱散不移除这项友军增益。不提高攻击力，不提供无敌或复活；只记录实际治疗和实际充能。释放或中断当帧不附加普攻。"} as const;
@@ -897,6 +901,7 @@ export const BULWARK={
 export const BULWARK_SKILL=define({name:BULWARK.name,role:BULWARK.role,multiplier:0,description:BULWARK.description});
 export const INFERNO_SKILL=define({name:INFERNO.name,role:INFERNO.role,damageType:"magic",radius:INFERNO.radius,description:INFERNO.description});
 export const MENDING_SKILL=define({name:MENDING.name,role:MENDING.role,description:MENDING.description});
+export const FORMLESS_SKILL=define({name:FORMLESS.name,role:FORMLESS.role,description:FORMLESS.description});
 
 /** Circle sizes normalize the original 9/11/14 and 20/22/25 units to this board. */
 export const HIVE = {
@@ -924,6 +929,7 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (id === "ghostjet" && hasFormlessRules(version)) return FORMLESS.description;
   if (id === "repair" && hasMendingRules(version)) return MENDING.description;
   if (id === "vajra" && hasInfernoRules(version)) return INFERNO.description;
   if (hasSiegeRules(version) && id === "chariot") return SIEGE.description;
@@ -1058,6 +1064,7 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "ghostjet" && hasFormlessRules(version) ? FORMLESS.name :
   id === "repair" && hasMendingRules(version) ? MENDING.name :
   id === "vajra" && hasInfernoRules(version) ? INFERNO.name :
   id === "chariot" && hasSiegeRules(version) ? SIEGE.name :
@@ -1123,6 +1130,7 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "ghostjet" && hasFormlessRules(version) ? FORMLESS.role :
   id === "repair" && hasMendingRules(version) ? MENDING.role :
   id === "vajra" && hasInfernoRules(version) ? INFERNO.role :
   id === "chariot" && hasSiegeRules(version) ? SIEGE.role :

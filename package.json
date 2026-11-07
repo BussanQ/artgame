@@ -110,7 +110,10 @@
     "test:spirit-ward": "vitest run tests/spirit-ward.test.ts tests/bulwark.test.ts",
     "test:siege": "vitest run tests/siege.test.ts",
     "test:inferno": "vitest run tests/inferno.test.ts",
-    "test:mending": "vitest run tests/mending.test.ts"
+    "test:mending": "vitest run tests/mending.test.ts",
+    "test:formless": "vitest run tests/formless.test.ts",
+    "test:support-actions": "vitest run tests/support-actions.test.ts",
+    "test:save-protection": "vitest run tests/save-protection.test.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

@@ -8,6 +8,7 @@ import {
   hasQiRules,
   hasGospelRules,
   hasStormRules,
+  hasFormlessRules,
   type CombatVersion,
 } from "../engine/types";
 export const RANGED_ACTIONS = {
@@ -282,6 +283,7 @@ export function rangedActionName(
   id: RangedId,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
+  if (id === "ghostjet" && hasFormlessRules(version)) return "侧倾机炮齐射";
   if (id === "stormcaller" && hasStormRules(version)) return "晶核聚能推波";
   if (id === "acolyte" && hasGospelRules(version)) return "悬壳晶核脉冲";
   if (id === "skycrab" && !hasAuroraRules(version)) return "合钳聚能弹";
