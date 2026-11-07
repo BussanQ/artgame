@@ -157,6 +157,8 @@ export interface Player {
   eliminatedRound?: number;
 }
 export interface Game {
+  /** Player-only, one-copy requests for the next successful shop refresh. */
+  debugShopQueue?: string[];
   /** Unit price and pool tier at match creation; not changed by battle upgrades. */
   catalogVersion?: CombatVersion;
   /** Fixed for the whole match; absent on pre-rotation saves. */

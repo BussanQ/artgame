@@ -1,4 +1,5 @@
 import { catalogCost } from "../data/catalog";
+import { takeShopCommand } from "./debug-shop";
 import { availableUnits, isRecruitable, randomBans } from "./rotation";
 import { CURRENT_COMBAT_VERSION } from "./types";
 import {pinCatalogDefinitions} from "../data/catalog";
@@ -86,7 +87,8 @@ export function roll(g: Game, p: Player, paid = true): boolean {
     const weight = (unit: (typeof units)[number]) =>
       (ODDS[p.level - 1][unit.cost - 1] * g.pool[unit.id]) / totals[unit.cost];
     let pick = random(g) * choices.reduce((n, u) => n + weight(u), 0);
-    const unit = choices.find((u) => (pick -= weight(u)) < 0) ?? choices.at(-1);
+    const normal = choices.find((u) => (pick -= weight(u)) < 0) ?? choices.at(-1);
+    const unit = (p.id === 0 ? takeShopCommand(g) : undefined) ?? normal;
     p.shop.push(unit?.id ?? null);
     if (unit) g.pool[unit.id]--;
   }

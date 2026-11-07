@@ -1,0 +1,121 @@
+.debug-shop-modal {
+  width: min(560px, 100%);
+}
+.debug-shop-modal code {
+  color: var(--gold);
+}
+.debug-command-form label {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  color: var(--gold);
+  font-size: 12px;
+}
+.debug-command-form > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px auto;
+  align-items: end;
+  gap: 8px;
+}
+.debug-command-form input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 9px 12px;
+  color: #eef0df;
+  background: #10241f;
+  border: 1px solid #83977b80;
+  border-radius: 0;
+  font: inherit;
+  font-size: 16px;
+}
+.debug-shop-modal button:not(.close) {
+  min-height: 44px;
+  flex-shrink: 0;
+}
+.debug-command-hint {
+  color: #9cafa3;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.debug-command-notice {
+  min-height: 40px;
+  margin: 12px 0;
+  padding: 8px 10px;
+  border-left: 2px solid #c2a071;
+  background: #c2a07112;
+  color: #e6c490;
+  font-size: 12px;
+}
+.debug-command-notice.success {
+  color: #a4dfc2;
+  border-color: #7da991;
+  background: #7da99112;
+}
+.debug-queue-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.debug-queue-heading h3 {
+  margin: 0;
+  font-size: 15px;
+}
+.debug-queue-heading h3 span {
+  margin-left: 8px;
+  color: #9cafa3;
+  font-size: 12px;
+  font-weight: normal;
+}
+.debug-shop-queue {
+  list-style: none;
+  margin: 8px 0 12px;
+  padding: 0;
+}
+.debug-shop-queue li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #83977b35;
+}
+.debug-shop-queue li > div {
+  flex: 1;
+  min-width: 0;
+}
+.debug-shop-queue b {
+  display: block;
+  font-size: 14px;
+}
+.debug-shop-queue small {
+  color: #9cafa3;
+  font-size: 11px;
+  font-weight: normal;
+}
+.debug-shop-queue b small {
+  margin-left: 5px;
+  color: var(--gold);
+}
+.debug-queue-number {
+  color: var(--gold);
+  font-size: 12px;
+}
+.debug-queue-empty {
+  color: #9cafa3;
+  font-size: 12px;
+}
+.shop-title h2 .debug-shop-count {
+  margin-left: 8px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: normal;
+}
+@media (max-width: 600px) {
+  .debug-command-form > div {
+    grid-template-columns: minmax(0, 1fr) 80px;
+  }
+  .debug-command-form button {
+    grid-column: 1 / -1;
+  }
+}

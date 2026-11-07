@@ -1,5 +1,7 @@
 # 本地存档与战报
 
+当前0.83使用schema82：schema81只升级格式，战斗版本、目录、资源、历史和播放不变；待刷新指令作为可选队列保存并校验，见[后台模式](debug-shop.md)。
+
 当前0.82使用schema81：schema80准备期升级detonation，战斗／结算／终局保留sea-fog；目录、资源、历史和播放不变，见[爆裂虫自爆](detonation.md)。
 
 0.81使用schema80：schema79准备期升级sea-fog，战斗／结算／终局保留equipment-skills，目录、资源、历史及播放不变，见[巨鲸之眼](whale-eye.md)。下列为此前格式与验收记录。

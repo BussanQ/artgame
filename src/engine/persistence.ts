@@ -1,5 +1,6 @@
 import { catalogCost, catalogDefinitionVersion, pinCatalogDefinitions } from "../data/catalog";
 import { isRecruitable, validBans } from "./rotation";
+import { validDebugShopQueue } from "./debug-shop";
 import { isAiProfileId } from "../data/ai-profiles";
 import { COMBAT_VERSIONS, CURRENT_COMBAT_VERSION,hasExecutionRules } from "./types";
 import { ITEM, COMPONENTS } from "../data/items";
@@ -41,7 +42,7 @@ export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
 export const PRESERVED_KEY = `${SAVE_KEY}.preserved`;
-export const SAVE_SCHEMA = 81;
+export const SAVE_SCHEMA = 82;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -159,6 +160,7 @@ export function validGame(value: unknown): value is Game {
     !validBans(g.bannedSeries) ||
     !validCombatVersion(g.combatVersion) ||
     (g.catalogVersion !== undefined && !validCombatVersion(g.catalogVersion)) ||
+    !validDebugShopQueue(g) ||
     !["relaxed", "standard", "veteran"].includes(g.difficulty) ||
     !integer(g.nextUid, 1, 1e9) ||
     !integer(g.round, 1, RULES.maxRounds) ||
@@ -1035,7 +1037,10 @@ export function decodeSave(raw: string | null): {
     if(v.schema===80&&v.rules==="singleplayer-0.81"&&record(v.game)){
       if(v.game.catalogVersion===undefined)v.game.catalogVersion="sea-fog";
       if(v.game.phase==="prepare")v.game.combatVersion=CURRENT_COMBAT_VERSION;
-      v.schema=81;v.rules=RULES.version;migrated=true;
+      v.schema=81;v.rules="singleplayer-0.82";migrated=true;
+    }
+    if(v.schema===81&&v.rules==="singleplayer-0.82"&&record(v.game)){
+      v.schema=82;v.rules=RULES.version;migrated=true;
     }
     if (v.schema !== SAVE_SCHEMA || v.rules !== RULES.version)
       return { data: null, status: "incompatible" };

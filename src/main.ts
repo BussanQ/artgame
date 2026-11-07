@@ -59,6 +59,8 @@ import {
   hasQiRules,
 } from "./engine/types";
 import { recruitmentMarkup } from "./ui/recruitment";
+import { debugShopMarkup } from "./ui/debug-shop";
+import { queueShopCommand, removeShopCommand } from "./engine/debug-shop";
 import { incomeMarkup } from "./ui/income";
 import { salePrice } from "./engine/progression";
 import { BattleComputer, ComputationCancelled } from "./compute/client";
@@ -113,6 +115,7 @@ import "./recruitment-layout.css";
 import "./mobile-navigation.css";
 import "./battle-inspection.css";
 import "./command-layout.css";
+import "./debug-shop.css";
 import { BattleScene, spriteUrl } from "./render/scene";
 import type { Battle, CombatVersion, Game } from "./engine/types";
 import { UNIT, UNITS, RULES, XP } from "./data/units";
@@ -148,6 +151,10 @@ const dialogs = new DialogFocus(app);
 let equipmentOverviewOpen = false;
 let equipmentHeldOnly = false;
 let settingsOpen = false;
+let debugOpen = false;
+let debugCommand = "/";
+let debugQuantity = "1";
+let debugNotice: { ok: boolean; message: string } | null = null;
 let unitInfo: Piece | null = null;
 let unitInfoVersion: CombatVersion | null = null;
 let unitInfoFinal = false;
@@ -446,7 +453,7 @@ function render() {
               `<button data-action="${action}" ${disabled(computing || fighting || game.phase === "result")}>${label}</button>`,
           )
           .join("")}</div></details>`
-  }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="restart">重新开始</button></nav><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></header>
+  }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="debug" title="按 / 输入兵种指令">后台模式${game.debugShopQueue?.length ? ` · ${game.debugShopQueue.length}` : ""}</button><button data-action="restart">重新开始</button></nav><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></header>
  ${computing || computeError ? `<section class="compute-status" role="status" aria-live="polite"><span>${computing ? pendingJob?.label : computeError}</span><div>${!computing ? '<button data-action="retry-compute">重试计算</button>' : ""}<button data-action="cancel-compute">${computing ? "取消计算" : "关闭"}</button></div></section>` : ""}
  <h1 class="toolbar-title">${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : spiritWardDemo ? "灵鹿庇护 · 战术演习" : bulwarkDemo ? "盾阵护卫 · 战术演习" : hiveDemo ? "蜂群双环 · 战术演习" : gazeDemo ? "凝视压制 · 战术演习" : rifleDemo ? "步枪火力 · 战术演习" : thornbindDemo ? "荆棘汲取 · 战术演习" : boneblastDemo ? "骨球震爆 · 战术演习" : wildfireDemo ? "燎原涅槃 · 战术演习" : tornadoDemo ? "龙卷穿阵 · 战术演习" : warcryDemo ? "战吼石化 · 战术演习" : terminatorDemo ? "终结者轰炸 · 战术演习" : bombardmentDemo ? "集团轰炸 · 战术演习" : secretOrbCounterDemo ? "秘法反制 · 战术演习" : secretOrbDemo ? "秘法削能 · 战术演习" : shurikenDemo ? "风魔飞镖 · 战术演习" : wushiDemo ? "武僧无式 · 战术演习" : jungleDemo ? "丛林震荡 · 战术演习": thunderstormDemo ? "雷暴削能 · 战术演习" : gospelDemo ? "福音供能 · 战术演习" : lightningDemo ? "雷神锁链 · 战术演习" : tarDemo ? "焦油爆破 · 战术演习" : taotieDemo ? "饕餮狂暴 · 战术演习" : auroraDemo ? "极光成长 · 战术演习" : coalitionDemo ? "空援协同 · 战术演习" : abnormalDemo ? "异能续战 · 战术演习" : counterplayDemo ? "狙骑反制 · 战术演习" : assassinDemo ? "六刺突袭 · 战术演习" : wildfrontDemo ? "荒原先锋 · 战术演习" : lingjiuDemo ? "海神刺杀 · 战术演习" : beastDemo ? "野兽破阵 · 战术演习" : staffDemo ? "疾风棍阵 · 战术演习" : shieldDemo ? "傀儡卫阵 · 战术演习" : bladeDemo ? "傀儡战刃 · 战术演习" : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : demoTitle) : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "赤潮战术演习"}</h1>
  ${!demoBattle ? matchSummaryMarkup(game) : ""}
@@ -488,10 +495,11 @@ function render() {
  }</div>${game.phase === "result" ? `<p class="result-badge">${lastWinner === 0 ? "防守胜利" : lastWinner === null ? "战斗平局" : "防守失败"}</p>` : ""}${!demoBattle && !done ? encounterMarkup(game) : ""}</section><section class="panel synergies">${synergyPanelMarkup(active, !!demoBattle)}</section></aside></main>
  <footer><span>RED TIDES / 战术演习</span><span class="save-status" role="status">${saveLabel()}</span><span>ImageGen 重制形象 · 2.5D 战场</span></footer><nav class="mobile-dock" aria-label="快捷导航"><span>${p.hp} 生命 · <b>${p.gold} 金</b> · ${onboard.length}/${p.level} 人口</span><div><a href="#battlefield" data-jump="battlefield" aria-controls="battlefield">战场</a><a href="#recruitment" data-jump="recruitment" aria-controls="recruitment">招募</a><a href="#armory" data-jump="armory" aria-controls="armory">装备</a><a href="#commander" data-jump="commander" aria-controls="commander">升级</a><a href="#intel" data-jump="intel" aria-controls="intel">情报</a></div></nav></div>
  ${restartOpen ? restartMarkup(game) : ""}
- ${game.reward && !restartOpen && !computing && !resultPresentation && !saveConflict && !settingsOpen && !unitInfo && scoutId === null && !historyOpen && !help && !codex && !analysisView && !equipmentOverviewOpen ? rewardMarkup(game) : ""}
+ ${game.reward && !restartOpen && !computing && !resultPresentation && !saveConflict && !settingsOpen && !debugOpen && !unitInfo && scoutId === null && !historyOpen && !help && !codex && !analysisView && !equipmentOverviewOpen ? rewardMarkup(game) : ""}
  ${analysisView ? battleAnalysisMarkup(analyzeBattle(analysisView.battle, analysisView.at), analysisMetric, analysisView.title, analysisView.limit, analysisView.battle.frames[analysisView.limit]?.tick ?? 0, analysisView.battle === demoBattle) : ""}
  ${equipmentOverviewOpen ? equipmentOverviewMarkup(game, equipmentHeldOnly) : ""}
  ${settingsOpen ? settingsMarkup(preferences) : ""}
+ ${debugOpen ? debugShopMarkup(game, !canEditDebugShop(), debugCommand, debugNotice, debugQuantity) : ""}
  ${unitInfo ? pieceInfoMarkup(unitInfo, unitInfoVersion ?? game.combatVersion, catalogVersion(game), unitInfoFinal) : ""}
  ${scoutId !== null ? scoutingMarkup(game, scoutId) : ""}
  ${historyOpen ? historyMarkup(game) : ""}
@@ -603,6 +611,9 @@ function reset() {
   saveConflict = false;
   saveNotice = "";
   closePanels();
+  debugCommand = "/";
+  debugQuantity = "1";
+  debugNotice = null;
   deploymentOpen = false;
   mobileView = "battlefield";
   replayRound = null;
@@ -752,10 +763,34 @@ function closePanels() {
   help = false;
   codex = false;
   settingsOpen = false;
+  debugOpen = false;
   unitInfo = null;
   unitInfoVersion = null;
   unitInfoFinal = false;
   if (wasRestartOpen) syncVisibility();
+}
+function canEditDebugShop() {
+  return game.phase === "prepare" && me().hp > 0 && !computing && !saveConflict && !demoBattle && !game.reward;
+}
+function focusDebugCommand() {
+  const input = app.querySelector<HTMLInputElement>('[data-focus="debug-command"]');
+  input?.focus({ preventScroll: true });
+  input?.setSelectionRange(input.value.length, input.value.length);
+}
+function openDebugShop(command?: string) {
+  closePanels();
+  debugOpen = true;
+  debugNotice = null;
+  if (command !== undefined) debugCommand = command;
+  render();
+  focusDebugCommand();
+}
+function submitDebugCommand() {
+  if (!debugOpen || !canEditDebugShop()) return;
+  debugNotice = queueShopCommand(game, debugCommand, Number(debugQuantity));
+  if (debugNotice.ok) debugCommand = "/";
+  render();
+  focusDebugCommand();
 }
 function openBattleAnalysis(battle: Battle, limit: number, title: string) {
   closePanels();
@@ -836,6 +871,7 @@ app.addEventListener("click", (e) => {
     computing &&
     ![
       "settings",
+      "debug",
       "help",
       "codex",
       "history",
@@ -891,6 +927,7 @@ app.addEventListener("click", (e) => {
       "codex",
       "history",
       "settings",
+      "debug",
       "unit-info",
       "equipment-overview",
       "equipment-all",
@@ -1062,6 +1099,24 @@ app.addEventListener("click", (e) => {
   if (action === "settings") {
     closePanels();
     settingsOpen = true;
+  }
+  if (action === "debug") {
+    openDebugShop();
+    return;
+  }
+  if (action === "debug-submit") {
+    e.preventDefault();
+    submitDebugCommand();
+    return;
+  }
+  if (debugOpen && (action === "debug-remove" || action === "debug-clear")) {
+    if (!canEditDebugShop()) return;
+    if (action === "debug-clear") delete game.debugShopQueue;
+    else if (!removeShopCommand(game, Number(target.dataset.debugIndex))) return;
+    debugNotice = { ok: true, message: action === "debug-clear" ? "已清空待刷新指令。" : "已移除该条指令。" };
+    render();
+    focusDebugCommand();
+    return;
   }
   if (action === "unit-info") {
     const piece = p.pieces.find((piece) => piece.uid === selected);
@@ -1537,14 +1592,40 @@ app.addEventListener("change", (e) => {
   if (key === "range") codexFilters.range = input.value;
   refreshCodex(app, game);
 });
+app.addEventListener("submit", (event) => {
+  if (!(event.target instanceof HTMLFormElement) || !event.target.hasAttribute("data-debug-command-form")) return;
+  event.preventDefault();
+  submitDebugCommand();
+});
 app.addEventListener("input", (event) => {
   const input = event.target;
+  if (input instanceof HTMLInputElement && input.dataset.focus === "debug-command") {
+    debugCommand = input.value;
+    return;
+  }
+  if (input instanceof HTMLInputElement && input.dataset.focus === "debug-quantity") {
+    debugQuantity = input.value;
+    return;
+  }
   if (!(input instanceof HTMLInputElement) || input.dataset.codex !== "query")
     return;
   codexFilters.query = input.value;
   refreshCodex(app, game);
 });
 document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && e.target instanceof HTMLInputElement &&
+    (e.target.dataset.focus === "debug-command" || e.target.dataset.focus === "debug-quantity")) {
+    e.preventDefault();
+    if (!e.isComposing && e.keyCode !== 229) submitDebugCommand();
+    return;
+  }
+  if (e.key === "/" && !e.defaultPrevented && !e.isComposing && !e.ctrlKey && !e.metaKey && !e.altKey &&
+    !(e.target instanceof HTMLElement && (e.target.isContentEditable || e.target.closest("input, textarea, select"))) &&
+    !app.querySelector('[role="dialog"]')) {
+    e.preventDefault();
+    openDebugShop("/");
+    return;
+  }
   const cell =
     e.target instanceof HTMLElement
       ? e.target.closest<HTMLElement>("[data-cell]")

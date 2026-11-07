@@ -1,5 +1,7 @@
 # 赤潮网页自走棋：资料与开发方案
 
+当前增量：[0.83 后台模式](design/debug-shop.md)。输入 `/兵种名称` 并设置数量，可一次排入多枚，队列最多五枚；容量与库存不足时整批拒绝。队列可编辑、随存档恢复，禁用、卡池及原价购买照常，存档升级为schema82。以下为此前记录。
+
 当前增量：[0.82 爆裂虫自爆](design/detonation.md) · [历史依据与完整生成提示词](research/detonation-history.json) · [必要验证](analysis/detonation-v082-validation.json)。分星爆炸、远程动作、透明形象、连锁、AI与schema81已接入。以下为此前记录。
 
 当前能力：[0.81 巨鲸之眼](design/whale-eye.md) · [原卡与适配](research/whale-eye-history.json) · [必要验证](analysis/whale-eye-v081-validation.json)。海雾、命中回能、AI、schema80及总览固定关闭入口已接入，装备共19件；73项不同检查、188模块构建与桌面／390px通过。下列为此前记录。
