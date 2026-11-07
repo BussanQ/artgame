@@ -11,6 +11,7 @@ import {INFERNO_DEMO} from "./data/inferno-demo";
 import {MENDING_DEMO} from "./data/mending-demo";
 import {FORMLESS_DEMO} from "./data/formless-demo";
 import {EQUIPMENT_SKILLS_DEMO} from "./data/equipment-skills-demo";
+import {WHALE_EYE_DEMO} from "./data/whale-eye-demo";
 import {DREAM_DEMO} from "./data/dream-demo";
 import {SUPPORT_ACTIONS_DEMO} from "./data/support-actions-demo";
 import {EXECUTION_DEMO} from "./data/execution-demo";
@@ -423,6 +424,7 @@ function render() {
           ["support-actions-demo", "隐形支援"],
           ["dream-demo", "迷梦蛛丝"],
           ["equipment-skills-demo", "装备主动技能"],
+          ["whale-eye-demo", "海雾回能"],
           ["execution-demo", "刑杀勾魂"],
           ["tortoise-shell-demo", "玄龟守御"],
           ["tortoise-breach-demo", "玄龟破壳"],
@@ -1254,7 +1256,7 @@ app.addEventListener("click", (e) => {
     action === "inferno-demo" ||
     action === "mending-demo" ||
     action === "formless-demo" ||
-    action === "equipment-skills-demo" ||
+    action === "equipment-skills-demo" || action === "whale-eye-demo" ||
     action === "dream-demo" ||
     action === "support-actions-demo" ||
     action === "execution-demo" ||
@@ -1265,7 +1267,7 @@ app.addEventListener("click", (e) => {
     action === "gaze-demo" ||
     action === "rifle-demo"
   ) {
-    demoTitle=action==="equipment-skills-demo"?"装备主动技能":action==="dream-demo"?"迷梦蛛丝":action==="support-actions-demo"?"隐形支援":action==="formless-demo"?"无形幽灵机":action==="mending-demo"?"灵蕴缝合":action==="inferno-demo"?"炎狱金刚":action==="siege-demo"?"攻城炮台":action==="execution-demo"?"刑杀勾魂":action==="tortoise-shell-demo"?"玄龟守御":action==="tortoise-breach-demo"?"玄龟破壳":"兵种演习";
+    demoTitle=action==="whale-eye-demo"?"海雾回能":action==="equipment-skills-demo"?"装备主动技能":action==="dream-demo"?"迷梦蛛丝":action==="support-actions-demo"?"隐形支援":action==="formless-demo"?"无形幽灵机":action==="mending-demo"?"灵蕴缝合":action==="inferno-demo"?"炎狱金刚":action==="siege-demo"?"攻城炮台":action==="execution-demo"?"刑杀勾魂":action==="tortoise-shell-demo"?"玄龟守御":action==="tortoise-breach-demo"?"玄龟破壳":"兵种演习";
     if (mobileViewport.matches) showMobileView("battlefield");
     resultPresentation = null;
     replayRound = null;
@@ -1317,7 +1319,7 @@ app.addEventListener("click", (e) => {
       beastDemo = action === "beast-demo";
       staffDemo = action === "staff-demo";
       swordDemo = action === "sword-demo";
-      const { left, right } = action === "equipment-skills-demo" ? EQUIPMENT_SKILLS_DEMO : action === "dream-demo" ? DREAM_DEMO : action === "support-actions-demo" ? SUPPORT_ACTIONS_DEMO : action === "formless-demo" ? FORMLESS_DEMO : action === "mending-demo" ? MENDING_DEMO : action === "inferno-demo" ? INFERNO_DEMO : action === "siege-demo" ? SIEGE_DEMO : action === "execution-demo" ? EXECUTION_DEMO : action === "tortoise-shell-demo" ? TORTOISE_SHELL_DEMO : action === "tortoise-breach-demo" ? TORTOISE_BREACH_DEMO : spiritWardDemo ? SPIRIT_WARD_DEMO : bulwarkDemo ? BULWARK_DEMO : hiveDemo ? HIVE_DEMO : gazeDemo ? GAZE_DEMO : rifleDemo ? RIFLE_DEMO : thornbindDemo ? THORNBIND_DEMO : boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
+      const { left, right } = action === "whale-eye-demo" ? WHALE_EYE_DEMO : action === "equipment-skills-demo" ? EQUIPMENT_SKILLS_DEMO : action === "dream-demo" ? DREAM_DEMO : action === "support-actions-demo" ? SUPPORT_ACTIONS_DEMO : action === "formless-demo" ? FORMLESS_DEMO : action === "mending-demo" ? MENDING_DEMO : action === "inferno-demo" ? INFERNO_DEMO : action === "siege-demo" ? SIEGE_DEMO : action === "execution-demo" ? EXECUTION_DEMO : action === "tortoise-shell-demo" ? TORTOISE_SHELL_DEMO : action === "tortoise-breach-demo" ? TORTOISE_BREACH_DEMO : spiritWardDemo ? SPIRIT_WARD_DEMO : bulwarkDemo ? BULWARK_DEMO : hiveDemo ? HIVE_DEMO : gazeDemo ? GAZE_DEMO : rifleDemo ? RIFLE_DEMO : thornbindDemo ? THORNBIND_DEMO : boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
         ? GOSPEL_DEMO
         : lightningDemo
           ? LIGHTNING_DEMO

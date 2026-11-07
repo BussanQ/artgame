@@ -82,7 +82,7 @@ export function equipmentOverviewMarkup(g: Game, heldOnly = false) {
   const inventoryLabel = inventoryKnown ? `${player.inventory.length} 件` : "未记录",
     equippedLabel = reservesKnown ? "装备中" : "已记录穿戴",
     heldLabel = inventoryKnown && reservesKnown ? (isFinal ? "终局持有" : "持有") : "已记录";
-  return `<div class="modal-backdrop"><section class="modal equipment-overview-modal" role="dialog" aria-modal="true" aria-label="装备总览"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">EQUIPMENT LEDGER</span><h2>${isFinal ? "终局装备总览" : "装备总览"}</h2><p class="equipment-ledger-summary">${heldLabel} ${player.inventory.length + equippedCount} 件 · 背包 ${inventoryLabel} · ${equippedLabel} ${equippedCount} 件</p>${snapshotNote(view)}<div class="equipment-ledger-filters"><button data-action="equipment-all" aria-pressed="${!heldOnly}">全部装备 ${entries.length}</button><button data-action="equipment-held" aria-pressed="${heldOnly}">${isFinal ? (inventoryKnown && reservesKnown ? "终局持有" : "已记录") : "已持有"} ${held.length} 种</button></div><p class="micro">${isFinal ? "终局回顾：点击持有人查看最后的星级、装备与阵位。" : "包含你的背包、场上与备战席棋子。点击持有人可选中该棋子并返回工坊；对手装备可在侦察中查看。"}</p>${[
+  return `<div class="modal-backdrop"><section class="modal manual-modal equipment-overview-modal" role="dialog" aria-modal="true" aria-label="装备总览"><header class="manual-header"><div><span class="eyebrow">EQUIPMENT LEDGER</span><h2>${isFinal ? "终局装备总览" : "装备总览"}</h2></div><button class="close" data-action="close" aria-label="关闭">×</button></header><div class="manual-body"><p class="equipment-ledger-summary">${heldLabel} ${player.inventory.length + equippedCount} 件 · 背包 ${inventoryLabel} · ${equippedLabel} ${equippedCount} 件</p>${snapshotNote(view)}<div class="equipment-ledger-filters"><button data-action="equipment-all" aria-pressed="${!heldOnly}">全部装备 ${entries.length}</button><button data-action="equipment-held" aria-pressed="${heldOnly}">${isFinal ? (inventoryKnown && reservesKnown ? "终局持有" : "已记录") : "已持有"} ${held.length} 种</button></div><p class="micro">${isFinal ? "终局回顾：点击持有人查看最后的星级、装备与阵位。" : "包含你的背包、场上与备战席棋子。点击持有人可选中该棋子并返回工坊；对手装备可在侦察中查看。"}</p>${[
     false,
     true,
   ]
@@ -93,7 +93,7 @@ export function equipmentOverviewMarkup(g: Game, heldOnly = false) {
     })
     .join(
       "",
-    )}${!shown.length ? `<p class="empty">${isFinal ? "本局没有可回顾的装备记录" : "尚未持有装备"}；切换“全部装备”查看属性与配方。</p>` : ""}</section></div>`;
+    )}${!shown.length ? `<p class="empty">${isFinal ? "本局没有可回顾的装备记录" : "尚未持有装备"}；切换“全部装备”查看属性与配方。</p>` : ""}</div></section></div>`;
 }
 export function equipmentMarkup(
   g: Game,

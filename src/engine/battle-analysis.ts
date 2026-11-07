@@ -202,7 +202,7 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
           source.interruptions++;
         if (effect.name === "目标丢失") source.lostTargets++;
       }
-      if (source && effect.kind === "energize")
+      if (source && effect.kind === "energize" && !effect.item)
         source.energyGiven += effect.amount;
       if (
         source?.armorApplications !== undefined &&

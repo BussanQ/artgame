@@ -1,6 +1,8 @@
 # 本地存档与战报
 
-当前0.80使用schema79：schema78准备期升级 `equipment-skills`，战斗／结算／终局继续 `dream`，目录、资源、历史与播放状态保留，见[装备技能](equipment-skills.md)。下列版本为此前记录。
+当前0.81使用schema80：schema79准备期升级sea-fog，战斗／结算／终局保留equipment-skills，目录、资源、历史及播放不变，见[巨鲸之眼](whale-eye.md)。下列为此前格式与验收记录。
+
+当前0.80使用schema79：schema78准备期升级 `equipment-skills`，战斗／结算／终局继续 `dream`，目录、资源、历史与播放状态保留，见[装备技能](equipment-skills.md)。当前0.80的保留旧档、恢复／刷新与实际下载已[补验](browser-followup-v080.md)。下列版本为此前记录。
 
 当前0.79使用schema78：schema77准备期升级迷梦，战斗／结算继续support-actions；资源、目录和旧历史保留。原文保留、导出与重试入口继续使用，见[dream.md](dream.md)与[save-protection.md](save-protection.md)。以下为此前存档记录。
 

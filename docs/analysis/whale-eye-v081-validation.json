@@ -1,0 +1,267 @@
+{
+  "version": "singleplayer-0.81",
+  "combatVersion": "sea-fog",
+  "saveSchema": 80,
+  "date": "2026-11-07",
+  "baseCommit": "07eef19ed2cc51fe8a3a26966d60ea2bd3fb196e",
+  "tests": {
+    "distinctPassed": 73,
+    "reports": [
+      {
+        "path": "tmp/whale-eye-final-tests.json",
+        "stage": "final core including energy attribution fix",
+        "passed": 35,
+        "failed": 0,
+        "sha256": "42a381c18b5531592941d67c89fbb6bb3834f49e828efdaba9f750ba2fa555a7"
+      },
+      {
+        "path": "tmp/whale-eye-equipment-regression-tests.json",
+        "stage": "existing equipment mechanics and ledger before UI follow-up",
+        "passed": 38,
+        "failed": 0,
+        "sha256": "def9a7f9ccd1e41048a1d64d6f85934de9740d514d45d2f4ca5d838b73a0b5ac"
+      },
+      {
+        "path": "tmp/whale-eye-ledger-final-tests.json",
+        "stage": "ledger recheck after fixed header",
+        "passed": 9,
+        "failed": 0,
+        "sha256": "04ba9fedb893f65d8929f41cbccc774d6e1e7ee56f5bd076f68b90d1cb13acd3"
+      }
+    ],
+    "deduplication": "35 new core cases plus 29 existing equipment cases plus 9 ledger cases. The final 9 ledger rechecks are not counted twice.",
+    "initialAttempt": {
+      "passed": 31,
+      "failed": 2,
+      "reason": "The first migration fixtures had no deployed actor for battle and no settled report for result. Fixed to legal envelopes before rechecking."
+    },
+    "finalCoreCommand": "npx vitest run tests/whale-eye.test.ts",
+    "fullSuiteRun": false,
+    "fullCampaigns": 0,
+    "bulkBattleSamples": 0
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "modules": 188,
+    "artifacts": [
+      {
+        "path": "dist/assets/index-2yXy-xKh.js",
+        "bytes": 451703,
+        "sha256": "65c71d77495a00c51c5d663a55b15c60079ebf135e130a844aebd7572e423e84"
+      },
+      {
+        "path": "dist/assets/index-CCbEP043.css",
+        "bytes": 88839,
+        "sha256": "5be1000c7fbc3ed613591a813c4c8c0557e945bdb41da5c8848661b341075af1"
+      },
+      {
+        "path": "dist/assets/worker-CcTz-OSz.js",
+        "bytes": 241428,
+        "sha256": "b607d7a297ad9d11670b72bdab994953580b3f09d9ab1d1966c01b62a43b3f12"
+      }
+    ]
+  },
+  "research": {
+    "primarySource": "S34",
+    "record": "docs/research/whale-eye-history.json",
+    "image": "docs/research/images/whale-eye-client-apr2019.png",
+    "deferredEel": "docs/research/eel-history-leads.json",
+    "newImageGeneration": false
+  },
+  "compatibility": {
+    "oldVersions": 53,
+    "oldItemCount": 18,
+    "definitionsAndPresentation": "all frozen SHA checks passed",
+    "oldReplaySHA256": "f4f9c5695e4ab750c5bc6e9dbebd4681e7ff20819fa995fee89c4214bbca59b1",
+    "oldReplayFrames": 46,
+    "oldReplayWinner": 0,
+    "fixture": "tests/fixtures/pre-v081-whale-eye.json",
+    "migrationPhases": [
+      "prepare",
+      "battle",
+      "result",
+      "finished"
+    ],
+    "migration": "Only prepare upgrades combat rules; catalog, resources, history and playback remain unchanged."
+  },
+  "fixedScenes": {
+    "new": "one existing legal 2 versus 3 sea-fog formation for recorded, fast and Worker equality",
+    "old": "one 0.80 equipment formation for replay SHA",
+    "runtimeUI": "same sea-fog formation launched before and after the discovered analysis fix; no campaign or bulk sampling"
+  },
+  "browser": {
+    "type": "in-app browser",
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "realDevice": false,
+    "at4Seconds": {
+      "remainingFogSeconds": 3,
+      "actualExtraEnergy": 65,
+      "detonations": 0,
+      "hpDamage": 0
+    },
+    "at7Seconds": {
+      "fogHits": 3,
+      "fogHpDamage": 480,
+      "fogShieldDamage": 0,
+      "actualExtraEnergy": 70,
+      "holderEnergyGiven": 0
+    },
+    "ledger": {
+      "totalItems": 19,
+      "components": 6,
+      "recipes": 13,
+      "closeAtBottomVisible": true,
+      "phoneCloseWidth": 44,
+      "phoneCloseHeight": 44,
+      "phoneCloseX": 307,
+      "phoneCloseY": 96.296875,
+      "viewportWidth": 390,
+      "documentWidth": 390
+    },
+    "uiFoundFixes": [
+      "Personal equipment recovery no longer counted as support energy supplied.",
+      "Ledger uses an existing fixed header and independent body scrolling so the close button stays visible."
+    ],
+    "artifacts": [
+      {
+        "path": "tmp/whale-eye-v081-desktop-analysis.jpg",
+        "purpose": "analysis after self recovery fix",
+        "width": 1440,
+        "height": 900,
+        "bytes": 74906,
+        "sha256": "e0b269dd41b3a0b96387af312af3929d60d6f3272fabb20f8df0f94fa5e7e907",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/whale-eye-v081-desktop-burst.jpg",
+        "purpose": "7 second global detonation",
+        "width": 1440,
+        "height": 900,
+        "bytes": 164391,
+        "sha256": "963c893789ac7eaea13de47c3b8e411bac759deb43f52f1dabe5099de7ec11ea",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/whale-eye-v081-390-burst.jpg",
+        "purpose": "390px detonation",
+        "width": 390,
+        "height": 844,
+        "bytes": 49400,
+        "sha256": "7429e5b8bfd05372fe8ae7bbd1eb6fe712d9bc2fdd57c7a9fa41f0e7bfb48945",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/whale-eye-v081-390-analysis.jpg",
+        "purpose": "390px contribution",
+        "width": 390,
+        "height": 844,
+        "bytes": 33670,
+        "sha256": "f14e902787151cb5a15ee47025e98dcd57c1415c58027c98bfb4986d17a41750",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/whale-eye-v081-390-forecast.jpg",
+        "purpose": "390px forecast",
+        "width": 390,
+        "height": 844,
+        "bytes": 52644,
+        "sha256": "30d69bec7e876ca511fe7df3ba00e6c1895bfbfaf6b8c74e72f521181de45a20",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/whale-eye-v081-390-inspection.jpg",
+        "purpose": "390px holder inspection",
+        "width": 390,
+        "height": 844,
+        "bytes": 52624,
+        "sha256": "f369e2a9e1d2c760b4d989415c0f5bd655d869a36f24a08c8ef578b3efc3b480",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/whale-eye-v081-desktop-forecast.jpg",
+        "purpose": "1440px forecast",
+        "width": 1440,
+        "height": 900,
+        "bytes": 169865,
+        "sha256": "d663e4e236c080280d0940f5e59e9defbc52b46940e02ddbb9d345e08d47453e",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/whale-eye-v081-desktop-ledger-fixed.jpg",
+        "purpose": "1440px ledger at bottom with fixed close",
+        "width": 1440,
+        "height": 900,
+        "bytes": 91771,
+        "sha256": "deab4f383c10e5dd429b8674ae891a7b7fbecb0011e21810cd4596904f0b0126",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/whale-eye-v081-390-ledger-fixed.jpg",
+        "purpose": "390px ledger at bottom with fixed close",
+        "width": 390,
+        "height": 844,
+        "bytes": 51878,
+        "sha256": "cba9f8f32272dc37e342f13858519f0d0f8b724ba4df94f5fb573bd7938beedb",
+        "gitIgnored": true
+      }
+    ],
+    "warningOrErrorLogs": 0,
+    "cleanup": {
+      "dialogCount": 0,
+      "viewportReset": [
+        634,
+        778
+      ],
+      "phase": "prepare",
+      "round": 1,
+      "hp": 100,
+      "gold": 10,
+      "deployed": 0,
+      "bench": 0,
+      "saveRecoveryOrRestartClicked": false,
+      "hotReloadBetweenFixes": true,
+      "note": "Temporary unsaved starts were re-created by Vite after code fixes; within each demonstration, exit restored that start. No existing save recovery was executed."
+    }
+  },
+  "sourceFingerprints": {
+    "package.json": "8cdbc9b05639152e602972b55843b059e82f89e21d0e14103baa7378cd1ef574",
+    "src/data/items.ts": "3585b9fdc0962c7380c1e8aabaa92e82f43b5341cd2c0c7f248ce2efa450a5e4",
+    "src/data/units.ts": "93efcc61996ec863d09a404f65e8d5487afe79fef0b39612b69b4bb806efc7c1",
+    "src/data/whale-eye-demo.ts": "c68be833fdbd902ef4ea1eeb89a99c4c423095bcd1ad0ba03655ecc771b2518d",
+    "src/engine/abilities.ts": "0d359b4b7c49d28d1c41362922be568063eb53b6c130f50d20f4bb22523ed065",
+    "src/engine/battle-analysis.ts": "573c00498e40db183f0aa01136dc192fd67897ee86d81dde904fda411bfa1da0",
+    "src/engine/battle.ts": "6c81cb736335980f2134d51cf6be747c1e07fb6aa5d2336ac308db3e1c35f470",
+    "src/engine/equipment-skills.ts": "9ad01243fff28c2ac9fc2210a5643e309e9e39c862eda0931d2d08e8eead91dd",
+    "src/engine/equipment.ts": "3311dcddf26628c0243439086ff50d19fd1bfe1239cc12a41bc12e4d90fa2264",
+    "src/engine/execution.ts": "b277487d97c000470f74f986c61dfc1f38451f560c26f9fa3b19f1704c715f23",
+    "src/engine/persistence.ts": "14ebb3f98254d87f642fce1af79d93b3c1ba65cced78e1187aec6063f29f12a3",
+    "src/engine/types.ts": "cc28ad50eb90ec5decb4f2f08c5eda8842ce048feeffb6049461904c85887be1",
+    "src/engine/whale-eye.ts": "1f75c8691da1fddf3686a0806ffcb21674e573dc425625f587db9dc2e3456095",
+    "src/main.ts": "9f8d62e570016ae27f67ad5adb2bd594ee77088688352097b4b10b96f9d5a976",
+    "src/render/equipment-skills.ts": "aa9bdca6ed889890998e9019e937277059d3c7c780b0bca5371fe6cfd5ae5adc",
+    "src/render/scene.ts": "464610fb5964869db527cc28141eca3f7c86e65e45ad78e64bd20ef788dc4039",
+    "src/render/whale-eye.ts": "93a03aa2082d6e945a4e278e80002c0fd5c7a2b2f67c5f939782c4273e40b6a7",
+    "src/ui/battle-analysis.ts": "6cbc73daf7774993cc1cd0f9e1be302f76ee166ae4a762ebb65b825f740d02e6",
+    "src/ui/equipment.ts": "3a17bf79ac91a6c95aaa0621c460dea6f7595d7e3357bcffaa9f67c27edd3ee6",
+    "tests/equipment-skills.test.ts": "0c3f29fe961488393b0db7c62648a5f0cbea58917871b409168d69aaa3a366ab",
+    "tests/fixtures/pre-v081-whale-eye.json": "21e5ecbe6a2c9a01ab81a173fc6a2545efe45f2aa1ca0ba65481d2093e7526e8",
+    "tests/gaze.test.ts": "30d37d1289fa8d851fb6b33598652d81f181223cc5ce67f523c303105c5b1cce",
+    "tests/whale-eye.test.ts": "69b7143eedc3894f29c92376c2a044303468c03e64cf560694d7b1be3f256fa4"
+  },
+  "remaining": [
+    "Other prototype unit mechanics and cross-period historical data",
+    "Overall difficulty and multiple complete build experiences",
+    "Real phone and low-end device performance"
+  ]
+}

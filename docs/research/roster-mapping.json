@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reviewedAt": "2026-11-07",
-  "rules": "singleplayer-0.80",
+  "rules": "singleplayer-0.81",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,

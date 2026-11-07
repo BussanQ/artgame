@@ -21,6 +21,7 @@ import {drawInfernos,infernoPose} from "./inferno";
 import {drawMendings,mendingPose} from "./mending";
 import {drawFormless} from "./formless";
 import {drawDreams} from "./dream";
+import {drawSeaFogForecast} from "./whale-eye";
 import {drawTortoises,tortoisePose} from "./tortoise";
 import {drawSpiritWards,spiritWardPose} from "./spirit-ward";
 import {bulwarkActive} from "../engine/bulwark";
@@ -452,6 +453,7 @@ export class BattleScene {
         })
         .sort((a, b) => a.y - b.y);
       this.paintedFighters = fs;
+      drawSeaFogForecast(c,fs,s.time,this.motionReduced);
       for (const f of fs) drawAirTelegraph(c, f, s.time, this.motionReduced);
       drawTarBombs(c, fs, s.time, this.motionReduced, "area");
       drawThunderstorm(c, fs, s.time, this.motionReduced, "area");

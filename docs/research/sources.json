@@ -422,7 +422,19 @@
       "status": "text-and-client-images-reviewed",
       "accessedAt": "2026-11-07",
       "targetVersion": null,
-      "note": "英雄互娱账号文章，在装备比较中给出摩托骑兵三连发和三星每发400；10秒指代可能是装备，不独立用于摩托冷却依据。 0.80取得原始狼牙坠与灵魂之晶卡面：10%吸血／30秒召唤、30%技能强度／10秒随机500技能伤害，均标明技能唯一；原图与适配见equipment-skills-history.json。"
+      "note": "英雄互娱账号文章，在装备比较中给出摩托骑兵三连发和三星每发400；10秒指代可能是装备，不独立用于摩托冷却依据。 0.80取得原始狼牙坠与灵魂之晶卡面：10%吸血／30秒召唤、30%技能强度／10秒随机500技能伤害，均标明技能唯一；原图与适配见equipment-skills-history.json。",
+      "whaleEyeReview": {
+        "version": "singleplayer-0.81",
+        "image": {
+          "path": "docs/research/images/whale-eye-client-apr2019.png",
+          "url": "https://video.kts.g.mi.com/ktv_1103968488_em0wV3dyNDhuaVdTTXZwU1FwaUdVQT09_1555665005626.png",
+          "bytes": 652382,
+          "sha256": "549ce88a37aba9764f6096d5744438f4ef989abfaa1de067aa80da29b1f2122f",
+          "originalBytes": true,
+          "review": "实际目视完整原始客户端卡面。"
+        },
+        "details": "whale-eye-history.json"
+      }
     },
     {
       "id": "S35",
@@ -1049,5 +1061,12 @@
     ],
     "details": "docs/research/equipment-skills-history.json",
     "sameClientCompleteEquipmentLibraryRecovered": false
+  },
+  "whaleEyeReview": {
+    "version": "singleplayer-0.81",
+    "sourceIds": [
+      "S34"
+    ],
+    "details": "docs/research/whale-eye-history.json"
   }
 }

@@ -43,7 +43,7 @@ import {
   hasMendingRules,
   hasFormlessRules,
   hasSupportActionRules,
-  hasDreamRules,hasEquipmentSkillRules,
+  hasDreamRules,hasEquipmentSkillRules,hasWhaleEyeRules,
   hasBoneBlastRules,
   hasThornBindRules,
   hasHiveRules,
@@ -165,8 +165,9 @@ export function army(
           ? (bonuses.get("召唤")?.summonWard ?? 0)
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
-      const equipmentSkills=hasEquipmentSkillRules(battleDefinitionVersion)?initialEquipmentSkills(p.items):undefined;
+      const equipmentSkills=hasEquipmentSkillRules(battleDefinitionVersion)?initialEquipmentSkills(p.items,battleDefinitionVersion):undefined;
       return {
+        ...(hasWhaleEyeRules(battleDefinitionVersion)&&gear.damageMana?{equipmentDamageMana:gear.damageMana}:{}),
         ...(equipmentSkills?{equipmentSkills}:{}),
         ...(hasDreamRules(definitionVersion)&&d.id==="spider"?{dream:emptyDream()}:{}),
         ...(hasFormlessRules(definitionVersion)&&d.id==="ghostjet"?{formless:emptyFormless(),innateRegen:true as const}:{}),
@@ -816,7 +817,7 @@ function runBattle(
         if (spinning) continue;
         if (f.signature) f.signature.attacks++;
         if(f.rifle)f.rifle.shots++;
-        if (f.damageManaBonus && usesEnergy(f)) f.attackManaReady = true;
+        if ((f.damageManaBonus || f.equipmentDamageMana) && usesEnergy(f)) f.attackManaReady = true;
         gainMana(f, ATTACK_MANA, tick);
         const gale = recordStaffAttack(f, target);
         if (

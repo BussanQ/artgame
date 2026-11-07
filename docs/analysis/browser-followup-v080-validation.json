@@ -1,0 +1,299 @@
+{
+  "version": "singleplayer-0.80",
+  "saveSchema": 79,
+  "date": "2026-11-07",
+  "testedCommit": "07eef19ed2cc51fe8a3a26966d60ea2bd3fb196e",
+  "scope": "补齐0.78存档恢复、0.79迷梦和0.80装备技能的当前页面验收；未改战斗参数。",
+  "build": {
+    "reusedVerifiedBuild": true,
+    "reason": "src、tests与package.json相对已通过构建的07eef19未改动，源码及产物SHA逐一匹配0.80记录。",
+    "modules": 185,
+    "priorRecord": "docs/analysis/equipment-skills-v080-validation.json",
+    "newBuildRun": false
+  },
+  "testScope": {
+    "fullSuite": false,
+    "fullCampaigns": 0,
+    "bulkBattleSamples": 0,
+    "existingFixedBrowserDemos": 2,
+    "offlineAuditCommand": "npx vite-node tmp/audit-restored-save-v080.ts",
+    "offlineAuditExitCode": 0
+  },
+  "browser": {
+    "type": "in-app browser",
+    "originalOrigin": "http://127.0.0.1:5174",
+    "isolatedRecoveryOrigin": "http://127.0.0.1:5187",
+    "desktopViewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        1280,
+        720
+      ]
+    ],
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "realDevice": false,
+    "warningOrErrorLogs": {
+      "originalGamePage": 0,
+      "isolatedRecoveryPage": 0
+    }
+  },
+  "equipment": {
+    "scene": "既有2对2装备主动技能演示",
+    "firstActivationSeconds": 1,
+    "actualMagicHpDamage": 400,
+    "callActivations": 1,
+    "itemPet": {
+      "star": 1,
+      "hp": 380
+    },
+    "unitPet": {
+      "star": 2,
+      "hp": 1216
+    },
+    "analysisAt6_75Seconds": {
+      "holderDamage": 730,
+      "holderOrdinaryDamage": 330,
+      "equipmentDamage": 400,
+      "equipmentSummons": 1,
+      "itemPetDamage": 86,
+      "leftTotalDamage": 2374
+    },
+    "inspection": "首次触发连线、召唤、独立贡献、回看和退出已观察。"
+  },
+  "dream": {
+    "scene": "既有2对3迷梦蛛丝演示",
+    "controlledTarget": "二星神枪手",
+    "at1Second": {
+      "currentSide": "己方",
+      "remainingSecondsDisplay": 5.8,
+      "attackBonus": 0.2
+    },
+    "at7Seconds": {
+      "controls": 1,
+      "taunts": 2,
+      "inducedHits": 8,
+      "inducedHpDamage": 528,
+      "releases": 1
+    },
+    "inspection": "蛛丝、目标环、手机控制说明与关闭按钮已观察；来源阵亡和驱散分支沿用模块证据。"
+  },
+  "renderedOverflowChecks": [
+    {
+      "scene": "装备首次触发",
+      "viewportWidth": 390,
+      "documentWidth": 390
+    },
+    {
+      "scene": "迷梦棋子详情",
+      "viewportWidth": 390,
+      "documentWidth": 390
+    },
+    {
+      "scene": "存档恢复前面板",
+      "viewportWidth": 390,
+      "documentWidth": 390
+    }
+  ],
+  "recovery": {
+    "initialOriginEmpty": true,
+    "seedAction": "在专用5187验收页点击准备按钮，只在四保存槽为空时建立测试旧档。",
+    "initialOldSchema": 999,
+    "purchase": "二费一星盾兵，备战席1/8，10金变8金。",
+    "protectionClickedInViewport": [
+      390,
+      844
+    ],
+    "successMessage": "旧存档已保留，本局已启用自动保存。",
+    "oldRawAndCompanionsExact": true,
+    "priorArchivePreserved": true,
+    "archiveCount": 2,
+    "download": {
+      "completedHandleAndFileVerified": true,
+      "filename": "red-tides-old-saves-2026-11-07T04-57-24-585Z.json",
+      "bytes": 504,
+      "sha256": "70fe43686be5f009213e021b6dc9960686746560fb806656a6ef2d7c45cb8502",
+      "localEvidence": "tmp/save-recovery-v080-actual-download.json"
+    },
+    "actualReload": true,
+    "currentGameUnchangedAfterReload": true,
+    "playbackUnchangedAfterReload": true,
+    "primarySummary": {
+      "schema": 79,
+      "phase": "prepare",
+      "round": 1,
+      "gold": 8,
+      "pieces": [
+        {
+          "uid": 1,
+          "defId": "guard",
+          "star": 1,
+          "position": null
+        }
+      ],
+      "bannedSeries": [
+        "野兽",
+        "不朽",
+        "灵能"
+      ]
+    },
+    "currentModuleAudit": {
+      "status": "passed",
+      "schema": 79,
+      "rules": "singleplayer-0.80",
+      "combatVersion": "equipment-skills",
+      "validGame": true,
+      "decodePreservesGameAndPlayback": true
+    },
+    "notExercisedInBrowser": [
+      "浏览器配额／权限失败",
+      "多窗口竞争"
+    ],
+    "note": "正常流程的实际点击、刷新、下载已补齐；异常分支仍由此前模块检查覆盖。"
+  },
+  "artifacts": [
+    {
+      "path": "tmp/equipment-v080-desktop-trigger.jpg",
+      "purpose": "1440px装备首次触发",
+      "width": 1440,
+      "height": 900,
+      "bytes": 168546,
+      "sha256": "28c2b3e6995d136a879e63c3356b7b74781a8b72503f003d5df436c9eb1b5cd3",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/equipment-v080-desktop-analysis.jpg",
+      "purpose": "1440px装备贡献",
+      "width": 1440,
+      "height": 900,
+      "bytes": 71405,
+      "sha256": "e62275c8d68828f0da47846b24500342ec8da662ef1f32807bdc80e9c7ba3eed",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/equipment-v080-390-trigger.jpg",
+      "purpose": "390px装备首次触发",
+      "width": 390,
+      "height": 844,
+      "bytes": 50871,
+      "sha256": "94944c673cf54318c6e699ee4ee62e7b7bf198e46b6f3105936a8d6a98a3c7c5",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/equipment-v080-390-analysis.jpg",
+      "purpose": "390px装备贡献与可见关闭按钮",
+      "width": 390,
+      "height": 844,
+      "bytes": 31850,
+      "sha256": "711616964ec6ff795323a71399ff127e3981087ed1b6151c733259b7d0f3192a",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/dream-v079-desktop-active.jpg",
+      "purpose": "1440px迷梦控制",
+      "width": 1440,
+      "height": 900,
+      "bytes": 166577,
+      "sha256": "71004477d648ed6553510ceeed886a665a85eaa9731b5f76839e378c43d91c61",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/dream-v079-desktop-analysis.jpg",
+      "purpose": "1440px迷梦贡献",
+      "width": 1440,
+      "height": 900,
+      "bytes": 70915,
+      "sha256": "e25c38d16f8666b8a924b148497c89ee4cb2be8b6a53ca83bd929fdfd65571e8",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/dream-v079-390-inspection.jpg",
+      "purpose": "390px被策反棋子详情",
+      "width": 390,
+      "height": 844,
+      "bytes": 50844,
+      "sha256": "8d7b71dcbadee1cd0ce6eedee9470d7e9ce48fbe38b269ef2ff3f238201f5a12",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/save-recovery-v080-desktop-before.jpg",
+      "purpose": "1280px恢复前状态",
+      "width": 1280,
+      "height": 720,
+      "bytes": 150569,
+      "sha256": "3e2ae201b4b8eb6623cc5589642edeb555640c53f338f8f2a9d1b245e3b74c85",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/save-recovery-v080-390-before.jpg",
+      "purpose": "390px恢复前按钮",
+      "width": 390,
+      "height": 844,
+      "bytes": 48315,
+      "sha256": "7d2eae9171f85edb1d6c40ea82822e89704cbaae6cc0e58d5044d92e66b24a5f",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/save-recovery-v080-390-after.jpg",
+      "purpose": "390px保留成功",
+      "width": 390,
+      "height": 844,
+      "bytes": 46539,
+      "sha256": "07d99ceb669ea2e3d9f753160134c6bcb313c6b49e9a8e0cc06d41c72eaf2568",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/save-recovery-v080-desktop-restored.jpg",
+      "purpose": "1440px恢复后的完整战场",
+      "width": 1440,
+      "height": 900,
+      "bytes": 172647,
+      "sha256": "1b4105f05744e85a9f15bed360bc25ec7255b03be686877ffde767a00c1f7470",
+      "localOnly": true
+    },
+    {
+      "path": "tmp/save-recovery-v080-390-ready.jpg",
+      "purpose": "390px刷新后场景完整加载",
+      "width": 390,
+      "height": 844,
+      "bytes": 51834,
+      "sha256": "83458458fb7d2560e0ccaa2025eb50fe19f48813d5349d86ccf9063f7133acee",
+      "localOnly": true
+    }
+  ],
+  "cleanup": {
+    "isolatedBrowserTabClosed": true,
+    "temporaryViewportOverridesReset": true,
+    "restoredOriginalViewport": [
+      634,
+      778
+    ],
+    "originalGameAfterBothDemos": {
+      "phase": "prepare",
+      "round": 1,
+      "hp": 100,
+      "gold": 10,
+      "level": 3,
+      "pieceCount": 0,
+      "bannedSeries": [
+        "空军",
+        "猛禽",
+        "陆行者"
+      ]
+    },
+    "original5174Actions": "仅进入并退出演示；未购买、恢复存档或重新开始。",
+    "existingServersRestarted": false,
+    "temporaryArtifactsGitIgnored": true
+  },
+  "remaining": [
+    "其余原型能力和跨期数值的逐项恢复",
+    "整体难度与多构筑完整体验",
+    "真实手机和弱设备性能",
+    "浏览器异常存储与多窗口分支的实际操作验收"
+  ]
+}

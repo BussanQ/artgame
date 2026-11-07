@@ -115,7 +115,7 @@ describe("眼虫随机单控与削能",()=>{
     castSkill(ctx,a,target);expect(target.gazed).toMatchObject({until:26,drain:10});
     expect(itemScore(piece("eyebug",1),"staff")).toBe(80); // 40 opening energy; no spell-power credit.
     expect(itemScore(piece("eyebug",1),"staff","rifle")).toBeGreaterThan(80);
-    expect(abilityCredit(piece("eyebug",1))).toBe(abilityCredit(piece("eyebug",1),{attack:0,hp:0,armor:0,haste:0,mana:0,skillPower:100,lifesteal:0,magicResist:0}));
+    expect(abilityCredit(piece("eyebug",1))).toBe(abilityCredit(piece("eyebug",1),{attack:0,hp:0,armor:0,haste:0,mana:0,skillPower:100,lifesteal:0,magicResist:0,damageMana:0}));
   });
 });
 

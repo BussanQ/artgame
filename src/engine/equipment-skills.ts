@@ -4,14 +4,16 @@ import {attackTargets} from "./triggers";
 import {isUndying} from "./immortality";
 import {isPhoenixEgg} from "./phoenix";
 import {summonCells,spawnRetinue} from "./summons";
-import type {Fighter} from "./types";
+import {CURRENT_COMBAT_VERSION,hasWhaleEyeRules,type Fighter,type CombatVersion} from "./types";
+import {emptySeaFog,advanceSeaFogs,releaseSeaFog} from "./whale-eye";
 
 /** Duplicate copies keep base stats but create just one controller for each unique skill. */
-export function initialEquipmentSkills(items:string[]=[]):Fighter["equipmentSkills"]{
+export function initialEquipmentSkills(items:string[]=[],version:CombatVersion=CURRENT_COMBAT_VERSION):Fighter["equipmentSkills"]{
   const result:NonNullable<Fighter["equipmentSkills"]>={};
   for(const id of new Set(items)){
     if(ITEM[id]?.effect==="resonance")result.resonance={readyAt:EQUIPMENT_SKILLS.opening,activations:0,damage:0,shieldDamage:0};
     if(ITEM[id]?.effect==="call")result.call={readyAt:EQUIPMENT_SKILLS.opening,activations:0,summoned:0};
+    if(ITEM[id]?.effect==="fog"&&hasWhaleEyeRules(version))result.fog=emptySeaFog();
   }
   return Object.keys(result).length?result:undefined;
 }
@@ -26,11 +28,13 @@ export function equipmentTarget(ctx:CombatContext,source:Fighter){
 
 /** Independent equipment actions do not spend energy or replace a unit's ordinary action. */
 export function advanceEquipmentSkills(ctx:CombatContext){
+  advanceSeaFogs(ctx);
   const holders=ctx.fighters.filter(f=>f.equipmentSkills).sort((a,b)=>a.uid-b.uid);
   if(ctx.tick%2)holders.reverse();
   for(const source of holders){
     if(source.hp<=0||source.summon||source.executionPuppet||source.charm||
       source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source))continue;
+    releaseSeaFog(ctx,source);
     const call=source.equipmentSkills!.call;
     if(call&&call.readyAt<=ctx.tick){
       const cells=summonCells(ctx,source,1);

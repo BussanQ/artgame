@@ -30,7 +30,7 @@ function dreamContribution(f:Pick<UnitContribution,"dream">){
 }
 function equipmentContribution(f:Pick<UnitContribution,"equipmentSkills">){
  const s=f.equipmentSkills;
- return `${s?.resonance?` · 装备鞭笞 ${s.resonance.activations}次 / 生命伤害 ${s.resonance.damage} / 破盾 ${s.resonance.shieldDamage}`:""}${s?.call?` · 装备呼号 ${s.call.activations}次 / 召唤 ${s.call.summoned}只`:""}`;
+ return `${s?.resonance?` · 装备鞭笞 ${s.resonance.activations}次 / 生命伤害 ${s.resonance.damage} / 破盾 ${s.resonance.shieldDamage}`:""}${s?.call?` · 装备呼号 ${s.call.activations}次 / 召唤 ${s.call.summoned}只`:""}${s?.fog?` · 装备海雾 ${s.fog.activations}次 / 引爆 ${s.fog.detonations}次 / 命中 ${s.fog.hits}人次 / 生命伤害 ${s.fog.damage} / 破盾 ${s.fog.shieldDamage} · 巨鲸额外回能 ${Math.round(s.fog.energyRecovered*10)/10}`:""}`;
 }
 function mendingContribution(f:Pick<UnitContribution,"mending">){
  const s=f.mending;return s?` · 灵蕴缝合 ${s.completed} 次 · 治疗 ${s.healing} 生命 · 充能 ${Math.round(s.energy)} · 加速施加 ${s.hastes} 人次${s.interrupted?` · 缝合中断 ${s.interrupted} 次`:""}${s.missed?` · 缝合落空 ${s.missed} 次`:""}`:"";

@@ -28,10 +28,10 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege", "inferno", "mending", "formless", "support-actions", "dream", "equipment-skills",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege", "inferno", "mending", "formless", "support-actions", "dream", "equipment-skills", "sea-fog",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "equipment-skills";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "sea-fog";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
@@ -49,6 +49,7 @@ export const hasFormlessRules = (version: CombatVersion) => hasRuleSince(version
 export const hasSupportActionRules = (version: CombatVersion) => hasRuleSince(version,"support-actions");
 export const hasDreamRules = (version: CombatVersion) => hasRuleSince(version,"dream");
 export const hasEquipmentSkillRules = (version: CombatVersion) => hasRuleSince(version,"equipment-skills");
+export const hasWhaleEyeRules = (version: CombatVersion) => hasRuleSince(version,"sea-fog");
 export const hasExecutionRules = (version: CombatVersion) => hasRuleSince(version,"execution");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
@@ -420,6 +421,8 @@ export interface Fighter {
   groundBonus?: number;
   /** Opening three-summoner bonus; applies once per successful ordinary attack action. */
   damageManaBonus?: number;
+  /** Personal equipment recovery; never copied to summoned or converted actors. */
+  equipmentDamageMana?: number;
   attackManaReady?: boolean;
   trueAttack?: boolean;
   devourSpent?: boolean;
@@ -521,6 +524,11 @@ export interface Fighter {
   equipmentSkills?: {
     resonance?: {readyAt:number; activations:number; damage:number; shieldDamage:number};
     call?: {readyAt:number; activations:number; summoned:number};
+    fog?: {
+      readyAt:number; activations:number; detonations:number; hits:number;
+      damage:number; shieldDamage:number; energyRecovered:number;
+      pending?:{start:number;landAt:number;side:0|1;from:{x:number;y:number}};
+    };
   };
   signature?: {
     casts: number;
@@ -571,6 +579,8 @@ export interface Fighter {
 }
 export type DamageType = "physical" | "magic" | "true";
 export interface CombatEffect {
+  /** Personal equipment recovery is separate from energy supplied to allies. */
+  item?: "whale-eye";
   chainHop?: number;
   source: number;
   target: number;
@@ -611,7 +621,7 @@ export interface CombatEffect {
 }
 export interface CombatEvent {
   /** One original equipment packet; reflections and later death effects keep their own identity. */
-  item?:"soul-crystal";
+  item?:"soul-crystal"|"whale-eye";
   /** Avoided consumption of existing HP/shield; credited to one strongest live deer connection. */
   ward?:{source:number;prevented:number};
   /** Secondary ordinary physical contact made by the transformed panda's cleave. */

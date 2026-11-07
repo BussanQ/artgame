@@ -14,7 +14,7 @@ import {
   hasSiegeRules,
   hasInfernoRules,
   hasMendingRules,hasDreamRules,
-  hasFormlessRules,hasEquipmentSkillRules,
+  hasFormlessRules,hasEquipmentSkillRules,hasWhaleEyeRules,
 } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
@@ -172,9 +172,12 @@ export function itemScore(
       SKILLS[u.id].damageType === "magic" ||
       SKILLS[u.id].healRatio > 0);
   const uniqueCredit=hasEquipmentSkillRules(equipmentVersion)&&!(piece.items??[]).includes(id)
-    ? ITEM[id].effect==="resonance"?150:ITEM[id].effect==="call"?105:0 : 0;
+    ? ITEM[id].effect==="resonance"?150:ITEM[id].effect==="call"?105:ITEM[id].effect==="fog"&&hasWhaleEyeRules(equipmentVersion)?120:0 : 0;
+  const energyUser=!(rifle||gospel||lightning||["birdrider","bladethrall","staffthrall","swordthrall","blastbug","cavalry","tiger"].includes(u.id)||u.id==="turtle"&&!tortoise);
+  const openingOnly=wushi||siege||tortoise||["wolf","shark","spider"].includes(u.id);
+  const recoveryCredit=hasWhaleEyeRules(equipmentVersion)&&energyUser?(s.damageMana??0)*(openingOnly?40:80):0;
   return (
-    uniqueCredit + (s.attack ?? 0) * (u.range > 1 ? 2 : 1) * expectedAttack +
+    uniqueCredit + recoveryCredit + (s.attack ?? 0) * (u.range > 1 ? 2 : 1) * expectedAttack +
     (s.hp ?? 0) * (gospel ? 0.2 : tank ? 0.2 : dream ? 0.16 : 0.08) +
     (s.armor ?? 0) * (gospel ? 8 : tank ? 10 : dream ? 8 : 4) +
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
@@ -253,7 +256,7 @@ export function equipBot(g: Game, p: Player) {
     }));
     const budget=p.inventory.length;
     for(let step=0;step<budget;step++){
-      const candidates=ITEMS.filter(item=>item.recipe&&canCraft(p,item.id)).map(item=>({
+      const candidates=ITEMS.filter(item=>item.recipe&&canCraft(p,item.id)&&(item.effect!=="fog"||hasWhaleEyeRules(g.combatVersion))).map(item=>({
         id:item.id,gain:value(item.id)-item.recipe!.reduce((sum,part)=>sum+value(part),0),value:value(item.id),
       })).filter(item=>item.gain>0).sort((a,b)=>b.gain-a.gain||b.value-a.value||a.id.localeCompare(b.id));
       if(!candidates.length||!craft(g,p,candidates[0].id))break;

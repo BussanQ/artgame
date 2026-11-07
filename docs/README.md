@@ -1,10 +1,12 @@
 # 赤潮网页自走棋：资料与开发方案
 
-当前能力：[0.80 装备独立技能](design/equipment-skills.md) · [原卡与适配](research/equipment-skills-history.json) · [必要验证](analysis/equipment-skills-v080-validation.json)。狼牙坠与灵魂之晶接入独立冷却、召唤／法伤、AI和schema79，装备共18件；模块与构建通过，浏览器验收待补。下列版本为此前记录。
+当前能力：[0.81 巨鲸之眼](design/whale-eye.md) · [原卡与适配](research/whale-eye-history.json) · [必要验证](analysis/whale-eye-v081-validation.json)。海雾、命中回能、AI、schema80及总览固定关闭入口已接入，装备共19件；73项不同检查、188模块构建与桌面／390px通过。下列为此前记录。
 
-当前能力：[0.79 蜘蛛迷梦](design/dream.md) · [逐字段研究](research/dream-history.json) · [必要验证](analysis/dream-v079-validation.json)。schema78与旧回放兼容已接入；39项迷梦和24项存档保护检查通过，浏览器验收待补。以下为此前各轮记录。
+当前能力：[0.80 装备独立技能](design/equipment-skills.md) · [原卡与适配](research/equipment-skills-history.json) · [必要验证](analysis/equipment-skills-v080-validation.json)。狼牙坠与灵魂之晶接入独立冷却、召唤／法伤、AI和schema79，装备共18件；模块与构建通过，桌面／390px及存档恢复／刷新／下载已[补验](design/browser-followup-v080.md)。下列版本为此前记录。
 
-当前后续：[保留旧档并恢复本局保存](design/save-protection.md) · [模块验证与待验项目](analysis/save-protection-v078-validation.json)。保存格式仍schema77；旧档与当时备份独立保留，24项新检查和6项回归通过，浏览器验收待补。
+当前能力：[0.79 蜘蛛迷梦](design/dream.md) · [逐字段研究](research/dream-history.json) · [必要验证](analysis/dream-v079-validation.json)。schema78与旧回放兼容已接入；39项迷梦和24项存档保护检查通过，当前0.80页面已补验迷梦画面和贡献。以下为此前各轮记录。
+
+当前后续：[保留旧档并恢复本局保存](design/save-protection.md) · [模块验证与待验项目](analysis/save-protection-v078-validation.json)。保存格式仍schema77；旧档与当时备份独立保留，24项新检查和6项回归通过，当前0.80页面已在隔离来源补验恢复、刷新与实际下载。
 
 最新修复：[0.78 隐形期间的辅助行动](design/support-actions.md) · [必要验证与前后对照](analysis/support-actions-v078-validation.json)。军医、长生鹿等按真实友军目标施法，无目标冷却继续流逝；schema77和旧战斗兼容已接入。
 

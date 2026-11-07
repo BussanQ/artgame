@@ -1046,7 +1046,7 @@ export const TRAITS: Record<Trait, { threshold: number; description: string }> =
     异能: { threshold: 2, description: "敌方能量获取降低 25%" },
   };
 export const RULES = {
-  version: "singleplayer-0.80",
+  version: "singleplayer-0.81",
   bench: 8,
   shop: 5,
   reroll: 2,

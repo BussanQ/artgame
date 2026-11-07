@@ -30,7 +30,7 @@ const old=simulate(frozen.replay.left,frozen.replay.right,"dream");
 
 describe("独立装备触发、唯一冷却与实际伤害",()=>{
  it("旧16件属性与配方保持，新增两件有原卡技能的成装",async()=>{
-  expect(ITEMS).toHaveLength(18);expect(await hash(ITEMS.filter(i=>frozen.items.ids.includes(i.id)))).toBe(frozen.items.sha256);
+  expect(ITEMS.filter(i=>frozen.items.ids.includes(i.id))).toHaveLength(16);expect(await hash(ITEMS.filter(i=>frozen.items.ids.includes(i.id)))).toBe(frozen.items.sha256);
   expect(ITEM["wolf-fang"].stats).toEqual({lifesteal:0.1});expect(ITEM["soul-crystal"].stats).toEqual({skillPower:0.3});
   expect(EQUIPMENT_SKILLS.call.cooldown).toBe(120);expect(EQUIPMENT_SKILLS.resonance.cooldown).toBe(40);
  });

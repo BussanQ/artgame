@@ -393,7 +393,7 @@ export function damage(
   ) {
     source.attackManaReady = false;
     if (
-      source.damageManaBonus &&
+      (source.damageManaBonus || source.equipmentDamageMana) &&
       usesEnergy(source) &&
       source.hp > 0 &&
       source.manaLockUntil <= ctx.tick
@@ -401,18 +401,26 @@ export function damage(
       const before = source.mana;
       // Amplify the same attack recovery. Cavalry's flat penalty must be charged only once.
       const extra =
-        recoveredMana(source, ATTACK_MANA * (1 + source.damageManaBonus)) -
+        recoveredMana(source, ATTACK_MANA * (1 + (source.damageManaBonus ?? 0) + (source.equipmentDamageMana ?? 0))) -
         recoveredMana(source, ATTACK_MANA);
       source.mana = Math.min(100, source.mana + Math.max(0, extra));
-      if (source.mana > before)
+      const fog=source.equipmentSkills?.fog;
+      if(fog&&source.equipmentDamageMana){
+        // The existing summoner grant gets first attribution; count only the extra energy the item actually supplied.
+        const existing=Math.max(0,recoveredMana(source,ATTACK_MANA*(1+(source.damageManaBonus??0)))-recoveredMana(source,ATTACK_MANA));
+        fog.energyRecovered+=Math.max(0,source.mana-before-existing);
+      }
+      if (source.mana > before) {
         effect(
           ctx,
           source,
           source,
           "energize",
           source.mana - before,
-          "召唤回能",
+          source.equipmentDamageMana ? "巨鲸回能" : "召唤回能",
         );
+        if(source.equipmentDamageMana)ctx.effects.at(-1)!.item="whale-eye";
+      }
     }
   }
   const rageSteal=infernoActive(source,ctx.tick)?INFERNO.lifesteal:0;
