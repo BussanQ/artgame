@@ -8,6 +8,7 @@ import {
   hasMendingRules,
   hasFormlessRules,
   hasDreamRules,
+  hasDetonationRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -35,6 +36,11 @@ import {
   hasWushiControlRules,
 } from "../engine/types";
 import type { DamageType, CombatVersion } from "../engine/types";
+
+/** S04 body and July player accounts; the July 11 damage ladder is a secondary historical report.
+ * Geometry, magic scaling and combat interactions are local adaptations. */
+export const DETONATION={name:"自爆",role:"前排阵亡爆破",radius:2,damage:[200,350,500],
+ description:"被动：阵亡当帧以死亡位置为中心自爆，对横纵距离合计2格内的敌人造成200/350/500基础法术伤害（一/二/三星），受技能强度加成，计算魔抗、技能防御与护盾。加血装备、生命连携和额外生命不增加爆炸伤害。每场仅一次，不积累能量，不需要蓄力或冲锋；眩晕和沉默不阻止死亡爆炸。可波及隐形、飞行与召唤物，并引发敌方爆裂虫连锁；不伤友军，按阵亡瞬间阵营辨敌，连锁中阵营变化不改变已发生的爆炸。普通攻击为2格喷吐，按物理伤害结算。优先放在靠近敌人的前排，远处阵亡可能空爆。"} as const;
 
 /** S04 body/CD, S26 slow and S64 early rage; combined tiers/timing remain local adaptations. */
 export const INFERNO={name:"炎狱之怒",role:"震地减速与狂怒续战",cooldown:240,windup:2,radius:1,duration:32,damage:[50,100,150],slow:[0.1,0.2,0.3],haste:0.2,lifesteal:0.1,
@@ -934,6 +940,7 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (id === "blastbug" && hasDetonationRules(version)) return DETONATION.description;
   if (id === "spider" && hasDreamRules(version)) return DREAM.description;
   if (id === "ghostjet" && hasFormlessRules(version)) return FORMLESS.description;
   if (id === "repair" && hasMendingRules(version)) return MENDING.description;
@@ -1070,6 +1077,7 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "blastbug" && hasDetonationRules(version) ? DETONATION.name :
   id === "spider" && hasDreamRules(version) ? DREAM.name :
   id === "ghostjet" && hasFormlessRules(version) ? FORMLESS.name :
   id === "repair" && hasMendingRules(version) ? MENDING.name :
@@ -1137,6 +1145,7 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "blastbug" && hasDetonationRules(version) ? DETONATION.role :
   id === "spider" && hasDreamRules(version) ? DREAM.role :
   id === "ghostjet" && hasFormlessRules(version) ? FORMLESS.role :
   id === "repair" && hasMendingRules(version) ? MENDING.role :

@@ -1,5 +1,7 @@
 # 赤潮网页自走棋：资料与开发方案
 
+当前增量：[0.82 爆裂虫自爆](design/detonation.md) · [历史依据与完整生成提示词](research/detonation-history.json) · [必要验证](analysis/detonation-v082-validation.json)。分星爆炸、远程动作、透明形象、连锁、AI与schema81已接入。以下为此前记录。
+
 当前能力：[0.81 巨鲸之眼](design/whale-eye.md) · [原卡与适配](research/whale-eye-history.json) · [必要验证](analysis/whale-eye-v081-validation.json)。海雾、命中回能、AI、schema80及总览固定关闭入口已接入，装备共19件；73项不同检查、188模块构建与桌面／390px通过。下列为此前记录。
 
 当前能力：[0.80 装备独立技能](design/equipment-skills.md) · [原卡与适配](research/equipment-skills-history.json) · [必要验证](analysis/equipment-skills-v080-validation.json)。狼牙坠与灵魂之晶接入独立冷却、召唤／法伤、AI和schema79，装备共18件；模块与构建通过，桌面／390px及存档恢复／刷新／下载已[补验](design/browser-followup-v080.md)。下列版本为此前记录。

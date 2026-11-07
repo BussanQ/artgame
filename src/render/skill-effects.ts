@@ -20,6 +20,7 @@ import {infernoLabels} from "./inferno";
 import {mendingLabels} from "./mending";
 import {formlessLabels} from "./formless";
 import {dreamLabels} from "./dream";
+import {drawDetonationEffect,detonationLabels} from "./detonation";
 import {drawEquipmentEffect,equipmentSkillLabels} from "./equipment-skills";
 import {tortoiseLabels} from "./tortoise";
 import {spiritWardLabels} from "./spirit-ward";
@@ -40,6 +41,7 @@ export function drawSkillEffect(
   age: number,
   reducedMotion = false,
 ) {
+  if(drawDetonationEffect(c,e,age,reducedMotion))return;
   if(e.kind==="equipment"){drawEquipmentEffect(c,e,age,reducedMotion);return;}
   if (drawWarcryEffect(c,e,age,reducedMotion)) return;
   if (drawBoneBlastEffect(c,e,age,reducedMotion)) return;
@@ -1099,6 +1101,7 @@ export function drawStatuses(
   labels.push(...mendingLabels(f,time));
   labels.push(...formlessLabels(f,time));
   labels.push(...dreamLabels(f,time));
+  labels.push(...detonationLabels(f));
   labels.push(...equipmentSkillLabels(f,time));
   labels.push(...tortoiseLabels(f,time));
   labels.push(...spiritWardLabels(f,time));

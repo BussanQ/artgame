@@ -116,7 +116,8 @@
     "test:save-protection": "vitest run tests/save-protection.test.ts",
     "test:dream": "vitest run tests/dream.test.ts",
     "test:equipment-skills": "vitest run tests/equipment-skills.test.ts",
-    "test:whale-eye": "vitest run tests/whale-eye.test.ts"
+    "test:whale-eye": "vitest run tests/whale-eye.test.ts",
+    "test:detonation": "vitest run tests/detonation.test.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

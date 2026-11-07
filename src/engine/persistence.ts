@@ -41,7 +41,7 @@ export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
 export const PRESERVED_KEY = `${SAVE_KEY}.preserved`;
-export const SAVE_SCHEMA = 80;
+export const SAVE_SCHEMA = 81;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -1029,8 +1029,13 @@ export function decodeSave(raw: string | null): {
     }
     if(v.schema===79&&v.rules==="singleplayer-0.80"&&record(v.game)){
       if(v.game.catalogVersion===undefined)v.game.catalogVersion="equipment-skills";
+      if(v.game.phase==="prepare")v.game.combatVersion="sea-fog";
+      v.schema=80;v.rules="singleplayer-0.81";migrated=true;
+    }
+    if(v.schema===80&&v.rules==="singleplayer-0.81"&&record(v.game)){
+      if(v.game.catalogVersion===undefined)v.game.catalogVersion="sea-fog";
       if(v.game.phase==="prepare")v.game.combatVersion=CURRENT_COMBAT_VERSION;
-      v.schema=80;v.rules=RULES.version;migrated=true;
+      v.schema=81;v.rules=RULES.version;migrated=true;
     }
     if (v.schema !== SAVE_SCHEMA || v.rules !== RULES.version)
       return { data: null, status: "incompatible" };

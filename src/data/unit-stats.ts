@@ -8,6 +8,7 @@ import {
   hasMendingRules,
   hasFormlessRules,
   hasDreamRules,
+  hasDetonationRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -60,6 +61,7 @@ const oldVajra:UnitDef={...UNIT.vajra,cost:2,hp:900,attack:42,interval:4,initial
 const oldRepair:UnitDef={...UNIT.repair,hp:500,attack:24,armor:2,range:3,interval:4,initialMana:50,skill:"战地维修"};
 const oldGhost:UnitDef={...UNIT.ghostjet,hp:640,attack:90,armor:3,range:3,interval:3,initialMana:undefined,regeneration:undefined,skill:"幽影迁跃"};
 const oldSpider:UnitDef={...UNIT.spider,hp:650,attack:45,armor:3,interval:4,skill:"迷梦蛛丝"};
+const oldBlastBug:UnitDef={...UNIT.blastbug,hp:700,armor:4,range:1,interval:4,skill:"裂变殉爆",color:"#e6a35c"};
 const oldChariotSniper: UnitDef = {...oldChariot,traits:previousTraits.chariot};
 const oldPangolin: UnitDef = {
   ...UNIT.pangolin,
@@ -184,6 +186,7 @@ export function unitSprite(
   version: CombatVersion = CURRENT_COMBAT_VERSION,
   star = 1,
 ) {
+  if (id === "blastbug" && hasDetonationRules(version)) return "blastbug-detonation-v082";
   if (id === "ghostjet" && hasFormlessRules(version)) return "ghostjet-formless-v077";
   if (id === "vajra" && hasInfernoRules(version)) return "vajra-inferno-v075";
   if (id === "repair" && hasMendingRules(version)) return "repair-mending-v076";
@@ -207,6 +210,7 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "blastbug" && !hasDetonationRules(version)) return oldBlastBug;
   if (id === "spider" && !hasDreamRules(version)) return oldSpider;
   if (id === "ghostjet" && !hasFormlessRules(version)) return oldGhost;
   if (id === "vajra" && !hasInfernoRules(version)) return oldVajra;

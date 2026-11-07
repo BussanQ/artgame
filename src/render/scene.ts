@@ -22,6 +22,7 @@ import {drawMendings,mendingPose} from "./mending";
 import {drawFormless} from "./formless";
 import {drawDreams} from "./dream";
 import {drawSeaFogForecast} from "./whale-eye";
+import {blastbugAnimationVersion} from "./detonation";
 import {drawTortoises,tortoisePose} from "./tortoise";
 import {drawSpiritWards,spiritWardPose} from "./spirit-ward";
 import {bulwarkActive} from "../engine/bulwark";
@@ -87,6 +88,7 @@ const W = 1280,
   H = 800;
 // Wide fins and wings should remain readable without covering neighboring pieces.
 const SPRITE_SCALES: Record<string, number> = {
+  "blastbug-detonation-v082":0.78,
   "acolyte-gospel": 0.76,
   "stormcaller-thunderstorm": 0.94,
   "treant-jungle": 0.9,
@@ -480,14 +482,15 @@ export class BattleScene {
             this.motionReduced,
           );
         let attack: { event: CombatEvent; progress: number } | undefined;
+        const animationVersion=blastbugAnimationVersion(f,s.version);
         const duration = f.hawkForm?.active
           ? 1
-          : isMelee(f.defId, s.version)
+          : isMelee(f.defId, animationVersion)
             ? Math.min(
                 MELEE_ACTIONS[f.defId].duration,
                 attackInterval(f, s.time),
               )
-            : isRanged(f.defId, s.version)
+            : isRanged(f.defId, animationVersion)
               ? Math.min(
                   RANGED_ACTIONS[f.defId].duration,
                   attackInterval(f, s.time),
@@ -531,7 +534,7 @@ export class BattleScene {
           now,
           s.selected,
           death,
-          f.siege?.mode || (f.inferno || f.thornbind || f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
+          f.siege?.mode || (f.detonation || f.inferno || f.thornbind || f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
           hit && fraction < 0.35,
           s.time,
           f.transformation ?? undefined,
@@ -572,14 +575,14 @@ export class BattleScene {
           const attacker = battle.frames[n].fighters.find(
             (f) => f.uid === e.attacker,
           )!;
-          const rangedId = isRanged(attacker.defId, s.version) ? attacker.defId : null;
+          const rangedId = isRanged(attacker.defId, blastbugAnimationVersion(attacker,s.version)) ? attacker.defId : null;
           const duration = rangedId
             ? Math.min(
                 RANGED_ACTIONS[rangedId].duration,
                 attackInterval(attacker, n),
               )
             : 1;
-          const impactAge = attacker.siege?.mode || (attacker.inferno&&e.skill)?0:(attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
+          const impactAge = attacker.siege?.mode || ((attacker.detonation||attacker.inferno)&&e.skill)?0:(attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
           if (
@@ -753,7 +756,7 @@ export class BattleScene {
     spriteId = fighterSprite(f),
   ) {
     if (f.wushi) picture("master-wushi");
-    const version = this.state().version;
+    const version = blastbugAnimationVersion(f,this.state().version);
     const throwCast = f.shuriken?.casting;
     const throwBlade = f.shuriken?.blades.find(blade=>time-blade.start<1.8);
     const secretTarget=f.secretOrb?.casting?.to??f.secretOrb?.channel;

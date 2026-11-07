@@ -4,6 +4,7 @@ import {emptyMending,advanceMendings,mendingActionBusy} from "./mending";
 import {emptyFormless,advanceFormless} from "./formless";
 import {advanceWithoutTarget} from "./support-actions";
 import {emptyDream,advanceDreams} from "./dream";
+import {emptyDetonation} from "./detonation";
 import {initialEquipmentSkills,advanceEquipmentSkills} from "./equipment-skills";
 import { advanceTarBombs, updateTarBombPositions } from "./tar";
 import { lightningStrike } from "./lightning";
@@ -43,7 +44,7 @@ import {
   hasMendingRules,
   hasFormlessRules,
   hasSupportActionRules,
-  hasDreamRules,hasEquipmentSkillRules,hasWhaleEyeRules,
+  hasDreamRules,hasEquipmentSkillRules,hasWhaleEyeRules,hasDetonationRules,
   hasBoneBlastRules,
   hasThornBindRules,
   hasHiveRules,
@@ -170,6 +171,7 @@ export function army(
         ...(hasWhaleEyeRules(battleDefinitionVersion)&&gear.damageMana?{equipmentDamageMana:gear.damageMana}:{}),
         ...(equipmentSkills?{equipmentSkills}:{}),
         ...(hasDreamRules(definitionVersion)&&d.id==="spider"?{dream:emptyDream()}:{}),
+        ...(hasDetonationRules(definitionVersion)&&d.id==="blastbug"?{detonation:emptyDetonation()}:{}),
         ...(hasFormlessRules(definitionVersion)&&d.id==="ghostjet"?{formless:emptyFormless(),innateRegen:true as const}:{}),
         ...(hasMendingRules(definitionVersion)&&d.id==="repair"?{mending:emptyMending()}:{}),
         ...(hasInfernoRules(definitionVersion)&&d.id==="vajra"?{inferno:emptyInferno()}:{}),

@@ -1,5 +1,6 @@
 import { beginWushi } from "./wushi";
 import {tauntTarget} from "./taunt";
+import {detonate} from "./detonation";
 import {beginBulwark} from "./bulwark";
 import {beginSpiritWard,spiritWardTargets,spiritWardBuff,stopSpiritWard} from "./spirit-ward";
 import {beginSiege,stopSiege} from "./siege";
@@ -449,7 +450,8 @@ export function damage(
       effect(ctx, target, ally, "cleanse", mana, "支援余辉");
     }
   }
-  if (target.hp === 0 && target.deathBurst === "ready") {
+  if(target.hp===0&&target.detonation)detonate(ctx,target);
+  if (target.hp === 0 && target.deathBurst === "ready" && !target.detonation) {
     target.deathBurst = "spent";
     if (target.signature) target.signature.casts++;
     effect(ctx, target, target, "cast", 2, "爆裂虫·殉爆");

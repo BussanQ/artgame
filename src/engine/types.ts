@@ -28,10 +28,10 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege", "inferno", "mending", "formless", "support-actions", "dream", "equipment-skills", "sea-fog",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege", "inferno", "mending", "formless", "support-actions", "dream", "equipment-skills", "sea-fog", "detonation",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "sea-fog";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "detonation";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
@@ -50,6 +50,7 @@ export const hasSupportActionRules = (version: CombatVersion) => hasRuleSince(ve
 export const hasDreamRules = (version: CombatVersion) => hasRuleSince(version,"dream");
 export const hasEquipmentSkillRules = (version: CombatVersion) => hasRuleSince(version,"equipment-skills");
 export const hasWhaleEyeRules = (version: CombatVersion) => hasRuleSince(version,"sea-fog");
+export const hasDetonationRules = (version: CombatVersion) => hasRuleSince(version,"detonation");
 export const hasExecutionRules = (version: CombatVersion) => hasRuleSince(version,"execution");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
@@ -514,6 +515,7 @@ export interface Fighter {
   /** Attacker-only flat physical armor penetration; never changes the target's debuffs. */
   armorPenetration?: number;
   deathBurst?: "ready" | "spent";
+  detonation?: {explosions:number; hits:number; damage:number; shieldDamage:number};
   charmCast?: "ready" | "spent";
   dream?: { selections:number; controls:number; taunts:number; released:number; cleansed:number; hits:number; damage:number; shieldDamage:number };
   charm?: { until: number; attack: number; side: 0 | 1; source?:number; bonus?:number };

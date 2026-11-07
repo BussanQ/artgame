@@ -4,6 +4,7 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  detonation?:Fighter["detonation"];
   equipmentSkills?:Fighter["equipmentSkills"];
   dream?:Fighter["dream"];
   formless?:Pick<NonNullable<Fighter["formless"]>,"activations"|"hits"|"damage"|"shieldDamage">;
@@ -66,6 +67,7 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.detonation?{detonation:{...f.detonation}}:{}),
     ...(f.equipmentSkills?{equipmentSkills:structuredClone(f.equipmentSkills)}:{}),
     ...(f.dream?{dream:{...f.dream}}:{}),
     ...(f.formless?{formless:{activations:f.formless.activations,hits:f.formless.hits,damage:f.formless.damage,shieldDamage:f.formless.shieldDamage}}:{}),

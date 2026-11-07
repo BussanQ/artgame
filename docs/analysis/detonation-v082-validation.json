@@ -1,0 +1,297 @@
+{
+  "version": "singleplayer-0.82",
+  "combatVersion": "detonation",
+  "saveSchema": 81,
+  "date": "2026-11-07",
+  "baseCommit": "1965e29ee4db7eafaf47f91e238df5b6b3a16385",
+  "previousGoalTurn": "progress: completed and pushed the existing 0.81 implementation before this increment",
+  "tests": {
+    "distinctPassed": 62,
+    "reports": [
+      {
+        "path": "tmp/detonation-final-tests.json",
+        "sha256": "cfa20e6f89b2d299a20e9b105b2265a39c34414c1d5d6aabd4affd4de92366ce",
+        "distinctCounted": 26,
+        "reportPassed": 26,
+        "reportFailed": 0,
+        "stage": "final core with current and old-catalog animation selection"
+      },
+      {
+        "path": "tmp/detonation-module-tests.json",
+        "sha256": "a2a12ab5107cc9989f33e05a2190a114b34ea85d1ae480b1f4646b3aa65fae00",
+        "distinctCounted": 35,
+        "reportPassed": 61,
+        "reportFailed": 0,
+        "stage": "only whale-eye.test.ts 35 checks counted; its earlier 26 detonation checks replaced by the final core"
+      },
+      {
+        "path": "tmp/detonation-legacy-module-tests.json",
+        "sha256": "0e1809d566540eeda8a0d3280376c0725332a1299a6c6d9c751c1eaba55ad43d",
+        "distinctCounted": 1,
+        "reportPassed": 1,
+        "reportFailed": 0,
+        "stage": "one explicitly pinned old max-HP death-burst case"
+      }
+    ],
+    "coreCommand": "npx vitest run tests/detonation.test.ts",
+    "regressionCommands": [
+      "npx vitest run tests/whale-eye.test.ts (with the earlier detonation core)",
+      "npx vitest run tests/insects.test.ts -t 旧版爆裂虫"
+    ],
+    "fullSuiteRun": false,
+    "fullCampaigns": 0,
+    "bulkBattleSamples": 0,
+    "deduplication": "26 final detonation checks + 35 whale-eye checks + 1 pinned old insect case. Rechecks are not added to the count.",
+    "initialAttempt": {
+      "passed": 24,
+      "failed": 1,
+      "reason": "The assertion treated staff as energy-only although it also gives 30% spell power. Replaced by an actual pure-energy context."
+    },
+    "laterChanges": [
+      "Added and passed a charm-release-during-recursive-bursts context.",
+      "Actual browser rendering exposed an unconnected fighterSprite branch; fixed and added direct current/legacy sprite assertions.",
+      "The original 2 versus 3 showcase did not demonstrate same-frame chaining; final legal equal-star duel does, without HP, armor or damage overrides.",
+      "Added old-catalog piece animation selection in a current battle and passed the focused core after the change."
+    ]
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "modules": 191,
+    "artifacts": [
+      {
+        "path": "dist/assets/index-CCbEP043.css",
+        "bytes": 88839,
+        "sha256": "5be1000c7fbc3ed613591a813c4c8c0557e945bdb41da5c8848661b341075af1"
+      },
+      {
+        "path": "dist/assets/index-QIkwwVm1.js",
+        "bytes": 455856,
+        "sha256": "70fbb15e06c03bd4394fdeb559a947b3bf39d7f65e687f8bcd4ca0e08af84f03"
+      },
+      {
+        "path": "dist/assets/worker-BthjOgfY.js",
+        "bytes": 242524,
+        "sha256": "0d4d4f19e1dba0d2649861e7b9788f8a372cf774b6f18f1100dd01591b89c67b"
+      }
+    ]
+  },
+  "research": {
+    "record": "docs/research/detonation-history.json",
+    "sources": [
+      "S04",
+      "S05",
+      "S20",
+      "S35",
+      "S72",
+      "S74"
+    ],
+    "bounds": "S04 body, primary July player observations and secondary July 11 damage ladder are dated separately; exact radius, scaling, damage type and animation remain explicit local adaptations."
+  },
+  "imagegen": {
+    "tool": "built-in image_gen",
+    "path": "public/assets/units/blastbug-detonation-v082.png",
+    "sha256": "d8d98a7555a99b4652e2a76b653fdc81306d54321b1ba46c71af607e2252b64e",
+    "width": 1254,
+    "height": 1254,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "transparentPixels": 732753,
+    "originalBytesCopied": true,
+    "promptRecord": "docs/research/detonation-history.json"
+  },
+  "compatibility": {
+    "oldVersions": 54,
+    "units": 64,
+    "oldItemCount": 19,
+    "oldDefinitionsAndPresentation": "all frozen SHA checks passed, including three star portraits, skills and attack classification",
+    "fixture": "tests/fixtures/pre-v082-detonation.json",
+    "oldReplaySHA256": "8f69dda4019f22f26c972e84bae41e4776c6aaa573fac55a5936482590768429",
+    "oldReplayFrames": 65,
+    "migrationPhases": [
+      "prepare",
+      "battle",
+      "result",
+      "finished"
+    ],
+    "migration": "Only prepare upgrades to detonation; catalog, players, pool, history and playback remain unchanged. Old-catalog bugs retain their original stats, max-HP burst, image and close attack even inside a newer battle."
+  },
+  "fixedScenes": {
+    "final": {
+      "roster": "one star blastbug versus one star blastbug",
+      "record": "tmp/detonation-replay-evidence.json",
+      "sha256": "ae57fa58fd50226dbc325044c466bcae3cbb7f86a1bc00b81969e0beea20341d",
+      "frames": 60,
+      "lastTick": 59,
+      "seconds": 14.75,
+      "winner": null,
+      "bothExplosionsSameTick": 59,
+      "actualBurstDamage": [
+        20,
+        0
+      ]
+    },
+    "old": "one frozen 0.81 two versus two insect formation",
+    "otherDevelopmentScene": "initial two versus three burst scenario, also used in browser before the final same-frame-chain duel; no complete campaigns or bulk sampling",
+    "playback": "Demo UI loops an already computed replay. Playback loops were not new campaign simulations."
+  },
+  "browser": {
+    "type": "in-app browser",
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "realDevice": false,
+    "finalAt14_75Seconds": {
+      "bothDead": true,
+      "bothExplosions": 1,
+      "friendlyNormalDamage": 480,
+      "friendlySkillDamage": 20,
+      "friendlyEffectiveBurstHits": 1,
+      "enemyNormalDamage": 500,
+      "enemySkillDamage": 0,
+      "enemyEffectiveBurstHits": 0
+    },
+    "previousFrame": {
+      "seconds": 14.5,
+      "bothHp": 20,
+      "bothNormalDamage": 480,
+      "bothExplosions": 0
+    },
+    "phone": {
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "inspectionEnergyLabel": "被动自爆",
+      "baseDamage": 200,
+      "intervalSeconds": 1.2
+    },
+    "warningOrErrorLogs": 0,
+    "artifacts": [
+      {
+        "path": "tmp/detonation-v082-desktop-codex.jpg",
+        "purpose": "current attributes, image and complete passive description",
+        "width": 1440,
+        "height": 900,
+        "bytes": 81745,
+        "sha256": "a055d9a798a495f86ad9f5b054d0f4bcae3808e8e3b3343807f74bd8f660b664",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/detonation-v082-desktop-final-start.jpg",
+        "purpose": "new image used by actual battle actors and shop before final duel fixture",
+        "width": 1440,
+        "height": 900,
+        "bytes": 163601,
+        "sha256": "e109899722269f17d5a21d8fc0914fc23f726c4afa6a6ccaef25e4466216ec8f",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/detonation-v082-desktop-analysis.jpg",
+        "purpose": "actual final duel contribution",
+        "width": 1440,
+        "height": 900,
+        "bytes": 67955,
+        "sha256": "6b343a72d950a2af2ba1daf1c77fe8b2532b6ef508d978ce86305e741ce542d3",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/detonation-v082-desktop-burst.jpg",
+        "purpose": "two same-frame explosions and exact tile outline",
+        "width": 1440,
+        "height": 900,
+        "bytes": 158122,
+        "sha256": "98736b23219e9170f3f548fb72ad7a02efed319665391ca6ae07952f59597be1",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/detonation-v082-390-burst.jpg",
+        "purpose": "390px burst and usable controls",
+        "width": 390,
+        "height": 844,
+        "bytes": 47656,
+        "sha256": "1b3e618f434b69d22c2ad76e5b99d86ae82062027c5c08211ae54b52cc7e5ad2",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/detonation-v082-390-analysis.jpg",
+        "purpose": "390px actual contribution",
+        "width": 390,
+        "height": 844,
+        "bytes": 31103,
+        "sha256": "0bf93a2add9ef7b85f7cf106ccac0c1d809878808235e93c9f7c4aa6cfd73af7",
+        "gitIgnored": true
+      },
+      {
+        "path": "tmp/detonation-v082-390-inspection.jpg",
+        "purpose": "390px passive, base damage and no-energy detail",
+        "width": 390,
+        "height": 844,
+        "bytes": 49872,
+        "sha256": "64db0b421520ecf71043817a7c783355eaef7a912372e02ba6d5a67e04b69a04",
+        "gitIgnored": true
+      }
+    ],
+    "cleanup": {
+      "dialogs": 0,
+      "viewportReset": [
+        634,
+        778
+      ],
+      "phase": "prepare",
+      "round": 1,
+      "hp": 100,
+      "gold": 10,
+      "deployed": 0,
+      "bench": 0,
+      "speed": 1,
+      "saveRecoveryOrRestartClicked": false,
+      "savedStoreReplaced": false,
+      "hotReloadBetweenFixes": true,
+      "finalBansAfterLastHMR": [
+        "傀儡",
+        "不朽",
+        "灵能"
+      ],
+      "note": "Code fixes caused Vite to create fresh temporary unsaved starts; the last small demonstration itself restored its original start on exit. The final old-profile animation-only adjustment happened after the full current-profile visual checks, then the page was checked again with no console warnings/errors."
+    }
+  },
+  "sourceFingerprints": {
+    "package.json": "46b6f8efd0cbfdda57988e95553752bc1e5053f43234b1cd68b89f5aee8f2d48",
+    "public/assets/units/blastbug-detonation-v082.png": "d8d98a7555a99b4652e2a76b653fdc81306d54321b1ba46c71af607e2252b64e",
+    "src/data/detonation-demo.ts": "a191c845ae38584fa5314fd6dfca37ac6849385baad26f70cb3ddd5b9c41da5c",
+    "src/data/skills.ts": "30b778a080a603b36084885f8abf13ddc0046975d04a94964c7718197687c741",
+    "src/data/unit-stats.ts": "b13f919902d3fb8be0fcd177a1a2f34ed228fe66ee478054aff7976d84fc3345",
+    "src/data/units.ts": "148debce67111b7b772550ac156bc7e82a53b9fcc8b14014fedad023796bdb02",
+    "src/engine/abilities.ts": "764e83c86b84bf5e966eead16853545f26805af6a27e9855e8d09b1d7399d500",
+    "src/engine/ai.ts": "a4194bcbaae4e23e60ab66f55b4ccd1f8910c7e78c5d8c66f364bdfce939c226",
+    "src/engine/battle-analysis.ts": "eecd87d347ab01d6cb44189cbac6cc6df3c0000bf77877b0516802ee19818c17",
+    "src/engine/battle.ts": "821af6ee76e7501335cd47415ae2c2e63f320fec191458709a20c8980747b8f1",
+    "src/engine/detonation.ts": "e1d55a392a5520dace8f71efd1bb10f3506eb40418e4e832a8a5642950d4a52c",
+    "src/engine/persistence.ts": "f09a6d646f8fdc20f607e46d3a8c2140a9791b325ba8d769bdfac4ec8df8d154",
+    "src/engine/summons.ts": "99c9e4530f5f5072156d5bb55a96c04a10acedd8efcd442d6b678ea597856d9b",
+    "src/engine/types.ts": "ed0dabafdf11dec7a8cff7b61d7556b8d41247b2f4ba494111618a4948843ce0",
+    "src/main.ts": "9cd610407d9ddd8c33c050d232d7e0529470d020abb493f69705a28ef2f3ecb0",
+    "src/render/battle-inspection.ts": "02b41d4be325467c9068c8f399b57d43de3f45095a860bf89c4e4b0221d2ad5b",
+    "src/render/detonation.ts": "0e9e7dcce69b7ed1f5fbc5382760a291496b49ecb11bf7f3021905663f35cdf5",
+    "src/render/melee.ts": "2c90b8c38abda732e64704faf90353d5063574fed0754c4550566b385817d039",
+    "src/render/ranged.ts": "cff25ce74ec425c7a410b370aeea748a0835c9ab6cfbc37006036600682e7755",
+    "src/render/scene.ts": "6f1846617226a47b51edab060bc897c46fd785b9fd97eb26cc7c2d77a34fd1bd",
+    "src/render/skill-effects.ts": "ba3bb7453b5fee16269c1b2173aab6934261119e0a18dace394f5b932292eb6b",
+    "src/ui/battle-analysis.ts": "6bc5a4666096a7e4e530d6af8a8d8d74849125fd30c6c38bb42e0ca623cb33f4",
+    "tests/detonation.test.ts": "30895ef9ecaaa5cca87b7502af958406d7d696d1c0c35e975005109a4b0104e3",
+    "tests/fixtures/pre-v082-detonation.json": "98763304007d6d5c8e686dc22b3a8b80ea98cde3e55c6168cf4e589eec9ddcb7",
+    "tests/insects.test.ts": "29d75253888498a4e0b04590d41327b0f8bdc49e154a4b603dc0c716aaec5c93"
+  },
+  "remaining": [
+    "Complete same-client historical skill cards and formulas for remaining prototypes",
+    "Overall difficulty and multiple complete build experiences",
+    "Real phone and low-end device performance"
+  ]
+}

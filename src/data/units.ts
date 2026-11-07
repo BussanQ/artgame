@@ -467,13 +467,13 @@ UNITS.push(
     name: "爆裂虫",
     cost: 2,
     traits: ["异虫"],
-    hp: 700,
+    hp: 500,
     attack: 40,
-    armor: 4,
-    range: 1,
-    interval: 4,
-    skill: "裂变殉爆",
-    color: "#e6a35c",
+    armor: 0,
+    range: 2,
+    interval: 4.8,
+    skill: "自爆",
+    color: "#79dfec",
     glyph: "✹",
   },
   {
@@ -1046,7 +1046,7 @@ export const TRAITS: Record<Trait, { threshold: number; description: string }> =
     异能: { threshold: 2, description: "敌方能量获取降低 25%" },
   };
 export const RULES = {
-  version: "singleplayer-0.81",
+  version: "singleplayer-0.82",
   bench: 8,
   shop: 5,
   reroll: 2,

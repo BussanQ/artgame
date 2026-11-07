@@ -1,4 +1,4 @@
-import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
+import { CURRENT_COMBAT_VERSION,type CombatVersion } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import {
   createGame,
@@ -53,8 +53,8 @@ function board() {
 function context(source: Fighter, ...others: Fighter[]): CombatContext {
   return { fighters: [source, ...others], tick: 1, events: [], effects: [] };
 }
-function fighter(id: string, uid: number, side: 0 | 1 = 0, star = 1) {
-  return army([piece(id, uid, star, side === 0 ? 35 : 36)], side)[0];
+function fighter(id: string, uid: number, side: 0 | 1 = 0, star = 1,version:CombatVersion=CURRENT_COMBAT_VERSION) {
+  return army([piece(id, uid, star, side === 0 ? 35 : 36)], side,version)[0];
 }
 describe("异虫进化与实际卡池份数", () => {
   it("备战席计不同种类，2/4种降低相应星级门槛，旧版不受影响", () => {
@@ -164,9 +164,9 @@ describe("异虫进化与实际卡池份数", () => {
   });
 });
 describe("异虫战斗技能", () => {
-  it("爆裂虫无能量，阵亡爆炸按最大生命和法强造成范围伤害，连锁每只仅一次", () => {
-    const a = fighter("blastbug", 1),
-      b = fighter("blastbug", 2, 1),
+  it("旧版爆裂虫无能量，阵亡爆炸按最大生命和法强造成范围伤害，连锁每只仅一次", () => {
+    const a = fighter("blastbug", 1, 0, 1,"sea-fog"),
+      b = fighter("blastbug", 2, 1, 1,"sea-fog"),
       near = fighter("guard", 3, 1),
       far = fighter("guard", 4, 1);
     Object.assign(a, { x: 3, y: 3 });

@@ -1,4 +1,4 @@
-import { CURRENT_COMBAT_VERSION, hasShurikenRules, hasSecretOrbRules, hasTerminatorRules, type CombatVersion } from "../engine/types";
+import { CURRENT_COMBAT_VERSION, hasShurikenRules, hasSecretOrbRules, hasTerminatorRules, hasDetonationRules, type CombatVersion } from "../engine/types";
 /** Pure animation sampling; no combat damage or simulation timing changes. */
 export const MELEE_ACTIONS = {
   reaper: {name:"双弯刀交错勾斩",duration:3.6,color:"#b3e9ef"},
@@ -53,6 +53,7 @@ export const REST_POSE: AttackPose = {
 };
 export function isMelee(id: string, version: CombatVersion = CURRENT_COMBAT_VERSION): id is MeleeId {
   return Object.hasOwn(MELEE_ACTIONS,id) && (id !== "panda" || !hasShurikenRules(version)) &&
+    (id !== "blastbug" || !hasDetonationRules(version)) &&
     (id !== "monk" || !hasSecretOrbRules(version)) && (id !== "titan" || !hasTerminatorRules(version));
 }
 /** Hold the raised pose until the simulation emits the slam, never show an early impact. */

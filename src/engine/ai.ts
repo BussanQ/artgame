@@ -1,6 +1,7 @@
 import { catalogCost, catalogUnit } from "../data/catalog";
 import { unitArmor,unitAttackInterval,unitDefinition } from "../data/unit-stats";
-import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules,hasInfernoRules,hasMendingRules,hasFormlessRules,hasDreamRules } from "./types";
+import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules,hasInfernoRules,hasMendingRules,hasFormlessRules,hasDreamRules,hasDetonationRules } from "./types";
+import {DETONATION} from "../data/skills";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { army, simulateOutcome } from "./battle";
 import { usesEnergy } from "./triggers";
@@ -269,7 +270,9 @@ export function abilityCredit(
       attacks = (u.hp * (0.02 + p.star * 0.01) * 3 * 2) / u.attack;
       break;
     case "blastbug":
-      attacks = (u.hp * 0.35 * 1.8) / u.attack;
+      attacks = hasDetonationRules(p.definitionVersion??CURRENT_COMBAT_VERSION)
+        ? DETONATION.damage[p.star-1]*1.8*0.75/(u.attack*2**(p.star-1))
+        : (u.hp * 0.35 * 1.8) / u.attack;
       break;
     case "bomber":
     case "eel":

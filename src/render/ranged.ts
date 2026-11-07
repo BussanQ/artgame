@@ -9,9 +9,11 @@ import {
   hasGospelRules,
   hasStormRules,
   hasFormlessRules,
+  hasDetonationRules,
   type CombatVersion,
 } from "../engine/types";
 export const RANGED_ACTIONS = {
+  blastbug:{name:"鼓囊收颚喷吐",duration:4.2,fireAt:0.38,impactAt:0.7,color:"#7de8f2"},
   titan: { name: "架炮装填与主炮后坐", duration: 4.2, fireAt: 0.28, impactAt: 0.68, color: "#ffc080" },
   monk: {
     name:"转杖凝珠推出",duration:4.8,fireAt:0.38,impactAt:0.75,color:"#97ead6",
@@ -275,6 +277,7 @@ export const RANGED_ACTIONS = {
 export type RangedId = keyof typeof RANGED_ACTIONS;
 export function isRanged(id: string, version: CombatVersion = CURRENT_COMBAT_VERSION): id is RangedId {
   return Object.hasOwn(RANGED_ACTIONS, id) && (id !== "panda" || hasShurikenRules(version)) &&
+    (id !== "blastbug" || hasDetonationRules(version)) &&
     (id !== "monk" || hasSecretOrbRules(version)) && (id !== "titan" || hasTerminatorRules(version));
 }
 const pulse = (t: number, a: number, b: number) =>
@@ -327,6 +330,12 @@ export function rangedPose(
     return p;
   }
   switch (id) {
+    case "blastbug": {
+      const swell=pulse(t,0,0.46),spit=pulse(t,0.35,0.85);
+      p.scaleX=1+0.13*swell-0.1*spit;p.scaleY=1+0.08*swell-0.06*spit;
+      p.forward=-7*swell+13*spit;p.lift=4*swell;p.rotation=-0.04*swell+0.05*spit;
+      break;
+    }
     case "titan": {
       const brace = pulse(t, 0, 0.34), recoil = pulse(t, 0.25, 0.7);
       p.forward = -4 * brace - 18 * recoil; p.lift = -3 * brace + 2 * recoil;
@@ -680,6 +689,17 @@ export function drawRangedAttack(
     c.restore();
   };
   switch (id) {
+    case "blastbug": {
+      const u=(t-profile.fireAt)/(profile.impactAt-profile.fireAt);
+      if(u>=0&&u<=1){
+        const at=projectilePoint(from,to,u,18),tail=projectilePoint(from,to,Math.max(0,u-0.17),18);
+        line(tail,at,4,0.7);c.fillStyle="#b8ffff";
+        c.beginPath();c.ellipse(at.x,at.y,6,4,angle,0,Math.PI*2);c.fill();
+      }
+      const splash=(t-profile.impactAt)/0.28;
+      if(splash>=0&&splash<=1){ring(to,8+22*splash,1-splash);sparks(splash,5);}
+      break;
+    }
     case "titan": {
       const u = (t - profile.fireAt) / (profile.impactAt - profile.fireAt);
       flash(pulse(t, profile.fireAt, profile.fireAt + 0.14));

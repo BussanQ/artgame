@@ -19,6 +19,7 @@ export function fighterSprite(
     Fighter,
     "defId" | "summon" | "hawkForm" | "phoenix" | "aurora" | "qiSkill" | "gospelAura" | "jungle" | "wushi"
   > & { storm?: Pick<NonNullable<Fighter["storm"]>, "launched">;
+    detonation?:Pick<NonNullable<Fighter["detonation"]>,"explosions">;
     inferno?:Pick<NonNullable<Fighter["inferno"]>,"formed">;
     mending?:Pick<NonNullable<Fighter["mending"]>,"completed">;
     formless?:Pick<NonNullable<Fighter["formless"]>,"activations">;
@@ -34,6 +35,7 @@ export function fighterSprite(
     secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>, "formed"> },
 ) {
   if (isPhoenixEgg(f)) return "phoenix-egg";
+  if(!f.summon&&f.defId==="blastbug"&&f.detonation)return "blastbug-detonation-v082";
   if(f.formless)return "ghostjet-formless-v077";
   if(f.mending)return "repair-mending-v076";
   if(f.inferno)return "vajra-inferno-v075";
