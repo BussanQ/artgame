@@ -7,6 +7,8 @@ import {THORNBIND_DEMO} from "./data/thornbind-demo";
 import {HIVE_DEMO} from "./data/hive-demo";
 import {BULWARK_DEMO} from "./data/bulwark-demo";
 import {SIEGE_DEMO} from "./data/siege-demo";
+import {INFERNO_DEMO} from "./data/inferno-demo";
+import {MENDING_DEMO} from "./data/mending-demo";
 import {EXECUTION_DEMO} from "./data/execution-demo";
 import {TORTOISE_SHELL_DEMO,TORTOISE_BREACH_DEMO} from "./data/tortoise-demo";
 import {SPIRIT_WARD_DEMO} from "./data/spirit-ward-demo";
@@ -408,6 +410,8 @@ function render() {
           ["boneblast-demo", "骨球震爆"],
           ["thornbind-demo", "荆棘汲取"],
           ["siege-demo", "攻城炮台"],
+          ["inferno-demo", "炎狱金刚"],
+          ["mending-demo", "灵蕴缝合"],
           ["execution-demo", "刑杀勾魂"],
           ["tortoise-shell-demo", "玄龟守御"],
           ["tortoise-breach-demo", "玄龟破壳"],
@@ -1171,6 +1175,8 @@ app.addEventListener("click", (e) => {
     action === "boneblast-demo" ||
     action === "thornbind-demo" ||
     action === "siege-demo" ||
+    action === "inferno-demo" ||
+    action === "mending-demo" ||
     action === "execution-demo" ||
     action === "tortoise-shell-demo" || action === "tortoise-breach-demo" ||
     action === "spirit-ward-demo" ||
@@ -1179,7 +1185,7 @@ app.addEventListener("click", (e) => {
     action === "gaze-demo" ||
     action === "rifle-demo"
   ) {
-    demoTitle=action==="siege-demo"?"攻城炮台":action==="execution-demo"?"刑杀勾魂":action==="tortoise-shell-demo"?"玄龟守御":action==="tortoise-breach-demo"?"玄龟破壳":"兵种演习";
+    demoTitle=action==="mending-demo"?"灵蕴缝合":action==="inferno-demo"?"炎狱金刚":action==="siege-demo"?"攻城炮台":action==="execution-demo"?"刑杀勾魂":action==="tortoise-shell-demo"?"玄龟守御":action==="tortoise-breach-demo"?"玄龟破壳":"兵种演习";
     if (mobileViewport.matches) showMobileView("battlefield");
     resultPresentation = null;
     replayRound = null;
@@ -1231,7 +1237,7 @@ app.addEventListener("click", (e) => {
       beastDemo = action === "beast-demo";
       staffDemo = action === "staff-demo";
       swordDemo = action === "sword-demo";
-      const { left, right } = action === "siege-demo" ? SIEGE_DEMO : action === "execution-demo" ? EXECUTION_DEMO : action === "tortoise-shell-demo" ? TORTOISE_SHELL_DEMO : action === "tortoise-breach-demo" ? TORTOISE_BREACH_DEMO : spiritWardDemo ? SPIRIT_WARD_DEMO : bulwarkDemo ? BULWARK_DEMO : hiveDemo ? HIVE_DEMO : gazeDemo ? GAZE_DEMO : rifleDemo ? RIFLE_DEMO : thornbindDemo ? THORNBIND_DEMO : boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
+      const { left, right } = action === "mending-demo" ? MENDING_DEMO : action === "inferno-demo" ? INFERNO_DEMO : action === "siege-demo" ? SIEGE_DEMO : action === "execution-demo" ? EXECUTION_DEMO : action === "tortoise-shell-demo" ? TORTOISE_SHELL_DEMO : action === "tortoise-breach-demo" ? TORTOISE_BREACH_DEMO : spiritWardDemo ? SPIRIT_WARD_DEMO : bulwarkDemo ? BULWARK_DEMO : hiveDemo ? HIVE_DEMO : gazeDemo ? GAZE_DEMO : rifleDemo ? RIFLE_DEMO : thornbindDemo ? THORNBIND_DEMO : boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
         ? GOSPEL_DEMO
         : lightningDemo
           ? LIGHTNING_DEMO

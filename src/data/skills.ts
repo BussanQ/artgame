@@ -4,6 +4,8 @@ import {
   hasSpiritWardRules,
   hasTortoiseRules,
   hasSiegeRules,
+  hasInfernoRules,
+  hasMendingRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -32,9 +34,15 @@ import {
 } from "../engine/types";
 import type { DamageType, CombatVersion } from "../engine/types";
 
+/** S04 body/CD, S26 slow and S64 early rage; combined tiers/timing remain local adaptations. */
+export const INFERNO={name:"炎狱之怒",role:"震地减速与狂怒续战",cooldown:240,windup:2,radius:1,duration:32,damage:[50,100,150],slow:[0.1,0.2,0.3],haste:0.2,lifesteal:0.1,
+ description:"初始能量0。满能量且60秒冷却结束时蓄势0.5秒，向释放时自身周围1格敌军震地，造成50/100/150法术伤害，并降低其攻击速度10/20/30%，持续8秒；范围按圆形距离，包含横纵相邻，不含斜角。金刚同时获得8秒狂怒，攻击速度提高20%，普通攻击按实际生命伤害额外吸血10%，可与装备吸血相加。技能强度仅提高震地伤害，不提高减速、攻速、吸血或时长；不生成护盾或眩晕。多枚金刚的减速各自计时，仅最强者生效，强效果结束后较弱者可继续生效；移动离开范围不会移除已施加的减速，来源阵亡也不会撤回。灵鱼驱散、狂舞免控、涅槃和进入残魂会清除减速，残魂与火种不受减速。蓄势期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂中断且不退款；敌人撤离后仍获得自身狂怒。释放后的狂怒不因眩晕或沉默消失，阵亡或进入残魂后失效；魅惑不延长狂怒。没有附近合法敌人时保留能量。"} as const;
 /** S71 measured 40% haste and ordinary area attacks; other siege tuning is documented locally. */
 export const SIEGE={name:"攻城形态",role:"架设远程物理炮台",cooldown:240,windup:3,haste:0.4,attack:[60,110,160],range:14,radius:1.5,splash:0.4,speed:2,
  description:"初始能量0。满能量且60秒冷却结束时，原地架设0.75秒，成功后本场变为不能自行移动的攻城炮台，射程覆盖棋盘，攻击增加60/110/160，攻速增加40%。此后普通攻击发出实际飞行的炮弹，伤害在发射时确定、落点固定；命中格内敌人承受完整普通攻击，周围1.5格敌人受到40%攻击的普通物理溅射，各自结算护甲、闪避、护盾、吸血和反伤。移动可避开落点，范围可波及隐蔽和飞行敌人，炮弹按发射时阵营判敌，已发出炮弹不因来源受控或阵亡取消；战斗结束后停止结算。架设期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂会中断，不返还能量或冷却。成形后不再施法或回能，沉默不影响炮击，眩晕仅暂停后续发射；魅惑期间仍保留形态并转向攻击原队友。法术强度不提高增攻、攻速或溅射。"} as const;
+/** S04 body/CD and S21 post-July healing/energy; exact ladders and timing remain local. */
+export const MENDING={name:"灵蕴缝合",role:"主力回复与攻速辅助",cooldown:48,windup:2,range:4,healing:[200,300,400],energy:[20,30,40],haste:[0.2,0.3,0.4],duration:24,
+ description:"初始能量0。满能量且12秒冷却结束时，锁定4格内当前攻击最高的存活友军（可选自身），蓄势0.5秒后回复200/300/400生命、20/30/40能量，并提高其攻击速度20/30/40%，持续6秒（一/二/三星）。攻击相同按稳定编号选人，不按剩余生命选人，满血目标也能获得回能与加速；法强只提高治疗量，不提高能量、攻速或时长。不能选择残魂或涅槃火种；无能量技能的目标仍可治疗和加速，但不获得虚假的能量，能量封锁和骑兵回能削减照常生效。蓄势期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂会打断，不返还能量或冷却。锁定目标阵亡、变为敌军、进入残魂/火种或移出4格时落空，不临时换人。释放后维修机恢复行动，已获得的加速不依赖来源继续存活或保持距离；同类加速只取最强，各自到期，弱效果不延长强效果。受益者死亡、化蛋或进入残魂后清除加速，灵鱼驱散不移除这项友军增益。不提高攻击力，不提供无敌或复活；只记录实际治疗和实际充能。释放或中断当帧不附加普攻。"} as const;
 /** Shared spell metadata; individual historical sources and local adaptations live in docs/research. */
 export interface SkillDef {
   name: string;
@@ -887,6 +895,8 @@ export const BULWARK={
   description:"初始能量0。满能量且15秒冷却结束时举盾，获得8/16/24额外护甲，持续4/5/6秒（一/二/三星）；同时嘲讽相邻1格可见敌军1.5秒，使其后续行动转向盾兵，不能新施放技能。范围按横纵相邻计算，不含斜角；嘲讽只在举盾时施加一次，不持续拉住后来靠近的敌人。举盾期间可正常移动和普攻，眩晕与沉默不撤回已获得的护甲。不会生成护盾、恢复生命、盾击伤害或眩晕，技能强度不增加护甲、范围或时长；回能不能绕过个人冷却。来源阵亡、成为友军、失去可选中状态或盾阵结束时释放嘲讽，灵鱼可驱散嘲讽；不影响已出手的投射物和维持中的技能。狂舞免控、残魂和涅槃火种不受嘲讽。附近无敌人时仍可举盾抵挡远程攻击，但不会隔空嘲讽。",
 } as const;
 export const BULWARK_SKILL=define({name:BULWARK.name,role:BULWARK.role,multiplier:0,description:BULWARK.description});
+export const INFERNO_SKILL=define({name:INFERNO.name,role:INFERNO.role,damageType:"magic",radius:INFERNO.radius,description:INFERNO.description});
+export const MENDING_SKILL=define({name:MENDING.name,role:MENDING.role,description:MENDING.description});
 
 /** Circle sizes normalize the original 9/11/14 and 20/22/25 units to this board. */
 export const HIVE = {
@@ -914,6 +924,8 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (id === "repair" && hasMendingRules(version)) return MENDING.description;
+  if (id === "vajra" && hasInfernoRules(version)) return INFERNO.description;
   if (hasSiegeRules(version) && id === "chariot") return SIEGE.description;
   if (hasTortoiseRules(version) && id === "turtle") return TORTOISE.description;
   if (hasSpiritWardRules(version) && id === "deer") return SPIRIT_WARD.description;
@@ -1046,6 +1058,8 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "repair" && hasMendingRules(version) ? MENDING.name :
+  id === "vajra" && hasInfernoRules(version) ? INFERNO.name :
   id === "chariot" && hasSiegeRules(version) ? SIEGE.name :
   id === "turtle" && hasTortoiseRules(version) ? TORTOISE.name :
   id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.name :
@@ -1109,6 +1123,8 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "repair" && hasMendingRules(version) ? MENDING.role :
+  id === "vajra" && hasInfernoRules(version) ? INFERNO.role :
   id === "chariot" && hasSiegeRules(version) ? SIEGE.role :
   id === "turtle" && hasTortoiseRules(version) ? TORTOISE.role :
   id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.role :

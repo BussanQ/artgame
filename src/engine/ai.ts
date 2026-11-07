@@ -1,6 +1,6 @@
 import { catalogCost, catalogUnit } from "../data/catalog";
 import { unitArmor,unitAttackInterval,unitDefinition } from "../data/unit-stats";
-import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules } from "./types";
+import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules,hasInfernoRules,hasMendingRules } from "./types";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { army, simulateOutcome } from "./battle";
 import { usesEnergy } from "./triggers";
@@ -21,6 +21,8 @@ import {
   BULWARK,
   SPIRIT_WARD,
   SIEGE,
+  INFERNO,
+  MENDING,
   TORTOISE,
   EXECUTION,
   AURORA,
@@ -81,6 +83,12 @@ export function abilityCredit(
   if(p.defId==="infantry")return 0;
   const u = unitDefinition(p.defId,p.definitionVersion),
     skill = SKILLS[p.defId];
+  if(p.defId==="vajra"&&hasInfernoRules(p.definitionVersion??CURRENT_COMBAT_VERSION)){
+    const readiness=0.65+Math.min(100,(u.initialMana??0)+gear.mana+openingMana)*0.0035;
+    // One interruptible shock and a limited rage window; spell power never boosts utility.
+    const shock=INFERNO.damage[p.star-1]*(1+gear.skillPower)*1.5*0.75/(u.attack*2**(p.star-1)+gear.attack);
+    return Math.min(0.6,(shock*0.04+INFERNO.slow[p.star-1]*0.25+INFERNO.haste*0.18+INFERNO.lifesteal*0.15)*readiness);
+  }
   if(p.defId==="chariot"&&hasSiegeRules(p.definitionVersion??CURRENT_COMBAT_VERSION)){
     const readiness=0.65+Math.min(100,(u.initialMana??0)+gear.mana+openingMana)*0.0035;
     return Math.min(0.6,(SIEGE.haste+SIEGE.attack[p.star-1]/(u.attack*2**(p.star-1)+gear.attack)+SIEGE.splash*0.6)*0.22*readiness);
@@ -325,6 +333,22 @@ export function wardSupportCredit(pieces:Piece[]){
     return Math.min(pieceStrength(source)*0.4,allies*(SPIRIT_WARD.armor[source.star-1]*0.002+SPIRIT_WARD.resist[source.star-1]*0.12)*0.55)*readiness;
   }));
 }
+const initialEnergyCache=new Map<string,boolean>();
+function initialEnergyUser(p:Piece){
+ const version=p.definitionVersion??CURRENT_COMBAT_VERSION,key=`${version}:${p.defId}`;
+ if(!initialEnergyCache.has(key))initialEnergyCache.set(key,usesEnergy(army([{uid:1,defId:p.defId,star:1,position:35}],0,version)[0]));
+ return initialEnergyCache.get(key)!;
+}
+/** One best support estimate; duplicate drones do not invent stacking permanent attack buffs. */
+export function mendingSupportCredit(pieces:Piece[]){
+ const attack=(p:Piece)=>unitDefinition(p.defId,p.definitionVersion).attack*2**(p.star-1)+equipmentStats(p.items).attack;
+ return Math.max(0,...pieces.filter(p=>p.defId==="repair"&&hasMendingRules(p.definitionVersion??CURRENT_COMBAT_VERSION)).map(source=>{
+  const target=[...pieces].sort((a,b)=>attack(b)-attack(a)||a.uid-b.uid)[0];if(!target)return 0;
+  const gear=equipmentStats(source.items),readiness=0.65+Math.min(100,gear.mana)*0.0035;
+  const energy=initialEnergyUser(target)?MENDING.energy[source.star-1]*0.15:0;
+  return Math.min(pieceStrength(source)*0.5,pieceStrength(target)*MENDING.haste[source.star-1]*0.3+MENDING.healing[source.star-1]*(1+gear.skillPower)*0.04+energy)*readiness;
+ }));
+}
 function strengthWithOpening(p: Piece, openingMana: number): number {
   const u = unitDefinition(p.defId,p.definitionVersion),
     scale = 2 ** (p.star - 1),
@@ -418,6 +442,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
         )
       );
     if (p.defId === "repair") {
+      if(hasMendingRules(p.definitionVersion??CURRENT_COMBAT_VERSION))return n;
       const carry = Math.max(
         0,
         ...pieces.filter((ally) => ally.uid !== p.uid).map(pieceStrength),
@@ -544,6 +569,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   return (
     (base * (1 + bonus + teamBonus) +
       support +
+      mendingSupportCredit(pieces) +
       wardSupportCredit(pieces) +
       energySupport +
       coordination +

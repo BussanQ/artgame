@@ -12,6 +12,8 @@ export function enterUndying(ctx: CombatContext, fighter: Fighter) {
   fighter.hp = 1;
   fighter.shield = 0;
   delete fighter.command;
+  delete fighter.attackSlows;
+  delete fighter.mendHaste;
   delete fighter.bladeStorm;
   delete fighter.corrosion;
   delete fighter.knockup;

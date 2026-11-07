@@ -108,7 +108,9 @@
     "test:execution": "vitest run tests/execution.test.ts",
     "test:tortoise": "vitest run tests/tortoise.test.ts",
     "test:spirit-ward": "vitest run tests/spirit-ward.test.ts tests/bulwark.test.ts",
-    "test:siege": "vitest run tests/siege.test.ts"
+    "test:siege": "vitest run tests/siege.test.ts",
+    "test:inferno": "vitest run tests/inferno.test.ts",
+    "test:mending": "vitest run tests/mending.test.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

@@ -4,6 +4,8 @@ import {
   hasSpiritWardRules,
   hasTortoiseRules,
   hasSiegeRules,
+  hasInfernoRules,
+  hasMendingRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -52,6 +54,8 @@ const previousDefinitions: Record<string, UnitDef> = Object.fromEntries(
 );
 
 const oldChariot: UnitDef = {...UNIT.chariot,cost:2,hp:620,attack:100,armor:5,range:4,interval:5,initialMana:undefined,skill:"集束轰击"};
+const oldVajra:UnitDef={...UNIT.vajra,cost:2,hp:900,attack:42,interval:4,initialMana:25,skill:"镇岳重击"};
+const oldRepair:UnitDef={...UNIT.repair,hp:500,attack:24,armor:2,range:3,interval:4,initialMana:50,skill:"战地维修"};
 const oldChariotSniper: UnitDef = {...oldChariot,traits:previousTraits.chariot};
 const oldPangolin: UnitDef = {
   ...UNIT.pangolin,
@@ -176,6 +180,8 @@ export function unitSprite(
   version: CombatVersion = CURRENT_COMBAT_VERSION,
   star = 1,
 ) {
+  if (id === "vajra" && hasInfernoRules(version)) return "vajra-inferno-v075";
+  if (id === "repair" && hasMendingRules(version)) return "repair-mending-v076";
   if (id === "wasp" && hasHiveRules(version)) return "wasp-hive";
   if (id === "infantry" && hasRifleRules(version)) return "infantry-rifle";
   if (id === "bonedragon" && hasBoneBlastRules(version)) return "bonedragon-boneblast";
@@ -196,6 +202,8 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "vajra" && !hasInfernoRules(version)) return oldVajra;
+  if (id === "repair" && !hasMendingRules(version)) return oldRepair;
   if (id === "turtle" && !hasTortoiseRules(version)) return oldTurtle;
   if (id === "deer" && !hasSpiritWardRules(version)) return oldDeer;
   if (id === "guard" && !hasBulwarkRules(version)) return oldGuard;

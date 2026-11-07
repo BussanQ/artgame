@@ -8,10 +8,17 @@ import { project } from "./projection";
 import { taotieScale } from "./taotie";
 import { wushiScale } from "./wushi";
 import { petrified } from "../engine/warcry";
+import {infernoActive,attackSlowRate} from "../engine/inferno";
+import {mendingHaste} from "../engine/mending";
 
 /** Only urgent, short labels belong beside every combatant. Full effects live in its inspector. */
 export function compactBattleLabels(f: Fighter, time: number) {
   const labels: string[] = [];
+  if(f.mending?.casting)labels.push("缝合蓄势");
+  if(mendingHaste(f,time)>0)labels.push("灵蕴加速");
+  if(f.inferno?.casting)labels.push("炎狱蓄势");
+  else if(infernoActive(f,time))labels.push("炎狱狂怒");
+  if(attackSlowRate(f,time))labels.push("炎狱减速");
   if(f.siege?.casting)labels.push("架设炮台");
   else if(f.siege?.mode)labels.push("攻城炮台");
   if(f.reaper?.casting)labels.push("刑杀潜行");

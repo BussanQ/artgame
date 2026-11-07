@@ -1,0 +1,92 @@
+{
+  "version": "singleplayer-0.76",
+  "collectedAt": "2026-11-07",
+  "sameClientSkillCardRecovered": false,
+  "sources": [
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "kind": "原始玩家测量",
+      "publishedAt": "2019-07-08",
+      "evidence": "已目视第一表第14行维修机：1费、550生命、50–62攻击、5护甲、4射程、2秒间隔、12秒CD、空军／支援。",
+      "image": {
+        "path": "docs/research/images/s04-main-attributes.jpg",
+        "bytes": 283542,
+        "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945"
+      },
+      "limits": "客户端构建未知；没有完整技能梯度或升星护甲。"
+    },
+    {
+      "id": "S20",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1556086391745_13",
+      "kind": "发行方原始图鉴",
+      "publishedAt": "2019-04-24",
+      "evidence": "已目视空军原图第二个维修机形象；当时为3费。",
+      "image": {
+        "path": "docs/research/images/s20-air-client.jpg",
+        "bytes": 609164,
+        "sha256": "1274450ca715cde588b1e3de75e020faa2cb9801d013d9863c3b3c4c2008a5e2"
+      },
+      "limits": "只用于形象，不把早期3费当作七月费用。"
+    },
+    {
+      "id": "S21",
+      "url": "https://news.17173.com/z/zzq/content/07292019/224057158.shtml?_platform=PC",
+      "kind": "官方署名页面中的玩家一人称观察",
+      "publishedAt": "2019-07-29",
+      "evidence": "正文回顾7月18日取消无敌，提供治疗和能量，目标为攻击最高单位。",
+      "limits": "正文没有完整数值。两幅内嵌图的正常HTTPS返回JS挑战HTML，未恢复技能卡、未执行挑战。"
+    },
+    {
+      "id": "S72",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=95",
+      "kind": "社区转载线索",
+      "publishedAt": "2019-07-11",
+      "evidence": "灵蕴缝合名称和攻速线索。",
+      "limits": "不是已恢复的官方完整原卡；与7月18日之后回复／回能跨日期，具体数值仅为本地设计。"
+    },
+    {
+      "id": "S57",
+      "url": "https://news.17173.com/z/zzq/content/05162019/161225352.shtml?_platform=PC",
+      "kind": "官方更新",
+      "publishedAt": "2019-05-16",
+      "evidence": "正文称2星和3星维修机护甲正常显示为10。",
+      "limits": "不同于七月测量日期，未据此宣称统一版本升星配置已复原。"
+    }
+  ],
+  "localAdaptation": {
+    "healing": [
+      200,
+      300,
+      400
+    ],
+    "energy": [
+      20,
+      30,
+      40
+    ],
+    "haste": [
+      0.2,
+      0.3,
+      0.4
+    ],
+    "durationSeconds": 6,
+    "windupSeconds": 0.5,
+    "range": 4,
+    "distance": "曼哈顿",
+    "skillPower": "只放大治疗",
+    "initialMana": 0,
+    "armorGrowth": "暂沿用本地成长，不作为统一历史配置证据"
+  },
+  "fishEvidenceCorrection": {
+    "sourceId": "S06",
+    "url": "https://www.9game.cn/cczzq/3157619.html",
+    "image": {
+      "path": "docs/research/images/s06-shadowfish-classic.jpg",
+      "bytes": 1194411,
+      "sha256": "fb701f8cd351793e6c0700e998860a89fa7680b0dbfe6edc9fee5d127730a362"
+    },
+    "observation": "原图实际为经典RTS影鱼、生产600和空中／隐身／反隐标签，并非自走棋技能卡；不能用它确认当前灵鱼原型。",
+    "runtimeChanged": false
+  }
+}

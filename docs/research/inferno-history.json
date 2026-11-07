@@ -1,0 +1,139 @@
+{
+  "rules": "singleplayer-0.75",
+  "combatVersion": "inferno",
+  "reviewedAt": "2026-11-07",
+  "unifiedHistoricalBuildConfirmed": false,
+  "scope": "金刚一费身板、双臂形象、炎狱震地与减速/狂怒。不同月份的资料分别保留，未取得完整统一版本技能卡。",
+  "sources": [
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "kind": "original-community-measurement",
+      "publishedAt": "2019-07-08",
+      "image": "docs/research/images/s04-arhat-attributes.jpg",
+      "row": 10,
+      "sha256": "8cfe13d1071e1068c397ee55921fbd752f5290de13e5ee75ce777ac5d5ed3333",
+      "review": "本轮实际目视S04-2第10行：一费、陆行者/护卫、650生命、42–46攻击、5甲、1格、1.5秒、60秒CD；客户端构建未知，未提供技能系数。"
+    },
+    {
+      "id": "S20",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1556086391745_13",
+      "kind": "publisher-client-image",
+      "publishedAt": "2019-04-24",
+      "imageUrl": "https://video.kts.g.mi.com/ktv_1103968488_bjBOdng1R3JHM1JYQTZIRm1RRS80QT09_1556086188043.jpeg",
+      "image": "docs/research/images/s20-landwalkers-client.jpg",
+      "bytes": 583584,
+      "sha256": "4fd0b9e9aa45b3825084fea233ce8d45df32c889e373ffe6d9175cd156b83e8d",
+      "review": "普通HTTPS取得并目视完整客户端陆行者页，左侧金刚为双臂蓝绿色重装守卫：圆盔、棕铜肩甲与青色环、金色腹甲。图中金刚为早期二费，不能拿来证明七月一费或技能参数。首次误选的相邻灵能者页仅在tmp，未作金刚证据。"
+    },
+    {
+      "id": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "kind": "original-player-review",
+      "modifiedAt": "2019-07-15",
+      "localHtml": "tmp/vine-s05-original.html",
+      "bytes": 302211,
+      "sha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "review": "重解析既有原始HTML金刚段，确认作者把一费金刚视为二星过渡与护卫构筑组件；这是玩家强度观察，不是官方参数表。"
+    },
+    {
+      "id": "S14",
+      "url": "https://www.taptap.cn/moment/15201495997744121",
+      "kind": "original-player-review",
+      "review": "原作者六月评测的索引文字记录二费降一费且未削生命。本轮普通HTTP返回约16KB限制页，未称重新取得完整正文。"
+    },
+    {
+      "id": "S26",
+      "url": "https://www.taptap.cn/moment/15220462338441888",
+      "kind": "original-player-review",
+      "publishedAt": "2019-05-28",
+      "review": "web直接读取原作者评测，金刚对物理阵容的减攻速定位明确；没有提供倍率、持续时间和原始技能卡。"
+    },
+    {
+      "id": "S64",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=29",
+      "kind": "original-player-measurement",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02",
+      "review": "沿用此前已阅读的原作者索引测量：早期二费金刚650生命5甲、范围50伤害、攻速+20%及生命窃取10%，作者未确认持续时间。本轮直接打开403，没有取得原卡或重新证明整段系数；六月与七月不可视为同一客户端。"
+    },
+    {
+      "id": "S72",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=95",
+      "kind": "community-patch-repost-secondary-lead",
+      "author": "馬子狗 e0987013924",
+      "postedAt": "2019-07-10T21:07:36",
+      "review": "既有索引研究的7/11转载线索提及炎狱之怒、范围2→1格、减攻速20/30/40%→10/20/30%。本轮直接打开403，未找到发布方原公告；只作命名与本地调参线索，绝不作为已复核的官方技能配置。"
+    }
+  ],
+  "secondaryChecks": [
+    {
+      "url": "https://shouyou.3dmgame.com/gl/132455.html",
+      "kind": "editorial-repost",
+      "publishedAt": "2019-06-13",
+      "localHtml": "tmp/vajra-3dm-guide.html",
+      "bytes": 61103,
+      "sha256": "26ced3604a2cce5878cf85dd461cbf73620a5d4733f90b27431b41251ff655a4",
+      "review": "正文称炎狱之怒可降攻速，但署名互联网；仅作线索。候选配图55687.jpg普通HTTPS403，未当作已看过的金刚技能卡。"
+    },
+    {
+      "id": "S53",
+      "review": "六月13日公告仅在翔龙文案中提及金刚，不能据此证明炎狱具体参数。"
+    }
+  ],
+  "adoptedBody": {
+    "cost": 1,
+    "traits": [
+      "陆行者",
+      "护卫"
+    ],
+    "hp": 650,
+    "attack": 44,
+    "attackBasis": "42–46取确定均值44",
+    "armor": 5,
+    "range": 1,
+    "intervalSeconds": 1.5,
+    "cooldownSeconds": 60
+  },
+  "localAdaptations": {
+    "damage": [
+      50,
+      100,
+      150
+    ],
+    "damageType": "magic",
+    "damageBoundary": "一星50参考早期测量；星级梯度、伤害类型和与七月本体组合属于本地适配。",
+    "slow": [
+      0.1,
+      0.2,
+      0.3
+    ],
+    "radius": 1,
+    "geometry": "释放时自身圆形1格；包含横纵相邻，不含斜角，可波及隐蔽/飞行敌人。开招仍需附近至少一名合法可见敌人。",
+    "windupSeconds": 0.5,
+    "durationSeconds": 8,
+    "initialMana": 0,
+    "haste": 0.2,
+    "lifesteal": 0.1,
+    "buffBoundary": "六月测量的加速与吸血方向用于自身狂怒；统一三档均20%/10%、8秒和只取普通实际生命伤害并非已确认的原卡条文。",
+    "strongestSlow": "独立来源分别到期，只取最大比例；实际间隔除以1-rate。与原型slow取更慢者，不重复相乘。现有攻击等待不追溯重算，后续普攻读取当前攻速。",
+    "lifecycle": "释放后不再持续选人；撤离/来源死亡不撤回既有减速。灵鱼、狂舞、化蛋和残魂清除。眩晕/沉默保留已成形自身狂怒，死亡/残魂使其失效。",
+    "committedShock": "同次已释放震地的剩余接触不因反伤杀死来源撤回；每名目标独立护盾与法抗结算。震地本身不产生吸血、护盾、硬控或灼烧。",
+    "lifestealCredit": "总治疗沿用一次合并结算；专属贡献只计在装备吸血已经计算后，狂怒额外真正补回的生命，排除满血/护盾/过量。",
+    "interruption": "冷却从蓄势开始；控制/阵亡打断不退款，释放或中断帧不追加普攻。",
+    "art": "按原始客户端双臂轮廓重新生成，不是原模型恢复，也未恢复各星级皮肤。"
+  },
+  "compatibility": {
+    "olderVersions": 47,
+    "unitsPerVersion": 64,
+    "definitionAndPresentationHashes": "tests/fixtures/pre-v075-inferno-replays.json",
+    "oldCost": 2,
+    "newCost": 1,
+    "saveSchema": 74,
+    "migration": "准备期升级inferno；旧battle/result继续原版本到下一准备期。既有目录价格、份数、商店、持有、历史与固定禁用保留，未新增真实兵种池键。"
+  },
+  "remaining": [
+    "统一构建完整技能卡与分星外观仍缺；精确数列、时序与控制边界仍含适配。",
+    "整体构筑经营、挑战难度和真实弱设备体验并非本轮小局面所能证明。"
+  ]
+}

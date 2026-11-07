@@ -1,5 +1,5 @@
 import { unitArmor, unitDefinition, unitSprite,unitAttackInterval,unitMinimumAttackInterval } from "../data/unit-stats";
-import { CURRENT_COMBAT_VERSION } from "../engine/types";
+import { CURRENT_COMBAT_VERSION,hasInfernoRules } from "../engine/types";
 import { salePrice } from "../engine/progression";
 import { traitTiers } from "../data/traits";
 import { equipmentStats, ITEM } from "../data/items";
@@ -35,7 +35,7 @@ export function pieceDetails(
     skillDescription: skillDescription(u.id, version),
     sell: salePrice(piece, costVersion),
     action: isMelee(u.id, version)
-      ? MELEE_ACTIONS[u.id].name
+      ? u.id==="vajra"&&hasInfernoRules(version)?"双拳交替重击":MELEE_ACTIONS[u.id].name
       : isRanged(u.id, version)
         ? rangedActionName(u.id, version)
         : "普通攻击",

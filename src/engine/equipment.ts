@@ -12,6 +12,8 @@ import {
   hasSpiritWardRules,
   hasTortoiseRules,
   hasSiegeRules,
+  hasInfernoRules,
+  hasMendingRules,
 } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
@@ -21,6 +23,8 @@ import {
   STAFF_GALE,
   SKILLS,
   THUNDER_CHAIN,
+  INFERNO,
+  MENDING,
 } from "../data/skills";
 import { random } from "./random";
 import type { Game, Player, Piece, CombatVersion } from "./types";
@@ -114,6 +118,8 @@ export function itemScore(
 ): number {
   version=piece.definitionVersion??version;
   const siege=hasSiegeRules(version)&&piece.defId==="chariot";
+  const inferno=hasInfernoRules(version)&&piece.defId==="vajra";
+  const mending=hasMendingRules(version)&&piece.defId==="repair";
   const tortoise=hasTortoiseRules(version)&&piece.defId==="turtle";
   const wushi = hasWushiRules(version) && piece.defId === "master";
   const lightning = hasLightningRules(version) && piece.defId === "thunderlord";
@@ -168,7 +174,7 @@ export function itemScore(
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
     (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
-      (lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise || siege
+      (mending ? MENDING.healing[piece.star-1]*0.3 : inferno ? INFERNO.damage[piece.star-1]*1.5*0.75 : lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise || siege
         ? 0
         : (version === "signature" ||
               version === "summons" ||

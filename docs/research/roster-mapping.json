@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reviewedAt": "2026-11-07",
-  "rules": "singleplayer-0.74",
+  "rules": "singleplayer-0.75",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
@@ -643,7 +643,13 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S05",
+        "S14",
+        "S26",
+        "S64",
+        "S72"
       ],
       "currentUnitId": "vajra",
       "currentName": "金刚",
@@ -651,9 +657,9 @@
         "陆行者",
         "护卫"
       ],
-      "mapping": "name-only",
+      "mapping": "classification-aligned-local-skills",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.75采用一费650生命/44均值攻击、炎狱震地减速与狂怒续战、S20双臂轮廓；旧二费目录与原图保留。完整原卡未取得，跨期和本地系数见inferno-history.json。"
     },
     {
       "historicalName": "罗汉",

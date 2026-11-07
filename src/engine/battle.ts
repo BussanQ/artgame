@@ -1,4 +1,6 @@
 import {emptySiege,advanceSiegeForms,advanceSiegeShells,siegeActionBusy,launchSiegeShell} from "./siege";
+import {emptyInferno,advanceInfernos,infernoActionBusy} from "./inferno";
+import {emptyMending,advanceMendings,mendingActionBusy} from "./mending";
 import { advanceTarBombs, updateTarBombPositions } from "./tar";
 import { lightningStrike } from "./lightning";
 import { advanceGospel } from "./gospel";
@@ -33,6 +35,8 @@ import {
   hasTortoiseRules,
   hasExecutionRules,
   hasSiegeRules,
+  hasInfernoRules,
+  hasMendingRules,
   hasBoneBlastRules,
   hasThornBindRules,
   hasHiveRules,
@@ -155,6 +159,8 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasMendingRules(definitionVersion)&&d.id==="repair"?{mending:emptyMending()}:{}),
+        ...(hasInfernoRules(definitionVersion)&&d.id==="vajra"?{inferno:emptyInferno()}:{}),
         ...(hasSiegeRules(definitionVersion)&&d.id==="chariot"?{siege:emptySiege()}:{}),
         ...(hasExecutionRules(definitionVersion)&&d.id==="reaper"?{reaper:{marks:0,trueHits:0,trueDamage:0,executions:0,enhanced:0,puppets:0,interrupted:0,missed:0}}:{}),
         ...(hasTortoiseRules(definitionVersion) && d.id === "turtle" ? {tortoise:{formed:0,interrupted:0,taunts:0,swings:0,splashHits:0}} : {}),
@@ -601,6 +607,8 @@ function runBattle(
       }
     }
     expireUndying(context);
+    advanceInfernos(context);
+    advanceMendings(context);
     advanceSiegeForms(context);
     advanceSiegeShells(context);
     advanceExecutions(context);
@@ -650,7 +658,7 @@ function runBattle(
           f.shuriken?.casting ||
           f.secretOrb?.casting || f.secretOrb?.channel ||
           f.wildfire?.casting || f.wildfire?.channel || f.thornbind?.channel ||
-          f.siege?.casting || f.siege?.actedAt===tick ||
+          f.siege?.casting || f.siege?.actedAt===tick || infernoActionBusy(f,tick) || mendingActionBusy(f,tick) ||
           f.spiritWard?.channel || f.spiritWard?.actedAt===tick || f.tortoise?.casting || f.tortoise?.actedAt===tick || executionActionBusy(f,tick) ||
           f.hive?.casting || f.hive?.burst || f.hive?.actedAt===tick ||
           f.combo ||
@@ -668,6 +676,8 @@ function runBattle(
       if (advanceSpiritWardAction(context, f)) continue;
       if (advanceTortoiseAction(context, f)) continue;
       if (siegeActionBusy(context, f)) continue;
+      if (infernoActionBusy(f,tick)) continue;
+      if (mendingActionBusy(f,tick)) continue;
       if (executionActionBusy(f,tick)) continue;
       if (advanceHiveAction(context, f)) continue;
       if (advanceFaithArrow(context, f)) continue;
@@ -690,7 +700,11 @@ function runBattle(
           )) ||
         enemies[0]);
       retargetStaff(f, target);
-      if (!target) continue;
+      if (!target) {
+        // A hidden enemy cannot prevent the new support from repairing a nearby ally.
+        if(f.mending){if(f.cooldown>0)f.cooldown--;if(f.cooldown<=0&&castSkill(context,f,f))f.cooldown+=attackInterval(f,tick);}
+        continue;
+      }
       if (f.cooldown > 0) f.cooldown--;
       if (f.cooldown > 0 && !spinning) continue;
       if (f.stunUntil > tick) continue;

@@ -59,7 +59,8 @@
       "spiritWardReview": "0.71实际目视第30行长生鹿，采用四费、850生命、79–95取均值87、5甲、4格、1.8秒及25秒；原始测量转录不改写。",
       "tortoiseReview": "0.72实际目视第43行：五费灵能者／护卫、1500生命、34–45攻击、10甲、1格、1.6秒、60秒与技能防御20%；第42行雷震子的被动不能错读到玄龟。",
       "executionReview": "0.73核对已归档第37行转录：三费勾魂使550HP、49–63攻击、5甲、2格、1.2秒、15秒；原图此前已目视，本轮未重新下载。",
-      "siegeReview": "0.74本轮实际目视原表第11行投石车三费800生命、41–50攻击、10甲5格、1秒和60秒冷却。"
+      "siegeReview": "0.74本轮实际目视原表第11行投石车三费800生命、41–50攻击、10甲5格、1秒和60秒冷却。",
+      "infernoReview": "0.75实际目视S04-2第10行一费金刚650生命、42–46攻击、1.5秒、5甲、1格与60秒CD；原始转录不改写。"
     },
     {
       "id": "S05",
@@ -91,7 +92,8 @@
       "kind": "media",
       "status": "text-reviewed",
       "accessedAt": "2026-11-03",
-      "targetVersion": null
+      "targetVersion": null,
+      "mendingReview": "0.76目视79308982.jpg为经典RTS影鱼资料卡，不是自走棋卡；仅保存辨误证据，不据其确认灵鱼原型。"
     },
     {
       "id": "S07",
@@ -249,7 +251,13 @@
         "sha256": "f29f5453424788005490766b3be606f4d5753db0517184687559035c894e478f",
         "status": "valid-jpeg-visually-reviewed-lingjiu-first-two-cost-card"
       },
-      "wildfrontReview": "0.41重读四月原文，野兽2/4/6的10/10/15%本族攻速与五月全军25/35不同，明确保留版本差异。"
+      "wildfrontReview": "0.41重读四月原文，野兽2/4/6的10/10/15%本族攻速与五月全军25/35不同，明确保留版本差异。",
+      "infernoReview": {
+        "image": "docs/research/images/s20-landwalkers-client.jpg",
+        "sha256": "4fd0b9e9aa45b3825084fea233ce8d45df32c889e373ffe6d9175cd156b83e8d",
+        "note": "0.75普通HTTPS取得并目视左侧金刚的双臂蓝绿色重装轮廓；该图显示早期二费，与七月一费分期。"
+      },
+      "mendingReview": "0.76实际目视空军原图第二个维修机，保存原图及指纹；四月3费与七月1费分开记录。"
     },
     {
       "id": "S21",
@@ -259,7 +267,8 @@
       "kind": "official-tagged-community-guide",
       "status": "text-reviewed",
       "accessedAt": "2026-11-03",
-      "targetVersion": null
+      "targetVersion": null,
+      "mendingReview": "0.76读取正文：7/18取消无敌，治疗加能量、选最高攻击；嵌图返回挑战HTML，未恢复精确卡面。"
     },
     {
       "id": "S22",
@@ -312,7 +321,8 @@
       "status": "partial-text-reviewed",
       "accessedAt": "2026-11-03",
       "targetVersion": null,
-      "reviewNotes": "Bat damage-over-time/control, Vajra attack-speed reduction and Skytoad HP threshold roles; not a full skill specification."
+      "reviewNotes": "Bat damage-over-time/control, Vajra attack-speed reduction and Skytoad HP threshold roles; not a full skill specification.",
+      "infernoReview": "0.75通过web原作者正文确认对物理阵容减攻速定位，未提供具体梯度和持续时间。"
     },
     {
       "id": "S27",
@@ -809,7 +819,8 @@
       "status": "indexed-original-text-reviewed",
       "targetVersion": null,
       "review": "长盾兵早期单控5秒CD与七月护卫兵15秒CD及后期重做不同，本轮保留研究边界，未修改盾兵。",
-      "bulwarkReview": "0.70复读索引原文：二费長盾兵750生命、5甲、30–84普攻；六月随机单控5秒CD仅作跨期对照。"
+      "bulwarkReview": "0.70复读索引原文：二费長盾兵750生命、5甲、30–84普攻；六月随机单控5秒CD仅作跨期对照。",
+      "infernoReview": "沿用此前原作者索引的二费650HP、范围50伤害、20%攻速与10%吸血；本轮直读403，未称重新取得原卡，跨期边界见inferno-history.json。"
     },
     {
       "id": "S65",
@@ -888,6 +899,17 @@
       "status": "indexed-original-text-reviewed-direct-open-403",
       "targetVersion": null,
       "review": "原作者声明首发并逐个测量；投石机800生命10甲5格、技能转范围普攻与40%攻速。地区映射、跨期和未确证参数见siege-history.json。直接打开403，未绕过限制。"
+    },
+    {
+      "id": "S72",
+      "title": "7/11 更新公告（社区转载）",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=95",
+      "author": "馬子狗 e0987013924",
+      "postedAt": "2019-07-10T21:07:36",
+      "kind": "community-repost-secondary-lead",
+      "status": "indexed-lead-direct-open-403",
+      "targetVersion": null,
+      "review": "炎狱之怒范围与减攻速数列仅作命名和本地调参线索；本轮未取得发布方原公告或完整同版技能卡，不作官方配置确证。"
     }
   ],
   "gospelReview": "0.52字段与置信边界见gospel-history.json；客户端三星能量末位被水印遮挡，10为暂定本地值。",
@@ -985,5 +1007,20 @@
       "S71"
     ],
     "unifiedHistoricalBuildConfirmed": false
-  }
+  },
+  "infernoReview": {
+    "rules": "singleplayer-0.75",
+    "sourceIds": [
+      "S04",
+      "S05",
+      "S14",
+      "S20",
+      "S26",
+      "S64",
+      "S72"
+    ],
+    "record": "inferno-history.json",
+    "note": "一费身板与原始双臂图已目视；持续时间、星级梯度和生命周期保持明确本地适配。S72为社区转载线索，非官方原配置。"
+  },
+  "mendingReview": "0.76维修机资料与适配见mending-history.json；正文支持7月治疗／回能和最高攻击选人，精确梯度仍本地。S06影鱼图片实际为经典RTS，已更正使用边界。"
 }

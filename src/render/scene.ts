@@ -17,6 +17,8 @@ import {drawHives,hivePose} from "./hive";
 import {drawBulwarks,bulwarkPose} from "./bulwark";
 import {drawExecutionMarks,executionPose} from "./execution";
 import {drawSieges,siegePose} from "./siege";
+import {drawInfernos,infernoPose} from "./inferno";
+import {drawMendings,mendingPose} from "./mending";
 import {drawTortoises,tortoisePose} from "./tortoise";
 import {drawSpiritWards,spiritWardPose} from "./spirit-ward";
 import {bulwarkActive} from "../engine/bulwark";
@@ -525,7 +527,7 @@ export class BattleScene {
           now,
           s.selected,
           death,
-          f.siege?.mode || (f.thornbind || f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
+          f.siege?.mode || (f.inferno || f.thornbind || f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
           hit && fraction < 0.35,
           s.time,
           f.transformation ?? undefined,
@@ -546,6 +548,8 @@ export class BattleScene {
       drawExecutionMarks(c,fs,s.time,this.motionReduced);
       drawTortoises(c,fs,s.time,this.motionReduced);
       drawSieges(c,fs,s.time,this.motionReduced);
+      drawInfernos(c,fs,s.time,this.motionReduced);
+      drawMendings(c,fs,s.time,this.motionReduced);
       drawSpiritWards(c,fs,s.time,this.motionReduced);
       drawShuriken(c, fs, s.time, this.motionReduced, "blades");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
@@ -569,7 +573,7 @@ export class BattleScene {
                 attackInterval(attacker, n),
               )
             : 1;
-          const impactAge = attacker.siege?.mode?0:(attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
+          const impactAge = attacker.siege?.mode || (attacker.inferno&&e.skill)?0:(attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
           if (
@@ -783,6 +787,10 @@ export class BattleScene {
     c.save();
     const pose = isPhoenixEgg(f) || stone
       ? REST_POSE
+      : !this.motionReduced && !death && f.mending?.casting
+        ? mendingPose(f,time)
+      : !this.motionReduced && !death && (f.inferno?.casting||(f.inferno?.pulse&&time-f.inferno.pulse.tick>=0&&time-f.inferno.pulse.tick<2))
+        ? infernoPose(f,time)
       : !this.motionReduced && !death && f.reaper?.casting
         ? executionPose(f,time)
       : !this.motionReduced && !death && f.siege && (f.siege.mode||f.siege.casting)

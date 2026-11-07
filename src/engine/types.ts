@@ -28,10 +28,10 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege", "inferno", "mending",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "siege";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "mending";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
@@ -43,6 +43,8 @@ export const hasBulwarkRules = (version: CombatVersion) => hasRuleSince(version,
 export const hasSpiritWardRules = (version: CombatVersion) => hasRuleSince(version,"spirit-ward");
 export const hasTortoiseRules = (version: CombatVersion) => hasRuleSince(version,"tortoise");
 export const hasSiegeRules = (version: CombatVersion) => hasRuleSince(version,"siege");
+export const hasInfernoRules = (version: CombatVersion) => hasRuleSince(version,"inferno");
+export const hasMendingRules = (version: CombatVersion) => hasRuleSince(version,"mending");
 export const hasExecutionRules = (version: CombatVersion) => hasRuleSince(version,"execution");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
@@ -418,6 +420,23 @@ export interface Fighter {
   trueAttack?: boolean;
   devourSpent?: boolean;
   slow?: { until: number; multiplier: number };
+  /** Independent applied attack-speed reductions: strongest active grant wins. */
+  attackSlows?: {source:number;rate:number;until:number}[];
+  /** Released allied haste grants, independently expiring; only the strongest applies. */
+  mendHaste?: {source:number;ratio:number;until:number}[];
+  mending?: {
+    completed:number;healing:number;energy:number;hastes:number;interrupted:number;missed:number;
+    casting?:{start:number;release:number;side:0|1;target:number;power:number};
+    pulse?:{tick:number;target:number;from:{x:number;y:number};to:{x:number;y:number}};
+    actedAt?:number;
+  };
+  inferno?: {
+    formed:number;hits:number;slows:number;healing:number;interrupted:number;
+    casting?:{start:number;release:number;side:0|1;power:number};
+    active?:{start:number;until:number};
+    pulse?:{tick:number;x:number;y:number};
+    actedAt?:number;
+  };
   windup?: {
     until: number;
     target: number;

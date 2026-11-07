@@ -32,6 +32,8 @@ export function usesEnergy(f: Fighter) {
   return !!f.tortoise || !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
+  if(f.mending?.casting)return false;
+  if(f.inferno?.casting)return false;
   if(f.executionPuppet||f.reaper?.casting||f.siege?.mode||f.siege?.casting)return false;
   if(f.tortoise?.mode||f.tortoise?.casting)return false;
   if(f.spiritWard?.channel)return false;

@@ -1,5 +1,9 @@
 # 赤潮网页自走棋：资料与开发方案
 
+最新能力：[0.76 维修机灵蕴缝合](design/mending.md) · [资料与边界](research/mending-history.json) · [内置ImageGen提示词](research/mending-assets.json) · [必要验证](analysis/mending-v076-validation.json)。治疗／回能／加速、schema75和旧规则兼容已接入。
+
+最新能力：[0.75 金刚炎狱震地](design/inferno.md) · [原始资料和适配边界](research/inferno-history.json) · [内置ImageGen完整提示词](research/inferno-assets.json) · [验证记录](analysis/inferno-v075-validation.json)。双臂形象、一费身板、独立减速、可反制蓄势、狂怒吸血和schema74已接入；65项必要检查、构建及桌面／390px同一小局面通过。
+
 最新能力：[0.74 投石车攻城炮台](design/siege.md) · [原始测量与适配](research/siege-history.json) · [内置ImageGen完整提示词](research/siege-assets.json) · [验证记录](analysis/siege-v074-validation.json)。真实架设、普通炮弹、固定落点、独立溅射贡献及旧目录兼容已接入；68项不同必要检查、构建及桌面／390px同一小演示通过。
 
 最新能力：[0.73 勾魂使刑杀与刑傀](design/execution.md) · [原卡与适配边界](research/execution-history.json) · [内置ImageGen完整提示词](research/execution-assets.json) · [验证记录](analysis/execution-v073-validation.json)。新增第64种棋子与第四种不朽；75项不同必要检查、构建及桌面／390px同一小演示通过，刑傀实际出手并单列贡献。

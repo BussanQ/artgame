@@ -1,0 +1,30 @@
+{
+  "version": "singleplayer-0.76",
+  "mode": "内置ImageGen",
+  "transparentBackground": true,
+  "prompt": "Use case: stylized-concept. Asset type: transparent full-body auto-chess unit sprite for 维修机 / repair drone. Input image 1 is the original 2019 client roster: use ONLY the SECOND character from the left, labelled 维修机, for identity and silhouette. The bomber, ghost aircraft, ark and all UI are irrelevant. Input image 2 is the old project repair.png: use ONLY its polished hand-painted 3D strategy-game rendering quality, NOT its silhouette, ornate materials, bottle or fan rotors. Primary request: recreate the original repair drone as one compact floating industrial medical/engineering droid. A charcoal and dark steel cylindrical central hovering body, rounded black circular front sensor with small warm ivory trim, a small raised triangular tail fin with a red tip. Two long articulated mechanical arms hang forward and to either side; each arm has a large rectangular luminous cyan panel on its upper housing and fine tool tips/claws below. Several ivory/cream and weathered grey armor panels, restrained dark bronze joints, small red rear fin. Exactly two arms, no legs, no organic creature, no wings shaped like a bird, no large turbines, no potion bottle, no decorative gold Chinese scrollwork. A believable functional robot with the original's clear triangular silhouette, hovering in a ready-to-repair posture. Three-quarter front view facing viewer-right, slightly elevated game camera, full unit including every tool tip entirely in the frame, centered with at least 10% clear padding. Crisp readable painterly 3D miniature at game scale, soft upper-left light, clear cyan emissive panels with restrained glow. Actual transparent background. No floor, no scenery, no pedestal, no drop shadow, no cards, no UI, no text, no watermark. One character only. Healing beams and pulses will be drawn by the game separately, do not bake long rays or a background glow into the sprite.",
+  "references": [
+    {
+      "path": "docs/research/images/s20-air-client.jpg",
+      "bytes": 609164,
+      "sha256": "1274450ca715cde588b1e3de75e020faa2cb9801d013d9863c3b3c4c2008a5e2"
+    },
+    {
+      "path": "public/assets/units/repair.png",
+      "bytes": 1994897,
+      "sha256": "b1707eaae0c3fafae824bca66b2a5b0daf062707ccb84d9eace3e60553c37ea4"
+    }
+  ],
+  "referenceScope": "S20第二个维修机用于身份；旧repair仅用于画风。跨日期参考不等于统一客户端模型。",
+  "nativeGeneratedPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-0324916a-6238-4a45-b9dc-0ef56369c98b.png",
+  "asset": {
+    "path": "public/assets/units/repair-mending-v076.png",
+    "bytes": 1597189,
+    "sha256": "5984c2460ad80c4e95df2fc449ce7a6a80afeca0ddf6a7c01e0477287d80e501",
+    "width": 1536,
+    "height": 1024,
+    "hasAlpha": true
+  },
+  "processing": "直接复制内置工具原生PNG，未编辑像素；保留旧图。",
+  "review": "已目视原生输出；本次推送未追加浏览器截图验收。"
+}

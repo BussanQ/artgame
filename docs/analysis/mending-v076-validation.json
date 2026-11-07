@@ -1,0 +1,81 @@
+{
+  "version": "singleplayer-0.76",
+  "combatVersion": "mending",
+  "schema": 75,
+  "date": "2026-11-07",
+  "scope": "只验证当前相关模块与一个固定小场景；无全量测试、完整经营局、批量对战或新增浏览器验收。",
+  "checks": {
+    "distinctFinalPassed": 60,
+    "initial": {
+      "command": "npx vitest run tests/mending.test.ts tests/inferno.test.ts",
+      "passed": 58,
+      "failed": 2
+    },
+    "followup": {
+      "command": "npx vitest run tests/mending.test.ts -t '充能遵守|迁移'",
+      "passed": 6,
+      "failed": 0
+    },
+    "correction": "新增战斗／战果存档样例补齐合法上阵棋子和历史；被动兵种样例补齐shots字段。没有为通过断言改动产品结算。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 174,
+    "artifacts": [
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      },
+      {
+        "path": "dist/assets/index-DR1BNOcD.js",
+        "bytes": 429850,
+        "sha256": "9638c07b42eec60722622a2536c2ce3b1d42db97c3df14170d028a4eb5557d9a"
+      },
+      {
+        "path": "dist/assets/worker-CcK7Ni0F.js",
+        "bytes": 227282,
+        "sha256": "f84e5cf31fd2b6cbf6e9b4fe69d4638efdba713dfce53949e5b12593ecd4b947"
+      }
+    ]
+  },
+  "compatibility": {
+    "historicalVersions": 48,
+    "units": 64,
+    "definitionsAndPresentation": "逐版本SHA保持",
+    "frozenReplay": "inferno版本37帧SHA保持",
+    "prepare": "升级mending",
+    "battleAndResult": "保留inferno",
+    "catalogPlayersPoolHistoryPlayback": "保持"
+  },
+  "demo": "同一固定二对三局面完成实际治疗与加速；Worker计算入口与快算一致，输入不变，初始帧贡献为0。此局面不代表整体平衡。",
+  "evidence": [
+    {
+      "path": "tests/mending.test.ts",
+      "bytes": 10493,
+      "sha256": "f24913b3b0cf5374de768926574c434b87e65332ff96f174a9fe07ce8a6d12b8"
+    },
+    {
+      "path": "tests/fixtures/pre-v076-repair-replays.json",
+      "bytes": 10547,
+      "sha256": "6509c14d3ff3a60ec777d186b330b59d4027d5b698109bfd7410b25ebf3390f2"
+    },
+    {
+      "path": "src/engine/mending.ts",
+      "bytes": 4217,
+      "sha256": "b2b196677ff7dda113a80e8753db9e8f8008efd89e1494f3a08a6fac16c3dc7e"
+    },
+    {
+      "path": "src/render/mending.ts",
+      "bytes": 2931,
+      "sha256": "279eb4f8d63e5a93afd841b2147910fa3440747afee2207af52b2ffc2e33ef3b"
+    },
+    {
+      "path": "public/assets/units/repair-mending-v076.png",
+      "bytes": 1597189,
+      "sha256": "5984c2460ad80c4e95df2fc449ce7a6a80afeca0ddf6a7c01e0477287d80e501"
+    }
+  ],
+  "ui": "仅继承0.75已完成的历史验收；不声称0.76已完成浏览器或真机验收。"
+}

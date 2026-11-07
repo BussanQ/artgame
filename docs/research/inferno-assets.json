@@ -1,0 +1,41 @@
+{
+  "rules": "singleplayer-0.75",
+  "mode": "built-in-imagegen",
+  "useCase": "stylized-concept",
+  "path": "public/assets/units/vajra-inferno-v075.png",
+  "nativePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-1adf0f41-d162-4ebe-94ee-8cf66d8dc72d.png",
+  "bytes": 1559991,
+  "width": 1312,
+  "height": 1199,
+  "modeRGBA": "RGBA",
+  "transparentBackground": true,
+  "sha256": "65e429cdb3f4ab677cd453b3defbd167eb207a15ecd47720e2944cea83c91b5a",
+  "nativeBytesUnmodified": true,
+  "references": [
+    {
+      "path": "docs/research/images/s20-landwalkers-client.jpg",
+      "role": "原始客户端左侧金刚身份与双臂轮廓"
+    },
+    {
+      "path": "public/assets/units/vajra.png",
+      "role": "仅项目渲染风格，明确不沿用旧四臂石像身份"
+    }
+  ],
+  "prompt": "Use case: stylized-concept. Asset type: transparent full-body auto-chess unit sprite, 金刚 / Vajra. Input image 1 is the original 2019 client roster screenshot: use ONLY the leftmost character labelled 金刚 as the identity reference; the other two characters and every UI element are irrelevant. Input image 2 is the project's old Vajra sprite: use it ONLY for painterly 3D game-miniature rendering quality, NOT anatomy, costume, materials or face. Primary request: recreate the original leftmost character's readable design as one detailed strategy-game miniature. A broad stocky, hunched, TWO-ARMED blue-teal muscular guardian, short thick legs, very large rounded dark reddish-bronze shoulder guards with several small glowing cyan rings, a compact blue-grey rounded crested helmet and red-bronze face brow, a bright antique-gold belly plate, red-brown thigh armor, exposed teal hands and sturdy teal bare feet. Exactly TWO powerful arms, both fists ready at his sides; original asymmetrical shoulder details, compact neck and heavy upper-body silhouette. Do NOT turn him into an ape, a human monk, a four-armed statue or a stone golem. Three-quarter front view facing viewer-right, slightly elevated game camera. Full body entirely visible including feet and shoulders, centered with at least 10% clear padding on all sides. Polished hand-painted high quality 3D strategy-game art with crisp readable silhouette and light from upper left; restrained cyan emissive details. No flames in this base sprite: the game draws the rage skill effects separately. Actual transparent background, no floor, no pedestal, no drop shadow, no scenery, no roster cards, no UI, no border, no halo, no extra arms, no weapons, no text, no watermark. One character only.",
+  "inspection": {
+    "visuallyReviewed": true,
+    "result": "蓝绿色双臂、棕铜肩甲青环、圆盔、金腹甲与厚脚，单体无文字；已接入实际战场及图鉴。",
+    "alphaZeroPixels": 827459,
+    "alphaOpaquePixels": 171,
+    "alphaBbox": [
+      0,
+      17,
+      1294,
+      1199
+    ],
+    "edgeNote": "有极淡边缘alpha，不能声称所有边缘全透明或实际满足提示词10%留白；没有裁切或改动原生PNG。"
+  },
+  "oldSpritePreserved": "public/assets/units/vajra.png",
+  "apiKeyOrCliUsed": false,
+  "originalClientModelRecovered": false
+}

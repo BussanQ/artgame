@@ -16,6 +16,7 @@ export function startBladeStorm(ctx: CombatContext, f: Fighter) {
   };
   // Existing attack slow does not linger beneath the immunity window.
   delete f.slow;
+  delete f.attackSlows;
 }
 
 /** Pulses follow the moving caster; no repeated cast counters or posthumous damage. */

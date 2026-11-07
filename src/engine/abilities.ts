@@ -3,6 +3,8 @@ import {tauntTarget} from "./taunt";
 import {beginBulwark} from "./bulwark";
 import {beginSpiritWard,spiritWardTargets,spiritWardBuff,stopSpiritWard} from "./spirit-ward";
 import {beginSiege,stopSiege} from "./siege";
+import {beginInferno,stopInferno,infernoCanCast,infernoActive,attackSlowRate} from "./inferno";
+import {beginMending,stopMending,mendingCanCast,mendingTarget,mendingHaste} from "./mending";
 import {beginTortoise,stopTortoise} from "./tortoise";
 import {beginExecution,executionCanCast,stampExecution,claimExecutionPuppet,stopExecution} from "./execution";
 import {unwardedMagicResist} from "./triggers";
@@ -74,6 +76,8 @@ import {
   BULWARK_SKILL,
   SPIRIT_WARD_SKILL,
   SIEGE,SIEGE_SKILL,
+  INFERNO,INFERNO_SKILL,
+  MENDING_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -93,9 +97,9 @@ export const distance = (
 export const attackInterval = (f: Fighter, tick: number) =>
   Math.max(
     f.hive ? HIVE.needlesPerAttack*HIVE.needleInterval : 1,
-    (f.interval / (1 + staffSpeed(f) + (f.formationHaste ?? 0) + (f.siege?.mode?SIEGE.haste:0))) *
+    (f.interval / (1 + staffSpeed(f) + (f.formationHaste ?? 0) + (f.siege?.mode?SIEGE.haste:0) + (infernoActive(f,tick)?INFERNO.haste:0) + mendingHaste(f,tick))) *
       (f.hasteUntil > tick ? 0.7 : 1) *
-      (f.slow && f.slow.until > tick ? f.slow.multiplier : 1),
+      Math.max(f.slow && f.slow.until > tick ? f.slow.multiplier : 1,1/(1-attackSlowRate(f,tick))),
   );
 export const combatAttack = (f: Fighter, tick: number) =>
   (f.attack + (f.siege?.mode?SIEGE.attack[f.star-1]:0) +
@@ -403,14 +407,18 @@ export function damage(
         );
     }
   }
-  if (!skill && !periodic && !reflected && source.lifesteal > 0)
+  const rageSteal=infernoActive(source,ctx.tick)?INFERNO.lifesteal:0;
+  if (!skill && !periodic && !reflected && (source.lifesteal > 0 || rageSteal > 0)) {
+    const extraHealing=source.hp>0&&!isUndying(source)?Math.min(source.maxHp-source.hp,Math.round(amount*(source.lifesteal+rageSteal)))-Math.min(source.maxHp-source.hp,Math.round(amount*source.lifesteal)):0;
     heal(
       ctx,
       source,
       source,
-      amount * source.lifesteal,
-      source.teamLifesteal ? "普攻吸血" : "治疗",
+      amount * (source.lifesteal+rageSteal),
+      rageSteal ? "炎狱吸血" : source.teamLifesteal ? "普攻吸血" : "治疗",
     );
+    if(rageSteal&&source.inferno)source.inferno.healing+=Math.max(0,extraHealing);
+  }
   const supportTriggered=target.hp===0&&target.supportHeal>0;
   if (supportTriggered) {
     const healing = target.supportHeal,
@@ -619,10 +627,12 @@ export function interruptAirSkill(ctx: CombatContext, source: Fighter) {
     !source.windup &&
     !source.combo &&
     !source.bird?.draw &&
-    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting && !source.spiritWard?.channel && !source.tortoise?.casting && !source.reaper?.casting && !source.siege?.casting
+    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting && !source.spiritWard?.channel && !source.tortoise?.casting && !source.reaper?.casting && !source.siege?.casting && !source.inferno?.casting && !source.mending?.casting
   )
     return;
   const wasDrawing = !!source.bird?.draw;
+  if(source.mending?.casting)stopMending(ctx,source);
+  if(source.inferno?.casting)stopInferno(ctx,source);
   if(source.siege?.casting)stopSiege(ctx,source);
   if(source.reaper?.casting)stopExecution(ctx,source);
   if(source.tortoise?.casting)stopTortoise(ctx,source);
@@ -866,7 +876,7 @@ export function castSkill(
 ) {
   if (source.gospelAura || source.rifle) return false;
   if (source.taunt?.kind!=="tortoise"&&tauntTarget(ctx, source)) return false;
-  const s = source.siege ? SIEGE_SKILL : source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  const s = source.mending ? MENDING_SKILL : source.inferno ? INFERNO_SKILL : source.siege ? SIEGE_SKILL : source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -882,6 +892,8 @@ export function castSkill(
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
   const wardTargets=source.spiritWard?spiritWardTargets(ctx,source):[];
+  if(source.mending){if(!mendingCanCast(ctx,source))return false;target=mendingTarget(ctx,source)!;}
+  if(source.inferno&&!infernoCanCast(ctx,source))return false;
   if(source.siege&&(source.siege.mode||source.siege.casting||(source.skillReadyAt??0)>ctx.tick||source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source)))return false;
   if(source.reaper&&!executionCanCast(ctx,source,target))return false;
   if(source.tortoise&&((source.skillReadyAt??0)>ctx.tick||source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source)))return false;
@@ -1111,7 +1123,7 @@ export function castSkill(
     if (dashTo(ctx, source, farthest)) target = farthest;
     else if (distance(source, target) > source.range) return false;
   }
-  if (source.defId === "ironrooster" || source.wushi || source.bulwark || source.spiritWard || source.tortoise || source.siege) target = source;
+  if (source.defId === "ironrooster" || source.wushi || source.bulwark || source.spiritWard || source.tortoise || source.siege || source.inferno) target = source;
   source.mana = 0;
   if (source.signature) {
     source.signature.casts++;
@@ -1411,6 +1423,7 @@ export function castSkill(
       break;
     }
     case "vajra":
+      if(source.inferno){beginInferno(ctx,source);break;}
       shield(ctx, source, 0.2, 16);
       for (const enemy of enemies().filter((f) => distance(source, f) <= 1)) {
         hit(enemy, enemy.uid === target.uid);
@@ -1541,6 +1554,7 @@ export function castSkill(
       }
       break;
     case "repair": {
+      if(source.mending){beginMending(ctx,source);break;}
       const ally = ctx.fighters
         .filter(
           (f) =>
@@ -1702,6 +1716,7 @@ export function castSkill(
         delete ally.thornRoot;
         delete ally.gazed;
         delete ally.reaperMarks;
+        delete ally.attackSlows;
         ally.armorBreak = 0;
         ally.armorBreakUntil = 0;
         delete ally.corrosion;

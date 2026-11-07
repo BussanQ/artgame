@@ -1,0 +1,536 @@
+{
+  "pointInTime": "0.75金刚增量完成必要模块、构建和桌面/手机局部画面验收后的dev工作区；自身不参与指纹。",
+  "checkedAt": "2026-11-07T02:16:41.950297+00:00",
+  "rules": "singleplayer-0.75",
+  "combatVersion": "inferno",
+  "saveSchema": 74,
+  "goalTurnClassification": "progress",
+  "previousGoalTurn": "progress：17dda39提交并推送dev，远端SHA已核对；本轮继续开发。",
+  "scope": "一费金刚的炎狱震地、独立减攻速、狂怒攻速/吸血与原始双臂轮廓；完整单机目标保持。",
+  "tests": {
+    "uniquePassed": 65,
+    "counts": {
+      "inferno": 34,
+      "siege": 31
+    },
+    "failedAtCompletion": 0,
+    "fullTestSuiteRun": false,
+    "runs": [
+      {
+        "path": "tmp/inferno-related-tests.json",
+        "passed": 61,
+        "failed": 3,
+        "skipped": 0
+      },
+      {
+        "path": "tmp/inferno-related-followup.json",
+        "passed": 64,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "path": "tmp/inferno-focused-final.json",
+        "passed": 3,
+        "failed": 0,
+        "skipped": 31
+      }
+    ],
+    "commands": [
+      "npx vitest run tests/inferno.test.ts tests/siege.test.ts --reporter=json --outputFile=tmp/inferno-related-tests.json",
+      "npx vitest run tests/inferno.test.ts tests/siege.test.ts --reporter=json --outputFile=tmp/inferno-related-followup.json",
+      "npx vitest run tests/inferno.test.ts -t '装备估值|同一小局|47代' --reporter=json --outputFile=tmp/inferno-focused-final.json",
+      "npx tsc --noEmit"
+    ],
+    "initialFailure": "首次61通过/3失败：初版演示未开出技能，以及旧测试把当前战斗版本和迁移目的地写死为siege。换为护卫/火焰兵对手演示，旧测试改为验证版本存在/真实当前迁移；第二次64通过。",
+    "focusedFollowup": "补装备估值与完整演示输入不变验证，历史版本检查允许后续追加版本；定向3通过/31跳过。65项不同检查均有通过证据，不把跳过项当作本次已执行。",
+    "staticFollowups": "初次tsc发现冻结JSON键的类型索引问题，改为已知历史键类型；最终tsc通过。构建后仅补源码注释和测试断言，运行代码保持。"
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 171,
+    "js": "index-UcNfus8Y.js",
+    "worker": "worker-PzsXJXEw.js",
+    "css": "index-0iwQsGQW.css",
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "bytes": 596,
+        "sha256": "e9e33f389afa5bd043a0ff706b7c76dd5d0c757e8a41963ffedb77bdaad6b1b6"
+      },
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      },
+      {
+        "path": "dist/assets/index-UcNfus8Y.js",
+        "bytes": 423859,
+        "sha256": "1fa2682a03d7184a8001ebf8295a9e4b3a2750b9de6a3e0c039378cdc69e3d0a"
+      },
+      {
+        "path": "dist/assets/worker-PzsXJXEw.js",
+        "bytes": 222042,
+        "sha256": "aedbecf11024aec6de8820aacc41e3fe1248e2090013bb4b4e8bc82f95c375e7"
+      }
+    ]
+  },
+  "compatibility": {
+    "oldVersions": 47,
+    "unitsPerVersion": 64,
+    "definitionAndPresentationHashesUnchanged": true,
+    "fixture": "tests/fixtures/pre-v075-inferno-replays.json",
+    "frozenV074Replay": {
+      "version": "siege",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "vajra",
+          "star": 2,
+          "position": 35
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 1,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 1,
+          "position": 43
+        }
+      ],
+      "frames": 56,
+      "winner": 0,
+      "sha256": "b435a55dba546bb7d9fbb76f5234e7d69d1e52a73110ae7a2e2de36cbc16f358"
+    },
+    "otherOldReplays": "tests/siege.test.ts还核对pre-v074-siege-replays.json中的legacy与execution旧小局面，SHA保持。",
+    "migration": "schema73准备期升级inferno，旧battle/result保留siege到下一准备期；目录、池、商店、持有、历史、禁用和播放资料保持。旧局二费、新局一费；旧玄龟目录身份固定不变。"
+  },
+  "scene": {
+    "frames": 88,
+    "lastTick": 87,
+    "winner": 0,
+    "source": {
+      "inferno": {
+        "formed": 1,
+        "hits": 2,
+        "slows": 2,
+        "healing": 47,
+        "interrupted": 0
+      },
+      "interruptions": 0,
+      "lostTargets": 0,
+      "uid": 101,
+      "defId": "vajra",
+      "star": 2,
+      "side": 0,
+      "hp": 0,
+      "maxHp": 1750,
+      "damage": 872,
+      "normalDamage": 696,
+      "skillDamage": 176,
+      "reflectedDamage": 0,
+      "energyGiven": 0,
+      "shieldDamage": 0,
+      "received": 1797,
+      "healing": 47,
+      "absorbed": 0,
+      "casts": 1,
+      "evades": 0
+    },
+    "formed": [
+      9
+    ],
+    "interrupted": [],
+    "healing": 47
+  },
+  "browser": {
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "raw": "tmp/inferno-v075-ui.json",
+    "resourcesUnchanged": true,
+    "logs": [],
+    "mobile": {
+      "close": {
+        "bottom": 237.5,
+        "height": 44,
+        "left": 257,
+        "right": 301,
+        "top": 193.5,
+        "width": 44,
+        "x": 257,
+        "y": 193.5
+      },
+      "rect": {
+        "bottom": 391,
+        "height": 201.5,
+        "left": 16,
+        "right": 306,
+        "top": 189.5,
+        "width": 290,
+        "x": 16,
+        "y": 189.5
+      },
+      "scrollWidth": 390,
+      "text": "×金刚 己方 · ★★生命 878 / 1750能量 100 / 100攻击 88间隔 1.25 秒护甲 2.0法术减伤 20%陆行者 · 普攻真实伤害炎狱震地 1次 · 有效命中 2人次 · 减速施加 2人次狂怒额外吸血 18生命炎狱狂怒 5.3s · 攻速+20% · 普攻吸血+10%炎狱冷却 56.8s步兵减甲 −3灼烧点击棋子固定详情 · 点击空处或按 Esc 收起",
+      "width": 390
+    },
+    "screenshots": [
+      "tmp/inferno-v075-active-desktop.jpg",
+      "tmp/inferno-v075-before-release-desktop.jpg",
+      "tmp/inferno-v075-codex-mobile.jpg",
+      "tmp/inferno-v075-inspector-desktop.jpg",
+      "tmp/inferno-v075-inspector-mobile.jpg",
+      "tmp/inferno-v075-mobile-scroll.jpg"
+    ],
+    "observed": [
+      "双臂新形象、蓄势、震地范围及狂怒/减速标记。",
+      "5秒金刚878/1750生命、88攻击、1.25秒间隔、18额外吸血；敌方盾兵20%减攻速后1.25秒间隔。",
+      "2秒回看：震地/命中/减速/吸血0，施法1为尚未释放的蓄势。",
+      "手机详情内部滚动后44×44关闭可见，scrollWidth=390；三星图鉴一费2600生命、176攻击、1.5秒与新说明。"
+    ],
+    "limitedScope": "GUI只观察至19.75秒片段及回看，没有冒称看到终局；21.75秒结局取模块同一演示证据。",
+    "restored": "退出演示、重置图鉴与临时视口，经营资源/商店/装备/固定禁用文本一致，页面标记交付。",
+    "existingNotice": "开始时已有存档版本不兼容提示，未清空或替换用户存档；合法旧档由模块验证。"
+  },
+  "research": {
+    "record": "docs/research/inferno-history.json",
+    "primary": "S04-2第10行和S20原客户端陆行者图实际目视；重解析既有S05原HTML，读取S26原作者正文。",
+    "limits": "S64沿用此前原作者索引，本轮403；S72是社区转载线索，不作发布方原配置。",
+    "unifiedHistoricalBuildConfirmed": false,
+    "localAdaptationsExplicit": true
+  },
+  "art": {
+    "record": "docs/research/inferno-assets.json",
+    "mode": "built-in-imagegen",
+    "path": "public/assets/units/vajra-inferno-v075.png",
+    "sha256": "65e429cdb3f4ab677cd453b3defbd167eb207a15ecd47720e2944cea83c91b5a",
+    "nativeBytesUnmodified": true,
+    "originalClientModelRecovered": false
+  },
+  "sampling": {
+    "newFullCampaigns": 0,
+    "bulkBattleSampling": false,
+    "scope": "仅直接相关模块、冻结旧小回放及同一演示。初版演示未开招后更换展示对手，未批量搜索胜率或进行完整经营局。"
+  },
+  "git": {
+    "branch": "dev",
+    "baseCommit": "17dda39128760fe1e22392ff04518f138b188ba2",
+    "newCommitRequested": false,
+    "changesCommitted": false,
+    "pushed": false
+  },
+  "remainingGoalRequirements": [
+    "未取得统一客户端完整技能卡、各星级外观和全部原始公式。",
+    "部分技能梯度、时序及生命周期是已注明本地适配，其他原型能力仍待推进。",
+    "整体多构筑经营、挑战难度、最终人工体验和真实弱设备性能不能由本轮小局面证明。"
+  ],
+  "sourceFingerprints": [
+    {
+      "path": "README.md",
+      "bytes": 30585,
+      "sha256": "e0be5222339fdbb3866fa78b34331a502ac2e95f3eb35b415b56441b3d91bc71"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 36866,
+      "sha256": "c5b159dc5177d610286423842cd785dfcae3f303aac2c1ec2ced8f1b4320728b"
+    },
+    {
+      "path": "docs/design/inferno.md",
+      "bytes": 5328,
+      "sha256": "9dc73bba287e7f81e66743af1a962f4e6d31c31faf762af51c46329208f5000d"
+    },
+    {
+      "path": "docs/design/roadmap.md",
+      "bytes": 30649,
+      "sha256": "3922c01cea03f5edf0cc3db7dac15d998b8a3c8a7be53ec10713277e28186ca0"
+    },
+    {
+      "path": "docs/design/single-player-plan.md",
+      "bytes": 38697,
+      "sha256": "d0c8b9c433891a3522013b874b283e2221203b16c2732c9b5d4509b676186857"
+    },
+    {
+      "path": "docs/design/skills.md",
+      "bytes": 12033,
+      "sha256": "bbaa7700eb02be45c2875ae48f603bc1d91ddecdcd1176add2cbe92fb343909f"
+    },
+    {
+      "path": "docs/research/historical-tables.md",
+      "bytes": 13720,
+      "sha256": "0b61da7d1e1e55a6cd683465ca28b7d58c293ccd17a97a58a569401b1ec7385c"
+    },
+    {
+      "path": "docs/research/images/s20-landwalkers-client.jpg",
+      "bytes": 583584,
+      "sha256": "4fd0b9e9aa45b3825084fea233ce8d45df32c889e373ffe6d9175cd156b83e8d"
+    },
+    {
+      "path": "docs/research/inferno-assets.json",
+      "bytes": 3182,
+      "sha256": "3db174e42e593b5ebc1616d7b459c3c81e0a8da7d5cda0d732b4b26ff6777c93"
+    },
+    {
+      "path": "docs/research/inferno-history.json",
+      "bytes": 7118,
+      "sha256": "1d1adda32fcd27c97d52f89c25e91415c914a8f00b1118363996e83a968acd46"
+    },
+    {
+      "path": "docs/research/roster-mapping.json",
+      "bytes": 35955,
+      "sha256": "fa169d4cd7ace668a5bda43339968b361072d64896d309115fb2482ba68811de"
+    },
+    {
+      "path": "docs/research/roster-mapping.md",
+      "bytes": 16484,
+      "sha256": "f55f0ec879ed3da207caafe4f100d647aeb0d613931fe3251cf54da98c1b9558"
+    },
+    {
+      "path": "docs/research/sources.json",
+      "bytes": 59746,
+      "sha256": "1948b8f0949b5e114654efee926a6d85b70a77458dc206f779f1322f6a433ca6"
+    },
+    {
+      "path": "docs/research/sources.md",
+      "bytes": 26377,
+      "sha256": "158569a1a10ddce262565937ec2086bf6a4b947887a65e5412b1e32d78aaf04c"
+    },
+    {
+      "path": "package.json",
+      "bytes": 19293,
+      "sha256": "e940c1b6f16e2a4f4643cb6304ec9c42be31cebd8fc5e03365f40eb165bc0aad"
+    },
+    {
+      "path": "public/assets/units/vajra-inferno-v075.png",
+      "bytes": 1559991,
+      "sha256": "65e429cdb3f4ab677cd453b3defbd167eb207a15ecd47720e2944cea83c91b5a"
+    },
+    {
+      "path": "src/data/inferno-demo.ts",
+      "bytes": 458,
+      "sha256": "799a4263e6b15757d9359eb095949c4739697733aa60897569ab236e39c063d6"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "bytes": 80485,
+      "sha256": "866c7d322d8cc225e4f34854b85c9796146bf58eb11c0a23d5a53b727c5430d3"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "bytes": 10106,
+      "sha256": "3c14fc62f919ba8c65482311251ff60564e84fd0d2bb502948940aacc420db4a"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 21226,
+      "sha256": "b3cdfcf82dc986060c0f790ec30aca78e0545bd7ecd9b9c7b65746e671a43ad0"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "bytes": 65003,
+      "sha256": "3de7ff4e86f6d64ba30e3eb455c601959694d66aeec23ae2223285a6a92ab50f"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "bytes": 54309,
+      "sha256": "d26ef33a29b481a7806d8690952fa96974352af91f367797fca6ff923c4fd353"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "bytes": 11487,
+      "sha256": "d478810915200a77f329f337c2753c91b5ea8147b92e2cdd56de16b2646be094"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 33359,
+      "sha256": "6d88a1049c3ec455da3257c748e2003d8d7d5d4018f72b04418dfa01ba9da8ff"
+    },
+    {
+      "path": "src/engine/equipment.ts",
+      "bytes": 8016,
+      "sha256": "4ec8002d19e58e0e969a1727c21a95ae2287e4cc6a308fea6ee698e4ef604896"
+    },
+    {
+      "path": "src/engine/execution.ts",
+      "bytes": 7003,
+      "sha256": "86e6641731dc1f86734d1c74fda3d411b611c4119edd773ff5edf15139bf8589"
+    },
+    {
+      "path": "src/engine/immortality.ts",
+      "bytes": 1615,
+      "sha256": "85c5caa2b6a10b6731890654699f4e6e1a75bcb7b9eef463f6c2d42ecb5585f8"
+    },
+    {
+      "path": "src/engine/inferno.ts",
+      "bytes": 4541,
+      "sha256": "52fcbd1c71fb4f60267ea408a9e081f3915497e93c85b9e2c76c8268e298d47f"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 39203,
+      "sha256": "7128daf67cb713d32981b8ee829a1a83217952a91d49496b755bdb20e32e752f"
+    },
+    {
+      "path": "src/engine/phoenix.ts",
+      "bytes": 3366,
+      "sha256": "73ee3004c88555973b6f3ae4504104caf335d2c502728b3a0174b458eba248a2"
+    },
+    {
+      "path": "src/engine/summons.ts",
+      "bytes": 12496,
+      "sha256": "641ac0d4af501301f67f79bfb68481ca7a54a11c0a7bd3cec6a2dd0d3514057e"
+    },
+    {
+      "path": "src/engine/swordthrall.ts",
+      "bytes": 1767,
+      "sha256": "12e6a421aac63923d7407ea749083628ea5d35e42b9d1c2bb23be70ed1eb6d13"
+    },
+    {
+      "path": "src/engine/triggers.ts",
+      "bytes": 6248,
+      "sha256": "98f71572116f75b18a5e60557b454766691fb696f574751427befeecab1566cd"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 24350,
+      "sha256": "55c86d9abd965c64c468a613f1e295c5df8d617eb6899717be9079ba15e158e1"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 80373,
+      "sha256": "c294fac3885ef58b035cfe7f46bc567917590d710587eb315075ece425b4ab44"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "bytes": 5487,
+      "sha256": "3b375d913a52099b04f858d4c5dea77fe715f6eaaf73483fa943ae2bfc83fbdb"
+    },
+    {
+      "path": "src/render/inferno.ts",
+      "bytes": 3703,
+      "sha256": "a7f020f1c1cd3c6d1d5551ec8c7da38018a7cad92c9f0b0cdb56ab469f98deeb"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "bytes": 39356,
+      "sha256": "9514d00d094d68ad5ce7886bff9b948600f98b5a52acef8dd38bd5f6851d9632"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "bytes": 44853,
+      "sha256": "aa2abca1cc8c53912ea14a4d646da7496f9702be5f4cf386b5f8cf5a1d387e10"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "bytes": 11182,
+      "sha256": "4ef7e60247a0d03bc081bc398e86c43ebba5b65c7979ad4c887561e3eb236923"
+    },
+    {
+      "path": "src/ui/bench-tooltip.ts",
+      "bytes": 9248,
+      "sha256": "c8fcb57fc7b3ce6eb2208b8740ca9871b96dd076001933e54be5c4d9c94dfb7f"
+    },
+    {
+      "path": "tests/fixtures/pre-v075-inferno-replays.json",
+      "bytes": 10211,
+      "sha256": "2cd37b8573a1404b75610d74c7282af69355152f3e863b6cb2607cf082da2c5c"
+    },
+    {
+      "path": "tests/inferno.test.ts",
+      "bytes": 16651,
+      "sha256": "d716a36655caab3059fddb453b1b724cc27f8fbd644214caccb5f531563fefe9"
+    },
+    {
+      "path": "tests/siege.test.ts",
+      "bytes": 15181,
+      "sha256": "cd076f4f4a3e04e9646eac69da15e25af4bf73f3e578f6fd7b88724007e85aa5"
+    }
+  ],
+  "localArtifactFingerprints": [
+    {
+      "path": "tmp/inferno-related-tests.json",
+      "bytes": 25047,
+      "sha256": "d7ce4141197410b960dc117bbbad60f5df74885224808f0cd149f6f507d65ca0"
+    },
+    {
+      "path": "tmp/inferno-related-followup.json",
+      "bytes": 22444,
+      "sha256": "6869a4aa8d1d295c2e8f46ff9e59abe115350796faed66f23ff509c63d1948c7"
+    },
+    {
+      "path": "tmp/inferno-focused-final.json",
+      "bytes": 11139,
+      "sha256": "242c23087f210d869d555ee48ca60e3b688c2c9fc9c02b170d9d05e70091b412"
+    },
+    {
+      "path": "tmp/inferno-v075-probe.json",
+      "bytes": 633,
+      "sha256": "3a0bf9fb49cb10be915722f012a802f70294c67816b3ef9ddb16d4ae554c6f07"
+    },
+    {
+      "path": "tmp/inferno-v075-scene.json",
+      "bytes": 714188,
+      "sha256": "635cb437dcc2fad015247ff1a9b08b68e9131756bf20991d6e3736aa3bc2cdac"
+    },
+    {
+      "path": "tmp/inferno-v075-ui.json",
+      "bytes": 12259,
+      "sha256": "d33a3b6c4f499842af9a889020d55f99667df5bf345bec92afbeb00f2ea238b4"
+    },
+    {
+      "path": "tmp/inferno-alpha.json",
+      "bytes": 363,
+      "sha256": "93e08b4c35b6c5b2701d76437f8adb40097395beaf349bcca451872f69ba2e9f"
+    },
+    {
+      "path": "tmp/vajra-3dm-guide.html",
+      "bytes": 61103,
+      "sha256": "26ced3604a2cce5878cf85dd461cbf73620a5d4733f90b27431b41251ff655a4"
+    },
+    {
+      "path": "tmp/inferno-v075-active-desktop.jpg",
+      "bytes": 146319,
+      "sha256": "2955d71d6964263aff12a58542f34b9623ba0332058f90c0280422c4d58cb2e4"
+    },
+    {
+      "path": "tmp/inferno-v075-before-release-desktop.jpg",
+      "bytes": 146252,
+      "sha256": "3754550d53d93e73cf91db47b385f664dedb14666b8559225d084b9337bb7270"
+    },
+    {
+      "path": "tmp/inferno-v075-codex-mobile.jpg",
+      "bytes": 36709,
+      "sha256": "8471e5e286a49393e3defcf4a71406f5cf14eb4af41962ae75af05971950061f"
+    },
+    {
+      "path": "tmp/inferno-v075-inspector-desktop.jpg",
+      "bytes": 146910,
+      "sha256": "725d9089d24d87cd72df3bba3c3be4fa674f70d1c2f4dc5311df84c3d2a7e5e8"
+    },
+    {
+      "path": "tmp/inferno-v075-inspector-mobile.jpg",
+      "bytes": 52597,
+      "sha256": "d989c420c1674ceea6770fdd7b2c54c62db0ea411d32ecc04f0b0a09efbc2b8d"
+    },
+    {
+      "path": "tmp/inferno-v075-mobile-scroll.jpg",
+      "bytes": 51627,
+      "sha256": "218656f79e98ccdf38bbc64088eb04f7d9990b7f6704964857c22d167ec3a92c"
+    }
+  ]
+}

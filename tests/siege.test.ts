@@ -127,11 +127,11 @@ describe("炮弹实际飞行、固定落点与普通物理结算",()=>{
 });
 
 describe("经营、历史与可读信息",()=>{
- it("46版旧64种定义哈希保持",async()=>{expect(frozen.definitions).toHaveLength(46);for(const row of frozen.definitions)expect(await hash(frozen.ids.map(id=>unitDefinition(id,row.version as CombatVersion)))).toBe(row.sha256);expect(COMBAT_VERSIONS.at(-1)).toBe("siege");});
+ it("46版旧64种定义哈希保持",async()=>{expect(frozen.definitions).toHaveLength(46);for(const row of frozen.definitions)expect(await hash(frozen.ids.map(id=>unitDefinition(id,row.version as CombatVersion)))).toBe(row.sha256);expect(COMBAT_VERSIONS).toContain("siege");});
  for(const row of frozen.replays)it(`${row.version}旧小局面完整SHA保持`,async()=>expect(await hash(simulate(row.left,row.right,row.version as CombatVersion))).toBe(row.sha256));
  it.each(["prepare","battle","result"] as const)("0.73的%s迁移保留旧卡池、费用和播放资料",phase=>{
   const game=oldGame(phase),before=structuredClone(game);expect(validGame(game)).toBe(true);const decoded=decodeSave(save(game));expect(decoded.status).toBe("migrated");const after=decoded.data!.game;
-  expect(decoded.data!.schema).toBe(SAVE_SCHEMA);expect(after.pool).toEqual(before.pool);expect(after.players).toEqual(before.players);expect(after.catalogVersion).toBe("execution");expect(catalogCost(after,"chariot")).toBe(2);expect(after.combatVersion).toBe(phase==="prepare"?"siege":"execution");expect(decoded.data!.playback).toEqual({time:2,speed:2,paused:true});
+  expect(decoded.data!.schema).toBe(SAVE_SCHEMA);expect(after.pool).toEqual(before.pool);expect(after.players).toEqual(before.players);expect(after.catalogVersion).toBe("execution");expect(catalogCost(after,"chariot")).toBe(2);expect(after.combatVersion).toBe(phase==="prepare"?CURRENT_COMBAT_VERSION:"execution");expect(decoded.data!.playback).toEqual({time:2,speed:2,paused:true});
  });
  it("旧局仍按2金购买和回池，新局使用三费份数",()=>{
   const game=decodeSave(save(oldGame())).data!.game,p=game.players[0];p.shop[0]="chariot";game.pool.chariot--;const gold=p.gold;
