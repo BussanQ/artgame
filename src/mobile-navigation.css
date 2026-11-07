@@ -1,0 +1,30 @@
+.mobile-dock a {
+  display: grid;
+  place-items: center;
+  padding: 6px 4px;
+  border: 1px solid #415157;
+  text-decoration: none;
+  touch-action: manipulation;
+}
+.mobile-dock a:focus-visible {
+  outline: 2px solid #ecdaa8;
+  outline-offset: 2px;
+}
+@media (max-width: 700px) {
+  .shell > .game-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    background: #14231ff5;
+  }
+  #battlefield,
+  #recruitment,
+  #armory,
+  #commander,
+  #intel {
+    scroll-margin-top: 64px;
+  }
+  .shell:not([data-mobile-view="battlefield"]) > .match-summary {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import type { Fighter } from "./types";
-import type { CombatContext } from "./abilities";
+import { interruptAirSkill, type CombatContext } from "./abilities";
+import {releaseDream,releaseDreamsFrom} from "./dream";
 
 /** hp=1 keeps an active soul in targeting and occupancy; it is not restored life. */
 export const isUndying = (fighter: Fighter) =>
@@ -7,10 +8,21 @@ export const isUndying = (fighter: Fighter) =>
 export function enterUndying(ctx: CombatContext, fighter: Fighter) {
   const state = fighter.immortal;
   if (!state || state.spent || fighter.hp > 0) return false;
+  releaseDreamsFrom(ctx,fighter.uid);
+  releaseDream(ctx,fighter,"target-lost");
   state.spent = true;
   state.until = ctx.tick + state.duration;
   fighter.hp = 1;
   fighter.shield = 0;
+  delete fighter.command;
+  delete fighter.attackSlows;
+  delete fighter.mendHaste;
+  if(fighter.formless)delete fighter.formless.active;
+  delete fighter.bladeStorm;
+  delete fighter.corrosion;
+  delete fighter.knockup;
+  delete fighter.jungleLandings;
+  delete fighter.taunt;
   ctx.effects.push({
     source: fighter.uid,
     target: fighter.uid,
@@ -27,6 +39,7 @@ export function expireUndying(ctx: CombatContext) {
     if (!isUndying(fighter) || fighter.immortal!.until > ctx.tick) continue;
     fighter.hp = 0;
     fighter.shield = 0;
+    if (fighter.boneblast || fighter.thornbind || fighter.reaper) interruptAirSkill(ctx, fighter);
     if (fighter.air) delete fighter.air.cast;
     ctx.effects.push({
       source: fighter.uid,

@@ -1,5 +1,7 @@
+import { setFlight } from "./sea-ward";
 import type { Fighter } from "./types";
 import type { CombatContext } from "./abilities";
+import {releaseDream,releaseDreamsFrom} from "./dream";
 
 export const isPhoenixEgg = (fighter: Pick<Fighter, "phoenix">) =>
   !!fighter.phoenix && fighter.phoenix.eggUntil > 0;
@@ -8,6 +10,9 @@ export const isPhoenixEgg = (fighter: Pick<Fighter, "phoenix">) =>
 export function enterPhoenixEgg(ctx: CombatContext, fighter: Fighter) {
   const state = fighter.phoenix;
   if (!state || state.spent || fighter.star < 2 || fighter.hp > 0) return false;
+  releaseDreamsFrom(ctx,fighter.uid);
+  releaseDream(ctx,fighter,"target-lost");
+  if (fighter.wildfire) fighter.wildfire.eggs++;
   state.spent = true;
   state.eggUntil = ctx.tick + 12;
   state.bodyMaxHp = fighter.maxHp;
@@ -15,22 +20,33 @@ export function enterPhoenixEgg(ctx: CombatContext, fighter: Fighter) {
   fighter.shield = 0;
   fighter.mana = 0;
   fighter.stunUntil = 0;
+  delete fighter.thornRoot;
+  delete fighter.gazed;
   fighter.manaLockUntil = 0;
   delete fighter.silenceUntil;
   delete fighter.burn;
+  delete fighter.corrosion;
+  delete fighter.knockup;
+  delete fighter.jungleLandings;
+  delete fighter.taunt;
   fighter.armorBreak = 0;
   fighter.armorBreakUntil = 0;
   delete fighter.slow;
+  delete fighter.attackSlows;
+  delete fighter.mendHaste;
+  if(fighter.formless)delete fighter.formless.active;
   delete fighter.sonic;
   delete fighter.windup;
   delete fighter.combo;
+  delete fighter.command;
+  delete fighter.bladeStorm;
   if (fighter.charm) {
     fighter.side = fighter.charm.side;
     fighter.attack = fighter.charm.attack;
     delete fighter.charm;
   }
   if (fighter.air) {
-    fighter.air.flying = false;
+    setFlight(fighter, false);
     fighter.air.phaseUntil = 0;
     delete fighter.air.cast;
   }
@@ -59,10 +75,11 @@ export function hatchPhoenix(ctx: CombatContext) {
       continue;
     state.eggUntil = 0;
     state.hatched = true;
+    if (fighter.wildfire) fighter.wildfire.hatches++;
     fighter.maxHp = fighter.hp = state.bodyMaxHp;
     fighter.mana = 0;
     fighter.cooldown = 1;
-    if (fighter.air) fighter.air.flying = true;
+    setFlight(fighter, true);
     ctx.effects.push({
       source: fighter.uid,
       target: fighter.uid,

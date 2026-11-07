@@ -1,0 +1,125 @@
+{
+  "capturedAt": "2026-11-06",
+  "rules": "singleplayer-0.52",
+  "provenance": "Normal paid standard psychic commander, classic seed173, round16. Captured before Gospel field placement correction; no resources or combat values modified.",
+  "report": "docs/analysis/gospel-v052-initial-psychic.json",
+  "aiSourceSha256": "9e872c0b78e0e2a7e0c1edd6348bdac1cb6b7b84ef03c53e1c8bff162b8a4013",
+  "left": [
+    {
+      "uid": 132,
+      "defId": "bull",
+      "star": 2,
+      "position": 35,
+      "items": [
+        "rageblade"
+      ]
+    },
+    {
+      "uid": 213,
+      "defId": "shark",
+      "star": 2,
+      "position": 36,
+      "items": [
+        "crystal"
+      ]
+    },
+    {
+      "uid": 214,
+      "defId": "turtle",
+      "star": 1,
+      "position": 37,
+      "items": []
+    },
+    {
+      "uid": 215,
+      "defId": "adept",
+      "star": 2,
+      "position": 56,
+      "items": [
+        "warblade"
+      ]
+    },
+    {
+      "uid": 261,
+      "defId": "wolf",
+      "star": 1,
+      "position": 34,
+      "items": []
+    },
+    {
+      "uid": 316,
+      "defId": "vajra",
+      "star": 1,
+      "position": 33,
+      "items": []
+    },
+    {
+      "uid": 332,
+      "defId": "acolyte",
+      "star": 1,
+      "position": 63,
+      "items": []
+    }
+  ],
+  "right": [
+    {
+      "uid": 14,
+      "defId": "guard",
+      "star": 2,
+      "position": 35,
+      "items": [
+        "aegis"
+      ]
+    },
+    {
+      "uid": 15,
+      "defId": "infantry",
+      "star": 3,
+      "position": 56,
+      "items": [
+        "sage",
+        "blade"
+      ]
+    },
+    {
+      "uid": 134,
+      "defId": "ghostjet",
+      "star": 2,
+      "position": 63,
+      "items": []
+    },
+    {
+      "uid": 162,
+      "defId": "lion",
+      "star": 1,
+      "position": 36,
+      "items": []
+    },
+    {
+      "uid": 221,
+      "defId": "phoenix",
+      "star": 1,
+      "position": 57,
+      "items": []
+    },
+    {
+      "uid": 223,
+      "defId": "winddragon",
+      "star": 1,
+      "position": 61,
+      "items": []
+    },
+    {
+      "uid": 294,
+      "defId": "bonedragon",
+      "star": 1,
+      "position": 59,
+      "items": []
+    }
+  ],
+  "observed": {
+    "gospelEnergy": 0,
+    "firstPulseEligibleAllies": 5,
+    "firstPulseAlliesInRange": 0
+  }
+}

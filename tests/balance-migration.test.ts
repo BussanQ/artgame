@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { encounterFor, encounterArmy } from "../src/data/encounters";
 import { deployLineup } from "../src/engine/ai";
 import { describe, it, expect } from "vitest";
@@ -13,7 +14,7 @@ import { decodeSave, validGame, SAVE_SCHEMA } from "../src/engine/persistence";
 import { claimReward } from "../src/engine/equipment";
 import type { Game } from "../src/engine/types";
 const oldGame = () => {
-  const g = createGame(861);
+  const g = createGame(861, "classic");
   g.combatVersion = "tactics";
   const p = g.players[0];
   p.level = 6;
@@ -48,7 +49,10 @@ describe("0.6 平衡与旧战斗保护", () => {
       result = migrate(g);
     expect(result.status).toBe("migrated");
     expect(result.data!.schema).toBe(SAVE_SCHEMA);
-    expect(result.data!.game).toEqual({ ...g, combatVersion: "metamorph" });
+    expect(result.data!.game).toEqual({
+      ...g,
+      combatVersion: CURRENT_COMBAT_VERSION,
+    });
   });
   it("已开始的旧战斗逐帧一致，结算后才切到新规则，历史继续按旧规则回放", () => {
     const g = oldGame(),
@@ -65,7 +69,7 @@ describe("0.6 平衡与旧战斗保护", () => {
     expect(resultPhase).toEqual(settled);
     if (resultPhase.reward) claimReward(resultPhase, 0);
     nextRound(resultPhase);
-    expect(resultPhase.combatVersion).toBe("metamorph");
+    expect(resultPhase.combatVersion).toBe(CURRENT_COMBAT_VERSION);
     expect(resultPhase.history[0].combatVersion).toBe("tactics");
     const record = resultPhase.history[0];
     expect(simulate(record.left, record.right, record.combatVersion)).toEqual(
@@ -115,7 +119,7 @@ describe("0.6 平衡与旧战斗保护", () => {
       offset: number,
       formation: "spread" | "compact",
     ) => {
-      const p = createGame().players[0];
+      const p = createGame(undefined, "classic").players[0];
       p.level = 6;
       p.pieces = ids.map((defId, i) => ({
         uid: offset + i + 1,

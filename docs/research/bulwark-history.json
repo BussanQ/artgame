@@ -1,0 +1,112 @@
+{
+  "rules": "singleplayer-0.70",
+  "unit": "guard",
+  "currentName": "盾兵",
+  "historicalNameMapping": {
+    "names": [
+      "护盾兵",
+      "护卫兵",
+      "長盾兵"
+    ],
+    "status": "local-design mapping; not verified aliases or one client build"
+  },
+  "skillNameStatus": "刺盾之阵见2020年S67公告；尚无2019完整原卡，不证明早期同名或同样全部机制。",
+  "sources": [
+    {
+      "sourceId": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "kind": "original-player-measurement",
+      "review": "本轮实际目视原始表第4行，印名护卫兵；社区测量，客户端版本未知。",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "imageSha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "fields": {
+        "cost": 2,
+        "hp": 750,
+        "attackMin": 30,
+        "attackMax": 84,
+        "armor": 5,
+        "range": 1,
+        "intervalSeconds": 1,
+        "cooldownSeconds": 15
+      },
+      "adoption": "身板与CD采用该行，原始攻击区间取均值57；本地不模拟每次30–84的随机摇值。"
+    },
+    {
+      "sourceId": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "modifiedAt": "2019-07-15",
+      "kind": "original-player-review",
+      "reviewMethod": "本轮检索索引中的原作者正文；既有原始HTML缓存指纹核对，未把搜索摘要当客户端卡。",
+      "cachedOriginalHtml": "../../tmp/vine-s05-original.html",
+      "originalHtmlSha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "supports": [
+        "护盾兵重做后增加护甲",
+        "嘲讽附近1格敌人"
+      ],
+      "doesNotSpecify": [
+        "护甲分星数列",
+        "盾阵持续时间",
+        "嘲讽秒数",
+        "初始能量",
+        "是否另有技能伤害",
+        "几何、驱散及施法承诺规则"
+      ]
+    },
+    {
+      "sourceId": "S64",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=29",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "reviewMethod": "本轮读取索引原文；此前直接访问403，不声称本轮直接取得完整HTML。",
+      "supports": "二费長盾兵750生命、5甲、30–84普攻；早期随机单体伤害/眩晕、5秒冷却。",
+      "adoption": "只作年代差异对照；不把六月5秒单控拼入七月护甲嘲讽方案。"
+    },
+    {
+      "sourceId": "S67",
+      "url": "https://news.17173.com/z/zzq/content/05142020/160934052.shtml?_platform=PC",
+      "publishedAt": "2020-05-14",
+      "kind": "publisher-byline-update",
+      "author": "战争艺术AOW（页面署名；来源微信公众号）",
+      "reviewMethod": "本轮网页工具实际打开正文，核对署名、日期与护盾兵段。",
+      "supports": "后期技能名刺盾之阵，并说明当时新增技能防御和受击增伤。",
+      "adoption": "仅借用可确认的后期名称；该期新增5/10/20%技能防御和每次受击10%技能伤害均未采用。"
+    }
+  ],
+  "localAdaptation": {
+    "initialMana": 0,
+    "armor": [
+      8,
+      16,
+      24
+    ],
+    "durationSeconds": [
+      4,
+      5,
+      6
+    ],
+    "tauntSeconds": 1.5,
+    "geometry": "横纵相邻Manhattan距离≤1，不含斜角；施放时一次性选取，不对后来靠近者持续刷新。",
+    "activation": "满能量且个人15秒CD结束，有可见敌人时立即举盾；敌人可在远处，护甲仍能抵挡远程普攻。",
+    "damage": "零即时技能伤害；移除本项目原型的30%最大生命护盾、140%盾击和眩晕，不声称原作者证明了全部原版伤害字段。",
+    "lifecycle": "护甲持续到期或死亡，普通沉默/眩晕不撤回。嘲讽可被灵鱼驱散；来源死亡、同阵营、不可选中或姿态到期释放。",
+    "commitments": "仅重定向新的普通行动，禁止新技能；不撤销已释放飞弹或维持中的技能。",
+    "immunity": "狂舞免控、残魂、涅槃火种不受嘲讽；法强不增加护甲、控制时长或范围。",
+    "overwrite": "后施加的有效嘲讽覆盖先前来源；清除后不恢复更早来源。",
+    "art": "继续使用项目已有ImageGen guard.png；盾徽、护甲环、举盾姿态和嘲讽指向线为本地Canvas表现。"
+  },
+  "boundaries": [
+    "尚无同一早期客户端卡贯通全部字段，不称统一2019版本完全复刻。",
+    "六月随机单控、七月护甲重做和2020新增效果按时期分开。",
+    "局部时长改善不证明所有阵容平衡，也不替代完整经营、多构筑或真实设备验收。"
+  ],
+  "compatibility": {
+    "newCombatVersion": "bulwark",
+    "oldVersions": 42,
+    "newCost": 2,
+    "oldCatalogCost": 1,
+    "saveSchema": 69,
+    "frozenReplays": "../../tests/fixtures/pre-v070-bulwark-replays.json"
+  }
+}

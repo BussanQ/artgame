@@ -1,0 +1,44 @@
+{
+  "rules": "singleplayer-0.72",
+  "mode": "built-in-imagegen",
+  "skill": "/Users/haomi/.codex/skills/.system/imagegen/SKILL.md",
+  "reference": "public/assets/units/turtle.png",
+  "intent": "new-form-variants",
+  "taxonomy": "stylized-concept",
+  "historicalFidelity": "沿用项目已有玄龟身份重制形态。未取得同版本客户端原模型；青玉重甲、开壳核心和轮廓属于生成美术适配，不冒称原版模型。",
+  "postProcessing": "原生PNG复制到项目，无裁切、抠图或栅格后处理；保留旧图。",
+  "assets": [
+    {
+      "path": "public/assets/units/turtle-shell-v072.png",
+      "nativePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-ef222118-f684-42a4-b7e2-6007d1428837.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent tactical auto-chess unit sprite, a new defensive form variant. Input image 1 is the character identity and material reference. Create the SAME ancient tortoise spirit in its compact shell defense form: head and legs withdrawn, broad armored jade shell low to the ground, a tiny green eye glint recessed in the front opening. Preserve green jade plates, weathered bronze/gold carved borders, silhouette spines and Chinese fantasy military materials from the reference. Single complete creature, three-quarter elevated isometric view, facing lower right, centered with generous transparent margins, full shell and all edges visible. High quality hand-painted 3D game asset, strong readable silhouette at 100 pixels. Actual transparent background, no floor, no platform, no scenery, no text, no labels, no UI, no extra creature, no detached shards.",
+      "width": 1536,
+      "height": 1024,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "b40cfa1e06b3b4f2a10ee2b51cb0249b5e8bb5dba71306da571566374f5c9f8d"
+    },
+    {
+      "path": "public/assets/units/turtle-breach-v072.png",
+      "nativePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-d185ba47-2818-4464-95bf-20fbbccd6447.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent tactical auto-chess unit sprite, offensive breach form variant. Input image 1 is the character identity and material reference. Create the SAME ancient jade and bronze tortoise spirit in an aggressive opened-shell attack form. The massive jade shell plates pivot open along the center ridge, exposing a restrained amber energy core, head extended forward and two heavy clawed forelegs braced to slam. Keep a clearly recognizable low quadruped tortoise, the same horned head, green jade panels, bronze carved borders and dark stone-scaled skin. Do not change into a humanoid or another species. One full creature, three-quarter elevated isometric camera, facing lower right, centered with transparent breathing room, all claws and shell edges visible. Match the reference hand-painted 3D game quality and sharp readable silhouette at 100 pixels. True transparent background with crisp alpha edges, no atmospheric background or outer glow, no floor, no platform, no text, no UI, no extra creature, no detached shards.",
+      "width": 1254,
+      "height": 1254,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentCorners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "d743e5642ab02ca835a50072b9f56e8ad605b061b93eae2d027be3c2af70c1cf"
+    }
+  ]
+}

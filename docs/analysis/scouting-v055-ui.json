@@ -1,0 +1,157 @@
+{
+  "checkedAt": "2026-11-06T02:01:09.552Z",
+  "url": "http://localhost:5177/",
+  "checkpoints": [
+    {
+      "armory": "ARMORY装备工坊 2 背包 · 1 已装选择棋子后点击库存装备 · 每枚最多 3 件全部装备 · 16 种查看属性、配方与持有人 →已穿戴 · 1 件 · 1 枚棋子神枪手 ★ · 场上 A8合金刃可选中场上或备战席棋子；穿戴和卸下不消耗金币。◆灵能晶体初始能量 +15，技能强度 +10%♥生命核心生命 +150合成配方 · 1 种可合成合成仅使用库存中的材料；已穿戴的材料需先卸下。成装不可拆分。⚔ 破军战刃合金刃 + 合金刃攻击 +50⬡ 堡垒甲装甲片 + 装甲片护甲 +9，法术减伤 +10%♥ 不屈之心生命核心 + 生命核心生命 +450ϟ 超频引擎加速线圈 + 加速线圈攻击间隔缩短 25%◆ 聚能法杖灵能晶体 + 灵能晶体初始能量 +40，技能强度 +30%◈ 吞噬之牙汲能獠牙 + 汲能獠牙普攻吸血 25%，攻击 +10⚔ 饮血战刃合金刃 + 汲能獠牙攻击 +30，普攻吸血 18%⬡ 守护壁垒装甲片 + 生命核心生命 +250，护甲 +5ϟ 疾风利刃合金刃 + 加速线圈攻击 +25，攻击间隔缩短 15%◆ 贤者核心灵能晶体 + 生命核心生命 +220，技能强度 +20%，初始能量 +20",
+      "bench": "备战席 1 / 8点击棋子选择 · 点击棋格部署",
+      "commander": "COMMANDER难度休闲标准挑战AI 会攒息、追星、组成羁绊并在低血量时投入金币。指挥官 01100生命值17金币等级 44 / 8 XP购买经验 5 金 / 5 XP本轮基础奖励+5 金第 6 回合增至 +7 金预计利息 +1 金 · 连胜 0",
+      "label": "R4 public recommendation",
+      "report": "作战简报上轮分析已参考零号机的当前阵容布阵，可继续手动调整。",
+      "scrollWidth": 1280,
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "dock": "100 生命 · 17 金 · 4/4 人口战场招募装备升级情报",
+      "label": "390px recommendation",
+      "message": "已参考零号机的当前阵容布阵，可继续手动调整。",
+      "scrollWidth": 390,
+      "touchAction": "manipulation",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "armory": "ARMORY装备工坊 2 背包 · 1 已装选择棋子后点击库存装备 · 每枚最多 3 件全部装备 · 16 种查看属性、配方与持有人 →已穿戴 · 1 件 · 1 枚棋子神枪手 ★ · 场上 A8合金刃可选中场上或备战席棋子；穿戴和卸下不消耗金币。◆灵能晶体初始能量 +15，技能强度 +10%♥生命核心生命 +150合成配方 · 1 种可合成合成仅使用库存中的材料；已穿戴的材料需先卸下。成装不可拆分。⚔ 破军战刃合金刃 + 合金刃攻击 +50⬡ 堡垒甲装甲片 + 装甲片护甲 +9，法术减伤 +10%♥ 不屈之心生命核心 + 生命核心生命 +450ϟ 超频引擎加速线圈 + 加速线圈攻击间隔缩短 25%◆ 聚能法杖灵能晶体 + 灵能晶体初始能量 +40，技能强度 +30%◈ 吞噬之牙汲能獠牙 + 汲能獠牙普攻吸血 25%，攻击 +10⚔ 饮血战刃合金刃 + 汲能獠牙攻击 +30，普攻吸血 18%⬡ 守护壁垒装甲片 + 生命核心生命 +250，护甲 +5ϟ 疾风利刃合金刃 + 加速线圈攻击 +25，攻击间隔缩短 15%◆ 贤者核心灵能晶体 + 生命核心生命 +220，技能强度 +20%，初始能量 +20",
+      "label": "390px armory",
+      "scrollWidth": 390,
+      "view": "armory",
+      "viewport": 390
+    },
+    {
+      "label": "390px intel",
+      "report": "作战简报上轮分析已参考零号机的当前阵容布阵，可继续手动调整。",
+      "scrollWidth": 390,
+      "view": "intel",
+      "viewport": 390
+    },
+    {
+      "armory": "ARMORY装备工坊 2 背包 · 1 已装选择棋子后点击库存装备 · 每枚最多 3 件全部装备 · 16 种查看属性、配方与持有人 →已穿戴 · 1 件 · 1 枚棋子神枪手 ★ · 场上 A8合金刃可选中场上或备战席棋子；穿戴和卸下不消耗金币。◆灵能晶体初始能量 +15，技能强度 +10%♥生命核心生命 +150合成配方 · 1 种可合成合成仅使用库存中的材料；已穿戴的材料需先卸下。成装不可拆分。⚔ 破军战刃合金刃 + 合金刃攻击 +50⬡ 堡垒甲装甲片 + 装甲片护甲 +9，法术减伤 +10%♥ 不屈之心生命核心 + 生命核心生命 +450ϟ 超频引擎加速线圈 + 加速线圈攻击间隔缩短 25%◆ 聚能法杖灵能晶体 + 灵能晶体初始能量 +40，技能强度 +30%◈ 吞噬之牙汲能獠牙 + 汲能獠牙普攻吸血 25%，攻击 +10⚔ 饮血战刃合金刃 + 汲能獠牙攻击 +30，普攻吸血 18%⬡ 守护壁垒装甲片 + 生命核心生命 +250，护甲 +5ϟ 疾风利刃合金刃 + 加速线圈攻击 +25，攻击间隔缩短 15%◆ 贤者核心灵能晶体 + 生命核心生命 +220，技能强度 +20%，初始能量 +20",
+      "dock": "100 生命 · 17 金 · 4/4 人口战场招募装备升级情报",
+      "label": "320px recommendation after reload",
+      "message": "已参考零号机的当前阵容布阵，可继续手动调整。",
+      "scrollWidth": 320,
+      "viewport": [
+        320,
+        740
+      ]
+    },
+    {
+      "armory": "ARMORY装备工坊 2 背包 · 1 已装选择棋子后点击库存装备 · 每枚最多 3 件全部装备 · 16 种查看属性、配方与持有人 →已穿戴 · 1 件 · 1 枚棋子神枪手 ★ · 场上 A8合金刃可选中场上或备战席棋子；穿戴和卸下不消耗金币。◆灵能晶体初始能量 +15，技能强度 +10%♥生命核心生命 +150合成配方 · 1 种可合成合成仅使用库存中的材料；已穿戴的材料需先卸下。成装不可拆分。⚔ 破军战刃合金刃 + 合金刃攻击 +50⬡ 堡垒甲装甲片 + 装甲片护甲 +9，法术减伤 +10%♥ 不屈之心生命核心 + 生命核心生命 +450ϟ 超频引擎加速线圈 + 加速线圈攻击间隔缩短 25%◆ 聚能法杖灵能晶体 + 灵能晶体初始能量 +40，技能强度 +30%◈ 吞噬之牙汲能獠牙 + 汲能獠牙普攻吸血 25%，攻击 +10⚔ 饮血战刃合金刃 + 汲能獠牙攻击 +30，普攻吸血 18%⬡ 守护壁垒装甲片 + 生命核心生命 +250，护甲 +5ϟ 疾风利刃合金刃 + 加速线圈攻击 +25，攻击间隔缩短 15%◆ 贤者核心灵能晶体 + 生命核心生命 +220，技能强度 +20%，初始能量 +20",
+      "commander": "COMMANDER难度休闲标准挑战AI 会攒息、追星、组成羁绊并在低血量时投入金币。指挥官 01100生命值17金币等级 44 / 8 XP购买经验 5 金 / 5 XP本轮基础奖励+5 金第 6 回合增至 +7 金预计利息 +1 金 · 连胜 0",
+      "dock": "100 生命 · 17 金 · 4/4 人口战场招募装备升级情报",
+      "label": "final restored normal viewport",
+      "message": "作战简报上轮分析已参考零号机的当前阵容布阵，可继续手动调整。"
+    }
+  ],
+  "publicOpponent": "Browser tab: 20, Title: \"赤潮 · 战术演习\", URL: \"http://localhost:5177/\".\nThere has been no change in the accessibility tree.\nThe focused UI element is 3 button 关闭",
+  "codexBefore": {
+    "close": {
+      "bottom": -478.5,
+      "top": -530.5
+    },
+    "modal": {
+      "bottom": 684.5,
+      "top": 55.5
+    },
+    "scrollTop": 603,
+    "visible": false
+  },
+  "codexAfter": {
+    "bodyScroll": 619,
+    "close": {
+      "bottom": 128.5,
+      "height": 44,
+      "top": 84.5,
+      "width": 44
+    },
+    "image": {
+      "complete": true,
+      "src": "/assets/units/treant-jungle.png",
+      "width": 1312
+    },
+    "scrollWidth": 320,
+    "visible": true,
+    "width": 320
+  },
+  "currentTraits": {
+    "count": 22,
+    "rows": [
+      "异虫本局可招募 4 种2 个不同棋子：持有2种不同异虫（含备战席），两枚同名一星异虫合成二星；二星升三星仍需三枚4 个不同棋子：持有4种不同异虫（含备战席），两枚同名同星异虫即可升星，最高三星",
+      "步兵本局可招募 7 种2 个不同棋子：全体敌人护甲降低 3 点（累计总量；整场生效，含后续召唤物；护甲减伤最低为零）4 个不同棋子：全体敌人护甲降低 9 点（累计总量；整场生效，含后续召唤物；护甲减伤最低为零）6 个不同棋子：全体敌人护甲降低 18 点（累计总量；整场生效，含后续召唤物；护甲减伤最低为零）",
+      "先锋本局可招募 7 种3 个不同棋子：先锋护甲 +6（累计总量；不额外增加生命或回复）6 个不同棋子：先锋护甲 +14（累计总量；不额外增加生命或回复）"
+    ]
+  },
+  "helpAfter": {
+    "bodyScroll": 1480,
+    "close": {
+      "bottom": 128.5,
+      "height": 44,
+      "top": 84.5,
+      "width": 44
+    },
+    "visible": true
+  },
+  "logs": [],
+  "rules": "singleplayer-0.55",
+  "combatVersion": "continuity",
+  "method": "CUA actions and visible DOM in a separate localhost:5177 origin. Normal shops, paid purchases and XP, first three PvE rounds and reward choices; no application-state or local-storage injection. A local UI smoke session, not a full campaign, human-win-rate or real-touch performance result.",
+  "actionsObserved": [
+    "Bought gunner, guard and pangolin for three gold in R1; recommendation deployed three; reload restored 100HP/7gold/level3.",
+    "Completed R1/R2/R3 PvE through normal start, automatic settlement and reward continuation.",
+    "Equipped alloy blade on gunner in R2; bought two normal duplicate cards and one paid XP action in R3.",
+    "R3 recommendation retained one equipped blade and one inventory crystal; R4 retained the blade plus crystal and life-core in inventory.",
+    "R4 recommendation named Zero Machine; opening scout showed its actual current four-unit deployment and the warning about AI adjustment before battle.",
+    "390px recommendation, armory/intel links; 320px recommendation and reload restored 100HP/17gold/level4, 4/8XP, four deployed and one reserve.",
+    "Long codex close was above scrollport before fix. Fixed header/scroll body retained a visible 44px close after 619px codex and 1480px help scroll; both closed through the actual button.",
+    "Current treant image loaded; expanded handbook had 22 traits including insect 2/4, infantry armor reduction 3/9/18, vanguard armor 6/14. Browser viewport override reset."
+  ],
+  "screenshots": [
+    {
+      "path": "tmp/scouting-v055-desktop.jpg",
+      "sha256": "e6518abe08513dfc91ecae78aa183d83c9c3b243b412c4d5406154fcb1829bf4",
+      "gitIgnored": true
+    },
+    {
+      "path": "tmp/scouting-v055-mobile.jpg",
+      "sha256": "243f11a06f42218ace11361c598c3b96ceaebd487a16dab21198f6a3463596ad",
+      "gitIgnored": true
+    },
+    {
+      "path": "tmp/scouting-v055-mobile-320.jpg",
+      "sha256": "623b0711795ab201267896570c096bdb4576ac5cb660c21217287dbd513c3411",
+      "gitIgnored": true
+    },
+    {
+      "path": "tmp/scouting-v055-codex-close-before.jpg",
+      "sha256": "d5449e45544f84e3ae5dc94eef518d5f978afd09c57290db8842979e2bac8985",
+      "gitIgnored": true
+    },
+    {
+      "path": "tmp/scouting-v055-codex-fixed-320.jpg",
+      "sha256": "85e9095c5a265f4b90167d9f940c6a664a1a4fa80e41861a60f276fef4aa7c0d",
+      "gitIgnored": true
+    }
+  ],
+  "limitations": [
+    "Natural task completion was fast; cancellation, stale results and error/retry race conditions were verified by module tests, not artificially slowed browser jobs.",
+    "Current insect descriptions were checked; migration/reconciliation of an actual held old-save pair was not newly exercised in this UI session.",
+    "No complete 30-round current-version UI campaign, real touch hardware or low-end device benchmark in this session.",
+    "Desktop and recommendation screenshots predate the isolated manual-dialog wrapper fix; the saved codex-after screenshot and final resource/log evidence follow that fix."
+  ],
+  "goalStatus": "active"
+}

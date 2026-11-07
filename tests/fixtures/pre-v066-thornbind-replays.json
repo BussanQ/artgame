@@ -1,0 +1,1679 @@
+{
+  "capturedBeforeRules": "singleplayer-0.66",
+  "definitions": [
+    {
+      "version": "legacy",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "tactics",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "balanced",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "signature",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "summons",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "legions",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "brood",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "airsea",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "fleet",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "metamorph",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "infantry",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "armored",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "puppets",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "wildfront",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "ambush",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "formations",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "counterplay",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "护卫"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "爆破",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "lineages",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "coalitions",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "aurora",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "qi",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "taotie",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "tar",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "lightning",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "gospel",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "thunderstorm",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "jungle",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "continuity",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "wushi",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "wushi-control",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "shuriken",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "secret-orb",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "bombardment",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "terminator",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "warcry",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "tornado",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "wildfire",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 1000,
+          "attack": 88,
+          "armor": 5,
+          "range": 3,
+          "interval": 4,
+          "skill": "冥霜吐息",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    },
+    {
+      "version": "boneblast",
+      "units": [
+        {
+          "id": "vine",
+          "name": "藤妖",
+          "cost": 2,
+          "traits": [
+            "不朽",
+            "异能"
+          ],
+          "hp": 820,
+          "attack": 44,
+          "armor": 5,
+          "range": 1,
+          "interval": 4,
+          "initialMana": 25,
+          "skill": "枯藤缠身",
+          "color": "#b5c794",
+          "glyph": "藤"
+        },
+        {
+          "id": "bonedragon",
+          "name": "骨龙",
+          "cost": 4,
+          "traits": [
+            "不朽",
+            "攻城",
+            "猛禽"
+          ],
+          "hp": 950,
+          "attack": 129,
+          "armor": 5,
+          "range": 4,
+          "interval": 4.8,
+          "skill": "骨爆",
+          "color": "#b4e4d7",
+          "glyph": "骨",
+          "flying": true
+        }
+      ]
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "vine",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "bonedragon",
+          "star": 1,
+          "position": 43
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "cannon",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "hash": "a6086828d25da36f915c188b5efad34c6ff84d0ee9fc72a8f756d338b68acc43",
+      "vineCasts": 1,
+      "immortal": false,
+      "frames": 26
+    },
+    {
+      "version": "boneblast",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "vine",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "bonedragon",
+          "star": 1,
+          "position": 43
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "cannon",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "hash": "68a37ff29b6655556601e003327c265eabb9164278b2f56c621068796c96bb40",
+      "vineCasts": 2,
+      "immortal": true,
+      "frames": 46
+    }
+  ]
+}

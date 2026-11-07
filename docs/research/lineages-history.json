@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.45",
+  "scope": "四月/五月二维职业分类对齐与异能吸血；不将不同日期的属性、费用或技能拼成统一客户端配置。",
+  "sources": [
+    {
+      "sourceId": "S03",
+      "url": "https://www.taptap.cn/moment/15202528882852517",
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/915032174273785f479cf7ccd0f93190.png/_tap_ugc.jpg",
+      "imageSha256": "1255a365dd2bf246e4f7e6d55415be1262869c73957159bc1d90832e90d3d79b",
+      "publishedAt": "2019-04-27",
+      "modifiedAt": "2019-05-09",
+      "review": "本轮实际目视已下载原图，核对八个交叉单元格和异能2/4/6档全军吸血5/5/10印刷增量。页面本次文本读取失败，未假称重新抓取成功；图片指纹与既有恢复记录相同。"
+    },
+    {
+      "sourceId": "S18",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "modifiedAt": "2019-05-22",
+      "review": "同期原作者声明数值按连携相加后的总量记录，异能改为2/4/6档全军吸血5%/10%/20%；并指出七名异能中物理输出较少，四/六档机会成本较高。页面含更新前保留文字，不据此建立全游戏统一版本。"
+    },
+    {
+      "sourceId": "S45",
+      "alsoCataloguedAs": "S14",
+      "url": "https://www.taptap.cn/moment/15201495997744121",
+      "publishedAt": "2019-06-19",
+      "review": "原作者明确记载棍奴由护卫改先锋，佐证S03与S04的分类差异属于时间变化。0.45选择四月/五月护卫分类，疾风技能仍保留既有后期参数适配。"
+    }
+  ],
+  "classifications": [
+    {
+      "id": "staffthrall",
+      "name": "棍奴",
+      "previousTraits": [
+        "傀儡",
+        "先锋"
+      ],
+      "selectedTraits": [
+        "傀儡",
+        "护卫"
+      ],
+      "sourceIds": [
+        "S03",
+        "S45"
+      ]
+    },
+    {
+      "id": "chariot",
+      "name": "投石车",
+      "previousTraits": [
+        "装甲",
+        "狙击",
+        "攻城"
+      ],
+      "selectedTraits": [
+        "装甲",
+        "攻城"
+      ],
+      "sourceIds": [
+        "S03"
+      ]
+    },
+    {
+      "id": "monk",
+      "name": "禅师熊猫",
+      "previousTraits": [
+        "熊猫",
+        "护卫"
+      ],
+      "selectedTraits": [
+        "熊猫",
+        "异能"
+      ],
+      "sourceIds": [
+        "S03"
+      ]
+    },
+    {
+      "id": "wolf",
+      "name": "鬼狼",
+      "previousTraits": [
+        "野兽",
+        "刺杀",
+        "召唤"
+      ],
+      "selectedTraits": [
+        "野兽",
+        "召唤"
+      ],
+      "sourceIds": [
+        "S03"
+      ]
+    },
+    {
+      "id": "titan",
+      "name": "铁巨神",
+      "previousTraits": [
+        "装甲",
+        "护卫",
+        "爆破"
+      ],
+      "selectedTraits": [
+        "装甲",
+        "爆破"
+      ],
+      "sourceIds": [
+        "S03"
+      ]
+    },
+    {
+      "id": "vine",
+      "name": "藤妖",
+      "previousTraits": [
+        "不朽",
+        "护卫"
+      ],
+      "selectedTraits": [
+        "不朽",
+        "异能"
+      ],
+      "sourceIds": [
+        "S03"
+      ]
+    },
+    {
+      "id": "bonedragon",
+      "name": "骨龙",
+      "previousTraits": [
+        "不朽",
+        "爆破",
+        "猛禽"
+      ],
+      "selectedTraits": [
+        "不朽",
+        "攻城",
+        "猛禽"
+      ],
+      "sourceIds": [
+        "S03"
+      ]
+    },
+    {
+      "id": "thunderlord",
+      "name": "雷震子",
+      "previousTraits": [
+        "灵能",
+        "爆破"
+      ],
+      "selectedTraits": [
+        "灵能",
+        "狙击"
+      ],
+      "sourceIds": [
+        "S03"
+      ]
+    }
+  ],
+  "abnormal": {
+    "thresholds": [
+      2,
+      4,
+      6
+    ],
+    "printedSteps": [
+      0.05,
+      0.05,
+      0.1
+    ],
+    "selectedTeamTotals": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "scope": "全部友军，包括后续召唤物；不同上阵名字计数，备战或重名不额外计数。",
+    "localBoundaries": [
+      "只按普通攻击的实际生命伤害回复，技能、反伤、持续伤害不触发；原文未提供精确结算分类，明确作为本地边界。",
+      "护盾吸收、闪避、免伤及过量击杀不虚增吸血；满血溢出不计治疗。",
+      "装备吸血先保留原60%装备上限，再加异能5/10/20%；不让装备上限吞掉团队加成。",
+      "召唤物只继承团队部分，不继承主人的装备吸血；开场锁定，主力或召唤者阵亡不撤销。",
+      "残魂与涅槃蛋不可治疗，不通过吸血复活；原有反伤/受击回能/治疗顺序保持。",
+      "异能不再压制敌方能量；骑兵独立的每次回能减3继续生效。"
+    ]
+  },
+  "compatibility": {
+    "saveSchema": 44,
+    "combatVersion": "lineages",
+    "previousCombatVersion": "counterplay",
+    "frozenBeforeEditFixtures": 47,
+    "frozenFile": "tests/fixtures/pre-v045-replays.json",
+    "frozenFileSha256": "39e802887a1cf78442227ee717cca572ff68f6cec8ada61627a8849cfbb6fa1d",
+    "migration": "schema43仅准备期更新；战斗、结算、终局和历史继续原职业与旧异能压制；进入下一准备阶段再采用新规则。八项仅职业变化，不改种族禁用集合，不补/重抽卡池。"
+  },
+  "remaining": [
+    "费用、技能、基础属性仍有跨期资料和单机适配。",
+    "其余历史梯度、受益范围和伤害分类/护甲公式尚未完全对齐。",
+    "四/六异能的正常经济成型与机会成本、高星和整体难度尚待继续校准。"
+  ]
+}

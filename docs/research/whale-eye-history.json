@@ -1,0 +1,44 @@
+{
+  "version": "singleplayer-0.81",
+  "reviewedAt": "2026-11-07",
+  "source": {
+    "id": "S34",
+    "url": "https://game.xiaomi.com/viewpoint/1103968488_1555665047389_16",
+    "author": "英雄互娱",
+    "publishedAt": "2019-04-19",
+    "image": {
+      "path": "docs/research/images/whale-eye-client-apr2019.png",
+      "url": "https://video.kts.g.mi.com/ktv_1103968488_em0wV3dyNDhuaVdTTXZwU1FwaUdVQT09_1555665005626.png",
+      "bytes": 652382,
+      "sha256": "549ce88a37aba9764f6096d5744438f4ef989abfaa1de067aa80da29b1f2122f",
+      "originalBytes": true,
+      "review": "实际目视完整原始客户端卡面。"
+    }
+  },
+  "confirmedFields": {
+    "name": "巨鲸之眼",
+    "damageEnergyRecoveryBonus": 1,
+    "maximumAttackBonus": 30,
+    "skill": "海雾",
+    "cooldownSeconds": 45,
+    "delaySeconds": 6,
+    "damage": 200,
+    "target": "全体敌人",
+    "activeUnique": true
+  },
+  "localAdaptations": {
+    "recipe": ["blade", "core"],
+    "firstActivationSeconds": 1,
+    "energy": "沿用既有25基础普攻回能，一次动作有实际生命伤害才增加；与召唤连携相加，统一处理倍率、骑兵扣减和100上限。技能、反伤、持续伤害、受击和供能不放大。",
+    "attribution": "既有召唤连携优先，装备只计实际额外回复；装备自回能不计辅助供能。",
+    "attack": "最大攻击字段映射为确定攻击加成，不模拟未知最小/最大攻击区间。",
+    "blast": "基础200法伤，不随星级或法强变化；按释放时阵营辨敌，引爆时检查全场当前敌人，覆盖隐形与晚出生召唤物，不伤释放者。",
+    "commit": "释放后不因死亡或控制撤回，不延长已结束战斗。",
+    "stacking": "同名主动唯一；基础属性相加；召唤物不复制装备，刑傀不复制海雾与额外回能。",
+    "visuals": "Canvas全场预告和引爆，使用已有ImageGen棋子形象，未生成新位图。"
+  },
+  "limits": [
+    "原卡未给材料、首次触发、战斗中阵营变化、隐形、后出生召唤物、死亡、控制或细分回能公式，上述为本地适配。",
+    "只有三件发行方原卡主动已接入，不声称完整原版装备库或统一历史配置已经恢复。"
+  ]
+}

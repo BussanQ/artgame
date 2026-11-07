@@ -1,0 +1,42 @@
+{
+  "reviewedAt": "2026-11-06",
+  "unit": "thunderlord / 雷震子",
+  "implementation": "singleplayer-0.51 / lightning",
+  "sources": [
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "imageSha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "row": 42,
+      "type": "原作者测量表，已重新目视；不是客户端配置",
+      "facts": {"cost": 3, "race": "灵能者", "class": "狙击", "hp": 450, "attackRange": [69,90], "attackIntervalSeconds": 1.6, "armor": 5, "range": 3, "passive": true}
+    },
+    {
+      "id": "S50",
+      "url": "https://www.taptap.cn/moment/15203671482564780?group_id=42979",
+      "type": "原玩家攻略，正文已读取；截图混期",
+      "facts": ["作者把攻击、暴击与攻速装备分配给雷震子等物理输出。", "未提供可靠完整锁链技能卡。另查的四张原图未发现弹射次数说明，不能补写原始参数。"]
+    },
+    {
+      "id": "S53",
+      "url": "https://news.17173.com/z/zzq/content/06132019/183201371.shtml",
+      "type": "17173标注官方的更新正文，已核对无AI摘要的原始HTML",
+      "originalHtmlSha256": "0dedc8dcdaf7ac25178d1154f70b6cc72683a49d2427e3edef07b4e59d8d3189",
+      "facts": ["2019-06-13公告给出技能名雷神锁链，并把每跳伤害衰减由40%调整为50%。"]
+    }
+  ],
+  "localAdaptations": {
+    "attack": "69–90取均值79.5后四舍五入80；攻击与生命沿用本地星级翻倍，不声称恢复分星随机伤害。",
+    "hitLimits": [3,5,7],
+    "hitLimitEvidence": "尚无原始技能卡证明该数列；采用有星级成长的本地上限，不将转载的七段说法当一手证据。",
+    "targeting": "曼哈顿距离3、最近且UID打破平局；排除当前目标，可往返其他存活可见敌人；全链同一战斗步内结算。",
+    "defenses": "各跳均走普通攻击结算，接受护甲、穿透、护盾、闪避、吸血和反伤；首击闪避则不再弹射，后续闪避继续传导。",
+    "interruptions": "死亡、眩晕或链内阵营变化停止剩余跳数；沉默不阻止普攻被动。",
+    "energy": "不积累能量，不接受童子充能，技能强度不放大锁链；目标受击回能沿用单机伤害公式。",
+    "flying": "沿用既有飞行标记与ImageGen锤凿形象；本表未提供飞行字段，不标为此次史料恢复。",
+    "rendering": "雷电从上一命中位置传递，逐跳变细并在视觉上错开；视觉延迟不改变即时战斗结算。"
+  },
+  "versionBoundary": "S04为七月玩家表，S50是五月修改的混期攻略，S53为六月公告。此为字段可追溯的单机组合，未宣称统一官方历史切片。",
+  "compatibility": "新局三费25份；既有整局目录继续五费10份。tar及更早战斗保留1100生命、100攻击、1秒间隔、4格、50初能量和主动九霄连雷；lineages之前还保留灵能/爆破职业。"
+}

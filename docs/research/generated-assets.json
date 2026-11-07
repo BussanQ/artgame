@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03",
+  "generatedAt": "2026-11-06",
   "method": "built-in image_gen",
   "assets": [
     {
@@ -531,6 +531,475 @@
         ]
       },
       "sha256": "99cc32d1700c556e6df94f8afd91e77c5b26f75735dbcf935b66a50f8abdebf4"
+    },
+    {
+      "id": "irondog",
+      "name": "铁狗",
+      "prompt": "Create a single transparent full-body isometric game unit sprite: a heavy four-legged robotic war hound named Iron Dog, low canine silhouette, petrol-blue steel armor, aged bronze trim, amber visor, hydraulic knees, steel claws, short tail and compact copper shock-pulse generator on its back. No rider. Three-quarter front view facing right, slightly elevated camera, entire body and all four paws visible with generous padding. Polished hand-painted 3D science-fantasy strategy-game miniature style, readable broad shapes, weathered metal, warm rim light. Genuine transparent alpha background. No floor, pedestal, shadow, text, UI, watermark, other characters or detached effects.",
+      "path": "public/assets/units/irondog.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-f2116518-09d6-43c4-b8f1-ba94ee040a73.png",
+      "sha256": "9cfed00caea06886486c5994e3f9733c43c346cd5b93fbe6c1d1311293aa542b",
+      "width": 1536,
+      "height": 1024,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 885687,
+      "totalPixels": 1572864
+    },
+    {
+      "id": "specialist",
+      "name": "特种兵",
+      "prompt": "Create one transparent full-body isometric strategy-game sprite of an elite science-fantasy long-range marksman, Special Forces infantry: slim athletic adult soldier in desaturated ivory and petrol-blue light segmented armor, bronze joints, enclosed helmet with one narrow amber targeting lens, short split charcoal scout cloak. Distinctive enormous long precision rifle with a rectangular bronze barrel, cyan power chamber and telescopic sight, held in both hands; left knee bent in a stable half-kneeling aiming stance, rifle points viewer-right. No shield, no vehicle, no wings. Polished hand-painted 3D miniature aesthetic with readable broad shapes and weathered metal, warm edge lighting and cool fill, slightly elevated three-quarter front view, entire rifle and both boots in frame, generous transparent padding. Genuine transparent alpha background, no floor, pedestal, shadow, scene, text, UI, logo, watermark or detached effects. One character only. Original reinterpretation for a science-fantasy auto-chess game.",
+      "path": "public/assets/units/specialist.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-5dd7e71b-151e-419b-9696-27991c2bd269.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 998016,
+      "totalPixels": 1572864,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "279c1bf028b4a7daab8349e567a44d9f0a49062b843cc1803fb59bb127be03cc"
+    },
+    {
+      "id": "birdrider",
+      "name": "鸟骑兵",
+      "prompt": "Use case: stylized-concept. Create one transparent isometric full-body auto-chess miniature sprite: a lightly armored science-fantasy mounted archer riding a sturdy flightless long-legged bird. The bird has deep teal and indigo feathers, an ivory beak, swept-back copper crest, two powerful clawed legs planted on the ground, folded short wings, leather saddle and small weathered bronze armor plates. One human rider in ivory and bronze scout armor with closed helmet sits securely in the saddle, holding a compact mechanical recurve bow with a visible arrow aimed viewer-right. The bow, both hands, bird head, full tail and both clawed feet all fit in frame with generous transparent margins. Polished hand-painted 3D strategy-game art, broad readable shapes, slightly elevated three-quarter front view, warm edge lighting and cool fill. Rider and mount form one coherent unit, strong silhouette legible at small size. Genuine transparent alpha background; no ground, floor, pedestal, cast shadow, scenery, text, UI, border, watermark, extra characters or detached effects. An original reinterpretation for a science-fantasy auto-chess game.",
+      "path": "public/assets/units/birdrider.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-4692975b-6cc2-4174-b007-93d3589fff5a.png",
+      "width": 1219,
+      "height": 1290,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 969097,
+      "totalPixels": 1572510,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "bdb1fcf8634efacf26f2144fb967b824c9fd9d13fb1806d2ac277ed6ca933653"
+    },
+    {
+      "id": "ironape",
+      "name": "铁猿",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit sprite for a dark sci-fi auto chess battlefield. Subject: ONE heavy mechanical gorilla called Iron Ape, squat armored primate silhouette, enormous paired hydraulic forearms and broad metal fists, short powerful legs, low gorilla head between shoulder plates. Blue gunmetal and weathered bronze armor, a small amber chest reactor and amber eyes, recessed blast vents on fists. Three-quarter front view facing slightly right, semi-realistic painted 3D strategy-game miniature, crisp readable silhouette at small size. Neutral combat-ready knuckle stance, both arms visible and separate from torso, full character including feet entirely inside frame with margin. Lighting from upper left. Actual transparent background, no scenery, no floor, no platform, no drop shadow, no lettering, no UI, no other units. Design an original mechanical gorilla rather than copying an existing model.",
+      "path": "public/assets/units/ironape.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-ec517441-6f9d-4d44-82aa-1e1ba9cfc3e4.png",
+      "width": 1312,
+      "height": 1199,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 541951,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "sha256": "1d075dac340b37bfdaefb94f2a7e7ec0439089154256392513b23168c04c3c3d"
+    },
+    {
+      "id": "ironrooster",
+      "name": "铁鸡",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a dark science-fiction auto chess game. Subject: ONE Iron Rooster, a compact bipedal armored assault and command walker with a low angular avian cockpit, a small red metal crest, two reverse-jointed hydraulic legs and wide three-toed steel feet. Paired short autocannon pods are mounted like folded wings beside its body; a raised amber command beacon and radio fins sit on its back. No organic feathers, no human rider. Weathered bronze and blue gunmetal plating, amber lenses, restrained red identifiers without lettering. Three-quarter front view facing slightly right, semi-realistic painted 3D strategy miniature, same coherent readable scale as a mechanical gorilla and armored hound. Both legs and both weapon pods clearly separated, neutral braced firing stance, entire character including feet within frame with generous margin. Upper-left lighting. Actual transparent background, no scenery, no floor, no platform, no cast shadow, no text, no UI, no other units. Original reinterpretation of a rooster-like command mech, crisp silhouette readable at small battlefield size.",
+      "path": "public/assets/units/ironrooster.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-9a90c017-785c-4eb5-8dee-725363fdbd86.png",
+      "width": 1221,
+      "height": 1289,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 970021,
+      "totalPixels": 1573869,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "0c42ac033ff35ec0f064ddfb826053c4ae844096c235a3d8b07ef6c211f0f6bd"
+    },
+    {
+      "id": "axethrall",
+      "name": "斧奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a dark science-fiction auto chess game. Primary request: ONE Axe Thrall, an agile humanoid psychic construct assassin made of angular black ceramic and emerald-turquoise armor, an enclosed pointed helmet with a tiny luminous visor, broad swept shoulder plates, slim waist, articulated armored legs and claw-like boots. It holds one long crescent-bladed throwing axe diagonally down beside the body, with a dark shaft and a bright jade energy edge; free hand slightly raised for balance. Original reinterpretation of an alien puppet warrior, not a human soldier, no exposed flesh. Semi-realistic painted 3D strategy miniature, readable crisp silhouette, three-quarter front view facing slightly right, full body including axe tip and both feet inside frame with generous margins. Neutral combat-ready stance suitable for animated leaning and slashing. Subtle bronze trims, upper-left lighting, coherent with a science-fantasy auto chess army. Actual transparent background, no scenery, no floor, no base, no cast shadow, no text, no UI, no logos, no other units.",
+      "path": "public/assets/units/axethrall.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-d57b258b-abbd-4960-b958-ae542837519d.png",
+      "width": 1199,
+      "height": 1312,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1098090,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "sha256": "ca62a717c0f0eacfe21f09cb1f5cbb816f06f106620ee42c90fe47c175467926"
+    },
+    {
+      "id": "swordthrall",
+      "name": "剑奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a science-fantasy auto chess game. Subject: ONE Sword Thrall, an agile humanoid puppet vanguard in pearl-white ceramic armor over dark articulated joints, teal crystal crest on a sealed angular helmet, swept gold shoulder horns and narrow waist. It holds TWO separate curved swords, one in each hand, arms spread in a low balanced stance ready for a turning double-sword sweep. Long dark steel blades with subtle cyan edges, short grips, no shields, no axe. Original reinterpretation of an alien construct swordsman, no human face, no exposed skin. Semi-realistic painted 3D strategy miniature, crisp silhouette coherent with a black-and-emerald axe thrall. Three-quarter front view facing slightly right. Entire character, both sword tips, helmet crest and both feet inside frame with generous 10 percent margins; readable at small battlefield size. Soft upper-left lighting, restrained jade and bronze details. Actual transparent background, no floor, no base, no cast shadow, no scenery, no text, no logo, no UI, no additional characters.",
+      "path": "public/assets/units/swordthrall.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-40d218c2-3831-4196-9fd1-41faf21cccb3.png",
+      "width": 1312,
+      "height": 1199,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1120716,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "174d970b4af5ca2737571c84b58f14ec6f589ad61211368d3b64aa42eda616d7"
+    },
+    {
+      "id": "bladethrall",
+      "name": "刀奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a science-fantasy auto chess game. Subject: ONE Blade Thrall, a slender alien humanoid puppet duelist with glossy dark indigo-black ceramic armor, ivory horn-like twin ears on a fully enclosed angular helmet, narrow glowing ice-blue visor, teal seams and small bronze details. No human face or exposed skin. It holds ONE long straight single-edged dark-steel saber with a cyan cutting edge in its right hand, poised horizontally across its lower body in an elegant low quick-draw stance; its left hand grips the empty scabbard at the hip. An angular folded shoulder mantle and articulated claw boots. Clearly different silhouette from a white armored dual-sword warrior and a green axe warrior. Semi-realistic painted 3D strategy miniature, readable crisp silhouette, three-quarter front view facing slightly right, balanced full body. Entire helmet, both feet, scabbard and full saber tip inside frame with generous ten percent margins. Soft upper-left lighting. Actual transparent background, no floor, no pedestal, no cast shadow, no scenery, no text, no logo, no UI, no additional characters.",
+      "path": "public/assets/units/bladethrall.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-b7b890ae-9474-40a9-8067-88a832aa0184.png",
+      "width": 1221,
+      "height": 1289,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1164377,
+      "totalPixels": 1573869,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "e41f0671ae7f569c04db820c87d25e548deb7d939be720acfce08a965d31ad24"
+    },
+    {
+      "id": "staffthrall",
+      "name": "棍奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto chess game. Primary request: ONE original Staff Thrall, a faceless humanoid puppet martial artist, in layered slate-blue and dark steel armor with a bronze chest bib and pale cyan edge light. A broad angular conical metal hat shades its sealed black faceplate; only two tiny violet eye lights are visible. The puppet holds ONE long straight unbladed fighting staff with both hands, diagonally across its body. The staff is dark metal with two short glowing cyan end caps. No sword, spear blade or shield. Strong articulated legs, compact shoulder armor, short blue cloth sash, planted bent-knee martial stance. Semi-realistic hand-painted 3D strategy miniature, three-quarter front view facing slightly right, clear readable silhouette and distinct broad hat plus long staff. Entire hat, both staff tips and both feet in frame, generous ten percent margins around the complete silhouette. Restrained blue energy at wrist joints, crisp metal facets; coherent with bronze/jade science-fantasy auto chess miniatures. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no UI, no logos, no additional characters.",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-fe7e5730-20c8-4170-9f7b-2b5eabfabdfc.png",
+      "path": "public/assets/units/staffthrall.png",
+      "width": 1221,
+      "height": 1288,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 988521,
+      "totalPixels": 1572648,
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "sha256": "1ae300a2873ac815a2b6d87f8aa1d639fb949c0d5227489ee7670c8abd7a937d"
+    },
+    {
+      "id": "shieldthrall",
+      "name": "盾奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a science-fantasy auto chess game. ONE Shield Thrall: a hulking faceless alien puppet in layered obsidian and gunmetal plate armor, broad shoulders, sealed angular helmet with a jade eye slit and two small green crystal horns. LEFT forearm braces a large faceted kite shield with a pale jade central crystal and bright edge trim. RIGHT hand holds a short broad straight energy sword lowered beside the body. Thick armored knees and boots, planted shield-bracing stance. Restrained emerald joint lights, bronze fasteners and pale teal rim lighting. Semi-realistic painted 3D strategy miniature, three-quarter front view facing slightly right, crisp readable silhouette. Entire shield, sword tip, horns and feet visible with generous margins. Actual transparent background, no scenery, floor, pedestal, cast shadow, text, UI, logo or other character.",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-bb6f4c13-2f0b-412d-9ff1-b1a2f1f65352.png",
+      "path": "public/assets/units/shieldthrall.png",
+      "width": 1199,
+      "height": 1312,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 664230,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "aab1be8aa34741633294264c62fcbf6110807f37abb30fedbc409630b5410e01"
+    },
+    {
+      "id": "elephant",
+      "name": "巨齿象",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-7e973149-8982-4d39-b212-d43774adcf2a.png",
+      "sha256": "efa51d11e411007d82ceaed998ae0274144ccf6f4b37954403bfe2e4a4feeb27",
+      "transparentPixels": 708863,
+      "path": "public/assets/units/elephant.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 巨齿象, a massive four-legged battle elephant with weathered charcoal-brown skin, an armored forehead and shoulder plates of antique bronze, two enormous sweeping ivory tusks reinforced by bronze rings, small warm amber eyes, muscular trunk lifted slightly in a forward fighting stance. No rider or howdah. Polished hand-painted 3D strategy-game miniature, elevated three-quarter front view facing viewer-right, whole animal and all four feet visible, strong readable silhouette at small size, 12% transparent padding. Match premium Eastern science-fantasy auto-chess art: realistic stylized material, restrained jade accents, warm daylight and cool rim light. Actual transparent alpha background, no floor, no pedestal, no ground shadow, no landscape, no text, no watermark, one creature only.",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "attempts": 1
+    },
+    {
+      "id": "venombeast",
+      "name": "猛毒兽",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-c512c03d-d5ef-4c40-9fe6-971bbacdb062.png",
+      "sha256": "de81bd7da16e2951b676604868fcd7dadb26204f8ad43a7c149d931c77a5d110",
+      "transparentPixels": 763155,
+      "path": "public/assets/units/venombeast.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 猛毒兽, a hulking low-slung quadrupedal venom beast, crocodilian dragon head with a broad acid-spitting jaw, sturdy clawed legs, thick curved tail, dark olive reptilian scales and overlapping charcoal back plates, luminous lime-green acid sacs at its throat and cheeks, a few restrained antique bronze Chinese armor clasps. Mouth slightly open with a small contained acid glow, no projectile or puddle. Clearly a muscular reptile creature, not an insect or elephant. Polished hand-painted 3D strategy-game miniature, elevated three-quarter front view facing viewer-right, entire creature, tail and all four feet visible, compact strong readable silhouette at small size, 12% transparent padding. Realistic stylized materials, warm daylight and cool rim light. Actual transparent alpha background, no floor, no pedestal, no shadow, no landscape, no text, no watermark, one creature only.",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "attempts": 1
+    },
+    {
+      "id": "lingjiu",
+      "name": "灵鹫",
+      "method": "built-in image_gen",
+      "generatedAt": "2026-11-05",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-eef4fce4-d603-4146-bd11-7f640692d520.png",
+      "path": "public/assets/units/lingjiu.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 灵鹫 (Lingjiu), an elegant compact flying sea-drake, an aquatic creature with a sleek horned dragonlike face, one long straight ivory nose horn, a swept crown of short indigo spines, an ivory segmented armored chest and belly, deep violet and lavender membranous fin-wings with pale gold ribs, small upper fins and two broad trailing lower fins, a slender curving aquatic tail. It hovers upright at a slight forward angle, mouth slightly open as if singing a magical sonic note. Aquatic alien anatomy, no feathered bird wings, no humanoid, no rider. Polished hand-painted 3D strategy-game miniature matching Eastern science-fantasy auto-chess art, elevated three-quarter front view facing viewer-right, whole body and all fins and tail visible, crisp readable silhouette with 12% transparent padding. Restrained bronze and jade detail, warm daylight and cool violet rim light. Actual transparent alpha background, no water, no landscape, no floor, no pedestal, no ground shadow, no text, no watermark, one creature only.",
+      "sha256": "7f00d219b1a303ad0f97606cbcb1f0643d6a3c2af1a99645fd1a0080baab23c7",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 1012262,
+      "cornersAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "generated",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "reference": {
+        "source": "S20",
+        "imageUrl": "https://video.kts.g.mi.com/ktv_1103968488_bEZsNDhRK2FWYWdsVzJrT0tIYUludz09_1556086200042.jpeg",
+        "sha256": "f29f5453424788005490766b3be606f4d5753db0517184687559035c894e478f",
+        "use": "Visually reviewed gallery for anatomy and palette; no image input passed to ImageGen."
+      }
+    },
+    {
+      "id": "skycrab-aurora",
+      "unit": "空蟹",
+      "kind": "versioned unit sprite",
+      "path": "public/assets/units/skycrab-aurora.png",
+      "generatedPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-0e179356-69ad-44a6-a1c9-205d73cec058.png",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent PNG chess-unit sprite for a 2.5D autobattler. Image 1 is the existing skycrab game asset to redesign; image 2 is a historical client screenshot used only as a silhouette and material reference. Redesign the unit into a floating deep-sea siege creature: a broad, low, manta-like armored crab carapace in dark slate-blue and pale blue-gray, swept layered fins, a pair of narrow luminous cyan eye slits and an integrated forward aurora emitter below its pointed shell. Keep the existing asset's detailed game-miniature rendering, crisp silhouette and readable three-quarter front view seen slightly from above; the front emitter points diagonally down-left in the image. Incorporate very restrained aged bronze trim to fit the rest of our jade-and-bronze game army, while the dominant silhouette and colors follow the historical reference. Make it clearly floating, without four planted walking legs, without the large upright crown or oversized orb held in claws. Show one entire creature centered with comfortable transparent padding, no cropping. Actual fully transparent alpha background, including between fins; no environment, floor, vignette, backdrop, ground shadow, beam, extra objects, UI, lettering or watermark. This is a new reusable sprite, not a screenshot recreation.",
+      "references": [
+        {
+          "role": "existing asset to redesign",
+          "path": "public/assets/units/skycrab.png"
+        },
+        {
+          "role": "historical silhouette reference, not a reusable game model",
+          "source": "S50",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/42148186b198d44c7cffea2e9007cf1a.png/_tap_ugc.jpg",
+          "archive": "docs/research/images/s50-skycrab-client.jpg",
+          "sha256": "f14f75e07712a24fb77430c1252e4c2e1bd080f53bdd202ff61c400024390808"
+        }
+      ],
+      "bytes": 1873901,
+      "width": 1536,
+      "height": 1024,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "fullyTransparentPixels": 1080375,
+        "cornerValues": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "e9c57366847cb28b47b97cacaad23112728a254c76ddcf20602fd01215d987d3",
+      "previousAsset": {
+        "path": "public/assets/units/skycrab.png",
+        "sha256": "995f2da29f1a25cfd8d4bf39e92891e7a22ca728fae934b454f908b897414d0f",
+        "preserved": true
+      },
+      "runtime": "New aurora games use this sprite in combat, shop, bench, codex, deployment, scouting and equipment. Earlier combat versions keep the previous portrait. Original generated alpha and bytes are preserved; no postprocessing.",
+      "generatedAt": "2026-11-05"
+    },
+    {
+      "id": "arhat-qi",
+      "unit": "罗汉",
+      "kind": "versioned unit sprite",
+      "path": "public/assets/units/arhat-qi.png",
+      "generatedPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-c7af0deb-5119-470f-a0f4-cfefbeb61218.png",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent full-body sprite for a 2.5D Chinese science-fantasy auto-chess game. Image 1 is our existing Arhat sprite to redesign; image 2 is a historical client card used only as the character silhouette and material reference. Redesign Arhat as a compact, massive stone-and-crystal automaton: broad slab shoulders, thick angular blue-gray stone armor, a small faceless carved head, gigantic forearms, short sturdy armored legs in a planted stance, and cyan crystalline energy seams across chest and hands. One hand cups a small bright cyan crystal core near the torso while the other open palm is poised to push a qi energy wave. Match the broad golem proportions of image 2, with restrained old-bronze joints and engraved trim to fit our army's art style. Retain polished hand-painted strategy-game-miniature rendering, crisp readable silhouette, slightly elevated three-quarter front view facing viewer-right, all limbs and feet fully visible with comfortable padding. Remove the tall thin humanoid proportions, floating halo, cloth robes, skirt, jewelry and gold light orb of image 1. Show one character only, no beam, weapon, companions, text, UI, border or watermark. Actual fully transparent alpha background, including between limbs; no floor, backdrop, vignette, ground shadow or scenery. Frame the complete body as a reusable game sprite, not a screenshot.",
+      "references": [
+        {
+          "role": "existing asset to redesign",
+          "path": "public/assets/units/arhat.png"
+        },
+        {
+          "role": "historical silhouette and material reference, not a reusable game model",
+          "source": "S50",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/1f937d33f1cb9ccc00dc162e2c4acd00.png/_tap_ugc.jpg",
+          "archive": "docs/research/images/s50-arhat-client.jpg",
+          "sha256": "f7634c8e61e94697d0132d6a4f30fb1b6d4cefece951da46d44f097e08883f1a"
+        }
+      ],
+      "bytes": 1960839,
+      "width": 1402,
+      "height": 1122,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "fullyTransparentPixels": 696873,
+        "fullyOpaquePixels": 727,
+        "cornerValues": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "c79bda17726fdc42f4da85990f12889e67c01e6308c0b02d1ee890039d54555b",
+      "previousAsset": {
+        "path": "public/assets/units/arhat.png",
+        "sha256": "1c89fd3d0a02c9d89963e364900b393a7bfac2fc7970415884ea5e7c588360e7",
+        "preserved": true
+      },
+      "runtime": "qi battles and current information panels use the stone/crystal golem. Earlier combat versions retain the previous portrait. Original generated bytes and alpha are preserved without postprocessing.",
+      "generatedAt": "2026-11-05"
+    },
+    {
+      "id": "acolyte-gospel",
+      "unitId": "acolyte",
+      "name": "童子 · 福音",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for an isometric Chinese science-fantasy auto-chess game. Primary request: create the Gospel Acolyte (童子), a small non-humanoid alien energy-support creature, based on this clearly defined silhouette: one large smooth pear/seed-shaped chalk-white organic shell crown, small electric-blue luminous eyes and cyan glowing seams, compact midnight-blue segmented underside, four slim bent chitinous spider-like legs and two small curled grasping appendages. A pale blue luminous core inside its shell suggests a continuous supportive energy field. Quiet, gentle, mysterious, slightly hovering posture. This is a compact alien creature, not a human child, not a robed Taoist, and not a large crab or insect swarm. Style/medium: polished hand-painted 3D strategy-game miniature, readable sculpted volumes and premium game asset materials matching existing fantasy miniature sprites. Composition/framing: single whole creature, three-quarter front view facing viewer-right, slightly elevated isometric camera, centered, body and all limbs fully visible with 12 percent clear padding, strong readable silhouette at small game-board size. Lighting: soft key light, restrained cyan rim light localized to the creature. Palette: ivory white, deep cobalt blue, electric cyan; subtle organic surface texture. Constraints: actual transparent background with clean alpha, no scenery, floor, pedestal, cast shadow, caption, letters, UI, frame, watermark, extra characters or separate props. Keep glow compact so the cutout remains crisp.",
+      "path": "public/assets/units/acolyte-gospel.png",
+      "generatedFile": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-a49ad74b-d7b0-4d3f-b96e-0a3af07fa61a.png",
+      "kind": "transparent-unit-sprite",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1061586,
+      "transparentBackground": true,
+      "colorMode": "RGBA",
+      "sha256": "5fab3eaaab9de64fe4776e90899202fbc23637cccfd1f026fe309f278032b743",
+      "references": [
+        "S32客户端原始形象；仅作目视设计参考，未把来源图作为正式角色资产"
+      ],
+      "combatVersion": "gospel",
+      "legacyPath": "public/assets/units/acolyte.png",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "processing": "内置生成输出原样复制，未通过脚本编辑；保留旧人形文件供历史回放。"
+    },
+    {
+      "id": "stormcaller-thunderstorm",
+      "unitId": "stormcaller",
+      "name": "天师 · 雷暴",
+      "prompt": "Use case: stylized-concept. Asset type: a single transparent full-body miniature sprite for an isometric Chinese science-fantasy auto-chess game. Primary request: the Thunderstorm Hierophant (天师), an alien psychic automaton with an imposing ivory and dark bronze segmented armored body. Its small head has a long pointed angular helmet, a narrow luminous cyan face slit, and no human face, beard, hair or skin. Large flared crescent shoulder plates frame an open rib-like armored chest containing a bright compact cyan lightning core. A floating segmented waist and tapered separated lower armor plates form a levitating lower body, with no normal human feet. Two long armored arms end in slender metallic claws: one open claw cradles a compact blue-white spherical energy pulse, the other extends slightly outward. Restrained gold circular joints and cyan seams. Keep the torso and energy core dominant and immediately legible at small size, noble and mysterious rather than bulky. Style/medium: polished hand-painted 3D strategy-game miniature, sculpted readable volumes, fine ivory metal and weathered dark bronze materials matching existing game sprites. Composition: whole character centered, three-quarter front view facing viewer-right, slightly elevated isometric camera, all shoulder plates, claws and floating lower plates visible with 12 percent padding. Soft key light and compact cyan rim lighting; no sprawling particle effect. Constraints: real transparent alpha background; no floor, cast shadow, pedestal, scenery, text, letters, UI, border, watermark, companions or separate props. This is a nonhuman armored energy construct, not a human Taoist wizard or a hooded robed mage.",
+      "path": "public/assets/units/stormcaller-thunderstorm.png",
+      "generatedFile": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-62ba407f-ba59-4c99-9c81-e11749f2316c.png",
+      "kind": "transparent-unit-sprite",
+      "width": 1220,
+      "height": 1289,
+      "bytes": 1349707,
+      "transparentBackground": true,
+      "sha256": "c82d0a57364d61c39a88ad2dfede7119e7fb5752b52912bc866d3c07745f7e8e",
+      "legacyPath": "public/assets/units/stormcaller.png",
+      "combatVersion": "thunderstorm",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "processing": "原样复制内置生成输出，保留透明通道和旧人形文件。"
+    },
+    {
+      "id": "treant-jungle",
+      "unitId": "treant",
+      "name": "树妖 · 丛林之怒",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body game unit cutout for the existing Red Tides browser auto-chess. Input image 1 is the primary-client reference: use ONLY the treant creature silhouette visible in the right portrait and small model, ignore every UI/text/background element. Input image 2 is the existing generated treant edit target and rendering-style reference. Remodel that unit toward the reference: a squat, massive, stooped undead bark-and-stone forest titan, a small angular root-mask head embedded between enormous jagged shoulders, a low crown of thick broken root horns, disproportionately long huge knotty forearms with clawlike root hands, thick short rooted legs. Dark charcoal olive-gray petrified bark, muted moss seams, restrained pale green soul glow in recessed eyes and cracks, a few tarnished bronze fittings consistent with this game. Retain the polished hand-painted 3D miniature finish and three-quarter front view facing viewer-right, slightly elevated camera. Remove the old white human beard, human elderly facial features, hanging cloth skirt and wide branching antler canopy; the silhouette must read as a compact monstrous forest juggernaut with clear arm/leg separation. Center the complete figure, all root claws and head horns fully inside the frame, 10% clear padding. Actual transparent alpha background. No floor, no base, no scenery, no cast ground shadow, no interface, no text, no watermark, no other units. Keep a readable silhouette at a small chessboard scale.",
+      "path": "public/assets/units/treant-jungle.png",
+      "generatedFile": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-5b22f6c6-ece3-4f41-ada6-737f6adc6c51.png",
+      "kind": "transparent-unit-sprite",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 2037213,
+      "transparentBackground": true,
+      "sha256": "eb62fa28e2f02de314ebdd5471cb2932d4f1d4355d9470827839afd1fa228301",
+      "legacyPath": "public/assets/units/treant.png",
+      "combatVersion": "jungle",
+      "method": "built-in image_gen",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "record": "jungle-assets.json",
+      "processing": "内置生成输出原样复制，保留透明通道与旧树妖文件。"
+    },
+    {
+      "id": "master-wushi",
+      "unitId": "master",
+      "name": "武僧熊猫 · 无式",
+      "path": "public/assets/units/master-wushi.png",
+      "prompt": "Edit the supplied full-body transparent panda warrior into his WUSHI transformed combat form for a dark oriental science-fantasy auto-chess game. Preserve the exact recognizable black-and-white panda face and fur, single topknot, red headband and scarf, ornate weathered bronze armor, cloth textures, painterly realistic 3D game-render finish, 3/4 camera orientation facing slightly right, and readable upright full body. Change the staff into one magnificent long guan-dao polearm with a wide crescent steel blade, muted pale-jade engraved edge. Make the torso bulkier and the armor visibly reinforced with a few emerald-jade plates, a calm resolute defensive stance, both hands gripping the polearm in a broad sweeping guard; he is an armored guardian, not a spellcaster. Slight restrained jade rim light to communicate transformation, no large glow cloud. Keep all body parts, feet and the entire weapon inside frame with comfortable transparent margins. One character only, no text, no UI, no ground, no pedestal, no shadow plane, no background. True clean transparent alpha. This is a sibling transformed-state asset; do not reproduce a branded original game character or add logos.",
+      "kind": "transparent-transformed-unit-sprite",
+      "origin": "built-in image_gen edit of existing generated identity; base asset preserved",
+      "sha256": "13c4ce20577666b271a4dbc0f287a6ac5533f7806ad756896dedd94d7a827461",
+      "record": "wushi-assets.json"
+    },
+    {
+      "id": "panda-shuriken",
+      "unitId": "panda",
+      "name": "忍者熊猫 · 风魔之刃",
+      "path": "public/assets/units/panda-shuriken.png",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent full-body 2.5D auto-chess unit sprite, a new ranged ninja panda variant. Input image 1 is the existing project's panda character: preserve his recognizable black-and-white panda face, stocky powerful proportions, realistic fur, aged bronze metal detail and polished rendered game-art style. Input image 2 is a historical client card used only as role/wardrobe reference; do not copy its UI, text or scene. Primary request: turn the dual-sword melee panda into a ranged shuriken ninja. Replace both curved swords with one clearly readable large four-bladed steel throwing shuriken held to the side in a ready-to-throw pose. Use dark teal-black segmented ninja armor with restrained red cloth trim, a low face scarf below the eyes and a small angular armored brow; keep panda ears and expressive eyes readable. Composition: isolated single full-body character including both feet and the entire throwing weapon; three-quarter view facing slightly toward screen right, camera above eye level to match tactical board units; compact stable silhouette and generous transparent edge margin. Keep the detailed semi-realistic 3D game rendering of image 1, directional warm top light, subtle cyan weapon edge. Background must be genuinely transparent alpha, no backdrop, floor, scene, pedestal, cast shadow, text, labels, logos, interface, collage or multiple characters. Only this one panda sprite.",
+      "method": "built-in image_gen",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sha256": "c3612a741f8f7565818835f3f8a9b1122cb798300a15f429b3d1da231ea8844c",
+      "record": "shuriken-assets.json"
+    },
+    {
+      "id": "monk-orb",
+      "name": "禅师秘法球形象",
+      "path": "public/assets/units/monk-orb.png",
+      "kind": "transparent-unit-sprite",
+      "tool": "built-in image_gen",
+      "record": "secret-orb-assets.json",
+      "sha256": "6d4897591a2b39628dae9a5b255ca862b1486547b38ce6b545d3e4ef362844cc",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent full-body 2.5D auto-chess unit sprite, a ranged secret-orb panda sage variant. Input image 1 is the existing project's elder panda and the edit target: preserve his recognizable elderly black-and-white panda face, long white beard and whiskers, topknot with jade ornament, substantial stocky proportions, wooden prayer beads, worn bronze shoulder armor, saffron and jade cloth and detailed realistic 3D game-art materials. Input image 2 is an original client card used only as the role reference for a panda concentrating qi in front of him; do not copy its text or interface. Primary request: make this elder panda visibly channel an offensive secret energy orb rather than cast a heal. Keep his ceremonial staff planted in the hand at screen left, angle his torso forward and extend the other palm to focus a compact, clearly defined cyan-jade spherical energy core inside two thin bronze rings. Keep the energy sphere separate and readable near the outstretched palm, no large fog cloud or glowing backdrop. Full body with both feet and entire staff inside frame, three-quarter front view facing slightly toward screen right, elevated tactical camera and compact readable silhouette consistent with image 1. Soft warm top light, restrained cool qi rim light. One single character only, real transparent alpha background, no floor, no pedestal, no shadow plane, no text, labels, logos, UI, collage or extra characters.",
+      "origin": "AI-generated elder panda variant; not extracted original model",
+      "legacyAssetPreserved": "public/assets/units/monk.png"
     }
   ]
 }

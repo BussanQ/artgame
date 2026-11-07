@@ -1,0 +1,25 @@
+{
+  "id": "lingjiu",
+  "name": "灵鹫",
+  "method": "built-in image_gen",
+  "generatedAt": "2026-11-05",
+  "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-eef4fce4-d603-4146-bd11-7f640692d520.png",
+  "path": "public/assets/units/lingjiu.png",
+  "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 灵鹫 (Lingjiu), an elegant compact flying sea-drake, an aquatic creature with a sleek horned dragonlike face, one long straight ivory nose horn, a swept crown of short indigo spines, an ivory segmented armored chest and belly, deep violet and lavender membranous fin-wings with pale gold ribs, small upper fins and two broad trailing lower fins, a slender curving aquatic tail. It hovers upright at a slight forward angle, mouth slightly open as if singing a magical sonic note. Aquatic alien anatomy, no feathered bird wings, no humanoid, no rider. Polished hand-painted 3D strategy-game miniature matching Eastern science-fantasy auto-chess art, elevated three-quarter front view facing viewer-right, whole body and all fins and tail visible, crisp readable silhouette with 12% transparent padding. Restrained bronze and jade detail, warm daylight and cool violet rim light. Actual transparent alpha background, no water, no landscape, no floor, no pedestal, no ground shadow, no text, no watermark, one creature only.",
+  "sha256": "7f00d219b1a303ad0f97606cbcb1f0643d6a3c2af1a99645fd1a0080baab23c7",
+  "width": 1312,
+  "height": 1199,
+  "mode": "RGBA",
+  "alphaRange": [0, 255],
+  "transparentPixels": 1012262,
+  "cornersAlpha": [0, 0, 0, 0],
+  "status": "generated",
+  "kind": "transparent-unit-sprite",
+  "origin": "AI-generated reinterpretation, not original game model",
+  "reference": {
+    "source": "S20",
+    "imageUrl": "https://video.kts.g.mi.com/ktv_1103968488_bEZsNDhRK2FWYWdsVzJrT0tIYUludz09_1556086200042.jpeg",
+    "sha256": "f29f5453424788005490766b3be606f4d5753db0517184687559035c894e478f",
+    "use": "Visually reviewed gallery for anatomy and palette; no image input passed to ImageGen."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "status": "generated",
+  "generatedAt": "2026-11-04",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "birdrider",
+      "name": "鸟骑兵",
+      "prompt": "Use case: stylized-concept. Create one transparent isometric full-body auto-chess miniature sprite: a lightly armored science-fantasy mounted archer riding a sturdy flightless long-legged bird. The bird has deep teal and indigo feathers, an ivory beak, swept-back copper crest, two powerful clawed legs planted on the ground, folded short wings, leather saddle and small weathered bronze armor plates. One human rider in ivory and bronze scout armor with closed helmet sits securely in the saddle, holding a compact mechanical recurve bow with a visible arrow aimed viewer-right. The bow, both hands, bird head, full tail and both clawed feet all fit in frame with generous transparent margins. Polished hand-painted 3D strategy-game art, broad readable shapes, slightly elevated three-quarter front view, warm edge lighting and cool fill. Rider and mount form one coherent unit, strong silhouette legible at small size. Genuine transparent alpha background; no ground, floor, pedestal, cast shadow, scenery, text, UI, border, watermark, extra characters or detached effects. An original reinterpretation for a science-fantasy auto-chess game.",
+      "path": "public/assets/units/birdrider.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-4692975b-6cc2-4174-b007-93d3589fff5a.png",
+      "width": 1219,
+      "height": 1290,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 969097,
+      "totalPixels": 1572510,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "bdb1fcf8634efacf26f2144fb967b824c9fd9d13fb1806d2ac277ed6ca933653"
+    }
+  ]
+}

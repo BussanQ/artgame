@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-04",
+  "unit": "鸟骑兵",
+  "sources": [
+    "S04",
+    "S38"
+  ],
+  "fields": {
+    "S04": {
+      "cost": 1,
+      "hp": 400,
+      "armor": 5,
+      "range": 4,
+      "attackMin": 51,
+      "attackMax": 57,
+      "attackIntervalSeconds": 1.5,
+      "passive": true
+    },
+    "S38": {
+      "date": "2019-05-30",
+      "oldSkill": "振翅",
+      "skill": "信仰之箭",
+      "ordinaryAttacksBeforeNextChargedAttack": [
+        6,
+        5,
+        4
+      ],
+      "attackMultiplier": 3,
+      "windupSeconds": null,
+      "attackRangesByStar": [
+        [
+          51,
+          57
+        ],
+        [
+          103,
+          115
+        ],
+        [
+          207,
+          230
+        ]
+      ],
+      "attackIntervalSeconds": 1.5
+    }
+  },
+  "localAdaptations": {
+    "windupSeconds": 0.5,
+    "attackByStar": [
+      54,
+      108,
+      216
+    ],
+    "invalidTargetCancels": true,
+    "hardControlCancels": true,
+    "silenceCancels": false,
+    "attackEvasionApplies": true,
+    "countsMisses": true,
+    "refundCounterOnCancel": false,
+    "skillPowerAffectsArrow": false,
+    "projectileTravel": "presentation only; damage resolves after windup"
+  },
+  "limitations": "Historical sources do not specify exact windup, counter cancellation, evasion, snapshot or equipment interactions. Current roster mixes historical dates and local balance."
+}

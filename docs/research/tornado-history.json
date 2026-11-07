@@ -1,0 +1,139 @@
+{
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.63",
+  "combatVersion": "tornado",
+  "unitId": "winddragon",
+  "scope": "恢复翔龙移动路径与两段控制；早期陆行者目录、七月实测表和十二月龙族客户端卡分开记录，不声称统一构建或已实现后期龙族。",
+  "sources": [
+    {
+      "id": "S55",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml?_platform=PC",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名）",
+      "kind": "publisher-byline-article-with-original-client-card",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "review": "本次正文可读，原图通过公开直接请求获得真正JPEG并实际目视。卡面确认四费、龙/攻城、龙卷风、20秒、150/200/250、落地眩晕1.5/2/3秒。正文另说龙族中真伤，属于后期分类语境；不把它等同于本局陆行者。"
+    },
+    {
+      "id": "S04-2",
+      "path": "images/s04-arhat-attributes.jpg",
+      "sha256": "8cfe13d1071e1068c397ee55921fbd752f5290de13e5ee75ce777ac5d5ed3333",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measured-attribute-table",
+      "row": 12,
+      "name": "翔龙",
+      "fields": {
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 750,
+        "attackRange": [
+          85,
+          102
+        ],
+        "armor": 5,
+        "range": 4,
+        "attackIntervalSeconds": 1.7,
+        "skillDefensePercent": 10,
+        "cooldownSeconds": 20
+      },
+      "review": "本次重新目视原图第12行并核对既有转录。攻击采用均值93.5，技能防御在当前法术减伤字段中承接；不将该转换称为已核实的原厂全伤害分类公式。"
+    },
+    {
+      "id": "S20",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1556086391745_13",
+      "publishedAt": "2019-04-24",
+      "author": "英雄互娱（页面账号）",
+      "kind": "publisher-species-introduction",
+      "review": "本次重新读取，确认早期陆行者成员为金刚、罗汉、翔龙，攻击变为真实伤害。其文字没有完整区分普攻/技能；既有唯一种类与真实普攻范围继续保留，不在本轮扩大。"
+    }
+  ],
+  "image": {
+    "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/tfvogrbnCjisehz.jpg",
+    "path": "images/winddragon-tornado-client-dec2019.jpg",
+    "sha256": "b9d616c2204b0f92689f3e27fd4223fd57213d2672a975a682e0e278565540e0",
+    "format": "JPEG",
+    "size": [
+      640,
+      296
+    ],
+    "bytes": 25455,
+    "visuallyReviewed": true,
+    "clientBuild": "unknown",
+    "accessBoundary": "Web点击原图曾超时，随后直接请求该公开图片取得真正JPEG；未更改系统网络配置。"
+  },
+  "confirmedClientCard": {
+    "cost": 4,
+    "raceAsPrinted": "龙",
+    "classAsPrinted": "攻城",
+    "skill": "龙卷风",
+    "shape": "moving-vortex",
+    "cooldownSeconds": 20,
+    "skillDamage": [
+      150,
+      200,
+      250
+    ],
+    "damageTypeAsPrinted": "技能伤害",
+    "landingStunSeconds": [
+      1.5,
+      2,
+      3
+    ]
+  },
+  "localChoices": {
+    "initialMana": 0,
+    "damageType": "magic",
+    "windupSeconds": 0.75,
+    "diameterTiles": 1.5,
+    "centerTravelTiles": 8,
+    "tilesPerSecond": 3,
+    "airborneSeconds": 0.5,
+    "targetLock": "起手锁定4格内可见目标的方向和起点，不跟踪后续位置；沿固定方向移动。",
+    "collision": "圆形头部的线段扫掠胶囊，包含圆形端点与侧边，避免跨采样漏碰撞；8格为中心行程，端点另有0.75格半径。一次龙卷每个UID至多接触一次。",
+    "control": "接触伤害后，仍存活且非火种/残魂/狂舞免控的目标击飞2帧。实际落地才加6/8/12帧眩晕；重叠更久击飞推迟落地，驱散删除当前与待落地控制。",
+    "releasedHazard": "保留发射阵营和起手法强；阵亡/眩晕/沉默/魅惑不取消已释放龙卷，已施加击飞也会独立落地。整场战斗结束后停止。",
+    "allegiance": "魅惑改变阵营后按原发射阵营选择当前敌人，原施法者若也变为敌方并位于路径内，可被自己的旧龙卷波及。",
+    "resistance": "采用S04的10%技能防御并用当前magicResist字段处理；初始能量和完整伤害/回能公式仍为本地适配。",
+    "laterDragonBranch": "当前早期陆行者目录仅真实普攻，龙卷始终法术。没有将后期龙族分支改名后混入，后期龙族仍未实现。",
+    "ai": "有限1.8目标、75%路径命中折扣和两段控制，不保证全队命中或真实技能伤害；未通过批量对战调参。"
+  },
+  "art": {
+    "manifest": "tornado-assets.json",
+    "path": "../../public/assets/units/winddragon-tornado.png",
+    "sha256": "c5a336d8040c38e1c50401681ac902f370a88b6e58b51a6b815aed3beec72f18",
+    "nativeBytesRetained": true,
+    "newImageGenerated": true,
+    "tool": "built-in image_gen edit",
+    "rasterPostprocessing": false,
+    "presentation": "现有金冠绿鳞白鬃角色的透明边缘清理，保留主体；Canvas另绘蓄风姿态、移动漏斗和路径。"
+  },
+  "compatibility": {
+    "previousRules": "singleplayer-0.62",
+    "previousCombatVersion": "warcry",
+    "saveSchema": 62,
+    "oldDefinition": {
+      "cost": 4,
+      "hp": 1100,
+      "attack": 75,
+      "armor": 5,
+      "range": 3,
+      "intervalTicks": 4,
+      "initialMana": 50,
+      "fighterDefaultMagicResist": 0.2,
+      "skill": "游龙卷风"
+    },
+    "historicalDefinitions": 35,
+    "frozenBattles": "../../tests/fixtures/pre-v063-winddragon-replays.json",
+    "frozenSha256": "1521343386d364392d9dddd668e0ff2d5cd1d7f1ac110d356e0440be7ae60a67",
+    "catalog": "四费15份不变，保留当前比赛价格目录与全部资源。"
+  },
+  "remaining": [
+    "后期龙族真实技能分支与早期陆行者的时间切片统一",
+    "其他原型能力与历史伤害/回能公式",
+    "整体难度、多构筑与高星经营",
+    "真实触屏和弱设备性能"
+  ]
+}

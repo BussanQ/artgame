@@ -1,0 +1,326 @@
+{
+  "checkedAt": "2026-11-06T04:16:29.208Z",
+  "rules": "singleplayer-0.57",
+  "combatVersion": "wushi-control",
+  "kind": "actual-CUA-visible-UI-evidence-not-injected-engine-state",
+  "method": {
+    "sourceUrl": "http://127.0.0.1:5177/",
+    "browser": "IAB",
+    "actions": "Normal visible UI clicks, real range-slider keyboard controls and canvas selection. No app globals, local-storage edits, injected save state or engine calls.",
+    "normalEconomy": "Continues the same paid standard setup from the 0.56 UI report. R6 buys lion for 2 and eel for 3, R7 buys naturally offered monk for 3. No free units/currency or specified winners.",
+    "manualStanding": "R1-R5 ran under wushi, R6-R7 under wushi-control. At R7 actual recommendation selected three pandas, then master/monk positions were manually changed via deployment grid.",
+    "viewports": "1280x720, 390x844 and 320x740 are browser emulations, not measured touch devices or weak hardware.",
+    "scope": "Partial real UI campaign, not completed full-game acceptance."
+  },
+  "preservation": {
+    "beforeDemo": {
+      "commander": "难度\n休闲\n标准\n挑战\n97生命值\n7金币\n等级 5\n3 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +0 金 · 连胜 1",
+      "armory": "装备工坊 0 背包 · 3 已装\n全部装备 · 16 种\n查看属性、配方与持有人 →\n已穿戴 · 3 件 · 1 枚棋子\n合成配方 · 0 种可合成",
+      "bench": "忍者熊猫\n★\n详情\n军医\n★\n详情\n武僧熊猫\n★\n详情\n武僧熊猫\n★\n详情\n05\n06\n07\n08"
+    },
+    "afterDemo": {
+      "commander": "难度\n休闲\n标准\n挑战\n97生命值\n7金币\n等级 5\n3 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +0 金 · 连胜 1",
+      "armory": "装备工坊 0 背包 · 3 已装\n全部装备 · 16 种\n查看属性、配方与持有人 →\n已穿戴 · 3 件 · 1 枚棋子\n合成配方 · 0 种可合成",
+      "bench": "忍者熊猫\n★\n详情\n军医\n★\n详情\n武僧熊猫\n★\n详情\n武僧熊猫\n★\n详情\n05\n06\n07\n08"
+    },
+    "exactVisibleResourcesEqual": true,
+    "noticeBoundary": "Reloaded R6 preparation displayed the new taunt/cap description and preserved resources. An explicit upgrade toast was not claimed.",
+    "oldRoundFiveTextExactlyEqual": true,
+    "oldRoundFiveSeconds": 14.25,
+    "oldRoundFiveMaster": {
+      "forms": 1,
+      "sweeps": 7,
+      "splashHits": 0,
+      "normalDamage": 564,
+      "shieldDamage": 476,
+      "hasTauntCounter": false
+    }
+  },
+  "demo": {
+    "kind": "unequal-budget-six-versus-six-showcase",
+    "winner": 0,
+    "seconds": 14.5,
+    "master": {
+      "forms": 1,
+      "sweeps": 5,
+      "splashHits": 8,
+      "tauntApplications": 4,
+      "normalDamage": 1385,
+      "skillDamage": 0,
+      "shieldDamage": 103,
+      "survived": false
+    },
+    "earlyAnalysisSeconds": 0.75,
+    "earlyTauntApplications": 0,
+    "pausedInspectionSeconds": 2,
+    "masterRemainingFormSeconds": 9.3,
+    "masterArmor": 17,
+    "formArmor": 12,
+    "vineRemainingTauntSeconds": 1.3,
+    "normalEconomyEvidence": false
+  },
+  "normalRounds": [
+    {
+      "round": 6,
+      "opponent": "深海回声",
+      "winner": 1,
+      "seconds": 11.5,
+      "hpDamage": 8,
+      "income": 7,
+      "master": {
+        "forms": 0,
+        "tauntApplications": 0,
+        "interruptions": 1
+      },
+      "next": {
+        "round": 7,
+        "hp": 89,
+        "gold": 9,
+        "level": 5,
+        "xp": 4
+      }
+    },
+    {
+      "round": 7,
+      "opponent": "铁幕",
+      "winner": 1,
+      "seconds": 17,
+      "hpDamage": 8,
+      "income": 7,
+      "threePandasFromPaidShop": true,
+      "master": {
+        "forms": 1,
+        "sweeps": 4,
+        "splashHits": 0,
+        "tauntApplications": 3,
+        "normalDamage": 437,
+        "received": 2039
+      },
+      "next": {
+        "round": 8,
+        "hp": 81,
+        "gold": 13,
+        "level": 5,
+        "xp": 5
+      }
+    }
+  ],
+  "currentCampaign": {
+    "round": 8,
+    "phase": "prepare",
+    "hp": 81,
+    "gold": 13,
+    "level": 5,
+    "xp": 5,
+    "onboard": 5,
+    "bench": 7,
+    "inventory": 0,
+    "equipped": 3,
+    "method": "normal paid UI; R6/R7 lost 8 HP each and each awarded 7 base gold; no free resources or specified outcomes",
+    "handoffTab": "25",
+    "commander": "难度\n休闲\n标准\n挑战\n81生命值\n13金币\n等级 5\n5 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +1 金 · 连败 2",
+    "console": [],
+    "viewport": {
+      "height": 720,
+      "width": 1280
+    }
+  },
+  "emulatedMobile": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "scrollWidth": 390,
+      "inspector": "×\n藤妖 敌方 · ★★\n生命\n1536 / 1640\n能量\n60 / 100\n攻击\n88\n间隔\n1.00 秒\n护甲\n2.0\n法术减伤\n20%\n无式嘲讽 1.3s · 转向武僧\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起"
+    },
+    {
+      "viewport": [
+        320,
+        740
+      ],
+      "scrollWidth": 320,
+      "inspector": "×\n藤妖 敌方 · ★★\n生命\n1536 / 1640\n能量\n60 / 100\n攻击\n88\n间隔\n1.00 秒\n护甲\n2.0\n法术减伤\n20%\n无式嘲讽 1.3s · 转向武僧\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "tmp/wushi-control-v057-codex.jpg",
+      "sha256": "d540cf28a11c42aed764928077293c1162e800c0c9202a5d838a514022a9dfba",
+      "bytes": 55957
+    },
+    {
+      "path": "tmp/wushi-control-v057-taunt-desktop.jpg",
+      "sha256": "7d230dfd8d80eea944772150bc91f154a8165564c8633b1c3748b6438cbc0926",
+      "bytes": 155899
+    },
+    {
+      "path": "tmp/wushi-control-v057-taunt-mobile.jpg",
+      "sha256": "40997bd591b78dc70d597e8170a9440f74a4b35a9cf0cdbbb50bee84b860fdda",
+      "bytes": 53886
+    },
+    {
+      "path": "tmp/wushi-control-v057-taunt-mobile-320.jpg",
+      "sha256": "ab85d7399c236183060b1741bc2e2171a11ecf1c61e43872d6ab1a9b6410a51d",
+      "bytes": 42022
+    },
+    {
+      "path": "tmp/wushi-control-v057-master-desktop.jpg",
+      "sha256": "e2fec6202090e342e21d633a3cba10ec956f9f01087896401a866097c8b4c4cc",
+      "bytes": 155949
+    },
+    {
+      "path": "tmp/wushi-control-v057-demo-analysis.jpg",
+      "sha256": "3c01b392360edb29495223d267781155c1ab84487f09d1aa909d4426c89505be",
+      "bytes": 55978
+    },
+    {
+      "path": "tmp/wushi-control-v057-normal-r6-analysis.jpg",
+      "sha256": "5c7e68455dbff130c59a4ca90fff80fcbbd8aaaed64e1d0aa205dda8d552168e",
+      "bytes": 55337
+    },
+    {
+      "path": "tmp/wushi-control-v057-normal-r7-analysis.jpg",
+      "sha256": "34ea10c9851fbef933360bc41eff02cc92c24c02697e402d26e3e2af33efddf5",
+      "bytes": 55441
+    },
+    {
+      "path": "tmp/wushi-control-v057-normal-r8.jpg",
+      "sha256": "ca969acf084c3627f9b10a0a3c987b7cdd0d888584a9997be514a8b88352a8b8",
+      "bytes": 162001
+    }
+  ],
+  "rawObservations": {
+    "checkedAt": "2026-11-06T04:14:28.530Z",
+    "url": "http://127.0.0.1:5177/",
+    "preservedPrepare": {
+      "commander": "难度\n休闲\n标准\n挑战\n97生命值\n7金币\n等级 5\n3 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +0 金 · 连胜 1",
+      "armory": "装备工坊 0 背包 · 3 已装\n全部装备 · 16 种\n查看属性、配方与持有人 →\n已穿戴 · 3 件 · 1 枚棋子\n合成配方 · 0 种可合成",
+      "bench": "忍者熊猫\n★\n详情\n军医\n★\n详情\n武僧熊猫\n★\n详情\n武僧熊猫\n★\n详情\n05\n06\n07\n08"
+    },
+    "checkpoints": [
+      {
+        "label": "2.0s pinned taunted vine, desktop",
+        "inspector": "×\n藤妖 敌方 · ★★\n生命\n1536 / 1640\n能量\n60 / 100\n攻击\n88\n间隔\n1.00 秒\n护甲\n2.0\n法术减伤\n20%\n无式嘲讽 1.3s · 转向武僧\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起",
+        "viewport": [
+          1280,
+          720
+        ],
+        "scrollWidth": 1280
+      },
+      {
+        "label": "390px same paused taunted vine",
+        "inspector": "×\n藤妖 敌方 · ★★\n生命\n1536 / 1640\n能量\n60 / 100\n攻击\n88\n间隔\n1.00 秒\n护甲\n2.0\n法术减伤\n20%\n无式嘲讽 1.3s · 转向武僧\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起",
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390
+      },
+      {
+        "label": "320px same paused taunted vine",
+        "inspector": "×\n藤妖 敌方 · ★★\n生命\n1536 / 1640\n能量\n60 / 100\n攻击\n88\n间隔\n1.00 秒\n护甲\n2.0\n法术减伤\n20%\n无式嘲讽 1.3s · 转向武僧\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起",
+        "viewport": [
+          320,
+          740
+        ],
+        "scrollWidth": 320
+      }
+    ],
+    "codex": "FIELD MANUAL\n棋子图鉴\n×\n\n63 种棋子各有独立技能。星级提升生命与攻击，护盾和治疗按技能说明计算。以下采用单机平衡数值。\n\n搜索棋子与能力\n招募范围\n全部棋子\n本局可招募\n本局禁用\n费用\n全部费用\n1 金\n2 金\n3 金\n4 金\n5 金\n羁绊\n全部羁绊\n猛禽\n陆行者\n灵能\n不朽\n步兵\n装甲\n野兽\n熊猫\n护卫\n狙击\n先锋\n刺杀\n骑兵\n支援\n召唤\n傀儡\n异虫\n空军\n海神\n攻城\n爆破\n异能\n星级\n1 星\n2 星\n3 星\n攻击方式\n全部方式\n近战\n远程\n飞行\n排序\n费用从低到高\n攻击从高到低\n生命从高到低\n射程从远到近\n\n找到 1 / 63 种棋子 · 本局可招募 51 种\n\n重置图鉴\n武僧熊猫 ★\n1 金 · 地面 · 熊猫 / 先锋 · 护甲变身与嘲讽\n\n生命 700 · 攻击 64\n护甲 5 · 射程 1 · 间隔 1.8 秒\n法术减伤 20%\n\n无式\n\n初始能量0。满能量且20秒冷却结束时，在原地蓄力1秒后变身，护甲增加6/12/18，持续8/10/12秒（一/二/三星）。变身期间每次普通攻击横斩主目标及其周围1格的敌人，总共最多3名（含主目标），每名目标独立结算普通物理伤害、护甲、闪避、护盾、吸血和反伤。护甲和持续时间不受技能强度放大。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会中断，能量和冷却不退还。冷却从蓄力开始计算；变身期间不积累能量，结束后可再次充能。变身完成时，嘲讽周围2格内合格敌人2秒：强制将后续普攻和追击转向武僧，期间不能开始新技能；已开始的施法和已发出的攻击不撤销。技能免控、残魂和涅槃火种不受嘲讽，灵鱼可驱散；武僧阵亡、形态结束或双方变为友军时解除。仅在变身完成时施加一次，后施加的嘲讽覆盖前者。\n\n羁绊梯度 · 同名仅计一次，异虫包含备战席",
+    "demoAnalysis": "×\nBATTLE ANALYSIS\n战斗分析\n\n武僧无式演习 · 战斗片段\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 0.75 秒\n可查看至 0.75 秒；不改变战场播放进度\n己方\n存活 6/6\n生命伤害\n551\n伤害 551 · 治疗 352\n承伤 456 · 承盾 0\n忍者熊猫\n★★ · 生命 1035/1060\n361\n\n普攻 106 · 技能 255 · 破盾 0\n承伤 25 · 治疗 0 · 承盾 0 · 施法 1 次\n\n神枪手\n★★ · 生命 960/960\n94\n\n普攻 94 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n巨齿象\n★★ · 生命 1221/1300\n74\n\n普攻 74 · 技能 0 · 破盾 0\n承伤 247 · 治疗 0 · 承盾 0 · 施法 0 次 · 击飞 0 次\n\n军医\n★ · 生命 500/500\n22\n\n普攻 22 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n武僧熊猫\n★★ · 生命 1400/1400\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 184 · 治疗 0 · 承盾 0 · 施法 1 次 · 无式变身 0 次 · 横斩 0 次 · 波及 0 次 · 嘲讽施加 0 人次\n\n禅师熊猫\n★★ · 生命 2200/2200\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 352 · 承盾 0 · 施法 1 次\n\n敌方\n存活 6/6\n生命伤害\n456\n伤害 456 · 治疗 0\n承伤 551 · 承盾 0\n剑奴\n★★ · 生命 1178/1200\n122\n\n普攻 122 · 技能 0 · 破盾 0\n承伤 22 · 治疗 0 · 承盾 0 · 施法 0 次\n\n神枪手\n★★ · 生命 960/960\n104\n\n普攻 104 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n藤妖\n★★ · 生命 1640/1640\n79\n\n普攻 79 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n盾兵\n★★ · 生命 1071/1600\n64\n\n普攻 64 · 技能 0 · 破盾 0\n承伤 529 · 治疗 0 · 承盾 0 · 施法 0 次\n\n天师\n★★ · 生命 800/800\n62\n\n普攻 62 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 雷暴发出 0 球 · 接触 0 次 · 削能 0\n\n军医\n★ · 生命 500/500\n25\n\n普攻 25 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n查看此刻战场\n从头回放这场战斗\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "partialAnalysis": "×\nBATTLE ANALYSIS\n战斗分析\n\n武僧无式演习 · 战斗片段\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 2.00 秒\n可查看至 13.50 秒；不改变战场播放进度\n己方\n存活 6/6\n生命伤害\n1,143\n伤害 1143 · 治疗 352\n承伤 868 · 承盾 0\n忍者熊猫\n★★ · 生命 1035/1060\n573\n\n普攻 318 · 技能 255 · 破盾 0\n承伤 25 · 治疗 0 · 承盾 0 · 施法 1 次\n\n神枪手\n★★ · 生命 960/960\n292\n\n普攻 292 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n巨齿象\n★★ · 生命 927/1300\n234\n\n普攻 74 · 技能 160 · 破盾 0\n承伤 541 · 治疗 0 · 承盾 0 · 施法 1 次 · 击飞 1 次\n\n军医\n★ · 生命 500/500\n44\n\n普攻 44 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n武僧熊猫\n★★ · 生命 1282/1400\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 302 · 治疗 0 · 承盾 0 · 施法 1 次 · 无式变身 1 次 · 横斩 0 次 · 波及 0 次 · 嘲讽施加 4 人次\n\n禅师熊猫\n★★ · 生命 2200/2200\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 352 · 承盾 0 · 施法 1 次\n\n敌方\n存活 6/6\n生命伤害\n868\n伤害 868 · 治疗 0\n承伤 1143 · 承盾 0\n神枪手\n★★ · 生命 960/960\n312\n\n普攻 312 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n剑奴\n★★ · 生命 1156/1200\n200\n\n普攻 200 · 技能 0 · 破盾 0\n承伤 44 · 治疗 0 · 承盾 0 · 施法 0 次\n\n盾兵\n★★ · 生命 605/1600\n128\n\n普攻 128 · 技能 0 · 破盾 0\n承伤 995 · 治疗 0 · 承盾 0 · 施法 0 次\n\n天师\n★★ · 生命 800/800\n102\n\n普攻 102 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 雷暴发出 0 球 · 接触 0 次 · 削能 0\n\n藤妖\n★★ · 生命 1536/1640\n79\n\n普攻 79 · 技能 0 · 破盾 0\n承伤 104 · 治疗 0 · 承盾 0 · 施法 0 次\n\n军医\n★ · 生命 500/500\n47\n\n普攻 47 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n查看此刻战场\n从头回放这场战斗\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "masterAtTwoSeconds": "×\n武僧熊猫 己方 · ★★\n生命\n1282 / 1400\n能量\n0 / 100\n攻击\n128\n间隔\n1.80 秒\n护甲\n17.0\n法术减伤\n20%\n无式 9.3s · 护甲+12\n无式变身 1次 · 横斩 0次 · 波及 0次\n无式嘲讽施加 4人次\n无式冷却 18.3s\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起",
+    "demoFinalAnalysis": "×\nBATTLE ANALYSIS\n战斗分析\n\n武僧无式演习 · 己方胜利\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 14.50 秒\n可查看至 14.50 秒；不改变战场播放进度\n己方\n存活 4/6\n生命伤害\n7,653\n伤害 7653 · 治疗 1820\n承伤 5154 · 承盾 0\n忍者熊猫\n★★ · 生命 740/1060\n3,000\n\n普攻 1884 · 技能 1116 · 破盾 318\n承伤 870 · 治疗 0 · 承盾 0 · 施法 6 次\n\n神枪手\n★★ · 生命 960/960\n2,340\n\n普攻 1644 · 技能 696 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 3 次\n\n武僧熊猫\n★★ · 已阵亡\n1,385\n\n普攻 1385 · 技能 0 · 破盾 103\n承伤 1659 · 治疗 0 · 承盾 0 · 施法 1 次 · 无式变身 1 次 · 横斩 5 次 · 波及 8 次 · 嘲讽施加 4 人次\n\n禅师熊猫\n★★ · 生命 2200/2200\n467\n\n普攻 467 · 技能 0 · 破盾 0\n承伤 468 · 治疗 1370 · 承盾 0 · 施法 2 次\n\n巨齿象\n★★ · 已阵亡\n323\n\n普攻 163 · 技能 160 · 破盾 59\n承伤 1468 · 治疗 0 · 承盾 0 · 施法 1 次 · 击飞 1 次\n\n军医\n★ · 生命 186/500\n138\n\n普攻 138 · 技能 0 · 破盾 0\n承伤 689 · 治疗 450 · 承盾 0 · 施法 2 次 · 中断 1 次\n\n敌方\n存活 0/6\n生命伤害\n5,154\n伤害 5154 · 治疗 953\n承伤 7653 · 承盾 480\n神枪手\n★★ · 已阵亡\n1,852\n\n普攻 1258 · 技能 594 · 破盾 0\n承伤 1110 · 治疗 0 · 承盾 0 · 施法 3 次\n\n天师\n★★ · 已阵亡\n1,267\n\n普攻 422 · 技能 845 · 破盾 0\n承伤 1175 · 治疗 0 · 承盾 0 · 施法 2 次 · 雷暴发出 2 球 · 接触 5 次 · 削能 50\n\n剑奴\n★★ · 已阵亡\n998\n\n普攻 278 · 技能 720 · 破盾 0\n承伤 1200 · 治疗 0 · 承盾 0 · 施法 1 次\n\n藤妖\n★★ · 已阵亡\n556\n\n普攻 330 · 技能 226 · 破盾 0\n承伤 1640 · 治疗 0 · 承盾 0 · 施法 2 次\n\n盾兵\n★★ · 已阵亡\n373\n\n普攻 272 · 技能 101 · 破盾 0\n承伤 1825 · 治疗 0 · 承盾 480 · 施法 1 次\n\n军医\n★ · 已阵亡\n108\n\n普攻 108 · 技能 0 · 破盾 0\n承伤 703 · 治疗 953 · 承盾 0 · 施法 2 次 · 中断 1 次\n\n查看此刻战场\n从头回放这场战斗\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "afterDemo": {
+      "commander": "难度\n休闲\n标准\n挑战\n97生命值\n7金币\n等级 5\n3 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +0 金 · 连胜 1",
+      "armory": "装备工坊 0 背包 · 3 已装\n全部装备 · 16 种\n查看属性、配方与持有人 →\n已穿戴 · 3 件 · 1 枚棋子\n合成配方 · 0 种可合成",
+      "bench": "忍者熊猫\n★\n详情\n军医\n★\n详情\n武僧熊猫\n★\n详情\n武僧熊猫\n★\n详情\n05\n06\n07\n08"
+    },
+    "oldRoundFiveAnalysis": "×\nBATTLE ANALYSIS\n战斗分析\n\n第 5 回合 · 白夜 · 己方胜利\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 14.25 秒\n可查看至 14.25 秒；不改变战场播放进度\n己方\n存活 4/5\n生命伤害\n3,250\n伤害 3250 · 治疗 239\n承伤 1408 · 承盾 780\n血鹰\n★ · 地面形态 · 生命 900/900\n1,041\n\n普攻 1041 · 技能 0 · 破盾 733\n承伤 173 · 治疗 119 · 承盾 0 · 施法 1 次\n\n狂狮\n★ · 生命 775/950\n826\n\n普攻 826 · 技能 0 · 破盾 89\n承伤 175 · 治疗 0 · 承盾 530 · 施法 5 次\n\n猛毒兽\n★ · 生命 650/650\n759\n\n普攻 759 · 技能 0 · 破盾 164\n承伤 0 · 治疗 0 · 承盾 0 · 施法 1 次 · 酸蚀命中 2 次\n\n武僧熊猫\n★★ · 生命 856/1400\n564\n\n普攻 564 · 技能 0 · 破盾 476\n承伤 610 · 治疗 38 · 承盾 0 · 施法 1 次 · 无式变身 1 次 · 横斩 7 次 · 波及 0 次\n\n灵鱼\n★ · 已阵亡\n60\n\n普攻 60 · 技能 0 · 破盾 0\n承伤 450 · 治疗 82 · 承盾 250 · 施法 1 次\n\n敌方\n存活 0/4\n生命伤害\n1,408\n伤害 1408 · 治疗 0\n承伤 3250 · 承盾 1462\n狂狮\n★ · 已阵亡\n497\n\n普攻 497 · 技能 0 · 破盾 0\n承伤 950 · 治疗 0 · 承盾 1462 · 施法 8 次\n\n穿山甲\n★★ · 已阵亡\n340\n\n普攻 250 · 技能 90 · 破盾 104\n承伤 1220 · 治疗 0 · 承盾 0 · 施法 1 次 · 暴击命中 0 次 · 击飞 0 次\n\n忍者熊猫\n★ · 已阵亡\n326\n\n普攻 227 · 技能 99 · 破盾 124\n承伤 530 · 治疗 0 · 承盾 0 · 施法 1 次 · 暴击命中 0 次\n\n斧奴\n★ · 已阵亡\n245\n\n普攻 145 · 技能 100 · 破盾 552\n承伤 550 · 治疗 0 · 承盾 0 · 施法 2 次 · 暴击命中 0 次\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "normalRoundSixInvested": {
+      "commander": "难度\n休闲\n标准\n挑战\n97生命值\n2金币\n等级 5\n3 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +0 金 · 连胜 1",
+      "armory": "装备工坊 0 背包 · 3 已装\n全部装备 · 16 种\n查看属性、配方与持有人 →\n已穿戴 · 3 件 · 1 枚棋子\n合成配方 · 0 种可合成",
+      "bench": "忍者熊猫\n★\n详情\n军医\n★\n详情\n武僧熊猫\n★\n详情\n武僧熊猫\n★\n详情\n狂狮\n★\n详情\n电蛟\n★\n详情\n07\n08"
+    },
+    "normalRoundSevenPrepare": {
+      "commander": "难度\n休闲\n标准\n挑战\n89生命值\n9金币\n等级 5\n4 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +0 金 · 连败 1",
+      "armory": "装备工坊 0 背包 · 3 已装\n全部装备 · 16 种\n查看属性、配方与持有人 →\n已穿戴 · 3 件 · 1 枚棋子\n合成配方 · 0 种可合成",
+      "bench": "忍者熊猫\n★\n详情\n军医\n★\n详情\n武僧熊猫\n★\n详情\n武僧熊猫\n★\n详情\n狂狮\n★\n详情\n电蛟\n★\n详情\n07\n08",
+      "report": "作战简报\n上轮分析\n\n防守失利。调整站位与羁绊，再战一轮。 战果展示后自动进入下一回合准备。"
+    },
+    "normalRoundSixAnalysis": "×\nBATTLE ANALYSIS\n战斗分析\n\n第 6 回合 · 深海回声 · 己方失败\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 11.50 秒\n可查看至 11.50 秒；不改变战场播放进度\n己方\n存活 0/5\n生命伤害\n2,498\n伤害 2498 · 治疗 381\n承伤 4731 · 承盾 1275\n血鹰\n★ · 地面形态 · 已阵亡\n872\n\n普攻 872 · 技能 0 · 破盾 0\n承伤 1056 · 治疗 48 · 承盾 0 · 施法 1 次\n\n狂狮\n★ · 已阵亡\n725\n\n普攻 725 · 技能 0 · 破盾 0\n承伤 1058 · 治疗 0 · 承盾 1025 · 施法 5 次\n\n猛毒兽\n★ · 已阵亡\n471\n\n普攻 471 · 技能 0 · 破盾 0\n承伤 704 · 治疗 0 · 承盾 0 · 施法 1 次 · 酸蚀命中 1 次\n\n武僧熊猫\n★★ · 已阵亡\n222\n\n普攻 222 · 技能 0 · 破盾 0\n承伤 1463 · 治疗 9 · 承盾 0 · 施法 1 次 · 无式变身 0 次 · 横斩 0 次 · 波及 0 次 · 嘲讽施加 0 人次 · 中断 1 次\n\n灵鱼\n★ · 已阵亡\n208\n\n普攻 208 · 技能 0 · 破盾 0\n承伤 450 · 治疗 324 · 承盾 250 · 施法 3 次\n\n敌方\n存活 4/7\n生命伤害\n4,731\n伤害 4731 · 治疗 0\n承伤 2498 · 承盾 0\n神射手\n★★ · 生命 1080/1080\n2,024\n\n普攻 1129 · 技能 895 · 破盾 9\n承伤 0 · 治疗 0 · 承盾 0 · 施法 2 次\n\n鬼狼\n★ · 生命 128/680\n1,338\n\n普攻 1338 · 技能 0 · 破盾 150\n承伤 552 · 治疗 0 · 承盾 0 · 施法 1 次\n\n穿山甲\n★★ · 生命 599/1000\n544\n\n普攻 368 · 技能 176 · 破盾 104\n承伤 401 · 治疗 0 · 承盾 0 · 施法 1 次 · 暴击命中 0 次 · 击飞 1 次\n\n斧奴\n★ · 生命 335/550\n297\n\n普攻 216 · 技能 81 · 破盾 671\n承伤 215 · 治疗 0 · 承盾 0 · 施法 1 次 · 暴击命中 1 次\n\n忍者熊猫\n★ · 已阵亡\n285\n\n普攻 113 · 技能 172 · 破盾 124\n承伤 530 · 治疗 0 · 承盾 0 · 施法 2 次 · 暴击命中 0 次\n\n幽影幼狼\n召唤物 · 1 星鬼狼召唤 · 已阵亡\n128\n\n普攻 128 · 技能 0 · 破盾 31\n承伤 400 · 治疗 0 · 承盾 0 · 施法 0 次\n\n幽影幼狼\n召唤物 · 1 星鬼狼召唤 · 已阵亡\n115\n\n普攻 115 · 技能 0 · 破盾 186\n承伤 400 · 治疗 0 · 承盾 0 · 施法 0 次\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "naturalThreePandasPrepare": {
+      "commander": "难度\n休闲\n标准\n挑战\n89生命值\n6金币\n等级 5\n4 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +0 金 · 连败 1",
+      "synergies": "阵容连携\n3 已激活\n◆\n熊猫\n3/31 档\n◆\n先锋\n3/61 档\n◆\n野兽\n2/41 档\n未激活连携 · 3",
+      "deployed": [
+        "A5＋",
+        "B5＋",
+        "C5＋",
+        "D5武僧熊猫",
+        "E5＋",
+        "F5＋",
+        "G5＋",
+        "H5＋",
+        "A6＋",
+        "B6＋",
+        "C6＋",
+        "D6禅师熊猫",
+        "E6＋",
+        "F6忍者熊猫",
+        "G6血鹰",
+        "H6＋",
+        "A7＋",
+        "B7＋",
+        "C7＋",
+        "D7＋",
+        "E7猛毒兽",
+        "F7＋",
+        "G7＋",
+        "H7＋",
+        "A8＋",
+        "B8＋",
+        "C8＋",
+        "D8＋",
+        "E8＋",
+        "F8＋",
+        "G8＋",
+        "H8＋"
+      ]
+    },
+    "normalRoundEightPrepare": {
+      "commander": "难度\n休闲\n标准\n挑战\n81生命值\n13金币\n等级 5\n5 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +1 金 · 连败 2",
+      "armory": "装备工坊 0 背包 · 3 已装\n全部装备 · 16 种\n查看属性、配方与持有人 →\n已穿戴 · 3 件 · 1 枚棋子\n合成配方 · 0 种可合成",
+      "bench": "灵鱼\n★\n详情\n狂狮\n★\n详情\n军医\n★\n详情\n武僧熊猫\n★\n详情\n武僧熊猫\n★\n详情\n狂狮\n★\n详情\n电蛟\n★\n详情\n08",
+      "report": "作战简报\n上轮分析\n\n防守失利。调整站位与羁绊，再战一轮。 战果展示后自动进入下一回合准备。"
+    },
+    "normalRoundSevenAnalysis": "×\nBATTLE ANALYSIS\n战斗分析\n\n第 7 回合 · 铁幕 · 己方失败\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 17.00 秒\n可查看至 17.00 秒；不改变战场播放进度\n己方\n存活 0/5\n生命伤害\n2,490\n伤害 2490 · 治疗 1335\n承伤 5915 · 承盾 0\n禅师熊猫\n★ · 已阵亡\n684\n\n普攻 684 · 技能 0 · 破盾 0\n承伤 1453 · 治疗 958 · 承盾 0 · 施法 5 次\n\n猛毒兽\n★ · 已阵亡\n576\n\n普攻 576 · 技能 0 · 破盾 0\n承伤 650 · 治疗 0 · 承盾 0 · 施法 1 次 · 酸蚀命中 3 次\n\n忍者熊猫\n★ · 已阵亡\n540\n\n普攻 258 · 技能 282 · 破盾 0\n承伤 530 · 治疗 0 · 承盾 0 · 施法 2 次\n\n武僧熊猫\n★★ · 已阵亡\n437\n\n普攻 437 · 技能 0 · 破盾 0\n承伤 2039 · 治疗 34 · 承盾 0 · 施法 1 次 · 无式变身 1 次 · 横斩 4 次 · 波及 0 次 · 嘲讽施加 3 人次\n\n血鹰\n★ · 地面形态 · 已阵亡\n253\n\n普攻 253 · 技能 0 · 破盾 0\n承伤 1243 · 治疗 343 · 承盾 0 · 施法 1 次 · 中断 1 次\n\n敌方\n存活 4/5\n生命伤害\n5,915\n伤害 5915 · 治疗 0\n承伤 2490 · 承盾 0\n神枪手\n★★ · 生命 960/960\n2,422\n\n普攻 1715 · 技能 707 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 4 次\n\n牛魔\n★ · 生命 457/1200\n1,389\n\n普攻 562 · 技能 827 · 破盾 0\n承伤 743 · 治疗 0 · 承盾 0 · 施法 4 次\n\n巨齿象\n★★ · 生命 179/1300\n1,052\n\n普攻 844 · 技能 208 · 破盾 0\n承伤 1121 · 治疗 0 · 承盾 0 · 施法 1 次 · 击飞 1 次\n\n刀奴\n★ · 生命 464/550\n588\n\n普攻 588 · 技能 0 · 破盾 0\n承伤 86 · 治疗 0 · 承盾 0 · 施法 0 次 · 暴击命中 0 次\n\n神射手\n★ · 已阵亡\n464\n\n普攻 258 · 技能 206 · 破盾 0\n承伤 540 · 治疗 0 · 承盾 0 · 施法 1 次\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "currentCampaign": {
+      "round": 8,
+      "phase": "prepare",
+      "hp": 81,
+      "gold": 13,
+      "level": 5,
+      "xp": 5,
+      "onboard": 5,
+      "bench": 7,
+      "inventory": 0,
+      "equipped": 3,
+      "method": "normal paid UI; R6/R7 lost 8 HP each and each awarded 7 base gold; no free resources or specified outcomes",
+      "handoffTab": "25",
+      "commander": "难度\n休闲\n标准\n挑战\n81生命值\n13金币\n等级 5\n5 / 12 XP\n购买经验 5 金 / 5 XP\n本轮基础奖励\n+7 金\n第 11 回合增至 +9 金\n\n预计利息 +1 金 · 连败 2",
+      "console": [],
+      "viewport": {
+        "height": 720,
+        "width": 1280
+      }
+    }
+  },
+  "limits": [
+    "No complete current manual match or real-device acceptance.",
+    "Normal R7 positive taunt still lost; neither a demo win nor selected small-seed proxy ranks establish overall balance.",
+    "Ninja and monk are still their prototype skills/costs, so the natural three-panda formation is not the recovered full historical route.",
+    "Player-facing proof used port 5177; 5174 source/asset identity is a separate read-only HTTP check.",
+    "All screenshots are ignored root tmp artifacts, not committed docs screenshots."
+  ]
+}

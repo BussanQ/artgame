@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { deployLineup } from "../src/engine/ai";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import { damage, castSkill, type CombatContext } from "../src/engine/abilities";
@@ -37,10 +38,10 @@ const core = () => [
   p("thunderlord", 4, 52),
 ];
 describe("灵能反伤与能量体系", () => {
-  it("2/4种为全队提供20/30反伤，同名备战不计，旧版本不启用", () => {
+  it("2/4种为全队提供20/50反伤，同名备战不计，旧版本不启用", () => {
     expect(
       army([...core(), p("guard", 5, 35)], 0).map((x) => x.reflection),
-    ).toEqual([30, 30, 30, 30, 30]);
+    ).toEqual([50, 50, 50, 50, 50]);
     const two = [p("adept", 1), p("acolyte", 2, 43), p("stormcaller", 3, null)];
     expect(synergies(two).find((s) => s.trait === "灵能")).toMatchObject({
       count: 2,
@@ -99,11 +100,11 @@ describe("灵能反伤与能量体系", () => {
     v.shield = 0;
     damage(c, e, v, 100, "true");
     expect(v.immortal?.spent).toBe(true);
-    expect(e.hp).toBe(e.maxHp - 30);
+    expect(e.hp).toBe(e.maxHp - 50);
     const before = e.hp;
     damage(c, e, v, 100, "true");
     expect(v.hp).toBe(1);
-    expect(e.hp).toBe(before - 30);
+    expect(e.hp).toBe(before - 50);
     e.immortal = { spent: true, duration: 16, until: 26 };
     e.hp = 1;
     const n = c.events.length;
@@ -158,8 +159,8 @@ describe("灵能反伤与能量体系", () => {
       expect(pieces).toHaveLength(3);
     }
   });
-  it("童子优先充能最高攻击的两个合格友军，受封能压制且上限100", () => {
-    const a = f("acolyte", 1),
+  it("旧版童子优先充能最高攻击的两个合格友军，受封能压制且上限100", () => {
+    const a = army([p("acolyte", 1)], 0, "lightning")[0],
       g = f("guard", 2),
       b = f("bonedragon", 3),
       t = f("thunderlord", 4),
@@ -178,14 +179,14 @@ describe("灵能反伤与能量体系", () => {
     a.mana = 100;
     const c = ctx(a, g, b, t, other, enemy);
     expect(castSkill(c, a, enemy)).toBe(true);
-    expect(t.mana).toBe(100);
+    expect(t.mana).toBe(90);
     expect(b.mana).toBe(78.75);
-    expect(g.mana).toBe(60);
+    expect(g.mana).toBe(85);
     expect(other.mana).toBe(60);
     expect(a.mana).toBe(0);
     expect(
       c.effects.filter((e) => e.kind === "energize").map((e) => e.amount),
-    ).toEqual([10, 18.75]);
+    ).toEqual([18.75, 25]);
     t.manaLockUntil = 20;
     b.manaLockUntil = 20;
     g.manaLockUntil = 20;
@@ -207,8 +208,8 @@ describe("灵能反伤与能量体系", () => {
     a.mana = 100;
     expect(castSkill(c, a, e)).toBe(false);
   });
-  it("天师法球只命中目标两格内敌人", () => {
-    const s = f("stormcaller", 1),
+  it("旧版天师法球只命中目标两格内敌人", () => {
+    const s = Object.assign(army([p("stormcaller", 1)], 0, "gospel")[0], { x: 3, y: 3 }),
       a = f("guard", 2, 1),
       b = f("guard", 3, 1),
       c = f("guard", 4, 1),
@@ -229,7 +230,7 @@ describe("灵能反伤与能量体系", () => {
     expect(ally.hp).toBe(ally.maxHp);
   });
   it("连锁最多四个不同目标，距离与UID决定跳跃，倍率衰减", () => {
-    const s = f("thunderlord", 1);
+    const s = army([p("thunderlord", 1)], 0, "tar")[0];
     s.mana = 100;
     const es = [2, 3, 4, 5, 6].map((id) => f("guard", id, 1));
     es.forEach((x, i) => {
@@ -266,7 +267,12 @@ describe("灵能反伤与能量体系", () => {
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
     expect(fast.winner).toBe(b.winner);
     expect(fast.damage).toBe(b.damage);
-    const result = compute({ kind: "replay", left, right, version: "fleet" });
+    const result = compute({
+      kind: "replay",
+      left,
+      right,
+      version: CURRENT_COMBAT_VERSION,
+    });
     expect(result.kind).toBe("replay");
     if (result.kind === "replay") expect(result.battle).toEqual(b);
     const report = analyzeBattle(b);
@@ -305,7 +311,7 @@ describe("充能辅助选阵", () => {
       [["thunderlord", "titan", "stormcaller"], "acolyte"],
       [["cavalry", "turtle", "tiger"], "infantry"],
     ] as const) {
-      const game = createGame(42),
+      const game = createGame(42, "classic"),
         me = game.players[0];
       me.level = 4;
       me.pieces = [
@@ -325,7 +331,8 @@ describe("充能辅助选阵", () => {
 describe("0.13存档增量兼容", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "只补新卡池并保留回放", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
+      g.combatVersion = "fleet";
       for (const player of g.players)
         for (let i = 0; i < player.shop.length; i++)
           if (PSYCHIC_ADDITIONS.includes(player.shop[i] ?? ""))
@@ -361,7 +368,9 @@ describe("0.13存档增量兼容", () => {
       expect(validGame(after)).toBe(true);
       expect(after.players).toEqual(before.players);
       expect(after.history).toEqual(before.history);
-      expect(after.combatVersion).toBe(before.combatVersion);
+      expect(after.combatVersion).toBe(
+        phase === "prepare" ? CURRENT_COMBAT_VERSION : before.combatVersion,
+      );
       for (const id of PSYCHIC_ADDITIONS)
         expect(after.pool[id]).toBe(COPIES[UNIT[id].cost]);
       if (phase === "battle")

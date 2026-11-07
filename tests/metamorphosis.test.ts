@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -213,7 +214,12 @@ describe("血鹰持续变身", () => {
     const input = structuredClone([left, right]);
     const b = simulate(left, right),
       fast = simulateOutcome(left, right),
-      worker = compute({ kind: "replay", left, right, version: "metamorph" });
+      worker = compute({
+        kind: "replay",
+        left,
+        right,
+        version: CURRENT_COMBAT_VERSION,
+      });
     expect(worker.kind).toBe("replay");
     if (worker.kind !== "replay") return;
     expect(JSON.stringify(worker.battle)).toBe(JSON.stringify(b));
@@ -240,7 +246,7 @@ describe("血鹰持续变身", () => {
 describe("0.15 战斗版本迁移", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "仅在准备或下一轮切换规则", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "fleet";
       let result: ReturnType<typeof startRound>;
       if (phase !== "prepare") {
@@ -272,7 +278,7 @@ describe("0.15 战斗版本迁移", () => {
       expect(validGame(after)).toBe(true);
       expect(after).toEqual({
         ...before,
-        combatVersion: phase === "prepare" ? "metamorph" : "fleet",
+        combatVersion: phase === "prepare" ? CURRENT_COMBAT_VERSION : "fleet",
       });
       if (phase === "battle")
         expect(JSON.stringify(resumeRound(after)!.battle)).toBe(
@@ -281,7 +287,7 @@ describe("0.15 战斗版本迁移", () => {
       if (phase === "result") {
         if (after.reward) claimReward(after, 0);
         nextRound(after);
-        expect(after.combatVersion).toBe("metamorph");
+        expect(after.combatVersion).toBe(CURRENT_COMBAT_VERSION);
         expect(after.history[0].combatVersion).toBe("fleet");
       }
     });

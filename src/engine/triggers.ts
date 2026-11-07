@@ -1,8 +1,25 @@
 import { isPhoenixEgg } from "./phoenix";
+import { commandBonuses } from "./ironrooster";
+import { staffArmor } from "./staffthrall";
+import { corrosionArmor } from "./beasts";
+import { STAFF_GALE } from "../data/skills";
 import type { Fighter } from "./types";
+import {spiritWardBuff} from "./spirit-ward";
+import {tortoiseArmor,tortoiseResist} from "./tortoise";
+import {formlessActive} from "./formless";
 const distance = (a: Fighter, b: Fighter) =>
   Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export function usesEnergy(f: Fighter) {
+  if(f.executionPuppet||f.siege?.mode)return false;
+  if(f.tortoise?.mode)return false;
+  if(f.rifle)return false;
+  if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return false;
+  if (f.lightningChain || f.gospelAura) return false;
+  if (
+    ["birdrider", "bladethrall", "staffthrall"].includes(f.defId) ||
+    f.bladeStorm
+  )
+    return false;
   if (
     isPhoenixEgg(f) ||
     f.hawkForm?.active ||
@@ -13,9 +30,27 @@ export function usesEnergy(f: Fighter) {
   )
     return false;
   if (f.summon || f.packCall === "spent" || f.summoning?.spent) return false;
-  return !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
+  return !!f.tortoise || !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
+  if(f.mending?.casting)return false;
+  if(f.inferno?.casting)return false;
+  if(f.executionPuppet||f.reaper?.casting||f.siege?.mode||f.siege?.casting)return false;
+  if(f.tortoise?.mode||f.tortoise?.casting)return false;
+  if(f.spiritWard?.channel)return false;
+  if(f.hive?.casting||f.hive?.burst)return false;
+  if(f.rifle)return false;
+  if(f.thornbind?.channel)return false;
+  if (f.wildfire?.casting || f.wildfire?.channel) return false;
+  if (f.secretOrb?.casting || f.secretOrb?.channel) return false;
+  if (f.shuriken?.casting) return false;
+  if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return false;
+  if (f.lightningChain || f.gospelAura) return false;
+  if (
+    ["birdrider", "bladethrall", "staffthrall"].includes(f.defId) ||
+    f.bladeStorm
+  )
+    return false;
   if (f.air?.cast || f.windup || f.combo) return false;
   if (
     isPhoenixEgg(f) ||
@@ -39,15 +74,43 @@ export function carapaceArmor(f: Fighter, tick: number) {
     Math.max(0, Math.min(1, (shell.until - tick) / (shell.until - shell.start)))
   );
 }
-export function effectiveArmor(f: Fighter, tick: number) {
+export function effectiveArmor(f: Fighter, tick: number, fighters?: Fighter[]) {
+  const galeArmor =
+    f.gale &&
+    (!fighters ||
+      attackTargets(f, fighters, tick).some((e) => e.uid === f.gale!.target))
+      ? staffArmor(f)
+      : 0;
   return (
-    f.armor +
-    (f.armorBuffUntil > tick ? f.armorBuff : 0) +
-    carapaceArmor(f, tick)
+    f.armor -
+    (f.infantryArmorBreak ?? 0) -
+    corrosionArmor(f, tick) +
+    Math.max(
+      f.armorBuffUntil > tick ? f.armorBuff : 0,
+      commandBonuses(f, tick).armor,
+    ) +
+    carapaceArmor(f, tick) +
+    tortoiseArmor(f) +
+    galeArmor +
+    (spiritWardBuff(f,tick,fighters)?.armor??0) +
+    (f.hp > 0 && f.bulwark && f.bulwark.until > tick ? f.bulwark.armor : 0) +
+    (f.hp > 0 && f.wushi && f.wushi.until > tick ? f.wushi.armor : 0)
   );
+}
+export function effectiveMagicResist(f:Fighter,tick:number,fighters?:Fighter[]){
+  const ward=spiritWardBuff(f,tick,fighters);
+  const shell=tortoiseResist(f);
+  return ward||shell?Math.min(0.75,f.magicResist+(ward?.resist??0)+shell):f.magicResist;
+}
+/** Preserve the shell's independent resistance when attributing only the deer's marginal prevention. */
+export function unwardedMagicResist(f:Fighter){
+  const shell=tortoiseResist(f);
+  return shell?Math.min(0.75,f.magicResist+shell):f.magicResist;
 }
 /** Bodyguards conceal fish; enemy fish reveal nearby targets. AoE still hits. */
 export function concealed(f: Fighter, fighters: Fighter[], tick = 0) {
+  if(formlessActive(f,tick))return true;
+  if(f.hp>0&&f.reaper?.casting)return true;
   if (f.hp > 0 && f.air && f.air.phaseUntil > tick) return true;
   if (!f.signature || f.defId !== "fish" || f.hp <= 0) return false;
   const protectedBy = fighters.some(
@@ -71,10 +134,26 @@ export function attackTargets(source: Fighter, fighters: Fighter[], tick = 0) {
     (e) =>
       e.side !== source.side &&
       e.hp > 0 &&
+      !e.reaper?.casting &&
       (!source.signature || !concealed(e, fighters, tick)),
   );
 }
 export function skillGauge(f: Fighter) {
+  if(f.tortoise?.mode)return {progress:0,color:f.tortoise.mode==="shell"?"#99ddbe":"#f5bc71"};
+  if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return { progress: 0, color: "#b5e9b7" };
+  if (f.gospelAura) return { progress: 0, color: "#8effe6" };
+  if (f.lightningChain) return { progress: 0, color: "#b8e8ff" };
+  if (f.gale)
+    return { progress: f.gale.stacks / STAFF_GALE.maxStacks, color: "#85c8ff" };
+  // Chance is not a charge meter; do not imply a guaranteed next critical hit.
+  if (f.bladeCrit) return { progress: 0, color: "#b8d6ff" };
+  if (f.bladeStorm)
+    return { progress: f.bladeStorm.remaining / 6, color: "#a9eadc" };
+  if (f.bird)
+    return {
+      progress: f.bird.draw ? 1 : f.bird.shots / (7 - f.star),
+      color: "#dceea0",
+    };
   if (
     isPhoenixEgg(f) ||
     f.hawkForm?.active ||

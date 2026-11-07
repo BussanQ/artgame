@@ -1,0 +1,128 @@
+{
+  "reviewedAt": "2026-11-06T05:18:16.145Z",
+  "rules": "singleplayer-0.58",
+  "combatVersion": "shuriken",
+  "scope": "恢复忍者远程本体与风魔之刃；来源存在时间差，不声明完整统一客户端复原。",
+  "sources": [
+    {
+      "id": "S59",
+      "url": "https://news.17173.com/z/zzq/content/08022019/112747368.shtml?_platform=PC",
+      "publishedAt": "2019-08-02",
+      "author": "赤潮最爱科先生",
+      "byline": "今日头条",
+      "kind": "community-article-containing-original-client-screenshot",
+      "reviewed": "完整文章重读；归档原始卡重新目视。数字来自客户端原图，阵亡持续来自社区正文，两者分开。",
+      "clientBuild": "unknown"
+    },
+    {
+      "id": "S04-1",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "kind": "community-measured-attribute-table",
+      "row": 19,
+      "rowName": "熊猫忍者",
+      "reviewed": "重新目视原表；不是官方逐版本数据表。"
+    },
+    {
+      "id": "S60",
+      "url": "https://news.17173.com/z/zzq/content/04022020/174456266.shtml?_platform=PC",
+      "publishedAt": "2020-04-02",
+      "author": "战争艺术AOW",
+      "byline": "微信公众号",
+      "kind": "publisher-authored-update-republished-by-17173",
+      "reviewed": "完整公告重新读取；后期150/250/350到160/270/380的改动不接入本切片，五次伤害仅用于语义交叉核对。"
+    }
+  ],
+  "image": {
+    "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/txnPfrbnrifDbph.jpg",
+    "path": "images/panda-ninja-client-aug2019.jpg",
+    "sha256": "aa462458aa54883a3dc2a1b1118a202bac760126c6a0583da8b7430696b2075d",
+    "width": 640,
+    "height": 360,
+    "visuallyReviewed": true
+  },
+  "confirmedFromClient": {
+    "name": "忍者熊猫",
+    "cost": 3,
+    "traits": [
+      "熊猫",
+      "刺杀"
+    ],
+    "skill": "风魔之刃",
+    "cooldownSeconds": 20,
+    "worldRadii": [
+      6,
+      8,
+      10
+    ],
+    "damagePerSecond": [
+      150,
+      250,
+      350
+    ],
+    "durationSeconds": 5
+  },
+  "tableBody": {
+    "hp": 550,
+    "attackRange": [
+      60,
+      72
+    ],
+    "implementedMeanAttack": 66,
+    "armor": 5,
+    "range": 3,
+    "attackSeconds": 1.2,
+    "magicDefense": 0.2
+  },
+  "secondaryQualitative": {
+    "source": "S59正文",
+    "claim": "已发出的忍者技能可在施法者阵亡后继续存在。",
+    "notAttributedToOfficialCard": true
+  },
+  "localChoices": {
+    "initialEnergy": 0,
+    "windupSeconds": 0.5,
+    "interrupts": [
+      "death",
+      "stun",
+      "silence",
+      "charm"
+    ],
+    "cooldownStarts": "startup",
+    "refund": false,
+    "projectileSpeedTilesPerSecond": 4,
+    "aim": "可见敌人的当时格心，按3格普攻射程判定，之后固定地面落点",
+    "worldToTileRatio": 0.2,
+    "tileRadii": [
+      1.2,
+      1.6,
+      2
+    ],
+    "geometry": "欧氏圆形，格心命中，范围技能可波及隐蔽单位",
+    "pulseSecondsAfterLanding": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "snapshot": "起手冻结威力、阵营、落点与范围；已发出部分不受控制/阵亡取消，目标每跳按当前阵营过滤",
+    "damageType": "magic",
+    "postReleaseActions": true,
+    "ordinaryCriticalOrLifesteal": false,
+    "matchEnd": "不延长已经结束的战斗"
+  },
+  "limits": [
+    "客户端截图构建号未知，S04年中实测本体与S59八月卡跨期。",
+    "首跳时序、飞行、范围换算、初始能量、伤害类型与控制边界为单机适配。",
+    "2020五次伤害修复不证明2019精确内部时序。",
+    "禅师仍为治疗原型，未因忍者更新宣称三熊猫完整复原。"
+  ],
+  "implementation": [
+    "src/engine/shuriken.ts",
+    "src/render/shuriken.ts",
+    "src/data/shuriken-demo.ts",
+    "tests/shuriken.test.ts"
+  ],
+  "assetRecord": "shuriken-assets.json"
+}

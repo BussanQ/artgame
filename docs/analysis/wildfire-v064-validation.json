@@ -1,0 +1,399 @@
+{
+  "recordedAt": "2026-11-07T04:13:28.917201+08:00",
+  "rules": "singleplayer-0.64",
+  "combatVersion": "wildfire",
+  "saveSchema": 63,
+  "goalStatus": "active；本增量不代替完整单机、统一历史规则、整体平衡、多构筑高星或真实设备验收。",
+  "previousGoalTurn": "progress：0.62/0.63能力与UI修复已由489689a提交并推送到dev；本轮继续燎原与涅槃循环，保留完整目标。",
+  "tests": {
+    "command": "npx --no-install vitest run tests/wildfire.test.ts tests/phoenix.test.ts tests/tornado.test.ts --reporter=json --outputFile=tmp/wildfire-module-tests.json",
+    "passed": 99,
+    "failed": 0,
+    "modules": {
+      "phoenix.test.ts": 18,
+      "tornado.test.ts": 35,
+      "wildfire.test.ts": 46
+    },
+    "sourceSha256": {
+      "tests/wildfire.test.ts": "5409136de09f3bcb8a750a956166ef3edc41fefa38df83ea1b35795db316c027",
+      "tests/phoenix.test.ts": "9d5fb2a0e35b155536db390d822a71a6b87ea601a2d972fc8c7f80a85224aa07",
+      "tests/tornado.test.ts": "d758dbe153541f9412020f6984dc4d8c9d862d2f62670dddbc57857b88a7e734",
+      "tests/warcry.test.ts": "8fcf2a6e6c2d7e908fea906e3483674a2f4ab90c83ea859f12fe9e87b967218a"
+    },
+    "rawReport": "../../tmp/wildfire-module-tests.json",
+    "rawReportSha256": "3ef72ae88a8bb6ec0fbd7df6cb09ded5467adec522d74348367fb457076c025a",
+    "additionalCatalogueChecks": {
+      "command": "npx --no-install vitest run tests/warcry.test.ts -t '目录' --reporter=json --outputFile=tmp/wildfire-catalog-tests.json",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 35,
+      "rawReport": "../../tmp/wildfire-catalog-tests.json",
+      "rawReportSha256": "bf5cb0759ce1c125a1c2312d9d0f02ec7c2502039ded88a64e140325a0376963"
+    },
+    "scope": "直接相关模块和三个相邻历史目录用例；没有运行全量套件或经营批量采样。",
+    "coverage": [
+      "三档基础预算、逐跳、持续时间、冷却与冻结法强",
+      "固定区域及即时占位、隐蔽/飞行/友军、当前护盾和魔抗、免伤及残魂",
+      "起手与维持的四种中断、非法施法、共享控制立即打断",
+      "反伤化蛋停止同跳余下目标、二/三星火种、孵化/破蛋/每战一次和生命/冷却保留",
+      "最后一枚火种维持战斗、完整/快速/Worker一致、占位和行动约束",
+      "三种星级头像、各信息入口、按查看帧统计及有限AI估值",
+      "新旧费用/卡池的实际买卖守恒、四阶段迁移、旧定义和冻结回放"
+    ]
+  },
+  "historical": {
+    "fixtures": "../../tests/fixtures/pre-v064-phoenix-replays.json",
+    "fixturesSha256": "982edb2788d4b8e6550ed529ff302d034bc521145eb9aa32801bc2c1047c3097",
+    "phoenixDefinitionsCompared": 36,
+    "frozenReplayCount": 3,
+    "fixturesSummary": [
+      {
+        "version": "legacy",
+        "phoenixCasts": 6,
+        "eggs": 1,
+        "hatches": 1,
+        "frames": 143,
+        "hash": "afe225490b3ac8ffdf5977bf20da7231eea3a0d0d5e42c3aa30493e896118014"
+      },
+      {
+        "version": "metamorph",
+        "phoenixCasts": 6,
+        "eggs": 1,
+        "hatches": 1,
+        "frames": 143,
+        "hash": "5be40e0e2cb6e8642be780c336f574030f0f9111be3a0730e429a0ee0f13a1eb"
+      },
+      {
+        "version": "tornado",
+        "phoenixCasts": 6,
+        "eggs": 1,
+        "hatches": 1,
+        "frames": 143,
+        "hash": "92aa12beba783a1f16a3fccf69c2c8d6cc22b76c903e8b1cbeddf6b4f9d8407c"
+      }
+    ],
+    "limits": "不是全部37版本完整战斗矩阵；旧不死鸟模块固定在tornado边界，相邻历史目录用例按真实历史池容量构造。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 139,
+    "rawLog": "../../tmp/wildfire-v064-build.log",
+    "rawLogSha256": "5cf2275c03947942b0e8455bf9b7ea41495eeb02213eaa6467295f3bff1b9897",
+    "app": "dist/assets/index-Di2666Zi.js",
+    "appSha256": "2e471c47e28c9ad61e8fddad48021273b39a8d063c95752dedb6d25894d018cb",
+    "worker": "dist/assets/worker-CMrWW_93.js",
+    "workerSha256": "54369e6606ca9a5375fea4a0bc61a262468d664b967e8b36bcc8af10ad7b9199",
+    "css": "dist/assets/index-0iwQsGQW.css",
+    "cssSha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+  },
+  "research": {
+    "manifest": "../research/wildfire-history.json",
+    "manifestSha256": "c4e3f36db5ebcb76aee190a6c5fb00dcdd1d612c08418f88ff16fc492614e6ec",
+    "clientCard": "../research/images/phoenix-wildfire-client-dec2019.jpg",
+    "clientCardSha256": "7c94d5de1aff5a96093cf360647aefae1607fef939e7e790c34314d508b4eeba",
+    "visuallyReviewed": true,
+    "primaryCardConfirms": [
+      "3费",
+      "15秒冷却",
+      "450/600/1050",
+      "4/5.5/7秒",
+      "矩形持续伤害",
+      "二星涅槃解锁"
+    ],
+    "localUnconfirmed": [
+      "伤害数列按总预算解释",
+      "0.5秒起手、0.5秒一跳和5×3棋格",
+      "全程可中断维持",
+      "初始25能量",
+      "800/1600火种由二手正文交叉说明，未取得被动原卡",
+      "3秒孵化、每战一次及不重置冷却"
+    ],
+    "boundary": "七月玩家实测基础字段、十二月活动卡和2020二手说明分开；保留当前早期攻城目录，不将后期法术等同早期异能吸血。"
+  },
+  "art": {
+    "manifest": "../research/wildfire-assets.json",
+    "manifestSha256": "4a79014a926ba12f197aeb5b19717d3089580853a598d0f21a4383268b360252",
+    "tool": "built-in image_gen edit",
+    "newImages": 2,
+    "nativeBytesRetained": true,
+    "rasterPostprocessing": false,
+    "outputs": [
+      {
+        "star": 1,
+        "path": "../../public/assets/units/phoenix-wildfire-blue.png",
+        "sha256": "1036e616981a07b489fad4d91e03a293011ed9c8eedfd4e418d05c90c93dfd52",
+        "size": [
+          1374,
+          1145
+        ],
+        "bytes": 1833687,
+        "fullyTransparentPixels": 827326,
+        "alphaMax": 255,
+        "corners": [
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "star": 3,
+        "path": "../../public/assets/units/phoenix-wildfire-gold.png",
+        "sha256": "7053f6f5ef53650f386f4c0e9cd2dd831b28766f2689ce0f4b64e3a91049ee6d",
+        "size": [
+          1374,
+          1145
+        ],
+        "bytes": 1719493,
+        "fullyTransparentPixels": 836764,
+        "alphaMax": 255,
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "preserved": [
+      {
+        "star": 2,
+        "path": "../../public/assets/units/phoenix.png",
+        "sha256": "66b7bc7d888984aa9ec120e076d4dcfa22fef1d0dca57f25b585924f9fda8ceb"
+      },
+      {
+        "form": "egg",
+        "path": "../../public/assets/units/phoenix-egg.png",
+        "sha256": "585d1b54d0bbdbb98c6945d59e939a22536a538708d38dc6424e732cb90a31d9"
+      }
+    ],
+    "rawAlphaInspection": "../../tmp/wildfire-v064-alpha.jsonl",
+    "rawAlphaSha256": "0f2fd54175b6a3d052c25c6a4a57d759159a3533482877a595a3f6b68dc20adc",
+    "scope": "现有项目角色的蓝/金配色编辑，不是原版模型提取；蓝图两个角alpha为1/255，未用后处理改写。"
+  },
+  "catalog": {
+    "newCost": 3,
+    "newCopies": 25,
+    "previousCost": 4,
+    "previousCopies": 15,
+    "preservedOldCatalogues": true,
+    "realBuySellConservationVerified": true,
+    "otherUnitsAnd22TraitsPreserved": true,
+    "insectTwoCopyMergePreserved": true
+  },
+  "ui": {
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "configuration": [
+      "1280x720 desktop",
+      "390x844 responsive viewport"
+    ],
+    "server": "PID30278，0.0.0.0:5174；浏览器已验证当前程序。",
+    "lan": "本轮未重新核验LAN地址，不根据上一轮192.168.31.130推断当前地址。",
+    "normalCampaignRuns": 0,
+    "uniqueDemo": "UI使用WILDFIRE_DEMO三对三正常引擎片段；UI去重后重新进入相同片段，其余为播放/回看，不是经营采样。",
+    "outcome": {
+      "seconds": 17.5,
+      "winner": 1,
+      "blue": {
+        "pulses": 8,
+        "hits": 11,
+        "normalDamage": 108,
+        "skillDamage": 45,
+        "shieldDamage": 777
+      },
+      "red": {
+        "formed": 1,
+        "pulses": 0,
+        "interrupted": 1,
+        "eggs": 1,
+        "hatches": 1,
+        "brokenEggs": 0
+      },
+      "gold": {
+        "pulses": 14,
+        "hits": 5,
+        "normalDamage": 1283,
+        "skillDamage": 300
+      }
+    },
+    "observations": [
+      {
+        "seconds": 3,
+        "redHp": 745,
+        "redMaxHp": 800,
+        "eggs": 1,
+        "hatches": 0,
+        "form": "egg"
+      },
+      {
+        "seconds": 8,
+        "redHp": 118,
+        "redMaxHp": 900,
+        "hatches": 1,
+        "bluePulses": 4,
+        "goldPulses": 4,
+        "goldSkillDamage": 240
+      }
+    ],
+    "mobileBattlefield": {
+      "canvas": {
+        "bottom": 438.375,
+        "height": 363.375,
+        "left": -97.5,
+        "right": 487.5,
+        "top": 75,
+        "width": 585,
+        "x": -97.5,
+        "y": 75
+      },
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "mobileAnalysisBefore": {
+      "body": {
+        "bottom": 761.6875,
+        "height": 589.390625,
+        "left": 47.75,
+        "right": 342.25,
+        "top": 172.296875,
+        "width": 294.5,
+        "x": 47.75,
+        "y": 172.296875
+      },
+      "close": {
+        "bottom": 136.296875,
+        "height": 44,
+        "left": 298.25,
+        "right": 342.25,
+        "top": 92.296875,
+        "width": 44,
+        "x": 298.25,
+        "y": 92.296875
+      },
+      "pageWidth": 390,
+      "panel": {
+        "bottom": 780.6875,
+        "height": 717.390625,
+        "left": 28.75,
+        "right": 361.25,
+        "top": 63.296875,
+        "width": 332.5,
+        "x": 28.75,
+        "y": 63.296875
+      },
+      "scrollTop": 0,
+      "width": 390
+    },
+    "mobileAnalysisAfter": {
+      "close": {
+        "bottom": 136.296875,
+        "height": 44,
+        "left": 298.25,
+        "right": 342.25,
+        "top": 92.296875,
+        "width": 44,
+        "x": 298.25,
+        "y": 92.296875
+      },
+      "pageWidth": 390,
+      "scrollTop": 844,
+      "width": 390
+    },
+    "resourcesUnchanged": true,
+    "consoleErrorsOrWarnings": [],
+    "viewportReset": true,
+    "rawEvidence": "../../tmp/wildfire-v064-ui.json",
+    "rawEvidenceSha256": "9c8fea863c15457bcf97b8501b0efd04eeb47891ddb247a3cfcda0f85e1ce248",
+    "screenshots": [
+      {
+        "path": "../../tmp/wildfire-v064-analysis-desktop.jpg",
+        "sha256": "c05b0fbe0b235ea5231b76f6aeec69cf5321b9c5bd62765f96575f20216259f1"
+      },
+      {
+        "path": "../../tmp/wildfire-v064-egg.jpg",
+        "sha256": "54e393fa101a11dca4c2697122229cbb11aab302e8b56af518b62fc3ab424c09"
+      },
+      {
+        "path": "../../tmp/wildfire-v064-flames.jpg",
+        "sha256": "d03fb2f2c30a4604db4608e9fa526bf3b02eac2ea8d7fd27ad03cf936c154941"
+      },
+      {
+        "path": "../../tmp/wildfire-v064-mobile-analysis.jpg",
+        "sha256": "fbdea9303fbcd6bd05de4a2e158a7cc422dda8624bff0735a98564e3b9f7828e"
+      },
+      {
+        "path": "../../tmp/wildfire-v064-mobile390.jpg",
+        "sha256": "5b3c790c2dccf01b583194ae1f801070e55c8739f06ed764dbd2006800a02d08"
+      },
+      {
+        "path": "../../tmp/wildfire-v064-start.jpg",
+        "sha256": "949a82eda499232d5979a7981b2338b89065c0a9d135322993d5eb7cffc78a99"
+      }
+    ],
+    "limits": [
+      "响应式视口不是实际触屏设备",
+      "本轮没有复验320px、真实弱设备或后期经营平衡"
+    ]
+  },
+  "sourceFingerprints": {
+    "package.json": "a6a8e9a12a3f57bca1b6b3901302d679b59c40df43b054d39be6700758ebfebd",
+    "src/compute/job.ts": "ad6b61f3163b76c0459385516e454d88c98bb900f2f06b5e19a70e89f8bbfa62",
+    "src/data/catalog.ts": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d",
+    "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba",
+    "src/data/skills.ts": "f528daee3c39bd4562a3118de48f3861d9b2d5acabfc4a5e31eddd1095b22bcb",
+    "src/data/traits.ts": "8e34a024ccecbb57c06e2978e7f5a30b184ba96ab30d488f06a7222c36c9940f",
+    "src/data/unit-stats.ts": "5750c8f78233bcf01034c3d22452ebeb2c62539ff63eeaa60305d8660f773bf9",
+    "src/data/units.ts": "d92ea7cfcdba12732406ec3a89b31563ae56e14d9033f97322d4b4c52da9990d",
+    "src/data/wildfire-demo.ts": "cb4e6cb96e2d5b60f25f83bf53159c1d0e17dd9924e0c89fe1e5c6d7a26c49c4",
+    "src/engine/abilities.ts": "5cdcbf096b4cf43deefb2af2d927b3aee9e23b1bafe6de5b0ff847be49825378",
+    "src/engine/ai.ts": "fefa0aabae1c04fd8158a801640e7bdf7416f3f720f7ad280e9cc2b177ecf302",
+    "src/engine/battle-analysis.ts": "b70d37c511448bdedf2356669e6e985d2654811105e08c76fb8ed2592205cd96",
+    "src/engine/battle.ts": "1b706c654b5555ea756816715a1e4126d72200fbd06ea8d155368c7ab11b29ed",
+    "src/engine/equipment.ts": "3d550e81103f770c5d051db22291368fe2b1c6079a55b5dddb51012da25241f2",
+    "src/engine/game.ts": "e4ebe95b0da39ae3a77fa9a9190c64a7c5c328507e132a4693cfe722b62a299b",
+    "src/engine/infantry-skills.ts": "d9f63278972aca474b1a912cad8951c31349b0520c21ce5c909355203191914a",
+    "src/engine/persistence.ts": "2e9dcabd5460a61be75d6b1a00c9f9f5bec473a342fd8b7029b4ed06577c9ad2",
+    "src/engine/phoenix.ts": "c91d572fae831a992472bdaffee0d402506375c185783f7d70ff7c8cfaa82629",
+    "src/engine/progression.ts": "351d3b922cef649a626f293e95da3b9b5e32d2f24df1cefef6160770a71b9f12",
+    "src/engine/rotation.ts": "31004f784695125cd6b187409d022748a397f8b153593f748de0bf5d469f48d3",
+    "src/engine/summons.ts": "b4bed3bfd8e10b7a76d321cd81b8cbfc2eecf06c2108e214a35843e501115271",
+    "src/engine/triggers.ts": "836641787c61104179a5fc25819a4dd0a66869bb24e6bddc13e5aa5a8e0e1438",
+    "src/engine/types.ts": "9996b6319239d3760fd563ed7b7de243b8b736e466c678d3b1801def1becff0a",
+    "src/engine/wildfire.ts": "f1bee9949843801b3c9dd1ed6e0da7a11d8a1b41d8dde9a9290d40ad1ac4e100",
+    "src/main.ts": "d379c55550b008e65d987a88c8c71838b876408ab0b5f8792652fb38a1807fbf",
+    "src/render/battle-inspection.ts": "0086197a21002974f8bf913f202c16d3d91949f3cc1b85a590f57f8d371cdf7a",
+    "src/render/ranged.ts": "692900b42979e231fd7396a1c16377400f7ac746cf996b1351c2f52f7bc5bccf",
+    "src/render/scene.ts": "5b6d5c0fe6f92b045f2e60c4462a04b952e68fb810ea98a910089b4cfe14546f",
+    "src/render/skill-effects.ts": "f7b8a71e752d43c060058dab086d9ef2041500b0100d34ce8f2edbe3731e36eb",
+    "src/render/wildfire.ts": "f3580fd7d8e842bed497c6b6325dff0578e0870799738a09f875a54e66d83e16",
+    "src/ui/battle-analysis.ts": "dd8114e4129983462a2871c36cfc4cf1769bd2c0c66fbe4622489c9f90c7b93b",
+    "src/ui/bench-tooltip.ts": "4be6d268b07f9c4ff71a22edde23ddc19d72db5442daefba484528d292dac273",
+    "src/ui/deployment.ts": "8ac84260279ae72f05f83a65420566f34c31a80f22c3a2e62eb44c459807e84e",
+    "src/ui/equipment.ts": "12e68b16439b06ef3350e0108fc90846b1bc74ba26873eef6f0413d0522460cc",
+    "src/ui/match-summary.ts": "443e7d3743f952e043081b8eb00ce345bfe145bc4caf51a67850fa189981ee3c",
+    "src/ui/scouting.ts": "115b3727a228ed622e31ceb1ec11c49214b59f6b30e4c0a63a9373d2a99626db",
+    "src/ui/unit-codex.ts": "844c977236252871c4434e413b8cdc7f71121d672592e6797d66f72f742fa9f4",
+    "src/visual.css": "01c68d7ed315b2e9b74dfda47706dba5dfd35f6b49a24d7c66dbdec4ed2fa406"
+  },
+  "notRun": [
+    "全量测试",
+    "完整经营局",
+    "大批量对战或经济采样",
+    "真实触屏及弱设备测试"
+  ],
+  "remaining": [
+    "燎原总量/逐秒、维持和涅槃被动的原始证据",
+    "统一历史切片及伤害/回能公式",
+    "其余原型技能",
+    "整体难度、多构筑及高星经营",
+    "真实触屏和弱设备性能"
+  ],
+  "git": {
+    "branch": "dev",
+    "baseCommit": "489689a8a6381ce6a1d1feb8be159823e5ea9d77",
+    "newCommitCreated": false,
+    "newChangesPushed": false,
+    "note": "此前push请求已完成；本次目标续作改动保留未提交。"
+  }
+}

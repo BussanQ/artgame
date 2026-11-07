@@ -1,0 +1,80 @@
+{
+  "rules": "singleplayer-0.64",
+  "unit": "phoenix",
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "useCase": "precise-object-edit",
+  "inputs": [
+    {
+      "path": "../../public/assets/units/phoenix.png",
+      "role": "edit-target",
+      "sha256": "66b7bc7d888984aa9ec120e076d4dcfa22fef1d0dca57f25b585924f9fda8ceb"
+    },
+    {
+      "path": "images/phoenix-wildfire-client-dec2019.jpg",
+      "role": "supporting-client-palette-reference",
+      "sha256": "7c94d5de1aff5a96093cf360647aefae1607fef939e7e790c34314d508b4eeba"
+    }
+  ],
+  "outputs": [
+    {
+      "star": 1,
+      "prompt": "Use case: precise-object-edit\nAsset type: transparent 2.5D auto-chess unit sprite, one-star blue-flame Phoenix.\nInput images: Image 1 is the edit target (the existing project Phoenix sprite); Image 2 is only supporting historical color reference (use the blue/cyan ONE-STAR thumbnail at the bottom left; do not copy its interface).\nPrimary request: create a blue-flame color variant of the SAME Phoenix. Change its orange/red flight feathers, crest and tail to rich azure and indigo with luminous cyan/ice-blue flame tips. Keep the existing bird identity, beak, fully spread wings, long curling tail, three-quarter facing-right pose, feather structure and restrained gold armor ornament. Keep a small jade chest jewel. Match the original polished illustrated 3D game-unit rendering and fine feather details. The silhouette must remain unmistakably the same bird, readable when small.\nComposition: one whole bird only, fully contained, centered in a landscape canvas with transparent margin around all wing and tail tips; no clipped feathers. Similar scale and camera to the edit target.\nBackground: actual alpha transparency with clean edges; retain semi-transparent blue flame tips only close to feathers. No broad glow cloud, no black/white/checkerboard background, no floor, no pedestal or shadow plate.\nConstraints: no extra birds, no text, no stars, no border, no UI, no watermark. Do not redesign the anatomy or add weapons.",
+      "nativePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-4a7542e7-a17b-4eea-b3ab-c089c916ab02.png",
+      "path": "../../public/assets/units/phoenix-wildfire-blue.png",
+      "sha256": "1036e616981a07b489fad4d91e03a293011ed9c8eedfd4e418d05c90c93dfd52",
+      "size": [
+        1374,
+        1145
+      ],
+      "bytes": 1833687,
+      "fullyTransparentPixels": 827326,
+      "fullyOpaquePixels": 102,
+      "alphaMax": 255,
+      "corners": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "nativeBytesRetained": true,
+      "rasterPostprocessing": false
+    },
+    {
+      "star": 3,
+      "prompt": "Use case: precise-object-edit\nAsset type: transparent 2.5D auto-chess unit sprite, three-star gold-flame Phoenix.\nInput images: Image 1 is the edit target (existing project Phoenix sprite); Image 2 is supporting historical palette reference only (the GOLD three-star thumbnail at the bottom left; no interface copying).\nPrimary request: make a GOLD-FLAME star-evolved color variant of the SAME Phoenix. Recolor the white and orange/red feathers to layered rich sun-gold, amber-gold and pale ivory-gold with yellow-white flame tips. The whole bird should read as golden, clearly different from the red/orange source and the blue one-star form. Keep the same identity, beak, fully spread wings, long curling tail, three-quarter facing-right pose, ornate but restrained gold armor and small jade chest jewel. Preserve the same polished illustrated 3D game rendering, feather anatomy and silhouette.\nComposition: one whole bird only. Scale the bird slightly down inside the canvas so EVERY wingtip, crest and tail tip has at least a small transparent margin; no part of the silhouette may touch the canvas border. Landscape composition, fully contained and centered.\nBackground: actual alpha transparency, clean edges; semi-transparent golden flame tips close to the feathers. No broad aura cloud, no black/white/checkerboard background, no pedestal, floor, cast-shadow plate or background objects.\nConstraints: no extra birds, no text, stars, frame, UI or watermark. Do not add weapons, change pose or redesign anatomy.",
+      "nativePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-acc0f62c-5f48-4ef3-830d-7ceb472c1dc8.png",
+      "path": "../../public/assets/units/phoenix-wildfire-gold.png",
+      "sha256": "7053f6f5ef53650f386f4c0e9cd2dd831b28766f2689ce0f4b64e3a91049ee6d",
+      "size": [
+        1374,
+        1145
+      ],
+      "bytes": 1719493,
+      "fullyTransparentPixels": 836764,
+      "fullyOpaquePixels": 142,
+      "alphaMax": 255,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nativeBytesRetained": true,
+      "rasterPostprocessing": false
+    }
+  ],
+  "preserved": [
+    {
+      "star": 2,
+      "path": "../../public/assets/units/phoenix.png",
+      "sha256": "66b7bc7d888984aa9ec120e076d4dcfa22fef1d0dca57f25b585924f9fda8ceb"
+    },
+    {
+      "form": "egg",
+      "path": "../../public/assets/units/phoenix-egg.png",
+      "sha256": "585d1b54d0bbdbb98c6945d59e939a22536a538708d38dc6424e732cb90a31d9"
+    }
+  ],
+  "review": "两张原生图和战场实际渲染均已目视。主体羽翼、冠饰、玉石和卷尾保持项目识别，配色以客户端一星蓝、二星红、三星金缩略图为参考；不是原版模型提取。蓝图两个角的alpha为1/255，零alpha像素与半透明边缘如实记录，没有通过后处理改写。两图是有透明留白的原生输出；蓝图上方个别火焰尖端接近边界，不宣称像素级完全复刻。"
+}

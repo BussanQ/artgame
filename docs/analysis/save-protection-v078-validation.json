@@ -1,0 +1,172 @@
+{
+  "increment": "0.78存档恢复后续",
+  "saveSchema": 77,
+  "combatVersion": "support-actions",
+  "date": "2026-11-07",
+  "scope": "存储模块与模板、静态脚本及生产构建；不运行对战、完整经营局或全量测试。",
+  "base": "已推送5a762b4及未提交的0.77／0.78工作树；本轮不提交或推送。",
+  "tests": {
+    "distinctPassed": 30,
+    "newStoreAndMarkup": 24,
+    "legacyPersistence": 6,
+    "runs": [
+      {
+        "command": "npx vitest run tests/save-protection.test.ts",
+        "passed": 22,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "command": "npx vitest run tests/persistence.test.ts -t '保存准备阶段|损坏主存档|拒绝不兼容版本|写入失败|旧标签页|卡池不守恒'",
+        "passed": 6,
+        "failed": 0,
+        "skipped": 5
+      },
+      {
+        "command": "npx vitest run tests/save-protection.test.ts -t '轮转|保留条目|主档写入失败|静默丢弃'",
+        "passed": 5,
+        "failed": 0,
+        "skipped": 19
+      },
+      {
+        "command": "npx vitest run tests/save-protection.test.ts",
+        "passed": 24,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "note": "首次22项新模块与6项回归通过；归档补强为同时保留原备份／损坏原文后定向5项、最终新模块24项通过。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 179,
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "bytes": 596,
+        "sha256": "1b640a0189bbc8edb1af1a0188e1dd073c32bd17f4975786fb5b67c8f7d4ba65"
+      },
+      {
+        "path": "dist/assets/index-CCbEP043.css",
+        "bytes": 88839,
+        "sha256": "5be1000c7fbc3ed613591a813c4c8c0557e945bdb41da5c8848661b341075af1"
+      },
+      {
+        "path": "dist/assets/index-CJe8XoBl.js",
+        "bytes": 439971,
+        "sha256": "81c80fb74a661888fc92a4f9768cbf0ae62ee8e4ee1c634dbd943a37ad91db74"
+      },
+      {
+        "path": "dist/assets/worker-DRhsJ-d3.js",
+        "bytes": 230647,
+        "sha256": "4d3c247c3929df82562b20c5c1ef494fd9b5f47034a985bab7f2c63ef8439271"
+      }
+    ],
+    "workerComparedWithSupportActions": {
+      "previous": "4d3c247c3929df82562b20c5c1ef494fd9b5f47034a985bab7f2c63ef8439271",
+      "current": "4d3c247c3929df82562b20c5c1ef494fd9b5f47034a985bab7f2c63ef8439271",
+      "unchanged": true
+    }
+  },
+  "coverage": [
+    "不兼容默认只读，不自动替换",
+    "准备／战斗／结算／终局资源与播放状态保持",
+    "原主档、当时备份及损坏字符串保留",
+    "既有条目与字段不覆盖、重复重试不追加",
+    "当前局先校验",
+    "保留区失败／主档失败／静默丢写不误报",
+    "未知保留区保持原文且仍能导出",
+    "检测到多窗口变化时停止替换",
+    "导出本身不写存储",
+    "普通保存实际写入及错误状态恢复",
+    "顶部未保存入口、写入按钮禁用、只读导出与冲突入口"
+  ],
+  "archive": {
+    "key": "red-tides.singleplayer.save.preserved",
+    "schema": 1,
+    "optionalEntryFields": [
+      "backup",
+      "recovery"
+    ],
+    "mainSaveFormatChanged": false,
+    "limits": "归档字符串超过6000000字符或格式未知时停止保护替换；浏览器配额／权限失败保留原主档，不自动删除历史数据。",
+    "concurrency": "写入前后再次核对，不声称跨标签页数据库事务锁。"
+  },
+  "browser": {
+    "status": "not-verified",
+    "testOrigin": "http://127.0.0.1:5187/",
+    "harness": {
+      "path": "tmp/save-recovery-harness.html",
+      "bytes": 1998,
+      "sha256": "020d87c492e6d72729e636c14847d7b2cec0d157eba6ee93bd0f9a0279ce96e1"
+    },
+    "harnessSyntaxCheck": "node --check tmp/save-recovery-harness.mjs passed",
+    "server": "Vite启动且运行中；HTTP200只证明服务与静态页面响应。",
+    "serverSession": 4851,
+    "attempts": [
+      {
+        "action": "保留既有交付页并创建隔离测试页",
+        "result": "30秒未响应，运行环境重置，创建是否完成未知"
+      },
+      {
+        "action": "读取现有窗口／标签页状态",
+        "result": "30秒未响应，运行环境重置"
+      },
+      {
+        "action": "连接既有browser2",
+        "result": "30秒未响应，运行环境重置"
+      }
+    ],
+    "storageSeedClicked": false,
+    "existing5174RecoveryClicked": false,
+    "saveClickVerified": false,
+    "refreshVerified": false,
+    "downloadVerified": false,
+    "mobileVerified": false,
+    "screenshots": [],
+    "completion": "浏览器部分已明确记录未完成。"
+  },
+  "sourceFingerprints": [
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 44735,
+      "sha256": "a37e1525c3cdb9fec0f7d750e4662ba53a325167a591957fb8a9bb0c1c7f58c3"
+    },
+    {
+      "path": "src/ui/save-notice.ts",
+      "bytes": 2497,
+      "sha256": "cf95aed7fd325286cad1d2430120e12696e7b3b09d9ecafe093b174f32d2a4e9"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 84022,
+      "sha256": "a621b96835d5487d9fc27c7648f0a9377a01831a38a905352a27c824becccdd5"
+    },
+    {
+      "path": "src/toolbar.css",
+      "bytes": 7522,
+      "sha256": "5b9b1a40ee8fb83edf31074a7d19d6629ef707079bee02dbe586afb4d98b2284"
+    },
+    {
+      "path": "tests/save-protection.test.ts",
+      "bytes": 10873,
+      "sha256": "d92074d4494ca2de50411353faf430f512e121303b69569730f5861d71bf1731"
+    },
+    {
+      "path": "package.json",
+      "bytes": 19551,
+      "sha256": "0f34a6d5195c2e44d487dcfd8360582b7f6fc32762e0f00932450332ee3aba8e"
+    }
+  ],
+  "next": [
+    "先核对仍运行的5187服务和既有浏览器标签，不因观察超时重启或重复创建",
+    "隔离来源有任何存档时测试页拒绝覆盖",
+    "真实购买后保留旧档并启用保存，比较资源与原文",
+    "刷新验证当前进度与禁用保持",
+    "实际下载并核对旧档、当时备份和既有条目",
+    "桌面与390px入口／收起／焦点／按钮／溢出验收",
+    "结束后清理测试页、恢复视口；截图仅保存tmp"
+  ],
+  "remaining": "本功能实际浏览器验收未完成；原始能力统一、整体难度、多构筑与真实设备等完整单机要求也继续保留。"
+}

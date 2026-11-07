@@ -1,0 +1,172 @@
+{
+  "checkedAt": "2026-11-06T05:22:52.331Z",
+  "rules": "singleplayer-0.58",
+  "combatVersion": "shuriken",
+  "kind": "actual-native-browser-UI-not-injected-state",
+  "evidencePath": "tmp/shuriken-v058-ui-evidence.json",
+  "evidenceSha256": "197b86165da1ac017cfc82cc1630bd426508e9dcbe3b8cc2f08db01b07655ada",
+  "freshCampaign": {
+    "origin": "http://127.0.0.1:5178/",
+    "mode": "rotation",
+    "difficulty": "standard",
+    "bannedSeries": [
+      "骑兵",
+      "异虫",
+      "灵能"
+    ],
+    "available": 51,
+    "noSeedOrResourceInjection": true,
+    "noRestartForFavorableOffers": true,
+    "transactions": [
+      "R1 buy repair1, irondog1, vine2: 10→6 gold; ordinary recommendation and combat",
+      "R1 victory +5 and choose crystal; R2 XP5 and paid roll2: 11→4 gold",
+      "R2 ninja3: 4→1 gold; equip crystal; master1: 1→0 gold; ordinary recommendation",
+      "Reload preserved commander/armory/bench text exactly",
+      "R2 victory 10.75sec; choose life core, automatically enter R3 prepare"
+    ],
+    "final": {
+      "round": 3,
+      "hp": 100,
+      "gold": 5,
+      "level": 4,
+      "xp": 3,
+      "field": 4,
+      "bench": 1,
+      "inventory": [
+        "core"
+      ],
+      "ninjaItems": [
+        "crystal"
+      ]
+    },
+    "scopeLimit": "Partial normal campaign; not a completed current-version human match.",
+    "actualNinja": {
+      "normalDamage": 171,
+      "skillDamage": 745,
+      "damage": 916,
+      "casts": 1,
+      "launched": 1,
+      "landings": 1,
+      "pulses": 5,
+      "effectiveContacts": 7,
+      "died": true,
+      "atSixSeconds": {
+        "died": true,
+        "pulses": 2,
+        "normalDamage": 171,
+        "skillDamage": 396
+      },
+      "postDeathPulsesVerified": true
+    }
+  },
+  "demo": {
+    "budget": "unequal showcase, not economy evidence",
+    "seconds": 12.25,
+    "winner": 0,
+    "ninja": {
+      "star": 2,
+      "damage": 2646,
+      "normalDamage": 1028,
+      "skillDamage": 1618,
+      "shieldDamage": 132,
+      "launched": 1,
+      "landings": 1,
+      "pulses": 5,
+      "hits": 10
+    },
+    "actualThreeSecondInspector": "×\n忍者熊猫 己方 · ★★\n生命\n1056 / 1100\n能量\n60 / 100\n攻击\n132\n间隔\n1.10 秒\n护甲\n2.0\n法术减伤\n20%\n飞镖发出 1枚 · 落地 1次\n刃阵脉冲 2次 · 有效波及 6人次\n刃阵半径 1.6格 · 余3跳 · 3.0s\n风魔冷却 17.3s\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起",
+    "resourceTextsBeforeAfterEqual": true,
+    "numberTimingPolish": {
+      "checkedAt": "2026-11-06T05:21:38.166Z",
+      "note": "持续技能伤害数字按实际脉冲即时显示，普通投掷继续使用自己的飞行时序。",
+      "inspector": "×\n忍者熊猫 己方 · ★★\n生命\n1056 / 1100\n能量\n60 / 100\n攻击\n132\n间隔\n1.10 秒\n护甲\n2.0\n法术减伤\n20%\n飞镖发出 1枚 · 落地 1次\n刃阵脉冲 2次 · 有效波及 6人次\n刃阵半径 1.6格 · 余3跳 · 3.0s\n风魔冷却 17.3s\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起"
+    }
+  },
+  "legacy": {
+    "origin": "http://127.0.0.1:5177/",
+    "round": 8,
+    "hp": 81,
+    "gold": 13,
+    "level": 5,
+    "xp": 5,
+    "field": 5,
+    "bench": 7,
+    "equipped": 3,
+    "ninjaPrice": 1,
+    "ninjaSale": 1,
+    "currentAbility": "ranged-shuriken",
+    "oldRoundSevenAnalysisExactlyEqual": true,
+    "previousEvidenceSha256": "874ea715e170fc20b1610eca2814ecdd68545375bafae57f4ba875cc0dafa695"
+  },
+  "responsive": [
+    {
+      "kind": "demo-mobile-390",
+      "geometry": {
+        "scrollWidth": 390,
+        "width": 390
+      },
+      "inspector": "×\n忍者熊猫 己方 · ★★\n生命\n1056 / 1100\n能量\n60 / 100\n攻击\n132\n间隔\n1.10 秒\n护甲\n2.0\n法术减伤\n20%\n飞镖发出 1枚 · 落地 1次\n刃阵脉冲 2次 · 有效波及 6人次\n刃阵半径 1.6格 · 余3跳 · 3.0s\n风魔冷却 17.3s\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起"
+    },
+    {
+      "kind": "demo-mobile-320",
+      "geometry": {
+        "scrollWidth": 320,
+        "width": 320
+      },
+      "inspector": "×\n忍者熊猫 己方 · ★★\n生命\n1056 / 1100\n能量\n60 / 100\n攻击\n132\n间隔\n1.10 秒\n护甲\n2.0\n法术减伤\n20%\n飞镖发出 1枚 · 落地 1次\n刃阵脉冲 2次 · 有效波及 6人次\n刃阵半径 1.6格 · 余3跳 · 3.0s\n风魔冷却 17.3s\n步兵减甲 −3\n\n点击棋子固定详情 · 点击空处或按 Esc 收起"
+    }
+  ],
+  "consoleAtPrimaryCheck": {
+    "current": [],
+    "legacy": []
+  },
+  "viewportOverrideReset": true,
+  "finalDefaultViewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "screenshotPolicy": "All QA screenshots are repository-root tmp/ ignored by Git; these links require the local workspace.",
+  "screenshots": [
+    {
+      "path": "tmp/shuriken-v058-codex.jpg",
+      "sha256": "1676de4094a3d994d5ed3d8f30bde13982f9cd65f5172b99d7650e92800d4d12"
+    },
+    {
+      "path": "tmp/shuriken-v058-normal-purchase.jpg",
+      "sha256": "16b963d774924b274f8779a62ab2197d204fd11bd9073c5c835dd524041d3e3c"
+    },
+    {
+      "path": "tmp/shuriken-v058-normal-r2-analysis.jpg",
+      "sha256": "53ec7d3cf0f0bfa4849bde45b76bed0371de08e0d4d41419b07d140559e41738"
+    },
+    {
+      "path": "tmp/shuriken-v058-demo-analysis.jpg",
+      "sha256": "20b02df3b47036fe5f8dbff2ae665a780988259f7b7844eaa1b81ddbf860563d"
+    },
+    {
+      "path": "tmp/shuriken-v058-desktop.jpg",
+      "sha256": "21236ac87f903b8f0e3663e2561f24b6fbc6776a54e9eb39641a7214f8cd5d4e"
+    },
+    {
+      "path": "tmp/shuriken-v058-mobile.jpg",
+      "sha256": "dc8446734a394f68f1f94d42ffdb19b37fca6039d843b0deaabe83be10260e35"
+    },
+    {
+      "path": "tmp/shuriken-v058-mobile-320.jpg",
+      "sha256": "ceb641ef4872aab512759b4faa303f859ef1432f1813af529446263c321c256a"
+    },
+    {
+      "path": "tmp/shuriken-v058-normal-r3.jpg",
+      "sha256": "cd0f850ae757289d6d2bd0bca0b6aace2a0fc316ad63e692573a212f21bfb3dd"
+    },
+    {
+      "path": "tmp/shuriken-v058-legacy-catalog.jpg",
+      "sha256": "d1b911caadd50d725e9744a25b37244ef9c875121a346a427f3e2243971e90a0"
+    }
+  ],
+  "notes": [
+    "The exit-demo menu offers a direct exit button. One incorrect submenu query was corrected after reading fresh UI; it was not an application failure.",
+    "After the final numbers-only timing adjustment, the same demo scene was revisited and desktop/390/320 screenshots refreshed; campaign resources again matched.",
+    "User service 5174 was checked by HTTP separately; GUI workflow uses isolated QA origins."
+  ]
+}

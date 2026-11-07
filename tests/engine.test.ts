@@ -40,8 +40,8 @@ const piece = (
 ): Piece => ({ uid, defId, position, star });
 describe("自走棋必要模块测试", () => {
   it("相同 seed 得到相同商店，初始化与反复刷新保持共享卡池守恒", () => {
-    const a = createGame(42),
-      b = createGame(42);
+    const a = createGame(42, "classic"),
+      b = createGame(42, "classic");
     expect(a).toEqual(b);
     a.players[0].gold = 200;
     for (let n = 0; n < 40; n++) {
@@ -50,7 +50,7 @@ describe("自走棋必要模块测试", () => {
     }
   });
   it("购买和出售归还准确份数，金币不足不改变状态", () => {
-    const g = createGame(),
+    const g = createGame(undefined, "classic"),
       p = g.players[0];
     expect(buy(g, p, 0)).toBe(true);
     conservation(g);
@@ -64,7 +64,7 @@ describe("自走棋必要模块测试", () => {
     expect(g).toEqual(before);
   });
   it("九枚合成三星，优先保留场上位置", () => {
-    const p = createGame().players[0];
+    const p = createGame(undefined, "classic").players[0];
     p.pieces = Array.from({ length: 9 }, (_, i) =>
       piece(i, "guard", i === 0 ? 35 : null),
     );
@@ -72,7 +72,7 @@ describe("自走棋必要模块测试", () => {
     expect(p.pieces).toEqual([{ ...piece(0, "guard", 35, 3), items: [] }]);
   });
   it("备战席满但可以合成时允许购买，否则拒绝且不扣金", () => {
-    const g = createGame(),
+    const g = createGame(undefined, "classic"),
       p = g.players[0];
     p.gold = 99;
     p.shop = ["guard"];
@@ -92,7 +92,7 @@ describe("自走棋必要模块测试", () => {
     expect(p.gold).toBe(gold);
   });
   it("人口限制、越界拒绝、满人口交换和战斗阶段禁操作", () => {
-    const g = createGame(),
+    const g = createGame(undefined, "classic"),
       p = g.players[0];
     p.level = 1;
     p.pieces = [piece(1, "guard", 35), piece(2, "sniper")];
@@ -137,7 +137,7 @@ describe("自走棋必要模块测试", () => {
     }
   });
   it("结算幂等、锁定商店保留，并在多轮 AI 演习中保持卡池守恒", () => {
-    const g = createGame(87),
+    const g = createGame(87, "classic"),
       p = g.players[0];
     buy(g, p, 0);
     move(g, p, p.pieces[0].uid, 35);

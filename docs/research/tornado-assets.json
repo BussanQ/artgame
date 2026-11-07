@@ -1,0 +1,43 @@
+{
+  "rules": "singleplayer-0.63",
+  "unit": "winddragon",
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "useCase": "background-extraction",
+  "prompt": "Use case: background-extraction\nAsset type: transparent 2.5D auto-chess unit sprite for a TypeScript browser game.\nInput images: Image 1 is the EDIT TARGET, the project's existing ImageGen wind dragon. Image 2 is a supporting historical client-card reference for the wind ability only; do not reproduce its interface.\nPrimary request: extract and clean the dragon from Image 1 into a genuinely transparent-background PNG. Keep its recognizable character, pose, materials, and painterly polished 3D game-art style. Preserve the jade-green scales, ivory-white mane and whiskers, branching pale horns, gold crown and armor, four clawed feet, curled tail, and small pale mint wind orb in its open mouth. Preserve the three-quarter view facing right and entire subject.\nScene/backdrop: actual alpha transparency outside the dragon; remove all beige/black haze, spotlight background, floor, and cast shadow. No opaque or semitransparent rectangular background or checkerboard pattern.\nComposition: one full-body character only, all horns, whiskers, feet and tail inside the canvas with a small clean margin. Silhouette readable at about 100 pixels tall.\nConstraints: change only background extraction and edge cleanup; keep the subject design, green/ivory/gold palette, proportions, and stance. No pedestal, scenery, giant tornado behind it, extra characters, UI, letters, labels, logos, or watermark. Preserve native transparent alpha in the returned image.",
+  "inputs": [
+    {
+      "path": "../../public/assets/units/winddragon.png",
+      "role": "edit-target",
+      "sha256": "40200e03c34c157a1eeee08e7f7e4ad52f68c8d93c22f40ec444e6405aadb098"
+    },
+    {
+      "path": "images/winddragon-tornado-client-dec2019.jpg",
+      "role": "supporting-client-reference",
+      "sha256": "b9d616c2204b0f92689f3e27fd4223fd57213d2672a975a682e0e278565540e0"
+    }
+  ],
+  "output": {
+    "nativePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-c648a2d9-b335-4933-9430-8cfab851f850.png",
+    "path": "../../public/assets/units/winddragon-tornado.png",
+    "sha256": "c5a336d8040c38e1c50401681ac902f370a88b6e58b51a6b815aed3beec72f18",
+    "size": [
+      1536,
+      1024
+    ],
+    "format": "RGBA PNG",
+    "fullyTransparentPixels": 808447,
+    "fullyOpaquePixels": 0,
+    "alphaMax": 254,
+    "corners": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "nativeBytesRetained": true,
+    "rasterPostprocessing": false,
+    "bytes": 2535785
+  },
+  "review": "保留原金冠、绿鳞、白鬃、四足、盘尾与风球；输出已目视，真实零alpha像素通过逐像素读取确认。旧图也已有alpha，旧零alpha像素为795615；本次不根据预览底色声称旧图完全不透明。原图保留给历史版本。"
+}

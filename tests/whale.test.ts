@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -176,7 +177,7 @@ describe("幻鲸完整战斗与集成", () => {
       kind: "replay",
       left,
       right,
-      version: "metamorph",
+      version: CURRENT_COMBAT_VERSION,
     });
     expect(worker.kind).toBe("replay");
     if (worker.kind === "replay") expect(worker.battle).toEqual(battle);
@@ -215,7 +216,7 @@ describe("幻鲸完整战斗与集成", () => {
 describe("0.17存档补充幻鲸卡池", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "不改变原资源与战斗结果", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       let battle: ReturnType<typeof startRound> | undefined;
       if (phase !== "prepare") {
         const player = g.players[0];

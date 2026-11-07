@@ -53,5 +53,3 @@
 - 390×844 终局、390×844 布阵和 320×740 按钮布局可用，页面宽度分别为 390 / 320；控制台未出现 warning / error。已恢复默认视口。
 - 一次真人式操作流程证明这一局的端到端操作可用，不能替代多构筑真人体验、全部结局路径、当前版本难度平衡或真实弱设备性能测试。30 回合上限和冠军分支本次没有在浏览器手动走到，仍与既有模块证据区分。
 - 未使用 Sites；未提交或推送 Git。完整单机目标继续保持进行中。
-
-截图：[终局阵容与历程](../preview-campaign-terminal.png)、[手机终局](../preview-campaign-terminal-mobile.png)、[历史回放标识](../preview-campaign-replay.png)、[手机取消选择](../preview-selection-mobile.png)。

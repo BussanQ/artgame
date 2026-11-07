@@ -1,0 +1,495 @@
+{
+  "pointInTime": "0.74必要模块、构建和局部画面验收后的dev工作区；报告不含自身指纹。",
+  "rules": "singleplayer-0.74",
+  "combatVersion": "siege",
+  "saveSchema": 73,
+  "goalTurnClassification": "progress",
+  "previousGoalTurn": "progress：0.72／0.73记录完成并提交推送ac3699e，远端已核对。",
+  "scope": "投石车架设、普通炮弹与物理溅射；完整单机目标保留。",
+  "tests": {
+    "uniquePassed": 68,
+    "counts": {
+      "siege": 31,
+      "execution": 37
+    },
+    "failedAtCompletion": 0,
+    "fullTestSuiteRun": false,
+    "commands": [
+      "npx vitest run tests/siege.test.ts tests/execution.test.ts --reporter=json --outputFile=tmp/siege-related-tests.json",
+      "npx vitest run tests/siege.test.ts -t '0.73的|旧局仍按' --reporter=json --outputFile=tmp/siege-migration-followup.json"
+    ],
+    "initialFailure": "result迁移fixture缺少必需的已结算历史，validGame正确拒绝；补为合法旧局后定向复验4项通过，非引擎回退。原始67通过／1失败报告保留，不冒称初次全绿。",
+    "staticFollowups": "补战报Pick的siege类型、移除测试对未安装Node类型的依赖、剑奴fixture使用真实字段；后续tsc及生产构建通过。",
+    "traceArtifacts": "同一演示首次模块执行导出tmp，之后仅修改fixture与静态类型，战斗语义保持；模块验证Worker与快算一致。",
+    "runs": [
+      {
+        "report": "tmp/siege-related-tests.json",
+        "passed": 67,
+        "failed": 1,
+        "skipped": 0
+      },
+      {
+        "report": "tmp/siege-migration-followup.json",
+        "passed": 4,
+        "failed": 0,
+        "skipped": 27
+      }
+    ]
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 168,
+    "js": "index-DnaEZtfh.js",
+    "worker": "worker-z_h8qvMi.js",
+    "css": "index-0iwQsGQW.css",
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "bytes": 596,
+        "sha256": "0f93a0816a7c1e9e8b5864425b6597640f27ddd81d2d0132501eef61f92aa111"
+      },
+      {
+        "path": "dist/assets/index-DnaEZtfh.js",
+        "bytes": 417623,
+        "sha256": "cd9504317e9024de94088cebf3e848b3d202aa7c421282b9da117341c22f8f71"
+      },
+      {
+        "path": "dist/assets/worker-z_h8qvMi.js",
+        "bytes": 217096,
+        "sha256": "18fc6886a405f026233ff09b31814e5b620916ca369c942f06db77a15a6870aa"
+      },
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      }
+    ]
+  },
+  "compatibility": {
+    "oldDefinitions": {
+      "versions": 46,
+      "unitsPerVersion": 64,
+      "sha256Unchanged": true,
+      "fixture": "tests/fixtures/pre-v074-siege-replays.json"
+    },
+    "migration": "schema72准备期升级siege，旧battle／result保留execution到下一准备期；旧二费目录、池、商店、持有、禁用、历史和播放资料保持。新局三费，无新增真实卡池键。",
+    "oldSmallReplays": [
+      {
+        "version": "legacy",
+        "frames": 118,
+        "winner": 1,
+        "sha256": "1d60d13ee5bc2c7c4f7bf1b6ffd7d67d330a2b425bb7d41da678654ab61ebd3b"
+      },
+      {
+        "version": "execution",
+        "frames": 50,
+        "winner": 0,
+        "sha256": "34735d5e258cbcfa56bbb810a64046adac10e453a43dd01b21a36c18259ef1c5"
+      }
+    ]
+  },
+  "browser": {
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "observed": [
+      "行军与展开形态、架设后坐、真实在途弹和固定落点。",
+      "12.25秒详情12发／11次落地、1240溅射生命伤害；攻击201、间隔0.66秒、护甲7含步兵减甲3。",
+      "12.75秒战报13发／11次落地、1240溅射；只为片段，不冒称终局UI。",
+      "7.25秒手机详情4发／3次落地、6次溅射／372生命伤害，1枚在途。",
+      "4.25秒回看架设0、炮弹0和溅射0，保留当时普通攻击280伤害。",
+      "图鉴三星3200生命、182攻击、10甲、5格、1秒、三费及新说明。",
+      "手机详情内部滚动后44px关闭仍可见，无水平溢出。"
+    ],
+    "rawText": "tmp/siege-v074-ui.json",
+    "restored": "退出演示、重置图鉴筛选并恢复临时视口，资源与固定禁用文本一致，页面标记交付。",
+    "existingNotice": "开始验收前已有存档版本不兼容；本轮未清空或替换该存档，合法旧档由模块验证。",
+    "limitedWait": "胜利标题定位观察超时，未据此重开演示；继续读取同一片段并回看。完整结局用模块战斗证据，不冒称浏览器看到终局。",
+    "resourcesUnchanged": true,
+    "logs": [],
+    "mobileInspector": {
+      "close": {
+        "bottom": 237.5,
+        "height": 44,
+        "left": 257,
+        "right": 301,
+        "top": 193.5,
+        "width": 44,
+        "x": 257,
+        "y": 193.5
+      },
+      "rect": {
+        "bottom": 391,
+        "height": 201.5,
+        "left": 16,
+        "right": 306,
+        "top": 189.5,
+        "width": 290,
+        "x": 16,
+        "y": 189.5
+      },
+      "scrollWidth": 390,
+      "text": "×投石车 己方 · ★★生命 1600 / 1600能量 炮台不回能攻击 201间隔 0.66 秒护甲 7.0法术减伤 20%架设 1次 · 炮弹发射 4枚 / 落地 3枚溅射命中 6人次 · 实际生命伤害 372攻城炮台 · 全场射程 · 攻击+110 · 攻速+40% · 不再回能在途炮弹 1枚 · 固定落点步兵减甲 −3点击棋子固定详情 · 点击空处或按 Esc 收起",
+      "width": 390
+    },
+    "screenshots": [
+      "tmp/siege-v074-active-desktop.jpg",
+      "tmp/siege-v074-before-form-desktop.jpg",
+      "tmp/siege-v074-codex-mobile.jpg",
+      "tmp/siege-v074-first-desktop.jpg",
+      "tmp/siege-v074-inspector-desktop.jpg",
+      "tmp/siege-v074-inspector-mobile.jpg",
+      "tmp/siege-v074-mobile-scroll.jpg"
+    ]
+  },
+  "sourceReview": {
+    "record": "docs/research/siege-history.json",
+    "newSource": "S71原作者三元测量，直接打开403而索引原文可读；S04目视、S05原HTML和S50本轮普通HTTPS原文交叉。",
+    "unifiedHistoricalBuildConfirmed": false,
+    "localAdaptationsExplicit": true
+  },
+  "art": {
+    "record": "docs/research/siege-assets.json",
+    "mode": "built-in-imagegen",
+    "path": "public/assets/units/chariot-siege-v074.png",
+    "nativeBytesUnmodified": true,
+    "originalClientModelRecovered": false
+  },
+  "sampling": {
+    "newFullCampaigns": 0,
+    "bulkBattleSampling": false,
+    "scope": "必要模块、两段冻结旧小回放和同一炮台演示；无完整经营局或批量对战。"
+  },
+  "git": {
+    "newCommitRequested": false,
+    "changesCommitted": false,
+    "pushed": false,
+    "branch": "dev",
+    "baseCommit": "ac3699e0d77befdfabd20312ec91ddaef2ac1208"
+  },
+  "checkedAt": "2026-11-07T01:46:00.053928+00:00",
+  "scene": {
+    "frames": 60,
+    "lastTick": 59,
+    "seconds": 14.75,
+    "winner": 0,
+    "formedTick": 19,
+    "formedSeconds": 4.75,
+    "sourceContribution": {
+      "siege": {
+        "formed": 1,
+        "fired": 15,
+        "impacts": 15,
+        "splashHits": 21,
+        "splashDamage": 1302,
+        "interrupted": 0,
+        "mode": true
+      },
+      "interruptions": 0,
+      "lostTargets": 0,
+      "uid": 101,
+      "defId": "chariot",
+      "star": 2,
+      "side": 0,
+      "hp": 1376,
+      "maxHp": 1600,
+      "damage": 3260,
+      "normalDamage": 3260,
+      "skillDamage": 0,
+      "reflectedDamage": 0,
+      "energyGiven": 0,
+      "shieldDamage": 0,
+      "received": 224,
+      "healing": 0,
+      "absorbed": 0,
+      "casts": 1,
+      "evades": 0
+    },
+    "fixedPositionAfterForm": true,
+    "workerAndFastOutcomeEqual": true,
+    "inputUnchanged": true
+  },
+  "remainingGoalRequirements": [
+    "未取得统一构建的完整投石车技能卡、原模型和各星级外观。",
+    "增攻、架设与炮弹时序、范围／溅射细则仍含明确的本地适配。",
+    "整体难度、多构筑经营与真实设备性能未由局部演示验收。"
+  ],
+  "sourceFingerprints": [
+    {
+      "path": "README.md",
+      "bytes": 30196,
+      "sha256": "ee512e9728d7c5755e14470835c4472a5f80c3c64eadd47e09e3a7d86de79c44"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 36451,
+      "sha256": "be070b87c69c3b56102efcc9bcf41d093d1141ac578bd06da8830de116c8eeaa"
+    },
+    {
+      "path": "docs/design/roadmap.md",
+      "bytes": 30263,
+      "sha256": "80f91ae4fc26d56a5d6e4fadcf4ccf587ca4c6fdce95ac8c7c0e88367ffa8a33"
+    },
+    {
+      "path": "docs/design/siege.md",
+      "bytes": 5017,
+      "sha256": "64b4b5e469cc336fa2dfe4870a903460588ada0a3722e0c3f85550cde6610b5f"
+    },
+    {
+      "path": "docs/design/single-player-plan.md",
+      "bytes": 38187,
+      "sha256": "7c8c201f03131ac23e9f15fbaaccebc2c4d882421a56d47a95798b3173e84558"
+    },
+    {
+      "path": "docs/design/skills.md",
+      "bytes": 11712,
+      "sha256": "d3d522b1e87a1eef78ba0a4a4a6c1a84c96bf58584881b39b23944680e28e8bd"
+    },
+    {
+      "path": "docs/research/historical-tables.md",
+      "bytes": 13380,
+      "sha256": "b30bc37646a156f1e09e007fb493f70152c275649208903b098801169bb11e18"
+    },
+    {
+      "path": "docs/research/roster-mapping.json",
+      "bytes": 35695,
+      "sha256": "149a9ff32ec6687db7192fe38fb2d0c14d7bf98ee330c5270173174d1d58125c"
+    },
+    {
+      "path": "docs/research/roster-mapping.md",
+      "bytes": 16120,
+      "sha256": "c3f687b4567d31c52947ad38e7ca8bac0a15769aebf1dd565258a6a6e9592cbe"
+    },
+    {
+      "path": "docs/research/siege-assets.json",
+      "bytes": 2387,
+      "sha256": "ac50e6d5a2ee9d7a1ccd6506d1fc233f749e97529196f468a5d58110355147b4"
+    },
+    {
+      "path": "docs/research/siege-history.json",
+      "bytes": 5898,
+      "sha256": "da403c104958dc71e317336909f6f98cb1e347c7b99bc6caa30a41c4fb63ae78"
+    },
+    {
+      "path": "docs/research/sources.json",
+      "bytes": 58006,
+      "sha256": "c812a868cd7d27be6c1c9cef2daecf4c5fef57611fd1b8ae25a536c9382292eb"
+    },
+    {
+      "path": "docs/research/sources.md",
+      "bytes": 25972,
+      "sha256": "28b8efcffb8d707695d5d5c22f1ad53d1f64b46277ae6056592458729d077506"
+    },
+    {
+      "path": "package.json",
+      "bytes": 19237,
+      "sha256": "0caf3b704788d7fad8ff7ebcbb4f31e5bd05d627ea3d7e95599cf86c776ff801"
+    },
+    {
+      "path": "public/assets/units/chariot-siege-v074.png",
+      "bytes": 1895328,
+      "sha256": "2eb2e8cfd067b91780a618c82d71ae46428b2f9f8a286768c7d3bc83b074176f"
+    },
+    {
+      "path": "src/data/siege-demo.ts",
+      "bytes": 494,
+      "sha256": "0557fdcf394d2b01e38b624de0ca8c60ebee50cb77ba58732ec3064cf4f5c0a9"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "bytes": 78749,
+      "sha256": "05773b5198d5b1ebb211a3ce4bc5e8f61bc589eba84a327fd487c5b4093007a1"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "bytes": 9829,
+      "sha256": "8f8cfaa674666e473191c3cb53c0579de00eba50e2ed0f383af10511b968549a"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 21227,
+      "sha256": "11c1859de3e806bddbea2faeb043522461e9d155f33bf68faab435e558b64736"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "bytes": 64089,
+      "sha256": "bb63990ac743993784103f878997650ecc0402d59f3e3671612ed49273acee80"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "bytes": 53784,
+      "sha256": "9a7e12488a6a5fb9088fd9253df556490e8e3a4c9fee377c62262892eb0546e0"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "bytes": 11228,
+      "sha256": "6c8a325c518a52c95e194707146cb8ca26e8e5f632f324c0889ecba06421fbce"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 33067,
+      "sha256": "7227ebb7d77ef115357e6dda3b318d8e9180e3b2bd6e754717c146e688fcb48d"
+    },
+    {
+      "path": "src/engine/equipment.ts",
+      "bytes": 7871,
+      "sha256": "e0ded5abb75ba0c0a171e9353352fc8e71728a91cbef503792112c8f3125caae"
+    },
+    {
+      "path": "src/engine/execution.ts",
+      "bytes": 6889,
+      "sha256": "f501fd78e22c915a41324368e55b09397aa7657fcd07a35f86b364a7c44f2f46"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 38928,
+      "sha256": "a3baf9cf3120bdfa4ea98c2e63aa9b2eb74e857d9a846d67b03cf0f6a904288c"
+    },
+    {
+      "path": "src/engine/siege.ts",
+      "bytes": 3957,
+      "sha256": "d0fa11f2e5bd02ff06fb4c48077e43d70d5bd339dde62e857d256b7150d5867d"
+    },
+    {
+      "path": "src/engine/summons.ts",
+      "bytes": 12391,
+      "sha256": "a2eceb67a3b1f2c576b2bcf3e065a04aa9b127ec2f1314eaffc3766e649e11dd"
+    },
+    {
+      "path": "src/engine/triggers.ts",
+      "bytes": 6210,
+      "sha256": "7436615cdc6b056c8b2aae7428af7bedc1d36a4c59329bee7690b9ad57b8541b"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 23833,
+      "sha256": "dc5a8952c58307e9af4eaf251c7d4a2b2d0ec60de1428a9cac301afd4f8a692b"
+    },
+    {
+      "path": "src/engine/warcry.ts",
+      "bytes": 3467,
+      "sha256": "e4f4068a95e46a3168be5d04344406c4171607c38c8a374a61406e1af91e69b6"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 80164,
+      "sha256": "a9d161c4242184ab942d9f0ae79c496ee6d99582e92c96057ac499d35784e1ca"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "bytes": 5252,
+      "sha256": "fadd3d35421f3fdaac192e10a28c251f04f7a3831e7cdb2109b4f90d1b371cbb"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "bytes": 39037,
+      "sha256": "d0ad157ea5a273afd8c7668e69d11b2980fb8f9db66fcdff9d9e3b3423ffc389"
+    },
+    {
+      "path": "src/render/siege.ts",
+      "bytes": 2686,
+      "sha256": "91cda3ba8800cc9b6ecbf202c0f52af2cb71e6dae3adffc48e290672dd9974a9"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "bytes": 44771,
+      "sha256": "26629031c2d70e5e5c4ca20d39cb9092e94a5a35b8585cdd1e04504bfcbc0632"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "bytes": 10806,
+      "sha256": "dfe008aa661e410a2487fa9b6ff3cbc4cd93446cc3f748d2600b10928d0a2293"
+    },
+    {
+      "path": "tests/fixtures/pre-v074-siege-replays.json",
+      "bytes": 8345,
+      "sha256": "2116c0579a54ea291d2f11c24d0947ea4b7d71d1240985175c59f339bb03610d"
+    },
+    {
+      "path": "tests/siege.test.ts",
+      "bytes": 15168,
+      "sha256": "90bfe628c5ed8ea94b710da2d3dc95bd3a330d80ce246b63c686dd84d831620d"
+    }
+  ],
+  "localArtifactFingerprints": [
+    {
+      "path": "tmp/siege-related-tests.json",
+      "bytes": 24912,
+      "sha256": "3a82494bd4c3b54b7d27e8be2ecd39e2f6880165bbe78ca1338ec6bffa2918fc"
+    },
+    {
+      "path": "tmp/siege-migration-followup.json",
+      "bytes": 10442,
+      "sha256": "d4039810403378b3255c2ea68810ed88fa891fc472696bc86748e91efd3e0b65"
+    },
+    {
+      "path": "tmp/siege-v074-ui.json",
+      "bytes": 18751,
+      "sha256": "75f89ce1827a0bf4a00bdb9f1bbf44ec2db8d401c9006fcb579218af85e32a48"
+    },
+    {
+      "path": "tmp/siege-v074-probe.json",
+      "bytes": 4034,
+      "sha256": "5beb12a59282dce7e9b27a0e3f8026183515daffeaf32f600ad8db3533041357"
+    },
+    {
+      "path": "tmp/siege-v074-scene.json",
+      "bytes": 255732,
+      "sha256": "596374936571a88bf9a275efe205a68d1ae872c48d84520cc8a6f36b1ecb95ce"
+    },
+    {
+      "path": "tmp/siege-alpha.json",
+      "bytes": 362,
+      "sha256": "82ae0fdea994ff2e2194790fdfe8d50302a819459a896af5a4a9dfc01cec5747"
+    },
+    {
+      "path": "tmp/s50-siege-original.html",
+      "bytes": 271183,
+      "sha256": "32f5711dc0fda7c2bf404430713dcd1e76371dc718335783a55e9f6f66e90ce9"
+    },
+    {
+      "path": "tmp/siege-v074-active-desktop.jpg",
+      "bytes": 145173,
+      "sha256": "43e8a2853f9e0cda779ca45db64c35d399cbf75b7d9ffb76db7a07b7bb6c65ce"
+    },
+    {
+      "path": "tmp/siege-v074-before-form-desktop.jpg",
+      "bytes": 145392,
+      "sha256": "35191d5dacfd279cfe411a2e7dd412905b099cf78937f3c0d76519ca863cb2ae"
+    },
+    {
+      "path": "tmp/siege-v074-codex-mobile.jpg",
+      "bytes": 55132,
+      "sha256": "0921c6685319926574b43ae56d48443895a290420a923148b180e51deec02fe7"
+    },
+    {
+      "path": "tmp/siege-v074-first-desktop.jpg",
+      "bytes": 143312,
+      "sha256": "39c4e9d057723c0ba2a0f1ee3234fb74776ccbff39fdb86150e71d8be3e4ecd6"
+    },
+    {
+      "path": "tmp/siege-v074-inspector-desktop.jpg",
+      "bytes": 144441,
+      "sha256": "8778a8060f7cd589dec57d2ab28db785b74bbf6206ab650daa5be417d2b8ea81"
+    },
+    {
+      "path": "tmp/siege-v074-inspector-mobile.jpg",
+      "bytes": 52490,
+      "sha256": "12435a2dc9966d16187c7c7074f125d50038f28c86ca0a961b70006750b8c03d"
+    },
+    {
+      "path": "tmp/siege-v074-mobile-scroll.jpg",
+      "bytes": 52620,
+      "sha256": "38a97c7c9732f053d86738e9c03e9de4be239f9fc473d9dc15138e4038121942"
+    }
+  ]
+}

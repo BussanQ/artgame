@@ -1,0 +1,766 @@
+{
+  "checkedAt": "2026-11-06T23:34:20.222448+00:00",
+  "pointInTime": true,
+  "rules": "singleplayer-0.71",
+  "combatVersion": "spirit-ward",
+  "saveSchema": 70,
+  "goalTurnClassification": "progress",
+  "previousGoalTurn": {
+    "classification": "progress",
+    "evidence": "0.70盾阵实现、109项检查与桌面／390px记录仍在当前工作树；本轮34项盾阵相关检查继续通过。",
+    "report": "bulwark-v070-validation.json"
+  },
+  "scope": "长生鹿多目标双防与可反制维持，实际防护归功、AI、界面及旧局兼容；完整单机目标未宣告完成。",
+  "tests": {
+    "uniquePassed": 70,
+    "failed": 0,
+    "baseModules": {
+      "command": "npm run test:spirit-ward -- --reporter=json --outputFile=tmp/spirit-ward-module-tests.json",
+      "passed": 69,
+      "suites": [
+        {
+          "path": "tests/bulwark.test.ts",
+          "passed": 34
+        },
+        {
+          "path": "tests/spirit-ward.test.ts",
+          "passed": 35
+        }
+      ]
+    },
+    "addedBoundary": {
+      "command": "npx vitest run tests/spirit-ward.test.ts -t '闪避不领取' --reporter=json --outputFile=tmp/spirit-ward-dodge-test.json",
+      "passed": 1,
+      "skipped": 35,
+      "note": "首次69项通过后新增独立闪避边界，只运行新增项；共36项庇护、34项盾阵，70项不同检查。"
+    },
+    "failuresObserved": 0,
+    "fullTestSuiteRun": false,
+    "oldBulwarkTestMaintenance": "旧定义差异固定比较bulwark/hive，引入时点不会被后续鹿身板覆盖；迁移到准备期仍要求当前战斗版本，旧目录价格与池不变。"
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 159,
+    "js": "index-DrBuDX6v.js",
+    "worker": "worker-BeWWOK-x.js",
+    "css": "index-0iwQsGQW.css",
+    "artifacts": [
+      {
+        "path": "dist/assets/index-DrBuDX6v.js",
+        "bytes": 399272,
+        "sha256": "b8702d3585b37ea1b39c43c24930398784f190dfb6a6a37592ea771b6dd03d38"
+      },
+      {
+        "path": "dist/assets/worker-BeWWOK-x.js",
+        "bytes": 200335,
+        "sha256": "3ff70c86077b86757c8319edac6f8a4f84ded887432c43e3d796a50061f2bce3"
+      },
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      }
+    ]
+  },
+  "compatibility": {
+    "oldDefinitionCount": 43,
+    "frozenSmallReplays": [
+      {
+        "version": "legacy",
+        "sha256": "db2ca25e1ccd064c47bbfaf7088c4461d2afc98e884e52a4059604192d5358af",
+        "frames": 84,
+        "winner": 0,
+        "oldCasts": 4,
+        "oldHealing": 635
+      },
+      {
+        "version": "bulwark",
+        "sha256": "2b196138483decd7b2d380d8912a32d3108e8996cb755b05a91349749e4d0f6f",
+        "frames": 59,
+        "winner": 0,
+        "oldCasts": 3,
+        "oldHealing": 404
+      }
+    ],
+    "newCost": 4,
+    "oldCost": 2,
+    "missingCatalogFallback": "bulwark",
+    "oldCombatRunsUntilNextPreparation": true,
+    "catalogPoolResourcesHistoryPlaybackPreserved": true,
+    "uncommittedV070WorkPreserved": true
+  },
+  "scene": {
+    "input": "../../src/data/spirit-ward-demo.ts",
+    "rawBattle": "../../tmp/spirit-ward-v071-scene.json",
+    "rawProbe": "../../tmp/spirit-ward-v071-probe.json",
+    "frames": 80,
+    "lastTick": 79,
+    "seconds": 19.75,
+    "winner": 0,
+    "sourceUid": 101,
+    "ward": {
+      "formed": 1,
+      "protected": 2,
+      "severed": 0,
+      "interrupted": 0,
+      "mitigated": 666,
+      "physicalSaved": 541,
+      "magicSaved": 125,
+      "actedAt": 42
+    },
+    "heal": 0,
+    "shieldGeneratedBySkill": 0,
+    "castTick": 16,
+    "formationTick": 18,
+    "packetEvidence": [
+      {
+        "tick": 19,
+        "attacker": 201,
+        "target": 102,
+        "type": "physical",
+        "amount": 27,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 16
+        }
+      },
+      {
+        "tick": 21,
+        "attacker": 203,
+        "target": 102,
+        "type": "physical",
+        "amount": 35,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 20
+        }
+      },
+      {
+        "tick": 22,
+        "attacker": 201,
+        "target": 102,
+        "type": "physical",
+        "amount": 27,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 16
+        }
+      },
+      {
+        "tick": 24,
+        "attacker": 202,
+        "target": 102,
+        "type": "physical",
+        "amount": 24,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 14
+        }
+      },
+      {
+        "tick": 25,
+        "attacker": 203,
+        "target": 102,
+        "type": "physical",
+        "amount": 35,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 20
+        }
+      },
+      {
+        "tick": 25,
+        "attacker": 201,
+        "target": 102,
+        "type": "physical",
+        "amount": 27,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 16
+        }
+      },
+      {
+        "tick": 26,
+        "attacker": 202,
+        "target": 102,
+        "type": "magic",
+        "amount": 75,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 125
+        }
+      },
+      {
+        "tick": 28,
+        "attacker": 201,
+        "target": 102,
+        "type": "physical",
+        "amount": 27,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 16
+        }
+      },
+      {
+        "tick": 28,
+        "attacker": 202,
+        "target": 102,
+        "type": "physical",
+        "amount": 24,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 14
+        }
+      },
+      {
+        "tick": 29,
+        "attacker": 203,
+        "target": 102,
+        "type": "physical",
+        "amount": 49,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 53
+        }
+      },
+      {
+        "tick": 31,
+        "attacker": 201,
+        "target": 102,
+        "type": "physical",
+        "amount": 39,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 41
+        }
+      },
+      {
+        "tick": 32,
+        "attacker": 202,
+        "target": 102,
+        "type": "physical",
+        "amount": 34,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 37
+        }
+      },
+      {
+        "tick": 33,
+        "attacker": 203,
+        "target": 102,
+        "type": "physical",
+        "amount": 49,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 53
+        }
+      },
+      {
+        "tick": 34,
+        "attacker": 201,
+        "target": 102,
+        "type": "physical",
+        "amount": 39,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 41
+        }
+      },
+      {
+        "tick": 37,
+        "attacker": 203,
+        "target": 102,
+        "type": "physical",
+        "amount": 49,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 53
+        }
+      },
+      {
+        "tick": 37,
+        "attacker": 202,
+        "target": 102,
+        "type": "physical",
+        "amount": 34,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 37
+        }
+      },
+      {
+        "tick": 37,
+        "attacker": 201,
+        "target": 102,
+        "type": "physical",
+        "amount": 39,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 41
+        }
+      },
+      {
+        "tick": 41,
+        "attacker": 203,
+        "target": 102,
+        "type": "physical",
+        "amount": 49,
+        "absorbed": 0,
+        "ward": {
+          "source": 101,
+          "prevented": 53
+        }
+      }
+    ],
+    "statsSumMatchesPacketEvidence": true,
+    "limits": "一个三对三、非等预算功能演示；不是独立平衡样本，不证明所有构筑的胜率或高费经营完成。"
+  },
+  "protectionAccounting": {
+    "formula": "min(当前生命+现有护盾, 无庇护本包伤害) - min(当前生命+现有护盾, 实际本包伤害)，取非负；无庇护只移除本次最强鹿加成，保留其他防御。",
+    "physicalAndMagicSeparate": true,
+    "trueDamageUnaffected": true,
+    "evasionImmunityAndOverkillExcluded": true,
+    "oneStrongestOwnerGetsCredit": true,
+    "notHealingDamageOrShieldAbsorption": true
+  },
+  "browser": {
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "rawRecord": "../../tmp/spirit-ward-v071-ui.json",
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "mobileLayout": {
+      "viewport": 390,
+      "width": 390
+    },
+    "inspectorScroll": {
+      "height": 180,
+      "top": 32,
+      "total": 212
+    },
+    "analysisCloseAfterScroll": {
+      "height": 44,
+      "width": 44,
+      "x": 298.25,
+      "y": 92.296875
+    },
+    "sourceAt6_75Seconds": {
+      "hp": 1500,
+      "maxHp": 1700,
+      "mana": 0,
+      "attack": 174,
+      "intervalSeconds": 1.8,
+      "armor": 2,
+      "magicResist": 0.2,
+      "protected": 2,
+      "mitigated": 227,
+      "physical": 102,
+      "magic": 125,
+      "remainingSeconds": 3.75,
+      "connections": 2,
+      "cooldownSeconds": 22.25
+    },
+    "guardAt6_75Seconds": {
+      "hp": 752,
+      "maxHp": 1950,
+      "armor": 38,
+      "magicResist": 0.7,
+      "bulwarkArmor": 16,
+      "wardArmor": 20,
+      "infantryArmorBreak": 3
+    },
+    "historyBeforeFormation": "4秒已开始蓄灵，成形0次、保护0人、减伤0；6.75秒为227，17.5秒已累计666，历史统计没有混入未来收益。",
+    "codex": {
+      "star": 3,
+      "hp": 3400,
+      "attack": 348,
+      "armor": 5,
+      "range": 4,
+      "intervalSeconds": 1.8,
+      "observedCost": 2,
+      "note": "正式页面保留secret-orb旧目录两费，新局四费由模块验证；没有重置正式对局来获取新价格截图。"
+    },
+    "resourcesUnchanged": {
+      "armory": true,
+      "commander": true,
+      "recruitment": true
+    },
+    "formalGameRestored": true,
+    "viewportOverrideReset": true,
+    "logs": [],
+    "finishedAt": "2026-11-06T23:29:44.853Z",
+    "screenshots": [
+      "../../tmp/spirit-ward-v071-initial-desktop.jpg",
+      "../../tmp/spirit-ward-v071-analysis-desktop.jpg",
+      "../../tmp/spirit-ward-v071-links-desktop.jpg",
+      "../../tmp/spirit-ward-v071-target-desktop.jpg",
+      "../../tmp/spirit-ward-v071-source-mobile390.jpg",
+      "../../tmp/spirit-ward-v071-links-mobile390.jpg",
+      "../../tmp/spirit-ward-v071-target-mobile390.jpg",
+      "../../tmp/spirit-ward-v071-analysis-mobile390.jpg",
+      "../../tmp/spirit-ward-v071-before-form-mobile390.jpg",
+      "../../tmp/spirit-ward-v071-charge-mobile390.jpg",
+      "../../tmp/spirit-ward-v071-codex-mobile390.jpg",
+      "../../tmp/spirit-ward-v071-codex-card-mobile390.jpg"
+    ],
+    "realDevicePerformanceVerified": false
+  },
+  "sourceReview": {
+    "record": "../research/spirit-ward-history.json",
+    "sourceIds": [
+      "S04",
+      "S05"
+    ],
+    "bodyAndCooldown": "S04第30行本轮实际目视；79–95取87。",
+    "oneStarDefense": "S05原作者索引正文记载一星15甲／40法抗，未取得完整原卡。",
+    "unknownFieldsAreLocal": [
+      "其余分星梯度",
+      "目标数与选人",
+      "维持、中断和时序",
+      "法抗百分比换算、上限与叠加",
+      "减伤归功"
+    ],
+    "hiveFollowup": "重新读到S19对三连击的谨慎一手目测，纠正0.69研究中遗漏；倍率、间距与回能仍没有完整原卡确认，未据此改动技能代码。",
+    "unifiedHistoricalClientBuildConfirmed": false
+  },
+  "art": {
+    "asset": {
+      "path": "public/assets/units/deer.png",
+      "bytes": 1513749,
+      "sha256": "4e7801e9541160b7acecf7d16bdea5df3b30fb9d119e4501d518e77260e8b6b1"
+    },
+    "reusedExistingImageGenPortrait": true,
+    "newImageGenerationCalls": 0,
+    "rasterEditing": false,
+    "newCanvasEffects": [
+      "蓄灵姿态",
+      "多线流光",
+      "受护轮廓"
+    ]
+  },
+  "sampling": {
+    "newFullCampaigns": 0,
+    "newBulkBattleSamples": 0,
+    "distinctCurrentSmallScenes": 1,
+    "oldFrozenSmallReplays": 2,
+    "note": "相关盾阵模块复用其既有局面，快算／Worker核对同一输入，不充作独立平衡采样。"
+  },
+  "git": {
+    "branch": "dev",
+    "baseCommit": "c265dee",
+    "previousUncommittedV070Preserved": true,
+    "committedThisTurn": false,
+    "pushedThisTurn": false
+  },
+  "remainingGoalRequirements": [
+    "其他原型能力与统一历史字段／公式",
+    "总体难度、高星经济及多构筑完整体验",
+    "真实触屏与弱设备性能",
+    "按完整目标逐项审计；当前证据不足以标记完成"
+  ],
+  "sourceFingerprints": [
+    {
+      "path": "src/data/spirit-ward-demo.ts",
+      "bytes": 614,
+      "sha256": "963f1881b2b8a1c3eb9c05adb1ffa464e6d51ee1074ae2fcf83d7bf96fe8374f"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 20963,
+      "sha256": "8e0f7ddfa5baa621cb5462d220c16efc5a860c2dbee099d797d710dc3cca3cfc"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "bytes": 74009,
+      "sha256": "4fb33f2346873ea15a63e5c11639f67aeeb6c398c04d37a091962bcfb1f61e4a"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "bytes": 9250,
+      "sha256": "c454d4f11e98c803166dd7c6dc9d4b7b46f28a57f9f3dd006a79af8d90f6b4cb"
+    },
+    {
+      "path": "src/data/catalog.ts",
+      "bytes": 917,
+      "sha256": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d"
+    },
+    {
+      "path": "src/engine/spirit-ward.ts",
+      "bytes": 5000,
+      "sha256": "319e9e519dca0e36f186f4764f13a8a05f68d056cdeb413ab5aed9f0c35b8c41"
+    },
+    {
+      "path": "src/engine/bulwark.ts",
+      "bytes": 1748,
+      "sha256": "9ff99ec3f1b53d32b5ed9317c084e25cb0618640fc814dd50080ac1250e8356e"
+    },
+    {
+      "path": "src/engine/taunt.ts",
+      "bytes": 1177,
+      "sha256": "b4f0c1a70d745ecd270180f82bee46b4fe84b04126f0adbb342fa2188b113233"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 22234,
+      "sha256": "0aaba0338efb9abbd0ea2b2a955896193c88bbf08cf2f4d6a5f162d86cb913f9"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "bytes": 62003,
+      "sha256": "b5f564473eb165c53ed8465342a5ad1c956bfde1cd339d8e305f9c1d4b865d6c"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 31377,
+      "sha256": "fa72a78fa3fb796752b2a7af53afc0d04b8522cb96687d3fa21653edc51141e8"
+    },
+    {
+      "path": "src/engine/triggers.ts",
+      "bytes": 5408,
+      "sha256": "07279cbe25228b82e6ec7fd2d40688667308bbab151560bcb91a3f855bcb83bb"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "bytes": 52451,
+      "sha256": "b1d912e457cd059f95453940e9b4f3efb3b1f520ff5416a11479d0155123c151"
+    },
+    {
+      "path": "src/engine/equipment.ts",
+      "bytes": 7602,
+      "sha256": "f7452489ea9740b598fa0333d91baabc74b925386934504d9857f04b51abd918"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "bytes": 10063,
+      "sha256": "b8792cadd95fe862fb098008b4e7805a4bc72d6aca73f287723557d97d7b0ebf"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 37305,
+      "sha256": "4bbbfc85827146f57d63892798961d527c2dfec6c4f1d9ed04f47686ca150bed"
+    },
+    {
+      "path": "src/engine/sea-ward.ts",
+      "bytes": 461,
+      "sha256": "c7205db3f8643c82ed374411931b096a7ee17421515b59fc3c9dd4f58aea1cab"
+    },
+    {
+      "path": "src/render/spirit-ward.ts",
+      "bytes": 2788,
+      "sha256": "fa5e18fa25cea55d239b7e573aac721e5560b48c4ccb10f47f8962379be2dc2b"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "bytes": 38160,
+      "sha256": "1c7882685b0f3f277d799ad2caea9013fd0bd3e3be835a1c11adb7e22c8f06d2"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "bytes": 44500,
+      "sha256": "9abc76cb9f56c7ce85fcd78ca4da961c3bff370961cc5def784fcaf9ca18709f"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "bytes": 4746,
+      "sha256": "c5717b08570b949ee4b587ac65abcadf41df3fc430d2eb4e8adf32ac6abcaa5f"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "bytes": 9644,
+      "sha256": "306fed8b26c6cfed3d2eaa3f12e69dba7007d54ea93afc9e4f8c21fe819f5e89"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 79055,
+      "sha256": "65efd6b525096d023469725a2216e4b1c7bbc96fa835f6138d0a171831c523e4"
+    },
+    {
+      "path": "tests/spirit-ward.test.ts",
+      "bytes": 17819,
+      "sha256": "c01a1433b4c6d9f38170d6813bdfb38689b2d3b756fe2f24ec1a038055858005"
+    },
+    {
+      "path": "tests/bulwark.test.ts",
+      "bytes": 15826,
+      "sha256": "f7f4d1d9b6b037b6c10aa0068b106d14bfe6ebfb4ab1f8d62ed0cb4d6715a8e1"
+    },
+    {
+      "path": "tests/fixtures/pre-v071-spirit-ward-replays.json",
+      "bytes": 18938,
+      "sha256": "6c4f146030f104382e0bc6311194666d7616f392bcb930cc08c37336d8b922cf"
+    },
+    {
+      "path": "package.json",
+      "bytes": 19067,
+      "sha256": "6e0e4aaf17096ea56c56cc2ec198cfbb6dea72cfd0c3ccd2f70f988e9537bd4f"
+    },
+    {
+      "path": "docs/design/spirit-ward.md",
+      "bytes": 3630,
+      "sha256": "948599431a007c9989f30f20c5b8cdded8710a7b43af3085c4dcb5662a2b390c"
+    },
+    {
+      "path": "docs/research/spirit-ward-history.json",
+      "bytes": 5158,
+      "sha256": "da0f9d50ec68f5c21b22beacfdec0635f7f6ac71a2386ce9894fff97e638fe53"
+    },
+    {
+      "path": "docs/design/skills.md",
+      "bytes": 10886,
+      "sha256": "3dcbc88d474db8ec60098a9c45ad9a9094661bdee68f0df045d7a149fb758c6e"
+    },
+    {
+      "path": "docs/design/hive.md",
+      "bytes": 2989,
+      "sha256": "687511f0c5d7bc5258245fdb3483126fb1a94cfd70d50d7c9237207f0e3356b7"
+    },
+    {
+      "path": "docs/research/hive-history.json",
+      "bytes": 5796,
+      "sha256": "9e821ff952f34cf865838422ea4b32b04451c0f31f3994f001f1e3e8c77f88fd"
+    },
+    {
+      "path": "docs/research/sources.json",
+      "bytes": 54088,
+      "sha256": "fde66042d1a0ee61d3050957eae97b78afa235284c361cd97eaf6ec47d2c8d64"
+    },
+    {
+      "path": "docs/research/sources.md",
+      "bytes": 24861,
+      "sha256": "20c1fec344dbb2c344ef696c19d475159ccd76c64c3b04ccd1fa9a1b8e2d8076"
+    },
+    {
+      "path": "docs/design/roadmap.md",
+      "bytes": 29081,
+      "sha256": "f1c8fb24989cb4377bf1ea695d744fa3df16a312b55e02f4b4ee15d33f9ab106"
+    },
+    {
+      "path": "docs/design/single-player-plan.md",
+      "bytes": 36804,
+      "sha256": "6b156bd2fb3c750e8ae1574281cd24329c64d2543b7284d0933dfabd45d94e5d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 29060,
+      "sha256": "a8e1d1e95bca23e43cdb63fcac3aa0a22ab0682c429a517bbe0340cdb63a8701"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 35213,
+      "sha256": "35e482c45e265e4d2d5862375cf71a0f550bbe87809ae8b80c2fb0b3465cae9f"
+    }
+  ],
+  "localArtifactFingerprints": [
+    {
+      "path": "tmp/spirit-ward-module-tests.json",
+      "bytes": 22084,
+      "sha256": "047509ea14cafe486d4cde5090fbe119a9e3213aeade0616db31dac8d42732f8"
+    },
+    {
+      "path": "tmp/spirit-ward-dodge-test.json",
+      "bytes": 10817,
+      "sha256": "01fa4694ac99a21cc05c34081003b68016468bb8c4f023f954c8693d603bba61"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-scene.json",
+      "bytes": 816081,
+      "sha256": "782c41b9bef7324ebdf6f819f7278d7c8b849defdbb9b4bdba024d3f39fb716e"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-probe.json",
+      "bytes": 11094,
+      "sha256": "7731c2e5d02ea40a96230f9ce1548a5c4eba350eae7f686da30964c04849a122"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-ui.json",
+      "bytes": 10903,
+      "sha256": "8a7fed8f410190fd3fd4128209ca39dcd512d452a21b20d3562a1b31d8de2d01"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-initial-desktop.jpg",
+      "bytes": 148014,
+      "sha256": "70dc20a8c99f963f573ea16e0485cc0ca203b691753ad521dede5f8467b75218"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-analysis-desktop.jpg",
+      "bytes": 54306,
+      "sha256": "97a0b0f64d4801bbc350280a5630981a831f8783700dcdb4f99592b666f74354"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-links-desktop.jpg",
+      "bytes": 148204,
+      "sha256": "c9ce25706e2766efad88cff1e3836a809d6ee86b2e9b8b816eec965996ed0b4e"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-target-desktop.jpg",
+      "bytes": 146714,
+      "sha256": "4e8d371089325f87659c07e19c302a52b010eba64a9b0870d1bed21b9235fdf0"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-source-mobile390.jpg",
+      "bytes": 50790,
+      "sha256": "ce2f370cdb646178725da922cc2e9cf23bb4bcac2b1510cca8003a2b160812c6"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-links-mobile390.jpg",
+      "bytes": 52228,
+      "sha256": "b6b496ab3817bc90ec85b9c518c74201128761e36eb13a7ce4eb36b0ea197ac3"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-target-mobile390.jpg",
+      "bytes": 50387,
+      "sha256": "f6f578491fa7c49b415513bfa4b8a7ab78ef48010c4503eae672ada30f7be0fd"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-analysis-mobile390.jpg",
+      "bytes": 34884,
+      "sha256": "4456b71c287a5c957d8dcfa203b3aa47c1ee13c6cfbebcad5e941651bc335701"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-before-form-mobile390.jpg",
+      "bytes": 33830,
+      "sha256": "49bd5bc4929853bcf0bb1396305fc7854102df7b2cc03ec6afac76e589ac3b7a"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-charge-mobile390.jpg",
+      "bytes": 52042,
+      "sha256": "37aee33e43f77eb48b58474ba354d872decdc9c90e71e285cf337ef5c7d4f7ff"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-codex-mobile390.jpg",
+      "bytes": 61746,
+      "sha256": "08001eb5ef1c1ddf1015b6cb7dc11d9fd7f0c39dcf1acac9f76013df7c8a2dcb"
+    },
+    {
+      "path": "tmp/spirit-ward-v071-codex-card-mobile390.jpg",
+      "bytes": 37361,
+      "sha256": "66e740418084b9f46920e72970b91d8743b5d97d413370b54a594f85f0801783"
+    }
+  ]
+}

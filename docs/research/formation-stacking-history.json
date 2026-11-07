@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.43",
+  "combatVersion": "formations",
+  "sources": [
+    {
+      "id": "S03",
+      "url": "https://www.taptap.cn/moment/15202528882852517",
+      "modifiedAt": "2019-05-09",
+      "kind": "community-original-chart",
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/915032174273785f479cf7ccd0f93190.png/_tap_ugc.jpg",
+      "imageSha256": "1255a365dd2bf246e4f7e6d55415be1262869c73957159bc1d90832e90d3d79b",
+      "status": "original-image-visually-rechecked",
+      "printedSteps": {
+        "infantry": { "counts": [2, 4, 6], "enemyArmor": [3, 6, 9] },
+        "vanguard": { "counts": [3, 6], "ownArmor": [6, 8] },
+        "puppet": { "counts": [2, 4, 6], "ownAttackPercent": [10, 15, 0], "teamAttackPercent": [0, 0, 20] },
+        "beast": { "counts": [2, 4, 6], "ownHastePercent": [15, 0, 0], "teamHastePercent": [0, 25, 35] }
+      },
+      "limits": "图片本身未解释累计方式；以下总量由S50累计说明和各档受益范围推导，不把原单元格改写成总量。"
+    },
+    {
+      "id": "S50",
+      "url": "https://www.taptap.cn/moment/15203671482564780?group_id=42979",
+      "author": "邪王易风",
+      "publishedAt": "2019-04-29",
+      "modifiedAt": "2019-05-11",
+      "kind": "first-person-guide-with-original-client-images",
+      "htmlSha256": "23fd4171eee13cb795afc68d8f8d94ff1bae8dd6cbc10e3457b4a05ddc4628ab",
+      "facts": ["作者明确各档效果累计，第三档包含前两档", "正文确认六刺为20%总暴击概率"],
+      "beastImageUrl": "https://img2-tc.tapimg.com/bbcode/images/2c334d0357ec1123ec5886cda49ff725.png/_tap_ugc.jpg",
+      "beastImageSha256": "5be880e769a72756b77a6113e38f9f31cd729cc84f7e3c22aaa88ac333e1378f",
+      "status": "body-read-and-original-beast-tooltip-visually-rechecked",
+      "limits": "野兽图签为2本族15%、4全军25%、6全军35%；先锋配图仍为回血，正文已改护甲，不能整篇视作统一客户端切片。"
+    },
+    {
+      "id": "S18",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "author": "User26157272",
+      "modifiedAt": "2019-05-22",
+      "kind": "first-person-contemporary-review",
+      "status": "original-body-read-via-web",
+      "facts": {
+        "combination": "author explicitly reports cumulative totals",
+        "vanguardArmorTotals": [6, 14],
+        "infantryEnemyArmorTotals": [3, 9, 18]
+      },
+      "limits": "作者保留5月16日前划线内容，野兽段先写全军35/65又括注40/75，与原图分对象范围不能直接等同。它证明累计方向，不作为所有非野兽也拿75%的依据。直接HTTP下载得到WAF页面，未把该文件指纹当正文证据；发布日期未核实。"
+    },
+    {
+      "id": "S20",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1556086391745_13",
+      "publishedAt": "2019-04-24",
+      "kind": "publisher",
+      "status": "original-body-rechecked",
+      "facts": { "puppetCounts": [2, 4, 6], "printedOwnAttackPercent": [10, 15, 0], "printedTeamAttackPercent": [0, 0, 20] },
+      "limits": "四月野兽为本族10/10/15%，不是五月全队速度；只交叉核对未变的傀儡逐档字段。"
+    }
+  ],
+  "derivedRules": {
+    "method": "sum unlocked printed steps separately for each beneficiary; precompute totals once",
+    "infantry": { "counts": [2, 4, 6], "enemyArmorTotals": [3, 9, 18] },
+    "vanguard": { "counts": [3, 6], "ownArmorTotals": [6, 14] },
+    "puppet": { "counts": [2, 4, 6], "ownAttackTotalsPercent": [10, 25, 45], "otherAllyAttackTotalsPercent": [0, 0, 20] },
+    "beast": { "counts": [2, 4, 6], "ownHasteTotalsPercent": [15, 40, 75], "otherAllyHasteTotalsPercent": [0, 25, 60] },
+    "inferenceBoundary": "野兽和傀儡的不同对象总量是原图范围加累计规则的推导，未声称取得同版本客户端实测日志。"
+  },
+  "localAdaptations": {
+    "counting": "different deployed recruitable IDs; bench, duplicate stars and summons do not increase these four formations",
+    "timing": "opening snapshot persists after provider death or charm",
+    "summons": "inherit team attack and haste only; never own-trait increments or vanguard armor; inherit opposing infantry break",
+    "math": "existing gear-before-attack-ratio, additive staff/formation speed and zero armor floor retained",
+    "otherTraits": "existing configured totals remain, never blindly sum already-total armor regeneration, critical chance or other tables"
+  },
+  "compatibility": {
+    "saveSchema": 42,
+    "fromSchema": 41,
+    "fromRules": "singleplayer-0.42",
+    "prepare": "switch-to-formations",
+    "otherPhasesAndHistory": "preserve original combat version and replay; switch at next preparation",
+    "frozenBeforeEdits": "tests/fixtures/pre-v043-replays.json: 27 ambush battles"
+  },
+  "remaining": ["8历史分类差异", "狙击甲穿与阈值", "骑兵敌方能量规则", "海神不同版本机制", "灵能范围与累计", "支援/猛禽/召唤/异能/熊猫等历史梯度", "自然六步兵、六先锋与玩家高阶傀儡覆盖", "高星与整体难度", "密集战斗状态文字", "最终多构筑人工及真实弱设备体验"]
+}

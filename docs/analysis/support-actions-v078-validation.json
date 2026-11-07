@@ -1,0 +1,348 @@
+{
+  "version": "singleplayer-0.78",
+  "combatVersion": "support-actions",
+  "schema": 77,
+  "date": "2026-11-07",
+  "base": {
+    "commit": "5a762b45f624b85a069a7e5d508df3671b39151d",
+    "worktreeRules": "singleplayer-0.77",
+    "note": "基于已推送5a762b4及尚未提交的0.77增量；本轮亦未提交或推送。"
+  },
+  "scope": "必要模块；一个三对一固定局面的前后对照与浏览器回看，无全量、完整经营局或批量对战。",
+  "tests": {
+    "distinctPassed": 56,
+    "supportActions": 26,
+    "formless": 30,
+    "runs": [
+      {
+        "command": "npx vitest run tests/support-actions.test.ts tests/formless.test.ts",
+        "passed": 56,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "command": "npx vitest run tests/support-actions.test.ts -t 'repair按真实|刑傀|嘲讽|维持和释放'",
+        "passed": 4,
+        "failed": 0,
+        "skipped": 22
+      }
+    ],
+    "buildCorrection": "首次TypeScript检查发现新增测试刑傀样例使用错误字段、嘲讽样例缺少start；补齐实际类型，未为通过断言改变产品结算。",
+    "followup": "加强维修机实际治疗与目标断言，庇护结束改用真实stopSpiritWard；相关4项定向通过。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 179,
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "bytes": 596,
+        "sha256": "226bd457f7ade9887f6cdf0fc9e1ae77f747bec38e445ce29f32cbd245649373"
+      },
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      },
+      {
+        "path": "dist/assets/index-rMVYvNn2.js",
+        "bytes": 434875,
+        "sha256": "a8b015b182caa749eb3a99bc80e11de89c7792c4d8b7b96219a5acb07a04ddad"
+      },
+      {
+        "path": "dist/assets/worker-DRhsJ-d3.js",
+        "bytes": 230647,
+        "sha256": "4d3c247c3929df82562b20c5c1ef494fd9b5f47034a985bab7f2c63ef8439271"
+      }
+    ]
+  },
+  "compatibility": {
+    "versions": 50,
+    "units": 64,
+    "definitionsAndPresentation": "逐版本SHA保持",
+    "frozenReplay": {
+      "version": "formless",
+      "frames": 142,
+      "winner": 1,
+      "sha256": "622c516951053c4063ddd43d17d252740838f00cdaf4ad37cbb4f35551943822"
+    },
+    "migration": "schema76准备期升级support-actions；battle/result仍formless，目录、卡池、玩家、历史和播放资料保持。"
+  },
+  "fixedScene": {
+    "lineups": {
+      "left": [
+        {
+          "uid": 101,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 102,
+          "defId": "medic",
+          "star": 2,
+          "position": 44,
+          "items": [
+            "staff",
+            "crystal"
+          ]
+        },
+        {
+          "uid": 103,
+          "defId": "deer",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff",
+            "staff",
+            "crystal"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "ghostjet",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "staff",
+            "staff",
+            "sage"
+          ]
+        }
+      ]
+    },
+    "baseline": {
+      "frames": 142,
+      "seconds": 35.25,
+      "winner": 1,
+      "rawSha256": "622c516951053c4063ddd43d17d252740838f00cdaf4ad37cbb4f35551943822"
+    },
+    "after": {
+      "frames": 97,
+      "winner": 0,
+      "firstCasts": [
+        {
+          "uid": 102,
+          "before": 25,
+          "after": 5
+        },
+        {
+          "uid": 103,
+          "before": 25,
+          "after": 5
+        }
+      ],
+      "castTimes": [
+        {
+          "tick": 1,
+          "source": 201,
+          "name": "无形",
+          "enemyHidden": true
+        },
+        {
+          "tick": 5,
+          "source": 103,
+          "name": "长生庇护",
+          "enemyHidden": true
+        },
+        {
+          "tick": 5,
+          "source": 102,
+          "name": "生命守护",
+          "enemyHidden": true
+        },
+        {
+          "tick": 40,
+          "source": 101,
+          "name": "刺盾之阵",
+          "enemyHidden": false
+        },
+        {
+          "tick": 41,
+          "source": 102,
+          "name": "生命守护",
+          "enemyHidden": false
+        },
+        {
+          "tick": 65,
+          "source": 201,
+          "name": "无形",
+          "enemyHidden": true
+        }
+      ],
+      "final": [
+        {
+          "uid": 101,
+          "defId": "guard",
+          "hp": 0,
+          "mana": 100,
+          "healing": 0
+        },
+        {
+          "uid": 102,
+          "defId": "medic",
+          "hp": 1000,
+          "mana": 100,
+          "healing": 1120
+        },
+        {
+          "uid": 103,
+          "defId": "deer",
+          "hp": 30,
+          "mana": 100,
+          "healing": 0,
+          "ward": {
+            "formed": 1,
+            "protected": 2,
+            "severed": 0,
+            "interrupted": 0,
+            "mitigated": 89,
+            "physicalSaved": 89,
+            "magicSaved": 0,
+            "actedAt": 31
+          }
+        },
+        {
+          "uid": 201,
+          "defId": "ghostjet",
+          "hp": 0,
+          "mana": 100,
+          "healing": 87.5
+        }
+      ]
+    },
+    "rawAfterSha256": "e541ed04aaf1196782636f0dbda10718d96a2e97304ce100b4d9d641d010b8df",
+    "assertions": [
+      "辅助在无形窗口中以自身入口选真实友军",
+      "前6.25秒没有己方向隐形敌人的攻击命中",
+      "治疗和防护产生实际贡献",
+      "Worker入口与快算相同",
+      "输入不变，零秒战报无未来贡献"
+    ],
+    "limits": "装备与站位固定的机制反例；胜负翻转不代表整体难度或平衡完成。"
+  },
+  "ui": {
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "visibleFragmentSeconds": 11.25,
+    "analysisLatest": "BATTLE ANALYSIS\n战斗分析\n×\n\n隐形支援 · 战斗片段\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 11.25 秒\n可查看至 11.25 秒；不改变战场播放进度\n己方\n存活 3/3\n生命伤害\n898\n伤害 898 · 治疗 700\n承伤 2064 · 承盾 0\n盾兵\n★★ · 生命 924/1500\n408\n\n普攻 408 · 技能 0 · 破盾 0\n承伤 576 · 治疗 0 · 承盾 0 · 施法 1 次 · 盾阵举盾 1 次 · 嘲讽施加 1 人次\n\n长生鹿\n★★ · 生命 912/1700\n310\n\n普攻 310 · 技能 0 · 破盾 0\n承伤 1488 · 治疗 0 · 承盾 0 · 施法 1 次 · 庇护成形 1 次 · 保护 2 人次 · 防护减伤 89（物理 89 / 法术 0）\n\n军医\n★★ · 生命 1000/1000\n180\n\n普攻 180 · 技能 0 · 破盾 0\n承伤 0 · 治疗 700 · 承盾 0 · 施法 2 次\n\n敌方\n存活 1/1\n生命伤害\n2,064\n伤害 2064 · 治疗 25\n承伤 898 · 承盾 0\n幽灵机\n★★★ · 生命 1347/2220\n2,064\n\n普攻 2064 · 技能 0 · 破盾 0\n承伤 898 · 治疗 25 · 承盾 0 · 施法 1 次 · 无形 1 次 · 隐形普攻有效命中 7 次 / 生命伤害 1302 / 破盾 0\n\n查看此刻战场\n从头回放这场战斗\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "analysisAt3Seconds": "BATTLE ANALYSIS\n战斗分析\n×\n\n隐形支援 · 战斗片段\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 3.00 秒\n可查看至 11.25 秒；不改变战场播放进度\n己方\n存活 3/3\n生命伤害\n0\n伤害 0 · 治疗 140\n承伤 558 · 承盾 0\n盾兵\n★★ · 生命 1500/1500\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 盾阵举盾 0 次 · 嘲讽施加 0 人次\n\n军医\n★★ · 生命 1000/1000\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 140 · 承盾 0 · 施法 1 次\n\n长生鹿\n★★ · 生命 1282/1700\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 558 · 治疗 0 · 承盾 0 · 施法 1 次 · 庇护成形 1 次 · 保护 2 人次 · 防护减伤 0（物理 0 / 法术 0）\n\n敌方\n存活 1/1\n生命伤害\n558\n伤害 558 · 治疗 0\n承伤 0 · 承盾 0\n幽灵机\n★★★ · 生命 2220/2220\n558\n\n普攻 558 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 1 次 · 无形 1 次 · 隐形普攻有效命中 3 次 / 生命伤害 558 / 破盾 0\n\n查看此刻战场\n从头回放这场战斗\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "analysisAt0Seconds": "BATTLE ANALYSIS\n战斗分析\n×\n\n隐形支援 · 战斗片段\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 0.00 秒\n可查看至 3.00 秒；不改变战场播放进度\n己方\n存活 3/3\n生命伤害\n0\n伤害 0 · 治疗 0\n承伤 0 · 承盾 0\n盾兵\n★★ · 生命 1500/1500\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 盾阵举盾 0 次 · 嘲讽施加 0 人次\n\n军医\n★★ · 生命 1000/1000\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n长生鹿\n★★ · 生命 1700/1700\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 庇护成形 0 次 · 保护 0 人次 · 防护减伤 0（物理 0 / 法术 0）\n\n敌方\n存活 1/1\n生命伤害\n0\n伤害 0 · 治疗 0\n承伤 0 · 承盾 0\n幽灵机\n★★★ · 生命 2220/2220\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 无形 0 次 · 隐形普攻有效命中 0 次 / 生命伤害 0 / 破盾 0\n\n查看此刻战场\n从头回放这场战斗\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "medicInspector": "×\n军医 己方 · ★★\n生命\n1000 / 1000\n能量\n0 / 100\n攻击\n50\n间隔\n1.00 秒\n护甲\n22.0\n法术减伤\n70%\n支援阵亡 · 治疗200 / 回能10\n庇护护甲 +20 · 法术减伤 +50% · 4.8s\n治疗 · 余3次\n\n点击棋子固定详情 · 点击空处或按 Esc 收起",
+    "mobile": {
+      "close": {
+        "bottom": 238.5,
+        "height": 44,
+        "left": 257,
+        "right": 301,
+        "top": 194.5,
+        "width": 44,
+        "x": 257,
+        "y": 194.5
+      },
+      "rect": {
+        "bottom": 391,
+        "height": 200.5,
+        "left": 16,
+        "right": 306,
+        "top": 190.5,
+        "width": 290,
+        "x": 16,
+        "y": 190.5
+      },
+      "scrollLayers": [],
+      "scrollWidth": 390,
+      "text": "×军医 己方 · ★★生命 1000 / 1000能量 0 / 100攻击 50间隔 1.00 秒护甲 22.0法术减伤 70%支援阵亡 · 治疗200 / 回能10庇护护甲 +20 · 法术减伤 +50% · 4.8s治疗 · 余3次点击棋子固定详情 · 点击空处或按 Esc 收起",
+      "width": 390
+    },
+    "resourcesUnchanged": true,
+    "logs": [],
+    "restore": "已退出演示并恢复临时视口。",
+    "storage": "保留原有存档版本不兼容提示，未清空存储；合法旧档迁移由模块证明。"
+  },
+  "sourceFingerprints": [
+    {
+      "path": "src/engine/support-actions.ts",
+      "bytes": 1192,
+      "sha256": "52ea6d12fcb693fce4e40aa3a8ce2b1fb0fd9be965b9319f434de3d477b7b4d2"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 34341,
+      "sha256": "2b1a4d76d948e49a78f2d25bcbddfa85a651d3b17cffc3ff51d01020d112686a"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 25279,
+      "sha256": "912afb20d69c8a092cd3da996dfed5693d7a3326457b564e94da5be5bec88df4"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 40042,
+      "sha256": "9093f1f39bfe00c5ad2511fe1e0893495c6d8dc1b708dc19d28afb49a424cce6"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 21264,
+      "sha256": "5984f20049f36230de7daad5eee35bf550beddb9abd2630ef6f43898156ada9a"
+    },
+    {
+      "path": "src/data/support-actions-demo.ts",
+      "bytes": 501,
+      "sha256": "7329a3dfcf6898f0c5cebe0b7640f7d2a4de46db1952d59755ebff8d8d6f3d14"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 81069,
+      "sha256": "f04a3308d55f5714c9c67a5f8c13dfe04d7d1be0bf10628cd8c7839843a56675"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "tests/support-actions.test.ts",
+      "bytes": 11537,
+      "sha256": "acf14a0e431a6c972fe2cef1d0acc50df7b49f2b6b45920c780959d8e8fc4c18"
+    },
+    {
+      "path": "tests/formless.test.ts",
+      "bytes": 14897,
+      "sha256": "4f2dc6cb51b67183afdf014250843a58660e68a52bdf4e4206e9c8d9d4c0d892"
+    },
+    {
+      "path": "tests/fixtures/pre-v078-support-actions.json",
+      "bytes": 11151,
+      "sha256": "654c6e35cd240b9679da7d75a5795628dc8cfa782568a4708ad0111ebf9f235c"
+    },
+    {
+      "path": "package.json",
+      "bytes": 19479,
+      "sha256": "707e0ba1ccadde2c5be3994082524dd59c409cee96650519468f53643f57f1df"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "tmp/support-actions-v078-active-desktop.jpg",
+      "sha256": "5782e80a012791ed755b54bd85db27de549522272b26cd1f10427228d6e79120"
+    },
+    {
+      "path": "tmp/support-actions-v078-inspector-desktop.jpg",
+      "sha256": "52a73fe5647109f1d1c0c8e50f90739c44bc91a93eae36a182c931d7cd9ec9e3"
+    },
+    {
+      "path": "tmp/support-actions-v078-inspector-mobile.jpg",
+      "sha256": "0b8a444362bb6f6b285dcd7621e835b446d7a83b2e5b80ddd638118c40a4f526"
+    }
+  ],
+  "remaining": "统一历史能力／公式、其他原型、整体难度、多构筑经营、真实设备与最终整体审计仍未完成；完整单机目标保持进行中。"
+}

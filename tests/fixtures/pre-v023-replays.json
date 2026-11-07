@@ -1,0 +1,187 @@
+{
+  "capturedFrom": "0.22 before infantry rules change",
+  "fixtures": [
+    {
+      "name": "infantry-mixed",
+      "left": [
+        {
+          "defId": "guard",
+          "uid": 1,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "infantry",
+          "uid": 2,
+          "star": 2,
+          "position": 39
+        },
+        {
+          "defId": "sniper",
+          "uid": 3,
+          "star": 2,
+          "position": 43
+        },
+        {
+          "defId": "medic",
+          "uid": 4,
+          "star": 2,
+          "position": 47
+        },
+        {
+          "defId": "flametrooper",
+          "uid": 5,
+          "star": 2,
+          "position": 51
+        },
+        {
+          "defId": "grenadier",
+          "uid": 6,
+          "star": 2,
+          "position": 55
+        }
+      ],
+      "right": [
+        {
+          "defId": "turtle",
+          "uid": 101,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "wolf",
+          "uid": 102,
+          "star": 2,
+          "position": 39
+        },
+        {
+          "defId": "adept",
+          "uid": 103,
+          "star": 2,
+          "position": 43
+        },
+        {
+          "defId": "shark",
+          "uid": 104,
+          "star": 2,
+          "position": 47
+        },
+        {
+          "defId": "bloodhawk",
+          "uid": 105,
+          "star": 2,
+          "position": 51
+        },
+        {
+          "defId": "phoenix",
+          "uid": 106,
+          "star": 2,
+          "position": 55
+        }
+      ],
+      "hashes": {
+        "legacy": "65c58cb392421222d196bba98de347dbde0c92471f275428aa99bdb3e2dcecf4",
+        "tactics": "61f6cb175963c138c89428d1779bf2301bd5e72de162ba56449ae1b38128f012",
+        "balanced": "d7eee180f46bb9570051b8096b22686b0db5d18c50cf8539f622328243018624",
+        "signature": "479a8b540073e07b6f9a1b18f7c6c31e4eebb7251149023c24dec7617cc69ef3",
+        "summons": "50777690693db417ff09e985efef866b221bc10ebc642a14e82d3c4eda50cbee",
+        "legions": "143a211d66b474909003b771681d13df75b96e6858ef7e19dcc252bc190c5a17",
+        "brood": "1aab3532097606bb41545218292e667a4793a4ed7bece199307bcb5ae2c26314",
+        "airsea": "1083682ebf4ce2afc188770f62ea8959e560fc4c715a334430331b0dd30e535e",
+        "fleet": "f66164e3f4819b69d5d5c77bcb3e14d347e46e61c430a8d4f3b2e1ce75bc0aa9",
+        "metamorph": "e1d7df5ea06875b37818b45b767a2e8dd5d66b5e49dff0b55512480dc8e6e966"
+      }
+    },
+    {
+      "name": "air-insects",
+      "left": [
+        {
+          "defId": "blastbug",
+          "uid": 1,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "eyebug",
+          "uid": 2,
+          "star": 2,
+          "position": 39
+        },
+        {
+          "defId": "spider",
+          "uid": 3,
+          "star": 2,
+          "position": 43
+        },
+        {
+          "defId": "dragonfly",
+          "uid": 4,
+          "star": 2,
+          "position": 47
+        },
+        {
+          "defId": "bomber",
+          "uid": 5,
+          "star": 2,
+          "position": 51
+        },
+        {
+          "defId": "ark",
+          "uid": 6,
+          "star": 2,
+          "position": 55
+        }
+      ],
+      "right": [
+        {
+          "defId": "guard",
+          "uid": 101,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "infantry",
+          "uid": 102,
+          "star": 2,
+          "position": 39
+        },
+        {
+          "defId": "motorcycle",
+          "uid": 103,
+          "star": 2,
+          "position": 43
+        },
+        {
+          "defId": "cavalry",
+          "uid": 104,
+          "star": 2,
+          "position": 47
+        },
+        {
+          "defId": "tiger",
+          "uid": 105,
+          "star": 2,
+          "position": 51
+        },
+        {
+          "defId": "fish",
+          "uid": 106,
+          "star": 2,
+          "position": 55
+        }
+      ],
+      "hashes": {
+        "legacy": "88697df9bb237e975917d4ef3d5fc382249f4c126803ee359d0bc7cd356d6f8c",
+        "tactics": "d4d9aac0a30430466e1e61a865c5049f4ce2d133e5fe8b6bd3235270c3e6b454",
+        "balanced": "d4d9aac0a30430466e1e61a865c5049f4ce2d133e5fe8b6bd3235270c3e6b454",
+        "signature": "d6f91924dd6bd84374d642e1c659d5a0115130b3d176a062c55dd9a6119a36ed",
+        "summons": "d6f91924dd6bd84374d642e1c659d5a0115130b3d176a062c55dd9a6119a36ed",
+        "legions": "3d7171da648e5a1f0ae932d294f7af4cac8c11d931dc2044acdba4cac294b1b7",
+        "brood": "41b1eeae80fe746613db41e342e65e86d9987d3774e7f5b61a4d341fb8bd1874",
+        "airsea": "c396641960e11beec548b023d1b3f5aa4ad3ca487bcb6df406b1ce5cc7bb71e9",
+        "fleet": "0f302ee0e1d8b6a1c6ab6caceae24dea818abff1942b155635cfd8863361b13c",
+        "metamorph": "0f302ee0e1d8b6a1c6ab6caceae24dea818abff1942b155635cfd8863361b13c"
+      }
+    }
+  ]
+}

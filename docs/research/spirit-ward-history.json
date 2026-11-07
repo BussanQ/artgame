@@ -1,0 +1,128 @@
+{
+  "rules": "singleplayer-0.71",
+  "unit": "deer",
+  "historicalName": "长生鹿",
+  "skillNameStatus": "保留项目名长生庇护；尚未取得同一2019客户端原卡确认技能名。",
+  "sources": [
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "kind": "original-player-measurement",
+      "reviewMethod": "本轮实际目视原始表第30行，直接印名长生鹿；社区测量，客户端构建号未知。",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "imageSha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "fields": {
+        "cost": 4,
+        "hp": 850,
+        "attackMin": 79,
+        "attackMax": 95,
+        "armor": 5,
+        "range": 4,
+        "intervalSeconds": 1.8,
+        "cooldownSeconds": 25
+      },
+      "adoption": "本体与CD采用该行，攻击区间取均值87，不模拟每次79–95的摇值。"
+    },
+    {
+      "id": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "modifiedAt": "2019-07-15",
+      "kind": "original-player-review",
+      "reviewMethod": "本轮读取搜索索引中的原作者长生鹿段；既有原始HTML缓存可核对，不称本轮重新取得完整HTTP正文。",
+      "cachedOriginalHtml": "../../tmp/vine-s05-original.html",
+      "originalHtmlSha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "supports": [
+        "长生鹿重做为强防御辅助",
+        "一星15护甲、40法抗"
+      ],
+      "doesNotConfirm": [
+        "完整分星梯度",
+        "连接目标数量",
+        "技能名",
+        "初始能量",
+        "维持、施法距离和时序",
+        "自身是否受益",
+        "驱散、叠加与伤害归功规则",
+        "法抗到当前公式的确切换算"
+      ]
+    }
+  ],
+  "deferredLeads": [
+    {
+      "url": "https://www.8090.com/news/xinqing/article_329039.html",
+      "status": "secondary indexed lead only; not a rule source",
+      "note": "五月治疗射线、目标数和40秒冷却的转载线索；不拼接进七月防御重做。"
+    },
+    {
+      "url": "https://www.taptap.cn/moment/15230426503185354",
+      "status": "later indexed publisher-post lead; not adopted as 2019 data",
+      "note": "2020五月目标数和护甲上调线索，不能据此证明早期完整数列。"
+    },
+    {
+      "url": "https://www.sohu.com/a/421209278_100204787",
+      "status": "later indexed lead; not adopted",
+      "note": "2020九月技能改名及来源自身受益的更新线索，未核验原发布账号；本次没有沿用这项后期自保效果。"
+    }
+  ],
+  "localAdaptation": {
+    "skillName": "长生庇护",
+    "initialMana": 0,
+    "armor": [
+      15,
+      20,
+      25
+    ],
+    "magicResistBonus": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "magicResistCap": 0.75,
+    "targetCounts": [
+      3,
+      5,
+      7
+    ],
+    "rangeManhattan": 4,
+    "windupSeconds": 0.5,
+    "durationSeconds": [
+      5,
+      6,
+      7
+    ],
+    "conversion": "S05的40法抗在此解释为+40个百分点当前法术减伤；不是已确认的统一历史防御公式。",
+    "selection": "其他存活友军，生命比例、距离、UID依次排序；满生命也可受益；不选自身、残魂和火种，友方隐蔽不影响。",
+    "maintenance": "锁定起手目标，暂停行动；来源硬控、沉默、魅惑、阵亡／残魂或换阵营取消全部；目标失效仅断开对应连接，不补选。",
+    "stacking": "仅一条最强有效连接提供双防；仍维持的弱连接可在强连接结束后继续生效；法强不增加双防、目标数或时长。",
+    "noActiveHealOrShield": true,
+    "positiveCleansePolicy": "灵鱼清除负面状态保留该友方增益。",
+    "attribution": "对比有无庇护时对现有生命+护盾的本次消耗，排除过量、闪避、免疫与真伤；仅归功给最强生效来源，弱来源不重复计数。",
+    "readouts": "战斗、详情、海神飞行切换共用有效魔抗函数；不把临时加成写入永久身板。",
+    "ai": "按短期防御和实际同队其他棋子折扣估值，重叠来源不相加，不再计算旧治疗或法强收益。"
+  },
+  "art": {
+    "asset": "../../public/assets/units/deer.png",
+    "sha256": "4e7801e9541160b7acecf7d16bdea5df3b30fb9d119e4501d518e77260e8b6b1",
+    "reusedExistingImageGenAsset": true,
+    "rasterEditing": false,
+    "canvasAdditions": [
+      "蓄灵姿态",
+      "双线流光",
+      "受护轮廓"
+    ]
+  },
+  "boundaries": [
+    "一星15／40是原作者评测而非完整客户端卡，无法证明全部同版本参数。",
+    "本次不是五月治疗方案或2020后期自保改名方案的混合复刻。",
+    "同一个三对三只证明该局面真实结算，不证明整体难度或所有高费阵容已平衡。"
+  ],
+  "compatibility": {
+    "combatVersion": "spirit-ward",
+    "priorVersionCount": 43,
+    "newCost": 4,
+    "oldCost": 2,
+    "saveSchema": 70,
+    "frozenReplays": "../../tests/fixtures/pre-v071-spirit-ward-replays.json"
+  }
+}

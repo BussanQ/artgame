@@ -1,0 +1,69 @@
+{
+  "unitId": "axethrall",
+  "name": "斧奴",
+  "reviewedAt": "2026-11-04",
+  "rules": "singleplayer-0.32",
+  "sources": [
+    "S04",
+    "S20",
+    "S25",
+    "S41"
+  ],
+  "historical": {
+    "cost": 1,
+    "traits": [
+      "傀儡",
+      "刺杀"
+    ],
+    "hp": 550,
+    "attackMin": 80,
+    "attackMax": 113,
+    "armor": 5,
+    "attackIntervalSeconds": 1.8,
+    "range": 1,
+    "skillName": "飞斧",
+    "skillDamage": [
+      300,
+      500,
+      700
+    ],
+    "skillCooldownSeconds": 5,
+    "skillControl": "brief stun; precise duration not supplied"
+  },
+  "provenance": {
+    "baseStats": "S04-1 row 44; player-measured table, not client configuration",
+    "skill": "S41 client screenshot and article body",
+    "referenceImageUrl": "https://www.8090.com/uploads/allimg/190510/293517-1Z51015401G45.png",
+    "referenceImageSha256": "a90b7df25bef5518e243eb668ce9aabca221595abb6228d0970921ac63eb9cda"
+  },
+  "localAdaptation": {
+    "attack": 97,
+    "attackRounding": "80–113 midpoint 96.5 rounded to 97",
+    "attackIntervalSeconds": 1.75,
+    "intervalReason": "Nearest 0.25-second simulation step",
+    "hpAndAttackStarScale": [
+      1,
+      2,
+      4
+    ],
+    "initialMana": 0,
+    "maxMana": 100,
+    "skillRange": 3,
+    "distance": "Manhattan",
+    "damageType": "magic",
+    "stunSeconds": 0.5,
+    "resolution": "Instant damage and control; projectile animation is presentation only",
+    "target": "Nearest visible living enemy at action opportunity",
+    "cooldownStarts": "On cast; normal attacks and mana gain continue",
+    "startupBlocks": [
+      "insufficient mana",
+      "cooldown",
+      "stun",
+      "silence",
+      "charm",
+      "death",
+      "invalid target"
+    ],
+    "caveat": "Skill range, control duration, initial mana, damage type and interaction boundaries are local choices. Historical sources are different dates, not a unified official ruleset."
+  }
+}

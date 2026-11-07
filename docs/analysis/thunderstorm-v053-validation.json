@@ -1,0 +1,124 @@
+{
+  "checkedAt": "2026-11-06",
+  "rules": "singleplayer-0.53",
+  "tests": {
+    "command": "npm run test:thunderstorm -- --reporter=json --outputFile=tmp/thunderstorm-final-tests.json",
+    "modules": [
+      {
+        "path": "tests/ai-doctrines.test.ts",
+        "passed": 23
+      },
+      {
+        "path": "tests/ai-valuation.test.ts",
+        "passed": 5
+      },
+      {
+        "path": "tests/audio.test.ts",
+        "passed": 8
+      },
+      {
+        "path": "tests/battle-analysis.test.ts",
+        "passed": 11
+      },
+      {
+        "path": "tests/catalog-rotation.test.ts",
+        "passed": 3
+      },
+      {
+        "path": "tests/computation.test.ts",
+        "passed": 14
+      },
+      {
+        "path": "tests/gospel.test.ts",
+        "passed": 124
+      },
+      {
+        "path": "tests/persistence.test.ts",
+        "passed": 10
+      },
+      {
+        "path": "tests/psychic.test.ts",
+        "passed": 15
+      },
+      {
+        "path": "tests/thunderstorm.test.ts",
+        "passed": 141
+      },
+      {
+        "path": "tests/visual.test.ts",
+        "passed": 6
+      }
+    ],
+    "passed": 360,
+    "failed": 0,
+    "fullSuiteRun": false,
+    "reportSha256": "678ce50b4ef59084d9a05134ea6a607396ce0aa7c86800ebbb7c601d26266e8b"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "worker": "dist/assets/worker-Bg0bDBTY.js",
+    "css": "dist/assets/index-C6vIi-7Q.css",
+    "javascript": "dist/assets/index-B2RHNVPA.js"
+  },
+  "sourceFingerprints": {
+    "src/data/skills.ts": "035fdcd0bf49af01ed04e981b258d6b711ee032d0349dde2b88802ed0de3b44f",
+    "src/data/units.ts": "5d6a6e9e3119c4619c1ecb9763b942a6fe29fb531f2aa0e18ff38869b48838b8",
+    "src/data/unit-stats.ts": "86fbf07666aa0f91f0bc2215c7cee52d0057ba13b5bcc9a306634ef262bb00f5",
+    "src/data/catalog.ts": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d",
+    "src/data/thunderstorm-demo.ts": "1509a2f6cfe2631e5b265e8f89fd7ab7c9bd288efb06396fd41ab309625960c8",
+    "src/engine/thunderstorm.ts": "584bb565b83c5e0a425908cb5295ed464d452c43da83d305f3f291e2aa88abb3",
+    "src/engine/abilities.ts": "0a43f369c5d35e74bfc6e0108b8830eb3e9658a5e5df585e0ef212ae8550ca93",
+    "src/engine/battle.ts": "8ae42d67d7b2cd3e3cfaebd159ff6546b6edc209eadb3a31b8ed556002512e42",
+    "src/engine/ai.ts": "abd42ad16ac830a1e404f927278c75e466f1c284d70523552b24248f10489432",
+    "src/engine/types.ts": "0a530a308eac25d59ee9d199f61504842730be91fc7ff7eb1105c43e3c1f8d75",
+    "src/engine/persistence.ts": "72a2dea580d590802e3c1b10040d14a3095e7afd23ebc1ef3cd0804ee4460415",
+    "src/engine/battle-analysis.ts": "89bf842ccd46659d3ce738d93592453271792eef51f95bb6462f9b5aa86ae6bb",
+    "src/render/thunderstorm.ts": "9b61f3fbe10d8aab061cf35c91b299f4fbcbacb825241e89f9d05144588304c4",
+    "src/render/scene.ts": "c4c69b67b5ed1577fb32d0ea27a348771aa3b07afe2159834e539e8d7b7a8e69",
+    "src/render/ranged.ts": "0f76ccb375f384d110350427e32b16fba2582c4174bb8efd1d84b4dec8bf8de2",
+    "src/render/skill-effects.ts": "f6faa2e4e18bfa7267c5c4dd5d5b753641b292a76c608f4d26ccd3c8661aa2c8",
+    "src/ui/battle-analysis.ts": "de248b69a1759ee3b6e4d6d0385407f7a33ae9a344bd7dcb57b43aaf8469dd31",
+    "src/main.ts": "7e3297fab496916bb73d85bebc2b4e9ce59e165d7f9420ad0bde1174264e78dd",
+    "src/compact.css": "685eb660c5f806820019daa1892aa7499ebf9ab249db18cbe0d45ac64cc0d1b8",
+    "src/command-layout.css": "ec56d6e2ccd067ea5cd5a156946888d725976e69cddb43b05186040bb1b15b90",
+    "tests/thunderstorm.test.ts": "74cf39c82d3b2b07371a15e2527d1d8c73f9b86415aa9f6de46f265aee80a544",
+    "tests/fixtures/pre-v053-replays.json": "a5f1e9e89992b87a4db7f5fe11424ee79f70526d2be2b53f69d81a476ea67f59",
+    "public/assets/units/stormcaller-thunderstorm.png": "c82d0a57364d61c39a88ad2dfede7119e7fb5752b52912bc866d3c07745f7e8e"
+  },
+  "historicalReplayCount": 111,
+  "surveyFingerprintMismatches": {
+    "docs/analysis/thunderstorm-v053-psychic.json": [],
+    "docs/analysis/thunderstorm-v053-armor.json": []
+  },
+  "livePreview": {
+    "url": "http://192.168.31.130:5174",
+    "checks": {
+      "/src/main.ts": {
+        "status": 200,
+        "markersPresent": [
+          "thunderstorm-demo",
+          "equipmentMarkup",
+          "synergyPanelMarkup"
+        ]
+      },
+      "/src/engine/thunderstorm.ts": {
+        "status": 200,
+        "markersPresent": [
+          "advanceStormBolts",
+          "stormContact"
+        ]
+      },
+      "/src/data/units.ts": {
+        "status": 200,
+        "markersPresent": [
+          "singleplayer-0.53"
+        ]
+      },
+      "/assets/units/stormcaller-thunderstorm.png": {
+        "status": 200,
+        "sha256": "c82d0a57364d61c39a88ad2dfede7119e7fb5752b52912bc866d3c07745f7e8e"
+      }
+    }
+  }
+}

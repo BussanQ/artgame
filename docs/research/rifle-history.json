@@ -1,0 +1,78 @@
+{
+  "rules": "singleplayer-0.67",
+  "unit": "infantry",
+  "displayName": "神枪手",
+  "sources": [
+    {
+      "id": "S04-1",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measured-attribute-table",
+      "row": 1,
+      "printedName": "神射手",
+      "fields": {
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "狙击"
+        ],
+        "hp": 400,
+        "attack": [
+          34,
+          38
+        ],
+        "armor": 5,
+        "range": 4,
+        "attackIntervalSeconds": 1,
+        "cooldown": "被动"
+      },
+      "review": "表中神射手映射为当前一费神枪手是依据费用、职业与定位的推断，名称不完全相同；不是已取得的官方神枪手客户端卡。"
+    },
+    {
+      "id": "S63",
+      "url": "https://www.taptap.cn/moment/15212919167910486?group_id=42979",
+      "title": "新版本最强性价比兵种以及阵容",
+      "publishedAt": "2019-05-15",
+      "kind": "original-player-post",
+      "review": "一费神枪手、攻速装备与三星六步兵四野兽构筑。面板0.5秒和作者目测0.3秒／一秒三枪属于带羁绊装备的构筑观察，不能证明单次普攻额外三次伤害，也不能证明裸装星级射速梯度。",
+      "images": [
+        {
+          "path": "images/rifleman-player-client-may2019-a.jpg",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/76e00727152ed77df8f64b3cacacdc8a.png/_tap_ugc.jpg",
+          "sha256": "ca4fb9d1978b95a4ede428afb3fc8ed24f78cc463d2c89f3f9c613582b6e3b8a",
+          "bytes": 111599
+        },
+        {
+          "path": "images/rifleman-player-client-may2019-b.jpg",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/77bc8f5c81cacb340b9ae6a3b401b407.png/_tap_ugc.jpg",
+          "sha256": "835e468258aa2c4a01db39c4cd028d8f2e33e2948a3d34f031f4f383cda6f09f",
+          "bytes": 109092
+        }
+      ],
+      "imageReview": "已查看原图，能辅助红灰配色和战场观感，不能取得技能卡或精确模型归属；原文件实际为JPEG。"
+    },
+    {
+      "id": "S52",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "review": "原作者评测支持低费、高攻速、依赖装备的物理核心定位，没有给出完整被动数值。"
+    }
+  ],
+  "localAdaptation": {
+    "skillName": "快速射击",
+    "attackMean": 36,
+    "starAttackIntervalsSeconds": [
+      1,
+      0.75,
+      0.5
+    ],
+    "realDamagePacketsPerOrdinaryAttack": 1,
+    "minimumAttackIntervalSeconds": 0.25,
+    "noEnergy": true
+  },
+  "deferred": [
+    "未取得可确证早期技能名称、裸装星级射速梯度的神枪手客户端卡。",
+    "护盾兵后期刺盾之阵公告不混入2019单体控制原型；本次未修改护盾兵。"
+  ],
+  "compatibility": "39个旧版本保留480生命、58攻击、2甲、3格、0.75秒及精准射击主动破甲；原有infantry.png保留。"
+}

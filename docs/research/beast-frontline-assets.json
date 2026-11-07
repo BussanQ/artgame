@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-11-05",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "elephant",
+      "name": "巨齿象",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-7e973149-8982-4d39-b212-d43774adcf2a.png",
+      "sha256": "efa51d11e411007d82ceaed998ae0274144ccf6f4b37954403bfe2e4a4feeb27",
+      "transparentPixels": 708863,
+      "path": "public/assets/units/elephant.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 巨齿象, a massive four-legged battle elephant with weathered charcoal-brown skin, an armored forehead and shoulder plates of antique bronze, two enormous sweeping ivory tusks reinforced by bronze rings, small warm amber eyes, muscular trunk lifted slightly in a forward fighting stance. No rider or howdah. Polished hand-painted 3D strategy-game miniature, elevated three-quarter front view facing viewer-right, whole animal and all four feet visible, strong readable silhouette at small size, 12% transparent padding. Match premium Eastern science-fantasy auto-chess art: realistic stylized material, restrained jade accents, warm daylight and cool rim light. Actual transparent alpha background, no floor, no pedestal, no ground shadow, no landscape, no text, no watermark, one creature only.",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [0, 254],
+      "attempts": 1
+    },
+    {
+      "id": "venombeast",
+      "name": "猛毒兽",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-c512c03d-d5ef-4c40-9fe6-971bbacdb062.png",
+      "sha256": "de81bd7da16e2951b676604868fcd7dadb26204f8ad43a7c149d931c77a5d110",
+      "transparentPixels": 763155,
+      "path": "public/assets/units/venombeast.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto-chess game. Subject: 猛毒兽, a hulking low-slung quadrupedal venom beast, crocodilian dragon head with a broad acid-spitting jaw, sturdy clawed legs, thick curved tail, dark olive reptilian scales and overlapping charcoal back plates, luminous lime-green acid sacs at its throat and cheeks, a few restrained antique bronze Chinese armor clasps. Mouth slightly open with a small contained acid glow, no projectile or puddle. Clearly a muscular reptile creature, not an insect or elephant. Polished hand-painted 3D strategy-game miniature, elevated three-quarter front view facing viewer-right, entire creature, tail and all four feet visible, compact strong readable silhouette at small size, 12% transparent padding. Realistic stylized materials, warm daylight and cool rim light. Actual transparent alpha background, no floor, no pedestal, no shadow, no landscape, no text, no watermark, one creature only.",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [0, 254],
+      "attempts": 1
+    }
+  ]
+}

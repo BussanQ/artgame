@@ -1,0 +1,294 @@
+{
+  "recordedAt": "2026-11-07T02:53:06.013008+08:00",
+  "rules": "singleplayer-0.62",
+  "combatVersion": "warcry",
+  "saveSchema": 61,
+  "goalStatus": "active；本增量不代替完整单机目标、历史统一切片或整体平衡验收。",
+  "previousGoalTurn": "progress：方舟/铁巨神增量已由245cfe3提交并推送到dev；本轮继续实现原型能力缺口。",
+  "tests": {
+    "command": "npm run test:warcry",
+    "passed": 69,
+    "failed": 0,
+    "modules": [
+      {
+        "path": "tests/terminator.test.ts",
+        "tests": 31,
+        "status": "passed"
+      },
+      {
+        "path": "tests/warcry.test.ts",
+        "tests": 38,
+        "status": "passed"
+      }
+    ],
+    "sourceSha256": {
+      "tests/warcry.test.ts": "025d81f34c34b09c202293734e699e6c4f8f71e8b17af59c6734dc61f2fb644b",
+      "tests/terminator.test.ts": "63b99f9e4a2843b54b7675be33f7a9b9c2ecc5decc925cd3ba6e3b7374282977"
+    },
+    "rawReport": "../../tmp/warcry-module-tests.json",
+    "rawReportSha256": "e04c6d00e62894a31ecc4c38f4bdcd47f75e2ae2b19acc83a2018c077e03d2e6",
+    "scope": "38项新战吼与31项既有终结者模块，固定小局面/微型状态检查；没有全量测试或经营对局采样。",
+    "cleanse": "实际调用灵鱼位面观测解除石化，不以直接改状态代替能力交互证据。"
+  },
+  "historical": {
+    "fixtures": [
+      {
+        "path": "../../tests/fixtures/pre-v062-lion-replays.json",
+        "sha256": "7d91fd33fea197c89a00cfb1b163981edb1b34c69e289698a4e00eea45fd287b",
+        "versions": [
+          "legacy",
+          "counterplay",
+          "terminator"
+        ],
+        "originalLionCasts": [
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "path": "../../tests/fixtures/pre-v061-titan-replays.json",
+        "sha256": "19ac06538ca61f00e9158eb5104aee439c6937ee68b6a1b108cc5a73a39ace6b",
+        "versions": [
+          "legacy",
+          "fleet",
+          "bombardment"
+        ]
+      }
+    ],
+    "frozenReplayCount": 6,
+    "lionDefinitionsCompared": 34,
+    "limits": "三份狂狮旧回放均包含四次旧技能施放；其他定义、连携、异虫双合及既有能力作直接比较，未重跑35版本完整战斗矩阵。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 133,
+    "rawLog": "../../tmp/warcry-v062-build.log",
+    "rawLogSha256": "9e6b902a3d97e0d9a140eece538bb9d86f8a7a4746c6752d92fac82cf8a4cb9a",
+    "app": "dist/assets/index-mdZdyY8c.js",
+    "appSha256": "3063c0990255df57fe1ee1b9765834c9d7705f9b8ae0894694d1917c92ec675d",
+    "worker": "dist/assets/worker-DAxP5b2w.js",
+    "workerSha256": "e779451c566f9349c622727b9d7d69888e7364290c3a2ce47139405dcc276fce",
+    "css": "dist/assets/index-0iwQsGQW.css",
+    "cssSha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+  },
+  "research": {
+    "manifest": "../research/warcry-history.json",
+    "image": "../research/images/lion-warcry-client-dec2019.jpg",
+    "imageSha256": "bf24bb39b02b7a98c58b0f541ba8a55683c574bd03fc56a6b536f8fd2fc97c9a",
+    "clientCardVisuallyReviewed": true,
+    "geometryAndStartup": "半径3格/120度/0.5秒为公开本地适配，卡面未给出。"
+  },
+  "art": {
+    "assetPath": "../../public/assets/units/lion.png",
+    "assetSha256": "833f364dd4c2321c813b0b56ca29130962d4ffa1bfbc9ef3a756055d205b9d9c",
+    "action": "reuse-existing-imagegen-asset",
+    "newImageGenerated": false,
+    "rasterPostprocessing": false,
+    "runtimePresentation": [
+      "蓄吼与释放姿态",
+      "前方扇形声波",
+      "灰石冻结与石片",
+      "个人反伤连线"
+    ],
+    "oldBasicAttack": "跃身爪击保持。"
+  },
+  "catalog": {
+    "newMatchCost": 3,
+    "newMatchCopies": 25,
+    "priorMatchCost": 2,
+    "priorMatchCopies": 30,
+    "validation": "两个目录的真实购买/出售各一次，价格与份数守恒，四阶段迁移及缺失目录回填通过。"
+  },
+  "roster": {
+    "units": 63,
+    "normalMelee": 24,
+    "normalRanged": 39,
+    "meleeProfiles": 24,
+    "rangedProfiles": 39,
+    "scope": "常态近远程；变形不计入两类的额外单位。"
+  },
+  "ui": {
+    "url": "http://127.0.0.1:5174/",
+    "lan": "http://192.168.31.130:5174/",
+    "lanHttpStatus": 200,
+    "configuration": "warcry六对六正常引擎演示，使用合法装备，不是等预算平衡样本。",
+    "normalCampaignRuns": 0,
+    "note": "分析布局修复造成开发热重载，随后重新打开同一确定性演示配置；不把两个查看片段称为连续正常经营局。",
+    "observations": [
+      {
+        "seconds": 4,
+        "lionHp": 1305,
+        "roars": 1,
+        "petrified": 3,
+        "retaliations": 1,
+        "retaliationLife": 0,
+        "retaliationShield": 20
+      },
+      {
+        "seconds": 5,
+        "lionHp": 1355,
+        "roars": 1,
+        "petrified": 3,
+        "retaliations": 2,
+        "retaliationLife": 0,
+        "retaliationShield": 40
+      },
+      {
+        "seconds": 10,
+        "lionHp": 269,
+        "roars": 1,
+        "petrified": 3,
+        "retaliations": 20,
+        "retaliationLife": 240,
+        "retaliationShield": 160
+      },
+      {
+        "seconds": 15,
+        "lionHp": 0,
+        "roars": 1,
+        "petrified": 3,
+        "retaliations": 25,
+        "retaliationLife": 300,
+        "retaliationShield": 200
+      }
+    ],
+    "outcome": "15秒片段仍未结束，不声明胜负或平衡效果。",
+    "mobileBeforeFix": {
+      "page": 390,
+      "panel": {
+        "scroll": 331,
+        "width": 332.5
+      },
+      "viewport": 390
+    },
+    "mobileAfterFix": {
+      "before": {
+        "close": {
+          "bottom": 136.296875,
+          "top": 92.296875,
+          "width": 44
+        },
+        "page": 390,
+        "panel": 332.5,
+        "viewport": 390
+      },
+      "after": {
+        "bodyScroll": 422,
+        "close": {
+          "bottom": 136.296875,
+          "top": 92.296875,
+          "width": 44
+        },
+        "page": 390,
+        "panel": {
+          "scroll": 331,
+          "width": 332.5
+        },
+        "viewport": 390
+      }
+    },
+    "desktopAnalysis": {
+      "page": 1280,
+      "panel": {
+        "scroll": 998,
+        "width": 1000
+      },
+      "viewport": 1280
+    },
+    "resourcesUnchanged": true,
+    "consoleErrorsOrWarnings": 0,
+    "viewportReset": true,
+    "rawEvidence": "../../tmp/warcry-v062-ui.json",
+    "rawEvidenceSha256": "a9bc4eddb0541ef460526707ae4597d5c83b0343eae30b172f11902bbf769e64",
+    "screenshots": [
+      {
+        "path": "../../tmp/warcry-v062-roar.jpg",
+        "format": "JPEG",
+        "size": [
+          1280,
+          720
+        ],
+        "sha256": "17789965dfbfbf993b6271265c5cf6beb674f94da8df1b86ff0600ff63ae94ae"
+      },
+      {
+        "path": "../../tmp/warcry-v062-desktop.jpg",
+        "format": "JPEG",
+        "size": [
+          1280,
+          720
+        ],
+        "sha256": "92f83cb4d621453d8a3d0729f11aa56dd86e18c181290f2dd2b81b143567f1e6"
+      },
+      {
+        "path": "../../tmp/warcry-v062-mobile390.jpg",
+        "format": "JPEG",
+        "size": [
+          390,
+          844
+        ],
+        "sha256": "b8e31afe78f6dcb7f21a20e19a53f4f07d50571d091b1366a961b80cf437ea9e"
+      },
+      {
+        "path": "../../tmp/warcry-v062-mobile-analysis-fixed.jpg",
+        "format": "JPEG",
+        "size": [
+          390,
+          844
+        ],
+        "sha256": "fd4a4da9447efb4c175baea99887f690c35dbddaa13c720dadd41969613ead92"
+      },
+      {
+        "path": "../../tmp/warcry-v062-desktop-analysis.jpg",
+        "format": "JPEG",
+        "size": [
+          1280,
+          720
+        ],
+        "sha256": "23f2fbb43ba073d4781c3d5a0b8faf44d006546e31df9dbed5708c417046fe1d"
+      }
+    ],
+    "limits": "本机浏览器桌面与窄屏验证，不是实际触屏/弱设备性能或多构筑完整局验收。"
+  },
+  "sourceFingerprints": {
+    "package.json": "11e147e71ba8d5cdd9e096f2004c82917b7ba92d18a085e9917f74c393e76cb1",
+    "src/engine/types.ts": "ac108fc1eabd8c94e601729ff5e6d0a9c28b34eaf0697dd49c83d6a8f24bf9a8",
+    "src/data/units.ts": "234ba2590586cb89f24336bcd29edd83587c78baf210ee4c96f90e10d9e22f88",
+    "src/data/skills.ts": "bd7f1ed8504bdc6d2d471b4138f97de3ca3183047c8418b2d21ff4888b3e321c",
+    "src/data/unit-stats.ts": "cb5d5a596d46c521d5f7e24a2a1f602238d04d5c8730e2edeff31a78c758ff1c",
+    "src/engine/abilities.ts": "9689017f62d90300106abf6fee82ec7da3856b3b75119e393de8520cfbfe6a2a",
+    "src/engine/battle.ts": "816815346a14e07a5dc36d98b2bdd03551f584db5124e53aaba5d0612bed5a95",
+    "src/engine/warcry.ts": "1025382eb143e6d78628e02706c02ff494cf810fd5c5058bf336d0cabb090d29",
+    "src/engine/persistence.ts": "5a494f6db610a683b5e04503324e635660e4795625690e9ff2bba7b85535249e",
+    "src/engine/ai.ts": "7aa19540fda031c0763debc00fb979b574b03e75a5c81d133179d6672c380160",
+    "src/engine/battle-analysis.ts": "08ef9f6ff7771716e87878fab97992aa4e46247b009baaf8439e448850d7453b",
+    "src/data/warcry-demo.ts": "8a4d00b722aba3efae87c7d1dbdae5405a865f67c5bf59ca334abdec0199f230",
+    "src/render/warcry.ts": "8263bb4ac6d880b7df9fbca7938b86cb37dfb51ba1388aa590be437b480ce05e",
+    "src/render/scene.ts": "d553dbd8a1f45181ffbb757db057759e93691a1502dd09cd4bb4e36a6db3a55c",
+    "src/render/skill-effects.ts": "bfca4024fe08c53600f71ea44566d39a967fb8cbcd282674880eecfa93e2b42b",
+    "src/render/battle-inspection.ts": "b903938fe6ff641a2900cde77b8bbe86853b4edd85818563f64bfeabecc45b4f",
+    "src/ui/battle-analysis.ts": "8f84f5ce970ba566f199bd2fc4780e5ff6d1bd60e9e99df7feed0160dd666a5a",
+    "src/visual.css": "01c68d7ed315b2e9b74dfda47706dba5dfd35f6b49a24d7c66dbdec4ed2fa406",
+    "src/main.ts": "40e4bb0ec3ddae384deb520c8a0caf12816515ce264286e2a4dee99076c874a9"
+  },
+  "notRun": [
+    "全量测试",
+    "批量平衡/阵容对战采样",
+    "新的完整正常经营局",
+    "真实手机与弱设备性能测试"
+  ],
+  "remaining": [
+    "统一历史构建全部字段及伤害/回能公式",
+    "其他待核对原型能力",
+    "总体难度与多构筑完整经营",
+    "高星/高费收集的最终体验",
+    "真实触屏与弱设备"
+  ],
+  "git": {
+    "branch": "dev",
+    "baseCommit": "245cfe3a6b152ba676f77ec6c466550aa33f5cdf",
+    "newCommitCreated": false,
+    "newChangesPushed": false
+  }
+}

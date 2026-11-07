@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION,type CombatVersion } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import {
   createGame,
@@ -38,7 +39,7 @@ const piece = (
   ...(copies === undefined ? {} : { copies }),
 });
 function board() {
-  const g = createGame(137),
+  const g = createGame(137, "classic"),
     p = g.players[0];
   p.gold = 100;
   const give = (id: string) => {
@@ -52,8 +53,8 @@ function board() {
 function context(source: Fighter, ...others: Fighter[]): CombatContext {
   return { fighters: [source, ...others], tick: 1, events: [], effects: [] };
 }
-function fighter(id: string, uid: number, side: 0 | 1 = 0, star = 1) {
-  return army([piece(id, uid, star, side === 0 ? 35 : 36)], side)[0];
+function fighter(id: string, uid: number, side: 0 | 1 = 0, star = 1,version:CombatVersion=CURRENT_COMBAT_VERSION) {
+  return army([piece(id, uid, star, side === 0 ? 35 : 36)], side,version)[0];
 }
 describe("异虫进化与实际卡池份数", () => {
   it("备战席计不同种类，2/4种降低相应星级门槛，旧版不受影响", () => {
@@ -163,9 +164,9 @@ describe("异虫进化与实际卡池份数", () => {
   });
 });
 describe("异虫战斗技能", () => {
-  it("爆裂虫无能量，阵亡爆炸按最大生命和法强造成范围伤害，连锁每只仅一次", () => {
-    const a = fighter("blastbug", 1),
-      b = fighter("blastbug", 2, 1),
+  it("旧版爆裂虫无能量，阵亡爆炸按最大生命和法强造成范围伤害，连锁每只仅一次", () => {
+    const a = fighter("blastbug", 1, 0, 1,"sea-fog"),
+      b = fighter("blastbug", 2, 1, 1,"sea-fog"),
       near = fighter("guard", 3, 1),
       far = fighter("guard", 4, 1);
     Object.assign(a, { x: 3, y: 3 });
@@ -207,8 +208,8 @@ describe("异虫战斗技能", () => {
     expect(castSkill(ctx, bee, target)).toBe(true);
     expect(ctx.events.at(-1)?.attacker).toBe(bee.uid);
   });
-  it("蜘蛛魅惑范围内最强非召唤敌人，控制期间不可施法或回能，每场一次", () => {
-    const spider = fighter("spider", 1),
+  it("旧版蜘蛛魅惑范围内最强非召唤敌人，控制期间不可施法或回能，每场一次", () => {
+    const spider = army([piece("spider",1,1,35)],0,"support-actions")[0],
       weak = fighter("guard", 2, 1),
       strong = fighter("titan", 3, 1),
       pet = fighter("guard", 4, 1);
@@ -253,10 +254,10 @@ describe("异虫战斗技能", () => {
     expect(fast).toMatchObject({ winner: b.winner, damage: b.damage });
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
   });
-  it("异能仅统计上阵两种，敌人所有回能按75%计算，旧版无此效果", () => {
+  it("旧brood异能仅统计上阵两种，敌人所有回能按75%计算，legions无此效果", () => {
     const left = [piece("spider", 1, 1, 35), piece("eyebug", 2, 1, 43)],
       right = [piece("guard", 3, 1, 36)];
-    const b = simulate(left, right),
+    const b = simulate(left, right, "brood"),
       enemy = b.frames[0].fighters.find((f) => f.uid === 3)!;
     expect(enemy.energyMultiplier).toBe(0.75);
     enemy.mana = 0;
@@ -267,8 +268,9 @@ describe("异虫战斗技能", () => {
     expect(enemy.mana).toBe(26.25);
     left[1].position = null;
     expect(
-      simulate(left, right).frames[0].fighters.find((f) => f.uid === 3)!
-        .energyMultiplier,
+      simulate(left, right, "brood").frames[0].fighters.find(
+        (f) => f.uid === 3,
+      )!.energyMultiplier,
     ).toBe(1);
     expect(
       simulate(left, right, "legions").frames[0].fighters.every(
@@ -280,7 +282,7 @@ describe("异虫战斗技能", () => {
 describe("0.9存档迁移", () => {
   for (const phase of ["prepare", "battle", "result"] as const)
     it(`${phase}保留资源、战报和进行中的规则`, () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "legions";
       // An old roster cannot contain an insect shop reservation.
       for (const p of g.players)
@@ -315,14 +317,14 @@ describe("0.9存档迁移", () => {
       expect(restored.players).toEqual(g.players);
       expect(restored.history).toEqual(g.history);
       expect(restored.combatVersion).toBe(
-        phase === "prepare" ? "metamorph" : "legions",
+        phase === "prepare" ? CURRENT_COMBAT_VERSION : "legions",
       );
       for (const id of BROOD_ADDITIONS)
         expect(restored.pool[id]).toBe(COPIES[UNIT[id].cost]);
       if (phase === "result") {
         if (restored.reward) claimReward(restored, 0);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("metamorph");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
       }
     });
 });

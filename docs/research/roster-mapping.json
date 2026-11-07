@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-03",
-  "rules": "singleplayer-0.21",
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.82",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
-    "currentRecruitableUnits": 50,
-    "mappedNamesOrLocalDesigns": 40,
-    "missingAprilUnits": 13,
-    "currentOutsideBaseline": 10,
-    "classificationDifferences": 8
+    "currentRecruitableUnits": 64,
+    "mappedNamesOrLocalDesigns": 53,
+    "missingAprilUnits": 0,
+    "currentOutsideBaseline": 11,
+    "classificationDifferences": 0
   },
   "aprilUnits": [
     {
@@ -102,12 +102,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "神射手只是本项目命名，未找到证据证明它是特种兵，暂不合并。"
+      "currentUnitId": "specialist",
+      "currentName": "特种兵",
+      "currentTraits": [
+        "步兵",
+        "狙击"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.25独立补入；基础字段参考S04，1.7秒间隔适配为1.75秒。锁定技能名、伤害和控制等具体参数为本地设计；不与sniper合并。"
     },
     {
       "historicalName": "投弹手",
@@ -139,12 +142,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "birdrider",
+      "currentName": "鸟骑兵",
+      "currentTraits": [
+        "骑兵",
+        "狙击"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.26独立补入；S04基础字段、S38五月30日信仰之箭。蓄力时长、打断/计数细节和统一星级成长为本地适配，不替代其他骑兵。"
     },
     {
       "historicalName": "摩托骑兵",
@@ -176,12 +182,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "irondog",
+      "currentName": "铁狗",
+      "currentTraits": [
+        "装甲",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.24补入分段震荡与逐星+2护甲；基础属性参考S04，技能名及参数为单机适配，见irondog.md。"
     },
     {
       "historicalName": "铁猿",
@@ -191,14 +200,20 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S05",
+        "S18"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "ironape",
+      "currentName": "铁猿",
+      "currentTraits": [
+        "装甲",
+        "爆破"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.27补入，基础属性参考S04，范围法伤定位参考S05/S18；具体技能参数为本地适配。"
     },
     {
       "historicalName": "投石车",
@@ -208,18 +223,31 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S05",
+        "S71"
       ],
       "currentUnitId": "chariot",
       "currentName": "投石车",
       "currentTraits": [
         "装甲",
-        "狙击",
         "攻城"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.74恢复三费800生命45.5平均攻击与架设范围普通攻击；S71地区名投石机为映射判断，时序、增攻和溅射细则单列于siege-history.json。旧局价格与份数保持。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "装甲",
+          "狙击",
+          "攻城"
+        ]
+      }
     },
     {
       "historicalName": "铁鸡",
@@ -229,14 +257,20 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S18",
+        "S40"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "ironrooster",
+      "currentName": "铁鸡",
+      "currentTraits": [
+        "装甲",
+        "刺杀"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.30补入；S04基础字段、S40友军攻防强化定位。技能名、幅度、范围、持续时间及边界为单机适配，详见ironrooster-history.json。"
     },
     {
       "historicalName": "铁巨神",
@@ -252,12 +286,22 @@
       "currentName": "铁巨神",
       "currentTraits": [
         "装甲",
-        "护卫",
         "爆破"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ]
+      }
     },
     {
       "historicalName": "轰炸机",
@@ -297,7 +341,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "同名角色；属性、技能与费用须单独核对。",
+      "implementationNote": "0.76灵蕴缝合为治疗／回能／独立加速；身板、最高攻击选人、跨期与本地梯度见mending-history.json。"
     },
     {
       "historicalName": "幽灵机",
@@ -307,7 +352,9 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S35"
       ],
       "currentUnitId": "ghostjet",
       "currentName": "幽灵机",
@@ -317,7 +364,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "同名角色；属性、技能与费用须单独核对。",
+      "implementationNote": "0.77无形替换瞬移伤害原型；6秒／16秒与30/40/50%取S35，身板取S04均值，跨期和适配见formless-history.json；S20机械鲨形象重制。"
     },
     {
       "historicalName": "方舟",
@@ -347,14 +395,19 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S41"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "axethrall",
+      "currentName": "斧奴",
+      "currentTraits": [
+        "傀儡",
+        "刺杀"
+      ],
+      "mapping": "historical-reference-local-adaptation",
+      "classificationMatches": true,
+      "note": "0.32新增；S04基础属性和S41飞斧300/500/700及5秒冷却有资料，3格技能射程、0.5秒控制和边界为本地适配。"
     },
     {
       "historicalName": "真人",
@@ -388,12 +441,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "swordthrall",
+      "currentName": "剑奴",
+      "currentTraits": [
+        "傀儡",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.33补入；基础属性及狂舞花绽伤害、次数、持续、冷却与免技能伤害有史料，移动免控参考同期玩家评测；半径及交互为本地适配。"
     },
     {
       "historicalName": "刀奴",
@@ -405,12 +461,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "bladethrall",
+      "currentName": "刀奴",
+      "currentTraits": [
+        "傀儡",
+        "先锋"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.34补入；属性、10%普攻暴击及300/450/600%倍率有史料。截图60秒冷却含义未确定，当前采用无主动冷却的普攻被动，交互与随机序列为本地适配。"
     },
     {
       "historicalName": "盾奴",
@@ -422,12 +481,15 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "须弥鲨召唤的镇海盾卫不等于可购买的盾奴，仍列缺失。"
+      "currentUnitId": "shieldthrall",
+      "currentName": "盾奴",
+      "currentTraits": [
+        "傀儡",
+        "护卫"
+      ],
+      "mapping": "name-only",
+      "classificationMatches": true,
+      "note": "0.35独立补入；S04基础字段、S42正义冲锋200/300/400法伤、10秒冷却与2秒沉默有史料。矩形范围大小、初始能量、反伤和控制边界为本地适配。镇海盾卫仍是不同召唤物。"
     },
     {
       "historicalName": "须弥鲨",
@@ -461,12 +523,31 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "傀儡/护卫；与武僧熊猫是不同棋子，尚未实现。"
+      "currentUnitId": "staffthrall",
+      "currentName": "棍奴",
+      "currentTraits": [
+        "傀儡",
+        "护卫"
+      ],
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45分类改回四月/五月护卫；疾风保留后期资料参数与本地边界。六月护卫→先锋的历史差异由S45佐证。",
+      "implementationSources": [
+        "S04",
+        "S44",
+        "S45"
+      ],
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03",
+          "S45"
+        ],
+        "previousTraits": [
+          "傀儡",
+          "先锋"
+        ]
+      }
     },
     {
       "historicalName": "童子",
@@ -486,7 +567,17 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.52恢复周边持续供能及原异形轮廓；二费与身板见S04/S38，技能卡S54，三星末位、范围换算等不确定项明确列为本地适配，见gospel-history.json。",
+      "abilityReview": {
+        "sourceIds": [
+          "S04",
+          "S32",
+          "S38",
+          "S54"
+        ],
+        "details": "gospel-history.json",
+        "sameHistoricalBuildProven": false
+      }
     },
     {
       "historicalName": "天师",
@@ -506,7 +597,17 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.53采用一费身板、雷暴贯穿/20削能与无脸晶核装甲形象，按S04/S55/S56逐字段核对；历史切片与本地适配见thunderstorm-history.json。",
+      "mechanismReview": {
+        "rules": "singleplayer-0.53",
+        "sourceIds": [
+          "S04",
+          "S55",
+          "S56"
+        ],
+        "record": "thunderstorm-history.json",
+        "unifiedHistoricalVersion": false
+      }
     },
     {
       "historicalName": "雷震子",
@@ -522,11 +623,21 @@
       "currentName": "雷震子",
       "currentTraits": [
         "灵能",
-        "爆破"
+        "狙击"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "灵能",
+          "爆破"
+        ]
+      }
     },
     {
       "historicalName": "金刚",
@@ -536,7 +647,13 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S05",
+        "S14",
+        "S26",
+        "S64",
+        "S72"
       ],
       "currentUnitId": "vajra",
       "currentName": "金刚",
@@ -544,9 +661,9 @@
         "陆行者",
         "护卫"
       ],
-      "mapping": "name-only",
+      "mapping": "classification-aligned-local-skills",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.75采用一费650生命/44均值攻击、炎狱震地减速与狂怒续战、S20双臂轮廓；旧二费目录与原图保留。完整原卡未取得，跨期和本地系数见inferno-history.json。"
     },
     {
       "historicalName": "罗汉",
@@ -566,7 +683,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.48按S50技能卡与S04属性表分别采用气波掌250/450/650、10秒及550生命/5甲/5格/2.2秒；攻击区间取均值160。仍含跨期与本地适配，不等于统一客户端完整复原。",
+      "mechanicsReview": "qi-history.json"
     },
     {
       "historicalName": "翔龙",
@@ -598,12 +716,21 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "lingjiu",
+      "currentName": "灵鹫",
+      "currentTraits": [
+        "海神",
+        "刺杀"
+      ],
+      "mapping": "mixed-version-adaptation",
+      "classificationMatches": true,
+      "note": "0.40补入；基础属性和6秒冷却参考S04，死魂曲200/300/400由2020年S48明确公告支持。自身1.5格范围、初始能量与边界是本地适配；S20原图视觉核对并生成独立飞行海兽形象。",
+      "implementationSources": [
+        "S04",
+        "S20",
+        "S48",
+        "S49"
+      ]
     },
     {
       "historicalName": "空蟹",
@@ -673,17 +800,19 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S50"
       ],
       "currentUnitId": "pangolin",
       "currentName": "穿山甲",
       "currentTraits": [
         "野兽",
-        "先锋"
+        "刺杀"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "mixed-version-adaptation",
+      "classificationMatches": true,
+      "note": "0.42分类与S04基本字段已对齐，S50客户端卡支持遁地100/200/300及20秒。初始能量、技能距离、法伤类型、击飞时长和位移边界为本地适配，旧回放保留先锋旧定义。"
     },
     {
       "historicalName": "巨齿象",
@@ -695,12 +824,21 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "elephant",
+      "currentName": "巨齿象",
+      "currentTraits": [
+        "野兽",
+        "先锋"
+      ],
+      "mapping": "mixed-version-adaptation",
+      "classificationMatches": true,
+      "note": "0.39补入；基础属性与20秒冷却参考S04，獠牙冲名称另见2020年S47。单体100/200/300、击飞1秒及其边界为本地适配；S46原图仅见索引转写，未完成视觉核实。",
+      "implementationSources": [
+        "S04",
+        "S18",
+        "S46",
+        "S47"
+      ]
     },
     {
       "historicalName": "猛毒兽",
@@ -712,12 +850,20 @@
         "S20",
         "S25"
       ],
-      "currentUnitId": null,
-      "currentName": null,
-      "currentTraits": [],
-      "mapping": "missing",
-      "classificationMatches": null,
-      "note": "尚无可招募棋子。"
+      "currentUnitId": "venombeast",
+      "currentName": "猛毒兽",
+      "currentTraits": [
+        "野兽",
+        "先锋"
+      ],
+      "mapping": "mixed-version-adaptation",
+      "classificationMatches": true,
+      "note": "0.39补入；S04基础字段，S35五月9日公告明确酸性污染10/8/6秒冷却，S18支持削甲定位。减甲7/14/21、九宫格、3格施法及6秒持续为本地适配，不虚构直接毒伤。",
+      "implementationSources": [
+        "S04",
+        "S18",
+        "S35"
+      ]
     },
     {
       "historicalName": "鬼狼",
@@ -733,12 +879,22 @@
       "currentName": "鬼狼",
       "currentTraits": [
         "野兽",
-        "刺杀",
         "召唤"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "野兽",
+          "刺杀",
+          "召唤"
+        ]
+      }
     },
     {
       "historicalName": "血鹰",
@@ -837,12 +993,23 @@
       "currentName": "骨龙",
       "currentTraits": [
         "不朽",
-        "爆破",
+        "攻城",
         "猛禽"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "不朽",
+          "爆破",
+          "猛禽"
+        ]
+      }
     },
     {
       "historicalName": "飞天蛤蟆",
@@ -912,7 +1079,10 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S35",
+        "S04",
+        "S73"
       ],
       "currentUnitId": "spider",
       "currentName": "蜘蛛",
@@ -922,7 +1092,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "同名角色；属性、技能与费用须单独核对。",
+      "implementationNote": "0.79迷梦随机策反、5/6.5/8秒与来源死亡解除；S04身板、媒体增攻和本地引火／驱散边界见dream-history.json。"
     },
     {
       "historicalName": "杀人蜂",
@@ -958,11 +1129,21 @@
       "currentName": "藤妖",
       "currentTraits": [
         "不朽",
-        "护卫"
+        "异能"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skills",
+      "classificationMatches": true,
+      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "不朽",
+          "护卫"
+        ]
+      }
     },
     {
       "historicalName": "树妖",
@@ -982,7 +1163,16 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.54按S04第38行与S55客户端卡分别采用身板和丛林之怒两段范围控制，形象参照树石巨兽；跨期与本地时序明确分开，不等于统一历史版本复原。",
+      "mechanismReview": {
+        "rules": "singleplayer-0.54",
+        "sourceIds": [
+          "S04",
+          "S55"
+        ],
+        "record": "jungle-history.json",
+        "unifiedHistoricalVersion": false
+      }
     },
     {
       "historicalName": "武僧熊猫",
@@ -1002,7 +1192,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "本轮把本地混用名“棍奴熊猫”更正为武僧熊猫，保留master ID和现有四费横扫；历史一费肉盾设计尚未对齐。"
+      "note": "历史原型曾混用“棍奴熊猫”名称；master ID继续兼容，当前能力以implementationNote为准。",
+      "implementationNote": "0.56接入一费无式护甲变身，0.57根据S59客户端卡补齐最多3目标及周围嘲讽；2格/2秒和交互为公开适配，旧目录与战报保留，见wushi-control-history.json。"
     },
     {
       "historicalName": "忍者熊猫",
@@ -1012,7 +1203,10 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S59",
+        "S60"
       ],
       "currentUnitId": "panda",
       "currentName": "忍者熊猫",
@@ -1020,9 +1214,10 @@
         "熊猫",
         "刺杀"
       ],
-      "mapping": "name-only",
+      "mapping": "classification-aligned-local-skill-timing",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "0.58按S59客户端卡恢复三费风魔之刃，S04补本体；跨期资料与本地几何/时序见implementationNote，不等于统一版本全部复原。",
+      "implementationNote": "三费550生命/66攻击/5甲/3射程/1.2秒，20秒冷却、150/250/350每秒伤害、5秒刃阵。6/8/10世界半径转换为1.2/1.6/2格，0.5秒蓄力与首跳相位等为单机适配，详见shuriken-history.json。旧一费目录及影袭回放保留。"
     },
     {
       "historicalName": "禅师熊猫",
@@ -1032,17 +1227,31 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S57",
+        "S59"
       ],
       "currentUnitId": "monk",
       "currentName": "禅师熊猫",
       "currentTraits": [
         "熊猫",
-        "护卫"
+        "异能"
       ],
-      "mapping": "name-only",
-      "classificationMatches": false,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "mapping": "classification-aligned-local-skill-timing",
+      "classificationMatches": true,
+      "note": "0.59恢复四费远程秘法球；卡面、官方七次削能与实测本体分开取证，仍含单机时序/范围适配。",
+      "classificationReview": {
+        "rules": "singleplayer-0.45",
+        "sourceIds": [
+          "S03"
+        ],
+        "previousTraits": [
+          "熊猫",
+          "护卫"
+        ]
+      },
+      "implementationNote": "四费850生命/59.5攻击/5甲/5射程/2秒；30秒冷却，6/6.5/7秒维持，七跳总伤760/1200/1300、每跳最多削3能量。0.75秒起手、2/2.5/3格半径与前方3格等为单机适配，见secret-orb-history.json。旧三费目录及气劲回放保留。"
     }
   ],
   "otherCurrentUnits": [
@@ -1114,14 +1323,15 @@
       "currentUnitId": "turtle",
       "currentName": "玄龟",
       "currentTraits": [
-        "野兽",
+        "灵能",
         "护卫"
       ],
       "sourceIds": [
-        "S06"
+        "S04",
+        "S69"
       ],
       "status": "outside-april-baseline",
-      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+      "note": "0.72新局五费灵能／护卫；旧目录继续原四费野兽身份。不属于四月基线。"
     },
     {
       "currentUnitId": "tiger",
@@ -1163,7 +1373,7 @@
         "S06"
       ],
       "status": "outside-april-baseline",
-      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+      "note": "S06图片实际为经典RTS影鱼而非自走棋卡；当前灵鱼仍为待核对本地原型，不能凭该图确认历史能力，见mending-history.json。"
     },
     {
       "currentUnitId": "phoenix",
@@ -1179,6 +1389,21 @@
       ],
       "status": "outside-april-baseline",
       "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "reaper",
+      "currentName": "勾魂使",
+      "currentTraits": [
+        "不朽",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S04",
+        "S05",
+        "S70"
+      ],
+      "status": "outside-april-baseline",
+      "note": "0.73新增七月兵种，三费与刑杀／刑傀见execution-history.json；不与暗影刀合并，不能抵扣四月名单。"
     }
   ]
 }

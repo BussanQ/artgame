@@ -1,0 +1,889 @@
+{
+  "capturedBeforeRules": "singleplayer-0.63",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "winddragon",
+        "name": "翔龙",
+        "cost": 4,
+        "traits": [
+          "陆行者",
+          "攻城"
+        ],
+        "hp": 1100,
+        "attack": 75,
+        "armor": 5,
+        "range": 3,
+        "interval": 4,
+        "initialMana": 50,
+        "skill": "游龙卷风",
+        "color": "#a9e1d3",
+        "glyph": "龙"
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "winddragon",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "lion",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 103,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "acolyte",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "df61dc5b2fca6d800acdbd361ad29773c68f5b1f310ac3a87208a2e4bc6ff9ca",
+      "dragonCasts": 3,
+      "frames": 49
+    },
+    {
+      "version": "counterplay",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "winddragon",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "lion",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 103,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "acolyte",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "ac1fb2142dcc78555ca61a39b1a5bef59fa849bbead9ef0dd50a87485b8e9cd5",
+      "dragonCasts": 2,
+      "frames": 46
+    },
+    {
+      "version": "warcry",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "winddragon",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "lion",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 103,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "acolyte",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "0c6fb87dd8104a40452eaf732cc5b1e42ae407f8200332685ebf9c2de7b98c69",
+      "dragonCasts": 3,
+      "frames": 53
+    }
+  ]
+}

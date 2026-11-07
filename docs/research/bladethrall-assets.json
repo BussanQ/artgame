@@ -1,0 +1,35 @@
+{
+  "status": "generated",
+  "generatedAt": "2026-11-04",
+  "method": "built-in image_gen",
+  "generationAttempts": [
+    {
+      "attempt": 1,
+      "result": "generated"
+    }
+  ],
+  "assets": [
+    {
+      "id": "bladethrall",
+      "name": "刀奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a science-fantasy auto chess game. Subject: ONE Blade Thrall, a slender alien humanoid puppet duelist with glossy dark indigo-black ceramic armor, ivory horn-like twin ears on a fully enclosed angular helmet, narrow glowing ice-blue visor, teal seams and small bronze details. No human face or exposed skin. It holds ONE long straight single-edged dark-steel saber with a cyan cutting edge in its right hand, poised horizontally across its lower body in an elegant low quick-draw stance; its left hand grips the empty scabbard at the hip. An angular folded shoulder mantle and articulated claw boots. Clearly different silhouette from a white armored dual-sword warrior and a green axe warrior. Semi-realistic painted 3D strategy miniature, readable crisp silhouette, three-quarter front view facing slightly right, balanced full body. Entire helmet, both feet, scabbard and full saber tip inside frame with generous ten percent margins. Soft upper-left lighting. Actual transparent background, no floor, no pedestal, no cast shadow, no scenery, no text, no logo, no UI, no additional characters.",
+      "path": "public/assets/units/bladethrall.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-b7b890ae-9474-40a9-8067-88a832aa0184.png",
+      "width": 1221,
+      "height": 1289,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1164377,
+      "totalPixels": 1573869,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "e41f0671ae7f569c04db820c87d25e548deb7d939be720acfce08a965d31ad24"
+    }
+  ]
+}

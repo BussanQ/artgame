@@ -1,4 +1,40 @@
+import { taotieScale } from "./taotie";
+import { wushiPose, wushiScale } from "./wushi";
+import { wushiActive } from "../engine/wushi";
+import { drawTarBombs } from "./tar";
+import { drawGospelField } from "./gospel";
+import { drawThunderstorm } from "./thunderstorm";
+import { drawBombardments, bombardmentPose } from "./bombardment";
+import { drawTerminators, terminatorPose } from "./terminator";
+import { drawWarcryTelegraphs, warcryPose, warcryTarget } from "./warcry";
+import { petrified } from "../engine/warcry";
+import { drawTornadoes, tornadoPose } from "./tornado";
+import { drawWildfires, wildfirePose, wildfirePalette } from "./wildfire";
+import { drawBoneBlasts, boneBlastPose } from "./boneblast";
+import {drawThornBinds,thornBindPose} from "./thornbind";
+import {drawGazes,gazePose} from "./gaze";
+import {drawHives,hivePose} from "./hive";
+import {drawBulwarks,bulwarkPose} from "./bulwark";
+import {drawExecutionMarks,executionPose} from "./execution";
+import {drawSieges,siegePose} from "./siege";
+import {drawInfernos,infernoPose} from "./inferno";
+import {drawMendings,mendingPose} from "./mending";
+import {drawFormless} from "./formless";
+import {drawDreams} from "./dream";
+import {drawSeaFogForecast} from "./whale-eye";
+import {blastbugAnimationVersion} from "./detonation";
+import {drawTortoises,tortoisePose} from "./tortoise";
+import {drawSpiritWards,spiritWardPose} from "./spirit-ward";
+import {bulwarkActive} from "../engine/bulwark";
+import { drawShuriken } from "./shuriken";
+import { drawSecretOrbs, secretOrbPose } from "./secret-orb";
+import { drawJungleTelegraphs, jungleChargePose } from "./jungle";
+import { JUNGLE } from "../data/skills";
+import { unitDefinition, unitSprite } from "../data/unit-stats";
+import { CURRENT_COMBAT_VERSION, type CombatVersion } from "../engine/types";
 import { isPhoenixEgg } from "../engine/phoenix";
+import { pickBattleFighter, fighterBattleMarkup } from "./battle-inspection";
+import { knockupLift, burrowPose } from "./beast-presentation";
 import { hawkGroundPose } from "./metamorph-presentation";
 import { skillGauge } from "../engine/triggers";
 import {
@@ -9,6 +45,7 @@ import {
   type BullTransformation,
 } from "./combat-presentation";
 import { fighterName, fighterSprite } from "../engine/summons";
+import { ARHAT_QI } from "../data/skills";
 import { QUALITY, type Preferences } from "../ui/preferences";
 import { FrameGate } from "./frame-policy";
 import { attackInterval } from "../engine/abilities";
@@ -27,6 +64,8 @@ import {
   isMelee,
   MELEE_ACTIONS,
   meleePose,
+  ironapeChargePose,
+  bladeStormPose,
   REST_POSE,
   drawMeleeWeapon,
 } from "./melee";
@@ -34,8 +73,10 @@ import { project, cellAt } from "./projection";
 import { UNIT } from "../data/units";
 import type { Battle, Fighter, Piece, CombatEvent } from "../engine/types";
 export interface SceneState {
+  version?: CombatVersion;
   pieces: Piece[];
   selected: number | null;
+  inspected?: number | null;
   battle: Battle | null;
   time: number;
   phase: string;
@@ -47,6 +88,13 @@ const W = 1280,
   H = 800;
 // Wide fins and wings should remain readable without covering neighboring pieces.
 const SPRITE_SCALES: Record<string, number> = {
+  "blastbug-detonation-v082":0.78,
+  "acolyte-gospel": 0.76,
+  "stormcaller-thunderstorm": 0.94,
+  "treant-jungle": 0.9,
+  "master-wushi": 0.92,
+  "panda-shuriken": 0.92,
+  "monk-orb": 0.88,
   fish: 0.72,
   dragonfly: 0.85,
   deer: 0.9,
@@ -103,13 +151,39 @@ export class BattleScene {
   private board = document.createElement("canvas");
   private boardKey = "";
   private motionReduced = false;
+  private inspector = document.createElement("aside");
+  private inspectorBody = document.createElement("div");
+  private paintedFighters: Fighter[] = [];
+  private hoverFighter: number | null = null;
+  private pinnedFighter: number | null = null;
+  private inspectorKey = "";
+  private closeInspection = () => {
+    this.pinnedFighter = this.hoverFighter = null;
+    this.onInspect?.(null);
+    this.inspector.hidden = true;
+  };
   constructor(
     private canvas: HTMLCanvasElement,
     private state: () => SceneState,
     onCell: (cell: number) => void,
     private options: () => Preferences,
+    private onInspect?: (uid: number | null) => void,
   ) {
     this.ctx = canvas.getContext("2d")!;
+    this.pinnedFighter = this.state().inspected ?? null;
+    this.inspector.className = "battle-inspector";
+    this.inspectorBody.className = "battle-inspector-body";
+    this.inspector.setAttribute("role", "region");
+    this.inspector.setAttribute("aria-label", "棋子战斗详情");
+    this.inspector.hidden = true;
+    this.inspector.innerHTML =
+      '<button type="button" data-close-battle-info aria-label="关闭棋子战斗详情">×</button>';
+    this.inspector.append(this.inspectorBody);
+    canvas.closest(".battle-viewport")?.append(this.inspector);
+    this.inspector.addEventListener("click", (e) => {
+      if ((e.target as Element).closest("[data-close-battle-info]"))
+        this.closeInspection();
+    });
     canvas.width = W;
     canvas.height = H;
     this.board.width = W;
@@ -124,11 +198,21 @@ export class BattleScene {
         ((e.clientX - r.left) / r.width) * W,
         ((e.clientY - r.top) / r.height) * H,
       );
+      this.hoverFighter = this.pickAt(e.clientX, e.clientY);
     });
     canvas.addEventListener("pointerleave", () => {
       this.hover = null;
+      this.hoverFighter = null;
+      if (this.pinnedFighter === null) this.inspector.hidden = true;
     });
     canvas.addEventListener("click", (e) => {
+      if (this.state().battle) {
+        this.pinnedFighter = this.pickAt(e.clientX, e.clientY);
+        this.onInspect?.(this.pinnedFighter);
+        this.hoverFighter = null;
+        if (this.pinnedFighter === null) this.inspector.hidden = true;
+        return;
+      }
       const r = canvas.getBoundingClientRect(),
         cell = cellAt(
           ((e.clientX - r.left) / r.width) * W,
@@ -156,6 +240,35 @@ export class BattleScene {
     this.running = false;
     cancelAnimationFrame(this.raf);
     this.observer.disconnect();
+    this.inspector.remove();
+  }
+  dismissInspection() {
+    if (this.pinnedFighter === null && this.hoverFighter === null) return false;
+    this.closeInspection();
+    return true;
+  }
+  private pickAt(clientX: number, clientY: number) {
+    const s = this.state(),
+      battle = s.battle;
+    if (!battle) return null;
+    const r = this.canvas.getBoundingClientRect();
+    return pickBattleFighter(
+      this.paintedFighters,
+      {
+        x: ((clientX - r.left) / r.width) * W,
+        y: ((clientY - r.top) / r.height) * H,
+      },
+      s.time,
+    );
+  }
+  private showInspection(f: Fighter, time: number, labels: string[]) {
+    const markup = fighterBattleMarkup(f, time, labels);
+    if (markup !== this.inspectorKey) {
+      this.inspectorBody.innerHTML = markup;
+      this.inspectorKey = markup;
+    }
+    this.inspector.classList.toggle("is-pinned", this.pinnedFighter !== null);
+    this.inspector.hidden = false;
   }
   private drawBoard(c: CanvasRenderingContext2D, s: SceneState) {
     c.clearRect(0, 0, W, H);
@@ -306,6 +419,12 @@ export class BattleScene {
         fraction = preferences.reducedMotion ? 0 : s.time - Math.floor(s.time),
         a = battle.frames[index],
         b = battle.frames[Math.min(index + 1, battle.frames.length - 1)];
+      const inspected = a.fighters.find(
+        (f) => f.uid === (this.pinnedFighter ?? this.hoverFighter),
+      );
+      if (!inspected) this.inspector.hidden = true;
+      else if (inspected.hp <= 0)
+        this.showInspection(inspected, s.time, ["已阵亡"]);
       const fs = a.fighters
         .map((f) => {
           const next = b.fighters.find((n) => n.uid === f.uid)!;
@@ -335,7 +454,23 @@ export class BattleScene {
           };
         })
         .sort((a, b) => a.y - b.y);
+      this.paintedFighters = fs;
+      drawSeaFogForecast(c,fs,s.time,this.motionReduced);
       for (const f of fs) drawAirTelegraph(c, f, s.time, this.motionReduced);
+      drawTarBombs(c, fs, s.time, this.motionReduced, "area");
+      drawThunderstorm(c, fs, s.time, this.motionReduced, "area");
+      drawBombardments(c, fs, s.time, this.motionReduced, "area");
+      drawTerminators(c, fs, s.time, this.motionReduced, "area");
+      drawWarcryTelegraphs(c,fs,s.time,this.motionReduced);
+      drawTornadoes(c,fs,s.time,this.motionReduced,"area");
+      drawWildfires(c,fs,s.time,this.motionReduced,"area");
+      drawBoneBlasts(c,fs,s.time,this.motionReduced,"area");
+      drawShuriken(c, fs, s.time, this.motionReduced, "area");
+      drawSecretOrbs(c, fs, s.time, this.motionReduced, "area");
+      drawJungleTelegraphs(c, fs, s.time, this.motionReduced);
+      for (const f of fs)
+        drawGospelField(c, f, s.time, this.motionReduced,
+          f.uid === (this.pinnedFighter ?? this.hoverFighter));
       for (const f of fs) {
         const death = deathFade(battle, f.uid, index, s.time);
         if (death >= 1) continue;
@@ -347,14 +482,15 @@ export class BattleScene {
             this.motionReduced,
           );
         let attack: { event: CombatEvent; progress: number } | undefined;
+        const animationVersion=blastbugAnimationVersion(f,s.version);
         const duration = f.hawkForm?.active
           ? 1
-          : isMelee(f.defId)
+          : isMelee(f.defId, animationVersion)
             ? Math.min(
                 MELEE_ACTIONS[f.defId].duration,
                 attackInterval(f, s.time),
               )
-            : isRanged(f.defId)
+            : isRanged(f.defId, animationVersion)
               ? Math.min(
                   RANGED_ACTIONS[f.defId].duration,
                   attackInterval(f, s.time),
@@ -398,12 +534,34 @@ export class BattleScene {
           now,
           s.selected,
           death,
-          attack,
+          f.siege?.mode || (f.detonation || f.inferno || f.thornbind || f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
           hit && fraction < 0.35,
           s.time,
           f.transformation ?? undefined,
         );
       }
+      drawTarBombs(c, fs, s.time, this.motionReduced, "labels");
+      drawThunderstorm(c, fs, s.time, this.motionReduced, "bolts");
+      drawBombardments(c, fs, s.time, this.motionReduced, "planes",
+        fs.some(f => f.bombardment?.raids.length) ? picture("ghostjet") : null);
+      drawTerminators(c, fs, s.time, this.motionReduced, "missiles");
+      drawTornadoes(c,fs,s.time,this.motionReduced,"vortex");
+      drawWildfires(c,fs,s.time,this.motionReduced,"breath");
+      drawBoneBlasts(c,fs,s.time,this.motionReduced,"orb");
+      drawThornBinds(c,fs,s.time,this.motionReduced);
+      drawGazes(c,fs,s.time,this.motionReduced);
+      drawHives(c,fs,s.time,this.motionReduced);
+      drawBulwarks(c,fs,s.time,this.motionReduced);
+      drawExecutionMarks(c,fs,s.time,this.motionReduced);
+      drawTortoises(c,fs,s.time,this.motionReduced);
+      drawSieges(c,fs,s.time,this.motionReduced);
+      drawInfernos(c,fs,s.time,this.motionReduced);
+      drawMendings(c,fs,s.time,this.motionReduced);
+      drawFormless(c,fs,s.time,this.motionReduced);
+      drawDreams(c,fs,s.time,this.motionReduced);
+      drawSpiritWards(c,fs,s.time,this.motionReduced);
+      drawShuriken(c, fs, s.time, this.motionReduced, "blades");
+      drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
       // Render recent events without skipping any at 2x/4x playback.
       for (let n = Math.max(1, index - 7); n <= index; n++)
         for (const e of battle.frames[n].events) {
@@ -417,24 +575,33 @@ export class BattleScene {
           const attacker = battle.frames[n].fighters.find(
             (f) => f.uid === e.attacker,
           )!;
-          const rangedId = isRanged(attacker.defId) ? attacker.defId : null;
+          const rangedId = isRanged(attacker.defId, blastbugAnimationVersion(attacker,s.version)) ? attacker.defId : null;
           const duration = rangedId
             ? Math.min(
                 RANGED_ACTIONS[rangedId].duration,
                 attackInterval(attacker, n),
               )
             : 1;
-          const impactAge = rangedId
+          const impactAge = attacker.siege?.mode || ((attacker.detonation||attacker.inferno)&&e.skill)?0:(attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
-          if (!preferences.reducedMotion && e.ranged && rangedId && e.primary)
+          if (
+            !preferences.reducedMotion &&
+            e.ranged &&
+            rangedId &&
+            e.primary &&
+            !attacker.lightningChain && !attacker.siege?.mode &&
+            !((attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken || attacker.qiSkill || attacker.taotie || attacker.tar || attacker.storm) && e.skill)
+          )
             drawRangedAttack(
               c,
               rangedId,
               age / duration,
               from,
               e.evaded ? { x: to.x + 22, y: to.y - 18 } : to,
-              e.skill,
+              e.skill || !!e.empowered,
+              !!attacker.qiSkill,
+              attacker.wildfire ? wildfirePalette(attacker.star).fire : undefined,
             );
           if (
             !preferences.reducedMotion &&
@@ -494,7 +661,7 @@ export class BattleScene {
               : e.evaded
                 ? "闪避"
                 : e.amount > 0
-                  ? String(e.amount)
+                  ? `${e.gale === 10 ? "疾风 " : e.empowered ? "暴击 " : ""}${e.amount}`
                   : `吸收 ${e.absorbed}`;
             c.strokeText(label, to.x, y);
             c.fillStyle =
@@ -502,7 +669,7 @@ export class BattleScene {
                 ? "#9cdeff"
                 : e.damageType === "magic"
                   ? "#c1acff"
-                  : e.skill
+                  : e.skill || e.empowered
                     ? "#ffe191"
                     : "#f2f5e3";
             c.fillText(label, to.x, y);
@@ -526,7 +693,8 @@ export class BattleScene {
       for (const p of [...s.pieces]
         .filter((p) => p.position !== null)
         .sort((a, b) => a.position! - b.position!)) {
-        const d = UNIT[p.defId];
+        const version = s.version ?? CURRENT_COMBAT_VERSION;
+        const d = unitDefinition(p.defId, p.definitionVersion??version);
         this.unit(
           {
             uid: p.uid,
@@ -544,6 +712,9 @@ export class BattleScene {
           0,
           undefined,
           false,
+          0,
+          undefined,
+          unitSprite(p.defId, p.definitionVersion??version, p.star),
         );
       }
       if (!s.pieces.some((p) => p.position !== null)) {
@@ -582,13 +753,28 @@ export class BattleScene {
     hit: boolean,
     time = 0,
     transformation?: BullTransformation,
+    spriteId = fighterSprite(f),
   ) {
+    if (f.wushi) picture("master-wushi");
+    const version = blastbugAnimationVersion(f,this.state().version);
+    const throwCast = f.shuriken?.casting;
+    const throwBlade = f.shuriken?.blades.find(blade=>time-blade.start<1.8);
+    const secretTarget=f.secretOrb?.casting?.to??f.secretOrb?.channel;
+    const roarTarget=warcryTarget(f,time), stone=petrified(f,time);
+    const windTarget=f.air?.cast?.kind==="tornado"?f.air.cast.to:undefined;
+    const wildfireTarget=f.wildfire?.casting?.to??f.wildfire?.channel?.to;
+    const boneTarget=f.air?.cast?.kind==="boneblast"?f.air.cast.to:undefined;
+    const thornTarget=f.thornbind?.channel?.to;
     const c = this.ctx,
       p = project(f.x + 0.5, f.y + 0.65),
       depth = 0.78 + f.y * 0.035,
       d = UNIT[f.defId],
-      im = picture(fighterSprite(f)),
-      scale = (1 + (f.star - 1) * 0.12) * depth * (f.summon ? 0.7 : 1);
+      im = picture(spriteId),
+      scale =
+        (1 + (f.star - 1) * 0.12) *
+        depth *
+        (f.summon ? 0.7 : 1) *
+        taotieScale(f, time) * wushiScale(f, time);
     const transformed = f.defId === "bull" ? picture("bull-charge") : null;
     c.save();
     c.globalAlpha = (1 - death) * (f.immortal?.spent && f.hp > 0 ? 0.62 : 1);
@@ -606,19 +792,119 @@ export class BattleScene {
     c.ellipse(0, 0, 30 * scale, 10 * scale, 0, 0, Math.PI * 2);
     c.stroke();
     c.shadowBlur = 0;
-    const sway = this.motionReduced ? 0 : Math.sin(now * 0.002 + f.uid) * 1.2;
+    const sway = this.motionReduced || stone ? 0 : Math.sin(now * 0.002 + f.uid) * 1.2;
     c.save();
-    const pose = isPhoenixEgg(f)
+    const pose = isPhoenixEgg(f) || stone
       ? REST_POSE
+      : !this.motionReduced && !death && f.mending?.casting
+        ? mendingPose(f,time)
+      : !this.motionReduced && !death && (f.inferno?.casting||(f.inferno?.pulse&&time-f.inferno.pulse.tick>=0&&time-f.inferno.pulse.tick<2))
+        ? infernoPose(f,time)
+      : !this.motionReduced && !death && f.reaper?.casting
+        ? executionPose(f,time)
+      : !this.motionReduced && !death && f.siege && (f.siege.mode||f.siege.casting)
+        ? siegePose(f,time)
+      : !this.motionReduced && !death && f.tortoise && (f.tortoise.casting||f.tortoise.mode)
+        ? tortoisePose(f,time,attack?.progress)
+      : !this.motionReduced && !death && f.spiritWard?.channel
+        ? spiritWardPose(f,time)
+      : !this.motionReduced && !death && !attack && bulwarkActive(f,time)
+        ? bulwarkPose(f,time)
+      : !this.motionReduced && !death && f.hive?.casting
+        ? hivePose(f,time)
+      : !this.motionReduced && !death && f.gaze && f.flash
+        ? gazePose()
+      : !this.motionReduced && !death && thornTarget
+        ? thornBindPose(f,time)
+      : !this.motionReduced && !death && boneTarget
+        ? boneBlastPose(f,time)
+      : !this.motionReduced && !death && wildfireTarget
+        ? wildfirePose(f,time)
+      : !this.motionReduced && !death && windTarget
+        ? tornadoPose(f,time)
+      : !this.motionReduced && !death && roarTarget
+        ? warcryPose(f,time)
+      : !this.motionReduced && !death && secretTarget
+        ? secretOrbPose(f,time)
+      : !this.motionReduced && !death && throwCast
+        ? rangedPose("panda",Math.max(0.01,Math.min(0.33,(time-throwCast.start)/2*0.33)),true)
+      : !this.motionReduced && !death && throwBlade
+        ? rangedPose("panda",Math.min(0.95,0.35+(time-throwBlade.start)/1.8*0.6),true)
+      : !this.motionReduced && !death && f.wushi?.casting
+        ? wushiPose(1-(f.wushi.casting.until-time)/4,true)
+      : !this.motionReduced && !death && attack && wushiActive(f,time)
+        ? wushiPose(attack.progress)
       : transformation
         ? bullFormPose(transformation, this.motionReduced)
-        : !this.motionReduced && !death && attack && f.hawkForm?.active
-          ? hawkGroundPose(attack.progress, attack.event.strike ?? 1)
-          : !this.motionReduced && !death && attack && isMelee(f.defId)
-            ? meleePose(f.defId, attack.progress, attack.event.skill)
-            : !this.motionReduced && !death && attack && isRanged(f.defId)
-              ? rangedPose(f.defId, attack.progress, attack.event.skill)
-              : REST_POSE;
+        : !this.motionReduced && !death && f.burrowSkill && attack?.event.skill
+          ? burrowPose(attack.progress)
+          : !this.motionReduced && !death && f.bladeStorm
+            ? bladeStormPose(time)
+            : !this.motionReduced && !death && f.terminator && f.air?.cast?.kind === "terminator"
+              ? terminatorPose(f, time)
+            : !this.motionReduced && !death && f.bombardment && f.air?.cast?.kind === "bombardment"
+              ? bombardmentPose(f, time)
+            : !this.motionReduced && !death && f.jungle && f.air?.cast?.kind === "jungle"
+              ? jungleChargePose(1 - (f.air.cast.next - time) / JUNGLE.windup)
+            : !this.motionReduced && !death && f.storm && f.air?.cast?.kind === "storm"
+              ? rangedPose("stormcaller", Math.max(0, Math.min(0.44,
+                  (1 - (f.air.cast.next - time) / 4) * 0.44)), true, false, false, true)
+            : !this.motionReduced && !death && f.air?.cast?.kind === "ironape"
+              ? ironapeChargePose(1 - (f.air.cast.next - time) / 3)
+              : !this.motionReduced && !death && f.qiSkill && f.windup
+                ? rangedPose(
+                    "arhat",
+                    Math.max(
+                      0,
+                      Math.min(
+                        0.39,
+                        (1 - (f.windup.until - time) / ARHAT_QI.windup) * 0.39,
+                      ),
+                    ),
+                    true,
+                    true,
+                  )
+                : !this.motionReduced && !death && f.bird?.draw
+                  ? rangedPose(
+                      "birdrider",
+                      Math.max(
+                        0,
+                        Math.min(
+                          0.29,
+                          (1 - (f.bird.draw.until - time) / 2) * 0.29,
+                        ),
+                      ),
+                      true,
+                    )
+                  : !this.motionReduced &&
+                      !death &&
+                      attack &&
+                      f.hawkForm?.active
+                    ? hawkGroundPose(attack.progress, attack.event.strike ?? 1)
+                    : !this.motionReduced &&
+                        !death &&
+                        attack &&
+                        isMelee(f.defId, version)
+                      ? meleePose(
+                          f.defId,
+                          attack.progress,
+                          attack.event.skill ||
+                            !!attack.event.empowered ||
+                            attack.event.gale === 10,
+                        )
+                      : !this.motionReduced &&
+                          !death &&
+                          attack &&
+                          isRanged(f.defId, version)
+                        ? rangedPose(
+                            f.defId,
+                            attack.progress,
+                            attack.event.skill || !!attack.event.empowered,
+                            !!f.qiSkill,
+                            !!f.gospelAura,
+                            !!f.storm,
+                          )
+                        : REST_POSE;
     const origin = transformation?.moving
       ? project(transformation.from.x + 0.5, transformation.from.y + 0.5)
       : attack
@@ -626,6 +912,22 @@ export class BattleScene {
         : p;
     const destination = transformation?.moving
       ? project(transformation.to.x + 0.5, transformation.to.y + 0.5)
+      : f.siege?.shot
+        ? project(f.siege.shot.to.x+0.5,f.siege.shot.to.y+0.5)
+      : boneTarget
+        ? project(boneTarget.x+0.5,boneTarget.y+0.5)
+      : thornTarget
+        ? project(thornTarget.x+0.5,thornTarget.y+0.5)
+      : wildfireTarget
+        ? project(wildfireTarget.x+0.5,wildfireTarget.y+0.5)
+      : windTarget
+        ? project(windTarget.x+0.5,windTarget.y+0.5)
+      : roarTarget
+        ? project(roarTarget.x+0.5,roarTarget.y+0.5)
+      : secretTarget
+        ? project(secretTarget.x+0.5,secretTarget.y+0.5)
+      : throwCast || throwBlade
+        ? project((throwCast??throwBlade)!.to.x+0.5,(throwCast??throwBlade)!.to.y+0.5)
       : attack
         ? project(attack.event.to.x + 0.5, attack.event.to.y + 0.5)
         : p;
@@ -633,7 +935,7 @@ export class BattleScene {
       dy = destination.y - origin.y,
       length = Math.hypot(dx, dy) || 1;
     const facing =
-      (attack || transformation) && Math.abs(dx) > 1
+      (f.siege?.shot || attack || transformation || throwCast || throwBlade || secretTarget || roarTarget || windTarget || wildfireTarget || boneTarget || thornTarget) && Math.abs(dx) > 1
         ? Math.sign(dx)
         : f.side === 0
           ? 1
@@ -643,9 +945,10 @@ export class BattleScene {
       (dx / length) * pose.forward * scale,
       (dy / length) * pose.forward * scale -
         pose.lift * scale -
+        knockupLift(f, time, this.motionReduced) * scale -
         sway -
         (f.air?.flying
-          ? 7 + (this.motionReduced ? 0 : Math.sin(now * 0.002 + f.uid) * 3)
+          ? 7 + (this.motionReduced || stone ? 0 : Math.sin(now * 0.002 + f.uid) * 3)
           : 0),
     );
     c.rotate(facing * pose.rotation + (this.motionReduced ? 0 : death * 1.3));
@@ -658,7 +961,8 @@ export class BattleScene {
     ) => {
       c.save();
       c.globalAlpha *= alpha;
-      const size = 130 * scale * (SPRITE_SCALES[f.defId] ?? 1) * enlarge,
+      if(stone)c.filter="grayscale(1) brightness(0.85) contrast(1.1)";
+      const size = 130 * scale * (SPRITE_SCALES[spriteId] ?? SPRITE_SCALES[f.defId] ?? 1) * enlarge,
         w = (size * sprite.width) / Math.max(sprite.width, sprite.height),
         h = (size * sprite.height) / Math.max(sprite.width, sprite.height);
       if (hit) {
@@ -690,12 +994,21 @@ export class BattleScene {
       !transformation &&
       !this.motionReduced &&
       !death &&
+      !stone && !roarTarget &&
       attack &&
-      isMelee(f.defId)
+      f.air?.cast?.kind !== "ironape" &&
+      !wushiActive(f,time) &&
+      isMelee(f.defId, version)
     ) {
       c.save();
       c.scale(facing, 1);
-      drawMeleeWeapon(c, f.defId, attack.progress, scale, attack.event.skill);
+      drawMeleeWeapon(
+        c,
+        f.defId,
+        attack.progress,
+        scale,
+        attack.event.skill || attack.event.gale === 10,
+      );
       c.restore();
       if (
         f.defId === "titan" &&
@@ -714,7 +1027,15 @@ export class BattleScene {
       }
     }
     if (!death) {
-      drawStatuses(c, f, time, scale, this.motionReduced);
+      drawStatuses(c, f, time, scale, this.motionReduced, {
+        compact: true,
+        ...(f.uid === (this.pinnedFighter ?? this.hoverFighter)
+          ? {
+              onLabels: (labels: string[]) =>
+                this.showInspection(f, time, labels),
+            }
+          : {}),
+      });
       const top = -129 * scale;
       c.fillStyle = "#07130ede";
       c.fillRect(-27, top, 54, 7);

@@ -1,0 +1,33 @@
+{
+  "status": "generated",
+  "generatedAt": "2026-11-05",
+  "method": "built-in image_gen",
+  "generationAttempts": [
+    {
+      "attempt": 1,
+      "result": "generated"
+    }
+  ],
+  "asset": {
+    "id": "staffthrall",
+    "name": "棍奴",
+    "prompt": "Use case: stylized-concept. Asset type: transparent full-body unit sprite for a Chinese science-fantasy auto chess game. Primary request: ONE original Staff Thrall, a faceless humanoid puppet martial artist, in layered slate-blue and dark steel armor with a bronze chest bib and pale cyan edge light. A broad angular conical metal hat shades its sealed black faceplate; only two tiny violet eye lights are visible. The puppet holds ONE long straight unbladed fighting staff with both hands, diagonally across its body. The staff is dark metal with two short glowing cyan end caps. No sword, spear blade or shield. Strong articulated legs, compact shoulder armor, short blue cloth sash, planted bent-knee martial stance. Semi-realistic hand-painted 3D strategy miniature, three-quarter front view facing slightly right, clear readable silhouette and distinct broad hat plus long staff. Entire hat, both staff tips and both feet in frame, generous ten percent margins around the complete silhouette. Restrained blue energy at wrist joints, crisp metal facets; coherent with bronze/jade science-fantasy auto chess miniatures. Actual transparent background, no scenery, no floor, no pedestal, no cast shadow, no text, no UI, no logos, no additional characters.",
+    "kind": "transparent-unit-sprite",
+    "origin": "AI-generated reinterpretation, not original game model",
+    "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-fe7e5730-20c8-4170-9f7b-2b5eabfabdfc.png",
+    "path": "public/assets/units/staffthrall.png",
+    "width": 1221,
+    "height": 1288,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "transparentPixels": 988521,
+    "totalPixels": 1572648,
+    "cornerAlpha": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "sha256": "1ae300a2873ac815a2b6d87f8aa1d639fb949c0d5227489ee7670c8abd7a937d"
+  }
+}

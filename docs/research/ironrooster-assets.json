@@ -1,0 +1,35 @@
+{
+  "status": "generated",
+  "generatedAt": "2026-11-04",
+  "method": "built-in image_gen",
+  "generationAttempts": [
+    {
+      "attempt": 1,
+      "result": "generated"
+    }
+  ],
+  "assets": [
+    {
+      "id": "ironrooster",
+      "name": "铁鸡",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a dark science-fiction auto chess game. Subject: ONE Iron Rooster, a compact bipedal armored assault and command walker with a low angular avian cockpit, a small red metal crest, two reverse-jointed hydraulic legs and wide three-toed steel feet. Paired short autocannon pods are mounted like folded wings beside its body; a raised amber command beacon and radio fins sit on its back. No organic feathers, no human rider. Weathered bronze and blue gunmetal plating, amber lenses, restrained red identifiers without lettering. Three-quarter front view facing slightly right, semi-realistic painted 3D strategy miniature, same coherent readable scale as a mechanical gorilla and armored hound. Both legs and both weapon pods clearly separated, neutral braced firing stance, entire character including feet within frame with generous margin. Upper-left lighting. Actual transparent background, no scenery, no floor, no platform, no cast shadow, no text, no UI, no other units. Original reinterpretation of a rooster-like command mech, crisp silhouette readable at small battlefield size.",
+      "path": "public/assets/units/ironrooster.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-9a90c017-785c-4eb5-8dee-725363fdbd86.png",
+      "width": 1221,
+      "height": 1289,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 970021,
+      "totalPixels": 1573869,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "0c42ac033ff35ec0f064ddfb826053c4ae844096c235a3d8b07ef6c211f0f6bd"
+    }
+  ]
+}

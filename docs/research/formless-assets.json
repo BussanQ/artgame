@@ -1,0 +1,43 @@
+{
+  "version": "singleplayer-0.77",
+  "mode": "内置ImageGen",
+  "transparentBackground": true,
+  "prompt": "Use case: stylized-concept\nAsset type: one transparent bitmap miniature for the browser auto-battler Red Tides.\nPrimary request: recreate the visual identity of the THIRD aircraft from the left, labeled 幽灵机, in reference image 1, as a single readable full-body game piece.\nInput images: image 1 (the original 2019 air roster) is the identity and silhouette reference; image 2 (the existing ghostjet asset) is ONLY a rendering-quality reference, not its crescent-wing design.\nSubject: a compact hovering olive-gold mechanical shark-like aircraft. Bulbous rounded armored nose with a dark circular eye sensor, short toothed lower jaw shaped metal intake, a tall swept triangular dorsal fin, stubby swept side fins, compact aft thruster. The body is chunky and aerodynamic, matching the third roster unit, with worn brass / muted olive armor and a pale warm face plate.\nStyle/medium: polished detailed 3D fantasy science-fiction strategy-game miniature with realistic metal materials, restrained panel wear and cool cyan engine light, matching the existing game's miniature rendering.\nComposition/framing: isolated single craft, three-quarter front view facing down-left, elevated isometric camera; center the complete nose, jaw, dorsal fin, side fins and tail in frame with clear transparent padding on every edge. Strong silhouette legible at 100 pixels.\nScene/backdrop: genuinely transparent alpha background, no environment or floor, no ground shadow, no colored backdrop.\nConstraints: one aircraft only; no pilot or other character; no text, labels, UI, logos or watermark. Keep the olive-gold compact shark silhouette, circular eye and toothed chin intake. Do not copy the neighboring repair drone, bomber or ark.\nAvoid: large crescent wings, jade ornaments, ornamental curls, humanoid limbs, landing gear, long gun barrels, giant magical aura, stealth transparency on the body, motion trails. The normal solid-body sprite will receive invisibility and attack effects in code.",
+  "references": [
+    {
+      "path": "docs/research/images/s20-air-client.jpg",
+      "bytes": 609164,
+      "sha256": "1274450ca715cde588b1e3de75e020faa2cb9801d013d9863c3b3c4c2008a5e2"
+    },
+    {
+      "path": "public/assets/units/ghostjet.png",
+      "bytes": 2057574,
+      "sha256": "949f93f9da353f40a5dbefb6e56b178d72169d26597180f829fd791eed4edb65"
+    }
+  ],
+  "referenceRoles": [
+    "S20第三个幽灵机的身份与轮廓",
+    "旧图仅参考渲染品质，不沿用月牙翼与玉饰"
+  ],
+  "nativeGeneratedPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-24a651d5-d720-4ae3-9d35-153a8cdd8cc7.png",
+  "asset": {
+    "path": "public/assets/units/ghostjet-formless-v077.png",
+    "bytes": 1717451,
+    "sha256": "7468f9af06280413575e3a4dc533167d40979c0e2a3671cb68448d70dbaeafc5",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaZeroPixels": 1175763,
+    "alphaOpaquePixels": 0,
+    "alphaBbox": [
+      0,
+      10,
+      1501,
+      992
+    ],
+    "transparent": true,
+    "originalBytesUnmodified": true
+  },
+  "processing": "直接复制原生PNG、未编辑像素，旧图保留。",
+  "review": "已目视原生输出及实际图鉴／战场。非原客户端模型；alpha边界在左侧触及画布，未宣称四边完全留白。"
+}

@@ -1,5 +1,9 @@
-import { mergePieces, pieceCopies, salePrice } from "./progression";
-import { previewPurchase } from "./recruitment";
+import { catalogCost } from "../data/catalog";
+import { availableUnits, isRecruitable, randomBans } from "./rotation";
+import { CURRENT_COMBAT_VERSION } from "./types";
+import {pinCatalogDefinitions} from "../data/catalog";
+import { mergePieces, pieceCopies } from "./progression";
+import { previewPurchase, previewSale } from "./recruitment";
 import { income } from "./economy";
 export { income } from "./economy";
 import { prepareBot } from "./ai";
@@ -7,18 +11,30 @@ import { encounterFor, encounterArmy } from "../data/encounters";
 import { rewardChoices, itemScore } from "./equipment";
 import { COPIES, ODDS, RULES, UNIT, UNITS, XP } from "../data/units";
 import { random } from "./random";
+import { opponentProfiles } from "../data/ai-profiles";
 import { simulate, simulateOutcome } from "./battle";
 import type { Game, Player, Piece, Battle } from "./types";
-export function createGame(seed = 20261102): Game {
+export function createGame(
+  seed = 20261102,
+  mode: "rotation" | "classic" = "rotation",
+): Game {
+  const bannedSeries = mode === "rotation" ? randomBans(seed) : undefined;
   const g: Game = {
     seed: seed >>> 0,
-    combatVersion: "metamorph",
+    ...(bannedSeries ? { bannedSeries } : {}),
+    catalogVersion: CURRENT_COMBAT_VERSION,
+    combatVersion: CURRENT_COMBAT_VERSION,
     difficulty: "standard",
     nextUid: 1,
     round: 1,
     phase: "prepare",
     players: [],
-    pool: Object.fromEntries(UNITS.map((u) => [u.id, COPIES[u.cost]])),
+    pool: Object.fromEntries(
+      UNITS.map((u) => [
+        u.id,
+        isRecruitable({ bannedSeries }, u.id) ? COPIES[u.cost] : 0,
+      ]),
+    ),
     message: "招募棋子，点击备战席棋子，再点击己方棋格部署。",
     history: [],
     encountersFromRound: 1,
@@ -34,9 +50,14 @@ export function createGame(seed = 20261102): Game {
     "深海回声",
     "铁幕",
   ];
+  const doctrines = opponentProfiles(
+    seed,
+    bannedSeries ? availableUnits({ bannedSeries }) : undefined,
+  );
   g.players = names.map((name, id) => ({
     id,
     name,
+    ...(id > 0 ? { aiProfile: doctrines[id - 1] } : {}),
     hp: 100,
     gold: 10,
     level: 3,
@@ -55,19 +76,17 @@ export function roll(g: Game, p: Player, paid = true): boolean {
   if (paid) p.gold -= RULES.reroll;
   for (const id of p.shop) if (id) g.pool[id]++;
   p.shop = [];
+  const units = availableUnits(g);
   for (let i = 0; i < RULES.shop; i++) {
-    const choices = UNITS.filter(
+    const totals = [0, 0, 0, 0, 0, 0];
+    for (const unit of units) totals[unit.cost] += g.pool[unit.id];
+    const choices = units.filter(
       (u) => g.pool[u.id] > 0 && ODDS[p.level - 1][u.cost - 1] > 0,
     );
-    const weight = (id: string) =>
-      (ODDS[p.level - 1][UNIT[id].cost - 1] * g.pool[id]) /
-      UNITS.filter((u) => u.cost === UNIT[id].cost).reduce(
-        (n, u) => n + g.pool[u.id],
-        0,
-      );
-    let pick = random(g) * choices.reduce((n, u) => n + weight(u.id), 0);
-    const unit =
-      choices.find((u) => (pick -= weight(u.id)) < 0) ?? choices.at(-1);
+    const weight = (unit: (typeof units)[number]) =>
+      (ODDS[p.level - 1][unit.cost - 1] * g.pool[unit.id]) / totals[unit.cost];
+    let pick = random(g) * choices.reduce((n, u) => n + weight(u), 0);
+    const unit = choices.find((u) => (pick -= weight(u)) < 0) ?? choices.at(-1);
     p.shop.push(unit?.id ?? null);
     if (unit) g.pool[unit.id]--;
   }
@@ -75,13 +94,13 @@ export function roll(g: Game, p: Player, paid = true): boolean {
 }
 export function merge(
   p: Player,
-  version: Game["combatVersion"] = "metamorph",
+  version: Game["combatVersion"] = CURRENT_COMBAT_VERSION,
 ): void {
   mergePieces(p, version);
 }
 export function buy(g: Game, p: Player, index: number): boolean {
   const id = p.shop[index];
-  if (g.phase !== "prepare" || !id || !UNIT[id] || p.gold < UNIT[id].cost)
+  if (g.phase !== "prepare" || !id || !UNIT[id] || p.gold < catalogCost(g, id))
     return false;
   const quote = previewPurchase(g, p, index);
   if (!quote.allowed || !quote.after) return false;
@@ -127,14 +146,12 @@ export function move(
   return true;
 }
 export function sell(g: Game, p: Player, uid: number): boolean {
-  if (g.phase !== "prepare") return false;
-  const piece = p.pieces.find((x) => x.uid === uid);
-  if (!piece) return false;
-  const copies = pieceCopies(piece);
-  p.gold += salePrice(piece);
-  g.pool[piece.defId] += copies;
-  p.inventory.push(...(piece.items ?? []));
-  p.pieces = p.pieces.filter((x) => x.uid !== uid);
+  const quote=previewSale(g,p,uid);
+  if(!quote)return false;
+  p.gold=quote.after.gold;
+  p.inventory=quote.after.inventory;
+  p.pieces=quote.after.pieces;
+  g.pool[quote.defId]+=quote.copies;
   return true;
 }
 export function addXp(p: Player, amount: number) {
@@ -232,7 +249,11 @@ export function settle(g: Game, result: RoundResult): void {
   )
     return;
   const previousHp = g.players[0].hp,
-    previousGold = g.players[0].gold;
+    previousGold = g.players[0].gold,
+    inventory = [...g.players[0].inventory],
+    bench = structuredClone(
+      g.players[0].pieces.filter((piece) => piece.position === null),
+    );
   for (const o of result.outcomes) {
     const p = g.players[o.playerId];
     p.hp = Math.max(0, p.hp - o.damage);
@@ -264,6 +285,8 @@ export function settle(g: Game, result: RoundResult): void {
     gold: g.players[0].gold,
     left: structuredClone(result.left),
     right: structuredClone(result.right),
+    bench,
+    inventory,
   });
   g.message = won
     ? "防守成功。金币与经验已结算。"
@@ -302,11 +325,15 @@ export function settle(g: Game, result: RoundResult): void {
 }
 export function nextRound(g: Game) {
   if (g.phase !== "result" || g.reward) return;
+  const previousVersion = g.combatVersion;
   g.round++;
-  g.combatVersion = "metamorph";
+  g.combatVersion = CURRENT_COMBAT_VERSION;
   g.phase = "prepare";
-  for (const p of g.players.filter((p) => p.hp > 0))
+  for (const p of g.players.filter((p) => p.hp > 0)) {
+    pinCatalogDefinitions(g,p.pieces);
+    if (previousVersion !== CURRENT_COMBAT_VERSION) mergePieces(p, g.combatVersion);
     if (!p.locked) roll(g, p, false);
+  }
 }
 export function rankings(g: Game) {
   return [...g.players].sort(

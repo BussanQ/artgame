@@ -1,6 +1,7 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { damage } from "../src/engine/abilities";
 import { describe, it, expect } from "vitest";
-import { TRAIT_TIERS } from "../src/data/traits";
+import { traitTiers } from "../src/data/traits";
 import { UNITS, UNIT, COPIES } from "../src/data/units";
 import { AI_PROFILES } from "../src/data/ai-profiles";
 import { synergies } from "../src/engine/synergies";
@@ -42,7 +43,7 @@ function conservation(g: Game) {
           p.shop.filter((id) => id === u.id).length +
           p.pieces
             .filter((x) => x.defId === u.id)
-            .reduce((m, x) => m + 3 ** (x.star - 1), 0),
+            .reduce((m, x) => m + (x.copies ?? 3 ** (x.star - 1)), 0),
         0,
       );
     expect(total).toBe(COPIES[u.cost]);
@@ -50,7 +51,9 @@ function conservation(g: Game) {
 }
 describe("羁绊梯度与 AI 策略", () => {
   it("每档羁绊均能由当前棋子达到，只取最高档，不计重复和备战", () => {
-    for (const [trait, tiers] of Object.entries(TRAIT_TIERS)) {
+    for (const [trait, tiers] of Object.entries(
+      traitTiers(CURRENT_COMBAT_VERSION),
+    )) {
       const units = UNITS.filter((u) => u.traits.some((t) => t === trait));
       expect(units.length).toBeGreaterThanOrEqual(tiers.at(-1)!.count);
       for (const [i, tier] of tiers.entries()) {
@@ -74,24 +77,25 @@ describe("羁绊梯度与 AI 策略", () => {
     ];
     const modern = army(pieces, 0),
       legacy = army(pieces, 0, "legacy");
-    expect(modern[0].maxHp).toBe(1100);
+    expect(modern[0].maxHp).toBe(800);
+    expect(army(pieces, 0, "metamorph")[0].maxHp).toBe(1100);
     expect(army(pieces, 0, "tactics")[0].maxHp).toBe(1200);
     expect(legacy[0].maxHp).toBe(1000);
-    expect(modern[1].attack).toBeCloseTo(58 * 1.15);
+    expect(modern[1].attack).toBe(58);
     expect(legacy[1].attack).toBe(58);
     const pandas = army(
       [piece("panda", 0), piece("monk", 1), piece("master", 2)],
       0,
     );
-    expect(pandas.every((f) => f.mana === 100 && f.skillPower === 1.15)).toBe(
+    expect(pandas.every((f) => f.mana === 100 && f.skillPower === 1)).toBe(
       true,
     );
     const guards = army(
       [
         piece("guard", 0),
         piece("lion", 1),
-        piece("monk", 2),
-        piece("titan", 3),
+        piece("staffthrall", 2),
+        piece("shieldthrall", 3),
       ],
       0,
     );
@@ -100,12 +104,14 @@ describe("羁绊梯度与 AI 策略", () => {
       [
         piece("infantry", 0),
         piece("sniper", 1),
-        piece("chariot", 2),
+        piece("thunderlord", 2),
         piece("cannon", 3),
       ],
       0,
     );
-    expect(snipers.every((f) => f.attackShred === 2)).toBe(true);
+    expect(
+      snipers.every((f) => f.armorPenetration === 4 && f.attackShred === 0),
+    ).toBe(true);
     const target = army(
       [{ uid: 100, defId: "guard", star: 1, position: 35 }],
       1,
@@ -116,12 +122,12 @@ describe("羁绊梯度与 AI 策略", () => {
       target,
       100,
     );
-    expect(target.armorBreak).toBe(2);
-    expect(target.armorBreakUntil).toBe(13);
-    expect(target.hp).toBe(800 - Math.round((100 * 100) / 130));
+    expect(target.armorBreak).toBe(0);
+    expect(target.armorBreakUntil).toBe(0);
+    expect(target.hp).toBe(800 - Math.round((100 * 100) / 118));
   });
   it("两种刺杀开场切入后排，落点唯一且不越界，旧版不跳跃", () => {
-    const left = [piece("panda", 0), piece("wolf", 1)],
+    const left = [piece("panda", 0), piece("axethrall", 1)],
       right = [piece("guard", 4), { ...piece("sniper", 5), position: 59 }];
     const b = simulate(left, right),
       old = simulate(left, right, "legacy");
@@ -135,7 +141,7 @@ describe("羁绊梯度与 AI 策略", () => {
     );
   });
   it("组合选阵不修改输入，保留强势高星棋子，布阵不超人口或重叠", () => {
-    const p = createGame().players[1];
+    const p = createGame(undefined, "classic").players[1];
     p.level = 3;
     p.pieces = [
       piece("guard", 0, 3),
@@ -161,7 +167,7 @@ describe("羁绊梯度与 AI 策略", () => {
     ).toBe(true);
   });
   it("推荐布阵计入装备，保留同星同种的已武装棋子", () => {
-    const p = createGame().players[0];
+    const p = createGame(undefined, "classic").players[0];
     p.level = 1;
     p.pieces = [
       piece("infantry", 0, 2),
@@ -173,7 +179,7 @@ describe("羁绊梯度与 AI 策略", () => {
     expect(chooseLineup(p, "standard").map((p) => p.uid)).toEqual([2]);
   });
   it("辅助位于队伍中段且覆盖前排，输出射手仍在后排", () => {
-    const p = createGame().players[0];
+    const p = createGame(undefined, "classic").players[0];
     p.level = 6;
     p.pieces = ["guard", "cavalry", "fish", "deer", "infantry", "monk"].map(
       (id, i) => piece(id, i, 2),
@@ -224,9 +230,10 @@ describe("羁绊梯度与 AI 策略", () => {
   it("不同 AI 有明确构筑偏好，攒息目标会随阶段和危险血量变化", () => {
     expect(
       new Set(AI_PROFILES.slice(1).map((p) => p.traits.join("/"))).size,
-    ).toBe(7);
-    const g = createGame(),
+    ).toBe(9);
+    const g = createGame(undefined, "classic"),
       p = g.players[1];
+    p.aiProfile = "infantry";
     g.round = 12;
     expect(savingsTarget(g, p)).toBe(25);
     p.hp = 30;
@@ -237,7 +244,7 @@ describe("羁绊梯度与 AI 策略", () => {
   });
   it("各难度 AI 只使用合法经济操作，卡池守恒，行动可重复且不在战斗中购物", () => {
     for (const difficulty of ["relaxed", "standard", "veteran"] as const) {
-      const g = createGame(55);
+      const g = createGame(55, "classic");
       g.difficulty = difficulty;
       const other = structuredClone(g);
       for (const p of g.players.slice(1))
@@ -263,7 +270,7 @@ describe("羁绊梯度与 AI 策略", () => {
     }
   });
   it("schema 2 战斗存档使用 legacy 恢复，进入下一回合才切换新规则", () => {
-    const g = createGame(88);
+    const g = createGame(88, "classic");
     g.combatVersion = "legacy";
     g.encountersFromRound = 31;
     buy(g, g.players[0], 0);
@@ -289,7 +296,7 @@ describe("羁绊梯度与 AI 策略", () => {
     settle(restored, resumeRound(restored)!);
     expect(restored.history[0].combatVersion).toBe("legacy");
     nextRound(restored);
-    expect(restored.combatVersion).toBe("metamorph");
+    expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
     expect(validGame(restored)).toBe(true);
   });
 });

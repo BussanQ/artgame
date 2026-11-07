@@ -1,0 +1,131 @@
+{
+  "reviewedAt": "2026-11-06",
+  "rules": "singleplayer-0.53",
+  "unitId": "stormcaller",
+  "combatVersion": "thunderstorm",
+  "scope": "逐字段靠近原作，不是已核定的统一历史客户端复原。",
+  "sources": [
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measurement-image",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "locator": "S04-1，第39行",
+      "fields": {
+        "cost": 1,
+        "hp": 400,
+        "attack": [
+          36,
+          44
+        ],
+        "armor": 5,
+        "range": 4,
+        "attackIntervalSeconds": 1.1,
+        "cooldownSeconds": [
+          5,
+          4,
+          3
+        ]
+      },
+      "accessBoundary": "原始表格图已归档并核对转录；本轮未成功通过Web重新读取TapTap全文。"
+    },
+    {
+      "id": "S55",
+      "title": "战争艺术 吃鸡宝典丨最强AOE英雄名单大盘点",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名，嘉宾香草糕）",
+      "kind": "publisher-authored-article-and-embedded-client-card",
+      "status": "original-html-and-client-image-reviewed",
+      "accessedAt": "2026-11-06",
+      "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/qfYCXIbnCjisgfv.jpg",
+      "image": "images/stormcaller-thunderstorm-client.jpg",
+      "imageSha256": "698bcf28f72abb267b159d0a1eeb17ca6c4e8b79768608ea9b571d778926c4c2",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "note": "正文确认一费、雷暴、路径命中与20削能；实际目视客户端卡确认宽1格及150/250/350，卡面冷却5秒。原图客户端构建日期未标明，不能把十二月文章与七月测量表当统一历史版本。"
+    },
+    {
+      "id": "S56",
+      "title": "战争艺术 以天师为核心的灵能爆破完美克制步狙流",
+      "url": "https://news.17173.com/z/zzq/content/12032019/183708432.shtml",
+      "publishedAt": "2019-12-03",
+      "author": "牛牛手游平台（页面署名）",
+      "kind": "secondary-guide-with-primary-client-image",
+      "status": "original-html-and-client-portrait-reviewed",
+      "accessedAt": "2026-11-06",
+      "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/wtsRNKbnBfkbakr.jpg",
+      "image": "images/stormcaller-client-dec03.jpg",
+      "imageSha256": "ea904b24766a4664f2f2a7ae9d597182451932e30afcc1e2bb86e099a2ee85f3",
+      "originalHtmlSha256": "2d8e857a4b1253c1410095696f6aa368f83ae325c2b1685395ceab99414c1933",
+      "note": "客户端原图用于确认一费、灵能者/爆破、雷暴和无脸装甲晶核轮廓。正文为二手攻略，提到蓄力与弹道难命中、4/3秒和命中后大量回能；后者未获客户端字段证明，没有按无依据比例实现自回能。"
+    }
+  ],
+  "confirmedClientCard": {
+    "source": "S55",
+    "name": "雷暴",
+    "cost": 1,
+    "traits": [
+      "灵能者",
+      "爆破"
+    ],
+    "damage": [
+      150,
+      250,
+      350
+    ],
+    "widthInTiles": 1,
+    "energyRemovedPerHit": 20,
+    "displayedCooldownSeconds": 5,
+    "review": "实际目视原始客户端卡；伤害数列与路径宽度均清晰可读，不是估算。"
+  },
+  "clientSilhouette": {
+    "source": "S56 embedded client image",
+    "appearance": [
+      "尖顶头盔与狭长发光面部，无可见人脸或白须",
+      "宽大外翻肩甲、象牙白和深金属装甲",
+      "开放胸腔中的蓝色发光晶核",
+      "金属长臂爪手与漂浮分节下身"
+    ],
+    "asset": "public/assets/units/stormcaller-thunderstorm.png",
+    "method": "built-in image_gen",
+    "assetMetadata": "thunderstorm-assets.json",
+    "originalImageNotUsedAsRuntimeAsset": true
+  },
+  "localAdaptations": {
+    "historicalMix": "七月社区测量身板/星级冷却与十二月文章的原客户端技能卡分字段结合，客户端确切日期均未锁定。",
+    "attack": "36–44取均值40；沿用单机每星生命/攻击翻倍。",
+    "damageType": "客户端只写技能伤害，本地归类法伤并受技能强度及法术减伤结算。",
+    "initialMana": 0,
+    "windupSeconds": 1,
+    "speedTilesPerSecond": 3,
+    "maxTravelTiles": 10,
+    "geometry": "瞄准时固定单位中心方向；宽1格按半径0.5扫掠胶囊碰撞，每球每UID最多接触一次。飞行逐tick结算，不是瞬时范围伤害。",
+    "targeting": "起手4格内可见敌人，发射后直线范围可接触隐蔽/飞行敌人；敌人按当前中心位置可走出路径。",
+    "lifecycle": "未发射蓄力可被眩晕、沉默、魅惑、阵亡打断，不退款；已发射球保留发射阵营，施法者死亡/变阵营仍继续。",
+    "cooldown": "5/4/3秒从蓄力开始计；能量已满仍须等冷却。",
+    "mana": "受击回能后再扣最多20现有能量；护盾吸收算受损，死亡/残魂/涅槃火种/免伤/无能量棋子不扣。数值不随法强增加，不封锁后续回能。",
+    "noSelfTransfer": "S56二手攻略提到命中后回能，但原卡未提供自回能数值/公式，未新增无依据的能量转移；沿用单机正常普攻、受击与福音回能。",
+    "battleEnd": "最后一方清空后结束；剩余弹道或未完成蓄力不会在战后补伤害。",
+    "pool": "一费对应现有单机45份，不宣称该份数取自客户端卡。"
+  },
+  "compatibility": {
+    "schema": 52,
+    "newCatalog": {
+      "cost": 1,
+      "copies": 45
+    },
+    "oldCatalog": {
+      "cost": 3,
+      "copies": 25
+    },
+    "legacyDefinition": "700生命、65攻击、3甲、3格、1秒、雷电法球和stormcaller.png保持旧战斗。",
+    "migration": "50→51固定gospel/0.52；51→52仅准备期升级thunderstorm，缺失目录补gospel，其他阶段/历史/资源/商店/随机数/装备/播放进度保持。"
+  },
+  "remainingUnverified": [
+    "统一历史客户端构建、原始伤害/回能/高星公式",
+    "精确前摇、球速、命中体积及二手攻略自回能机制",
+    "本轮原作卡片没有解决童子三星供能被遮挡的问题，10仍是本地暂定。"
+  ]
+}

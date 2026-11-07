@@ -1,0 +1,39 @@
+{
+  "rules": "singleplayer-0.73",
+  "mode": "built-in-imagegen",
+  "skill": "/Users/haomi/.codex/skills/.system/imagegen/SKILL.md",
+  "intent": "new-character-sprite",
+  "taxonomy": "stylized-concept",
+  "references": [
+    {
+      "path": "docs/research/images/s70-reaper-puppet-client.jpg",
+      "role": "原客户端二星角色身份：有角蓝灰蜥蜴、双弯刀；忽略UI。"
+    },
+    {
+      "path": "public/assets/units/shadowblade.png",
+      "role": "仅采用项目画风、材质和俯视角，不采用角色身份。"
+    }
+  ],
+  "historicalFidelity": "依据客户端二星轮廓生成的新美术，各星级共用；不是客户端模型或完整升星皮肤。",
+  "postProcessing": "原生透明PNG复制到仓库，无栅格后处理；生成原件保留。",
+  "assets": [
+    {
+      "path": "public/assets/units/reaper.png",
+      "nativePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-31906c0e-b94c-48cd-99c8-a6d413556384.png",
+      "prompt": "Use case: stylized-concept. Asset type: a new transparent auto-chess character sprite. Input image 1 is the ORIGINAL CLIENT CHARACTER IDENTITY reference: use only the horned pale-blue reptilian assassin pictured on its left, ignore all interface and text. Input image 2 is only a reference for the established project's detailed hand-painted 3D rendering finish and elevated tactical camera, not its character identity. Create one complete lean humanoid reptilian soul reaper with pale blue-grey scales, a narrow horned lizard face with small dark eyes, hunched shoulders, wrapped dark cloth waist and forearms, weathered metal ornaments, and two enormous curved silver crescent scimitars held in an agile asymmetrical combat stance. Preserve the visible organic creature, horns and curved blades from image 1. Do not use the closed faceless helmet or straight purple swords from image 2. Three-quarter isometric elevated view, facing lower right. Full body and both entire curved blades visible, centered with transparent margin, strong readable silhouette at 100 pixels. Restrained cold teal spiritual accents, fine worn surfaces, polished production game art. Actual transparent background with crisp alpha, no floor, no pedestal, no scenery, no detached shadow, no extra character, no labels, no text, no interface, no watermark.",
+      "width": 1254,
+      "height": 1254,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 952146,
+      "opaquePixels": 1712,
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "sha256": "4770928c90dcb0ac2281bff70dae8a77d0aa9013a0cab676eaa22fd40532a08a"
+    }
+  ]
+}

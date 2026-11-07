@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { deployLineup, frontlineFactor } from "../src/engine/ai";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
@@ -201,7 +202,7 @@ describe("投弹手沉默与能量封锁独立", () => {
   });
 });
 describe("步兵集成", () => {
-  it("六种不同步兵触发600生命，不把重复棋子或备战算入，旧三步兵保持300", () => {
+  it("旧规则六种不同步兵触发600生命，不把重复棋子或备战算入，旧三步兵保持300", () => {
     const ids = [
       "infantry",
       "guard",
@@ -211,23 +212,25 @@ describe("步兵集成", () => {
       "grenadier",
     ];
     const pieces = ids.map((id, i) => p(id, i + 1, 1, 32 + i));
-    expect(synergies(pieces).find((s) => s.trait === "步兵")!.bonus.hp).toBe(
-      600,
-    );
-    expect(army(pieces, 0).map((f) => f.maxHp - UNIT[f.defId].hp)).toEqual([
-      600, 600, 600, 600, 600, 600,
-    ]);
     expect(
-      synergies(pieces.slice(0, 3)).find((s) => s.trait === "步兵")!.bonus.hp,
+      synergies(pieces, "metamorph").find((s) => s.trait === "步兵")!.bonus.hp,
+    ).toBe(600);
+    expect(
+      army(pieces, 0, "metamorph").map((f) => f.maxHp - UNIT[f.defId].hp),
+    ).toEqual([600, 600, 600, 600, 600, 600]);
+    expect(
+      synergies(pieces.slice(0, 3), "metamorph").find(
+        (s) => s.trait === "步兵",
+      )!.bonus.hp,
     ).toBe(300);
     pieces[5].position = null;
-    expect(synergies(pieces).find((s) => s.trait === "步兵")!.bonus.hp).toBe(
-      300,
-    );
+    expect(
+      synergies(pieces, "metamorph").find((s) => s.trait === "步兵")!.bonus.hp,
+    ).toBe(300);
     pieces[5] = { ...pieces[0], uid: 6, position: 37 };
-    expect(synergies(pieces).find((s) => s.trait === "步兵")!.bonus.hp).toBe(
-      300,
-    );
+    expect(
+      synergies(pieces, "metamorph").find((s) => s.trait === "步兵")!.bonus.hp,
+    ).toBe(300);
   });
   it("完整、快速和Worker一致，新技能均产生真实事件", () => {
     const left = [
@@ -242,7 +245,12 @@ describe("步兵集成", () => {
       ];
     const b = simulate(left, right),
       fast = simulateOutcome(left, right),
-      w = compute({ kind: "replay", left, right, version: "metamorph" });
+      w = compute({
+        kind: "replay",
+        left,
+        right,
+        version: CURRENT_COMBAT_VERSION,
+      });
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
     if (w.kind === "replay") expect(w.battle).toEqual(b);
     else throw Error("wrong response");
@@ -252,7 +260,8 @@ describe("步兵集成", () => {
   });
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it("0.19 " + phase + "迁移只补新卡池，不改资源和回放", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
+      g.combatVersion = "metamorph";
       let battle: ReturnType<typeof startRound> | undefined;
       for (const pl of g.players)
         for (let i = 0; i < pl.shop.length; i++)
@@ -295,6 +304,8 @@ describe("步兵集成", () => {
       expect(decoded.data?.schema).toBe(SAVE_SCHEMA);
       expect(decoded.data!.game).toEqual({
         ...before,
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "metamorph",
         pool: { ...before.pool, flametrooper: COPIES[2], grenadier: COPIES[4] },
       });
       expect(validGame(decoded.data!.game)).toBe(true);
@@ -304,7 +315,7 @@ describe("步兵集成", () => {
 });
 
 it("火焰兵按近线保护放置，投弹手仍在后排", () => {
-  const player = createGame(137).players[1];
+  const player = createGame(137, "classic").players[1];
   player.level = 3;
   player.pieces = [
     p("flametrooper", 1, 2),

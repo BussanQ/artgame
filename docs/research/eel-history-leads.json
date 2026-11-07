@@ -1,0 +1,48 @@
+{
+  "status": "deferred-no-runtime-change",
+  "reviewedAt": "2026-11-07",
+  "reason": "未取得同一客户端的完整电磁灼烧卡面；不将跨期伤害、目标数与2020新增削能混用。",
+  "sources": [
+    {
+      "id": "S04",
+      "source": "docs/research/historical-tables.json",
+      "method": "本次复读已归档转录S04-2第7行，未重新目视原图。",
+      "fields": {"cost":3,"hp":750,"attackMin":95,"attackMax":114,"armor":5,"range":3,"attackIntervalSeconds":2,"skillCooldownSeconds":10}
+    },
+    {
+      "id": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "method": "网页工具405；复读此前取得的原作者HTML正文，SHA保持。",
+      "archive": "tmp/vine-s05-original.html",
+      "sha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "finding": "原作者三费评价不含完整技能范围或时序。"
+    },
+    {
+      "url": "https://www.taptap.cn/moment/15201495997744121",
+      "publishedAt": "2019-06-19",
+      "kind": "原始玩家评测",
+      "method": "本次实际打开正文。",
+      "finding": "三星10秒冷却、最多6个目标及185×2的玩家表述，不能据此补全所有星级。"
+    },
+    {
+      "id": "S72",
+      "kind": "社区转载线索",
+      "url": "https://forum.gamer.com.tw/Co.php?bPage=0&bsn=36595&sn=141&subbsn=1",
+      "method": "检索正文可读；未取得发布方完整同版卡面。",
+      "finding": "2019-07-11单次65/85/125改75/100/145，仅作分期线索。"
+    },
+    {
+      "url": "https://news.17173.com/z/zzq/content/04022020/174456266.shtml?_platform=PC",
+      "kind": "发布方署名公告",
+      "finding": "2020-04-02才新增命中削能，不混入2019。"
+    },
+    {
+      "url": "https://news.17173.com/z/zzq/content/06112020/182740162.shtml?_platform=PC",
+      "kind": "发布方署名公告",
+      "method": "本次实际打开；不使用第三方AI摘要。",
+      "finding": "正文给出后期伤害与旧目标上限4/6/8，但新上限字段缺失，不能补读未知值。"
+    }
+  ],
+  "nextEvidenceNeeded": ["同一2019客户端完整卡面或实际施法记录", "分星目标上限、选取范围与两次伤害的准确时序"],
+  "currentPrototype": "原有800生命、65攻击、固定区域三段雷场保持；这不是原版已恢复的声明。"
+}

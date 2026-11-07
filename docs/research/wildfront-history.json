@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.41",
+  "combatVersion": "wildfront",
+  "sources": [
+    {
+      "id": "S03",
+      "url": "https://www.taptap.cn/moment/15202528882852517",
+      "publishedAt": "2019-04-27",
+      "modifiedAt": "2019-05-09",
+      "kind": "community-original-chart",
+      "imageUrl": "https://img2-tc.tapimg.com/bbcode/images/915032174273785f479cf7ccd0f93190.png/_tap_ugc.jpg",
+      "imageSha256": "1255a365dd2bf246e4f7e6d55415be1262869c73957159bc1d90832e90d3d79b",
+      "status": "downloaded-valid-image-and-visually-rechecked-this-turn",
+      "facts": {
+        "beast": {
+          "counts": [2, 4, 6],
+          "attackSpeedPercent": [15, 25, 35],
+          "beneficiaries": ["beasts", "all-allies", "all-allies"]
+        },
+        "vanguard": {
+          "counts": [3, 6],
+          "armorAsPrinted": [6, 8],
+          "beneficiaries": "vanguards"
+        }
+      },
+      "transcriptionCorrection": "原图野兽三档均为攻速。historical-tables.json原先漏写后两档的速度二字，已纠正；不能把25/35解释为攻击力。"
+    },
+    {
+      "id": "S35",
+      "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
+      "publishedAt": "2019-05-09",
+      "modifiedAt": "2019-05-08",
+      "kind": "original-announcement-post-account-badge-unverified",
+      "status": "relevant-original-html-body-read",
+      "htmlSha256": "8abb8a45cc529d7ce184ef2f90f68749f2d74c04bbc440a0e02ab7af5391d781",
+      "facts": ["4野兽开始使连携对全部友军生效", "先锋从生命回复改为护甲6/8"],
+      "limits": "正文不是全部阈值与累计方式的证明；档位人数和野兽15/25/35采用S03原图。网页可能动态变化，指纹对应本轮保存的原始HTML。"
+    },
+    {
+      "id": "S20",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1556086391745_13",
+      "publishedAt": "2019-04-24",
+      "kind": "publisher",
+      "status": "original-body-rechecked",
+      "facts": {
+        "beastCounts": [2, 4, 6],
+        "beastAttackSpeedPercent": [10, 10, 15],
+        "beneficiaries": "beasts"
+      },
+      "limits": "比五月改版早，保留为版本冲突证据，不与五月25/35全队攻速拼成同一规则。"
+    }
+  ],
+  "localAdaptations": {
+    "tierCombination": "highest-tier-total; never sum 15+25+35 or 6+8",
+    "counting": "different deployed recruitable unit IDs; bench, duplicates and summoned fighters do not increase counts",
+    "timing": "opening snapshot; provider death or charm does not recalculate formation",
+    "summons": "later summons inherit four/six-beast team speed, never two-beast personal speed or vanguard armor",
+    "intervalFormula": "max(1 tick, gearAdjustedBaseInterval / (1 + formationSpeed + activeStaffGaleSpeed) * temporaryHasteFactor * activeSlowFactor)",
+    "limits": "精确攻速叠加、最低间隔、召唤继承、锁定和控制边界为本地适配；引擎以0.25秒离散步进。当前野兽10种/先锋12种的本地名单仍不同于五月7/7，不声称整个阵容已经同版本复原。"
+  },
+  "compatibility": {
+    "saveSchema": 40,
+    "fromSchema": 39,
+    "fromRules": "singleplayer-0.40",
+    "prepare": "switch-to-wildfront",
+    "battleResultFinishedAndHistory": "keep-original-combat-version; next preparation adopts current rules",
+    "economyRngRosterGearShopsAiAndBans": "unchanged"
+  }
+}

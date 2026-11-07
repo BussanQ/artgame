@@ -1,3 +1,5 @@
+import { unitCost } from "../data/catalog";
+import { CURRENT_COMBAT_VERSION, hasInsectEvolutionRules } from "./types";
 import { UNIT, UNITS } from "../data/units";
 import type { CombatVersion, Piece, Player } from "./types";
 export const isInsect = (id: string) =>
@@ -6,29 +8,29 @@ export const insectCount = (pieces: Piece[]) =>
   new Set(pieces.filter((p) => isInsect(p.defId)).map((p) => p.defId)).size;
 export const pieceCopies = (piece: Piece) =>
   piece.copies ?? 3 ** (piece.star - 1);
-export const salePrice = (piece: Piece) =>
+export const salePrice = (
+  piece: Piece,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) =>
   isInsect(piece.defId)
-    ? Math.min(5, UNIT[piece.defId].cost * 3 ** (piece.star - 1))
-    : UNIT[piece.defId].cost * pieceCopies(piece);
+    ? Math.min(5, unitCost(piece.defId, version) * 3 ** (piece.star - 1))
+    : unitCost(piece.defId, version) * pieceCopies(piece);
 export function mergeCount(
   pieces: Piece[],
   id: string,
   star: number,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) {
-  if (
-    (version !== "brood" &&
-      version !== "airsea" &&
-      version !== "fleet" &&
-      version !== "metamorph") ||
-    !isInsect(id)
-  )
+  if (!hasInsectEvolutionRules(version) || !isInsect(id))
     return 3;
   const kinds = insectCount(pieces);
   return kinds >= (star === 1 ? 2 : 4) ? 2 : 3;
 }
 /** Evolution records real pool copies; equipment overflow returns to inventory. */
-export function mergePieces(p: Player, version: CombatVersion = "metamorph") {
+export function mergePieces(
+  p: Player,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) {
   for (const d of UNITS)
     for (let star = 1; star < 3; star++) {
       for (;;) {

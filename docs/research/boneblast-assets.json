@@ -1,0 +1,64 @@
+{
+  "rules": "singleplayer-0.65",
+  "unit": "bonedragon",
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "useCase": "background-extraction",
+  "inputs": [
+    {
+      "path": "../../public/assets/units/bonedragon.png",
+      "role": "edit-target",
+      "sha256": "e3ab4aebdff796c33c7404348c6f3b344750018378919eb98717bee6d27618ff"
+    },
+    {
+      "path": "images/bonedragon-boneblast-client-june2019.png",
+      "role": "supporting-client-reference",
+      "sha256": "54e492991c2da1c97688c330971a2e28e4dc19abec314fc212cbb1e578e7bb45"
+    }
+  ],
+  "output": {
+    "path": "../../public/assets/units/bonedragon-boneblast.png",
+    "nativeOutputPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-ec267d0f-bf89-4873-971c-21170947dbfb.png",
+    "sha256": "1331cb456153dd7be6d8b004ab86ae9b590f142f6be29da6e8e038aac05ac14d",
+    "bytes": 2382861,
+    "size": [
+      1536,
+      1024
+    ],
+    "transparentBackground": true,
+    "prompt": "Use case: background-extraction\nAsset type: transparent 2.5D auto-chess skeletal Bone Dragon unit sprite.\nInput images: Image 1 is the EDIT TARGET, the project's existing illustrated Bone Dragon. Image 2 is a supporting historical game-client reference for its mint-green undead identity only; do not reproduce the interface or text.\nPrimary request: extract and refine the SAME recognizable skeletal flying dragon onto a genuinely transparent background. Keep its elongated horned skull, exposed rib cage, bony spread wings, two hanging claws, curling segmented tail, three-quarter facing-right pose, fine bone detail and polished illustrated 3D game-unit style. Retain the existing jade soul inside the ribs. Give the bones a restrained pale mint-green undead tint inspired by Image 2, while keeping their ivory material readable. Keep the small existing gold ornaments restrained. Remove the long loose flame extending out of its mouth, so the game can draw a charging bone orb there at runtime.\nBackground: actual alpha transparency. Remove ALL beige/brown/black haze, rectangular backdrop, spotlight, ground and cast-shadow plate. Preserve only a tight jade glow INSIDE the eyes, mouth and ribs, not a broad glow cloud outside the silhouette.\nComposition: one complete dragon only, all wing tips, horns, claws and tail contained with transparent margin. Landscape composition, same camera and recognizable body proportions. Small sprite legibility matters.\nConstraints: no pedestal, environment, extra characters, text, stars, border, UI, labels, logos or watermark. Do not make a living fleshy dragon. Do not change the pose or invent extra limbs. Preserve native transparent alpha in the returned image.",
+    "copiedByteForByte": true,
+    "rasterPostprocessing": false,
+    "alpha": {
+      "zeroPixels": 919118,
+      "max": 254,
+      "corners": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "attempts": 1
+  },
+  "priorAsset": {
+    "preserved": true,
+    "alpha": {
+      "zeroPixels": 937644,
+      "max": 254,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "旧图已有alpha，不把本次重绘描述为首次获得透明通道。"
+  },
+  "review": {
+    "nativeImageViewed": true,
+    "browserCanvasReviewed": true,
+    "note": "原生输出与实际Canvas均已目视，桌面及390px无矩形背景；小尺寸保持可辨骨骼轮廓，见boneblast-v065-validation.json。"
+  },
+  "routing": "boneblast及以后使用新形象，37个旧战斗版本保留旧图"
+}

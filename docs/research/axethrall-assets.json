@@ -1,0 +1,35 @@
+{
+  "status": "generated",
+  "generatedAt": "2026-11-04",
+  "method": "built-in image_gen",
+  "generationAttempts": [
+    {
+      "attempt": 1,
+      "result": "generated"
+    }
+  ],
+  "assets": [
+    {
+      "id": "axethrall",
+      "name": "斧奴",
+      "prompt": "Use case: stylized-concept. Asset type: transparent full-body sprite for a dark science-fiction auto chess game. Primary request: ONE Axe Thrall, an agile humanoid psychic construct assassin made of angular black ceramic and emerald-turquoise armor, an enclosed pointed helmet with a tiny luminous visor, broad swept shoulder plates, slim waist, articulated armored legs and claw-like boots. It holds one long crescent-bladed throwing axe diagonally down beside the body, with a dark shaft and a bright jade energy edge; free hand slightly raised for balance. Original reinterpretation of an alien puppet warrior, not a human soldier, no exposed flesh. Semi-realistic painted 3D strategy miniature, readable crisp silhouette, three-quarter front view facing slightly right, full body including axe tip and both feet inside frame with generous margins. Neutral combat-ready stance suitable for animated leaning and slashing. Subtle bronze trims, upper-left lighting, coherent with a science-fantasy auto chess army. Actual transparent background, no scenery, no floor, no base, no cast shadow, no text, no UI, no logos, no other units.",
+      "path": "public/assets/units/axethrall.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-d57b258b-abbd-4960-b958-ae542837519d.png",
+      "width": 1199,
+      "height": 1312,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 1098090,
+      "totalPixels": 1573088,
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "sha256": "ca62a717c0f0eacfe21f09cb1f5cbb816f06f106620ee42c90fe47c175467926"
+    }
+  ]
+}

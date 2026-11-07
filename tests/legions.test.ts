@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -108,9 +109,9 @@ describe("召唤职业与傀儡战线", () => {
     const live = ctx.fighters.filter((f) => f.hp > 0);
     expect(new Set(live.map((f) => `${f.x},${f.y}`)).size).toBe(live.length);
   });
-  it("召唤按不同棋子计数，备战和重复不计；全队及新召唤物受法术保护", () => {
+  it("旧lineages召唤按不同棋子计数，备战和重复不计；全队及新召唤物受法术保护", () => {
     const pieces = [p("adept", 1, 43), p("shark", 2, 35), p("guard", 3, 36)];
-    const team = army(pieces, 0);
+    const team = army(pieces, 0, "lineages");
     expect(team.every((f) => Math.abs(f.magicResist - 0.35) < 1e-10)).toBe(
       true,
     );
@@ -118,9 +119,13 @@ describe("召唤职业与傀儡战线", () => {
       synergies([...pieces, p("shark", 4, 37)]).find((s) => s.trait === "召唤")!
         .count,
     ).toBe(2);
-    const three = army([...pieces, p("wolf", 4, 37)], 0);
+    const three = army([...pieces, p("wolf", 4, 37)], 0, "lineages");
     expect(three.every((f) => f.magicResist === 0.45)).toBe(true);
-    const reserve = army([pieces[0], { ...pieces[1], position: null }], 0);
+    const reserve = army(
+      [pieces[0], { ...pieces[1], position: null }],
+      0,
+      "lineages",
+    );
     expect(reserve[0].magicResist).toBe(0.2);
     team[0].mana = 100;
     const ctx: CombatContext = {
@@ -210,7 +215,7 @@ describe("召唤职业与傀儡战线", () => {
   it.each(["prepare", "battle", "result"] as const)(
     "0.8 %s 存档仅补卡池，进行中的旧战斗和战报保留",
     (phase) => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "summons";
       for (const player of g.players)
         player.shop = player.shop.map((id) => {
@@ -250,14 +255,14 @@ describe("召唤职业与傀儡战线", () => {
       expect(restored.players).toEqual(before.players);
       expect(restored.history).toEqual(before.history);
       expect(restored.combatVersion).toBe(
-        phase === "prepare" ? "metamorph" : "summons",
+        phase === "prepare" ? CURRENT_COMBAT_VERSION : "summons",
       );
       if (phase === "battle")
         expect(resumeRound(restored)!.battle).toEqual(round!.battle);
       if (phase === "result") {
         if (restored.reward) claimReward(restored, 0);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("metamorph");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
       }
     },
   );

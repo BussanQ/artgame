@@ -1,0 +1,83 @@
+{
+  "baselineFiles": [
+    "docs/analysis/chain-v050-psychic.json",
+    "docs/analysis/chain-v050-infantry.json"
+  ],
+  "currentFiles": [
+    "docs/analysis/chain-v051-psychic.json",
+    "docs/analysis/chain-v051-infantry.json"
+  ],
+  "stages": {
+    "v050": {
+      "games": 12,
+      "rounds": 312,
+      "gamesDeployingThunderlord": 4,
+      "thunderlordRounds": 13,
+      "starRounds": [
+        9,
+        4,
+        0
+      ],
+      "attacks": 0,
+      "bounces": 0,
+      "evades": 0,
+      "oldActiveCasts": 25,
+      "averageRank": {
+        "relaxed": 1.0,
+        "standard": 5.5,
+        "veteran": 5.25
+      },
+      "encounteredOpponentRounds": 0,
+      "encounteredOpponentAttacks": 0,
+      "encounteredOpponentBounces": 0,
+      "sourceHashes": {
+        "docs/analysis/chain-v050-psychic.json": {
+          "count": 57,
+          "matchingCurrent": 44
+        },
+        "docs/analysis/chain-v050-infantry.json": {
+          "count": 57,
+          "matchingCurrent": 44
+        }
+      }
+    },
+    "v051": {
+      "games": 12,
+      "rounds": 316,
+      "gamesDeployingThunderlord": 7,
+      "thunderlordRounds": 77,
+      "starRounds": [
+        42,
+        34,
+        1
+      ],
+      "attacks": 407,
+      "bounces": 852,
+      "evades": 5,
+      "oldActiveCasts": 0,
+      "averageRank": {
+        "relaxed": 1.0,
+        "standard": 3.25,
+        "veteran": 6.25
+      },
+      "encounteredOpponentRounds": 9,
+      "encounteredOpponentAttacks": 56,
+      "encounteredOpponentBounces": 200,
+      "sourceHashes": {
+        "docs/analysis/chain-v051-psychic.json": {
+          "count": 59,
+          "matchingCurrent": 59
+        },
+        "docs/analysis/chain-v051-infantry.json": {
+          "count": 59,
+          "matchingCurrent": 59
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Only two seed/profile pairs; not independent human matches or a pure skill-only causal experiment.",
+    "Player uses the paid standard commander while opponents follow each selected difficulty.",
+    "Current report chainDamage includes initial hits; battle-analysis lightning.damage counts only extra bounces."
+  ]
+}

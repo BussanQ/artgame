@@ -1,0 +1,550 @@
+{
+  "checkedAt": "2026-11-07T00:20:27.959398+00:00",
+  "pointInTime": true,
+  "rules": "singleplayer-0.72",
+  "combatVersion": "tortoise",
+  "saveSchema": 71,
+  "goalTurnClassification": "progress",
+  "previousGoalTurn": {
+    "classification": "progress",
+    "evidence": "按用户push要求创建并推送05137639379475889382f210c3d67f29910e0a71至origin/dev，0.70与0.71成为已提交状态。"
+  },
+  "scope": "玄龟五费灵能双形态、持续普通攻击引火、破壳群攻、生成形象、真实统计与旧目录身份兼容。",
+  "tests": {
+    "uniquePassed": 106,
+    "failedAtCompletion": 0,
+    "fullTestSuiteRun": false,
+    "baseModules": {
+      "command": "npx vitest run tests/tortoise.test.ts tests/spirit-ward.test.ts tests/bulwark.test.ts --reporter=json --outputFile=tmp/tortoise-related-tests.json",
+      "passed": 105,
+      "suites": [
+        {
+          "path": "tests/bulwark.test.ts",
+          "passed": 34
+        },
+        {
+          "path": "tests/spirit-ward.test.ts",
+          "passed": 36
+        },
+        {
+          "path": "tests/tortoise.test.ts",
+          "passed": 35
+        }
+      ]
+    },
+    "cooldownFollowup": {
+      "command": "npx vitest run tests/tortoise.test.ts -t '打断保留' --reporter=json --outputFile=tmp/tortoise-cooldown-tests.json",
+      "passed": 4,
+      "skipped": 31,
+      "note": "目视S04确认60秒后加入CD，四个中断边界重新验证，不重复增加检查数。"
+    },
+    "addedCharmBoundary": {
+      "command": "npx vitest run tests/tortoise.test.ts -t '未变形时被魅惑' --reporter=json --outputFile=tmp/tortoise-charm-tests.json",
+      "passed": 1,
+      "skipped": 35,
+      "note": "新增独立魅惑暂停回能检查，只运行新增项；36玄龟+36鹿+34盾阵=106项不同检查。"
+    },
+    "initialFailures": [
+      "测试误将水晶视为50能量、将附带40能量的法杖收益误设为0，按真实装备修正。",
+      "新技能说明入口落在版本归一化之后而显示旧玄甲，已前移。",
+      "守御详情须包含敌方步兵减甲，实际42甲而非旧预期。",
+      "旧准备期迁移fixture需显式预期玄龟spirit-ward定义固定，池与历史原样。",
+      "静态检查要求召唤fixture带born字段，已补齐。"
+    ]
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 162,
+    "js": "index-BkOJ0U9n.js",
+    "worker": "worker-DdpdrgO9.js",
+    "css": "index-0iwQsGQW.css",
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "bytes": 596,
+        "sha256": "5118bea7e5c6633be7bc50f4f36dc4ca00bb6f0b40611f44e4e5bbb4a9f90d0d"
+      },
+      {
+        "path": "dist/assets/index-BkOJ0U9n.js",
+        "bytes": 406192,
+        "sha256": "39482778fb085103b1d088146b1b8ccb1d24551c83e11485ac8d16491b0bf95e"
+      },
+      {
+        "path": "dist/assets/worker-DdpdrgO9.js",
+        "bytes": 205960,
+        "sha256": "146729a54b2618ee86d519a7a1826eb239bb2494d599971a6447085855581a28"
+      },
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      }
+    ]
+  },
+  "compatibility": {
+    "definitionVersionsFrozen": 44,
+    "historicalReplays": [
+      {
+        "version": "legacy",
+        "frames": 118,
+        "winner": 1,
+        "sha256": "1d60d13ee5bc2c7c4f7bf1b6ffd7d67d330a2b425bb7d41da678654ab61ebd3b"
+      },
+      {
+        "version": "spirit-ward",
+        "frames": 74,
+        "winner": 0,
+        "sha256": "ee5a150f7fbb85b6973d3e97cbb27a156e34c54630805d8f37c0025c7f66d41f"
+      }
+    ],
+    "catalog": "旧目录玄龟整体保留四费野兽/护卫和渐减玄甲，持有与未来购买固定spirit-ward。新局五费灵能。禁用、卡池、出售和合星保持各自定义。",
+    "migration": "prepare升级并固定旧玄龟；battle/result/finished保留原战斗版本与旧报告，result进入下一准备时固定；缺目录0.71补spirit-ward；拒绝任意旧定义注入。",
+    "pureBanEnumeration": {
+      "combinations": 286,
+      "combatSimulations": 0
+    }
+  },
+  "browser": {
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "resourcesUnchanged": true,
+    "mobile": {
+      "close": [
+        {
+          "height": 44,
+          "width": 44
+        }
+      ],
+      "scrollWidth": 390,
+      "viewport": 390
+    },
+    "logs": [],
+    "screenshots": [
+      "tmp/tortoise-v072-before-form-desktop.jpg",
+      "tmp/tortoise-v072-breach-analysis-mobile390.jpg",
+      "tmp/tortoise-v072-breach-desktop.jpg",
+      "tmp/tortoise-v072-breach-inspector-desktop.jpg",
+      "tmp/tortoise-v072-breach-mobile390.jpg",
+      "tmp/tortoise-v072-codex-mobile390.jpg",
+      "tmp/tortoise-v072-shell-analysis-desktop.jpg",
+      "tmp/tortoise-v072-shell-desktop.jpg",
+      "tmp/tortoise-v072-shell-inspector-desktop.jpg",
+      "tmp/tortoise-v072-shell-mobile-clean.jpg",
+      "tmp/tortoise-v072-shell-mobile390.jpg"
+    ],
+    "restored": "退出演示、图鉴筛选重置、视口恢复，保留正式对局。",
+    "existingNotice": "验收开始前已有存档版本不兼容通知；本轮未清空或替换该存档。模块用合法档验证迁移，不以页面现有通知反称所有用户旧档已验收。"
+  },
+  "scenes": {
+    "shell": {
+      "playedSeconds": 18,
+      "inspectedSeconds": 1.5,
+      "allies": 2,
+      "enemies": 3,
+      "formed": 1,
+      "taunts": 3,
+      "armor": 42,
+      "magicResist": 0.5,
+      "swings": 0,
+      "note": "护甲10+35-3；18秒时敌方火焰兵已施法2次，不是全场禁止施法。"
+    },
+    "breach": {
+      "playedSeconds": 3.75,
+      "inspectedSeconds": 2.25,
+      "allies": 3,
+      "enemies": 2,
+      "formed": 1,
+      "armor": 0,
+      "magicResist": 0.2,
+      "swings": 1,
+      "splashHits": 1,
+      "normalDamage": 358,
+      "skillDamage": 0,
+      "note": "护卫连携的承盾不是玄龟变形生成护盾。"
+    },
+    "beforeForm": {
+      "seconds": 0.25,
+      "formed": 0,
+      "armor": 10,
+      "magicResist": 0.2,
+      "windupRemainingSeconds": 0.5,
+      "cooldownRemainingSeconds": 60
+    },
+    "codex": {
+      "star": 3,
+      "cost": 5,
+      "traits": [
+        "灵能",
+        "护卫"
+      ],
+      "hp": 6000,
+      "attack": 160,
+      "armor": 10,
+      "range": 1,
+      "intervalSeconds": 1.6
+    }
+  },
+  "sourceReview": {
+    "record": "docs/research/tortoise-history.json",
+    "S04": "实际目视第43行，60秒和20%技能防御，不能误用相邻雷震子的被动字段。",
+    "S05": "重新解析已取得的302211字节原始HTML玄龟段。",
+    "S69": "索引中的发行方原文；直接访问403，未取得客户端卡图/模型。",
+    "unconfirmed": "名称、平局/计数/时点、额外防御数列、破壳范围/倍率与精确交互单列适配。"
+  },
+  "art": {
+    "mode": "built-in-imagegen",
+    "assets": "docs/research/tortoise-assets.json",
+    "nativePngs": 2,
+    "postProcessing": false,
+    "originalRetained": true,
+    "authenticClientModelObtained": false
+  },
+  "sampling": {
+    "fullCampaignsAdded": 0,
+    "bulkCombatSampling": 0,
+    "currentUiScenes": 2,
+    "historicalSmallReplayFixtures": 2,
+    "note": "只验证相关模块、两个小演示与两段冻结旧局面；失败修正复验和纯禁用组合枚举不算新对战样本。"
+  },
+  "git": {
+    "branch": "dev",
+    "baseCommit": "05137639379475889382f210c3d67f29910e0a71",
+    "newCommitRequested": false,
+    "newChangesCommitted": false
+  },
+  "remainingGoalRequirements": [
+    "其他棋子原型能力、身板与职业待核对恢复。",
+    "同一历史版本完整数据、技能卡和伤害/防御公式未统一确证；本轮数列及美术仍含适配。",
+    "整体难度、多构筑经营取舍与长期平衡不能由两个小演示证明。",
+    "真实手机、长时间运行与大阵容性能仍需按具体问题验证。"
+  ],
+  "sourceFingerprints": [
+    {
+      "path": "README.md",
+      "bytes": 29463,
+      "sha256": "083f4a75cebcac4d62ec6d73c7931663aee82c0d57499537f4665774d6f61156"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 35638,
+      "sha256": "e360c6d1e4263b7c55fd56ad1be25cad7cd3e3d260cc7b4bb61a2c693bc08886"
+    },
+    {
+      "path": "docs/design/roadmap.md",
+      "bytes": 29474,
+      "sha256": "04f563905499437ce9058271fe3db8d62c41894eff3876c201b56b5c63ad4803"
+    },
+    {
+      "path": "docs/design/single-player-plan.md",
+      "bytes": 37276,
+      "sha256": "b1a80574a1538f11cc21ca4441b47c8d8f0c68bc677f8c4341a151f3530c42f4"
+    },
+    {
+      "path": "docs/design/skills.md",
+      "bytes": 11188,
+      "sha256": "3ed4fc90929c7ffaf0a32d2a7a6a3e2019643ee5010fdc36aac6b276a07b1ebb"
+    },
+    {
+      "path": "docs/design/tortoise.md",
+      "bytes": 5139,
+      "sha256": "700abcab76e3d333404f81fcfe0ff14efd7d57e3284786a314642291c7d51968"
+    },
+    {
+      "path": "docs/research/historical-tables.md",
+      "bytes": 12789,
+      "sha256": "8ee312ee9cdb5919bbd4cbe28a41f8b88fb5432626a9e1eea5ec62336df14efe"
+    },
+    {
+      "path": "docs/research/roster-mapping.md",
+      "bytes": 15515,
+      "sha256": "65395b57da4639bb222b2bb06e1db00a48a3b2fbdff01ab9fc06a5725826bcaa"
+    },
+    {
+      "path": "docs/research/sources.json",
+      "bytes": 55534,
+      "sha256": "58c57179b636655c7428b4e5286c2e1014806aba05453ca218fa9b1024e8d9f7"
+    },
+    {
+      "path": "docs/research/sources.md",
+      "bytes": 25473,
+      "sha256": "f5157bbeb37d6fee24c5def53dc1dda810aa6308c90aeb85fd17c05c029d3fe0"
+    },
+    {
+      "path": "docs/research/tortoise-assets.json",
+      "bytes": 3510,
+      "sha256": "8e1786a9218b61c2487d6087697783ce2378d61fc115e146ce2c2ddfaf643c4a"
+    },
+    {
+      "path": "docs/research/tortoise-history.json",
+      "bytes": 5464,
+      "sha256": "3b558af92104996e03c2a268c2a1d7f36edd1c12cc961441442f8a785554a055"
+    },
+    {
+      "path": "package.json",
+      "bytes": 19125,
+      "sha256": "f8d63339287f39f051f01a5dd827964c40a2e99177efce769c25de0da72740dd"
+    },
+    {
+      "path": "public/assets/units/turtle-breach-v072.png",
+      "bytes": 2334836,
+      "sha256": "d743e5642ab02ca835a50072b9f56e8ad605b061b93eae2d027be3c2af70c1cf"
+    },
+    {
+      "path": "public/assets/units/turtle-shell-v072.png",
+      "bytes": 2662806,
+      "sha256": "b40cfa1e06b3b4f2a10ee2b51cb0249b5e8bb5dba71306da571566374f5c9f8d"
+    },
+    {
+      "path": "src/data/catalog.ts",
+      "bytes": 1557,
+      "sha256": "7b53d261ddb4af10346af8f7c325fa661656d1141d6806b08d93f9f8ff0aabc3"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "bytes": 75541,
+      "sha256": "b397ee92af5fcab43001a43f4783ab73eaff4060975ab17a3bb95726dd65ae3b"
+    },
+    {
+      "path": "src/data/tortoise-demo.ts",
+      "bytes": 928,
+      "sha256": "24c70da6ff3cfd7e9085785daf3b62592e1330d0391d2b7993234f4db9e0bbf9"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "bytes": 9477,
+      "sha256": "16d6e1c7ef4b8e624a801c5762c10f9e49357efe8d73cc355dff6cfc116b15f1"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 20970,
+      "sha256": "ca7522ad14771cd66cb29f2efe81edda69915d473f908532f72b4a7be37de077"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "bytes": 62583,
+      "sha256": "9069034725ab001fa2f53eca330f05c575dba93a219fb51acb83f596af0b5bec"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "bytes": 53211,
+      "sha256": "5c568970e636d7cd792986d6645122de765d43a37e0adc8c09038dd933e128e4"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "bytes": 10388,
+      "sha256": "709970f8d0941cb7036bb58675ce9ed16350dfd5b79de1bdd6eb9a2efb4631e8"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 32146,
+      "sha256": "4a9319b843f04cccd8337e66d5be7d229947e8f8ffd90f0497b780dcf28e9504"
+    },
+    {
+      "path": "src/engine/equipment.ts",
+      "bytes": 7759,
+      "sha256": "03a1ccdf992b0a3f1314d5ec1dfb26f5a94e37037d51e3ad34b287267b317361"
+    },
+    {
+      "path": "src/engine/game.ts",
+      "bytes": 10750,
+      "sha256": "847a92bad16f8c31466377ca576f103af5b3a26b82ab722e7fb2329e9083c05d"
+    },
+    {
+      "path": "src/engine/opening-ai.ts",
+      "bytes": 2925,
+      "sha256": "720f83f5c41a270740ee1a341c6a8254f246f23d9e693839e2bc080915285f90"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 38002,
+      "sha256": "749b3b542b1fe437bd76d28229a442ccdf775bbef55d678c8f5ac9e9d2adddde"
+    },
+    {
+      "path": "src/engine/recruitment.ts",
+      "bytes": 2941,
+      "sha256": "4b3426da1842f9303b255ed4116ff7d4f0d4d4207940af6faa6e2e184441d442"
+    },
+    {
+      "path": "src/engine/rotation.ts",
+      "bytes": 3793,
+      "sha256": "faba5284bddd4f7e184fabcdccd70fc89407a45434df6523395f908840ae6c3d"
+    },
+    {
+      "path": "src/engine/summons.ts",
+      "bytes": 12205,
+      "sha256": "05bd08886100cc4ee39e08f1df092168001ebe7b08fc03015594f5fdeb7e9b22"
+    },
+    {
+      "path": "src/engine/synergies.ts",
+      "bytes": 3391,
+      "sha256": "3ada5c77ae7a6adc7ca010cbdabf4c59f9ed9fd4b4b88ac95b5b3ae8e85dd80a"
+    },
+    {
+      "path": "src/engine/taunt.ts",
+      "bytes": 1233,
+      "sha256": "f3c6082177fbe7d5cce7248667ade222b38443d0084cc941c76ae96df24e4a44"
+    },
+    {
+      "path": "src/engine/tortoise.ts",
+      "bytes": 5248,
+      "sha256": "5d8f0d9415dd96f0a5c2bd5a489cfa51be6d669ee4231c6cfbc4324f999ed7f6"
+    },
+    {
+      "path": "src/engine/triggers.ts",
+      "bytes": 5997,
+      "sha256": "07e013066254de7cd233fb874c0c6c19841025564f4833c2d6a525ab8a5dd089"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 22742,
+      "sha256": "2d357a5ffa5b1dc332a346505b22779d4cb38d80d0aff643bc04127412985202"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 79562,
+      "sha256": "ccf89611764fffefc2a21d54b80bb4b777f206a614ee8616c0b5c8ccbf354274"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "bytes": 4900,
+      "sha256": "887f86d9036aa26a52eb7ed80005c22976cf398e94c15ea7f876c13ddc70f4d7"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "bytes": 38451,
+      "sha256": "d9f14ec3a7e58d888e26736f7d23036627618a3d2c9d20f43c5e4fd6ef330849"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "bytes": 44585,
+      "sha256": "ad47f7768238039cc155387100e8eafcb942c7282b5f96d39f26608fd3ea1556"
+    },
+    {
+      "path": "src/render/tortoise.ts",
+      "bytes": 2893,
+      "sha256": "5624ab4328d663dc2bfd0b89efbeb7c00e4ed63832b0c1218f8337a14260788c"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "bytes": 10085,
+      "sha256": "5e44800f6cdd699fd94dcd9552b59f487c70b3e2fcf532b7dbdc9a0176404fa0"
+    },
+    {
+      "path": "src/ui/bench-tooltip.ts",
+      "bytes": 9142,
+      "sha256": "6833a35a9396128803298428372fe79a088ef0ac552cc56266b53df715939592"
+    },
+    {
+      "path": "src/ui/unit-codex.ts",
+      "bytes": 8211,
+      "sha256": "3c809955094cb15f3be01f8d68c5440867990e247bef843b4b34c1aa029af5ab"
+    },
+    {
+      "path": "tests/bulwark.test.ts",
+      "bytes": 15984,
+      "sha256": "c496ffccb5b5009d97af16d4750fa78acb93fbefdb30a0c7b3b60bd4100ceba9"
+    },
+    {
+      "path": "tests/fixtures/pre-v072-tortoise-replays.json",
+      "bytes": 20189,
+      "sha256": "e642f8a39f6675c0687d3a886d17f2b09b317825fa2d06df28de8bfc403f6e77"
+    },
+    {
+      "path": "tests/spirit-ward.test.ts",
+      "bytes": 18000,
+      "sha256": "7dcdfc194901e291b6a9cfcf1716bfa4c7baa05adb03b8eae61060b1054c197e"
+    },
+    {
+      "path": "tests/tortoise.test.ts",
+      "bytes": 19723,
+      "sha256": "2d94258c082a8642fdbd878e3c043cfa5e6734b2e9e0bba2d246339f58f92404"
+    }
+  ],
+  "localArtifactFingerprints": [
+    {
+      "path": "tmp/tortoise-related-tests.json",
+      "bytes": 34465,
+      "sha256": "9b75ec0b1b0cfc366bdb5fdb0ddce65b43a95e6a22d2827e520f0984bd509328"
+    },
+    {
+      "path": "tmp/tortoise-cooldown-tests.json",
+      "bytes": 11647,
+      "sha256": "6c3838f475ee6586d2a082cbb0d7560aace1333757c7a8ec3f59c8e053a57e1e"
+    },
+    {
+      "path": "tmp/tortoise-charm-tests.json",
+      "bytes": 11876,
+      "sha256": "daa3783632748af998a8369ff56dc67641f4f0eb33e789f048ca21badbce4e01"
+    },
+    {
+      "path": "tmp/tortoise-v072-ui.json",
+      "bytes": 16758,
+      "sha256": "d11d7700c10b2901d458941ffe85b448c145f7f5e4c884ecedc735684a537c4e"
+    },
+    {
+      "path": "tmp/tortoise-v072-before-form-desktop.jpg",
+      "bytes": 146579,
+      "sha256": "6997e335e7148391a3fae007bfc3ec69b78cd9a4031060be5581f20d85c153b4"
+    },
+    {
+      "path": "tmp/tortoise-v072-breach-analysis-mobile390.jpg",
+      "bytes": 31793,
+      "sha256": "718bad581cc12a3e429082fa44876cfdcf96785c772686f5d0dd00e61aae2cb5"
+    },
+    {
+      "path": "tmp/tortoise-v072-breach-desktop.jpg",
+      "bytes": 148323,
+      "sha256": "ce753376c7eae91ad09e47567f24039b4c05de3581d5c4658d4b7eb2dbf3ee63"
+    },
+    {
+      "path": "tmp/tortoise-v072-breach-inspector-desktop.jpg",
+      "bytes": 147761,
+      "sha256": "fc61d2b54bf7e15f7aa08d414d7373fe3130b7947347d748e2dc11ee2f59f601"
+    },
+    {
+      "path": "tmp/tortoise-v072-breach-mobile390.jpg",
+      "bytes": 51735,
+      "sha256": "80e12e8469fa4b28bc5610804ae4bb76c67aeade57c460ea9c4cca5f51b01204"
+    },
+    {
+      "path": "tmp/tortoise-v072-codex-mobile390.jpg",
+      "bytes": 54473,
+      "sha256": "538a10e62560a1feccad77ac52d5f9ab14261cd884dd671bdc9c846d814e62a9"
+    },
+    {
+      "path": "tmp/tortoise-v072-shell-analysis-desktop.jpg",
+      "bytes": 52098,
+      "sha256": "bf3e96e9f0c3c468eb2bb0d7efb20357f70d41c49baebf612dcd5f5748d0f8fe"
+    },
+    {
+      "path": "tmp/tortoise-v072-shell-desktop.jpg",
+      "bytes": 144822,
+      "sha256": "cccc88d021c82f69d9607cf507cb245d2ab6b3788f662e2da6bdac841bebf82d"
+    },
+    {
+      "path": "tmp/tortoise-v072-shell-inspector-desktop.jpg",
+      "bytes": 145040,
+      "sha256": "2d809e188e23efa90f5cd2225aafe0e1016f1ac2b6487b42310371bd0925fd06"
+    },
+    {
+      "path": "tmp/tortoise-v072-shell-mobile-clean.jpg",
+      "bytes": 51740,
+      "sha256": "1075f9b3df4d55d4f2921fc97d4ca2d47295e3a2861e027bcb5cc106e06192ed"
+    },
+    {
+      "path": "tmp/tortoise-v072-shell-mobile390.jpg",
+      "bytes": 51620,
+      "sha256": "7a265d86a03e703e8722b90d1220c9831e3c8a13834dcd9196c74998792f5b13"
+    }
+  ]
+}

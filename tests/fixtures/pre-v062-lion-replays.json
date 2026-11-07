@@ -1,0 +1,834 @@
+{
+  "capturedBeforeRules": "singleplayer-0.62",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "lion",
+        "name": "狂狮",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 950,
+        "attack": 52,
+        "armor": 5,
+        "range": 1,
+        "interval": 3,
+        "skill": "怒吼",
+        "color": "#d2a978",
+        "glyph": "♜"
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "lion",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "titan",
+          "star": 1,
+          "position": 51
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "acolyte",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "972ecfc88556cc4845640df7cc0b1e7b58cc330099fa523fbc62e4bd63577d58",
+      "lionCasts": 4,
+      "frames": 48
+    },
+    {
+      "version": "counterplay",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "lion",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "titan",
+          "star": 1,
+          "position": 51
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "acolyte",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "a99fc004b86d4692d7803c59cbb3240f99097d8c094ab7d342290d482819bbeb",
+      "lionCasts": 4,
+      "frames": 48
+    },
+    {
+      "version": "terminator",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "lion",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "titan",
+          "star": 1,
+          "position": 51
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "acolyte",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "e889b03f76b1fa7d0abd5a9c9d65f75165f3e5c83e293232bdc6b7a2c2026a1a",
+      "lionCasts": 4,
+      "frames": 56
+    }
+  ]
+}

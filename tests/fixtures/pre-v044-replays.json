@@ -1,0 +1,3326 @@
+{
+  "capturedBefore": "singleplayer-0.44",
+  "combatVersion": "formations",
+  "fixtures": [
+    {
+      "name": "army-1",
+      "left": [
+        {
+          "defId": "irondog",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "ironape",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "chariot",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "titan",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "motorcycle",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "bomber",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "blastbug",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "phoenix",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "guard",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "infantry",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "sniper",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "medic",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "flametrooper",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "grenadier",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "specialist",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "birdrider",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "910a582b0eb13abbbb47531fb5ff3cac8bb5c875a98748568b5b2a708c6e5f54"
+    },
+    {
+      "name": "army-2",
+      "left": [
+        {
+          "defId": "guard",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "infantry",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "sniper",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "medic",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "flametrooper",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "grenadier",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "specialist",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "birdrider",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "wolf",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "adept",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "shark",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "shadowblade",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "vine",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "bonedragon",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "acolyte",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "thunderlord",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "7d9e17543a273e322abdfbef1ac04fa20f547358a8909f753da69530e2b5fd78"
+    },
+    {
+      "name": "army-3",
+      "left": [
+        {
+          "defId": "wolf",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "adept",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "shark",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "shadowblade",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "vine",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "bonedragon",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "acolyte",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "thunderlord",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "bloodhawk",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "skytoad",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "whale",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "deer",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "bat",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "dragonfly",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "turtle",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "arhat",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "5c07905f6edbc2ea841e032ab8e6eb4c61967d548c78073e26072d54a30f6e52"
+    },
+    {
+      "name": "army-4",
+      "left": [
+        {
+          "defId": "bloodhawk",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "skytoad",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "whale",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "deer",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "bat",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "dragonfly",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "turtle",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "arhat",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "infantry",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "guard",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "pangolin",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "panda",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "sniper",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "lion",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "chariot",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "monk",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "1e98bd3fdadb1d4c3db8eb190888cbd980d173ee6d4748b24900bbc658854818"
+    },
+    {
+      "name": "army-5",
+      "left": [
+        {
+          "defId": "infantry",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "guard",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "pangolin",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "panda",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "sniper",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "lion",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "chariot",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "monk",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "wolf",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "cannon",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "master",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "titan",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "cavalry",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "dragonfly",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "shadowblade",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "turtle",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "7c10f1650118486e489c9410f7af6f5378ed96607a8cda1c83112fbaa17235b6"
+    },
+    {
+      "name": "army-6",
+      "left": [
+        {
+          "defId": "wolf",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "cannon",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "master",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "titan",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "cavalry",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "dragonfly",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "shadowblade",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "turtle",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "tiger",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "bull",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "fish",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "deer",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "adept",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "shark",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "eyebug",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "blastbug",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "2a2f528a4a29c5fac26777b41a1eae8d1127357e04d3ec0469f53f8fc7fba75f"
+    },
+    {
+      "name": "army-7",
+      "left": [
+        {
+          "defId": "tiger",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "bull",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "fish",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "deer",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "adept",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "shark",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "eyebug",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "blastbug",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "spider",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "wasp",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "repair",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "bomber",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "ghostjet",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "ark",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "skycrab",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "eel",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "b0958976f7ab12b407d0b75a2556881376814b5ffc9632f9cb7ff2465aefb52d"
+    },
+    {
+      "name": "army-8",
+      "left": [
+        {
+          "defId": "spider",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "wasp",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "repair",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "bomber",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "ghostjet",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "ark",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "skycrab",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "eel",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "vine",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "bonedragon",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "treant",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "acolyte",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "stormcaller",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "thunderlord",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "bat",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "bloodhawk",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "ce4b35592ea234d5e8bbec111bb597441c09231dee3969ce433ffbc17793fc1a"
+    },
+    {
+      "name": "army-9",
+      "left": [
+        {
+          "defId": "vine",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "bonedragon",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "treant",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "acolyte",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "stormcaller",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "thunderlord",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "bat",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "bloodhawk",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "skytoad",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "vajra",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "arhat",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "winddragon",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "phoenix",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "whale",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "medic",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "flametrooper",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "aa455f14bd9f964ad8863b040f874251a19e7e78e9d1d43ae72215d09e8c83f8"
+    },
+    {
+      "name": "army-10",
+      "left": [
+        {
+          "defId": "skytoad",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "vajra",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "arhat",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "winddragon",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "phoenix",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "whale",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "medic",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "flametrooper",
+          "uid": 8,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "right": [
+        {
+          "defId": "grenadier",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "motorcycle",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "irondog",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "specialist",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "birdrider",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "ironape",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        }
+      ],
+      "hash": "bd53300cff4c106ba421b51fccfc5ef7c6128b6025d42875d1f4615f8bbeed20"
+    },
+    {
+      "name": "army-11",
+      "left": [
+        {
+          "defId": "grenadier",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "motorcycle",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "irondog",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "specialist",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "birdrider",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "ironape",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        }
+      ],
+      "right": [
+        {
+          "defId": "irondog",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "ironape",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "chariot",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "titan",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "motorcycle",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "bomber",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "blastbug",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "phoenix",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "e5e276fcf327c48775731eb5895b54f5bed00450bb5586e616fc4f6a6316c4cc"
+    },
+    {
+      "name": "ironrooster-coordination",
+      "left": [
+        {
+          "defId": "ironrooster",
+          "uid": 1,
+          "star": 2,
+          "position": 58
+        },
+        {
+          "defId": "ghostjet",
+          "uid": 2,
+          "star": 2,
+          "position": 59
+        },
+        {
+          "defId": "irondog",
+          "uid": 3,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "ironape",
+          "uid": 4,
+          "star": 2,
+          "position": 36
+        }
+      ],
+      "right": [
+        {
+          "defId": "turtle",
+          "uid": 101,
+          "star": 3,
+          "position": 35
+        },
+        {
+          "defId": "medic",
+          "uid": 102,
+          "star": 3,
+          "position": 51
+        },
+        {
+          "defId": "birdrider",
+          "uid": 103,
+          "star": 3,
+          "position": 58
+        },
+        {
+          "defId": "guard",
+          "uid": 104,
+          "star": 3,
+          "position": 36
+        }
+      ],
+      "hash": "e3d3d45f2b5a04ef9681d90237ad50bc4be6ccca2c88d8163bb832b939b43b83"
+    },
+    {
+      "name": "axethrall-puppets",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "axethrall",
+          "star": 3,
+          "position": 58
+        },
+        {
+          "uid": 102,
+          "defId": "panda",
+          "star": 2,
+          "position": 59
+        },
+        {
+          "uid": 103,
+          "defId": "adept",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 104,
+          "defId": "shark",
+          "star": 1,
+          "position": 36
+        },
+        {
+          "uid": 105,
+          "defId": "turtle",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 106,
+          "defId": "deer",
+          "star": 1,
+          "position": 51
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "lion",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "infantry",
+          "star": 2,
+          "position": 58
+        },
+        {
+          "uid": 204,
+          "defId": "medic",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 205,
+          "defId": "sniper",
+          "star": 2,
+          "position": 59
+        },
+        {
+          "uid": 206,
+          "defId": "birdrider",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "fe1c492584d2c86197ecf05404ba184583f795a354291e6cc5381ade5f1f0d25"
+    },
+    {
+      "name": "swordthrall-vanguard",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 102,
+          "defId": "pangolin",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "axethrall",
+          "star": 3,
+          "position": 58
+        },
+        {
+          "uid": 104,
+          "defId": "panda",
+          "star": 2,
+          "position": 59
+        },
+        {
+          "uid": 105,
+          "defId": "adept",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 106,
+          "defId": "shark",
+          "star": 1,
+          "position": 34
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "lion",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "specialist",
+          "star": 2,
+          "position": 58
+        },
+        {
+          "uid": 204,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 51
+        },
+        {
+          "uid": 205,
+          "defId": "infantry",
+          "star": 2,
+          "position": 59
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 50
+        }
+      ],
+      "hash": "bf8b47383812b99235396ef1af92a3dedfd80fa0c3d07895b5ac6a14a52eb452"
+    },
+    {
+      "name": "bladethrall-vanguard",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "bladethrall",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "fortress",
+            "heart",
+            "overdrive"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "axethrall",
+          "star": 2,
+          "position": 58
+        },
+        {
+          "uid": 104,
+          "defId": "adept",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 105,
+          "defId": "turtle",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 106,
+          "defId": "deer",
+          "star": 2,
+          "position": 59
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "specialist",
+          "star": 2,
+          "position": 58
+        },
+        {
+          "uid": 204,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 51
+        },
+        {
+          "uid": 205,
+          "defId": "infantry",
+          "star": 2,
+          "position": 59
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 50
+        }
+      ],
+      "hash": "818a0c78bcfc753588e266407648479f6372d046fdb32ed5d5c226d639b7e9d7"
+    },
+    {
+      "name": "shieldthrall-bodyguards",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "shieldthrall",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 102,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "bladethrall",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 104,
+          "defId": "axethrall",
+          "star": 2,
+          "position": 58
+        },
+        {
+          "uid": 105,
+          "defId": "adept",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 106,
+          "defId": "shark",
+          "star": 1,
+          "position": 34
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 203,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 204,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 205,
+          "defId": "infantry",
+          "star": 2,
+          "position": 45
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 44
+        }
+      ],
+      "hash": "eda44cdc969a07fb522c66da413a86320dc4409394fea89776798f8f70df5295"
+    },
+    {
+      "name": "puppet-team-summons-v037",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "adept",
+          "star": 2,
+          "position": 32
+        },
+        {
+          "uid": 102,
+          "defId": "shark",
+          "star": 2,
+          "position": 33
+        },
+        {
+          "uid": 103,
+          "defId": "axethrall",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 104,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 105,
+          "defId": "bladethrall",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 106,
+          "defId": "shieldthrall",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 107,
+          "defId": "wolf",
+          "star": 2,
+          "position": 38
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "titan",
+          "star": 2,
+          "position": 32
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 33
+        },
+        {
+          "uid": 203,
+          "defId": "specialist",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 205,
+          "defId": "medic",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 206,
+          "defId": "infantry",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 207,
+          "defId": "guard",
+          "star": 2,
+          "position": 38
+        }
+      ],
+      "hash": "bb1caa7232fe1bb2218569b784464fd92079b617ead4d3f05b1fbe25069b717c"
+    },
+    {
+      "name": "staffthrall-gale-v038",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "staffthrall",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "fortress",
+            "heart",
+            "overdrive"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "shieldthrall",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 104,
+          "defId": "bladethrall",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 105,
+          "defId": "adept",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 106,
+          "defId": "deer",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 36,
+          "items": [
+            "fortress",
+            "heart",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 203,
+          "defId": "turtle",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 205,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 44
+        }
+      ],
+      "hash": "d95e85fa3c87c1f174e08655ccecb1e1863c7b6a76d49fba4d42b36f6a6f4002"
+    },
+    {
+      "name": "beast-frontline-v039",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "elephant",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "venombeast",
+          "star": 2,
+          "position": 36,
+          "items": [
+            "staff",
+            "heart"
+          ]
+        },
+        {
+          "uid": 103,
+          "defId": "lion",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 104,
+          "defId": "bloodhawk",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 105,
+          "defId": "wolf",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 106,
+          "defId": "deer",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "shieldthrall",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "ironape",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 205,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 44
+        }
+      ],
+      "hash": "101eda96b9770fb232013291c29441b95d6b923486432fcfa8077e8d24e547e5"
+    },
+    {
+      "name": "lingjiu-v040",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "lingjiu",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff",
+            "staff",
+            "heart"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "ghostjet",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 103,
+          "defId": "axethrall",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 104,
+          "defId": "skycrab",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 105,
+          "defId": "fish",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 106,
+          "defId": "repair",
+          "star": 2,
+          "position": 52
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "heart",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "venombeast",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "ironape",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 205,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "hash": "4f60052eb5b9e7cae8027f789613ee73447ad460ea64938f8b4c520830d62171"
+    },
+    {
+      "name": "formation-野兽-v040",
+      "left": [
+        {
+          "defId": "elephant",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "venombeast",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "pangolin",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "lion",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "wolf",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "turtle",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        }
+      ],
+      "right": [
+        {
+          "defId": "guard",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "ironape",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "specialist",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "medic",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "flametrooper",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "titan",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        }
+      ],
+      "hash": "2eb33fb442628ed7b977453b9902f110c8a061112a43c69dbad13426c128757c"
+    },
+    {
+      "name": "formation-先锋-v040",
+      "left": [
+        {
+          "defId": "elephant",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "venombeast",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "staffthrall",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "bladethrall",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "swordthrall",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "pangolin",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        }
+      ],
+      "right": [
+        {
+          "defId": "guard",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "ironape",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "specialist",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "medic",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "flametrooper",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "titan",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        }
+      ],
+      "hash": "d561e0016ce47dc4ce17beb8c033aeafe727d7adaeb66501345dbd913d2dcb10"
+    },
+    {
+      "name": "wildfront-v041",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "elephant",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "venombeast",
+          "star": 2,
+          "position": 36,
+          "items": [
+            "staff",
+            "heart"
+          ]
+        },
+        {
+          "uid": 103,
+          "defId": "pangolin",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 104,
+          "defId": "staffthrall",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 105,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 33
+        },
+        {
+          "uid": 106,
+          "defId": "bloodhawk",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 107,
+          "defId": "wolf",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff"
+          ]
+        },
+        {
+          "uid": 108,
+          "defId": "deer",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "irondog",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "flametrooper",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 205,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 206,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 207,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 208,
+          "defId": "medic",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "hash": "9ff018cae8c5a3d4efc46c8082cc40b423d0e4339a0d958e2470df591ba4c5c5"
+    },
+    {
+      "name": "assassin-v041",
+      "left": [
+        {
+          "defId": "lingjiu",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "axethrall",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "panda",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "wolf",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "shadowblade",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "ghostjet",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "ironrooster",
+          "uid": 7,
+          "star": 1,
+          "position": 50
+        }
+      ],
+      "right": [
+        {
+          "defId": "pangolin",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "elephant",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "venombeast",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "guard",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "medic",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "titan",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "staffthrall",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "specialist",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "1e88ee4840d82ab285f30d44f72c5363d361aba1afee96f4b5ea2fcfc9c0a51b"
+    },
+    {
+      "name": "wildfront-v042",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "elephant",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "venombeast",
+          "star": 2,
+          "position": 36,
+          "items": [
+            "staff",
+            "heart"
+          ]
+        },
+        {
+          "uid": 103,
+          "defId": "bull",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 104,
+          "defId": "staffthrall",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 105,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 33
+        },
+        {
+          "uid": 106,
+          "defId": "bloodhawk",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 107,
+          "defId": "wolf",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff"
+          ]
+        },
+        {
+          "uid": 108,
+          "defId": "deer",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "irondog",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "flametrooper",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 205,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 206,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 207,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 208,
+          "defId": "medic",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "hash": "4a6e6dca10d764e2143a8462bba489395587e172963e54732d749c391c1aabd6"
+    },
+    {
+      "name": "assassin-v042",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "pangolin",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff",
+            "staff",
+            "heart"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "axethrall",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 103,
+          "defId": "panda",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 104,
+          "defId": "lingjiu",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 105,
+          "defId": "ghostjet",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 106,
+          "defId": "ironrooster",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 107,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 108,
+          "defId": "venombeast",
+          "star": 2,
+          "position": 36
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "elephant",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "flametrooper",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 205,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 206,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 207,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 208,
+          "defId": "medic",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "hash": "815d07c1e8cf2670f8144031e004a6f1eef2e5662b8bcd51904c5a2b25643d23"
+    },
+    {
+      "name": "puppet-v042",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "shieldthrall",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 102,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "bladethrall",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 104,
+          "defId": "axethrall",
+          "star": 2,
+          "position": 58
+        },
+        {
+          "uid": 105,
+          "defId": "adept",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 106,
+          "defId": "shark",
+          "star": 1,
+          "position": 34
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 203,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 204,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 205,
+          "defId": "infantry",
+          "star": 2,
+          "position": 45
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 44
+        }
+      ],
+      "hash": "eda44cdc969a07fb522c66da413a86320dc4409394fea89776798f8f70df5295"
+    },
+    {
+      "name": "wildfront-v043",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "elephant",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "venombeast",
+          "star": 2,
+          "position": 36,
+          "items": [
+            "staff",
+            "heart"
+          ]
+        },
+        {
+          "uid": 103,
+          "defId": "bull",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 104,
+          "defId": "staffthrall",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 105,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 33
+        },
+        {
+          "uid": 106,
+          "defId": "bloodhawk",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 107,
+          "defId": "wolf",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff"
+          ]
+        },
+        {
+          "uid": 108,
+          "defId": "deer",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "irondog",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "flametrooper",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 205,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 206,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 207,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 208,
+          "defId": "medic",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "hash": "4a6e6dca10d764e2143a8462bba489395587e172963e54732d749c391c1aabd6"
+    },
+    {
+      "name": "assassin-v043",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "pangolin",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff",
+            "staff",
+            "heart"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "axethrall",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 103,
+          "defId": "panda",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 104,
+          "defId": "lingjiu",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 105,
+          "defId": "ghostjet",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 106,
+          "defId": "ironrooster",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 107,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 108,
+          "defId": "venombeast",
+          "star": 2,
+          "position": 36
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 203,
+          "defId": "elephant",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "flametrooper",
+          "star": 2,
+          "position": 37
+        },
+        {
+          "uid": 205,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 206,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 207,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 44
+        },
+        {
+          "uid": 208,
+          "defId": "medic",
+          "star": 2,
+          "position": 51,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "hash": "815d07c1e8cf2670f8144031e004a6f1eef2e5662b8bcd51904c5a2b25643d23"
+    },
+    {
+      "name": "puppet-v043",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "shieldthrall",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 102,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "bladethrall",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 104,
+          "defId": "axethrall",
+          "star": 2,
+          "position": 58
+        },
+        {
+          "uid": 105,
+          "defId": "adept",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 106,
+          "defId": "shark",
+          "star": 1,
+          "position": 34
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 203,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 204,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 205,
+          "defId": "infantry",
+          "star": 2,
+          "position": 45
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 44
+        }
+      ],
+      "hash": "eda44cdc969a07fb522c66da413a86320dc4409394fea89776798f8f70df5295"
+    },
+    {
+      "name": "staff-v043",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "staffthrall",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "fortress",
+            "heart",
+            "overdrive"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "shieldthrall",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "swordthrall",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 104,
+          "defId": "bladethrall",
+          "star": 2,
+          "position": 42
+        },
+        {
+          "uid": 105,
+          "defId": "adept",
+          "star": 2,
+          "position": 50
+        },
+        {
+          "uid": 106,
+          "defId": "deer",
+          "star": 2,
+          "position": 43
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 36,
+          "items": [
+            "fortress",
+            "heart",
+            "plate"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "ironape",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 203,
+          "defId": "turtle",
+          "star": 2,
+          "position": 34
+        },
+        {
+          "uid": 204,
+          "defId": "specialist",
+          "star": 2,
+          "position": 52
+        },
+        {
+          "uid": 205,
+          "defId": "grenadier",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 206,
+          "defId": "medic",
+          "star": 2,
+          "position": 44
+        }
+      ],
+      "hash": "1558779361d9ba70fedb64171e0408b0848d44dc6095473cc60da07a05b5b47b"
+    },
+    {
+      "name": "counter-狙击-v043",
+      "left": [
+        {
+          "defId": "infantry",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "sniper",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "chariot",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "cannon",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "tiger",
+          "uid": 5,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "wasp",
+          "uid": 6,
+          "star": 3,
+          "position": 47
+        }
+      ],
+      "right": [
+        {
+          "defId": "guard",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "ironape",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "wolf",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "elephant",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "venombeast",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "specialist",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "staffthrall",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "medic",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "64493df694c5bc8cf4657ad1576afb800099fdf85586fb308d3a03262f5330f2"
+    },
+    {
+      "name": "counter-骑兵-v043",
+      "left": [
+        {
+          "defId": "cavalry",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "dragonfly",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        }
+      ],
+      "right": [
+        {
+          "defId": "guard",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "ironape",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "wolf",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "elephant",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "venombeast",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "specialist",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "staffthrall",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "medic",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "9b962eee5cffb4ef2af6e577917a4c9b9e39c825016abdb973e31a9dbf931b2a"
+    },
+    {
+      "name": "counter-海神-v043",
+      "left": [
+        {
+          "defId": "lingjiu",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "fish",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "shark",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "skycrab",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        }
+      ],
+      "right": [
+        {
+          "defId": "guard",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "ironape",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "wolf",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "elephant",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "venombeast",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "specialist",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "staffthrall",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "medic",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "e2c43f7e2e2f9e7b6552efb7abef6601a5a5b0b60ed06f9ad31615b8865c0572"
+    },
+    {
+      "name": "counter-灵能-v043",
+      "left": [
+        {
+          "defId": "adept",
+          "uid": 1,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "acolyte",
+          "uid": 2,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "stormcaller",
+          "uid": 3,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "thunderlord",
+          "uid": 4,
+          "star": 1,
+          "position": 41
+        }
+      ],
+      "right": [
+        {
+          "defId": "guard",
+          "uid": 101,
+          "star": 1,
+          "position": 32
+        },
+        {
+          "defId": "ironape",
+          "uid": 102,
+          "star": 2,
+          "position": 35
+        },
+        {
+          "defId": "wolf",
+          "uid": 103,
+          "star": 3,
+          "position": 38
+        },
+        {
+          "defId": "elephant",
+          "uid": 104,
+          "star": 1,
+          "position": 41
+        },
+        {
+          "defId": "venombeast",
+          "uid": 105,
+          "star": 2,
+          "position": 44
+        },
+        {
+          "defId": "specialist",
+          "uid": 106,
+          "star": 3,
+          "position": 47
+        },
+        {
+          "defId": "staffthrall",
+          "uid": 107,
+          "star": 1,
+          "position": 50
+        },
+        {
+          "defId": "medic",
+          "uid": 108,
+          "star": 2,
+          "position": 53
+        }
+      ],
+      "hash": "1875d8b12853cae1f880ccad276337be61bc432848d25905e5715f56d4251c4b"
+    }
+  ]
+}

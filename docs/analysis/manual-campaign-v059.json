@@ -1,0 +1,251 @@
+{
+  "checkedAt": "2026-11-06T08:09:27.428Z",
+  "scope": "Midgame visible UI campaign and reserve equipment notice. Full singleplayer objective remains active.",
+  "stopReason": "User requested fewer battle tests. Further campaign testing stopped at round 19 preparation; this is not a finished campaign.",
+  "previousGoalTurn": "progress: opening AI policy, paid campaign sampling and R9 visible settlement",
+  "thisGoalTurn": "progress: normal R10-R18 gameplay, a persistent reserve equipment notice, necessary module verification and saved R19 state",
+  "rawEvidence": [
+    {
+      "path": "tmp/manual-campaign-v059-ui.json",
+      "sha256": "c210118ed0919447dd8815ad3a66359d527d7da108cc8ad4d10939ba0b500813"
+    },
+    {
+      "path": "tmp/manual-campaign-v059-supplement.json",
+      "sha256": "2759368c041492462b1196977c79e96f27e398a2fff04c08a1c9cb77c0b24195"
+    }
+  ],
+  "checkpoints": 32,
+  "initial": {
+    "round": 10,
+    "hp": 92,
+    "gold": 14,
+    "level": 6,
+    "xp": 5
+  },
+  "final": {
+    "round": 19,
+    "phase": "prepare",
+    "hp": 64,
+    "gold": 42,
+    "level": 8,
+    "xp": 5,
+    "field": 8
+  },
+  "economy": {
+    "observedRounds": 9,
+    "settlementGold": [
+      8,
+      11,
+      9,
+      11,
+      11,
+      9,
+      12,
+      14,
+      13
+    ],
+    "settlementGoldTotal": 98,
+    "spentGoldByRound": [
+      1,
+      19,
+      4,
+      7,
+      5,
+      22,
+      3,
+      4,
+      5
+    ],
+    "spentGoldTotal": 70,
+    "finalGold": 42,
+    "paidXpPurchases": 7,
+    "paidXp": 35,
+    "normalRoundXp": 9,
+    "hpLost": 28
+  },
+  "naturalMerges": [
+    {
+      "round": 12,
+      "unit": "维修机",
+      "star": 2,
+      "fullReservePurchase": true
+    },
+    {
+      "round": 13,
+      "unit": "武僧熊猫",
+      "star": 2,
+      "fullReservePurchase": true
+    },
+    {
+      "round": 14,
+      "unit": "巨神炮",
+      "star": 2,
+      "cost": 4
+    },
+    {
+      "round": 16,
+      "unit": "忍者熊猫",
+      "star": 2,
+      "cost": 3
+    },
+    {
+      "round": 17,
+      "unit": "禅师熊猫",
+      "star": 2,
+      "cost": 4,
+      "staffRetained": true
+    }
+  ],
+  "naturalFiveGoldPurchase": {
+    "round": 18,
+    "unit": "暗影刀",
+    "star": 1
+  },
+  "threeStarsObserved": 0,
+  "fiveGoldTwoStarsObserved": 0,
+  "equipment": {
+    "initialComponents": [
+      "装甲片",
+      "加速线圈",
+      "灵能晶体"
+    ],
+    "rewards": [
+      {
+        "round": 10,
+        "dialog": "FIELD SALVAGE\n选择你的战利品\n\n第 10 回合 · 挑战成功，三选一。选择后自动进入下一回合。\n\n◆\n灵能晶体\n\n初始能量 +15，技能强度 +10%\n\n领取并继续 →\nϟ\n加速线圈\n\n攻击间隔缩短 8%\n\n领取并继续 →\n⚔\n合金刃\n\n攻击 +18\n\n领取并继续 →\n\n奖励已保存，刷新后仍可继续选择。",
+        "chosen": "灵能晶体"
+      },
+      {
+        "round": 15,
+        "dialog": "FIELD SALVAGE\n选择你的战利品\n\n第 15 回合 · 挑战成功，三选一。选择后自动进入下一回合。\n\nϟ\n加速线圈\n\n攻击间隔缩短 8%\n\n领取并继续 →\n♥\n生命核心\n\n生命 +150\n\n领取并继续 →\n⬡\n装甲片\n\n护甲 +3\n\n领取并继续 →\n\n奖励已保存，刷新后仍可继续选择。",
+        "chosen": "生命核心"
+      }
+    ],
+    "crafts": [
+      {
+        "round": 11,
+        "item": "聚能法杖",
+        "materials": [
+          "灵能晶体",
+          "灵能晶体"
+        ],
+        "owner": "禅师熊猫"
+      },
+      {
+        "round": 16,
+        "item": "守护壁垒",
+        "materials": [
+          "装甲片",
+          "生命核心"
+        ],
+        "owner": "铁狗"
+      }
+    ],
+    "final": [
+      "铁狗：守护壁垒",
+      "忍者熊猫：加速线圈",
+      "禅师熊猫：聚能法杖"
+    ],
+    "componentsConserved": "3 starting + 2 rewards = 2 staff + 2 aegis + 1 coil"
+  },
+  "uiChecks": [
+    {
+      "kind": "R10 reward reload",
+      "unchanged": true
+    },
+    {
+      "kind": "natural reserve equipment notice",
+      "shown": true
+    },
+    {
+      "kind": "R17 merge retains staff and notice follows actual reserve wearer",
+      "staffRetained": true,
+      "monkNoticeCleared": true,
+      "allReserveNoticeCleared": false,
+      "reason": "The equipped monk is fielded; a different two-star master carrying the coil is now in reserve and correctly keeps the notice visible."
+    },
+    {
+      "kind": "normal equipment transfer",
+      "goldUnchanged": true,
+      "coilOnNinja": true,
+      "noticeCleared": true
+    }
+  ],
+  "browserIssues": [],
+  "sourceAudit": {
+    "snapshot": {
+      "path": "tmp/manual-campaign-v059-runtime-sources.json",
+      "sha256": "d327b5dad06127ba62fd450d9e1aabe7013e6ad654279553c60114c4b60e3816"
+    },
+    "files": 126,
+    "changed": [
+      "src/main.ts",
+      "src/ui/deployment.ts"
+    ],
+    "engineDataAndComputeUnchanged": true
+  },
+  "necessaryChecks": {
+    "command": "npx vitest run tests/scouting.test.ts tests/equipment-overview.test.ts --reporter=json --outputFile=tmp/manual-campaign-v059-equipment-tests.json",
+    "cases": 22,
+    "passed": 22,
+    "failed": 0,
+    "report": {
+      "path": "tmp/manual-campaign-v059-equipment-tests.json",
+      "sha256": "6eaa46f182937799f3ae04624ade5e1397a803b89bc3e5ef2c7d99ba8507267b"
+    },
+    "fullSuiteRun": false,
+    "batchCampaignSurveysRun": false,
+    "note": "Existing transaction and recommendation regressions. The new notice itself was verified in the actual visible UI."
+  },
+  "build": {
+    "command": "npm run build",
+    "observedExitCode": 0,
+    "modules": 124,
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "sha256": "c36d937c87032ba2094a715fe5dac15ae92916ebcc84d7dbbf7bc7a550f75660"
+      },
+      {
+        "path": "dist/assets/index-DRC3L1vB.js",
+        "sha256": "0d5a7ffb71bdb6b2c5c372c1ea7951a4239b4095c382f3965f548b61ba4b9099"
+      },
+      {
+        "path": "dist/assets/index-Cl_s3fRv.css",
+        "sha256": "fb32161ab26bb533506f187edd50741ce940eabf6cf344b41647c31de57d94f3"
+      },
+      {
+        "path": "dist/assets/worker-BSBVsAfh.js",
+        "sha256": "48e6e75d1e0f3f649ed65a07aeb1ffa6dfca5ad94323fd42c6a5c5b8d1a930e4"
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "path": "tmp/manual-campaign-v059-r11-staff.jpg",
+      "sha256": "a04de10ecda237aa87631082e2411090115b538cb1c348799dba5cff58c63959"
+    },
+    {
+      "path": "tmp/manual-campaign-v059-r14-cannon.jpg",
+      "sha256": "39319e4d496e65b077e06cc44b739c7cddfb4cf788dec00168e7349c499428bc"
+    },
+    {
+      "path": "tmp/manual-campaign-v059-reserve-equipment.jpg",
+      "sha256": "0e053558bacfa7c1c552e98f7cce6d2af08a23b1721776af48d587a05417e3a3"
+    },
+    {
+      "path": "tmp/manual-campaign-v059-r17-monk.jpg",
+      "sha256": "24698625a535aac35ec3d74b041b9dd8f2c65f559289340dcb1b5de34e714fb8"
+    }
+  ],
+  "limits": [
+    "Stopped at R19 preparation after user steering; no terminal result or complete current campaign is claimed.",
+    "No new batch battle sampling or full test suite ran.",
+    "No current three-star or five-gold two-star sample; broad composition/difficulty fidelity and real device validation remain unproven."
+  ],
+  "fingerprints": {
+    "AGENTS.md": "2c7f8730302657f1447ace2b40bf4d848d25181118fbf567a97b24cdbe9b4db5",
+    "src/main.ts": "7657cb1ddf44ac6a24d49dc44a127cc46206dffece7cfbaadd42a65c261187ad",
+    "src/ui/deployment.ts": "d76fef6d20722c3ffc8ffc08180f154b428044dc6c152587d30d14d0d7c6c5da"
+  }
+}

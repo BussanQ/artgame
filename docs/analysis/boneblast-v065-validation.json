@@ -1,0 +1,104 @@
+{
+  "checkedAt": "2026-11-07",
+  "rules": "singleplayer-0.65",
+  "combatVersion": "boneblast",
+  "saveSchema": 64,
+  "tests": {
+    "command": "npm run test:boneblast -- --reporter=json --outputFile=tmp/boneblast-module-tests.json",
+    "passed": 92,
+    "failed": 0,
+    "suites": {
+      "tests/boneblast.test.ts": 33,
+      "tests/immortality.test.ts": 13,
+      "tests/wildfire.test.ts": 46
+    },
+    "rawReport": "../../tmp/boneblast-module-tests.json"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 142,
+    "artifacts": [
+      "dist/assets/index-DmsvAJ94.js",
+      "dist/assets/worker-Buc4o6J9.js",
+      "dist/assets/index-0iwQsGQW.css"
+    ]
+  },
+  "compatibility": {
+    "frozenDefinitions": 37,
+    "frozenSmallReplays": 3,
+    "fixture": "../../tests/fixtures/pre-v065-bonedragon-replays.json",
+    "fullAllVersionBattleMatrix": false
+  },
+  "scene": {
+    "fixture": "../../src/data/boneblast-demo.ts",
+    "size": "3v3",
+    "fullFastAndWorkerEqual": true,
+    "mutatesInput": false,
+    "boneOrbsActuallyHit": true
+  },
+  "browser": {
+    "newBoneDragonArtReviewed": true,
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "screenshots": [
+      "../../tmp/boneblast-v065-start.jpg",
+      "../../tmp/boneblast-v065-charge.jpg",
+      "../../tmp/boneblast-v065-flight.jpg",
+      "../../tmp/boneblast-v065-impact.jpg",
+      "../../tmp/boneblast-v065-analysis-desktop.jpg",
+      "../../tmp/boneblast-v065-mobile390.jpg",
+      "../../tmp/boneblast-v065-mobile-analysis.jpg"
+    ],
+    "rawRecord": "../../tmp/boneblast-v065-ui.json",
+    "resourcesIdentical": true,
+    "mobile": {
+      "canvas": {
+        "height": 363.375,
+        "left": -97.5,
+        "right": 487.5,
+        "width": 585
+      },
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "mobileClose": {
+      "height": 44,
+      "right": 342.25,
+      "top": 92.296875,
+      "width": 44
+    },
+    "logs": [],
+    "timeSlices": {
+      "chargingSeconds": 3.5,
+      "flightSeconds": 4.25,
+      "impactSeconds": 4.75,
+      "analysisSeconds": 20
+    },
+    "observedBoneDragonAt20": {
+      "skillDamage": 1272,
+      "launched": 1,
+      "detonated": 1,
+      "hits": 2,
+      "stuns": 2
+    },
+    "previousPhoenixEvidence": "wildfire-v064-validation.json",
+    "limitation": "Mobile viewport and mouse control only; real touch and weak hardware remain unverified."
+  },
+  "sampling": {
+    "newCampaigns": 0,
+    "newBulkBalanceSampling": 0
+  },
+  "remaining": [
+    "完整历史伤害/控制数列和统一公式",
+    "完整单机平衡与真实设备验收"
+  ]
+}

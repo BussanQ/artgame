@@ -1,0 +1,44 @@
+{
+  "unitId": "shieldthrall",
+  "name": "盾奴",
+  "reviewedAt": "2026-11-04",
+  "rules": "singleplayer-0.35",
+  "sources": ["S04", "S20", "S25", "S42"],
+  "historical": {
+    "cost": 4,
+    "traits": ["傀儡", "护卫"],
+    "hp": 1050,
+    "attackMin": 101,
+    "attackMax": 110,
+    "armor": 5,
+    "attackIntervalSeconds": 1.2,
+    "range": 1,
+    "skillName": "正义冲锋",
+    "damageType": "magic",
+    "damage": [200, 300, 400],
+    "cooldownSeconds": 10,
+    "silenceSeconds": 2,
+    "area": "forward rectangle, exact dimensions not given"
+  },
+  "provenance": {
+    "baseStats": "S04-2 row 3, 2019-07-08 player measurement; not official client configuration",
+    "skill": "S42 embedded client screenshot: four cost, puppet/bodyguard, skill name, forward rectangular energy damage, 200/300/400 and 10-second cooldown",
+    "silence": "S42 article published 2019-05-27, discussing May 23 changes; its prose states added two-second silence, not present in the embedded skill text",
+    "referenceImageUrl": "https://image.9game.cn/2019/5/27/80505108.jpg",
+    "referenceImageSha256": "115caa470dcef432de1c056534c8a3f0a721303e7473f5e8959feb81d139e01e"
+  },
+  "localAdaptation": {
+    "attack": 106,
+    "attackIntervalSeconds": 1.25,
+    "intervalReason": "Nearest 0.25-second simulation step",
+    "hpAndAttackStarScale": [1, 2, 4],
+    "initialMana": 25,
+    "areaDepth": 3,
+    "areaWidth": 3,
+    "areaResolution": "Cell-center geometry, forward-only, cardinal adjacent primary target, clipped at board edges. Renderer uses the same geometry helper.",
+    "castRequirements": "Full energy, live caster and visible adjacent enemy, no stun/silence/charm, cooldown complete",
+    "resolution": "Instant per-target resolution in fighter order. No movement, extra shield, armor, channel, lifesteal or basic-attack shred. Reflection killing the caster stops later targets; the target already hit keeps its silence if still alive and eligible.",
+    "silence": "Blocks active skills and immediately removes active channels/windups; does not stop basic attacks, bird draw or blade critical passive. Existing longer silence keeps its later expiry. Does not silence dead targets, undying souls, phoenix eggs or an immune spinning Sword Thrall.",
+    "caveat": "Initial energy, exact area, per-star stat growth and interaction boundaries are local choices. May client screenshot, May article and July measured attributes do not prove a unified official historical ruleset."
+  }
+}

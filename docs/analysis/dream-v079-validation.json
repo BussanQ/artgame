@@ -1,0 +1,326 @@
+{
+  "version": "singleplayer-0.79",
+  "combatVersion": "dream",
+  "saveSchema": 78,
+  "date": "2026-11-07",
+  "base": {
+    "branch": "dev",
+    "commit": "0808660112c61900b156d6a24d1b8fe62900481f",
+    "currentChangesCommitted": false
+  },
+  "scope": "蜘蛛随机策反、来源约束、短时引火、驱散、独立贡献、界面呈现代码与兼容；不代表整个单机目标已完成。",
+  "tests": {
+    "distinctPassed": 64,
+    "dream": 39,
+    "saveProtection": 24,
+    "legacySpider": 1,
+    "runs": [
+      {
+        "command": "npx vitest run tests/dream.test.ts tests/save-protection.test.ts --reporter=json --outputFile=tmp/dream-verified-module-tests.json",
+        "passed": 62,
+        "failed": 0,
+        "skipped": 0,
+        "report": {
+          "path": "tmp/dream-verified-module-tests.json",
+          "bytes": 22011,
+          "sha256": "1c5bdcedabe321478ea6838edef6b21b0157c2ed1835d3f7a05ca54eb96d7467"
+        }
+      },
+      {
+        "command": "npx vitest run tests/insects.test.ts -t 旧版蜘蛛 --reporter=json --outputFile=tmp/dream-legacy-spider-tests.json",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 12,
+        "report": {
+          "path": "tmp/dream-legacy-spider-tests.json",
+          "bytes": 4618,
+          "sha256": "bea60388bc5a3613a994839a41ef63b1e18827b36b81be7d0e6bca67c121e5d1"
+        }
+      },
+      {
+        "command": "npx vitest run tests/dream.test.ts -t 混合定义|旧定义|旧蜘蛛 --reporter=json --outputFile=tmp/dream-mixed-followup-tests.json",
+        "passed": 4,
+        "failed": 0,
+        "skipped": 35,
+        "report": {
+          "path": "tmp/dream-mixed-followup-tests.json",
+          "bytes": 12629,
+          "sha256": "47a03fc1f10933632871bb3040425619c7365fcdf08cb41fcf541cb9603628d9"
+        }
+      }
+    ],
+    "note": "迷梦完整38项与存档保护24项通过；随后补入新旧定义混合的同次施法断开，新增用例及相关旧规则／SHA三项定向通过，累计迷梦39项；既有蜘蛛用例显式固定旧版后一项通过。未运行全量测试。",
+    "corrections": "初次新用例的结算状态缺少历史条目、装备ID错误，另有遗漏的类型字段和函数参数；已修正样例。功能审计另发现并修复同队灵鱼误解除己方策反，并补入同队／原队两种断言。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 182,
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "bytes": 596,
+        "sha256": "e23a182cd10d07bae6a58ef7e7393bed68bb6f35acb429c540a118874df27c6a"
+      },
+      {
+        "path": "dist/assets/index-CCbEP043.css",
+        "bytes": 88839,
+        "sha256": "5be1000c7fbc3ed613591a813c4c8c0557e945bdb41da5c8848661b341075af1"
+      },
+      {
+        "path": "dist/assets/index-BMZQd7Mn.js",
+        "bytes": 443998,
+        "sha256": "5bcd9dcd370c25ce434773f6e16660309d2acdf34a39bb77ad6ad4c6fda46802"
+      },
+      {
+        "path": "dist/assets/worker-BYfKFLR3.js",
+        "bytes": 235073,
+        "sha256": "9db436abe5ec87925d947342ff7f82ab17c7a776618476fa302e07376fdb3870"
+      }
+    ]
+  },
+  "compatibility": {
+    "versions": 51,
+    "unitCount": 64,
+    "definitionAndPresentationHashPassed": true,
+    "oldReplay": {
+      "version": "support-actions",
+      "sha256": "1429ee00361cd017dfd4521ddfc6b177fa530e027db2a429fbc0fb02e32be5d1",
+      "frames": 58,
+      "winner": 1,
+      "damage": 6
+    },
+    "oldReplayHashPassed": true,
+    "oldControllerNewVictimSameActionRelease": true,
+    "migration": {
+      "from": {
+        "schema": 77,
+        "rules": "singleplayer-0.78"
+      },
+      "prepare": "dream",
+      "battleAndResult": "support-actions",
+      "playersPoolCatalogHistoryPlaybackPreserved": true
+    }
+  },
+  "fixedScenes": {
+    "main": {
+      "input": "src/data/dream-demo.ts",
+      "sizes": [
+        2,
+        3
+      ],
+      "sameInputAcrossRecordedFastAndWorker": true,
+      "inputUnchanged": true,
+      "controlOccurred": true,
+      "homeSideAnalysisPreserved": true,
+      "noDoubleCountingControllerDamage": true
+    },
+    "lastEnemy": {
+      "sizes": [
+        1,
+        1
+      ],
+      "continuedPastControlExpiry": true,
+      "originalSideRestored": true
+    },
+    "fullCampaigns": 0,
+    "bulkBattleSampling": false,
+    "limit": "只验证小局面和边界，不据此宣称总体强度或难度已调平。"
+  },
+  "coverage": [
+    "5/6.5/8秒、10/20/30%与40秒CD；无虚构即时伤害",
+    "独立可复现随机，不受数组顺序与攻击大小影响",
+    "隐形／残魂／火种／召唤物／刑傀／免控／已被魅惑／范围限制",
+    "眩晕、沉默、魅惑、冷却和残魂施法限制",
+    "控制期间禁止主动技能及回能，实际普攻生命伤害／破盾单列",
+    "致死当帧来源解除；目标死亡、化蛋、残魂与来源失去阵营／离场",
+    "原阵营灵鱼驱散；同队灵鱼不误解除；引火及时清理",
+    "当前与旧蜘蛛策反控制源时，同次施法解除其新蛛丝，不产生永久改队",
+    "暂时攻击增幅到期不回滚其他基础攻击成长",
+    "最后敌人被策反不直接判胜",
+    "有限AI估值、法强不虚增控制、来源生存装备收益",
+    "51代旧定义、呈现与固定旧战报；三阶段存档迁移"
+  ],
+  "research": {
+    "history": "docs/research/dream-history.json",
+    "sources": [
+      "S35",
+      "S04",
+      "S73"
+    ],
+    "sameClientCompleteCardRecovered": false,
+    "unconfirmedFieldsExplicitlyAdapted": true
+  },
+  "visuals": {
+    "newBitmapGenerated": false,
+    "existingImageGenAsset": {
+      "path": "public/assets/units/spider.png",
+      "bytes": 2180420,
+      "sha256": "87c02ff0a13580a3371534030359ae7dea61633b7d713bb6634650ebe2dcc593"
+    },
+    "newCode": [
+      "src/render/dream.ts",
+      "src/render/scene.ts",
+      "src/render/skill-effects.ts"
+    ],
+    "demoEntry": "战斗演示 → 迷梦蛛丝",
+    "browserVerified": false
+  },
+  "browser": {
+    "status": "not-verified",
+    "attemptsThisIncrement": [
+      {
+        "action": "cua.getState()",
+        "result": "30秒初始化未返回，运行环境重置"
+      }
+    ],
+    "services": {
+      "5174": "lsof确认node30278监听所有接口，当前dream.ts请求HTTP200",
+      "5187": "既有node10192仍监听127.0.0.1，当前dream.ts请求HTTP200"
+    },
+    "storageSeedClicked": false,
+    "existing5174RecoveryOrRestartClicked": false,
+    "viewportChangedThisIncrement": false,
+    "screenshots": [],
+    "priorPending": "存档恢复的实际保存／刷新／下载与手机布局验收仍未完成。",
+    "limit": "HTTP200不是浏览器画面或操作通过证据；没有本次截图。"
+  },
+  "sourceFingerprints": [
+    {
+      "path": "package.json",
+      "bytes": 19603,
+      "sha256": "7c245e0514fb41f5a430d59272853a633a9838d2291534b3ddeca5e0aee63c87"
+    },
+    {
+      "path": "src/data/dream-demo.ts",
+      "bytes": 444,
+      "sha256": "918eab9aa086ac27759fa337b41bbc61be97fe8704f5d8afe1bcd023a9434934"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "bytes": 85630,
+      "sha256": "c77b38d72f8e7d203acfeba016d2866eef2cbbe56318999a1237a796ce19665b"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "bytes": 10914,
+      "sha256": "eea32407a0bec174c6073da3080552ad8d259a871f5bc36eadf2c1473b0b7783"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 21262,
+      "sha256": "da3a751fec701c32af1c3312e516ab862b9649bf40ba3436f3957979aa5028a2"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "bytes": 67022,
+      "sha256": "f00f4755801088d9ab81953429fe71e1b142346fc1d016ea942fb4d45e54b388"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "bytes": 56256,
+      "sha256": "88738bf9dcf32340af520831737cffa43b03fcfb459ffa090e492d19f456b341"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "bytes": 12118,
+      "sha256": "16105c9b88739c9baeb1cc4352856394f82eb73e2bee0a6211ea3fa751338594"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 34554,
+      "sha256": "2e52081a50316d9bbd131936a20f054f5510360746216a53335893cc55003ab8"
+    },
+    {
+      "path": "src/engine/dream.ts",
+      "bytes": 4526,
+      "sha256": "4d3d5dce595d9e00f106cd0d06622adcb27a7f2623cf50c5ec4b3816a6a6abff"
+    },
+    {
+      "path": "src/engine/equipment.ts",
+      "bytes": 8372,
+      "sha256": "68360b06f1f940fd32b35f5f02df32d40d78415cd978e2f5011158d83993a249"
+    },
+    {
+      "path": "src/engine/execution.ts",
+      "bytes": 7284,
+      "sha256": "18f895e966b0039d83a762e3bbc495bc12ca4c60daba18536d83dee1c5fa6779"
+    },
+    {
+      "path": "src/engine/immortality.ts",
+      "bytes": 1834,
+      "sha256": "fc474d94d3e66522b5a346fc11ae59c96cf78d58a79c34b96d1ac77c608f3f6c"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 45030,
+      "sha256": "841b062b5ea898f1380b59c013e41157aa8ed9233a424d3514e10a89ff800cf0"
+    },
+    {
+      "path": "src/engine/phoenix.ts",
+      "bytes": 3585,
+      "sha256": "b085cc5cd858d0a4b0fe11eebcda6a7b66f65d8c47c261b3c0b8f6ea55ea1236"
+    },
+    {
+      "path": "src/engine/taunt.ts",
+      "bytes": 1316,
+      "sha256": "be5337474bf5552487fa43ed40e704a3ea8b3f935e3b51cd14f7510d11797a3a"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 25553,
+      "sha256": "da24f568d00b4b63e38fc3a7d5f83a77a8355dd9040f74ae255e370d81404319"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 84217,
+      "sha256": "240e59d2536510cc6058e87b6be28d4f14e449c0e78b67b75e1284ff1b0da00a"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "bytes": 5795,
+      "sha256": "80e5c35554a7868a527af881254909ac2084e030fa803d7fccfe2d4d7239b6fb"
+    },
+    {
+      "path": "src/render/dream.ts",
+      "bytes": 1637,
+      "sha256": "93563cf22121515bfb31ab0ddf9a2c27a2f372e194050ad0d349cb5b150527fc"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "bytes": 39729,
+      "sha256": "9b67a0d727c03c442020a8c273343565d000b10ec2cfb3423e3cc2c35f74bcc5"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "bytes": 45096,
+      "sha256": "5bacc13ce6a1f66d015506b85ebaa734e5fbc7b511a9fc566685fa14a91f1ed5"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "bytes": 12169,
+      "sha256": "eadf68def66c542ddc0dd4f89bb56b08cbd7ed9aa143879fedad5ae940aec6e4"
+    },
+    {
+      "path": "tests/dream.test.ts",
+      "bytes": 16328,
+      "sha256": "af8e9582879d0f80c084d947eb2f4e89e03a045d44c659f318df36aa9965b14b"
+    },
+    {
+      "path": "tests/fixtures/pre-v079-dream.json",
+      "bytes": 11249,
+      "sha256": "3ff1c9dd308d5c3ba4643138296c745a937db0bd8f8d1e13023f4da0f403f5ab"
+    },
+    {
+      "path": "tests/insects.test.ts",
+      "bytes": 11983,
+      "sha256": "7207f225337661fea8f8bc82131cdac848e2279804893a778893cb96da7b60a1"
+    }
+  ],
+  "remaining": [
+    "本次蛛丝画面、演示入口与手机实际验收",
+    "此前存档保护的保存／刷新／导出实际操作",
+    "其他原型能力与未确证历史字段／统一公式",
+    "总体难度、多构筑完整经营与真实设备性能"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "version": "singleplayer-0.80",
+  "reviewedAt": "2026-11-07",
+  "source": {
+    "id": "S34",
+    "author": "英雄互娱",
+    "publishedAt": "2019-04-19",
+    "url": "https://game.xiaomi.com/viewpoint/1103968488_1555665047389_16",
+    "kind": "发行方文章及原始客户端卡面",
+    "images": [
+      {
+        "path": "docs/research/images/wolf-fang-client-apr2019.png",
+        "url": "https://video.kts.g.mi.com/ktv_1103968488_V1BDMUFXb3dBcmNVNWpiR0pKaEd3QT09_1555664946777.png",
+        "bytes": 594391,
+        "sha256": "e27143122268741ede4d4666763c6b8411ec204ce5682baff7642cc42cea3810",
+        "originalBytes": true
+      },
+      {
+        "path": "docs/research/images/soul-crystal-client-apr2019.png",
+        "url": "https://video.kts.g.mi.com/ktv_1103968488_WE5OeGJCV25sNXQ1Ujc3cTJQczRJdz09_1555664989081.png",
+        "bytes": 1132463,
+        "sha256": "f592343c8ebbed13d52e01db589c5153699c99f4f69cea6ef80ab8067bc97156",
+        "originalBytes": true
+      }
+    ]
+  },
+  "confirmedFields": {
+    "wolf-fang": {
+      "name": "狼牙坠",
+      "lifesteal": 0.1,
+      "skill": "呼号",
+      "cooldownSeconds": 30,
+      "summonCount": 1,
+      "activeUnique": true
+    },
+    "soul-crystal": {
+      "name": "灵魂之晶",
+      "skillPower": 0.3,
+      "skill": "鞭笞",
+      "cooldownSeconds": 10,
+      "damage": 500,
+      "target": "随机一个敌人",
+      "activeUnique": true
+    }
+  },
+  "localAdaptations": {
+    "recipes": {
+      "wolf-fang": [
+        "fang",
+        "crystal"
+      ],
+      "soul-crystal": [
+        "crystal",
+        "coil"
+      ]
+    },
+    "firstActivationSeconds": 1,
+    "automatic": true,
+    "energyCost": 0,
+    "control": "眩晕、沉默、魅惑、死亡、残魂、化蛋暂停；无目标或空格保留就绪；不替换本体行动。",
+    "damage": "500基础法伤不随星级或法强变化，魔抗和护盾照常计算，仅选择可见敌人。",
+    "summon": {
+      "star": 1,
+      "hp": 380,
+      "attack": 48,
+      "armor": 3,
+      "attackIntervalSeconds": 0.75,
+      "inherit": "仅全军与召唤增益，不继承装备、法强或持有人星级；次帧行动；持有人死亡不消失。",
+      "asset": "public/assets/units/puppet-spirit.png"
+    },
+    "duplicateBaseStats": "沿用现有属性叠加和上限；同名技能只有一套控制器。"
+  },
+  "limits": [
+    "原卡没有提供合成材料、首次触发时间、傀儡属性和控制交互，上述字段属于本地适配。",
+    "仅按2019-04-19两张卡面恢复，不将跨期伤害和装备改动混为统一客户端。",
+    "装备共18件，原有16件保持；本轮不是原版完整装备库复原。",
+    "复用既有ImageGen傀儡形象，本轮未生成新位图。"
+  ]
+}

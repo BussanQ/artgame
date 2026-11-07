@@ -1,0 +1,313 @@
+{
+  "recordedAt": "2026-11-07T03:27:58.623449+08:00",
+  "rules": "singleplayer-0.63",
+  "combatVersion": "tornado",
+  "saveSchema": 62,
+  "goalStatus": "active；本增量不代替完整单机、统一历史切片、整体平衡或真实设备验收。",
+  "previousGoalTurn": "progress：0.62狂狮战吼与手机分析关闭修复已经实现和验证，仍未提交；本轮继续翔龙路径控制。",
+  "tests": {
+    "command": "npm run test:tornado",
+    "passed": 73,
+    "failed": 0,
+    "modules": [
+      {
+        "path": "tests/tornado.test.ts",
+        "tests": 35,
+        "status": "passed"
+      },
+      {
+        "path": "tests/warcry.test.ts",
+        "tests": 38,
+        "status": "passed"
+      }
+    ],
+    "sourceSha256": {
+      "tests/tornado.test.ts": "dc8f244fab9cb4e25c6c854c28315c931c583765bb31f8d716e43dc02a61ae35",
+      "tests/warcry.test.ts": "324818c58a761341bcc275a87fe5335eb8a005d4a2c54a102967aaff8501562c"
+    },
+    "rawReport": "../../tmp/tornado-module-tests.json",
+    "rawReportSha256": "e72e4a4c4ff8923b343a52315f8b0662ccafa5bccc08d78611ca2336967e9272",
+    "scope": "35项龙卷与38项战吼模块；固定小局面和微型状态，不含全量测试、批量平衡对战或正常经营局采样。",
+    "interactions": [
+      "真实位面观测驱散当前击飞和待落地眩晕",
+      "真实树妖施法延后龙卷落地、分别记录两类控制",
+      "源阵亡后的龙卷推进和落地",
+      "完整/快速结算相同、输入不变、只读分帧分析"
+    ]
+  },
+  "historical": {
+    "fixtures": [
+      {
+        "path": "../../tests/fixtures/pre-v063-winddragon-replays.json",
+        "sha256": "1521343386d364392d9dddd668e0ff2d5cd1d7f1ac110d356e0440be7ae60a67",
+        "versions": [
+          "legacy",
+          "counterplay",
+          "warcry"
+        ],
+        "originalDragonCasts": [
+          3,
+          2,
+          3
+        ]
+      },
+      {
+        "path": "../../tests/fixtures/pre-v062-lion-replays.json",
+        "sha256": "7d91fd33fea197c89a00cfb1b163981edb1b34c69e289698a4e00eea45fd287b",
+        "versions": [
+          "legacy",
+          "counterplay",
+          "terminator"
+        ]
+      }
+    ],
+    "frozenReplayCount": 6,
+    "winddragonDefinitionsCompared": 35,
+    "limits": "其他单位、连携、异虫双合与初始化能力另作直接比较；未重跑36版本完整战斗矩阵。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 136,
+    "rawLog": "../../tmp/tornado-v063-build.log",
+    "rawLogSha256": "e70e9dfaf8c53a9ea1d0c73e4f500f243f035e31469ea1bb87b5e294b78803fd",
+    "app": "dist/assets/index-BZtsigCi.js",
+    "appSha256": "58ec037587f95fed0b7877d11603c4ea48ba9752570860d2af3a049bc74268ad",
+    "worker": "dist/assets/worker-CSn7jILM.js",
+    "workerSha256": "68423f69681cd20fbd2e968aa32d5ba41e556f51eacf850adb2e8149c3b851d6",
+    "css": "dist/assets/index-0iwQsGQW.css",
+    "cssSha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+  },
+  "research": {
+    "manifest": "../research/tornado-history.json",
+    "clientCard": "../research/images/winddragon-tornado-client-dec2019.jpg",
+    "clientCardSha256": "b9d616c2204b0f92689f3e27fd4223fd57213d2672a975a682e0e278565540e0",
+    "clientCardVisuallyReviewed": true,
+    "currentCatalogue": "早期陆行者/攻城；后期龙族真实技能分支未实现，不把两种分类等同。",
+    "localAdaptations": [
+      "起手0.75秒、初始0能量",
+      "直径1.5格、中心8格行程、每秒3格",
+      "空中0.5秒和离散帧结算",
+      "技能伤害映射当前magic分类、10%技能防御映射magicResist"
+    ]
+  },
+  "art": {
+    "manifest": "../research/tornado-assets.json",
+    "tool": "built-in image_gen edit / background-extraction",
+    "assetPath": "../../public/assets/units/winddragon-tornado.png",
+    "assetSha256": "c5a336d8040c38e1c50401681ac902f370a88b6e58b51a6b815aed3beec72f18",
+    "size": [
+      1536,
+      1024
+    ],
+    "bytes": 2535785,
+    "nativeBytesRetained": true,
+    "rasterPostprocessing": false,
+    "alphaZeroPixels": 808447,
+    "alphaMax": 254,
+    "corners": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "rawAlphaInspection": "../../tmp/tornado-alpha.json",
+    "oldAssetPath": "../../public/assets/units/winddragon.png",
+    "oldAssetSha256": "40200e03c34c157a1eeee08e7f7e4ad52f68c8d93c22f40ec444e6405aadb098",
+    "note": "旧图也已有alpha，未声称原资产完全不透明；新图清理边缘并保留角色，旧版本继续使用原图。"
+  },
+  "catalog": {
+    "winddragonCost": 4,
+    "copies": 15,
+    "priceChanged": false,
+    "preservedOldCatalogues": true,
+    "validation": "新局容量、四阶段旧局资源/目录/历史保持及0.62缺失目录回填通过；没有新增自然高费购买经营局。"
+  },
+  "ui": {
+    "url": "http://127.0.0.1:5174/",
+    "lan": "http://192.168.31.130:5174/",
+    "lanHttpStatus": 200,
+    "configuration": "TORNADO_DEMO六对六正常引擎、合法装备，不是等预算平衡样本。",
+    "normalCampaignRuns": 0,
+    "outcome": {
+      "seconds": 16.25,
+      "winner": 1,
+      "label": "己方失败；未调整队伍追求胜利，不宣称平衡改善。"
+    },
+    "observations": [
+      {
+        "seconds": 0,
+        "dragonHp": 1500,
+        "launched": 0,
+        "contacts": 0,
+        "knockups": 0,
+        "landings": 0,
+        "normalDamage": 0,
+        "skillDamage": 0,
+        "shieldDamage": 0
+      },
+      {
+        "seconds": 6,
+        "dragonHp": 944,
+        "launched": 1,
+        "contacts": 2,
+        "knockups": 2,
+        "landings": 0,
+        "normalDamage": 431,
+        "skillDamage": 448,
+        "shieldDamage": 0
+      },
+      {
+        "seconds": 7,
+        "dragonHp": 1044,
+        "launched": 1,
+        "contacts": 2,
+        "knockups": 2,
+        "landings": 1,
+        "normalDamage": 431,
+        "skillDamage": 448,
+        "shieldDamage": 0
+      },
+      {
+        "seconds": 16.25,
+        "dragonHp": 0,
+        "launched": 1,
+        "contacts": 2,
+        "knockups": 2,
+        "landings": 1,
+        "normalDamage": 805,
+        "skillDamage": 448,
+        "shieldDamage": 374
+      }
+    ],
+    "mobileBattlefield": {
+      "page": 390,
+      "viewport": 390
+    },
+    "mobileAnalysis": {
+      "before": {
+        "close": {
+          "bottom": 136.296875,
+          "top": 92.296875,
+          "width": 44
+        },
+        "page": 390,
+        "panel": {
+          "scroll": 331,
+          "width": 332.5
+        },
+        "viewport": 390
+      },
+      "after": {
+        "bodyScroll": 253,
+        "close": {
+          "bottom": 136.296875,
+          "top": 92.296875,
+          "width": 44
+        },
+        "page": 390,
+        "panel": {
+          "scroll": 331,
+          "width": 332.5
+        },
+        "viewport": 390
+      }
+    },
+    "desktopAnalysis": {
+      "page": 1280,
+      "panel": {
+        "scroll": 998,
+        "width": 1000
+      },
+      "viewport": 1280
+    },
+    "resourcesUnchanged": true,
+    "consoleErrorsOrWarnings": 0,
+    "viewportReset": true,
+    "rawEvidence": "../../tmp/tornado-v063-ui.json",
+    "rawEvidenceSha256": "1484a79f1777baedce7fed2a19ce7d922eaa4e2ef912eef10b6e2c28a66480c2",
+    "screenshots": [
+      {
+        "path": "../../tmp/tornado-v063-desktop.jpg",
+        "format": "JPEG",
+        "size": [
+          1280,
+          720
+        ],
+        "sha256": "e6b42027a5301d79ebaaa9a161ed637e8f280ca48eb96004a1534e482ba31354"
+      },
+      {
+        "path": "../../tmp/tornado-v063-analysis-desktop.jpg",
+        "format": "JPEG",
+        "size": [
+          1280,
+          720
+        ],
+        "sha256": "ad8bc549a633c3afaca0da23c122803d07858a76085bf102836841219c879ec2"
+      },
+      {
+        "path": "../../tmp/tornado-v063-mobile390.jpg",
+        "format": "JPEG",
+        "size": [
+          390,
+          844
+        ],
+        "sha256": "b699dd0cf466340408a5ae09fbf95cde4f96d993a2397ca2dde4fc2246b8cd13"
+      },
+      {
+        "path": "../../tmp/tornado-v063-mobile-analysis.jpg",
+        "format": "JPEG",
+        "size": [
+          390,
+          844
+        ],
+        "sha256": "148e8fc358be601c05633eb962c043c3117b84c2babf069c6032a06a3937857b"
+      }
+    ],
+    "limits": "本机浏览器桌面与390px窄屏片段，不是实际触屏/弱设备性能或多构筑完整经营局验收。"
+  },
+  "sourceFingerprints": {
+    "package.json": "ced8e53668eb1c6efc46f9f219f6d026010cf0b37e25eb02f3f0f6562fe1335b",
+    "src/engine/types.ts": "9da072d5475ed27f4c2279827f09ccec40c16b4af240d84dabf892c5eea3a357",
+    "src/data/units.ts": "06aaab150aa44db151c30dfd890b6f0f5d6c99d09abf21e0110e4d82c6e5bbd7",
+    "src/data/skills.ts": "3c85ae840fe5bddec1ec4a28fe0d1976a5eda07a9b2f033fbdc85210cabefecb",
+    "src/data/unit-stats.ts": "d9a380522efbfcc49a41e6cd085d924d9a358cf09e5ee41f7a2799b99e9daafa",
+    "src/engine/abilities.ts": "2cc76e7d7721412999836b2905e52cf09b9f0e2050d200a30e448109c62eeb4a",
+    "src/engine/battle.ts": "ea890a719a23882daa3be0de548c09b9edbda71f6482054bb117d094c6369db1",
+    "src/engine/tornado.ts": "eceeb24166f5e93ba3f8352356e50f337c3bdc8a6085bda8d3783c89a3bf930f",
+    "src/engine/jungle.ts": "63db7fbb8de11fc6ef5cc918ca45a2a7f38f96d3be98a3392cb70ce9e5d9a00e",
+    "src/engine/warcry.ts": "1025382eb143e6d78628e02706c02ff494cf810fd5c5058bf336d0cabb090d29",
+    "src/engine/persistence.ts": "86c085d81b7cdfcdac7c683e97a08a2e2ee248fa13eaa2e15441e5a1f2419905",
+    "src/engine/ai.ts": "0b0278d53274e525ebc80abb7f25fe18ae2eba436f5ee0c69b4247920fce488c",
+    "src/engine/battle-analysis.ts": "4b8d2ba9cf3209d9a3cf3a16580c0ad38a2790ca92799786e8a0a14f19dc6dfa",
+    "src/engine/summons.ts": "177c410a7439b26ed10221ac1de4557903dc03d2e4d5bc63c91c770570baa9af",
+    "src/data/tornado-demo.ts": "0e8b54c108079ab5e489a22c59db08de307489db88f6edaa40442d543af43c73",
+    "src/render/tornado.ts": "c63a2c6e31879fc6459e0bf5b6b94253310dc22b888a3643bd55fdb2fb817f66",
+    "src/render/scene.ts": "548f1c63080e8e4074de1380e1669236d54b139dd406d114d754bc23ad734932",
+    "src/render/skill-effects.ts": "71003a9c66220a9d2d7d2a8cb9f9c4b48e588d363a772ad364bf26836eda31ed",
+    "src/render/battle-inspection.ts": "5e44830f9081791e4f8f29ab3615c64e6c182abdfa2e6e295ac8ebb9e58b00b7",
+    "src/ui/battle-analysis.ts": "23a8e6d7539a2b5e1db56f8628b3e93c6c3d6e5ce1fba320a3c8d0bb54d1ce6f",
+    "src/visual.css": "01c68d7ed315b2e9b74dfda47706dba5dfd35f6b49a24d7c66dbdec4ed2fa406",
+    "src/main.ts": "337091d3ad23646096e33b1119cdba1b60ca476ca024d687b4335eedab4c9e9a"
+  },
+  "notRun": [
+    "全量测试",
+    "批量平衡/阵容对战采样",
+    "新的完整正常经营局",
+    "真实手机与弱设备性能测试"
+  ],
+  "remaining": [
+    "后期龙族分支与统一历史目录/公式",
+    "其他原型技能",
+    "整体难度及多构筑完整经营",
+    "高星与高费收集的最终体验",
+    "真实触屏及弱设备性能"
+  ],
+  "git": {
+    "branch": "dev",
+    "baseCommit": "245cfe3a6b152ba676f77ec6c466550aa33f5cdf",
+    "newCommitCreated": false,
+    "newChangesPushed": false,
+    "note": "0.62与0.63增量均保留在当前工作区，未自动提交。"
+  }
+}

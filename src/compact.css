@@ -1,0 +1,1255 @@
+/* The battle and recruitment share the center column. Long disclosures remain
+   in normal document flow, so no information is trapped in a nested scroller. */
+.battle-column {
+  min-width: 0;
+}
+.battle-viewport {
+  position: relative;
+  min-width: 0;
+}
+.formation-tools {
+  min-width: 0;
+}
+.arena-bottom .stage-controls {
+  position: static;
+  flex-shrink: 0;
+}
+.arena-bottom {
+  gap: 10px;
+}
+main > .left > .equipment-panel {
+  margin: 0;
+}
+main > .right > .encounter-brief {
+  grid-template-columns: 1fr;
+  margin: 0;
+  gap: 6px;
+}
+.right .encounter-preview {
+  flex-wrap: wrap;
+}
+.right .encounter-stats > .defender-grid {
+  grid-template-columns: 1fr;
+}
+.left .equipment-panel .section-label {
+  flex-wrap: wrap;
+}
+.left .inventory-grid,
+.left .recipe-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1000px) {
+  .shell {
+    max-width: 1720px;
+    padding: 0 16px;
+  }
+  .shell > header {
+    min-height: 48px;
+    padding: 5px 0;
+    gap: 18px;
+  }
+  .brand {
+    font-size: 20px;
+    gap: 8px;
+  }
+  .brand-mark {
+    width: 30px;
+    height: 34px;
+  }
+  .brand b {
+    font-size: 18px;
+    margin-left: 5px;
+  }
+  .brand small {
+    display: none;
+  }
+  header nav {
+    gap: 2px;
+  }
+  header nav button,
+  .demo-menu > summary {
+    padding: 6px 8px;
+  }
+  .mode {
+    font-size: 11px;
+  }
+  .mode span {
+    margin-left: 0;
+  }
+  .command {
+    padding: 6px 0;
+    gap: 20px;
+    min-height: 48px;
+  }
+  .command > div > .eyebrow {
+    display: none;
+  }
+  .command h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+  .round strong {
+    font-size: 28px;
+  }
+  .phase {
+    padding-left: 16px;
+    min-width: 156px;
+    font-size: 12px;
+  }
+  .phase small {
+    margin-top: 2px;
+    font-size: 10px;
+  }
+  .start {
+    padding: 8px 22px;
+  }
+  main {
+    grid-template-columns: clamp(170px, 15.5vw, 210px) minmax(0, 1fr) clamp(
+        170px,
+        15.5vw,
+        210px
+      );
+    align-items: start;
+    gap: 10px;
+  }
+  main > .right {
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .right > .panel {
+    flex: none;
+  }
+  main > .left,
+  main > .right {
+    gap: 8px;
+    min-width: 0;
+  }
+  .panel {
+    padding: 10px;
+  }
+  .section-label {
+    margin-bottom: 6px;
+  }
+  .section-label h2 {
+    font-size: 14px;
+  }
+  .micro {
+    margin-top: 5px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+  .empty {
+    padding: 6px 0;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .commander > .eyebrow,
+  .commander > h2,
+  .difficulty-hint {
+    display: none;
+  }
+  .difficulty-setting {
+    margin: 0 0 4px;
+  }
+  .difficulty-setting select {
+    padding: 3px 6px;
+  }
+  .vitals {
+    margin-top: 3px;
+  }
+  .vitals strong {
+    font-size: 27px;
+  }
+  .vitals small {
+    display: inline;
+    margin-left: 6px;
+    font-size: 10px;
+  }
+  .life {
+    margin-top: 5px;
+  }
+  .level {
+    margin-top: 8px;
+  }
+  .xp {
+    margin: 4px 0 8px;
+  }
+  .wide {
+    padding: 7px 4px;
+  }
+  .round-income {
+    margin-top: 7px;
+    padding-top: 6px;
+    gap: 2px 6px;
+    font-size: 11px;
+  }
+  .round-income small {
+    font-size: 10px;
+  }
+  .synergies > .micro {
+    display: none;
+  }
+  .synergy-detail {
+    padding: 2px 0;
+  }
+  .synergy-detail > summary {
+    min-height: 28px;
+    font-size: 12px;
+  }
+  .synergy-count small {
+    display: inline;
+    margin-left: 5px;
+  }
+  .trait-icon {
+    font-size: 14px;
+  }
+  .inactive-synergies > summary,
+  .equipment-panel > details > summary {
+    padding: 7px 0;
+    font-size: 11px;
+  }
+  .player {
+    padding: 3px 0;
+    gap: 7px;
+  }
+  .leaderboard .player {
+    width: 100%;
+    padding: 3px 0;
+  }
+  .player b {
+    font-size: 11px;
+  }
+  .player-bar {
+    margin-top: 4px;
+  }
+  .scout-button {
+    min-height: 28px;
+  }
+  .report {
+    min-height: 0;
+  }
+  .report > .eyebrow {
+    display: none;
+  }
+  .report h2 {
+    margin: 0;
+  }
+  .report p {
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+  .damage {
+    margin-top: 5px;
+  }
+  .right .encounter-brief h2 {
+    margin: 0;
+    font-size: 14px;
+  }
+  main > .right > .encounter-brief {
+    grid-template-columns: 1fr auto;
+  }
+  .right .encounter-preview {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .right .encounter-hint {
+    grid-column: 1 / -1;
+  }
+  .right .encounter-brief .eyebrow {
+    display: none;
+  }
+  .right .encounter-preview img {
+    height: 40px;
+    width: 34px;
+  }
+  .right .encounter-hint {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+  .right .encounter-stats {
+    font-size: 11px;
+  }
+  .left .equipment-panel .eyebrow,
+  .left .equipment-panel .section-label > .micro {
+    display: none;
+  }
+  .equipment-panel h2 small {
+    font-size: 10px;
+    margin-left: 4px;
+  }
+  .equipped-slots {
+    gap: 4px;
+    margin: 6px 0;
+    font-size: 11px;
+  }
+  .equipped-slots button {
+    padding: 5px;
+    font-size: 10px;
+  }
+  .equipped-slots .micro {
+    margin: 0;
+  }
+  .equipment-panel details {
+    margin-top: 4px;
+  }
+  .left .inventory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .inventory-grid button {
+    padding: 6px;
+  }
+  .inventory-grid b {
+    margin-top: 2px;
+    font-size: 11px;
+  }
+  .inventory-grid .item-icon {
+    font-size: 18px;
+  }
+  .inventory-grid small {
+    display: none;
+  }
+  .inventory-grid > .empty {
+    grid-column: 1 / -1;
+  }
+
+  .battle-column {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: start;
+    gap: 8px;
+  }
+  .arena {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 88px;
+    grid-template-rows: 22px auto auto auto;
+    gap: 4px 8px;
+    position: relative;
+  }
+  .arena-label {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 22px;
+    padding: 0 0 3px;
+    font-size: 10px;
+  }
+  .arena-label .speed {
+    padding: 0 5px;
+  }
+  .battle-viewport {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+    background: radial-gradient(ellipse, #31473b55, #15262344);
+    border: 1px solid #9a9c7720;
+  }
+  .battle-stage {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.8;
+    box-shadow: none;
+  }
+  /* Crop only the bottom foreground. Keep the full top edge for tall enemy
+     back-row units, and preserve proportions and the hit-testing bounds. */
+  #battle-canvas {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 112.5%;
+  }
+  .stage-title {
+    top: 10px;
+    left: 12px;
+  }
+  .stage-title > span {
+    font-size: 16px;
+    letter-spacing: 3px;
+  }
+  .stage-title small {
+    display: none;
+  }
+  .stage-status {
+    top: 10px;
+    right: 10px;
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+  .stage-controls {
+    bottom: 6px;
+    gap: 5px;
+  }
+  .stage-controls button {
+    padding: 4px 7px;
+    min-height: 26px;
+  }
+  .arena-bottom {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: end;
+    align-self: center;
+    padding: 4px 0;
+    min-height: 24px;
+  }
+  .arena-bottom > span:first-of-type {
+    display: none;
+  }
+  .bench-header {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    justify-content: center;
+    min-height: 19px;
+  }
+  .bench-header > span:last-child {
+    display: none;
+  }
+  .bench {
+    grid-column: 2;
+    grid-row: 2;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, minmax(40px, 1fr));
+    gap: 4px;
+  }
+  .bench-slot {
+    position: relative;
+    height: 100%;
+    min-height: 40px;
+  }
+  .bench-slot > .piece {
+    position: absolute;
+    inset: 2px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+  }
+  .bench-item {
+    position: relative;
+    min-height: 0;
+  }
+  .bench-info {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    min-height: 22px;
+    padding: 2px 4px;
+    margin: 0;
+    font-size: 9px;
+    background: #13271fe6;
+  }
+  .piece .unit-portrait {
+    height: 100%;
+    width: 48%;
+    margin-right: auto;
+  }
+  .bench .piece-name {
+    position: absolute;
+    right: 1px;
+    bottom: 4px;
+    font-size: 9px;
+  }
+  .piece .stars {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    margin: 0;
+  }
+  .formation-tools {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    display: flex;
+    align-items: start;
+    gap: 6px;
+    padding-top: 5px;
+  }
+  .deployment-panel {
+    margin: 0;
+  }
+  .deployment-panel > button,
+  .auto-deploy button {
+    min-height: 28px;
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  .deployment-panel > span,
+  .auto-deploy > .micro {
+    display: none;
+  }
+  .auto-deploy {
+    margin: 0;
+    gap: 6px;
+  }
+  .selection {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    min-height: 30px;
+    font-size: 11px;
+    flex-wrap: wrap;
+    padding-top: 3px;
+  }
+  .selection:not(.has-selection) {
+    display: none;
+  }
+  .selection button {
+    min-height: 26px;
+    margin-left: 3px;
+    padding: 3px 5px;
+  }
+  /* Precise placement expands the page rather than covering the canvas/shop. */
+  .battle-column:has(.deployment-grid) {
+    min-height: 0;
+  }
+  .arena:has(.deployment-grid) {
+    grid-template-rows: 22px auto auto auto auto;
+  }
+  .arena:has(.deployment-grid) .selection {
+    grid-row: 5;
+  }
+  .formation-tools:has(.deployment-grid) {
+    grid-row: 4;
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    flex-wrap: wrap;
+  }
+  .arena:has(.deployment-grid) .arena-bottom {
+    align-self: start;
+  }
+  .deployment-panel:has(.deployment-grid) {
+    width: 100%;
+  }
+
+  .battle-column > .shop {
+    margin: 0;
+    padding: 8px;
+    flex-shrink: 0;
+  }
+  .shop-title {
+    margin-bottom: 4px;
+    min-height: 28px;
+  }
+  .shop-title h2 {
+    margin: 0;
+    font-size: 15px;
+  }
+  .shop-title .eyebrow,
+  .shop-guide {
+    display: none;
+  }
+  .shop-title button {
+    padding: 4px 9px;
+    min-height: 28px;
+    margin-left: 5px;
+  }
+  .shop-odds {
+    font-size: 10px;
+    margin: 3px 0 5px;
+  }
+  .shop-cards {
+    gap: 7px;
+  }
+  .shop-entry {
+    gap: 0;
+    position: relative;
+  }
+  .shop-entry .card,
+  .shop-cards > .sold {
+    height: 88px;
+    min-height: 88px;
+    padding: 5px;
+  }
+  .card-art {
+    height: 62px;
+    bottom: 17px;
+  }
+  .card-art img {
+    height: 100%;
+  }
+  .card-top span {
+    font-size: 10px;
+    padding: 2px 3px;
+  }
+  .card-top b {
+    font-size: 19px;
+  }
+  .card-bottom {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    padding-top: 8px;
+  }
+  .card-bottom strong {
+    font-size: 12px;
+  }
+  .card-bottom small {
+    display: none;
+  }
+  .rarity {
+    bottom: 0;
+    font-size: 4px;
+  }
+  .shop-info {
+    position: absolute;
+    top: 40px;
+    right: 3px;
+    min-height: 24px;
+    font-size: 10px;
+    padding: 2px 4px;
+    background: #13271fe6;
+  }
+  .purchase-hint {
+    padding: 4px 2px 0;
+    gap: 1px;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .insect-evolution {
+    margin: 3px 0 6px;
+    padding: 4px 6px;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .insect-evolution strong {
+    margin-right: 10px;
+  }
+  .insect-evolution p {
+    display: inline;
+    margin: 0;
+  }
+  .insect-evolution > span {
+    display: none;
+  }
+  .bench-tooltip {
+    width: 420px;
+    padding: 12px;
+  }
+  .bench-tooltip .tooltip-heading {
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .bench-tooltip .tooltip-heading img {
+    width: 44px;
+    height: 48px;
+  }
+  .bench-tooltip .tooltip-heading strong {
+    font-size: 16px;
+  }
+  .bench-tooltip .tooltip-heading span {
+    margin: 2px 0;
+  }
+  .bench-tooltip .tooltip-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px 12px;
+    padding: 7px 0;
+  }
+  .bench-tooltip .tooltip-basis {
+    margin: 5px 0;
+  }
+  .bench-tooltip section {
+    margin-top: 6px;
+  }
+  .bench-tooltip section p {
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+  footer {
+    margin: 0;
+    padding: 5px 0;
+    min-height: 22px;
+  }
+}
+
+/* On narrower laptops, give the battlefield the intelligence column's width. */
+@media (min-width: 1000px) and (max-width: 1199px) {
+  main {
+    grid-template-columns: 170px minmax(0, 1fr);
+  }
+  main > .right {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+/* Tablets retain a readable board, with supporting panels below the main task. */
+@media (min-width: 701px) and (max-width: 999px) {
+  main {
+    grid-template-columns: 185px minmax(0, 1fr);
+    align-items: start;
+  }
+  .battle-column {
+    grid-column: 2;
+  }
+  .battle-stage {
+    max-height: none;
+    width: 100%;
+    aspect-ratio: 1.4;
+    margin: auto;
+  }
+  .bench-slot {
+    height: 60px;
+  }
+  .formation-tools {
+    display: flex;
+    gap: 6px;
+    margin: 5px 0;
+  }
+  .auto-deploy,
+  .deployment-panel {
+    margin: 0;
+  }
+  .deployment-panel > span {
+    display: none;
+  }
+  .formation-tools:has(.deployment-grid) {
+    flex-wrap: wrap;
+  }
+  .formation-tools:has(.deployment-grid) .deployment-panel {
+    width: 100%;
+  }
+  .battle-column .shop {
+    margin-top: 8px;
+    padding: 10px;
+  }
+  .shop-cards {
+    gap: 5px;
+  }
+  .shop-entry .card,
+  .shop-cards > .sold {
+    height: 120px;
+    min-height: 120px;
+    padding: 5px;
+  }
+  .card-art {
+    height: 78px;
+    bottom: 25px;
+  }
+  .card-bottom {
+    left: 5px;
+    right: 5px;
+  }
+  .card-bottom small {
+    display: none;
+  }
+  .shop-guide {
+    display: none;
+  }
+  .purchase-hint {
+    padding: 4px 0;
+    font-size: 10px;
+  }
+  .right .leaderboard .player {
+    width: 100%;
+  }
+  .right .leaderboard {
+    display: block;
+  }
+  .right .encounter-brief {
+    grid-column: 1 / -1;
+  }
+  .formation-tools .micro {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .shell > header {
+    min-height: 0;
+    height: auto;
+    padding: 6px 0;
+    gap: 6px;
+  }
+  .brand-mark {
+    height: 30px;
+  }
+  .brand small {
+    display: none;
+  }
+  header nav {
+    gap: 3px;
+  }
+  header nav button,
+  .demo-menu > summary {
+    min-height: 32px;
+    padding: 5px 7px;
+  }
+  header nav [data-jump] {
+    display: none;
+  }
+  .command {
+    padding: 7px 0;
+    gap: 5px;
+  }
+  .command .eyebrow {
+    display: none;
+  }
+  .command h1 {
+    font-size: 17px;
+  }
+  .command > div:first-child {
+    flex-basis: 100%;
+  }
+  .round strong {
+    font-size: 25px;
+  }
+  .battle-stage {
+    aspect-ratio: 1.4;
+  }
+  .stage-title small {
+    display: none;
+  }
+  .stage-status {
+    top: 10px;
+    bottom: auto;
+    right: 8px;
+    left: auto;
+  }
+  .arena-bottom {
+    padding: 5px 0;
+  }
+  .bench {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 3px;
+  }
+  .bench-slot {
+    height: 60px;
+  }
+  .bench .piece-name {
+    font-size: 9px;
+  }
+  .bench-info {
+    padding: 3px 0;
+    min-height: 32px;
+    font-size: 10px;
+  }
+  main > .battle-column {
+    order: -2;
+  }
+  .battle-column .shop {
+    margin-top: 8px;
+  }
+  .formation-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 6px 0;
+  }
+  .deployment-panel,
+  .auto-deploy {
+    margin: 0;
+  }
+  .deployment-panel > span,
+  .auto-deploy .micro {
+    display: none;
+  }
+  .formation-tools:has(.deployment-grid) .deployment-panel {
+    width: 100%;
+  }
+  .left > .equipment-panel {
+    grid-column: 1 / -1;
+  }
+  .left .inventory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .shop-guide {
+    display: none;
+  }
+  .shop-title {
+    margin-bottom: 6px;
+  }
+  .shop-title .eyebrow {
+    display: none;
+  }
+  .shop-odds {
+    margin: 6px 0;
+    font-size: 11px;
+  }
+  .shop-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .shop-entry .card,
+  .shop-cards > .sold {
+    height: 120px;
+    min-height: 120px;
+    padding: 5px;
+  }
+  .card-art {
+    height: 78px;
+    bottom: 26px;
+  }
+  .card-bottom {
+    left: 5px;
+    right: 5px;
+    bottom: 10px;
+  }
+  .card-top span {
+    font-size: 9px;
+    padding: 2px;
+  }
+  .card-top b {
+    font-size: 20px;
+  }
+  .shop-info {
+    min-height: 36px;
+    padding: 4px;
+  }
+  .purchase-hint {
+    padding: 4px 0;
+    font-size: 11px;
+  }
+  .selection:not(.has-selection) {
+    display: none;
+  }
+  .left > .commander {
+    grid-row: auto;
+  }
+}
+/* Zoom the board, not the unit proportions; pointer mapping uses the enlarged
+   canvas bounds. The complete board and both back ranks remain in view. */
+@media (max-width: 999px) {
+  #battle-canvas {
+    position: absolute;
+    width: 125%;
+    height: 109.375%;
+    left: -12.5%;
+    top: 0;
+  }
+}
+/* Phone navigation replaces the long stacked desktop page. Each view retains
+   natural page scrolling for expanded details and large text. */
+.mobile-tools-toggle,
+.mobile-shop-return,
+.mobile-feedback {
+  display: none;
+}
+@media (max-width: 700px) {
+  .shell {
+    padding: 0 8px calc(90px + env(safe-area-inset-bottom));
+  }
+  .shell > header {
+    position: relative;
+    min-height: 48px;
+    padding: 2px 0;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .brand {
+    font-size: 17px;
+  }
+  .brand b {
+    display: inline;
+    font-size: 13px;
+  }
+  .brand-mark {
+    width: 26px;
+    height: 30px;
+  }
+  header .mode {
+    display: none;
+  }
+  .mobile-tools-toggle {
+    display: block;
+    min-width: 64px;
+    min-height: 44px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  header #game-tools {
+    display: none;
+  }
+  header #game-tools.is-open {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: min(320px, 100%);
+    z-index: 35;
+    padding: 10px;
+    gap: 6px;
+    border: 1px solid #899b77;
+    border-radius: 8px;
+    background: #1c2d2b;
+    box-shadow: 0 12px 30px #0008;
+  }
+  #game-tools button,
+  #game-tools .demo-menu > summary {
+    min-height: 44px;
+    font-size: 12px;
+    padding: 10px;
+  }
+  #game-tools .demo-menu {
+    grid-column: 1 / -1;
+  }
+  #game-tools .demo-options {
+    position: static;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    box-shadow: none;
+  }
+  .command {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0 8px;
+  }
+  .command > div:first-child {
+    display: none;
+  }
+  .command .round {
+    gap: 4px;
+  }
+  .round small {
+    font-size: 10px;
+  }
+  .round strong {
+    font-size: 25px;
+  }
+  .round > span {
+    display: none;
+  }
+  .command .phase {
+    padding: 0 6px;
+    text-align: left;
+    font-size: 11px;
+  }
+  .phase small {
+    display: block;
+    font-size: 9px;
+    margin-top: 3px;
+  }
+  .phase-dot {
+    display: none;
+  }
+  .command .start {
+    min-height: 44px;
+    padding: 7px 10px;
+    font-size: 12px;
+    margin: 0;
+  }
+  main {
+    display: block;
+  }
+  main > .left,
+  main > .right,
+  .battle-column > .shop,
+  .battle-column > .mobile-shop-return {
+    display: none;
+  }
+  .shell:not([data-mobile-view="battlefield"]) .arena {
+    display: none;
+  }
+  .shell[data-mobile-view="recruitment"] .battle-column > .shop {
+    display: block;
+    margin: 0;
+  }
+  .shell[data-mobile-view="recruitment"] .mobile-shop-return {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    margin-top: 8px;
+  }
+  .shell[data-mobile-view="armory"] main > .left,
+  .shell[data-mobile-view="commander"] main > .left,
+  .shell[data-mobile-view="intel"] main > .right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .shell[data-mobile-view="armory"] .left > :not(.equipment-panel),
+  .shell[data-mobile-view="commander"] .left > .equipment-panel {
+    display: none;
+  }
+  .right .leaderboard {
+    display: block;
+  }
+  .right .leaderboard .player {
+    width: 100%;
+  }
+  .shell > footer {
+    display: none;
+  }
+  .arena-label {
+    padding: 0 0 3px;
+    min-height: 22px;
+    font-size: 10px;
+  }
+  .arena-label .speed {
+    display: none;
+  }
+  .battle-viewport {
+    padding-bottom: 0;
+  }
+  .battle-stage {
+    aspect-ratio: 1.2;
+    margin-top: 0;
+  }
+  #battle-canvas {
+    width: 150%;
+    height: 112.5%;
+    left: -25%;
+    top: 0;
+  }
+  .stage-title {
+    top: 8px;
+  }
+  .stage-title > span {
+    font-size: 13px;
+  }
+  .stage-status {
+    top: 8px;
+    font-size: 9px;
+  }
+  .arena-bottom {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .stage-controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .stage-controls button {
+    min-height: 40px;
+    font-size: 12px;
+  }
+  .arena-bottom {
+    padding: 5px 0;
+    font-size: 11px;
+  }
+  .bench-header {
+    margin: 0 0 5px;
+    font-size: 11px;
+  }
+  .bench {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .bench-item {
+    position: relative;
+    min-width: 0;
+  }
+  .bench-slot {
+    height: 64px;
+    position: relative;
+  }
+  .bench-slot > .piece {
+    position: absolute;
+    inset: 2px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+  }
+  .bench .unit-portrait {
+    width: 48%;
+    height: 100%;
+    margin-right: auto;
+  }
+  .bench .piece-name {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 10px;
+  }
+  .bench .stars {
+    position: absolute;
+    left: 3px;
+    top: 0;
+    margin: 0;
+  }
+  .bench-info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 2px;
+    font-size: 11px;
+    background: #1d302be8;
+  }
+  .formation-tools {
+    gap: 5px;
+    margin: 7px 0 0;
+  }
+  .formation-tools button {
+    min-height: 44px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  .auto-deploy {
+    gap: 5px;
+  }
+  .selection {
+    padding: 8px 0 0;
+    gap: 5px;
+  }
+  .selection > span {
+    width: 100%;
+  }
+  .selection > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .selection button {
+    min-height: 44px;
+    margin: 0;
+    padding: 4px 2px;
+    font-size: 11px;
+  }
+  .mobile-feedback {
+    display: block;
+    color: #bac7b5;
+    font-size: 11px;
+    line-height: 1.5;
+    margin: 7px 0 0;
+  }
+  .shop-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .shop-title button {
+    min-height: 44px;
+    padding: 6px 8px;
+    margin-left: 4px;
+  }
+  .shop-info {
+    min-height: 44px;
+  }
+  .mobile-dock {
+    padding: 5px 8px calc(6px + env(safe-area-inset-bottom));
+  }
+  .mobile-dock > div {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .mobile-dock button,
+  .mobile-dock a {
+    min-height: 44px;
+    font-size: 12px;
+    background: #1c3129;
+  }
+  .mobile-dock button[aria-current="page"],
+  .mobile-dock a[aria-current="page"] {
+    color: #15211c;
+    background: linear-gradient(#d5c394, #ae9365);
+    border-color: #ecdaa8;
+    font-weight: 700;
+  }
+}
+
+/* Distinct landwalkers suppress their exclusive formation. Keep the conflict visible. */
+.synergy-detail.conflicted { border-color: #a05f49; background: #512e2340; }
+.synergy-detail.conflicted .trait-icon,
+.synergy-detail.conflicted .synergy-count small { color: #efb098; }

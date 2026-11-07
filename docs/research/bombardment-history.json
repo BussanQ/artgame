@@ -1,0 +1,118 @@
+{
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.60",
+  "combatVersion": "bombardment",
+  "unitId": "ark",
+  "scope": "恢复方舟机群轰炸，分开记录五月公告、六月机制报道、七月实测表和十二月客户端截图，不声明已还原某一构建的全部字段。",
+  "sources": [
+    {
+      "id": "S55",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml?_platform=PC",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名）",
+      "kind": "publisher-byline-article-with-original-client-card",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "review": "重新解析此前取得且无第三方AI摘要的原始HTML，正文为大范围矩形轰炸；重新下载并目视客户端卡，确认四费、空军/攻城、集团轰炸、一星14秒及250/400/650技能伤害。",
+      "accessBoundary": "当前网页有第三方AI摘要横幅，精确数值只取原图；初次图片下载是988字节HTML挑战响应，已移出docs，未作为图片使用。重取后检查为真正JPEG，以下单独记录指纹。"
+    },
+    {
+      "id": "S35",
+      "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
+      "publishedAt": "2019-05-09",
+      "kind": "update-announcement-byline-not-independently-verified",
+      "originalHtmlSha256": "8abb8a45cc529d7ce184ef2f90f68749f2d74c04bbc440a0e02ab7af5391d781",
+      "review": "本次Web重读失败，复查已有完整原始HTML。集团轰炸冷却10/8/6秒调整为14/12/10秒；账号官方标识未独立确认，沿用来源目录中的边界。"
+    },
+    {
+      "id": "S11",
+      "url": "https://shouyou.gamersky.com/news/201906/1191090_2.shtml?tag=wap",
+      "publishedAt": "2019-06-06",
+      "kind": "media-update-report",
+      "sourceByline": "游民星空[整理]",
+      "originalHtmlSha256": "f502e651a318e56703c51532280efde8646e8fd626d1b262a99e92156a0afba3",
+      "review": "本次取得并解析原始HTML，确认机群出现后方舟死亡仍继续结算伤害的机制描述。作为定性旁证，不将媒体稿称为官方数值表。",
+      "author": "未知"
+    },
+    {
+      "id": "S04-1",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measured-attribute-table",
+      "row": 17,
+      "name": "方舟",
+      "fields": {
+        "cost": 4,
+        "hp": 650,
+        "attackRange": [
+          30,
+          34
+        ],
+        "armor": 5,
+        "range": 5,
+        "attackIntervalSeconds": 1.2,
+        "skillCooldownSeconds": [
+          14,
+          12,
+          10
+        ]
+      },
+      "limits": "玩家实测表，不是官方逐版本数据；攻击实现取区间均值32。"
+    }
+  ],
+  "image": {
+    "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/aJqUQBbnCjiseCx.jpg",
+    "path": "images/ark-bombardment-client-dec2019.jpg",
+    "sha256": "6ad3291873abdff33878b46ea84767d0abc75d89d8627245491905241e00ce29",
+    "format": "JPEG",
+    "size": [
+      640,
+      296
+    ],
+    "bytes": 25020,
+    "visuallyReviewed": true,
+    "clientBuild": "unknown"
+  },
+  "confirmedClientCard": {
+    "cost": 4,
+    "traits": [
+      "空军",
+      "攻城"
+    ],
+    "name": "集团轰炸",
+    "damage": [
+      250,
+      400,
+      650
+    ],
+    "displayedOneStarCooldownSeconds": 14,
+    "carrierLaunchesCarpetBombingAircraft": true
+  },
+  "localChoices": {
+    "initialMana": 0,
+    "windupSeconds": 1,
+    "rectangleWidthTiles": 3,
+    "rectangleLengthTiles": 8,
+    "speedTilesPerSecond": 2,
+    "visualAircraftCount": 3,
+    "packetsPerVictimPerRaid": 1,
+    "direction": "起手锁定从方舟向当前可见目标的方向，机群不追踪之后的目标移动。",
+    "collision": "每0.25秒扫掠前进条带，检查敌人当时的位置；同一机群每个UID最多一次，出界部分无效。",
+    "timing": "起手可被眩晕、沉默、魅惑和死亡打断；出动后恢复行动，独立机群保持原阵营及威力，直到完成或整场战斗结束。",
+    "damage": "固定星级法伤乘起手法强；每次命中独立经过现有魔抗、护盾、免伤、攻城和反伤规则，不把三架飞机计成三次全额伤害。",
+    "limits": "资料未给出精确宽长、速度、起手、飞机数量、每目标次数、碰撞与打断边界，上述均是可复核的单机适配。"
+  },
+  "art": {
+    "carrier": "../../public/assets/units/ark.png",
+    "aircraft": "../../public/assets/units/ghostjet.png",
+    "origin": "沿用既有ImageGen资产；机群不是额外棋子或可选召唤物。范围、落弹、发动机尾迹与起手姿态由Canvas绘制，不新增或重写栅格图片。"
+  },
+  "compatibility": {
+    "previousRules": "singleplayer-0.59",
+    "previousCombatVersion": "secret-orb",
+    "saveSchema": 59,
+    "historicalArkDefinition": "1050生命、100攻击、4格、1秒、虚空重炮，所有此前32版本保留。",
+    "frozenBattles": "../../tests/fixtures/pre-v060-ark-replays.json",
+    "catalog": "四费与卡池15份均未改变，已有比赛的目录仍固定。"
+  }
+}

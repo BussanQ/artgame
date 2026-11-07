@@ -1,0 +1,477 @@
+{
+  "checkedAt": "2026-11-06",
+  "rules": "singleplayer-0.55",
+  "combatVersion": "continuity",
+  "policy": "Paid standard commander keeps the explicitly requested preference for each classic/rotation pair, even when its main series is banned; this is a diagnostic preference, not the formal new-game profile allocation. Only available units can be bought; opponents follow chosen difficulty. No free money, units, rerolls or reward injection. Roster changes alter RNG choices; not a pure causal skill or human-win-rate estimate.",
+  "reportArtifacts": {
+    "docs/analysis/jungle-v053-psychic.json": "d4405ddc1de366bd9e583a92e0ea9e04c490c8b0c8da4bae7d5f219b960ec576",
+    "docs/analysis/jungle-v053-beasts.json": "81c12848dd83c6a9db549725f8060b8d97c7cc778ef16bc3a32ff4eb88c7a093",
+    "docs/analysis/jungle-v054-psychic.json": "e8ec3ab19f9fd1baad0d1663c05fe9c080c7263b5091475ac2a8082646381db2",
+    "docs/analysis/jungle-v054-beasts.json": "32c196a3f3c386924e149f7325785f5a96d39a2d7e02168da789e47b557276e6",
+    "docs/analysis/continuity-v055-psychic.json": "b23992042315c566d0ed6f8765cef4e4c70edf473329150303e8793bee2ddb79",
+    "docs/analysis/continuity-v055-beasts.json": "ff090235b00afe1d8c3a6633fe29bceae7c2686156767b4366fa17e10be3cd0d"
+  },
+  "cohorts": {
+    "reference053": {
+      "games": 12,
+      "rounds": 313,
+      "gamesWithNaturalThreeStars": 2,
+      "averageRankByDifficulty": {
+        "relaxed": 1.0,
+        "standard": 5.0,
+        "veteran": 6.5
+      },
+      "playerTreant": {
+        "games": 3,
+        "unitRounds": 16,
+        "starUnitRounds": [
+          7,
+          9,
+          0
+        ]
+      },
+      "allAIPreparedTreantUnitRounds": 48,
+      "opponentJungleInPlayerBattles": null
+    },
+    "affected054": {
+      "games": 12,
+      "rounds": 318,
+      "gamesWithNaturalThreeStars": 0,
+      "averageRankByDifficulty": {
+        "relaxed": 1.0,
+        "standard": 3.75,
+        "veteran": 6.25
+      },
+      "playerTreant": {
+        "games": 0,
+        "unitRounds": 0,
+        "starUnitRounds": [
+          0,
+          0,
+          0
+        ]
+      },
+      "allAIPreparedTreantUnitRounds": 5,
+      "opponentJungleInPlayerBattles": {
+        "rounds": 2,
+        "waves": 2,
+        "hits": 11,
+        "knockups": 11,
+        "landings": 11
+      }
+    },
+    "fixed055": {
+      "games": 12,
+      "rounds": 307,
+      "gamesWithNaturalThreeStars": 2,
+      "averageRankByDifficulty": {
+        "relaxed": 1.0,
+        "standard": 4.75,
+        "veteran": 7.5
+      },
+      "playerTreant": {
+        "games": 0,
+        "unitRounds": 0,
+        "starUnitRounds": [
+          0,
+          0,
+          0
+        ]
+      },
+      "allAIPreparedTreantUnitRounds": 6,
+      "opponentJungleInPlayerBattles": {
+        "rounds": 2,
+        "waves": 1,
+        "hits": 5,
+        "knockups": 5,
+        "landings": 4
+      }
+    }
+  },
+  "pairs": [
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "bannedSeries": [],
+      "reference053": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": 27,
+        "uniqueThreeStars": 1,
+        "peakThreeStars": 1
+      },
+      "affected054": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": 27,
+        "uniqueThreeStars": 1,
+        "peakThreeStars": 1
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "bannedSeries": [
+        "海神",
+        "不朽",
+        "猛禽"
+      ],
+      "reference053": {
+        "rank": 1,
+        "rounds": 28,
+        "firstThreeStar": 28,
+        "uniqueThreeStars": 1,
+        "peakThreeStars": 1
+      },
+      "affected054": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 1,
+        "rounds": 28,
+        "firstThreeStar": 28,
+        "uniqueThreeStars": 1,
+        "peakThreeStars": 1
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "standard",
+      "bannedSeries": [],
+      "reference053": {
+        "rank": 8,
+        "rounds": 20,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 3,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 8,
+        "rounds": 20,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "bannedSeries": [
+        "海神",
+        "不朽",
+        "猛禽"
+      ],
+      "reference053": {
+        "rank": 6,
+        "rounds": 24,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 7,
+        "rounds": 20,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 6,
+        "rounds": 24,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "bannedSeries": [],
+      "reference053": {
+        "rank": 7,
+        "rounds": 24,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 8,
+        "rounds": 22,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 7,
+        "rounds": 23,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 173,
+      "profile": "psychic",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "bannedSeries": [
+        "海神",
+        "不朽",
+        "猛禽"
+      ],
+      "reference053": {
+        "rank": 8,
+        "rounds": 18,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 4,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 8,
+        "rounds": 18,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "bannedSeries": [],
+      "reference053": {
+        "rank": 1,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 1,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 1,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "bannedSeries": [
+        "步兵",
+        "空军",
+        "猛禽"
+      ],
+      "reference053": {
+        "rank": 1,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 1,
+        "rounds": 26,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 1,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "standard",
+      "bannedSeries": [],
+      "reference053": {
+        "rank": 2,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 3,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 1,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "bannedSeries": [
+        "步兵",
+        "空军",
+        "猛禽"
+      ],
+      "reference053": {
+        "rank": 4,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 2,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 4,
+        "rounds": 28,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "bannedSeries": [],
+      "reference053": {
+        "rank": 5,
+        "rounds": 30,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 8,
+        "rounds": 21,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 8,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "bannedSeries": [
+        "步兵",
+        "空军",
+        "猛禽"
+      ],
+      "reference053": {
+        "rank": 6,
+        "rounds": 27,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "affected054": {
+        "rank": 5,
+        "rounds": 29,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      },
+      "fixed055": {
+        "rank": 7,
+        "rounds": 24,
+        "firstThreeStar": null,
+        "uniqueThreeStars": 0,
+        "peakThreeStars": 0
+      }
+    }
+  ],
+  "fixedSurveyFingerprintMismatches": {
+    "docs/analysis/continuity-v055-psychic.json": [],
+    "docs/analysis/continuity-v055-beasts.json": []
+  },
+  "aiPolicy": {
+    "sha256": "314ae91ec4ce5e1ef3d3d893710f79d8bc48bf0ad7cef87d8ebebeedec0cb7f6",
+    "sameAs054": true,
+    "additionalControlScoutingShipped": false
+  },
+  "diagnosis": {
+    "affectedVersion": "jungle",
+    "traitFallback": "AIRSEA_TRAIT_TIERS",
+    "evolutionFallback": "three copies for every star",
+    "fixedVersion": "continuity",
+    "routingAudit": "inheritance-v055.json"
+  },
+  "limits": [
+    "同偏好、种子和卡池模式的配对代理；全部购买/刷新/经验/出售使用实际规则，不是人工UI局。",
+    "0.54存在连携表与异虫进化回退，旧组不能仅用于解释树妖或AI估值。原始报告和当时源码指纹保留。",
+    "恢复规则后标准和挑战名次退步，未把较容易取胜当修复完成或平衡完成的证明。",
+    "自然三星0→2局，玩家树妖仍0局；树妖构筑价值、总体难度、多构筑人工和真实设备仍缺证据。",
+    "0.53是参考组，其树妖身板/技能与0.55不同。三个版本不是36个独立随机样本，不能作单参数因果结论。",
+    "AI准备单位轮次与玩家遇敌战斗轮次范围不同；旧版未采集新技能计数时保留null。"
+  ]
+}

@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -20,7 +21,7 @@ const p = (defId: string, uid: number, position = 35): Piece => ({
   star: 2,
 });
 describe("0.12 空海战斗节奏与版本隔离", () => {
-  it("轰炸机50初始能量，旧版仍为0，四空军45%与旧30%分别生效", () => {
+  it("轰炸机50初始能量，旧版仍为0，四空军35%与旧30%分别生效", () => {
     const pieces = ["repair", "bomber", "ghostjet", "ark"].map((id, i) =>
       p(id, i + 1, 32 + i),
     );
@@ -28,7 +29,7 @@ describe("0.12 空海战斗节奏与版本隔离", () => {
       old = army(pieces, 0, "airsea");
     expect(current[1].mana).toBe(50);
     expect(old[1].mana).toBe(0);
-    expect(current.every((f) => f.air!.evasion === 0.45)).toBe(true);
+    expect(current.every((f) => f.air!.evasion === 0.35)).toBe(true);
     expect(old.every((f) => f.air!.evasion === 0.3)).toBe(true);
     expect(army(pieces.slice(0, 2), 0)[0].air!.evasion).toBe(0.15);
     expect(skillDescription("bomber")).toContain("初始能量 50");
@@ -36,7 +37,7 @@ describe("0.12 空海战斗节奏与版本隔离", () => {
     expect(
       pieceDetails(p("bomber", 1)).traits.find((t) => t.name === "空军")!
         .description,
-    ).toContain("45%");
+    ).toContain("35%");
     expect(
       pieceDetails(p("bomber", 1), "airsea").traits.find(
         (t) => t.name === "空军",
@@ -67,9 +68,43 @@ describe("0.12 空海战斗节奏与版本隔离", () => {
       }
     });
   it("0.11完整32棋子快照保持原SHA-256", async () => {
+    const originalIds = [
+      "infantry",
+      "guard",
+      "pangolin",
+      "panda",
+      "sniper",
+      "lion",
+      "chariot",
+      "monk",
+      "wolf",
+      "cannon",
+      "master",
+      "titan",
+      "cavalry",
+      "dragonfly",
+      "shadowblade",
+      "turtle",
+      "tiger",
+      "bull",
+      "fish",
+      "deer",
+      "adept",
+      "shark",
+      "eyebug",
+      "blastbug",
+      "spider",
+      "wasp",
+      "repair",
+      "bomber",
+      "ghostjet",
+      "ark",
+      "skycrab",
+      "eel",
+    ];
     const fixture = (start: number) =>
-      UNITS.slice(start, start + 16).map((u, i) => ({
-        ...p(u.id, start + i + 1, 32 + i),
+      originalIds.slice(start, start + 16).map((id, i) => ({
+        ...p(id, start + i + 1, 32 + i),
         items: i % 3 === 0 ? ["staff"] : [],
       }));
     const b = simulate(fixture(0), fixture(16), "airsea");
@@ -85,7 +120,7 @@ describe("0.12 空海战斗节奏与版本隔离", () => {
   });
   for (const phase of ["prepare", "battle", "result"] as const)
     it(`schema10 ${phase}保留资源和旧战斗，准备或下一回合才升级`, () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "airsea";
       const player = g.players[0];
       buy(g, player, 0);
@@ -110,12 +145,12 @@ describe("0.12 空海战斗节奏与版本隔离", () => {
       expect(validGame(restored)).toBe(true);
       expect(restored).toEqual({
         ...g,
-        combatVersion: phase === "prepare" ? "metamorph" : "airsea",
+        combatVersion: phase === "prepare" ? CURRENT_COMBAT_VERSION : "airsea",
       });
       if (phase === "result") {
         if (restored.reward) claimReward(restored, 0);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("metamorph");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
         expect(restored.history[0].combatVersion).toBe("airsea");
       }
     });

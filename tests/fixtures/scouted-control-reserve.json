@@ -1,0 +1,4627 @@
+{
+  "provenance": {
+    "kind": "normal-paid-proxy-capture",
+    "report": "docs/analysis/scouting-v055-beasts.json",
+    "reportSha256": "c86b839b7bd716223a10734676f09b2ddf45bf3ec1bc1d5371e39cca7e519cff",
+    "captureSha256": "7f7f011e660bba76159871b7ac959ebef1ceda389acc0f5062eda48e9dda4fd1",
+    "initialSeed": 311,
+    "mode": "classic",
+    "difficulty": "standard",
+    "round": 23,
+    "policy": "Paid standard commander keeps the explicitly requested preference for each classic/rotation pair, even when its main series is banned; this is a diagnostic preference, not the formal new-game profile allocation. Only available units can be bought; opponents follow chosen difficulty. No free money, units, rerolls or reward injection. Roster changes alter RNG choices; not a pure causal skill or human-win-rate estimate.",
+    "sources": {
+      "scripts/rotation-survey.ts": "91715c3e70b47bc335891ac3061b89a2fd057e6c19b03f80d82333595546d813",
+      "src/data/abnormal-demo.ts": "f39d89a4975f0c8f0221c4a336f9f28200aedd2568841e6d3424bb94a79740fc",
+      "src/data/ai-profiles.ts": "94692ba49058d48cf237c058e3705b733f12ef79e990e3714dc2df20f6587645",
+      "src/data/assassin-demo.ts": "26bd337f77404cb2df4ec15f0db8dde0ac82a96a4672d9510417e6485fccace5",
+      "src/data/aurora-demo.ts": "5d536911cfd14c7f76045377bcf6ce05556ed3189614261805774cc0f1ec0a5f",
+      "src/data/axethrall-demo.ts": "e753f888f6d7181cbe02cacf7f6eba7b490124edf8bc757509944108fabf8e23",
+      "src/data/beast-frontline-demo.ts": "0dca9d8b86da4ce5f52fef6fdece66e35ed0436ec37de53628b2aead11c50fde",
+      "src/data/bladethrall-demo.ts": "330e4fd8764f9f3bce79d3d415c58f328185209d0bd9379e68ade93a6814084b",
+      "src/data/catalog.ts": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d",
+      "src/data/coalition-demo.ts": "c39f5517f8db652c11bd9695731d1ec8c5a5d99808ecace12ed66328e17087fc",
+      "src/data/counterplay-demo.ts": "89bba4fb7c61733cc52a840430feda6d11a4228ce286b3a60e752334ee34756f",
+      "src/data/encounters.ts": "762f649bd560004bb14a6b23f9ca51005c08dc8bde37db9e4ab481fb584ae62d",
+      "src/data/gospel-demo.ts": "670ac143a73933448f9a2567828e8bfb3e78eae76c927fd4e934c8a4e83b6a67",
+      "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba",
+      "src/data/jungle-demo.ts": "617775bd9b74ca1db4254caff2572830e09646a6510a5bb9d5fa962bcdb61bf9",
+      "src/data/lightning-demo.ts": "70d16396b91c19fb7033d527d6ff54bddce783eff754300d026b2127cc97e3c8",
+      "src/data/lingjiu-demo.ts": "7ff2b2d29a20c7dc068f794efe167ac61574e53751dbc9f51417dac0d47e54da",
+      "src/data/shieldthrall-demo.ts": "bb6b29064083db4cf3c07a0341c1a1253df0ab40511e62bce8eb6351761d20ab",
+      "src/data/skills.ts": "2f7948b60b7827da7350cc468db730c82a06c28368403760fee2fcfe07090b9f",
+      "src/data/staffthrall-demo.ts": "a0d4b22ddab5ea7c7e72fddcd4c8ea26396a7ce501dffab9e138b570bb9eb1a9",
+      "src/data/swordthrall-demo.ts": "8c21b7b290e54f2c7c77ef43bf2f9ff925e14ac50db2169571c701b0420f1d53",
+      "src/data/taotie-demo.ts": "96f77913390241f2358063f580d9a6b68088613596f07eccfbd6fb4cbc1656cb",
+      "src/data/tar-demo.ts": "a571dbc675508f04ea6f782d7c5fb9eb4d0e2ff54283b5151606e221ff70267c",
+      "src/data/thunderstorm-demo.ts": "1509a2f6cfe2631e5b265e8f89fd7ab7c9bd288efb06396fd41ab309625960c8",
+      "src/data/traits.ts": "8e34a024ccecbb57c06e2978e7f5a30b184ba96ab30d488f06a7222c36c9940f",
+      "src/data/unit-stats.ts": "b794103cc38fe93ea1df3a128670f0db5bbcc101656fd376160e15977feba36d",
+      "src/data/units.ts": "0d57b5cd8113e585742d2bd314102c3d53f5c72224fddd68bbf7025138d3b7fd",
+      "src/data/wildfront-demo.ts": "17f963e214eed3069e0c255652007e39255cdee924b494b63a93c1a3fb694b50",
+      "src/engine/abilities.ts": "cbfe16233c95a32d2e0c9f2a4bb173ea8230945818598ff95fdbe8fc7b50900b",
+      "src/engine/ai.ts": "c13b05e47f4438de1bfb7931a28957698cd40c1784f71ff6fca08b23ec59e682",
+      "src/engine/assassins.ts": "e88609c81bae44956d4aa39c1e8b32d4414f0d1f8f16bab7106076955011bc01",
+      "src/engine/battle-analysis.ts": "11c50f08cf7a1dc7c93a65c243e098b8dbc39790637c571a5796f6828883812e",
+      "src/engine/battle.ts": "ac58ed002f4c009215bd5092f78296ad966746f30916742a2afc01d9afc86230",
+      "src/engine/beasts.ts": "cc44ac5d85a62711af58c72ee35f8c29722ee48df68d5069f395fd41a5dc62b7",
+      "src/engine/birdrider.ts": "61a81c9c3a0da3c07e047eb28278f2597361c13706f8c029417a7d3018015878",
+      "src/engine/bladethrall.ts": "24a15ea431ad5ec67aed56f867b203c38b3f4f0110369541442a857726bb1424",
+      "src/engine/deployment.ts": "7b3536cdf128ec7b10b9142a864ac529750120c13ff9f6f9d1ffbbd4cff08393",
+      "src/engine/economy.ts": "3d7e8b88ac2f16e4cdeb01fbe9ae58549a774070ed1173c2a5e666ed0a9dcd71",
+      "src/engine/equipment.ts": "8096c1c22a4637b4085eeb4a1ce699208988f207067937810ddd36167603f61d",
+      "src/engine/game.ts": "e4ebe95b0da39ae3a77fa9a9190c64a7c5c328507e132a4693cfe722b62a299b",
+      "src/engine/gospel.ts": "638a6351fcfa6d3ebf703b4b0ea96cab43bd6ee4bef777994a917d64654aea66",
+      "src/engine/immortality.ts": "fe9106a0b2084841c81bf498efd18a141da81a78099920df746e051cc29cf960",
+      "src/engine/infantry-skills.ts": "d9f63278972aca474b1a912cad8951c31349b0520c21ce5c909355203191914a",
+      "src/engine/ironrooster.ts": "5835565b2b5097b8ecdb524c5855f4e767e19910f1657e8c52cf8b72a7fb2c06",
+      "src/engine/jungle.ts": "c3a4d01c8991664e50c570637c1b7c0b539044a5810be2bf7f42b23e8082e1f5",
+      "src/engine/lightning.ts": "a0dfd157419807e8133fc4b1b3da5a30468a3f260db4a83663da86ba7beeaf58",
+      "src/engine/lingjiu.ts": "e34c520d075d8d93bde0ebbbf5dcbb767f7ebc086872ddac4dced5aabbb8548e",
+      "src/engine/match-summary.ts": "fc0225d87c171a58f3fcf9ea54263d1b9e3b3b2416632d7db63b0fe54bcf3674",
+      "src/engine/metamorphosis.ts": "d70ce056ac8dec6f62255df57b6633f72abc61be6a39adb6f0bbde3307f116f8",
+      "src/engine/persistence.ts": "16da8d12ea10c7821ac2663d44e1e32ccaab44aecfcd8b5a42c792f9b64aaae1",
+      "src/engine/phoenix.ts": "7ca133ffa3f436af675978e80ad92005bb0948478400c3e4ee12cfb9e04128f5",
+      "src/engine/progression.ts": "351d3b922cef649a626f293e95da3b9b5e32d2f24df1cefef6160770a71b9f12",
+      "src/engine/random.ts": "ba0d5984534fdd513fac5e9d54bc586c1e8dfb65736af189f048ade4c34d0b21",
+      "src/engine/recruitment.ts": "e052d1a3ba95aa783a330eb324ae316c4fe5eb73859dc8fd48b2ff983fcbb8ab",
+      "src/engine/rotation.ts": "31004f784695125cd6b187409d022748a397f8b153593f748de0bf5d469f48d3",
+      "src/engine/sea-ward.ts": "c7205db3f8643c82ed374411931b096a7ee17421515b59fc3c9dd4f58aea1cab",
+      "src/engine/shieldthrall.ts": "e34e99dda3213eb00418ca6775fdc68409a7c84b71f16465e35aaaf9865001bb",
+      "src/engine/staffthrall.ts": "208b898b1fc9586409b2661d9ad1f2b65b176dc2107d50e62ca8a059c13b1f70",
+      "src/engine/summons.ts": "2ce7178aab21b37ccbbdb7bcb247ba4da547831d1688335f35e01286d3ea172b",
+      "src/engine/swordthrall.ts": "4531a8b9625f4ce71e6972f3e63075afaef51cb482df7decd879e1b197253d00",
+      "src/engine/synergies.ts": "e1e26d4536e5d24e27a93f78872ff63dc448ea777e5f55325b4a782ae7bf8662",
+      "src/engine/tar.ts": "c6f8d5196114e17e0010d4f9ce494ae7fed7cf163bb7922c34a34a47e69dbba9",
+      "src/engine/thunderstorm.ts": "584bb565b83c5e0a425908cb5295ed464d452c43da83d305f3f291e2aa88abb3",
+      "src/engine/triggers.ts": "420ecc2ee33df93b3b97e764ab0412c6679ef3fb74550b9a3b36b8b8d7fd27d9",
+      "src/engine/types.ts": "3f5be6aa0d051220a4dfd9a340c291c652900d2d41699802fa9da9e12399dc2c",
+      "src/engine/wild-skills.ts": "040807f4b6a071893c82b4d52babded5ea6ab454b50799d9578dd6635929a63a"
+    }
+  },
+  "game": {
+    "seed": 1994321359,
+    "catalogVersion": "continuity",
+    "combatVersion": "continuity",
+    "difficulty": "standard",
+    "nextUid": 440,
+    "round": 23,
+    "phase": "prepare",
+    "players": [
+      {
+        "id": 0,
+        "name": "你 · 指挥官",
+        "hp": 73,
+        "gold": 48,
+        "level": 9,
+        "xp": 33,
+        "streak": 3,
+        "pieces": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 52,
+            "items": [
+              "sage",
+              "sage"
+            ]
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 2,
+            "position": 47,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 51,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "phoenix",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 372,
+            "defId": "master",
+            "star": 1,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 388,
+            "defId": "bull",
+            "star": 1,
+            "position": 44,
+            "items": []
+          },
+          {
+            "uid": 398,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 415,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 430,
+            "defId": "wolf",
+            "star": 1,
+            "position": 45,
+            "items": []
+          }
+        ],
+        "shop": [
+          "grenadier",
+          "ghostjet",
+          "turtle",
+          "cannon",
+          "bonedragon"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 1,
+        "name": "北境哨兵",
+        "aiProfile": "pandas",
+        "hp": 20,
+        "gold": 18,
+        "level": 9,
+        "xp": 43,
+        "streak": -2,
+        "pieces": [
+          {
+            "uid": 11,
+            "defId": "cavalry",
+            "star": 2,
+            "position": 36,
+            "items": [
+              "heart"
+            ]
+          },
+          {
+            "uid": 44,
+            "defId": "lion",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 46,
+            "defId": "elephant",
+            "star": 2,
+            "position": 33,
+            "items": [
+              "sage"
+            ]
+          },
+          {
+            "uid": 77,
+            "defId": "guard",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 121,
+            "defId": "dragonfly",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 169,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 216,
+            "defId": "guard",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 248,
+            "defId": "turtle",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 267,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 291,
+            "defId": "lion",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 292,
+            "defId": "lion",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 293,
+            "defId": "master",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 373,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 374,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 402,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 418,
+            "defId": "phoenix",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 431,
+            "defId": "master",
+            "star": 1,
+            "position": 37,
+            "items": []
+          }
+        ],
+        "shop": [
+          "ironrooster",
+          "blastbug",
+          "winddragon",
+          "wolf",
+          "bonedragon"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 2,
+        "name": "渡鸦",
+        "aiProfile": "insects",
+        "hp": 0,
+        "gold": 4,
+        "level": 9,
+        "xp": 11,
+        "streak": -9,
+        "pieces": [],
+        "shop": [],
+        "locked": false,
+        "inventory": [],
+        "eliminatedRound": 21
+      },
+      {
+        "id": 3,
+        "name": "荒原旅者",
+        "aiProfile": "assassins",
+        "hp": 60,
+        "gold": 38,
+        "level": 8,
+        "xp": 9,
+        "streak": 2,
+        "pieces": [
+          {
+            "uid": 18,
+            "defId": "elephant",
+            "star": 2,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 53,
+            "defId": "axethrall",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 81,
+            "defId": "pangolin",
+            "star": 3,
+            "position": 32,
+            "items": [
+              "staff",
+              "staff",
+              "staff"
+            ]
+          },
+          {
+            "uid": 102,
+            "defId": "ghostjet",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 196,
+            "defId": "ghostjet",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 225,
+            "defId": "lion",
+            "star": 2,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 252,
+            "defId": "turtle",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 327,
+            "defId": "staffthrall",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 338,
+            "defId": "axethrall",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 359,
+            "defId": "shieldthrall",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 424,
+            "defId": "cannon",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 426,
+            "defId": "cannon",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 433,
+            "defId": "bull",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 434,
+            "defId": "dragonfly",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 436,
+            "defId": "lingjiu",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 438,
+            "defId": "ghostjet",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "shop": [
+          "bonedragon",
+          "blastbug",
+          "shieldthrall",
+          "tiger",
+          "lingjiu"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 4,
+        "name": "零号机",
+        "aiProfile": "psychic",
+        "hp": 45,
+        "gold": 27,
+        "level": 9,
+        "xp": 38,
+        "streak": 8,
+        "pieces": [
+          {
+            "uid": 21,
+            "defId": "adept",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 23,
+            "defId": "eyebug",
+            "star": 2,
+            "position": null,
+            "copies": 2,
+            "items": []
+          },
+          {
+            "uid": 85,
+            "defId": "venombeast",
+            "star": 2,
+            "position": 52,
+            "items": [
+              "coil",
+              "fang",
+              "warblade"
+            ]
+          },
+          {
+            "uid": 86,
+            "defId": "panda",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 199,
+            "defId": "bull",
+            "star": 2,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 201,
+            "defId": "wolf",
+            "star": 2,
+            "position": 47,
+            "items": [
+              "sage"
+            ]
+          },
+          {
+            "uid": 202,
+            "defId": "eyebug",
+            "star": 2,
+            "position": null,
+            "copies": 2,
+            "items": []
+          },
+          {
+            "uid": 227,
+            "defId": "master",
+            "star": 1,
+            "position": 44,
+            "items": []
+          },
+          {
+            "uid": 256,
+            "defId": "monk",
+            "star": 2,
+            "position": 45,
+            "items": []
+          },
+          {
+            "uid": 276,
+            "defId": "cannon",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 304,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 328,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 51,
+            "items": []
+          },
+          {
+            "uid": 363,
+            "defId": "bonedragon",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 395,
+            "defId": "bull",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 407,
+            "defId": "eyebug",
+            "star": 1,
+            "position": null,
+            "copies": 1,
+            "items": []
+          },
+          {
+            "uid": 427,
+            "defId": "skytoad",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 439,
+            "defId": "shadowblade",
+            "star": 1,
+            "position": 53,
+            "items": []
+          }
+        ],
+        "shop": [
+          "thunderlord",
+          "shadowblade",
+          "panda",
+          "bloodhawk",
+          "bull"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 5,
+        "name": "白夜",
+        "aiProfile": "fleet",
+        "hp": 0,
+        "gold": 6,
+        "level": 8,
+        "xp": 3,
+        "streak": -1,
+        "pieces": [],
+        "shop": [],
+        "locked": false,
+        "inventory": [],
+        "eliminatedRound": 17
+      },
+      {
+        "id": 6,
+        "name": "深海回声",
+        "aiProfile": "infantry",
+        "hp": 33,
+        "gold": 14,
+        "level": 9,
+        "xp": 28,
+        "streak": 2,
+        "pieces": [
+          {
+            "uid": 31,
+            "defId": "guard",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 63,
+            "defId": "infantry",
+            "star": 2,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 149,
+            "defId": "vajra",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "staff",
+              "staff"
+            ]
+          },
+          {
+            "uid": 209,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 241,
+            "defId": "master",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 257,
+            "defId": "specialist",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "bloodblade"
+            ]
+          },
+          {
+            "uid": 313,
+            "defId": "staffthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 315,
+            "defId": "shark",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 319,
+            "defId": "arhat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 321,
+            "defId": "shieldthrall",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 343,
+            "defId": "guard",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 344,
+            "defId": "specialist",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 368,
+            "defId": "titan",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 384,
+            "defId": "specialist",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 410,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 428,
+            "defId": "medic",
+            "star": 1,
+            "position": 43,
+            "items": []
+          },
+          {
+            "uid": 429,
+            "defId": "monk",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "shop": [
+          "medic",
+          "pangolin",
+          "skytoad",
+          "elephant",
+          "bat"
+        ],
+        "locked": false,
+        "inventory": []
+      },
+      {
+        "id": 7,
+        "name": "铁幕",
+        "aiProfile": "beasts",
+        "hp": 50,
+        "gold": 29,
+        "level": 9,
+        "xp": 33,
+        "streak": 6,
+        "pieces": [
+          {
+            "uid": 130,
+            "defId": "venombeast",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "warblade",
+              "coil"
+            ]
+          },
+          {
+            "uid": 155,
+            "defId": "cavalry",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 181,
+            "defId": "bat",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 210,
+            "defId": "bull",
+            "star": 1,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 211,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "staff",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 259,
+            "defId": "elephant",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 286,
+            "defId": "master",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 324,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 43,
+            "items": []
+          },
+          {
+            "uid": 325,
+            "defId": "turtle",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 331,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 333,
+            "defId": "lion",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 346,
+            "defId": "titan",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 370,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 385,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 397,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 412,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 414,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "shop": [
+          "dragonfly",
+          "turtle",
+          "bomber",
+          "bloodhawk",
+          "wasp"
+        ],
+        "locked": false,
+        "inventory": []
+      }
+    ],
+    "pool": {
+      "lingjiu": 28,
+      "elephant": 32,
+      "venombeast": 24,
+      "staffthrall": 11,
+      "shieldthrall": 10,
+      "bladethrall": 22,
+      "swordthrall": 28,
+      "axethrall": 39,
+      "infantry": 42,
+      "guard": 33,
+      "pangolin": 32,
+      "panda": 41,
+      "sniper": 30,
+      "lion": 18,
+      "chariot": 30,
+      "monk": 21,
+      "wolf": 14,
+      "cannon": 11,
+      "master": 3,
+      "titan": 8,
+      "cavalry": 22,
+      "dragonfly": 20,
+      "shadowblade": 8,
+      "turtle": 8,
+      "tiger": 9,
+      "bull": 17,
+      "fish": 43,
+      "deer": 30,
+      "adept": 27,
+      "shark": 12,
+      "eyebug": 40,
+      "blastbug": 28,
+      "spider": 25,
+      "wasp": 14,
+      "repair": 45,
+      "bomber": 29,
+      "ghostjet": 17,
+      "ark": 15,
+      "skycrab": 30,
+      "eel": 25,
+      "vine": 30,
+      "bonedragon": 11,
+      "treant": 10,
+      "acolyte": 30,
+      "stormcaller": 45,
+      "thunderlord": 24,
+      "bat": 18,
+      "bloodhawk": 19,
+      "skytoad": 8,
+      "vajra": 24,
+      "arhat": 24,
+      "winddragon": 13,
+      "phoenix": 10,
+      "whale": 10,
+      "medic": 43,
+      "flametrooper": 28,
+      "grenadier": 14,
+      "motorcycle": 25,
+      "irondog": 45,
+      "specialist": 20,
+      "birdrider": 45,
+      "ironape": 30,
+      "ironrooster": 14
+    },
+    "message": "防守成功。金币与经验已结算。",
+    "history": [
+      {
+        "round": 1,
+        "combatVersion": "continuity",
+        "opponentId": -1,
+        "opponentName": "荒原斥候",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 5,
+        "hp": 100,
+        "gold": 5,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 1,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 1,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 900000100,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 35,
+            "encounterPower": 0.35,
+            "items": []
+          },
+          {
+            "uid": 900000101,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 37,
+            "encounterPower": 0.35,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 2,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 6,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 7,
+            "defId": "repair",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "core"
+      },
+      {
+        "round": 2,
+        "combatVersion": "continuity",
+        "opponentId": -1,
+        "opponentName": "幽影狼群",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 5,
+        "hp": 100,
+        "gold": 6,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 1,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "repair",
+            "star": 2,
+            "position": 43,
+            "items": []
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": 35,
+            "items": [
+              "core"
+            ]
+          }
+        ],
+        "right": [
+          {
+            "uid": 900000200,
+            "defId": "wolf",
+            "star": 1,
+            "position": 34,
+            "encounterPower": 0.5,
+            "items": []
+          },
+          {
+            "uid": 900000201,
+            "defId": "wolf",
+            "star": 1,
+            "position": 37,
+            "encounterPower": 0.5,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 2,
+            "defId": "fish",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 3,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 6,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 41,
+            "defId": "irondog",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 42,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 43,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "crystal"
+      },
+      {
+        "round": 3,
+        "combatVersion": "continuity",
+        "opponentId": -1,
+        "opponentName": "狮王营地",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 5,
+        "hp": 100,
+        "gold": 8,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 1,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "repair",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 1,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 900000300,
+            "defId": "lion",
+            "star": 1,
+            "position": 35,
+            "encounterPower": 0.75,
+            "items": []
+          },
+          {
+            "uid": 900000301,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 34,
+            "encounterPower": 0.5,
+            "items": []
+          },
+          {
+            "uid": 900000302,
+            "defId": "pangolin",
+            "star": 1,
+            "position": 37,
+            "encounterPower": 0.5,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 3,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 6,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 41,
+            "defId": "irondog",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 42,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 43,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "core"
+      },
+      {
+        "round": 4,
+        "combatVersion": "continuity",
+        "opponentId": 4,
+        "opponentName": "零号机",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 6,
+        "hp": 100,
+        "gold": 13,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "repair",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 1,
+            "position": 35,
+            "items": [
+              "core"
+            ]
+          }
+        ],
+        "right": [
+          {
+            "uid": 23,
+            "defId": "eyebug",
+            "star": 2,
+            "position": 56,
+            "copies": 2,
+            "items": [
+              "sage",
+              "blade"
+            ]
+          },
+          {
+            "uid": 54,
+            "defId": "blastbug",
+            "star": 2,
+            "position": 35,
+            "copies": 2,
+            "items": []
+          },
+          {
+            "uid": 86,
+            "defId": "panda",
+            "star": 1,
+            "position": 32,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 3,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 6,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 41,
+            "defId": "irondog",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 43,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 5,
+        "combatVersion": "continuity",
+        "opponentId": 5,
+        "opponentName": "白夜",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 7,
+        "hp": 100,
+        "gold": 17,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "repair",
+            "star": 2,
+            "position": 43,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "core",
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 26,
+            "defId": "bomber",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 29,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "crystal"
+            ]
+          },
+          {
+            "uid": 58,
+            "defId": "repair",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 61,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 3,
+            "defId": "stormcaller",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 43,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 6,
+        "combatVersion": "continuity",
+        "opponentId": 6,
+        "opponentName": "深海回声",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 7,
+        "income": 8,
+        "hp": 93,
+        "gold": 21,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "repair",
+            "star": 2,
+            "position": 43,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "sage",
+              "core"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 31,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 63,
+            "defId": "infantry",
+            "star": 1,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 64,
+            "defId": "fish",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "staff",
+              "blade"
+            ]
+          },
+          {
+            "uid": 67,
+            "defId": "skycrab",
+            "star": 1,
+            "position": 56,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 3,
+            "defId": "stormcaller",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 43,
+            "defId": "guard",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 119,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 120,
+            "defId": "sniper",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 7,
+        "combatVersion": "continuity",
+        "opponentId": 7,
+        "opponentName": "铁幕",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 9,
+        "hp": 93,
+        "gold": 23,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "core",
+              "sage"
+            ]
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 98,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "warblade"
+            ]
+          },
+          {
+            "uid": 116,
+            "defId": "deer",
+            "star": 1,
+            "position": 43,
+            "items": [
+              "crystal"
+            ]
+          },
+          {
+            "uid": 130,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 152,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 155,
+            "defId": "cavalry",
+            "star": 1,
+            "position": 35,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 3,
+            "defId": "stormcaller",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "repair",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 119,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 8,
+        "combatVersion": "continuity",
+        "opponentId": 1,
+        "opponentName": "北境哨兵",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 10,
+        "hp": 93,
+        "gold": 31,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "sage",
+              "core"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 11,
+            "defId": "cavalry",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 46,
+            "defId": "elephant",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "heart",
+              "blade"
+            ]
+          },
+          {
+            "uid": 78,
+            "defId": "cavalry",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 121,
+            "defId": "dragonfly",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 161,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 37,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 3,
+            "defId": "stormcaller",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 4,
+            "defId": "repair",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 119,
+            "defId": "stormcaller",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 160,
+            "defId": "lion",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 9,
+        "combatVersion": "continuity",
+        "opponentId": 2,
+        "opponentName": "渡鸦",
+        "kind": "pvp",
+        "winner": null,
+        "damage": 3,
+        "income": 9,
+        "hp": 90,
+        "gold": 30,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "core",
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 13,
+            "defId": "lion",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 14,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "core",
+              "warblade"
+            ]
+          },
+          {
+            "uid": 48,
+            "defId": "vine",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 80,
+            "defId": "chariot",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 136,
+            "defId": "guard",
+            "star": 1,
+            "position": 37,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 160,
+            "defId": "lion",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 166,
+            "defId": "deer",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 167,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 168,
+            "defId": "arhat",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 10,
+        "combatVersion": "continuity",
+        "opponentId": -1,
+        "opponentName": "遗迹守军",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 9,
+        "hp": 90,
+        "gold": 31,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "sage",
+              "core"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": 56,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 900001000,
+            "defId": "guard",
+            "star": 2,
+            "position": 35,
+            "encounterPower": 1,
+            "items": []
+          },
+          {
+            "uid": 900001001,
+            "defId": "guard",
+            "star": 2,
+            "position": 36,
+            "encounterPower": 1,
+            "items": []
+          },
+          {
+            "uid": 900001002,
+            "defId": "chariot",
+            "star": 2,
+            "position": 59,
+            "encounterPower": 0.85,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 160,
+            "defId": "lion",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 167,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 182,
+            "defId": "pangolin",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "blade"
+      },
+      {
+        "round": 11,
+        "combatVersion": "continuity",
+        "opponentId": 4,
+        "opponentName": "零号机",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 12,
+        "hp": 90,
+        "gold": 37,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 36,
+            "items": [
+              "core",
+              "sage"
+            ]
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 34,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 54,
+            "defId": "blastbug",
+            "star": 2,
+            "position": 34,
+            "copies": 2,
+            "items": []
+          },
+          {
+            "uid": 85,
+            "defId": "venombeast",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 199,
+            "defId": "bull",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 201,
+            "defId": "wolf",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 202,
+            "defId": "eyebug",
+            "star": 2,
+            "position": 56,
+            "copies": 2,
+            "items": [
+              "warblade",
+              "sage"
+            ]
+          },
+          {
+            "uid": 227,
+            "defId": "master",
+            "star": 1,
+            "position": 37,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 8,
+            "defId": "irondog",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 160,
+            "defId": "lion",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 167,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 12,
+        "combatVersion": "continuity",
+        "opponentId": 5,
+        "opponentName": "白夜",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 12,
+        "hp": 90,
+        "gold": 35,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "sage",
+              "core"
+            ]
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 34,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 58,
+            "defId": "repair",
+            "star": 2,
+            "position": 43,
+            "items": [
+              "blade",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 88,
+            "defId": "fish",
+            "star": 2,
+            "position": 44,
+            "items": []
+          },
+          {
+            "uid": 164,
+            "defId": "lingjiu",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 206,
+            "defId": "wolf",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 233,
+            "defId": "bull",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 237,
+            "defId": "staffthrall",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 240,
+            "defId": "ghostjet",
+            "star": 1,
+            "position": 63,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 107,
+            "defId": "elephant",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 160,
+            "defId": "lion",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 167,
+            "defId": "cavalry",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 13,
+        "combatVersion": "continuity",
+        "opponentId": 6,
+        "opponentName": "深海回声",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 13,
+        "hp": 90,
+        "gold": 33,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "core",
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 33,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 31,
+            "defId": "guard",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 32,
+            "defId": "swordthrall",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 63,
+            "defId": "infantry",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 94,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "staff",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 149,
+            "defId": "vajra",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 241,
+            "defId": "master",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 283,
+            "defId": "master",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 261,
+            "defId": "wasp",
+            "star": 1,
+            "position": null,
+            "copies": 1,
+            "items": []
+          },
+          {
+            "uid": 262,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 265,
+            "defId": "adept",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 266,
+            "defId": "ironape",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 14,
+        "combatVersion": "continuity",
+        "opponentId": 7,
+        "opponentName": "铁幕",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 13,
+        "hp": 90,
+        "gold": 42,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "sage",
+              "core"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 33,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 98,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 181,
+            "defId": "bat",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "staff",
+              "warblade"
+            ]
+          },
+          {
+            "uid": 210,
+            "defId": "bull",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 211,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 286,
+            "defId": "master",
+            "star": 1,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 324,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 325,
+            "defId": "turtle",
+            "star": 1,
+            "position": 34,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 261,
+            "defId": "wasp",
+            "star": 1,
+            "position": null,
+            "copies": 1,
+            "items": []
+          },
+          {
+            "uid": 262,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 287,
+            "defId": "panda",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 15,
+        "combatVersion": "continuity",
+        "opponentId": -1,
+        "opponentName": "狂兽围猎",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 13,
+        "hp": 90,
+        "gold": 43,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "core",
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 326,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 900001500,
+            "defId": "lion",
+            "star": 2,
+            "position": 35,
+            "encounterPower": 1.2,
+            "items": []
+          },
+          {
+            "uid": 900001501,
+            "defId": "wolf",
+            "star": 2,
+            "position": 34,
+            "encounterPower": 1,
+            "items": []
+          },
+          {
+            "uid": 900001502,
+            "defId": "wolf",
+            "star": 2,
+            "position": 37,
+            "encounterPower": 1,
+            "items": []
+          },
+          {
+            "uid": 900001503,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 43,
+            "encounterPower": 1,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 261,
+            "defId": "wasp",
+            "star": 1,
+            "position": null,
+            "copies": 1,
+            "items": []
+          },
+          {
+            "uid": 262,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "crystal"
+      },
+      {
+        "round": 16,
+        "combatVersion": "continuity",
+        "opponentId": 2,
+        "opponentName": "渡鸦",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 5,
+        "income": 14,
+        "hp": 85,
+        "gold": 47,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "sage",
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 326,
+            "defId": "wolf",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 14,
+            "defId": "irondog",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "aegis"
+            ]
+          },
+          {
+            "uid": 48,
+            "defId": "vine",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 111,
+            "defId": "irondog",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 171,
+            "defId": "thunderlord",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "warblade"
+            ]
+          },
+          {
+            "uid": 250,
+            "defId": "cannon",
+            "star": 1,
+            "position": 59,
+            "items": []
+          },
+          {
+            "uid": 294,
+            "defId": "spider",
+            "star": 2,
+            "position": 61,
+            "copies": 2,
+            "items": []
+          },
+          {
+            "uid": 295,
+            "defId": "arhat",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "fang"
+            ]
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 261,
+            "defId": "wasp",
+            "star": 1,
+            "position": null,
+            "copies": 1,
+            "items": []
+          },
+          {
+            "uid": 262,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 17,
+        "combatVersion": "continuity",
+        "opponentId": 3,
+        "opponentName": "荒原旅者",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 15,
+        "hp": 85,
+        "gold": 48,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "sage",
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 56,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 18,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "crystal",
+              "staff",
+              "staff"
+            ]
+          },
+          {
+            "uid": 53,
+            "defId": "axethrall",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 81,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 102,
+            "defId": "ghostjet",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 225,
+            "defId": "lion",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 252,
+            "defId": "turtle",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 327,
+            "defId": "staffthrall",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 359,
+            "defId": "shieldthrall",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 261,
+            "defId": "wasp",
+            "star": 1,
+            "position": null,
+            "copies": 1,
+            "items": []
+          },
+          {
+            "uid": 262,
+            "defId": "ironrooster",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 18,
+        "combatVersion": "continuity",
+        "opponentId": 7,
+        "opponentName": "铁幕",
+        "kind": "pvp",
+        "winner": 1,
+        "damage": 12,
+        "income": 14,
+        "hp": 73,
+        "gold": 48,
+        "left": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": 32,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 33,
+            "items": [
+              "sage",
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 372,
+            "defId": "master",
+            "star": 1,
+            "position": 34,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 130,
+            "defId": "venombeast",
+            "star": 1,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 181,
+            "defId": "bat",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "staff",
+              "warblade",
+              "crystal"
+            ]
+          },
+          {
+            "uid": 210,
+            "defId": "bull",
+            "star": 1,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 211,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 324,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 325,
+            "defId": "turtle",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 333,
+            "defId": "lion",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 346,
+            "defId": "titan",
+            "star": 1,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 261,
+            "defId": "wasp",
+            "star": 1,
+            "position": null,
+            "copies": 1,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 371,
+            "defId": "phoenix",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 19,
+        "combatVersion": "continuity",
+        "opponentId": 1,
+        "opponentName": "北境哨兵",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 15,
+        "hp": 73,
+        "gold": 49,
+        "left": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "sage",
+              "sage",
+              "blade"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 388,
+            "defId": "bull",
+            "star": 1,
+            "position": 33,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 11,
+            "defId": "cavalry",
+            "star": 2,
+            "position": 35,
+            "items": [
+              "heart"
+            ]
+          },
+          {
+            "uid": 44,
+            "defId": "lion",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 46,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "sage"
+            ]
+          },
+          {
+            "uid": 121,
+            "defId": "dragonfly",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 169,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 38,
+            "items": []
+          },
+          {
+            "uid": 248,
+            "defId": "turtle",
+            "star": 1,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 293,
+            "defId": "master",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 374,
+            "defId": "phoenix",
+            "star": 1,
+            "position": 63,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 1,
+            "defId": "panda",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 371,
+            "defId": "phoenix",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 372,
+            "defId": "master",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 20,
+        "combatVersion": "continuity",
+        "opponentId": -1,
+        "opponentName": "铁壁防线",
+        "kind": "pve",
+        "winner": 0,
+        "damage": 0,
+        "income": 14,
+        "hp": 73,
+        "gold": 48,
+        "left": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "sage",
+              "sage"
+            ]
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "phoenix",
+            "star": 2,
+            "position": 56,
+            "items": [
+              "blade"
+            ]
+          },
+          {
+            "uid": 372,
+            "defId": "master",
+            "star": 1,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 388,
+            "defId": "bull",
+            "star": 1,
+            "position": 38,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 900002000,
+            "defId": "titan",
+            "star": 2,
+            "position": 35,
+            "encounterPower": 1.1,
+            "items": []
+          },
+          {
+            "uid": 900002001,
+            "defId": "guard",
+            "star": 2,
+            "position": 34,
+            "encounterPower": 1.2,
+            "items": []
+          },
+          {
+            "uid": 900002002,
+            "defId": "guard",
+            "star": 2,
+            "position": 37,
+            "encounterPower": 1.2,
+            "items": []
+          },
+          {
+            "uid": 900002003,
+            "defId": "cannon",
+            "star": 2,
+            "position": 59,
+            "encounterPower": 1,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 398,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 400,
+            "defId": "sniper",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": [],
+        "reward": "coil"
+      },
+      {
+        "round": 21,
+        "combatVersion": "continuity",
+        "opponentId": 3,
+        "opponentName": "荒原旅者",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 17,
+        "hp": 73,
+        "gold": 51,
+        "left": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 45,
+            "items": [
+              "sage",
+              "sage"
+            ]
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 2,
+            "position": 47,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 44,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "phoenix",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 372,
+            "defId": "master",
+            "star": 1,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 388,
+            "defId": "bull",
+            "star": 1,
+            "position": 52,
+            "items": []
+          },
+          {
+            "uid": 415,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 416,
+            "defId": "deer",
+            "star": 1,
+            "position": 55,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 18,
+            "defId": "elephant",
+            "star": 2,
+            "position": 37,
+            "items": [
+              "staff",
+              "staff",
+              "staff"
+            ]
+          },
+          {
+            "uid": 53,
+            "defId": "axethrall",
+            "star": 2,
+            "position": 32,
+            "items": []
+          },
+          {
+            "uid": 81,
+            "defId": "pangolin",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 102,
+            "defId": "ghostjet",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 196,
+            "defId": "ghostjet",
+            "star": 2,
+            "position": 63,
+            "items": []
+          },
+          {
+            "uid": 225,
+            "defId": "lion",
+            "star": 2,
+            "position": 34,
+            "items": []
+          },
+          {
+            "uid": 252,
+            "defId": "turtle",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 359,
+            "defId": "shieldthrall",
+            "star": 2,
+            "position": 36,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 398,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      },
+      {
+        "round": 22,
+        "combatVersion": "continuity",
+        "opponentId": 3,
+        "opponentName": "荒原旅者",
+        "kind": "pvp",
+        "winner": 0,
+        "damage": 0,
+        "income": 18,
+        "hp": 73,
+        "gold": 48,
+        "left": [
+          {
+            "uid": 5,
+            "defId": "elephant",
+            "star": 2,
+            "position": 52,
+            "items": [
+              "sage",
+              "sage"
+            ]
+          },
+          {
+            "uid": 131,
+            "defId": "lion",
+            "star": 2,
+            "position": 46,
+            "items": []
+          },
+          {
+            "uid": 132,
+            "defId": "wolf",
+            "star": 2,
+            "position": 47,
+            "items": []
+          },
+          {
+            "uid": 215,
+            "defId": "bloodhawk",
+            "star": 1,
+            "position": 51,
+            "items": []
+          },
+          {
+            "uid": 349,
+            "defId": "phoenix",
+            "star": 2,
+            "position": 63,
+            "items": [
+              "rageblade"
+            ]
+          },
+          {
+            "uid": 372,
+            "defId": "master",
+            "star": 1,
+            "position": 53,
+            "items": []
+          },
+          {
+            "uid": 388,
+            "defId": "bull",
+            "star": 1,
+            "position": 44,
+            "items": []
+          },
+          {
+            "uid": 415,
+            "defId": "winddragon",
+            "star": 1,
+            "position": 62,
+            "items": []
+          },
+          {
+            "uid": 430,
+            "defId": "wolf",
+            "star": 1,
+            "position": 45,
+            "items": []
+          }
+        ],
+        "right": [
+          {
+            "uid": 18,
+            "defId": "elephant",
+            "star": 2,
+            "position": 33,
+            "items": []
+          },
+          {
+            "uid": 53,
+            "defId": "axethrall",
+            "star": 2,
+            "position": 39,
+            "items": []
+          },
+          {
+            "uid": 81,
+            "defId": "pangolin",
+            "star": 3,
+            "position": 32,
+            "items": [
+              "staff",
+              "staff",
+              "staff"
+            ]
+          },
+          {
+            "uid": 102,
+            "defId": "ghostjet",
+            "star": 2,
+            "position": 56,
+            "items": []
+          },
+          {
+            "uid": 225,
+            "defId": "lion",
+            "star": 2,
+            "position": 37,
+            "items": []
+          },
+          {
+            "uid": 252,
+            "defId": "turtle",
+            "star": 2,
+            "position": 36,
+            "items": []
+          },
+          {
+            "uid": 327,
+            "defId": "staffthrall",
+            "star": 2,
+            "position": 35,
+            "items": []
+          },
+          {
+            "uid": 359,
+            "defId": "shieldthrall",
+            "star": 2,
+            "position": 34,
+            "items": []
+          }
+        ],
+        "bench": [
+          {
+            "uid": 73,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 74,
+            "defId": "vajra",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 117,
+            "defId": "pangolin",
+            "star": 2,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 185,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 186,
+            "defId": "bat",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 247,
+            "defId": "flametrooper",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 288,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          },
+          {
+            "uid": 398,
+            "defId": "bladethrall",
+            "star": 1,
+            "position": null,
+            "items": []
+          }
+        ],
+        "inventory": []
+      }
+    ],
+    "encountersFromRound": 1,
+    "reward": null
+  },
+  "profile": "beasts",
+  "expected": {
+    "economy": {
+      "startGold": 48,
+      "purchases": 2,
+      "refreshes": 0,
+      "xpBuys": 3,
+      "sales": 2,
+      "spent": 23,
+      "saleIncome": 10,
+      "trades": [
+        {
+          "kind": "sell",
+          "id": "vajra",
+          "starsBefore": [
+            2
+          ],
+          "price": 6
+        },
+        {
+          "kind": "buy",
+          "id": "turtle",
+          "starsBefore": [],
+          "price": 4
+        },
+        {
+          "kind": "sell",
+          "id": "turtle",
+          "starsBefore": [
+            1
+          ],
+          "price": 4
+        },
+        {
+          "kind": "buy",
+          "id": "bonedragon",
+          "starsBefore": [],
+          "price": 4
+        }
+      ],
+      "offers": [
+        [
+          "grenadier",
+          "ghostjet",
+          "turtle",
+          "cannon",
+          "bonedragon"
+        ]
+      ]
+    },
+    "planning": {
+      "controlPurchaseTrials": 25,
+      "scoutedPurchases": [
+        "bonedragon"
+      ],
+      "deploymentTrials": 19
+    },
+    "gold": 35,
+    "level": 10,
+    "hp": 73
+  }
+}

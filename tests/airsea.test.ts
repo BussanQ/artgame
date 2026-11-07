@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -163,7 +164,7 @@ describe("空海羁绊与攻击结算", () => {
     damage(c, a, b, 1, "true", true);
     expect(a.mana).toBe(30);
   });
-  it("攻城只增幅指定类型的普攻，爆破降低敌方法术减伤并传递给后续召唤物", () => {
+  it("攻城增幅指定类型的普攻与直接技能，爆破降低敌方法术减伤并传递给后续召唤物", () => {
     const pieces = ["chariot", "bull", "cannon"].map((id, i) =>
       p(id, i + 1, 32 + i),
     );
@@ -171,17 +172,17 @@ describe("空海羁绊与攻击结算", () => {
       b = f("bomber", 20, 1),
       c = ctx(a, b);
     b.armor = 0;
-    expect(damage(c, a, b, 100)).toBe(115);
-    expect(damage(c, a, b, 100, "true", true)).toBe(100);
+    expect(damage(c, a, b, 100)).toBe(125);
+    expect(damage(c, a, b, 100, "true", true)).toBe(125);
     const battle = simulate(
       [p("blastbug", 1), p("bomber", 2, 36), p("titan", 3, 34)],
       [{ ...p("adept", 4, 43), items: ["staff"] }, p("guard", 5, 35)],
     );
     const initial = battle.frames[0].fighters.find((x) => x.uid === 4)!;
-    expect(initial.magicResist).toBeCloseTo(0.1);
+    expect(initial.magicResist).toBeCloseTo(0);
     const pet = battle.frames.flatMap((x) => x.fighters).find((x) => x.summon);
     expect(pet).toBeDefined();
-    expect(pet!.magicResist).toBeCloseTo(0.1);
+    expect(pet!.magicResist).toBeCloseTo(0);
     expect(pet!.air?.flying).toBe(false);
   });
 });
@@ -213,9 +214,9 @@ describe("空海独立技能与中断", () => {
     castSkill(c, repair, enemy);
     expect(strong.attackBoost!.ratio).toBe(0.25);
   });
-  it("幽灵机跃向残血敌人，2秒隐身挡普攻但不挡范围技能", () => {
-    const a = f("ghostjet", 1, 0, 0, 7),
-      b = f("guard", 2, 1, 4, 2),
+  it("旧规则幽灵机跃向残血敌人，2秒隐身挡普攻但不挡范围技能", () => {
+    const a = Object.assign(army([p("ghostjet",1)],0,"mending")[0],{x:0,y:7,mana:100}),
+      b = Object.assign(army([p("guard",2)],1,"mending")[0],{x:4,y:2,mana:100}),
       c = ctx(a, b);
     b.hp = 300;
     expect(castSkill(c, a, b)).toBe(true);
@@ -227,8 +228,12 @@ describe("空海独立技能与中断", () => {
     damage(c, b, a, 100, "magic", true);
     expect(a.hp).toBeLessThan(hp);
   });
-  it("空蟹只狙杀射程内攻击最高敌人", () => {
-    const a = f("skycrab", 1),
+  it("旧空蟹只狙杀射程内攻击最高敌人", () => {
+    const a = Object.assign(army([p("skycrab", 1)], 0, "coalitions")[0], {
+        x: 3,
+        y: 3,
+        mana: 100,
+      }),
       weak = f("guard", 2, 1, 3, 4),
       strong = f("titan", 3, 1, 4, 3),
       far = f("titan", 4, 1, 7, 7);
@@ -349,9 +354,38 @@ describe("空海独立技能与中断", () => {
     expect(fast).toMatchObject({ winner: b.winner, damage: b.damage });
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
     expect(simulate(left, right)).toEqual(b);
+    // Pin the original 26 identities; new units are prepended to UNITS over time.
+    const originalIds = [
+      "infantry",
+      "guard",
+      "pangolin",
+      "panda",
+      "sniper",
+      "lion",
+      "chariot",
+      "monk",
+      "wolf",
+      "cannon",
+      "master",
+      "titan",
+      "cavalry",
+      "dragonfly",
+      "shadowblade",
+      "turtle",
+      "tiger",
+      "bull",
+      "fish",
+      "deer",
+      "adept",
+      "shark",
+      "eyebug",
+      "blastbug",
+      "spider",
+      "wasp",
+    ];
     const old = simulate(
-      UNITS.slice(0, 13).map((u, i) => p(u.id, i + 1, 32 + i, 2)),
-      UNITS.slice(13, 26).map((u, i) => p(u.id, i + 101, 32 + i, 2)),
+      originalIds.slice(0, 13).map((id, i) => p(id, i + 1, 32 + i, 2)),
+      originalIds.slice(13, 26).map((id, i) => p(id, i + 101, 32 + i, 2)),
       "brood",
     );
     const hash = await crypto.subtle.digest(
@@ -375,7 +409,7 @@ describe("空海选阵估值", () => {
       lineupScore(carry, AI_PROFILES[0]) -
       pieceStrength(support[0]);
     expect(surplus(strong)).toBeGreaterThan(surplus(weak));
-    const player = createGame(137).players[0];
+    const player = createGame(137, "classic").players[0];
     player.level = 3;
     player.pieces = [p("bomber", 1), p("repair", 2), p("ark", 3)];
     deployLineup(player, "standard");
@@ -390,7 +424,7 @@ describe("空海选阵估值", () => {
 describe("0.10存档迁移", () => {
   for (const phase of ["prepare", "battle", "result"] as const)
     it(`${phase}补齐空海卡池但保留当前资源和旧战报`, () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
       g.combatVersion = "brood";
       for (const player of g.players)
         for (let i = 0; i < player.shop.length; i++)
@@ -423,14 +457,14 @@ describe("0.10存档迁移", () => {
       expect(restored.players).toEqual(g.players);
       expect(restored.history).toEqual(g.history);
       expect(restored.combatVersion).toBe(
-        phase === "prepare" ? "metamorph" : "brood",
+        phase === "prepare" ? CURRENT_COMBAT_VERSION : "brood",
       );
       for (const id of AIRSEA_ADDITIONS)
         expect(restored.pool[id]).toBe(COPIES[UNIT[id].cost]);
       if (phase === "result") {
         if (restored.reward) claimReward(restored, 0);
         nextRound(restored);
-        expect(restored.combatVersion).toBe("metamorph");
+        expect(restored.combatVersion).toBe(CURRENT_COMBAT_VERSION);
       }
     });
 });

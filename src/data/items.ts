@@ -7,6 +7,7 @@ export interface ItemStats {
   skillPower: number;
   lifesteal: number;
   magicResist: number;
+  damageMana: number;
 }
 export interface ItemDef {
   id: string;
@@ -15,7 +16,11 @@ export interface ItemDef {
   description: string;
   stats: Partial<ItemStats>;
   recipe?: [string, string];
+  effect?: "resonance" | "call" | "fog";
 }
+/** S34 client cards; opening delay, recipes and summon profile are local adaptations. */
+export const EQUIPMENT_SKILLS={opening:4,resonance:{cooldown:40,damage:500},call:{cooldown:120}} as const;
+export const WHALE_EYE={cooldown:180,delay:24,damage:200} as const;
 export const ITEMS: ItemDef[] = [
   {
     id: "blade",
@@ -139,6 +144,18 @@ export const ITEMS: ItemDef[] = [
     stats: { hp: 220, skillPower: 0.2, mana: 20 },
     recipe: ["crystal", "core"],
   },
+  {
+    id:"wolf-fang",name:"狼牙坠",icon:"◈",stats:{lifesteal:0.1},recipe:["fang","crystal"],effect:"call",
+    description:"普攻吸血+10%。自动技能·呼号：开战1秒后、此后每30秒在相邻空格召唤一只呼号傀儡。固定380生命、48攻击、3甲、0.75秒普攻；不继承持有者星级、装备或法强，享受团队召唤与全军增益。无空格时等待；控制期间暂停。同名装备只触发一套召唤，基础吸血仍可叠加。",
+  },
+  {
+    id:"soul-crystal",name:"灵魂之晶",icon:"◆",stats:{skillPower:0.3},recipe:["crystal","coil"],effect:"resonance",
+    description:"技能强度+30%。自动技能·鞭笞：开战1秒后、此后每10秒随机对一名可见敌人造成500基础法术伤害，不随星级或法强变化，仍计算魔抗和护盾。无需能量，不占用普攻或本体引导；控制期间暂停，无可见敌人时等待。同名装备共享一套触发与冷却，基础技能强度仍可叠加。",
+  },
+  {
+    id:"whale-eye",name:"巨鲸之眼",icon:"◉",stats:{attack:30,damageMana:1},recipe:["blade","core"],effect:"fog",
+    description:"攻击+30，普攻造成生命伤害时的能量回复+100%，每次普攻动作最多一次；不为无能量棋子回能，不放大受击或辅助供能。自动技能·海雾：开战1秒后释放，6秒后对全场其他存活敌人造成200基础法术伤害，覆盖隐形，计算魔抗和护盾，不随星级或法强变化。释放后即使持有人死亡或受控也会引爆，不延长已结束战斗；按释放时阵营辨敌，45秒冷却。释放前受控时等待。同名技能不叠加，基础攻击与回能加成可叠加；召唤物不继承本装备，刑傀不继承海雾和额外回能。",
+  },
 ];
 export const ITEM = Object.fromEntries(ITEMS.map((i) => [i.id, i])) as Record<
   string,
@@ -155,6 +172,7 @@ export function equipmentStats(items: string[] = []): ItemStats {
     skillPower: 0,
     lifesteal: 0,
     magicResist: 0,
+    damageMana: 0,
   };
   for (const id of items)
     for (const [key, value] of Object.entries(ITEM[id]?.stats ?? {}))

@@ -1,0 +1,35 @@
+{
+  "id": "master-wushi",
+  "unitId": "master",
+  "name": "武僧熊猫 · 无式",
+  "ruleVersion": "singleplayer-0.56",
+  "method": "built-in image_gen",
+  "generatedAt": "2026-11-06",
+  "prompt": "Edit the supplied full-body transparent panda warrior into his WUSHI transformed combat form for a dark oriental science-fantasy auto-chess game. Preserve the exact recognizable black-and-white panda face and fur, single topknot, red headband and scarf, ornate weathered bronze armor, cloth textures, painterly realistic 3D game-render finish, 3/4 camera orientation facing slightly right, and readable upright full body. Change the staff into one magnificent long guan-dao polearm with a wide crescent steel blade, muted pale-jade engraved edge. Make the torso bulkier and the armor visibly reinforced with a few emerald-jade plates, a calm resolute defensive stance, both hands gripping the polearm in a broad sweeping guard; he is an armored guardian, not a spellcaster. Slight restrained jade rim light to communicate transformation, no large glow cloud. Keep all body parts, feet and the entire weapon inside frame with comfortable transparent margins. One character only, no text, no UI, no ground, no pedestal, no shadow plane, no background. True clean transparent alpha. This is a sibling transformed-state asset; do not reproduce a branded original game character or add logos.",
+  "referenceRoles": [
+    {
+      "path": "public/assets/units/master.png",
+      "role": "existing generated panda edit target and visual identity reference; original bytes preserved"
+    }
+  ],
+  "generatedFile": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-415d227e-1ed4-4989-9339-5a873d20f47e.png",
+  "asset": "public/assets/units/master-wushi.png",
+  "attempts": 1,
+  "path": "public/assets/units/master-wushi.png",
+  "width": 1312,
+  "height": 1199,
+  "mode": "RGBA",
+  "sha256": "13c4ce20577666b271a4dbc0f287a6ac5533f7806ad756896dedd94d7a827461",
+  "alphaZeroPixels": 785160,
+  "alphaOpaquePixels": 190,
+  "alphaBbox": [
+    0,
+    0,
+    1312,
+    1199
+  ],
+  "transparent": true,
+  "originalBytesUnmodified": true,
+  "previousAssetSha256": "8c77c798abb87e5d9b055d470b2370f5627cb4833e2acde98970860947276ea9",
+  "usage": "Only the active battle form changes sprite. Base, bench, shop and historical sweeps retain master.png; scaling and motions are sampled from battle state."
+}

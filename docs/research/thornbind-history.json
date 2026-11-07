@@ -1,0 +1,132 @@
+{
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.66",
+  "combatVersion": "thornbind",
+  "unitId": "vine",
+  "scope": "补齐已知的分段控制、逐段回血和剩余段数转火；未知参数明确作为单机适配。",
+  "sources": [
+    {
+      "id": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "author": "User26157272",
+      "modifiedAt": "2019-07-15",
+      "kind": "original-player-review",
+      "originalHtmlSha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "originalHtmlBytes": 302211,
+      "localHtml": "../../tmp/vine-s05-original.html",
+      "review": "普通HTTP取得并阅读藤妖原文段。玩家描述技能改为多段、每段回血；目标死亡后剩余控制仍能作用于他人；段间可能释放瞬发技能。正文没有精确段数、分星伤害或时长。页面自述主体为S1末期，修改时间不等于已核实发布日期。"
+    },
+    {
+      "id": "S04-1",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measured-attribute-table",
+      "row": 36,
+      "fields": {
+        "cost": 2,
+        "traits": [
+          "不朽者",
+          "异能"
+        ],
+        "hp": 650,
+        "attackRange": [
+          99,
+          141
+        ],
+        "armor": 5,
+        "range": 1,
+        "attackIntervalSeconds": 1.7,
+        "cooldownSeconds": 60
+      },
+      "review": "本次重新目视原始表格。攻击取均值120，间隔名义值转为6.8模拟步；原始转录表不改动。"
+    },
+    {
+      "id": "S62",
+      "url": "https://news.17173.com/z/zzq/content/06102021/180944537.shtml?_platform=PC",
+      "author": "战争艺术AOW（页面署名，来源微信公众号）",
+      "publishedAt": "2021-06-10",
+      "kind": "publisher-byline-update",
+      "review": "确认技能名荆棘缠绕，新增施放能量藤蔓束缚后自身护甲5/7/9。与2019数据跨期，只借用名称；后期新增护甲未并入当前早期目录。"
+    }
+  ],
+  "knownBehavior": [
+    "分段控制",
+    "每段回血",
+    "目标死亡后剩余段数不浪费",
+    "段间可施放瞬发技能"
+  ],
+  "localAdaptation": {
+    "pulses": 3,
+    "windupSeconds": 0.5,
+    "pulseIntervalSeconds": 0.75,
+    "controlSeconds": 0.5,
+    "actionGapSeconds": 0.25,
+    "totalAttackMultiplier": 1.6,
+    "damageType": "magic",
+    "drainRatioOfActualHpDamage": 1,
+    "rangeTiles": 1,
+    "initialMana": 25,
+    "maintainedChannel": true,
+    "cooldownStartsAt": "startup",
+    "targetPolicy": "keep visible hostile target within one tile; otherwise nearest valid target, stable uid tie-break",
+    "interrupts": [
+      "stun",
+      "silence",
+      "charm",
+      "death",
+      "soul expiry"
+    ],
+    "healingExclusions": [
+      "shield-only damage",
+      "immune damage",
+      "overkill",
+      "overheal",
+      "undying source",
+      "source killed by reflection"
+    ],
+    "note": "这些字段由本地原型预算及交互方案确定，未找到早期技能原卡，不冒称历史精确参数。"
+  },
+  "unconfirmed": [
+    "早期准确技能名与客户端构建",
+    "各星级技能伤害/回血数列",
+    "分段总数及精确时序",
+    "施法/转火射程",
+    "真实伤害与回血/抗性公式",
+    "源死亡、反伤与新目标免控的完整原版交互"
+  ],
+  "excluded": {
+    "laterArmorBonus": [
+      5,
+      7,
+      9
+    ],
+    "reason": "2021后期新增项，不混入当前2019早期职业目录。"
+  },
+  "reusedAsset": {
+    "path": "../../public/assets/units/vine.png",
+    "manifest": "immortal-assets.json",
+    "changed": false,
+    "note": "继续使用项目既有内置ImageGen藤妖形象；本轮新增Canvas动作与藤蔓特效。"
+  },
+  "boneDragonCorrection": {
+    "unitId": "bonedragon",
+    "source": "S04-1 row 34",
+    "sourceIntervalSeconds": 2.2,
+    "sourceMeanAttack": 129,
+    "sourceDps": 58.6,
+    "previousImplementationSeconds": 1.2,
+    "previousVersion": "boneblast",
+    "currentTicks": 8.8,
+    "originalTranscriptionAlreadyCorrect": true,
+    "review": "重新目视第34行，2.2秒与表中58.6 DPS互相印证。修正新局代码及0.65研究记录；旧版本保持1.2秒以维持旧回放。"
+  },
+  "simulationResolution": {
+    "secondsPerTick": 0.25,
+    "nominalIntervals": {
+      "vine": 1.7,
+      "bonedragon": 2.2
+    },
+    "note": "名义攻击间隔受现有0.25秒模拟步取整影响，不声称连续时间完全一致。"
+  }
+}

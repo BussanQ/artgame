@@ -7,6 +7,8 @@ if (!/^[a-z0-9-]+$/.test(label)) throw new Error("Invalid report label");
 const paths = [
   "src/engine/ai.ts",
   "src/data/units.ts",
+  "src/data/unit-stats.ts",
+  "src/engine/types.ts",
   "src/data/skills.ts",
   "src/data/items.ts",
 ];

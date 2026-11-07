@@ -1,6 +1,60 @@
+import {
+  CURRENT_COMBAT_VERSION,
+  hasBulwarkRules,
+  hasSpiritWardRules,
+  hasTortoiseRules,
+  hasSiegeRules,
+  hasInfernoRules,
+  hasMendingRules,
+  hasFormlessRules,
+  hasDreamRules,
+  hasDetonationRules,
+  hasHiveRules,
+  hasGazeRules,
+  hasRifleRules,
+  hasThornBindRules,
+  hasBoneBlastRules,
+  hasWildfireRules,
+  hasTornadoRules,
+  hasWarcryRules,
+  hasTerminatorRules,
+  hasBombardmentRules,
+  hasShurikenRules,
+  hasSecretOrbRules,
+  hasAmbushRules,
+  hasLineageRules,
+  hasCoalitionRules,
+  hasAuroraRules,
+  hasQiRules,
+  hasTaotieRules,
+  hasTarRules,
+  hasLightningRules,
+  hasGospelRules,
+  hasStormRules,
+  hasJungleRules,
+  hasWushiRules,
+  hasWushiControlRules,
+} from "../engine/types";
 import type { DamageType, CombatVersion } from "../engine/types";
 
-/** Independent single-player balance; these are not recovered original skill values. */
+/** S04 body and July player accounts; the July 11 damage ladder is a secondary historical report.
+ * Geometry, magic scaling and combat interactions are local adaptations. */
+export const DETONATION={name:"自爆",role:"前排阵亡爆破",radius:2,damage:[200,350,500],
+ description:"被动：阵亡当帧以死亡位置为中心自爆，对横纵距离合计2格内的敌人造成200/350/500基础法术伤害（一/二/三星），受技能强度加成，计算魔抗、技能防御与护盾。加血装备、生命连携和额外生命不增加爆炸伤害。每场仅一次，不积累能量，不需要蓄力或冲锋；眩晕和沉默不阻止死亡爆炸。可波及隐形、飞行与召唤物，并引发敌方爆裂虫连锁；不伤友军，按阵亡瞬间阵营辨敌，连锁中阵营变化不改变已发生的爆炸。普通攻击为2格喷吐，按物理伤害结算。优先放在靠近敌人的前排，远处阵亡可能空爆。"} as const;
+
+/** S04 body/CD, S26 slow and S64 early rage; combined tiers/timing remain local adaptations. */
+export const INFERNO={name:"炎狱之怒",role:"震地减速与狂怒续战",cooldown:240,windup:2,radius:1,duration:32,damage:[50,100,150],slow:[0.1,0.2,0.3],haste:0.2,lifesteal:0.1,
+ description:"初始能量0。满能量且60秒冷却结束时蓄势0.5秒，向释放时自身周围1格敌军震地，造成50/100/150法术伤害，并降低其攻击速度10/20/30%，持续8秒；范围按圆形距离，包含横纵相邻，不含斜角。金刚同时获得8秒狂怒，攻击速度提高20%，普通攻击按实际生命伤害额外吸血10%，可与装备吸血相加。技能强度仅提高震地伤害，不提高减速、攻速、吸血或时长；不生成护盾或眩晕。多枚金刚的减速各自计时，仅最强者生效，强效果结束后较弱者可继续生效；移动离开范围不会移除已施加的减速，来源阵亡也不会撤回。灵鱼驱散、狂舞免控、涅槃和进入残魂会清除减速，残魂与火种不受减速。蓄势期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂中断且不退款；敌人撤离后仍获得自身狂怒。释放后的狂怒不因眩晕或沉默消失，阵亡或进入残魂后失效；魅惑不延长狂怒。没有附近合法敌人时保留能量。"} as const;
+/** S71 measured 40% haste and ordinary area attacks; other siege tuning is documented locally. */
+export const SIEGE={name:"攻城形态",role:"架设远程物理炮台",cooldown:240,windup:3,haste:0.4,attack:[60,110,160],range:14,radius:1.5,splash:0.4,speed:2,
+ description:"初始能量0。满能量且60秒冷却结束时，原地架设0.75秒，成功后本场变为不能自行移动的攻城炮台，射程覆盖棋盘，攻击增加60/110/160，攻速增加40%。此后普通攻击发出实际飞行的炮弹，伤害在发射时确定、落点固定；命中格内敌人承受完整普通攻击，周围1.5格敌人受到40%攻击的普通物理溅射，各自结算护甲、闪避、护盾、吸血和反伤。移动可避开落点，范围可波及隐蔽和飞行敌人，炮弹按发射时阵营判敌，已发出炮弹不因来源受控或阵亡取消；战斗结束后停止结算。架设期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂会中断，不返还能量或冷却。成形后不再施法或回能，沉默不影响炮击，眩晕仅暂停后续发射；魅惑期间仍保留形态并转向攻击原队友。法术强度不提高增攻、攻速或溅射。"} as const;
+/** S35 May 9 announcement: 6s stealth, 16s cooldown and 30/40/50% haste. */
+export const FORMLESS={name:"无形",role:"隐形高速普攻",duration:24,cooldown:64,haste:[0.3,0.4,0.5],
+ description:"初始能量0。满能量且16秒冷却结束时原地进入无形，持续6秒，期间攻击速度提高30/40/50%（一/二/三星）。冷却从施放时开始计算，包含隐形持续时间；不瞬移、不直接造成技能伤害，不受技能强度加成。期间可移动、普攻和回能，普攻仍按物理伤害结算护甲、闪避、护盾、刺杀暴击、吸血与反伤；加速与编队及灵蕴加速相加。隐形使自己无法被敌方定向攻击或技能选中，仍会受到范围伤害、反伤和控制，不是无敌；已锁定并发出的攻击依照各自命中规则处理。眩晕只停止行动，沉默只阻止再次施放，均不删除已获得的无形；魅惑不延长时长，增益随当前阵营继续。死亡、涅槃化蛋或进入残魂会结束无形。没有可见敌人时仍可施放自身增益。自然恢复每秒5生命，仅记录实际回复，不复活或恢复残魂。隐形中的有效普攻命中、生命伤害与破盾单独计入战报。"} as const;
+/** S04 body/CD and S21 post-July healing/energy; exact ladders and timing remain local. */
+export const MENDING={name:"灵蕴缝合",role:"主力回复与攻速辅助",cooldown:48,windup:2,range:4,healing:[200,300,400],energy:[20,30,40],haste:[0.2,0.3,0.4],duration:24,
+ description:"初始能量0。满能量且12秒冷却结束时，锁定4格内当前攻击最高的存活友军（可选自身），蓄势0.5秒后回复200/300/400生命、20/30/40能量，并提高其攻击速度20/30/40%，持续6秒（一/二/三星）。攻击相同按稳定编号选人，不按剩余生命选人，满血目标也能获得回能与加速；法强只提高治疗量，不提高能量、攻速或时长。不能选择残魂或涅槃火种；无能量技能的目标仍可治疗和加速，但不获得虚假的能量，能量封锁和骑兵回能削减照常生效。蓄势期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂会打断，不返还能量或冷却。锁定目标阵亡、变为敌军、进入残魂/火种或移出4格时落空，不临时换人。释放后维修机恢复行动，已获得的加速不依赖来源继续存活或保持距离；同类加速只取最强，各自到期，弱效果不延长强效果。受益者死亡、化蛋或进入残魂后清除加速，灵鱼驱散不移除这项友军增益。不提高攻击力，不提供无敌或复活；只记录实际治疗和实际充能。释放或中断当帧不附加普攻。"} as const;
+/** Shared spell metadata; individual historical sources and local adaptations live in docs/research. */
 export interface SkillDef {
   name: string;
   role: string;
@@ -23,13 +77,292 @@ const define = (
   healRatio: 0,
   ...skill,
 });
+export const SIEGE_SKILL=define({name:SIEGE.name,role:SIEGE.role,description:SIEGE.description});
+/** S35 duration/random draw/source-death release; S04 cooldown. Taunt geometry is local. */
+export const DREAM={name:"迷梦",role:"随机策反与引火",duration:[20,26,32],attack:[0.1,0.2,0.3],cooldown:160,tauntRadius:2,tauntDuration:6,
+ description:"初始能量50。满能量时从3格内随机选择一名可见的非召唤敌人，使其暂时加入己方5/6.5/8秒，并提高攻击力10/20/30%（一/二/三星）。选人使用独立确定序列，不按攻击高低，也不影响商店随机；不能选择残魂、火种、刑傀、已被魅惑或免控中的敌人。被策反者立即嘲讽周围2格可见的原队友1.5秒，迫使后续普攻和追击转向自己并阻止新技能；已出手的攻击不撤销。控制期间可移动和普攻，不能施法或回能；只改变当前战斗阵营，不改变原归属、棋子、装备或卡池。蜘蛛阵亡、进入残魂、失去自身阵营，或目标死亡、化蛋、进入残魂时立即断开；眩晕和沉默不会撤回已成功的蛛丝。目标原阵营的灵鱼可驱散魅惑及附带嘲讽。控制自然结束时只撤回本次攻击增益，保留期间其他合法增益。冷却40秒，在本地40秒战斗上限内每场一次；法强不增加时长、攻击增幅或嘲讽。魅惑最后敌人不会直接判胜；控制命中、诱导普攻生命伤害及破盾独立显示，仍按实际攻击者记账，不重复增加蜘蛛本体伤害。"} as const;
+export const DREAM_SKILL=define({name:DREAM.name,role:DREAM.role,description:DREAM.description});
+/** Client field and visible 4/7 rates; the obscured third rate (10), geometry and cadence are local. */
+export const GOSPEL = {
+  name: "福音",
+  role: "持续供能",
+  energy: [4, 7, 10],
+  radius: 3,
+  interval: 4,
+  description:
+    "被动：童子存活时维持福音能量场，从开战后第1秒起，每秒为圆形3格内所有能使用能量的友军回复4/7/10能量（一/二/三星）。多个童子覆盖同一友军时只取最高星级供能，不叠加；能量已满、封能中的单位和无能量技能单位不会获得供能，也不储存溢出。供能受骑兵回能压制影响，不受攻速或技能强度加成。童子自身不积累能量；眩晕、沉默不关闭光环，被魅惑期间暂停，恢复后继续，阵亡后停止。",
+} as const;
+/** S55 client-card damage, path width and drain; S04 star cooldowns. Timing/speed/range are local. */
+export const THUNDERSTORM = {
+  name: "雷暴", role: "穿行削能", damage: [150, 250, 350],
+  cooldown: [20, 16, 12], drain: 20, width: 1,
+  windup: 4, speed: 0.75, range: 10,
+  description: "初始能量0。满能量且冷却结束时向4格内可见目标当前方向蓄力1秒，发出宽1格的雷暴球，沿固定直线穿行最多10格，对路径敌人造成150/250/350法伤并削减最多20能量，每球对同一棋子只命中一次。冷却5/4/3秒从蓄力开始计算，伤害按施法时技能强度确定。蓄力期间不能普攻或移动，眩晕、沉默、魅惑或阵亡会打断；已发出的球继续飞行并保留发射时阵营，敌人可以移动避开。护盾受损也可削能，技能免伤、残魂或无能量棋子不会被削能。削能在受击回能后结算，不封锁后续回能，也不把能量转给天师。",
+} as const;
+export const STORM_SKILL = define({name: THUNDERSTORM.name, role: THUNDERSTORM.role,
+  damageType: "magic", description: THUNDERSTORM.description});
+/** S55 client damage/radius/landing stun/cooldown; windup and flight duration are local. */
+export const JUNGLE = {
+  name: "丛林之怒", role: "大范围两段控制", radius: 4,
+  damage: [100, 200, 300], stun: [4, 6, 8], cooldown: 120,
+  windup: 4, flight: 4,
+  description: "初始能量50。满能量且冷却结束时，周围圆形4格内有可见敌人即可在原地蓄力1秒；随后对锁定圆形范围内的所有敌人造成100/200/300法术伤害，击飞1秒，落地后再眩晕1/1.5/2秒（一/二/三星）。冷却30秒从蓄力开始计，伤害按施法时技能强度确定。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡可打断；已击飞的敌人仍会落地眩晕，驱散可解除两段控制。技能免伤、残魂和涅槃火种不受控制；不附加自身护盾。",
+} as const;
+export const JUNGLE_SKILL = define({ name: JUNGLE.name, role: JUNGLE.role,
+  damageType: "magic", radius: JUNGLE.radius, duration: JUNGLE.stun[0],
+  description: JUNGLE.description });
+/** S04 passive physical role and June 13 decay; hop limits/geometry are local adaptations. */
+export const THUNDER_CHAIN = {
+  name: "雷神锁链",
+  role: "物理弹射核心",
+  hits: [3, 5, 7],
+  retention: 0.5,
+  radius: 3,
+  description:
+    "被动：每次普通攻击发出雷电，一/二/三星最多命中3/5/7次（含首击），每次弹射伤害比上一跳降低50%。从上一目标跳向3格内最近的其他可见敌人，可在不同敌人之间往返。首击被闪避时不弹射，后续闪避仍可传导；无下一目标或自身阵亡、眩晕、阵营改变时结束。所有命中均为普通物理伤害，受护甲、狙击穿透、吸血和攻击增益影响，不受技能强度加成；不积累能量，也不受沉默限制。",
+} as const;
+/** May 30 target counts/delay and June 13 splash; center damage and geometry are local. */
+export const MOTOR_TAR = {
+  name: "焦油弹",
+  role: "延迟范围爆破",
+  damage: [300, 400, 500],
+  splash: 120,
+  delay: 12,
+  interval: 2,
+  cooldown: 40,
+  radius: 1,
+  description:
+    "初始能量50。满能量且10秒冷却结束时，依次向3格内1/2/3名不同可见敌人（一/二/三星）脚下投放焦油弹，每0.5秒一枚。焦油弹黏附并跟随目标移动，投放3秒后爆炸：中心300/400/500法伤，相邻一格120法伤，均按施法时技能强度计算。带弹目标远离队友可减少溅射；目标阵亡后弹留在其最后位置，范围仍可命中隐蔽和飞行敌人。眩晕、沉默、魅惑、阵亡或无新目标会取消未投出的弹；已落地弹继续倒计时，按爆炸时施法者阵营判敌，不附带减速或灼烧。投放期间不能普攻或移动，冷却从施法开始计；战斗结束后不再引爆。",
+} as const;
+export const TAR_SKILL = define({
+  name: MOTOR_TAR.name,
+  role: MOTOR_TAR.role,
+  damageType: "magic",
+  radius: MOTOR_TAR.radius,
+  description: MOTOR_TAR.description,
+});
+/** S50 client card: flat star damage, 13s cooldown and three 25% attack stacks. */
+export const AURORA = {
+  name: "极光电影",
+  role: "成长狙杀",
+  cooldown: 52,
+  damage: [575, 825, 1075],
+  attackPerStack: 0.25,
+  maxStacks: 3,
+  description:
+    "初始能量0。满能量且13秒冷却结束时，对射程内当前可见敌人造成575/825/1075法术伤害；技能强度提高伤害，攻击力不提高技能伤害。每次成功施放后攻击+25%，最多3层、累计+75%，持续本场战斗，不因护盾或免伤而停止叠层。冷却从施放开始计算，期间可以普攻和回能，能量满时仍须等待冷却。眩晕、沉默、魅惑及阵亡时不能施放；无合法目标不扣能量或开始冷却。",
+} as const;
+export const AURORA_SKILL = define({
+  name: AURORA.name,
+  role: AURORA.role,
+  damageType: "magic",
+  description: AURORA.description,
+});
+/** S50 client card fixes damage and cooldown; 1s startup and target retention are local. */
+export const ARHAT_QI = {
+  name: "气波掌",
+  role: "晶核蓄能",
+  cooldown: 40,
+  windup: 4,
+  damage: [250, 450, 650],
+  description:
+    "初始能量0。满能量且10秒冷却结束时锁定射程内当前可见敌人，蓄力1秒后造成250/450/650法术伤害，按开始蓄力时的技能强度计算，攻击力不提高技能伤害。蓄力时不能移动或普攻，攻击冷却仍流逝；眩晕、沉默、魅惑或阵亡会中断。目标阵亡、隐蔽、变为友方或离开射程时落空，不换目标、不返还能量或冷却。冷却期间可正常移动、普攻与回能。陆行者连携只改变其普通攻击伤害类型。",
+} as const;
+export const QI_SKILL = define({
+  name: ARHAT_QI.name,
+  role: ARHAT_QI.role,
+  damageType: "magic",
+  description: ARHAT_QI.description,
+});
+/** S38 May 30 patch: healing, flat rage attack, duration and per-star cooldown. */
+export const TAOTIE = {
+  name: "饕餮",
+  role: "吞噬狂暴",
+  cooldown: [88, 72, 56],
+  healing: [300, 600, 1200],
+  attack: [50, 100, 200],
+  duration: 32,
+  description:
+    "初始能量25，自带40%法术减伤、每秒恢复5生命。满能量且22/18/14秒冷却结束时，吞噬射程内当前生命低于自身的可见敌人，优先生命最高者。造成足以清空其护盾和生命的真实伤害，成功造成致命生命伤害且自身仍存活时恢复300/600/1200生命，攻击增加50/100/200、体型增大，持续8秒；不叠加，重复吞噬刷新。固定回血与攻击增量不受技能强度放大，溢出治疗无效；眩晕、沉默、魅惑时不能施放，免疫伤害不会获得回血或狂暴。不能吞噬不朽残魂，但致命伤害仍触发不朽续战或涅槃。冷却期间可正常移动、普攻和回能。",
+} as const;
+export const TAOTIE_SKILL = define({
+  name: TAOTIE.name,
+  role: TAOTIE.role,
+  damageType: "true",
+  description: TAOTIE.description,
+});
 export const HAWK_METAMORPH = define({
   name: "血羽化身",
   role: "落地连击",
   description:
     "满能量时变为地面形态并恢复至满生命，每场一次，不位移或立即造成技能伤害。此后每次普攻变为三段爪击，每段造成 60% 攻击物伤，后两段相隔 0.25 秒；每段独立计算护盾、闪避、吸血和反伤。控制或阵亡取消余下连击，目标死亡、隐蔽、脱离射程或成为友方也会取消。形态持续到本场结束，不再积累能量；落地后失去飞行闪避与海神回能，仍保留本族对地增伤。回血不受技能强度加成，不复活。",
 });
+export const SHIELD_WAVE = {
+  depth: 3,
+  halfWidth: 1,
+  cooldown: 40,
+  silenceTicks: 8,
+  damage: [200, 300, 400],
+} as const;
+/** 2019 cooldowns; damage, control and acid geometry are documented single-player adaptations. */
+export const TUSK_CHARGE = {
+  cooldown: 80,
+  damage: [100, 200, 300],
+  knockupTicks: 4,
+} as const;
+/** Client screenshot S50; range, startup and knockup duration are local adaptations. */
+export const PANGOLIN_BURROW = {
+  name: "遁地",
+  role: "突袭击飞",
+  range: 3,
+  cooldown: 80,
+  knockupTicks: 4,
+  damage: [100, 200, 300],
+  description:
+    "初始能量25。满能量、冷却结束时遁地突袭3格内的可见敌人，移动到其相邻空格，造成100/200/300法术伤害并击飞1秒。冷却20秒；技能强度提高伤害，技能不触发刺杀暴击。不附带范围伤害、减甲或持续伤害。没有相邻空格且原地不在近战距离时不施放、不扣能量；眩晕、沉默、魅惑或阵亡时不能施放。位移瞬时结算，不额外获得免伤或隐身。",
+} as const;
+export const BURROW_SKILL = define({
+  name: PANGOLIN_BURROW.name,
+  role: PANGOLIN_BURROW.role,
+  description: PANGOLIN_BURROW.description,
+  damageType: "magic",
+});
+/** S04 2019 cooldown; flat damage is the explicitly dated 2020-07-30 adaptation. */
+export const DEATH_SONG = {
+  radius: 1.5,
+  cooldown: 24,
+  damage: [200, 300, 400],
+} as const;
+export const ACID_POLLUTION = {
+  range: 3,
+  cooldown: [40, 32, 24],
+  armor: [7, 14, 21],
+  duration: 24,
+} as const;
+/** Later community card (2021); retained as a documented local adaptation, not verified April 2019 values. */
+export const STAFF_GALE = {
+  speedPerStack: [0.1, 0.15, 0.2],
+  maxStacks: 10,
+  armorAtMax: 50,
+} as const;
+export const BLADE_CRITICAL = { chance: 0.1, multiplier: [3, 4.5, 6] } as const;
+export const BLADE_STORM = {
+  radius: 1.5,
+  duration: 26,
+  cooldown: 48,
+  pulseInterval: 4,
+  pulses: 6,
+  damage: [50, 100, 150],
+} as const;
+export const AXE_THROW = {
+  range: 3,
+  cooldown: 20,
+  stunTicks: 2,
+  damage: [300, 500, 700],
+} as const;
 export const SKILLS: Record<string, SkillDef> = {
+  lingjiu: define({
+    name: "死魂曲",
+    role: "飞行刺杀 / 近身范围法伤",
+    damageType: "magic",
+    radius: DEATH_SONG.radius,
+    description:
+      "初始能量25。满能量、冷却结束且自身1.5格圆形范围内有可见敌人时，以自身为中心发出一次音波，对该范围内全体敌人造成200/300/400法术伤害。伤害受技能强度加成，包含隐蔽和飞行敌人，不影响友军；只结算一次，不附带眩晕、沉默、减甲或持续伤害。冷却6秒从施放时计，期间可正常移动、普攻和回能。没有近身可见敌人时保留能量，仍可用3格普通攻击；当前两刺杀羁绊可使其开场跳向后排。不额外获得空军或猛禽标签。眩晕、沉默、魅惑、阵亡或没有合法近身目标时不施放、不扣能量。",
+  }),
+  elephant: define({
+    name: "獠牙冲",
+    role: "野兽先锋 / 近身击飞",
+    damageType: "magic",
+    duration: TUSK_CHARGE.knockupTicks,
+    description:
+      "初始能量25。满能量、相邻有可见敌人且冷却结束时，以獠牙挑击单个目标，造成100/200/300法术伤害并原地击飞1秒。伤害受技能强度加成，击飞期间不能行动并打断主动蓄力或引导，不改变棋格或飞行种族。冷却20秒从施放时计，期间可正常普攻、移动与回能。眩晕、沉默、魅惑、阵亡或没有合法目标时不施放、不扣能量。技能免伤中的剑奴不受伤害或击飞；残魂、涅槃火种不追加击飞。",
+  }),
+  venombeast: define({
+    name: "酸性污染",
+    role: "野兽先锋 / 范围减甲",
+    radius: 1,
+    duration: ACID_POLLUTION.duration,
+    description:
+      "初始能量25。满能量、3格内有可见敌人且冷却结束时，向其所在格喷出酸液，使该格及周围九宫格内敌人护甲降低7/14/21，持续6秒。包含空中和隐蔽敌人，不影响友军；后进入区域的单位不受影响。技能不直接造成伤害或附加持续伤害，技能强度不提高减甲。多个猛毒兽的污染取当前最高值，各来源分别计时，弱效果不会延长强效果；与步兵减甲、普攻破甲分别计算，物伤结算护甲最低为0。灵鱼可驱散，残魂、火种和旋转免控的剑奴不受影响；已施加污染在施法者阵亡后仍持续。冷却10/8/6秒从施放时计；技能不提高近战普攻射程。眩晕、沉默、魅惑、阵亡或没有合法目标时不施放、不扣能量。",
+  }),
+  staffthrall: define({
+    name: "疾风",
+    role: "连续普攻 / 攻速叠层",
+    description:
+      "被动：连续攻击同一目标，每次攻击获得10%/15%/20%攻速，最多10层。满层改变攻击动作并获得50护甲。更换目标、目标死亡或失去可见目标时清空；眩晕只暂停，沉默不阻止。按攻击次数叠层，闪避、护盾和免伤不阻止叠层。攻速按基础间隔÷(1+层数加成)，再叠加装备、加速与减速，最快每0.25秒一次；换目标按剩余冷却比例移除加速。阵营改变会清空。不积累能量，不受技能强度加成。",
+  }),
+  shieldthrall: define({
+    name: "正义冲锋",
+    role: "傀儡护卫 / 前方范围沉默",
+    damageType: "magic",
+    radius: SHIELD_WAVE.depth,
+    duration: SHIELD_WAVE.silenceTicks,
+    description:
+      "初始能量25。满能量、相邻有可见敌人且冷却结束时，向该目标方向释放长3格、宽3格的矩形能量波，造成200/300/400法术伤害（一/二/三星）并沉默2秒。伤害受技能强度加成，命中按当前矩形区域判定，包含飞行和隐蔽敌人，不命中身后、侧边或友军。伤害与沉默即时结算，能量波为表现，不产生位移、额外护盾或护甲。冷却10秒从施放时计，冷却中仍可普攻、移动与回能。眩晕、沉默、魅惑、阵亡或没有合法近身目标时不施放、不扣能量。沉默不影响普攻与被动；免控中的剑奴、残魂、涅槃火种不追加沉默。",
+  }),
+  bladethrall: define({
+    name: "零时突进",
+    role: "傀儡先锋 / 概率暴击",
+    description:
+      "被动：每次普通攻击有10%概率造成300%/450%/600%攻击的暴击（一/二/三星）。按普通攻击计算护甲、闪避、护盾、破甲与吸血，技能强度不提高暴击伤害。不积累或消耗能量，没有主动施法与技能冷却；沉默和封能不影响被动，眩晕、阵亡或没有合法攻击目标时不进行攻击与暴击判定。魅惑期间仍可暴击原队友。概率按每次攻击独立判定，不保证每十次必定触发；回放结果固定。",
+  }),
+  swordthrall: define({
+    name: "狂舞花绽",
+    role: "傀儡先锋 / 移动范围伤害",
+    damageType: "magic",
+    radius: BLADE_STORM.radius,
+    duration: BLADE_STORM.duration,
+    description:
+      "初始能量25。满能量、相邻有可见敌人且冷却结束时旋转双刀，持续6.5秒。每秒对自身周围1.5格圆形范围造成50/100/150法伤，共6次，伤害按施放时技能强度计算。期间自动追击但不能普攻、再次施法或恢复能量；免疫技能伤害、眩晕、沉默、魅惑、攻速减慢与击退，仍受普通攻击（包括真伤普攻）和能量削减影响。清除已有攻速减慢，不获得额外护甲或回血。伤害范围随自身移动，每次重新判定，包含隐蔽及飞行敌人；空放仍消耗次数。冷却12秒从施放时计；阵亡立即结束。",
+  }),
+  axethrall: define({
+    name: "飞斧",
+    role: "近战刺杀 / 单体投掷控制",
+    damageType: "magic",
+    duration: AXE_THROW.stunTicks,
+    description:
+      "初始能量0。满能量、冷却结束且3格内有可见敌人时，向当前最近目标投出灵刃，造成300/500/700法术伤害并眩晕0.5秒。伤害受技能强度加成，冷却5秒；冷却期间可正常普攻、移动和回能。飞斧不增加普通攻击射程，不触发普攻吸血或破甲。眩晕、沉默、魅惑、阵亡或无合法目标时不施放、不扣能量。伤害与控制即时结算，飞行轨迹为表现；残魂免疫伤害和本次控制，化蛋目标不追加眩晕。",
+  }),
+  ironrooster: define({
+    name: "战术协同",
+    role: "远程刺杀 / 群体强化",
+    radius: 3,
+    duration: 24,
+    description:
+      "初始能量50。满能量、3格内有可见敌人且冷却结束时，以自身为中心发出协同脉冲，使3格内存活友军（含自身和已有召唤物）攻击提高15%/25%/35%、临时护甲提高3/5/7，持续6秒。不造成直接伤害，不受技能强度加成；同类攻击或护甲强化取较高值，各来源分别计时，弱效果不会延长强效果。不影响残魂、火种或被魅惑单位；后来进入范围或新召唤者不获得增益，离开范围或施法者阵亡不提前移除。受益者转为敌方时增益暂停，变为残魂或火种时清除。技能冷却13秒；冷却中可普攻回能，眩晕和沉默阻止施放。",
+  }),
+  ironape: define({
+    name: "重装震爆",
+    role: "装甲前排 / 范围爆发",
+    damageType: "magic",
+    radius: 2,
+    description:
+      "初始能量25。满能量、有相邻可见敌人且冷却结束时原地蓄力0.75秒，随后对自身周围曼哈顿2格内全体敌人造成250/500/1000法术伤害，不附带控制。伤害受施法时技能强度加成。命中时重新判定范围，可命中隐蔽或空中敌人；原目标离开不取消，范围内无人仍会空放。蓄力期间不能移动或普攻；眩晕、沉默、魅惑或阵亡会中断，不退能量或冷却。冷却10秒，从施放时计；冷却中可正常攻击回能。护甲随升星为6/8/10。",
+  }),
+  birdrider: define({
+    name: "信仰之箭",
+    role: "骑射 / 周期强化普攻",
+    damageType: "physical",
+    description:
+      "被动：普通攻击累计6/5/4次（一/二/三星）后，下一次攻击蓄力0.5秒，射出造成300%攻击物理伤害的强力箭。计数包含被闪避的攻击，不消耗或积累能量，不受技能强度加成。强力箭仍按普攻计算护甲、闪避、破甲与吸血。蓄力期间不能移动或另行普攻，攻击冷却继续流逝；眩晕、魅惑、阵亡，或目标阵亡、隐蔽、变为友方、离开射程会取消本箭，不退回计数。沉默与封能不影响该被动；魅惑期间的攻击不累计。",
+  }),
+  specialist: define({
+    name: "定点狙击",
+    role: "超远程单体控制",
+    damageType: "magic",
+    duration: 3,
+    description:
+      "初始能量25。满能量且冷却结束时锁定7格内当前可见敌人，瞄准0.75秒后射击，造成300/600/1200法术伤害并眩晕0.75秒。伤害受施法时技能强度加成。瞄准期间不能移动或普攻；眩晕、沉默、魅惑或阵亡会中断，锁定目标阵亡、隐蔽、变为友方或离开射程也会取消，不转火。技能冷却10秒，从开始瞄准计算，取消不返还能量；冷却中仍可移动、普攻和回能。",
+  }),
+  irondog: define({
+    name: "震荡压制",
+    role: "装甲前排 / 分段控制",
+    multiplier: 0,
+    damageType: "magic",
+    radius: 1,
+    description:
+      "初始能量25。满能量且有相邻可见敌人时原地引导3次震荡：0.5秒后首发，此后每0.75秒一次，每次对周围1格全体敌人造成70/140/280法伤并眩晕0.25秒；伤害受施法时技能强度加成。每次重新判定范围，可命中新进入的敌人，空放仍消耗次数。眩晕、沉默、魅惑或阵亡会中断。引导期间不能移动或普攻，冷却中可正常攻击回能；技能冷却10秒，从施放时计。护甲随升星为5/7/9。",
+  }),
   motorcycle: define({
     name: "三连发",
     role: "逐发转火爆发",
@@ -435,20 +768,280 @@ export const SKILLS: Record<string, SkillDef> = {
       "重击目标及其周围 2 格敌人，造成 220% 攻击的法术伤害，并眩晕 1.5 秒。",
   }),
 };
+/** S57 May 16 armor/duration/area attacks; startup and tile geometry are local. */
+export const WUSHI = {
+  name: "无式",
+  role: "护甲变身与横斩",
+  armor: [6, 12, 18],
+  duration: [32, 40, 48],
+  cooldown: 80,
+  windup: 4,
+  splashRadius: 1,
+  description: "初始能量0。满能量且20秒冷却结束时，在原地蓄力1秒后变身，护甲增加6/12/18，持续8/10/12秒（一/二/三星）。变身期间每次普通攻击同时横斩主目标周围1格的敌人，每名目标独立结算普通物理伤害、护甲、闪避、护盾、吸血和反伤。护甲和持续时间不受技能强度放大。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会中断，能量和冷却不退还。冷却从蓄力开始计算；变身期间不积累能量，结束后可再次充能。",
+} as const;
+export const WUSHI_SKILL = define({name:WUSHI.name,role:WUSHI.role,
+  radius:WUSHI.splashRadius,description:WUSHI.description});
+/** S59 client card caps ordinary cleaves at three and confirms nearby taunt.
+ * The two-tile, two-second one-time taunt is a disclosed local conversion. */
+export const WUSHI_CONTROL = {
+  maxTargets: 3, tauntRadius: 2, tauntDuration: 8,
+  role: "护甲变身与嘲讽",
+  description: WUSHI.description.replace(
+    "同时横斩主目标周围1格的敌人",
+    "横斩主目标及其周围1格的敌人，总共最多3名（含主目标）",
+  ) + "变身完成时，嘲讽周围2格内合格敌人2秒：强制将后续普攻和追击转向武僧，期间不能开始新技能；已开始的施法和已发出的攻击不撤销。技能免控、残魂和涅槃火种不受嘲讽，灵鱼可驱散；武僧阵亡、形态结束或双方变为友军时解除。仅在变身完成时施加一次，后施加的嘲讽覆盖前者。",
+} as const;
+
+/** S59 client values; 6/8/10 world radii become 1.2/1.6/2 tiles locally. */
+export const SHURIKEN = {
+  name: "风魔之刃", role: "持续范围飞镖",
+  damage: [150, 250, 350], radius: [1.2, 1.6, 2],
+  duration: 20, pulseInterval: 4, pulses: 5, cooldown: 80, windup: 2, speed: 1,
+  description: "初始能量0。满能量且20秒冷却结束时，向射程3格内的可见敌人当前位置蓄力0.5秒并投出巨大飞镖。落点固定，飞行速度每秒4格；抵达后形成持续5秒的圆形刃阵，每秒造成150/250/350法术伤害，共5次，半径1.2/1.6/2格（一/二/三星）。首跳在落地1秒后，敌人可走出范围躲避；伤害受技能强度增益，范围与时长不受影响。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会中断，能量与冷却不退还。冷却从蓄力开始计算。飞镖发出后可继续行动，已发出的飞镖与刃阵在本场战斗内不因施法者阵亡或受控而消失，按发出时的阵营结算。",
+} as const;
+export const SHURIKEN_SKILL = define({ name: SHURIKEN.name, role: SHURIKEN.role,
+  damageType: "magic", radius: SHURIKEN.radius[0], description: SHURIKEN.description });
+
+/** S59 totals/durations and S57 seven hits/three energy; geometry and startup are local. */
+export const SECRET_ORB = {
+  name: "秘法球", role: "维持范围法伤与削能",
+  damage: [760,1200,1300], duration: [24,26,28], radius: [2,2.5,3],
+  pulses: 7, drain: 3, cooldown: 120, windup: 3, forward: 3,
+  description: "初始能量0，自然回复每秒5生命。满能量且30秒冷却结束时，面向射程5格内的可见敌人原地蓄力0.75秒，在前方最多3格、朝向目标的固定位置凝聚秘法球。圆形半径2/2.5/3格，持续6/6.5/7秒（一/二/三星），在持续时间内分7次造成累计基础法术伤害760/1200/1300，每次有效伤害额外削减目标3点能量。每跳按目标当时的位置、法术减伤和护盾结算；技能强度增加伤害，不放大削能、范围或时长。受击回能仍按普通规则先结算，再扣除实际可削能量。蓄力及维持期间不能移动、普攻或施放其他技能；眩晕、沉默、魅惑或阵亡会中断并移除秘法球，未发生的跳数不再结算，能量与冷却不退还。冷却从开始蓄力计算；敌人可走出范围躲避，已开始的维持不因嘲讽而取消。",
+} as const;
+export const SECRET_ORB_SKILL = define({name:SECRET_ORB.name,role:SECRET_ORB.role,
+  damageType:"magic",radius:SECRET_ORB.radius[0],description:SECRET_ORB.description});
+
+/** Client card: damage and first-rank cooldown; May update/table: star cooldowns.
+ * Width, length, startup and flight speed are explicit local adaptations. */
+export const BOMBARDMENT = {
+  name: "集团轰炸", role: "矩形地毯轰炸",
+  damage: [250, 400, 650], cooldown: [56, 48, 40],
+  windup: 4, width: 3, length: 8, speed: 0.5,
+  description: "满能量且14/12/10秒冷却结束时，朝射程5格内的可见敌人原地聚能1秒，派出三架战机沿施法时锁定的方向进行地毯轰炸。机群每秒推进2格，扫过宽3格、长8格的矩形路径，出界部分无效；每个敌人在同一次轰炸中至多受到一次250/400/650基础法术伤害（一/二/三星），三架战机不会重复叠伤。技能强度增加伤害，普通攻击力不增加轰炸伤害。起手期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会打断，不退还能量与冷却。机群出动后方舟可恢复行动，已经派出的机群保留原阵营和伤害，方舟阵亡或受控也会继续轰炸；敌人可走出路径躲避，战斗结束后不再追加伤害。冷却从开始聚能计算。",
+} as const;
+export const BOMBARDMENT_SKILL = define({name:BOMBARDMENT.name,role:BOMBARDMENT.role,
+  damageType:"magic",description:BOMBARDMENT.description});
+
+/** S55 client card: three-tile circle and two damage ladders. Launch timing is local. */
+export const TERMINATOR = {
+  name: "终结者", role: "双轮范围轰炸",
+  smallDamage: [100, 200, 300], largeDamage: [250, 350, 450],
+  radius: 3, cooldown: [56, 48, 40], windup: 3, launchInterval: 3, flight: 2,
+  description: "满能量且14/12/10秒冷却结束时，锁定射程5格内可见敌人当时的位置，架炮0.75秒发射小导弹，再隔0.75秒发射大导弹。每枚导弹飞行0.5秒，在固定落点周围圆形半径3格爆炸，分别造成100/200/300与250/350/450基础法术伤害（一/二/三星）；每个敌人可分别受到两弹各一次伤害，不附带眩晕。技能强度增加两弹伤害，普通攻击力不增加技能威力。每次落地按敌人当时的位置、阵营、法术减伤、护盾和技能免伤独立结算，目标移动可躲开，隐蔽敌军仍可被爆炸波及。架炮与两次发射之间不能移动或普攻；眩晕、沉默、魅惑或阵亡会中止尚未发出的导弹，不退还已消耗的能量和冷却。已经发射的导弹保留原阵营与起手伤害，施法者受控或阵亡也会继续落地。第二弹发出后可恢复行动，整场战斗结束则不再追加伤害；冷却从开始架炮计算。",
+} as const;
+export const TERMINATOR_SKILL = define({name:TERMINATOR.name,role:TERMINATOR.role,
+  damageType:"magic",radius:TERMINATOR.radius,description:TERMINATOR.description});
+
+/** S55 client card: all three ranks and durations. Cone geometry/startup are local. */
+export const WARCRY = {
+  name: "战吼", role: "扇形石化与个人反伤",
+  damage: [30, 50, 80], petrify: [12, 14, 16], reflection: [10, 20, 30],
+  reflectionDuration: 80, cooldown: 120, windup: 2, radius: 3, angle: 120,
+  description: "初始能量0。满能量且30秒冷却结束时，朝1格内可见敌人的当前位置蓄吼0.5秒，锁定方向，对前方120度、圆形半径3格的扇形内敌人造成30/50/80基础法术伤害，并石化3/3.5/4秒（一/二/三星）。石化禁止移动、普攻和施法，可被驱散；狂舞免控、残魂与涅槃火种不会石化。释放后自身获得20秒战吼反伤：每次受到敌方非反伤伤害（含破盾）时，向仍存活的伤害来源反弹10/20/30固定真实伤害，普通致死一击也可触发。反伤不受攻击力或技能强度放大，不被护甲或魔抗减伤，但仍受护盾和技能免伤影响；不反弹闪避、免伤或其他反伤，无法攻击已阵亡的来源。与灵能反伤分别结算，灵能先结算，来源已阵亡则不再触发个人反伤。技能强度只增加咆哮法伤，不增加控制、持续时间和反伤。蓄吼期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会打断，不退还能量和冷却；已释放的咆哮会结算整个扇形，狂狮阵亡后不再获得反伤。冷却从蓄吼开始计算。",
+} as const;
+export const WARCRY_SKILL = define({name:WARCRY.name,role:WARCRY.role,
+  damageType:"magic",radius:WARCRY.radius,description:WARCRY.description});
+
+/** S55 client damage, landing stun and cooldown. Travel geometry and flight timing are local. */
+export const TORNADO = {
+  name: "龙卷风", role: "路径击飞与落地眩晕", damage: [150,200,250], stun: [6,8,12],
+  cooldown: 80, windup: 3, flight: 2, width: 1.5, length: 8, speed: 0.75,
+  description: "初始能量0。满能量且20秒冷却结束时，朝4格内可见敌人的当前位置蓄风0.75秒，发出直径1.5格的龙卷风，沿起手锁定的方向每秒移动3格，中心最多前进8格，出界部分无效。每次龙卷对同一敌人只接触一次，造成150/200/250基础法术伤害（一/二/三星），击飞0.5秒，落地后再眩晕1.5/2/3秒。范围可波及隐蔽和飞行敌军，不伤友军；敌人可以移动走出路径。技能强度放大起手冻结的技能伤害，攻击力不增加该伤害。狂舞免控、残魂、涅槃火种不被击飞；落地前获得免控或被位面观测驱散可阻止后续眩晕，其他击飞会推迟落地。蓄风期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会打断，不返还能量和冷却；已发出的龙卷保留原阵营和伤害，施法者阵亡后仍会前进，已施加的落地控制也不依赖施法者存活。释放后恢复行动，战斗结束就停止。陆行者连携只转换普攻，龙卷风仍按法术结算。冷却从蓄风开始计算。",
+} as const;
+export const TORNADO_SKILL = define({name:TORNADO.name,role:TORNADO.role,
+  damageType:"magic",description:TORNADO.description});
+
+/** S55 client damage, duration and cooldown; cadence, total-budget interpretation,
+ * tile geometry, startup and interruptible channel are explicit local adaptations. */
+export const WILDFIRE = {
+  name: "燎原 / 涅槃", role: "矩形持续法伤与重生",
+  damage: [450, 600, 1050], duration: [16, 22, 28],
+  cooldown: 60, windup: 2, pulseInterval: 2,
+  description: "初始能量25。满能量且15秒冷却结束时，朝射程3格内可见敌人的当前位置蓄焰0.5秒，锁定前方长5格、宽3格的矩形区域，引导4/5.5/7秒（一/二/三星）。每0.5秒一次，分别8/11/14跳，每名始终在范围内的敌人累计受到450/600/1050基础法术伤害，受起手技能强度放大，不取普通攻击力；首跳在引导开始0.5秒后。每跳按当前占位、法术减伤和护盾结算，敌人可走出区域躲避，飞行和隐蔽敌军也可被波及，不伤友军。蓄焰与引导期间不能移动或普攻；眩晕、沉默、魅惑、阵亡或化为火种都会中断，未发生的伤害取消，能量与冷却不退还。二星起首次致死化为800/1600生命的地面火种，占据原格且可被攻击，不能行动、治疗、加盾或回能；3秒未被打破则满血、零能量重生，每战仅一次。一星没有涅槃。火种保留原护甲和装备防御，重生恢复包含装备的本体生命，不计为治疗，不重置燎原冷却。",
+} as const;
+export const WILDFIRE_SKILL = define({name:WILDFIRE.name,role:WILDFIRE.role,
+  damageType:"magic",description:WILDFIRE.description});
+
+/** Client image confirms name, 25s cooldown and a bone orb with circular impact.
+ * Damage/stun retain local prototype values; timing/geometry are local until a full card is found. */
+export const BONEBLAST = {
+  name: "骨爆", role: "骨球范围伤害与眩晕",
+  cooldown: 100, windup: 5, speed: 0.75, radius: 1, multiplier: 2.2, stun: 4,
+  description: "初始能量0。满能量且25秒冷却结束时，锁定射程4格内可见敌人的当前位置，原地蓄力1.25秒后吐出巨大骨球。骨球每秒飞行3格，在固定落点周围圆形半径1格爆炸，造成起手220%攻击的法术伤害，并使仍存活且可被控制的敌人眩晕1秒。起手冻结攻击力与技能强度，落地按当前占位、魔抗、护盾及技能免伤独立结算；可波及飞行和隐蔽敌军，不伤发射阵营的友军。目标可走出落点躲避，蓄力中不能移动或普攻，眩晕、沉默、魅惑或阵亡取消未吐出的骨球，不返还能量与冷却。已经吐出的骨球保留发射阵营和伤害，施法者阵亡、进入残魂或受控后仍会落地；落地反伤击杀来源不会取消同次爆炸的其余目标。狂舞免控、残魂和涅槃火种不受眩晕，火种仍可承受伤害。冷却从蓄力开始计算；战斗结束就停止，不延长等待。",
+} as const;
+export const BONEBLAST_SKILL = define({name:BONEBLAST.name,role:BONEBLAST.role,
+  multiplier:BONEBLAST.multiplier,damageType:"magic",radius:BONEBLAST.radius,
+  duration:BONEBLAST.stun,description:BONEBLAST.description});
+
+/** Early player account confirms segmented control/drain/retarget; exact amounts and cadence are local. */
+export const THORNBIND = {
+  name:"荆棘缠绕",role:"分段单控与汲取",
+  cooldown:240,windup:2,interval:3,pulses:3,root:2,multiplier:1.6,
+  description:"初始能量25。满能量且60秒冷却结束时，锁定1格内可见敌人并原地施法。起手0.5秒后开始三段能量藤蔓，每隔0.75秒缠绕一次，每段眩晕0.5秒，段间有0.25秒可行动空隙。三段合计造成起手160%攻击的法术伤害，每段按实际扣除生命等量回复自身生命；破盾、免伤、过量伤害和溢出治疗不提供回复。攻击与技能强度在起手冻结，每段独立读取当前魔抗和护盾。原目标死亡、离开1格、隐蔽或成为友军后，剩余段数转向1格内最近可见敌人；没有合法目标则终止。维持时不能移动、普攻或再次施法，眩晕、沉默、魅惑、阵亡或残魂到期会终止剩余段数，不返还能量与冷却。残魂可施法但不能回血。狂舞、残魂和涅槃火种不受缠绕控制，火种仍可受伤；灵鱼可驱散已施加的短控制，后续段数仍可再次施加。冷却从起手计算。",
+} as const;
+export const THORNBIND_SKILL=define({name:THORNBIND.name,role:THORNBIND.role,
+  multiplier:THORNBIND.multiplier,damageType:"magic",duration:THORNBIND.root,description:THORNBIND.description});
+
+/** S04 body/CD and S05 one-star armor/resistance; all connection timing and later ladders are local. */
+/** Publisher material confirms forms/taunt/AoE; exact form numbers and decision timing are local. */
+export const TORTOISE={
+  name:"玄武双相",role:"人数判形 · 守御与群攻",windup:2,cooldown:240,
+  armor:[20,35,50],resist:[0.2,0.3,0.4],multiplier:[2,2.5,3],breachArmorLoss:10,radius:1,
+  description:"初始能量0。满能量且冷却结束时蓄势0.5秒，冷却60秒从蓄势开始计；完成时比较双方存活棋子数：我方更多则破壳，否则龟缩；包含召唤物，不计残魂和涅槃火种。每场成功变形一次，形态确定后不再改变。龟缩停止移动与普攻，护甲+20/35/50、法术减伤+20/30/40个百分点（总上限75%），持续吸引所有可选中自己的敌人，使其普通攻击优先指向玄龟；不阻止施法或取消已发出的攻击。破壳降低自身10点护甲，普攻对主目标及其相邻1格可见敌人各造成200/250/300%攻击物理伤害，分别结算闪避、护甲、吸血和反伤，不受技能强度加成。蓄势可被眩晕、沉默、魅惑或阵亡打断，能量不退还；成形后眩晕或沉默不解除形态，嘲讽随当前阵营转移，阵亡后停止。",
+} as const;
+export const TORTOISE_SKILL=define({name:TORTOISE.name,role:TORTOISE.role,description:TORTOISE.description});
+/** Client cards establish execution, 15s and 4/6s puppets; mark threshold, damage and timing are local. */
+export const EXECUTION={
+  name:"刑杀 / 刑傀",role:"叠印真伤与击杀转化",marks:3,cooldown:60,windup:2,damage:[180,300,500],puppetDuration:[0,16,24],
+  description:"初始能量0。普通攻击命中敌人的生命或护盾后，给该目标叠加自己的死亡印记，最多3层；本次命中叠满时起，后续普攻对该目标造成真实伤害。换目标不把印记带走，不同勾魂使分别叠层；印记不直接伤害，灵鱼可驱散。满能量、15秒冷却结束且2格内有可见敌人和相邻空位时，闪现至目标后方并蓄势0.5秒，期间不能被定向攻击选中，仍可受到范围伤害与控制；随后刑杀造成180/300/500法伤，满3层时伤害翻倍，并清除自己的印记。技能伤害受起手法强加成，普攻真伤仍可暴击、被闪避或护盾抵挡。眩晕、沉默、魅惑、阵亡或残魂到期会打断蓄势；目标死亡、隐蔽、变为友军或离开2格时落空，不返还能量和冷却。二星起，刑杀击杀会将合格敌人转化为我方刑傀残魂，持续4/6秒；它保留死亡时普攻能力，下一步行动，不能施法、回能、治疗或再次转化，不占人口和卡池，来源阵亡不提前消散。刑傀可替代被击杀者的不朽续战；支援余辉或自爆优先，未重生过的不死鸟先化蛋，火种不转化，已重生的鸟可以转化。",
+} as const;
+export const EXECUTION_SKILL=define({name:EXECUTION.name,role:EXECUTION.role,damageType:"magic",description:EXECUTION.description});
+SKILLS.reaper=EXECUTION_SKILL;
+export const SPIRIT_WARD={
+  name:"长生庇护",role:"维持多目标双防",cooldown:100,windup:2,range:4,targets:[3,5,7],armor:[15,20,25],resist:[0.4,0.5,0.6],duration:[20,24,28],
+  description:"初始能量0。满能量且25秒冷却结束时，锁定4格内生命比例最低的3/5/7名其他存活友军，蓄灵0.5秒后连接并维持5/6/7秒（一/二/三星），提供15/20/25护甲和40/50/60个百分点法术减伤，最终法术减伤最高75%。生命比例相同优先近处，再按稳定编号选取；满生命友军也可受到保护，不保护自身、残魂或涅槃火种。蓄灵和维持期间不能移动、普攻或另行施法。眩晕、沉默、魅惑、阵亡或进入残魂会中断并撤回全部连线，不返还能量或冷却；友军死亡、成为敌军或走出4格只断开该条连线，不重新选人，全部失效则结束。多枚长生鹿的庇护不叠加，只采用最强的一条；较弱但仍维持的连线可在强庇护结束后继续生效。灵鱼驱散负面状态不会移除这项友方增益。法强不增加双防、目标数或时长；技能不治疗、补盾或直接造成伤害。防护减伤比较本次伤害在有无庇护时对现有生命与护盾的实际消耗，排除闪避、免疫和过量部分；只归功给本次生效的来源，不计入治疗或护盾吸收。收束当帧不附带普攻。冷却从蓄灵开始计算。",
+} as const;
+export const SPIRIT_WARD_SKILL=define({name:SPIRIT_WARD.name,role:SPIRIT_WARD.role,multiplier:0,description:SPIRIT_WARD.description});
+
+/** S04 body/CD and S05 armor/adjacent taunt; numeric stance ladders are disclosed local choices. */
+export const BULWARK={
+  name:"刺盾之阵",role:"护甲盾阵与相邻嘲讽",cooldown:60,armor:[8,16,24],duration:[16,20,24],tauntRadius:1,tauntDuration:6,
+  description:"初始能量0。满能量且15秒冷却结束时举盾，获得8/16/24额外护甲，持续4/5/6秒（一/二/三星）；同时嘲讽相邻1格可见敌军1.5秒，使其后续行动转向盾兵，不能新施放技能。范围按横纵相邻计算，不含斜角；嘲讽只在举盾时施加一次，不持续拉住后来靠近的敌人。举盾期间可正常移动和普攻，眩晕与沉默不撤回已获得的护甲。不会生成护盾、恢复生命、盾击伤害或眩晕，技能强度不增加护甲、范围或时长；回能不能绕过个人冷却。来源阵亡、成为友军、失去可选中状态或盾阵结束时释放嘲讽，灵鱼可驱散嘲讽；不影响已出手的投射物和维持中的技能。狂舞免控、残魂和涅槃火种不受嘲讽。附近无敌人时仍可举盾抵挡远程攻击，但不会隔空嘲讽。",
+} as const;
+export const BULWARK_SKILL=define({name:BULWARK.name,role:BULWARK.role,multiplier:0,description:BULWARK.description});
+export const INFERNO_SKILL=define({name:INFERNO.name,role:INFERNO.role,damageType:"magic",radius:INFERNO.radius,description:INFERNO.description});
+export const MENDING_SKILL=define({name:MENDING.name,role:MENDING.role,description:MENDING.description});
+export const FORMLESS_SKILL=define({name:FORMLESS.name,role:FORMLESS.role,description:FORMLESS.description});
+
+/** Circle sizes normalize the original 9/11/14 and 20/22/25 units to this board. */
+export const HIVE = {
+  name:"蜂群震荡",role:"三针连射与双圈爆发",cooldown:80,windup:3,
+  inner:[1,11/9,14/9],outer:[20/9,22/9,25/9],innerDamage:[200,300,400],outerDamage:[100,150,200],
+  needlesPerAttack:3,needleInterval:1,
+  description:"初始能量0。普通攻击为三针连射，每针造成100%当前攻击的物理伤害，后两针各间隔0.25秒；每针独立计算护甲、闪避、护盾、穿透、吸血和反伤，每轮只在首针恢复普通攻击能量。攻速缩短两轮连射的间隔，不缩短针间距；未完成连射时不会开始下一轮，每轮最快0.75秒。目标死亡、隐蔽、出射程、变为友军，或自身眩晕、阵亡、阵营改变时取消余针；沉默和封能不阻止普通连射。满能量、20秒冷却结束且爆发范围内有可见敌人时，原地蓄力0.75秒后震荡：内圈200/300/400法伤，外圈100/150/200法伤（一/二/三星），每名敌人只受一个圈的伤害。内圈半径1/1.22/1.56格、外圈2.22/2.44/2.78格；星级提高范围，技能强度只放大法伤。蓄力期间不能移动或普攻，眩晕、沉默、魅惑或阵亡会中断，不返还能量或冷却。爆发时按当前位置判定，可波及飞行及隐蔽敌军，敌人可在蓄力时走出范围；不附带控制、持续毒伤或减甲。已释放的同次震荡完整结算，不因反伤击杀来源而跳过余下目标。冷却从蓄力开始计算。",
+} as const;
+export const HIVE_SKILL=define({name:HIVE.name,role:HIVE.role,multiplier:0,damageType:"magic",description:HIVE.description});
+
+/** The measured body/CD and observed control are historical; star ladder/drain are local. */
+export const GAZE = {
+  name:"凝视",role:"随机单控与削能",cooldown:60,duration:[16,20,24],drainInterval:4,drain:10,
+  description:"初始能量0。满能量且15秒冷却结束时，随机选择4格内一名可见且可受控制的敌人，立即使其眩晕4/5/6秒（一/二/三星），期间不能移动、普攻或施法，每秒削减最多10能量，最后一跳在控制结束时结算。凝视不直接造成伤害，不触发吸血、破甲或反伤，技能强度不增加控制或削能；已满护盾不能阻挡。沉默、眩晕、魅惑或阵亡时不能开始施法，无合法目标时保留能量；不会选中狂舞免控、残魂或涅槃火种。施放后可恢复行动，已施加的控制和削能不依赖眼虫存活或持续引导；灵鱼可驱散并终止后续削能。多个凝视不叠加削能，保留较晚到期的一次。无能量技能的敌人可被控制，但不被削能；削减不封锁后续回能，也不将能量转给眼虫。冷却从成功施放开始计算。",
+} as const;
+export const GAZE_SKILL=define({name:GAZE.name,role:GAZE.role,multiplier:0,description:GAZE.description});
+
+/** S04 marks the one-cost infantry/sniper as passive; name and star-rate ladder are local. */
+export const RIFLE = {
+  name:"快速射击",role:"被动普攻核心",intervals:[4,3,2],
+  description:"被动：依靠快速普通攻击持续输出，一/二/三星基础攻击间隔为1/0.75/0.5秒。每次普攻按当前攻击力结算一次物理伤害，受护甲、闪避、护盾、狙击穿透、普攻破甲、吸血和反伤影响；射击动作中的多道曳光不追加伤害。升星同时提升生命与攻击。攻速装备和野兽增益进一步缩短攻击间隔，减速会延长间隔，最快每0.25秒一次。不会积累、消耗能量或施放主动破甲技能，能量和技能强度装备不提高这项被动。沉默与封能不影响射击；眩晕、石化、阵亡或没有合法射程目标时停止攻击，魅惑期间仍可攻击原队友。",
+} as const;
+
 export function skillDescription(
   id: string,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
-  if (id === "bloodhawk" && version === "metamorph")
+  if (id === "blastbug" && hasDetonationRules(version)) return DETONATION.description;
+  if (id === "spider" && hasDreamRules(version)) return DREAM.description;
+  if (id === "ghostjet" && hasFormlessRules(version)) return FORMLESS.description;
+  if (id === "repair" && hasMendingRules(version)) return MENDING.description;
+  if (id === "vajra" && hasInfernoRules(version)) return INFERNO.description;
+  if (hasSiegeRules(version) && id === "chariot") return SIEGE.description;
+  if (hasTortoiseRules(version) && id === "turtle") return TORTOISE.description;
+  if (hasSpiritWardRules(version) && id === "deer") return SPIRIT_WARD.description;
+  if (hasBulwarkRules(version) && id === "guard") return BULWARK.description;
+  if (hasHiveRules(version) && id === "wasp") return HIVE.description;
+  if (hasGazeRules(version) && id === "eyebug") return GAZE.description;
+  if (hasRifleRules(version) && id === "infantry") return RIFLE.description;
+  if (hasThornBindRules(version) && id === "vine") return THORNBIND.description;
+  if (hasBoneBlastRules(version) && id === "bonedragon") return BONEBLAST.description;
+  if (hasWildfireRules(version) && id === "phoenix") return WILDFIRE.description;
+  if (hasTornadoRules(version) && id === "winddragon") return TORNADO.description;
+  if (hasWarcryRules(version) && id === "lion") return WARCRY.description;
+  if (hasTerminatorRules(version) && id === "titan") return TERMINATOR.description;
+  if (hasBombardmentRules(version) && id === "ark") return BOMBARDMENT.description;
+  if (hasSecretOrbRules(version) && id === "monk") return SECRET_ORB.description;
+  if (hasShurikenRules(version) && id === "panda") return SHURIKEN.description;
+  if (hasWushiControlRules(version) && id === "master") return WUSHI_CONTROL.description;
+  if (hasWushiRules(version) && id === "master") return WUSHI.description;
+  if (hasJungleRules(version) && id === "treant") return JUNGLE.description;
+  if (hasStormRules(version) && id === "stormcaller") return THUNDERSTORM.description;
+  if (hasGospelRules(version) && id === "acolyte") return GOSPEL.description;
+  if (hasLightningRules(version) && id === "thunderlord")
+    return THUNDER_CHAIN.description;
+  if (hasTarRules(version) && id === "motorcycle") return MOTOR_TAR.description;
+  if (hasTaotieRules(version) && id === "skytoad") return TAOTIE.description;
+  if (hasQiRules(version) && id === "arhat") return ARHAT_QI.description;
+  if (hasAuroraRules(version) && id === "skycrab") return AURORA.description;
+  if (hasCoalitionRules(version) && ["wolf", "adept", "shark"].includes(id))
+    return `${skillDescription(id, "lineages")}三召唤使全军普通攻击造成生命伤害时回能+40%，不再提供法术减伤；无能量技能的召唤物不能因此施法。`;
+  if (hasLineageRules(version) && id === "acolyte")
+    return skillDescription(id, "counterplay").replace("异能压制", "骑兵压制");
+  if (hasLineageRules(version) && ["wolf", "adept", "shark"].includes(id))
+    return `${skillDescription(id, "counterplay")}异能的全军普攻吸血对后续召唤物生效，与召唤者装备吸血分开计算。`;
+  if (hasAmbushRules(version) && id === "pangolin")
+    return PANGOLIN_BURROW.description;
+  if (hasAmbushRules(version) && id === "lingjiu")
+    return skillDescription(id, "wildfront").replace(
+      "当前两刺杀羁绊可使其开场跳向后排。",
+      "单名刺杀即可开战跳向后排，3/6刺杀额外提供普通攻击暴击。",
+    );
+  if (
+    (version === "wildfront" || hasAmbushRules(version)) &&
+    ["wolf", "adept", "shark"].includes(id)
+  )
+    return `${skillDescription(id, "puppets")}4/6野兽的全队攻速对召唤物生效，2野兽的个人攻速不传递。`;
+  if (version === "puppets" && ["wolf", "adept", "shark"].includes(id))
+    return skillDescription(id, "armored")
+      .replace(
+        "不继承装备或傀儡攻击羁绊",
+        "不继承装备或2/4档傀儡攻击，6档全队攻击对召唤物生效",
+      )
+      .replace(
+        "不继承装备或召唤者个人开场增益。",
+        "不继承装备或召唤者个人开场增益；6傀儡的全队攻击加成对幼狼生效。",
+      );
+  if (
+    id === "bloodhawk" &&
+    (version === "metamorph" ||
+      version === "infantry" ||
+      version === "armored" ||
+      version === "puppets" ||
+      version === "wildfront" ||
+      hasAmbushRules(version))
+  )
     return HAWK_METAMORPH.description;
-  if (version === "metamorph") version = "fleet";
+  if (
+    version === "metamorph" ||
+    version === "infantry" ||
+    version === "armored" ||
+    version === "puppets" ||
+    version === "wildfront" ||
+    hasAmbushRules(version)
+  )
+    version = "fleet";
   if (id === "bomber" && version === "fleet")
     return `初始能量 50。${SKILLS.bomber.description}引导期间攻击冷却正常流逝。`;
   if (["ark", "eel"].includes(id) && version === "fleet")
     return `${SKILLS[id].description}蓄力或引导期间攻击冷却正常流逝。`;
   if (id === "cannon" && (version === "airsea" || version === "fleet"))
     return "优先追击可见空中敌人，普攻对其伤害 +50% 且必中（不绕过隐身）。满能量施放裁决：光束贯穿敌人，造成 300% 攻击法伤并消耗目标 30 能量。";
-  if (id === "blastbug" || id === "motorcycle") return SKILLS[id].description;
+  if (
+    [
+      "blastbug",
+      "elephant",
+      "venombeast",
+      "lingjiu",
+      "motorcycle",
+      "irondog",
+      "specialist",
+      "birdrider",
+      "bladethrall",
+      "staffthrall",
+      "ironape",
+      "ironrooster",
+    ].includes(id)
+  )
+    return SKILLS[id].description;
   if (id === "adept" || id === "shark")
     return `${SKILLS[id].description}召唤物下一战斗步开始行动，不能施法，主人阵亡后仍作战；不占人口或卡池，每只存活召唤物在胜利扣血时计 1 点。`;
   if (
@@ -480,27 +1073,140 @@ export function skillDescription(
   return `能量满 100 时自动施放。${SKILLS[id].description}`;
 }
 
-export const skillName = (id: string, version: CombatVersion = "metamorph") =>
-  id === "bloodhawk" && version === "metamorph"
-    ? HAWK_METAMORPH.name
-    : (version === "summons" ||
-          version === "legions" ||
-          version === "brood" ||
-          version === "airsea" ||
-          version === "fleet" ||
-          version === "metamorph") &&
-        id === "wolf"
-      ? "幽狼召唤"
-      : SKILLS[id].name;
-export const skillRole = (id: string, version: CombatVersion = "metamorph") =>
-  id === "bloodhawk" && version === "metamorph"
-    ? HAWK_METAMORPH.role
-    : (version === "summons" ||
-          version === "legions" ||
-          version === "brood" ||
-          version === "airsea" ||
-          version === "fleet" ||
-          version === "metamorph") &&
-        id === "wolf"
-      ? "狼群召唤"
-      : SKILLS[id].role;
+export const skillName = (
+  id: string,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) =>
+  id === "blastbug" && hasDetonationRules(version) ? DETONATION.name :
+  id === "spider" && hasDreamRules(version) ? DREAM.name :
+  id === "ghostjet" && hasFormlessRules(version) ? FORMLESS.name :
+  id === "repair" && hasMendingRules(version) ? MENDING.name :
+  id === "vajra" && hasInfernoRules(version) ? INFERNO.name :
+  id === "chariot" && hasSiegeRules(version) ? SIEGE.name :
+  id === "turtle" && hasTortoiseRules(version) ? TORTOISE.name :
+  id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.name :
+  id === "guard" && hasBulwarkRules(version) ? BULWARK.name :
+  id === "wasp" && hasHiveRules(version) ? HIVE.name :
+  id === "eyebug" && hasGazeRules(version) ? GAZE.name :
+  id === "infantry" && hasRifleRules(version) ? RIFLE.name :
+  id === "vine" && hasThornBindRules(version) ? THORNBIND.name :
+  id === "bonedragon" && hasBoneBlastRules(version) ? BONEBLAST.name :
+  id === "phoenix" && hasWildfireRules(version) ? WILDFIRE.name :
+  id === "winddragon" && hasTornadoRules(version) ? TORNADO.name :
+  id === "lion" && hasWarcryRules(version) ? WARCRY.name :
+  id === "titan" && hasTerminatorRules(version) ? TERMINATOR.name :
+  id === "ark" && hasBombardmentRules(version) ? BOMBARDMENT.name :
+  id === "monk" && hasSecretOrbRules(version) ? SECRET_ORB.name :
+  id === "panda" && hasShurikenRules(version) ? SHURIKEN.name :
+  id === "master" && hasWushiRules(version) ? WUSHI.name :
+  id === "treant" && hasJungleRules(version)
+    ? JUNGLE.name
+    :
+  id === "stormcaller" && hasStormRules(version)
+    ? THUNDERSTORM.name
+    :
+  id === "acolyte" && hasGospelRules(version)
+    ? GOSPEL.name
+    : id === "thunderlord" && hasLightningRules(version)
+    ? THUNDER_CHAIN.name
+    : id === "motorcycle" && hasTarRules(version)
+      ? MOTOR_TAR.name
+      : id === "skytoad" && hasTaotieRules(version)
+        ? TAOTIE.name
+        : id === "arhat" && hasQiRules(version)
+          ? ARHAT_QI.name
+          : id === "skycrab" && hasAuroraRules(version)
+            ? AURORA.name
+            : id === "pangolin" && hasAmbushRules(version)
+              ? PANGOLIN_BURROW.name
+              : id === "bloodhawk" &&
+                  (version === "metamorph" ||
+                    version === "infantry" ||
+                    version === "armored" ||
+                    version === "puppets" ||
+                    version === "wildfront" ||
+                    hasAmbushRules(version))
+                ? HAWK_METAMORPH.name
+                : (version === "summons" ||
+                      version === "legions" ||
+                      version === "brood" ||
+                      version === "airsea" ||
+                      version === "fleet" ||
+                      version === "metamorph" ||
+                      version === "infantry" ||
+                      version === "armored" ||
+                      version === "puppets" ||
+                      version === "wildfront" ||
+                      hasAmbushRules(version)) &&
+                    id === "wolf"
+                  ? "幽狼召唤"
+                  : SKILLS[id].name;
+export const skillRole = (
+  id: string,
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+) =>
+  id === "blastbug" && hasDetonationRules(version) ? DETONATION.role :
+  id === "spider" && hasDreamRules(version) ? DREAM.role :
+  id === "ghostjet" && hasFormlessRules(version) ? FORMLESS.role :
+  id === "repair" && hasMendingRules(version) ? MENDING.role :
+  id === "vajra" && hasInfernoRules(version) ? INFERNO.role :
+  id === "chariot" && hasSiegeRules(version) ? SIEGE.role :
+  id === "turtle" && hasTortoiseRules(version) ? TORTOISE.role :
+  id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.role :
+  id === "guard" && hasBulwarkRules(version) ? BULWARK.role :
+  id === "wasp" && hasHiveRules(version) ? HIVE.role :
+  id === "eyebug" && hasGazeRules(version) ? GAZE.role :
+  id === "infantry" && hasRifleRules(version) ? RIFLE.role :
+  id === "vine" && hasThornBindRules(version) ? THORNBIND.role :
+  id === "bonedragon" && hasBoneBlastRules(version) ? BONEBLAST.role :
+  id === "phoenix" && hasWildfireRules(version) ? WILDFIRE.role :
+  id === "winddragon" && hasTornadoRules(version) ? TORNADO.role :
+  id === "lion" && hasWarcryRules(version) ? WARCRY.role :
+  id === "titan" && hasTerminatorRules(version) ? TERMINATOR.role :
+  id === "ark" && hasBombardmentRules(version) ? BOMBARDMENT.role :
+  id === "monk" && hasSecretOrbRules(version) ? SECRET_ORB.role :
+  id === "panda" && hasShurikenRules(version) ? SHURIKEN.role :
+  id === "master" && hasWushiControlRules(version) ? WUSHI_CONTROL.role :
+  id === "master" && hasWushiRules(version) ? WUSHI.role :
+  id === "treant" && hasJungleRules(version)
+    ? JUNGLE.role
+    :
+  id === "stormcaller" && hasStormRules(version)
+    ? THUNDERSTORM.role
+    :
+  id === "acolyte" && hasGospelRules(version)
+    ? GOSPEL.role
+    : id === "thunderlord" && hasLightningRules(version)
+    ? THUNDER_CHAIN.role
+    : id === "motorcycle" && hasTarRules(version)
+      ? MOTOR_TAR.role
+      : id === "skytoad" && hasTaotieRules(version)
+        ? TAOTIE.role
+        : id === "arhat" && hasQiRules(version)
+          ? ARHAT_QI.role
+          : id === "skycrab" && hasAuroraRules(version)
+            ? AURORA.role
+            : id === "pangolin" && hasAmbushRules(version)
+              ? PANGOLIN_BURROW.role
+              : id === "bloodhawk" &&
+                  (version === "metamorph" ||
+                    version === "infantry" ||
+                    version === "armored" ||
+                    version === "puppets" ||
+                    version === "wildfront" ||
+                    hasAmbushRules(version))
+                ? HAWK_METAMORPH.role
+                : (version === "summons" ||
+                      version === "legions" ||
+                      version === "brood" ||
+                      version === "airsea" ||
+                      version === "fleet" ||
+                      version === "metamorph" ||
+                      version === "infantry" ||
+                      version === "armored" ||
+                      version === "puppets" ||
+                      version === "wildfront" ||
+                      hasAmbushRules(version)) &&
+                    id === "wolf"
+                  ? "狼群召唤"
+                  : SKILLS[id].role;

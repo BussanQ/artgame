@@ -1,0 +1,472 @@
+{
+  "checkedAt": "2026-11-06T07:34:42.561Z",
+  "rules": "singleplayer-0.59",
+  "combatVersion": "secret-orb",
+  "scope": "Local AI policy increment. Full singleplayer objective remains active.",
+  "selectedPolicy": "final-distinct-member protection + bounded complete-opening trials + same-shop reconsideration + pre-sale army baseline",
+  "policyLabels": {
+    "initialConservative": "Exact earlier AI and helper hashes, reconstructed in an ignored isolated source copy for beasts/fleet; not current policy.",
+    "speculative": "Exploration reports retain their original final-* filenames. These do not describe the selected worktree.",
+    "selected": "Current worktree, all 73 engine/data/survey fingerprints verified."
+  },
+  "method": "Four seed/profile families (173/pandas,47/pandas,311/beasts,137/fleet), each classic/rotation x three opponent difficulties. Paid standard commander proxy versus selected difficulty opponents; no gold, unit, refresh, reward or future RNG injection. This is not 24 independent seeds, a human win rate or a single-variable balance estimate.",
+  "counts": "Four policies each contain 24 paired games. Repeated captures, duplicated before-pandas reports, R18 captures, module counterfactuals and repeated timing samples are not additional games. Old reports have no PvP/PvE split; null means uncollected.",
+  "statistics": {
+    "before": {
+      "games": 24,
+      "rounds": 616,
+      "seedFamilies": [
+        173,
+        47,
+        311,
+        137
+      ],
+      "averageRank": {
+        "relaxed": 1,
+        "standard": 5.375,
+        "veteran": 5.625
+      },
+      "gamesWithNaturalThreeStars": 11,
+      "perGameDistinctThreeStarInstances": 15,
+      "playerMonkGames": 0,
+      "playerMonkUnitRounds": 0,
+      "playerThreePandaRounds": 0,
+      "formalAiMonkUnitRounds": 3,
+      "formalAiThreePandaRounds": 0,
+      "formalAiOpenings": [],
+      "directOpponentSecretOrbByKind": null,
+      "reports": [
+        {
+          "path": "docs/analysis/opening-ai-v059-before-pandas.json",
+          "sha256": "1f781589b8f1079a8bb5626de332615867928ad33582c99b3315a721e23ed890"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-before-pandas47.json",
+          "sha256": "293ade924af9b0f5062d7b043936088c8fe4f5482e3c80be6b7a8fac6f30b00b"
+        },
+        {
+          "path": "docs/analysis/secret-orb-v059-beasts.json",
+          "sha256": "479e3f788d477304f767a6ba8a92197f60f72e6f67b68e3a70f31fed8138fe87"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-before-fleet137.json",
+          "sha256": "d204cf22556b29c658df371cfda95ce08d90399a04a8b0eb88a9d79cc9cb90c1"
+        }
+      ]
+    },
+    "initialConservative": {
+      "games": 24,
+      "rounds": 628,
+      "seedFamilies": [
+        173,
+        47,
+        311,
+        137
+      ],
+      "averageRank": {
+        "relaxed": 1,
+        "standard": 5.125,
+        "veteran": 5.25
+      },
+      "gamesWithNaturalThreeStars": 10,
+      "perGameDistinctThreeStarInstances": 13,
+      "playerMonkGames": 1,
+      "playerMonkUnitRounds": 1,
+      "playerThreePandaRounds": 1,
+      "formalAiMonkUnitRounds": 7,
+      "formalAiThreePandaRounds": 5,
+      "formalAiOpenings": [
+        {
+          "seed": 137,
+          "mode": "rotation",
+          "difficulty": "standard",
+          "playerId": 5,
+          "profile": "pandas",
+          "rounds": 29,
+          "completeRounds": 5,
+          "firstCompleteRound": 22,
+          "monkRounds": 5
+        }
+      ],
+      "directOpponentSecretOrbByKind": {
+        "pvp": {
+          "rounds": 3,
+          "formed": 3,
+          "pulses": 18,
+          "hits": 54,
+          "energyRemoved": 117,
+          "interrupted": 1
+        },
+        "pve": {
+          "rounds": 17,
+          "formed": 17,
+          "pulses": 71,
+          "hits": 380,
+          "energyRemoved": 810,
+          "interrupted": 15
+        }
+      },
+      "reports": [
+        {
+          "path": "docs/analysis/opening-ai-v059-initial-pandas173.json",
+          "sha256": "32517a5c2712ce10700df80c139477356f50215bf1f00e9b4e8d74adecc8e60f"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-initial-pandas47.json",
+          "sha256": "c8e15e8f78dce675add4c376a423cdecf0ca4672871828e2bbff669d0ec583da"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-conservative-beasts311.json",
+          "sha256": "f768095c07124d4f9f103dc6599f0186a272390e5f553575558bd9cda7c6f1e5"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-conservative-fleet137.json",
+          "sha256": "df7588de84c6f0d50ef419e11ff6207df79f2210296613fce8df90333939f2eb"
+        }
+      ]
+    },
+    "speculative": {
+      "games": 24,
+      "rounds": 617,
+      "seedFamilies": [
+        173,
+        47,
+        311,
+        137
+      ],
+      "averageRank": {
+        "relaxed": 1,
+        "standard": 6,
+        "veteran": 5.25
+      },
+      "gamesWithNaturalThreeStars": 10,
+      "perGameDistinctThreeStarInstances": 12,
+      "playerMonkGames": 2,
+      "playerMonkUnitRounds": 6,
+      "playerThreePandaRounds": 6,
+      "formalAiMonkUnitRounds": 7,
+      "formalAiThreePandaRounds": 5,
+      "formalAiOpenings": [
+        {
+          "seed": 137,
+          "mode": "rotation",
+          "difficulty": "standard",
+          "playerId": 5,
+          "profile": "pandas",
+          "rounds": 28,
+          "completeRounds": 5,
+          "firstCompleteRound": 22,
+          "monkRounds": 5
+        }
+      ],
+      "directOpponentSecretOrbByKind": {
+        "pvp": {
+          "rounds": 3,
+          "formed": 3,
+          "pulses": 18,
+          "hits": 54,
+          "energyRemoved": 117,
+          "interrupted": 1
+        },
+        "pve": {
+          "rounds": 16,
+          "formed": 16,
+          "pulses": 50,
+          "hits": 261,
+          "energyRemoved": 636,
+          "interrupted": 16
+        }
+      },
+      "reports": [
+        {
+          "path": "docs/analysis/opening-ai-v059-final-pandas173.json",
+          "sha256": "5008b82c19d3e181c85ceaf36451c8d03b9a03a3ba3f75658e4195457a88ec2d"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-final-pandas47.json",
+          "sha256": "ac210758d65b3f2b367143de7eaf2e85e84fe8aab05703e3480cce7b1c4596c3"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-final-beasts311.json",
+          "sha256": "e514bd294cef920f9bb8972aa8623492d8e4f247f89a0f10a44eb1e490005c08"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-final-fleet137.json",
+          "sha256": "de8c02071d5a6f7f9246a8e253ae8c1250dda5719de4b1b3ba22ea746cc18128"
+        }
+      ]
+    },
+    "selected": {
+      "games": 24,
+      "rounds": 628,
+      "seedFamilies": [
+        173,
+        47,
+        311,
+        137
+      ],
+      "averageRank": {
+        "relaxed": 1,
+        "standard": 5,
+        "veteran": 5.25
+      },
+      "gamesWithNaturalThreeStars": 11,
+      "perGameDistinctThreeStarInstances": 14,
+      "playerMonkGames": 1,
+      "playerMonkUnitRounds": 1,
+      "playerThreePandaRounds": 1,
+      "formalAiMonkUnitRounds": 7,
+      "formalAiThreePandaRounds": 5,
+      "formalAiOpenings": [
+        {
+          "seed": 137,
+          "mode": "rotation",
+          "difficulty": "standard",
+          "playerId": 5,
+          "profile": "pandas",
+          "rounds": 29,
+          "completeRounds": 5,
+          "firstCompleteRound": 22,
+          "monkRounds": 5
+        }
+      ],
+      "directOpponentSecretOrbByKind": {
+        "pvp": {
+          "rounds": 3,
+          "formed": 3,
+          "pulses": 18,
+          "hits": 54,
+          "energyRemoved": 117,
+          "interrupted": 1
+        },
+        "pve": {
+          "rounds": 17,
+          "formed": 17,
+          "pulses": 62,
+          "hits": 340,
+          "energyRemoved": 753,
+          "interrupted": 16
+        }
+      },
+      "reports": [
+        {
+          "path": "docs/analysis/opening-ai-v059-selected-pandas173.json",
+          "sha256": "311746dc3f229cea60cf468bbd51ec89a964a5947b3ebd248442827416c954f8"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-selected-pandas47.json",
+          "sha256": "f8ca7d0930f01e0830e31048cc9385d886242468aea6ea68039c5f5e692de0c4"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-selected-beasts311.json",
+          "sha256": "22c10ed0dc2899effc636f7ec70b4aa648a15656493b15b217ca23c648dd7aa5"
+        },
+        {
+          "path": "docs/analysis/opening-ai-v059-selected-fleet137.json",
+          "sha256": "ff51abaf8b63c7400c7340b630c717edb36be46c237947f60f16cf8396534980"
+        }
+      ]
+    }
+  },
+  "pairedRanks": [
+    {
+      "seed": 173,
+      "profile": "pandas",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "before": 1,
+      "selected": 1
+    },
+    {
+      "seed": 173,
+      "profile": "pandas",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "before": 1,
+      "selected": 1
+    },
+    {
+      "seed": 173,
+      "profile": "pandas",
+      "mode": "classic",
+      "difficulty": "standard",
+      "before": 3,
+      "selected": 3
+    },
+    {
+      "seed": 173,
+      "profile": "pandas",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "before": 8,
+      "selected": 8
+    },
+    {
+      "seed": 173,
+      "profile": "pandas",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "before": 6,
+      "selected": 2
+    },
+    {
+      "seed": 173,
+      "profile": "pandas",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "before": 6,
+      "selected": 6
+    },
+    {
+      "seed": 47,
+      "profile": "pandas",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "before": 1,
+      "selected": 1
+    },
+    {
+      "seed": 47,
+      "profile": "pandas",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "before": 1,
+      "selected": 1
+    },
+    {
+      "seed": 47,
+      "profile": "pandas",
+      "mode": "classic",
+      "difficulty": "standard",
+      "before": 7,
+      "selected": 7
+    },
+    {
+      "seed": 47,
+      "profile": "pandas",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "before": 7,
+      "selected": 4
+    },
+    {
+      "seed": 47,
+      "profile": "pandas",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "before": 5,
+      "selected": 5
+    },
+    {
+      "seed": 47,
+      "profile": "pandas",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "before": 7,
+      "selected": 8
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "before": 1,
+      "selected": 1
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "before": 1,
+      "selected": 1
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "standard",
+      "before": 6,
+      "selected": 6
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "before": 4,
+      "selected": 4
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "before": 7,
+      "selected": 7
+    },
+    {
+      "seed": 311,
+      "profile": "beasts",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "before": 6,
+      "selected": 6
+    },
+    {
+      "seed": 137,
+      "profile": "fleet",
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "before": 1,
+      "selected": 1
+    },
+    {
+      "seed": 137,
+      "profile": "fleet",
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "before": 1,
+      "selected": 1
+    },
+    {
+      "seed": 137,
+      "profile": "fleet",
+      "mode": "classic",
+      "difficulty": "standard",
+      "before": 6,
+      "selected": 6
+    },
+    {
+      "seed": 137,
+      "profile": "fleet",
+      "mode": "rotation",
+      "difficulty": "standard",
+      "before": 2,
+      "selected": 2
+    },
+    {
+      "seed": 137,
+      "profile": "fleet",
+      "mode": "classic",
+      "difficulty": "veteran",
+      "before": 7,
+      "selected": 7
+    },
+    {
+      "seed": 137,
+      "profile": "fleet",
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "before": 1,
+      "selected": 1
+    }
+  ],
+  "limitations": [
+    "Natural three-star games remain 11/24, per-game distinct instances fall from 15 to 14.",
+    "Only one formal AI seat in one selected game naturally fields all three pandas; broad composition coverage remains weak.",
+    "PvP orb counters describe direct encounters, whereas AI usage describes all prepared formal lineups.",
+    "Average rank is lower for both standard and veteran in this paired sample, which does not establish overall balance.",
+    "Policies also change paid trades, live shared pool use and subsequent RNG paths."
+  ]
+}

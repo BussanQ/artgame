@@ -38,11 +38,12 @@ describe("战场投影与表现事件", () => {
   });
 });
 
-import { MELEE_ACTIONS, meleePose, REST_POSE } from "../src/render/melee";
+import { MELEE_ACTIONS, isMelee, meleePose, REST_POSE } from "../src/render/melee";
 import { UNITS } from "../src/data/units";
 import { pieceDetails } from "../src/ui/bench-tooltip";
 import {
   RANGED_ACTIONS,
+  rangedActionName,
   rangedPose,
   projectilePoint,
 } from "../src/render/ranged";
@@ -70,7 +71,7 @@ describe("远程攻击表现", () => {
       }
       expect(
         pieceDetails({ uid: 1, defId: id, star: 1, position: null }).action,
-      ).toBe(RANGED_ACTIONS[id].name);
+      ).toBe(rangedActionName(id));
     }
     expect(trajectories.size).toBe(ranged.length);
   });
@@ -89,7 +90,7 @@ describe("近战动作与棋子信息", () => {
   it("每个近战兵种都有独立动作，整段轨迹合法并回到待机姿态", () => {
     const melee = UNITS.filter((u) => u.range === 1);
     expect(melee.map((u) => u.id).sort()).toEqual(
-      Object.keys(MELEE_ACTIONS).sort(),
+      Object.keys(MELEE_ACTIONS).filter(id=>isMelee(id)).sort(),
     );
     const signatures = new Set<string>();
     for (const u of melee) {

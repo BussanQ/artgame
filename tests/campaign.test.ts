@@ -27,7 +27,7 @@ describe("完整单机对局", () => {
   ] as const)(
     "种子 %i / %s / 构筑 %i 从招募到终局保持合法",
     (seed, difficulty: Difficulty, profile) => {
-      let game = createGame(seed);
+      let game = createGame(seed, "classic");
       game.difficulty = difficulty;
       const storage = new Map<string, string>();
       const port = {
@@ -92,8 +92,14 @@ describe("完整单机对局", () => {
       expect(summary.lineup.length).toBeGreaterThan(0);
       const markup = matchSummaryMarkup(game);
       expect(markup).toContain('aria-label="整局总结"');
+      const currentSprites: Record<string, string> = {
+        arhat: "arhat-qi",
+        skycrab: "skycrab-aurora",
+      };
       for (const p of summary.lineup)
-        expect(markup).toContain(`/assets/units/${p.defId}.png`);
+        expect(markup).toContain(
+          `/assets/units/${currentSprites[p.defId] ?? p.defId}.png`,
+        );
       if (game.players[0].hp === 0) {
         expect(game.players[0].pieces).toHaveLength(0);
         expect(summary.reason).toBe("eliminated");
@@ -117,7 +123,7 @@ describe("完整单机对局", () => {
 });
 
 it("第30回合结算后结束，即使多名玩家存活也不能进入31回合", () => {
-  const g = createGame(137);
+  const g = createGame(137, "classic");
   g.round = 30;
   const p = g.players[0];
   buy(g, p, p.shop.findIndex(Boolean));

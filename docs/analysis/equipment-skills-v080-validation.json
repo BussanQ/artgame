@@ -1,0 +1,138 @@
+{
+  "version": "singleplayer-0.80",
+  "combatVersion": "equipment-skills",
+  "saveSchema": 79,
+  "date": "2026-11-07",
+  "scope": "当前未提交的0.79之上增加两件独立装备技能；没有完整经营局或批量对战。",
+  "base": {
+    "commit": "0808660112c61900b156d6a24d1b8fe62900481f",
+    "worktreeRules": "singleplayer-0.79"
+  },
+  "tests": {
+    "reports": [
+      {
+        "report": "tmp/equipment-skills-second-tests.json",
+        "role": "29项模块首次通过",
+        "passed": 29,
+        "failed": 0,
+        "skipped": 0,
+        "sha256": "d721b8e19d244c9387d83ad7d29d1221f7637d8f2afc06d46c346238908765fb"
+      },
+      {
+        "report": "tmp/push-equipment-overview-tests.json",
+        "role": "工坊总览",
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "sha256": "014d084c2d17662deaf4df0e6a63c3901194a349946e634342d5e69b8500c351"
+      },
+      {
+        "report": "tmp/push-equipment-transactions-tests.json",
+        "role": "交易与旧版AI",
+        "passed": 4,
+        "failed": 0,
+        "skipped": 6,
+        "sha256": "e985fce94af3a0e3d7c10b125c75452e162c4d9132063a29cceb10fd98a08dd6"
+      },
+      {
+        "report": "tmp/push-equipment-ai-tests.json",
+        "role": "新AI补充幂等与资源守恒后复验",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 28,
+        "sha256": "51994d488762eeb51515f20686ff1dc16893964ccb412b208ff06a65536d9ed0"
+      },
+      {
+        "report": "tmp/push-dream-migration-tests.json",
+        "role": "迷梦存档迁移",
+        "passed": 3,
+        "failed": 0,
+        "skipped": 36,
+        "sha256": "14d5b09078f753ce81fb686073c64eb12152395531ca921062543295694f11a0"
+      }
+    ],
+    "distinctPassed": 45,
+    "note": "新AI复验属于29项中的同一检查，不重复计数；旧版AI测试固定dream以验证原合成顺序。"
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "modules": 185,
+    "artifacts": [
+      {
+        "path": "dist/assets/index-C44yFfDH.js",
+        "bytes": 447522,
+        "sha256": "56c1612e8db574b773ffed7ec5f73ce3a2cbda08234eede61bd046681271c86c"
+      },
+      {
+        "path": "dist/assets/index-CCbEP043.css",
+        "bytes": 88839,
+        "sha256": "5be1000c7fbc3ed613591a813c4c8c0557e945bdb41da5c8848661b341075af1"
+      },
+      {
+        "path": "dist/assets/worker-DRQMY-SB.js",
+        "bytes": 238590,
+        "sha256": "8e3e06840ff861aee20f36121d8bd4af12c0eb9bb029a66b98ce9dbba7332f14"
+      }
+    ]
+  },
+  "compatibility": {
+    "oldCombatVersions": 52,
+    "fixture": "tests/fixtures/pre-v080-equipment-skills.json",
+    "oldItemCount": 16,
+    "definitionsAndPresentation": "SHA保持",
+    "oldSummonReplay": "SHA保持",
+    "migration": "schema78准备期升级，战斗/结算/终局保持dream，资源、目录、历史及播放状态保留。"
+  },
+  "fixedScenes": [
+    "装备技能固定2对2，录制、快算和Worker一致；新召唤物出生当帧不行动。",
+    "同阵容旧规则回放校验；其他新行为用直接模块上下文验证。"
+  ],
+  "research": "docs/research/equipment-skills-history.json",
+  "browser": {
+    "status": "pending",
+    "note": "浏览器初始化超时；未完成桌面、手机或实际恢复/刷新/下载验收，没有本轮截图。"
+  },
+  "sourceFingerprints": {
+    "package.json": "3b67dc79ed17c4a5217a967f3130f1f60202b9a1b9f1222a854153e750f51219",
+    "src/data/dream-demo.ts": "918eab9aa086ac27759fa337b41bbc61be97fe8704f5d8afe1bcd023a9434934",
+    "src/data/equipment-skills-demo.ts": "49e3e00be03ede3a1c612b9a8e1c7684e7b0dc2504e24d7863aa2fd3e83d46c0",
+    "src/data/items.ts": "e50c69fdb148af2c1a4b7ee721f8ed7f2d348aee3d832ab7049b27dd3507f83d",
+    "src/data/skills.ts": "c77b38d72f8e7d203acfeba016d2866eef2cbbe56318999a1237a796ce19665b",
+    "src/data/unit-stats.ts": "eea32407a0bec174c6073da3080552ad8d259a871f5bc36eadf2c1473b0b7783",
+    "src/data/units.ts": "aa6f469739616d43651262b4eebd3e00f5d36e9e3a207e9c533ca11032d6a490",
+    "src/engine/abilities.ts": "f00f4755801088d9ab81953429fe71e1b142346fc1d016ea942fb4d45e54b388",
+    "src/engine/ai.ts": "88738bf9dcf32340af520831737cffa43b03fcfb459ffa090e492d19f456b341",
+    "src/engine/battle-analysis.ts": "02fe03f3e1c9a43666678950680e39937ab70ec2f7570ec2e69fe74fab27f14e",
+    "src/engine/battle.ts": "d5d3666997df47d3dd91f2b97f778de01d3b6b5a2d23e6915210c22eeeab28d8",
+    "src/engine/dream.ts": "4d3d5dce595d9e00f106cd0d06622adcb27a7f2623cf50c5ec4b3816a6a6abff",
+    "src/engine/equipment-skills.ts": "e565b49960a0420eb88cc46db1e9c46da08f5a83f2f0ebeb1a58d3fd015424c2",
+    "src/engine/equipment.ts": "d01724e9d56a37e576968db32e214298ce35760fc6711cf4e8584fb7b7dc463b",
+    "src/engine/execution.ts": "f575a4e0a4e51b580ce187cf3cc6e86f9768a06592f4596e5ec7599c81eb551a",
+    "src/engine/immortality.ts": "fc474d94d3e66522b5a346fc11ae59c96cf78d58a79c34b96d1ac77c608f3f6c",
+    "src/engine/persistence.ts": "0549c6963446eaf783ba21abf89013613a2523ebf31c293dd2558f6ca1994ced",
+    "src/engine/phoenix.ts": "b085cc5cd858d0a4b0fe11eebcda6a7b66f65d8c47c261b3c0b8f6ea55ea1236",
+    "src/engine/summons.ts": "27b3a453ce9f24be0fe755723e507287a29bcb5dcbbfb5f99bb4d7ad03a0ad18",
+    "src/engine/taunt.ts": "be5337474bf5552487fa43ed40e704a3ea8b3f935e3b51cd14f7510d11797a3a",
+    "src/engine/types.ts": "349834c13831b0fd9a316b26355872656fc4af174fb7a472609fde49b1cc9e9d",
+    "src/main.ts": "1d406e145bd0ca459e55f05317f66c38c4c881fa565da15a0bfef5486236ddf3",
+    "src/render/battle-inspection.ts": "80e5c35554a7868a527af881254909ac2084e030fa803d7fccfe2d4d7239b6fb",
+    "src/render/dream.ts": "93563cf22121515bfb31ab0ddf9a2c27a2f372e194050ad0d349cb5b150527fc",
+    "src/render/equipment-skills.ts": "3d68889fa306641af602a79731d3bf91fedbbf53b82cbdc9e62f91194495678a",
+    "src/render/scene.ts": "9b67a0d727c03c442020a8c273343565d000b10ec2cfb3423e3cc2c35f74bcc5",
+    "src/render/skill-effects.ts": "f0f2a96a466618d6390cf44de1ba749e865e4b9ba51a560e86bc42244e42308a",
+    "src/ui/battle-analysis.ts": "e145753c615025459f0b0d831e2df81454d64f64c17cdfc384afbf2cee54a18b",
+    "tests/dream.test.ts": "2ce665819e0ddbf3917ec0de6a6cdee625359b41bb15ab2d58578679655b6d39",
+    "tests/equipment-overview.test.ts": "8a6ceb9f38dbcfded950a77036bd59d81387e2289748039b7d429dd7d2877ce5",
+    "tests/equipment-skills.test.ts": "91bb249e074396709ec86694004579b0df7b9ebc1ae4b0081499de132b93bc14",
+    "tests/equipment.test.ts": "af195190972df41a44b62ca6fd6e14ca84e5de975c6165f4e035065768f4d007",
+    "tests/fixtures/pre-v079-dream.json": "3ff1c9dd308d5c3ba4643138296c745a937db0bd8f8d1e13023f4da0f403f5ab",
+    "tests/fixtures/pre-v080-equipment-skills.json": "47519fc7ca7d197609551271884f3bebdc605520bc1c6d587b622b0eabbbef67",
+    "tests/insects.test.ts": "7207f225337661fea8f8bc82131cdac848e2279804893a778893cb96da7b60a1"
+  },
+  "remaining": [
+    "实际画面和手机交互验收",
+    "存档恢复的实际刷新与下载验收",
+    "其余原型与整体单机平衡继续推进"
+  ]
+}

@@ -1,6 +1,24 @@
+import { catalogCost, catalogVersion, pinCatalogDefinitions } from "../data/catalog";
+import { isRecruitable } from "./rotation";
 import { RULES, UNIT } from "../data/units";
-import { isInsect, mergePieces } from "./progression";
+import { isInsect, mergePieces, pieceCopies, salePrice } from "./progression";
 import type { Game, Piece, Player } from "./types";
+
+/** Shared, read-only sale quote for real transactions and concrete reserve swaps. */
+export function previewSale(
+  game:Pick<Game,"phase"|"combatVersion"|"catalogVersion">,
+  player:Player,
+  uid:number,
+) {
+  if(game.phase!=="prepare")return null;
+  const piece=player.pieces.find(piece=>piece.uid===uid);
+  if(!piece)return null;
+  const after=structuredClone(player),price=salePrice(piece,catalogVersion(game));
+  after.gold+=price;
+  after.inventory.push(...(piece.items??[]));
+  after.pieces=after.pieces.filter(piece=>piece.uid!==uid);
+  return {after,price,defId:piece.defId,copies:pieceCopies(piece)};
+}
 
 export interface PurchasePreview {
   allowed: boolean;
@@ -15,12 +33,15 @@ export interface PurchasePreview {
 
 /** Read-only projection shared by the shop and the actual purchase transaction. */
 export function previewPurchase(
-  game: Pick<Game, "phase" | "nextUid" | "combatVersion">,
+  game: Pick<
+    Game,
+    "phase" | "nextUid" | "combatVersion" | "bannedSeries" | "catalogVersion"
+  >,
   player: Player,
   index: number,
 ): PurchasePreview {
   const id = player.shop[index];
-  const cost = id ? (UNIT[id]?.cost ?? 0) : 0;
+  const cost = id && UNIT[id] ? catalogCost(game, id) : 0;
   const interest = (gold: number) =>
     Math.min(5, Math.floor(Math.max(0, gold) / 10));
   const result: PurchasePreview = {
@@ -34,6 +55,10 @@ export function previewPurchase(
     interestAfter: interest(player.gold - cost),
   };
   if (!id || !UNIT[id]) return result;
+  if (!isRecruitable(game, id)) {
+    result.reason = "本局已禁用该系列";
+    return result;
+  }
   const after = structuredClone(player);
   after.pieces.push({
     uid: game.nextUid,
@@ -42,6 +67,7 @@ export function previewPurchase(
     position: null,
     ...(isInsect(id) ? { copies: 1 } : {}),
   });
+  pinCatalogDefinitions(game,after.pieces);
   mergePieces(after, game.combatVersion);
   after.gold -= cost;
   after.shop[index] = null;

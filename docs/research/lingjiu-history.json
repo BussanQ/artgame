@@ -1,0 +1,73 @@
+{
+  "unitId": "lingjiu",
+  "name": "灵鹫",
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.40",
+  "status": "implemented-mixed-version-adaptation",
+  "classification": {
+    "traits": ["海神", "刺杀"],
+    "sources": ["S20", "S25", "S04"]
+  },
+  "julyObservation": {
+    "source": "S04-2 row 5",
+    "publishedAt": "2019-07-08",
+    "cost": 2,
+    "hp": 550,
+    "attackMin": 96,
+    "attackMax": 105,
+    "armor": 0,
+    "range": 3,
+    "intervalSeconds": 2,
+    "skillCooldownSeconds": [6]
+  },
+  "datedSkillAnnouncement": {
+    "source": "S48",
+    "publishedAt": "2020-07-30",
+    "skillName": "死魂曲",
+    "oldDamageByStar": [150, 250, 350],
+    "newDamageByStar": [200, 300, 400],
+    "note": "直接读到作者/来源均署名官方的转载正文。日期属于2020，不证明2019七月具有相同伤害。"
+  },
+  "appearanceReference": {
+    "source": "S20",
+    "publishedAt": "2019-04-24",
+    "imageUrl": "https://video.kts.g.mi.com/ktv_1103968488_bEZsNDhRK2FWYWdsVzJrT0tIYUludz09_1556086200042.jpeg",
+    "sha256": "f29f5453424788005490766b3be606f4d5753db0517184687559035c894e478f",
+    "status": "downloaded-valid-jpeg-and-visually-reviewed",
+    "observed": "海神图鉴第一张二费卡，浅色分节腹部、尖角、紫色鳍翼的悬浮海兽；没有把名字误画成普通猛禽。",
+    "use": "仅作研究和原创生成提示词的形态参考，未把原图放进游戏运行素材。"
+  },
+  "implementation": {
+    "cost": 2,
+    "hp": 550,
+    "attack": 101,
+    "armor": 0,
+    "range": 3,
+    "intervalSeconds": 2,
+    "initialMana": 25,
+    "flying": true,
+    "skillName": "死魂曲",
+    "damageType": "magic",
+    "damageByStar": [200, 300, 400],
+    "cooldownSeconds": 6,
+    "radiusTiles": 1.5,
+    "center": "caster",
+    "shape": "Euclidean circle clipped to the board",
+    "extraControl": false,
+    "damageOverTime": false
+  },
+  "localBoundaries": [
+    "攻击96–105取四舍五入中值101；生命/攻击沿用统一二倍星级成长。",
+    "初始25能量、法伤类型、自身圆形中心、1.5格半径、近身可见敌人才触发和其他边界为本地适配。",
+    "S46原图仍未取得；索引转写中的15不等于15棋格，本地1.5格也不是已经验证的历史单位换算。",
+    "普通选敌的曼哈顿同距顺序不限制自身圆形技能，圆内可见敌人按欧氏距离和UID选择主命中锚点。",
+    "命中隐藏及飞行敌人，排除友军；不附加控制、减甲或持续伤害。反伤使施法者阵亡时停止余下命中。",
+    "飞行不自动增加空军/猛禽标签；接受现有飞行增益和海神回能，每步最多一次额外回能。开场跳后排沿用当前两刺杀规则。",
+    "当前攻击冷却仍限制行动节拍；未以新增灵鹫为由静默重做全局施法时序。"
+  ],
+  "unresolved": [
+    "2019同版本技能伤害、原始范围/中心、能量与星级成长仍需原客户端或可读图鉴核实。",
+    "四月名单现在53/53有名称或本地设计对应，但9项分类差异、统一版本规则和最终平衡仍未完成。",
+    "美术由内置ImageGen生成，是原创再设计，不是原作3D模型。"
+  ]
+}

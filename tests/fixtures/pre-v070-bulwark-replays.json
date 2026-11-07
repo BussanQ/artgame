@@ -1,0 +1,949 @@
+{
+  "capturedBeforeRules": "singleplayer-0.70",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "tornado",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "wildfire",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "boneblast",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "thornbind",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "rifle",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "gaze",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    },
+    {
+      "version": "hive",
+      "unit": {
+        "id": "guard",
+        "name": "盾兵",
+        "cost": 1,
+        "traits": [
+          "步兵",
+          "护卫"
+        ],
+        "hp": 800,
+        "attack": 36,
+        "armor": 7,
+        "range": 1,
+        "interval": 4,
+        "skill": "震荡重击",
+        "color": "#75bcb8",
+        "glyph": "⬡"
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "infantry",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "hash": "9cb835ae0bf5cebaee1ad7bdffae556ae23c801ec666b4c4039fd51e2fa5373e",
+      "frames": 79,
+      "winner": 0,
+      "tick": 78,
+      "guards": [
+        {
+          "uid": 101,
+          "hp": 1509,
+          "shield": 615,
+          "signatureCasts": 0
+        }
+      ],
+      "shieldCasts": 0
+    },
+    {
+      "version": "hive",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "wasp",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "staff",
+            "staff",
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 36,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 36,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "infantry",
+          "star": 2,
+          "position": 44,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "hash": "84f4bb83e9556e32d6b887fc9ca759888176b7ba94b4bb2b2ae3ffe387dc0f75",
+      "frames": 161,
+      "winner": null,
+      "tick": 160,
+      "guards": [
+        {
+          "uid": 102,
+          "hp": 2050,
+          "shield": 383,
+          "signatureCasts": 11
+        },
+        {
+          "uid": 201,
+          "hp": 1299,
+          "shield": 442,
+          "signatureCasts": 8
+        }
+      ],
+      "shieldCasts": 19
+    }
+  ]
+}

@@ -30,7 +30,7 @@ import {
 } from "../src/engine/persistence";
 
 function setup() {
-  const g = createGame(123),
+  const g = createGame(123, "classic"),
     p = g.players[0];
   buy(g, p, 0);
   move(g, p, p.pieces[0].uid, 35);
@@ -206,8 +206,9 @@ describe("野怪回合与装备构筑", () => {
       0.55,
     );
   });
-  it("AI 将装备分配给上场棋子并合成，不能给同一个棋子超过三件", () => {
+  it("旧版 AI 按原配方顺序合成并分配装备，不能给同一个棋子超过三件", () => {
     const { g, p, piece } = setup();
+    g.combatVersion = "dream";
     p.inventory = [
       "blade",
       "blade",

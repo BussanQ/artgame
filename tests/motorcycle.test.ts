@@ -1,3 +1,4 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { describe, it, expect } from "vitest";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
@@ -26,7 +27,7 @@ const p = (
   position: number | null = 35,
 ): Piece => ({ defId, uid, star, position });
 const f = (id: string, uid: number, side: 0 | 1 = 0, star = 1): Fighter =>
-  Object.assign(army([p(id, uid, star)], side)[0], {
+  Object.assign(army([p(id, uid, star)], side, "taotie")[0], {
     x: 3,
     y: side ? 3 : 4,
     mana: 100,
@@ -173,9 +174,14 @@ describe("摩托骑兵集成", () => {
   it("完整、快速、Worker回放一致，冷却间隔和普攻窗口实际生效", () => {
     const left = [p("motorcycle", 1, 3, 51), p("guard", 2, 3, 35)],
       right = [p("turtle", 3, 3, 35), p("medic", 4, 3, 43)];
-    const b = simulate(left, right),
-      fast = simulateOutcome(left, right),
-      job = compute({ kind: "replay", left, right, version: "metamorph" });
+    const b = simulate(left, right, "taotie"),
+      fast = simulateOutcome(left, right, "taotie"),
+      job = compute({
+        kind: "replay",
+        left,
+        right,
+        version: "taotie",
+      });
     expect(fast.winner).toBe(b.winner);
     expect(fast.final.fighters).toEqual(b.frames.at(-1)!.fighters);
     expect(fast.damage).toBe(b.damage);
@@ -198,7 +204,7 @@ describe("摩托骑兵集成", () => {
     ).toBeGreaterThanOrEqual(3);
   });
   it("AI把摩托骑兵作为后排，技能装备提高估值且卡池正常", () => {
-    const g = createGame(137),
+    const g = createGame(137, "classic"),
       pl = g.players[0];
     pl.level = 2;
     pl.pieces = [p("motorcycle", 1, 2), p("guard", 2, 2)];
@@ -211,13 +217,14 @@ describe("摩托骑兵集成", () => {
   });
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it("0.20 " + phase + "仅新增25份卡池，保留资源和逐帧回放", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
+      g.combatVersion = "metamorph";
       g.pool.motorcycle = 0;
       let result: ReturnType<typeof startRound> | undefined;
       if (phase !== "prepare") {
         const pl = g.players[0];
         if (pl.shop[0]) g.pool[pl.shop[0]]++;
-        pl.shop[0] = phase === "finished" ? "fish" : "guard";
+        pl.shop[0] = phase === "finished" ? "acolyte" : "guard";
         g.pool[pl.shop[0]]--;
         buy(g, pl, 0);
         pl.pieces[0].position = 35;
@@ -242,6 +249,8 @@ describe("摩托骑兵集成", () => {
       expect(decoded.data!.schema).toBe(SAVE_SCHEMA);
       expect(decoded.data!.game).toEqual({
         ...before,
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "metamorph",
         pool: { ...before.pool, motorcycle: 25 },
       });
       expect(validGame(decoded.data!.game)).toBe(true);

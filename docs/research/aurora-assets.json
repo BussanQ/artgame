@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-05",
+  "rules": "singleplayer-0.47",
+  "method": "built-in image_gen; no CLI or API key; first attempt succeeded",
+  "assets": [
+    {
+      "id": "skycrab-aurora",
+      "unit": "空蟹",
+      "kind": "versioned unit sprite",
+      "path": "public/assets/units/skycrab-aurora.png",
+      "generatedPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-0e179356-69ad-44a6-a1c9-205d73cec058.png",
+      "prompt": "Use case: precise-object-edit. Asset type: transparent PNG chess-unit sprite for a 2.5D autobattler. Image 1 is the existing skycrab game asset to redesign; image 2 is a historical client screenshot used only as a silhouette and material reference. Redesign the unit into a floating deep-sea siege creature: a broad, low, manta-like armored crab carapace in dark slate-blue and pale blue-gray, swept layered fins, a pair of narrow luminous cyan eye slits and an integrated forward aurora emitter below its pointed shell. Keep the existing asset's detailed game-miniature rendering, crisp silhouette and readable three-quarter front view seen slightly from above; the front emitter points diagonally down-left in the image. Incorporate very restrained aged bronze trim to fit the rest of our jade-and-bronze game army, while the dominant silhouette and colors follow the historical reference. Make it clearly floating, without four planted walking legs, without the large upright crown or oversized orb held in claws. Show one entire creature centered with comfortable transparent padding, no cropping. Actual fully transparent alpha background, including between fins; no environment, floor, vignette, backdrop, ground shadow, beam, extra objects, UI, lettering or watermark. This is a new reusable sprite, not a screenshot recreation.",
+      "references": [
+        {
+          "role": "existing asset to redesign",
+          "path": "public/assets/units/skycrab.png"
+        },
+        {
+          "role": "historical silhouette reference, not a reusable game model",
+          "source": "S50",
+          "url": "https://img2-tc.tapimg.com/bbcode/images/42148186b198d44c7cffea2e9007cf1a.png/_tap_ugc.jpg",
+          "archive": "docs/research/images/s50-skycrab-client.jpg",
+          "sha256": "f14f75e07712a24fb77430c1252e4c2e1bd080f53bdd202ff61c400024390808"
+        }
+      ],
+      "bytes": 1873901,
+      "width": 1536,
+      "height": 1024,
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "fullyTransparentPixels": 1080375,
+        "cornerValues": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "sha256": "e9c57366847cb28b47b97cacaad23112728a254c76ddcf20602fd01215d987d3",
+      "previousAsset": {
+        "path": "public/assets/units/skycrab.png",
+        "sha256": "995f2da29f1a25cfd8d4bf39e92891e7a22ca728fae934b454f908b897414d0f",
+        "preserved": true
+      },
+      "runtime": "New aurora games use this sprite in combat, shop, bench, codex, deployment, scouting and equipment. Earlier combat versions keep the previous portrait. Original generated alpha and bytes are preserved; no postprocessing.",
+      "generatedAt": "2026-11-05"
+    }
+  ]
+}

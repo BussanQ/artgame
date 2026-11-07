@@ -1,6 +1,11 @@
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import { advanceSonic } from "../src/engine/wild-skills";
 import { describe, it, expect } from "vitest";
-import { army, simulate, simulateOutcome } from "../src/engine/battle";
+import { army as armyAtVersion, simulate as simulateAtVersion, simulateOutcome as outcomeAtVersion } from "../src/engine/battle";
+// These fixtures describe the original 0.17 prototype, preserved through 0.63.
+const army = (pieces: Piece[], side: 0 | 1) => armyAtVersion(pieces, side, "tornado");
+const simulate = (left: Piece[], right: Piece[]) => simulateAtVersion(left, right, "tornado");
+const simulateOutcome = (left: Piece[], right: Piece[]) => outcomeAtVersion(left, right, "tornado");
 import {
   castSkill,
   damage,
@@ -281,7 +286,12 @@ describe("燎原矩形引导", () => {
     const original = structuredClone([left, right]),
       b = simulate(left, right),
       fast = simulateOutcome(left, right);
-    const w = compute({ kind: "replay", left, right, version: "metamorph" });
+    const w = compute({
+      kind: "replay",
+      left,
+      right,
+      version: "tornado",
+    });
     expect(w.kind).toBe("replay");
     if (w.kind !== "replay") return;
     expect(JSON.stringify(w.battle)).toBe(JSON.stringify(b));
@@ -320,7 +330,8 @@ describe("燎原矩形引导", () => {
 describe("0.16到0.17卡池迁移", () => {
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(phase + "保留旧资源、战斗和历史，仅补新卡池", () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
+      g.combatVersion = "metamorph";
       let result: ReturnType<typeof startRound>;
       if (phase !== "prepare") {
         const me = g.players[0];
@@ -350,6 +361,8 @@ describe("0.16到0.17卡池迁移", () => {
       expect(decoded.data!.schema).toBe(SAVE_SCHEMA);
       expect(decoded.data!.game).toEqual({
         ...before,
+        combatVersion:
+          phase === "prepare" ? CURRENT_COMBAT_VERSION : "metamorph",
         pool: { ...before.pool, phoenix: COPIES[UNIT.phoenix.cost] },
       });
       expect(validGame(decoded.data!.game)).toBe(true);

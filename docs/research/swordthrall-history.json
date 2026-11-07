@@ -1,0 +1,82 @@
+{
+  "unitId": "swordthrall",
+  "name": "剑奴",
+  "reviewedAt": "2026-11-04",
+  "rules": "singleplayer-0.33",
+  "sources": [
+    "S04",
+    "S20",
+    "S25",
+    "S42",
+    "S43"
+  ],
+  "historical": {
+    "cost": 2,
+    "traits": [
+      "傀儡",
+      "先锋"
+    ],
+    "hp": 600,
+    "attackMin": 76,
+    "attackMax": 82,
+    "armor": 5,
+    "attackIntervalSeconds": 1.2,
+    "range": 1,
+    "skillName": "狂舞花绽",
+    "skillDamage": [
+      50,
+      100,
+      150
+    ],
+    "skillPulses": 6,
+    "skillDurationSeconds": 6.5,
+    "skillCooldownSeconds": 12,
+    "skillImmunity": "skill damage; screenshot",
+    "movementAndControlImmunity": "May 28 player review; exact control categories unspecified"
+  },
+  "provenance": {
+    "baseStats": "S04-2 row 1, player table; not official client configuration",
+    "skill": "S42 client screenshot",
+    "referenceImageUrl": "https://image.9game.cn/2019/5/27/80505085.jpg",
+    "referenceImageSha256": "d399c94a34f10c176e84de5284f02f2149781d9ae779edfd6166668f045048d1",
+    "control": "S43 player observation"
+  },
+  "localAdaptation": {
+    "attack": 79,
+    "attackIntervalSeconds": 1.25,
+    "intervalReason": "Nearest 0.25-second simulation step",
+    "hpAndAttackStarScale": [
+      1,
+      2,
+      4
+    ],
+    "initialMana": 25,
+    "maxMana": 100,
+    "radius": 1.5,
+    "distance": "Euclidean circle around current cell",
+    "damageType": "magic",
+    "pulseOffsetsSeconds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "noBasicAttacksOrManaGainWhileSpinning": true,
+    "cooldownStarts": "On cast",
+    "controlImmunity": [
+      "stun",
+      "silence",
+      "charm",
+      "attack slow",
+      "knockback"
+    ],
+    "remainingVulnerabilities": [
+      "basic attacks including true basic damage",
+      "armor break",
+      "energy drain and lock"
+    ],
+    "caveat": "Initial mana, pulse phase, radius, damage type and control/interaction boundaries are local choices. Sources span different dates and do not establish a unified original ruleset."
+  }
+}

@@ -4,6 +4,45 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  detonation?:Fighter["detonation"];
+  equipmentSkills?:Fighter["equipmentSkills"];
+  dream?:Fighter["dream"];
+  formless?:Pick<NonNullable<Fighter["formless"]>,"activations"|"hits"|"damage"|"shieldDamage">;
+  mending?:Pick<NonNullable<Fighter["mending"]>,"completed"|"healing"|"energy"|"hastes"|"interrupted"|"missed">;
+  inferno?:Pick<NonNullable<Fighter["inferno"]>,"formed"|"hits"|"slows"|"healing"|"interrupted">;
+  siege?:Pick<NonNullable<Fighter["siege"]>,"formed"|"fired"|"impacts"|"splashHits"|"splashDamage"|"interrupted"|"mode">;
+  reaper?:Pick<NonNullable<Fighter["reaper"]>,"marks"|"trueHits"|"trueDamage"|"executions"|"enhanced"|"puppets"|"interrupted"|"missed">;
+  executionPuppet?:Fighter["executionPuppet"];
+  tortoise?:Omit<NonNullable<Fighter["tortoise"]>,"casting"|"actedAt">;
+  spiritWard?:Pick<NonNullable<Fighter["spiritWard"]>,"formed"|"protected"|"severed"|"interrupted"|"mitigated"|"physicalSaved"|"magicSaved">;
+  bulwark?:Pick<NonNullable<Fighter["bulwark"]>,"formations"|"taunts">;
+  hive?:Pick<NonNullable<Fighter["hive"]>,"volleys"|"needles"|"explosions"|"innerHits"|"outerHits"|"interrupted">;
+  gaze?:Fighter["gaze"];
+  rifle?:Fighter["rifle"];
+  thornbind?:Pick<NonNullable<Fighter["thornbind"]>,"pulses"|"hits"|"roots"|"healing"|"retargets"|"interrupted">;
+  boneblast?: Pick<NonNullable<Fighter["boneblast"]>, "launched" | "detonated" | "hits" | "stuns" | "interrupted">;
+  wildfire?: Pick<NonNullable<Fighter["wildfire"]>, "formed" | "pulses" | "hits" | "interrupted" | "eggs" | "hatches" | "brokenEggs">;
+  tornado?: Pick<NonNullable<Fighter["tornado"]>, "launched" | "contacts" | "knockups" | "landings">;
+  warcry?: Pick<NonNullable<Fighter["warcry"]>, "roars" | "petrified" | "retaliations" | "retaliationDamage" | "retaliationShield">;
+  terminator?: Pick<NonNullable<Fighter["terminator"]>, "smallLaunched" | "largeLaunched" | "detonated" | "hits">;
+  bombardment?: Pick<NonNullable<Fighter["bombardment"]>, "launched" | "hits">;
+  secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>,"formed"|"pulses"|"hits"|"energyRemoved"|"interrupted">;
+  shuriken?: Pick<NonNullable<Fighter["shuriken"]>, "launched" | "landings" | "pulses" | "hits" | "interrupted">;
+  wushi?: Fighter["wushi"];
+  jungle?: Fighter["jungle"];
+  storm?: Pick<NonNullable<Fighter["storm"]>, "launched" | "hits" | "energyRemoved">;
+  gospelAura?: Fighter["gospelAura"];
+  lightning?: { attacks: number; bounces: number; damage: number };
+  tar?: Pick<NonNullable<Fighter["tar"]>, "launched" | "detonated">;
+  taotie?: Fighter["taotie"];
+  aurora?: Fighter["aurora"];
+  qiSkill?: true;
+  interruptions: number;
+  lostTargets: number;
+  armorApplications?: number;
+  knockups?: number;
+  peakGale?: number;
+  criticalHits?: number;
   phoenix?: Fighter["phoenix"];
   hawkForm?: Fighter["hawkForm"];
   undying?: boolean;
@@ -28,6 +67,61 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.detonation?{detonation:{...f.detonation}}:{}),
+    ...(f.equipmentSkills?{equipmentSkills:structuredClone(f.equipmentSkills)}:{}),
+    ...(f.dream?{dream:{...f.dream}}:{}),
+    ...(f.formless?{formless:{activations:f.formless.activations,hits:f.formless.hits,damage:f.formless.damage,shieldDamage:f.formless.shieldDamage}}:{}),
+    ...(f.mending?{mending:{completed:f.mending.completed,healing:f.mending.healing,energy:f.mending.energy,hastes:f.mending.hastes,interrupted:f.mending.interrupted,missed:f.mending.missed}}:{}),
+    ...(f.inferno?{inferno:{formed:f.inferno.formed,hits:f.inferno.hits,slows:f.inferno.slows,healing:f.inferno.healing,interrupted:f.inferno.interrupted}}:{}),
+    ...(f.reaper?{reaper:{marks:f.reaper.marks,trueHits:f.reaper.trueHits,trueDamage:f.reaper.trueDamage,executions:f.reaper.executions,enhanced:f.reaper.enhanced,puppets:f.reaper.puppets,interrupted:f.reaper.interrupted,missed:f.reaper.missed}}:{}),
+    ...(f.executionPuppet?{executionPuppet:{...f.executionPuppet}}:{}),
+    ...(f.siege?{siege:{formed:f.siege.formed,fired:f.siege.fired,impacts:f.siege.impacts,splashHits:f.siege.splashHits,splashDamage:f.siege.splashDamage,interrupted:f.siege.interrupted,mode:f.siege.mode}}:{}),
+    ...(f.tortoise?{tortoise:{formed:f.tortoise.formed,interrupted:f.tortoise.interrupted,taunts:f.tortoise.taunts,swings:f.tortoise.swings,splashHits:f.tortoise.splashHits,mode:f.tortoise.mode,allies:f.tortoise.allies,enemies:f.tortoise.enemies}}:{}),
+    ...(f.spiritWard?{spiritWard:{formed:f.spiritWard.formed,protected:f.spiritWard.protected,severed:f.spiritWard.severed,
+      interrupted:f.spiritWard.interrupted,mitigated:f.spiritWard.mitigated,physicalSaved:f.spiritWard.physicalSaved,magicSaved:f.spiritWard.magicSaved}}:{}),
+    ...(f.bulwark?{bulwark:{formations:f.bulwark.formations,taunts:f.bulwark.taunts}}:{}),
+    ...(f.hive?{hive:{volleys:f.hive.volleys,needles:f.hive.needles,explosions:f.hive.explosions,
+      innerHits:f.hive.innerHits,outerHits:f.hive.outerHits,interrupted:f.hive.interrupted}}:{}),
+    ...(f.gaze?{gaze:{...f.gaze}}:{}),
+    ...(f.rifle?{rifle:{shots:f.rifle.shots}}:{}),
+    ...(f.thornbind?{thornbind:{pulses:f.thornbind.pulses,hits:f.thornbind.hits,roots:f.thornbind.roots,
+      healing:f.thornbind.healing,retargets:f.thornbind.retargets,interrupted:f.thornbind.interrupted}}:{}),
+    ...(f.boneblast ? {boneblast:{launched:f.boneblast.launched,detonated:f.boneblast.detonated,
+      hits:f.boneblast.hits,stuns:f.boneblast.stuns,interrupted:f.boneblast.interrupted}} : {}),
+    ...(f.wildfire ? {wildfire:{formed:f.wildfire.formed,pulses:f.wildfire.pulses,hits:f.wildfire.hits,
+      interrupted:f.wildfire.interrupted,eggs:f.wildfire.eggs,hatches:f.wildfire.hatches,brokenEggs:f.wildfire.brokenEggs}} : {}),
+    ...(f.tornado ? {tornado:{launched:f.tornado.launched,contacts:f.tornado.contacts,
+      knockups:f.tornado.knockups,landings:f.tornado.landings}} : {}),
+    ...(f.warcry ? {warcry:{roars:f.warcry.roars,petrified:f.warcry.petrified,
+      retaliations:f.warcry.retaliations,retaliationDamage:f.warcry.retaliationDamage,
+      retaliationShield:f.warcry.retaliationShield}} : {}),
+    ...(f.terminator ? { terminator: { smallLaunched: f.terminator.smallLaunched,
+      largeLaunched: f.terminator.largeLaunched, detonated: f.terminator.detonated, hits: f.terminator.hits } } : {}),
+    ...(f.bombardment ? { bombardment: { launched: f.bombardment.launched, hits: f.bombardment.hits } } : {}),
+    ...(f.secretOrb ? {secretOrb:{formed:f.secretOrb.formed,pulses:f.secretOrb.pulses,
+      hits:f.secretOrb.hits,energyRemoved:f.secretOrb.energyRemoved,interrupted:f.secretOrb.interrupted}} : {}),
+    ...(f.shuriken ? { shuriken: { launched:f.shuriken.launched,landings:f.shuriken.landings,
+      pulses:f.shuriken.pulses,hits:f.shuriken.hits,interrupted:f.shuriken.interrupted } } : {}),
+    ...(f.wushi ? { wushi: structuredClone(f.wushi) } : {}),
+    ...(f.jungle ? { jungle: { ...f.jungle } } : {}),
+    ...(f.storm ? { storm: { launched: f.storm.launched, hits: f.storm.hits,
+      energyRemoved: f.storm.energyRemoved } } : {}),
+    ...(f.gospelAura ? { gospelAura: structuredClone(f.gospelAura) } : {}),
+    ...(f.lightningChain
+      ? { lightning: { attacks: 0, bounces: 0, damage: 0 } }
+      : {}),
+    ...(f.tar
+      ? { tar: { launched: f.tar.launched, detonated: f.tar.detonated } }
+      : {}),
+    ...(f.taotie ? { taotie: structuredClone(f.taotie) } : {}),
+    ...(f.aurora ? { aurora: { ...f.aurora } } : {}),
+    ...(f.qiSkill ? { qiSkill: true as const } : {}),
+    interruptions: 0,
+    lostTargets: 0,
+    ...(f.defId === "venombeast" ? { armorApplications: 0 } : {}),
+    ...(f.defId === "elephant" || f.burrowSkill ? { knockups: 0 } : {}),
+    ...(f.gale ? { peakGale: 0 } : {}),
+    ...(f.bladeCrit || f.assassinCrit ? { criticalHits: 0 } : {}),
     ...(f.phoenix ? { phoenix: { ...f.phoenix } } : {}),
     ...(f.hawkForm ? { hawkForm: { ...f.hawkForm } } : {}),
     ...(isUndying(f) ? { undying: true } : {}),
@@ -69,6 +163,15 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
       const source = units.get(event.attacker),
         target = units.get(event.target);
       if (source) {
+        if (source.lightning && event.chainHop !== undefined) {
+          if (event.chainHop === 0) source.lightning.attacks++;
+          else {
+            source.lightning.bounces++;
+            source.lightning.damage += event.amount;
+          }
+        }
+        if (source.peakGale !== undefined)
+          source.peakGale = Math.max(source.peakGale, event.gale ?? 0);
         source.damage += event.amount;
         source[
           event.reflected
@@ -78,6 +181,14 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
               : "normalDamage"
         ] += event.amount;
         source.shieldDamage += event.absorbed;
+        if (
+          source.criticalHits !== undefined &&
+          event.empowered &&
+          !event.skill &&
+          !event.evaded &&
+          !event.immune
+        )
+          source.criticalHits++;
       }
       if (target) {
         if (event.evaded) target.evades++;
@@ -88,8 +199,25 @@ export function analyzeBattle(battle: Battle, at = battle.frames.length - 1) {
     for (const effect of battle.frames[i].effects) {
       const source = units.get(effect.source);
       if (source && effect.kind === "cast") source.casts++;
-      if (source && effect.kind === "energize")
+      if (source && effect.kind === "silence") {
+        if (["施法中断", "蓄力中断", "飞镖蓄力中断", "秘法球中断"].includes(effect.name))
+          source.interruptions++;
+        if (effect.name === "目标丢失") source.lostTargets++;
+      }
+      if (source && effect.kind === "energize" && !effect.item)
         source.energyGiven += effect.amount;
+      if (
+        source?.armorApplications !== undefined &&
+        effect.kind === "break" &&
+        effect.name === "酸性减甲"
+      )
+        source.armorApplications++;
+      if (
+        source?.knockups !== undefined &&
+        effect.kind === "stun" &&
+        effect.name === "击飞"
+      )
+        source.knockups++;
     }
   }
   const sides = ([0, 1] as const).map((side) => {

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { compute } from "../src/compute/job";
+import {advanceThornBinds} from "../src/engine/thornbind";
 import { army, simulate, simulateOutcome } from "../src/engine/battle";
 import {
   damage,
@@ -22,7 +23,8 @@ import {
   settle,
 } from "../src/engine/game";
 import { decodeSave, SAVE_SCHEMA, validGame } from "../src/engine/persistence";
-import { UNITS, IMMORTAL_ADDITIONS, COPIES, UNIT } from "../src/data/units";
+import { IMMORTAL_ADDITIONS, COPIES, UNIT } from "../src/data/units";
+import { CURRENT_COMBAT_VERSION } from "../src/engine/types";
 import type { Fighter, Piece } from "../src/engine/types";
 const p = (
   id: string,
@@ -100,8 +102,10 @@ describe("不朽生命周期与控制", () => {
     damage(c, enemy, vine, 10000, "true");
     vine.mana = 100;
     expect(castSkill(c, vine, enemy)).toBe(true);
+    c.tick=12;
+    advanceThornBinds(c);
     expect(enemy.hp).toBeLessThan(enemy.maxHp);
-    expect(enemy.stunUntil).toBe(17);
+    expect(enemy.stunUntil).toBe(14);
     c.tick = 25;
     expireUndying(c);
     expect(isUndying(vine)).toBe(true);
@@ -115,9 +119,9 @@ describe("不朽生命周期与控制", () => {
     heal(c, enemy, vine, 100);
     expect(vine.hp).toBe(0);
   });
-  it("藤妖单控、骨龙范围及树妖自身范围准确，不命中友军", () => {
+  it("0.53藤妖单控、骨龙范围及原型树妖自身范围/护盾保持，不命中友军", () => {
     for (const id of IMMORTAL_ADDITIONS) {
-      const a = f(id, 1),
+      const a = army([p(id, 1)], 0, "thunderstorm")[0],
         b = f("guard", 2, 1),
         near = f("guard", 3, 1),
         far = f("guard", 4, 1),
@@ -143,10 +147,11 @@ describe("不朽生命周期与控制", () => {
       if (id === "bonedragon") expect(a.air?.flying).toBe(true);
     }
   });
-  it("残魂树妖不能通过技能护盾或先锋再生恢复生命", () => {
+  it("旧fleet残魂树妖不能通过技能护盾或先锋再生恢复生命", () => {
     const [tree, bone, front] = army(
       [p("treant", 1), p("bonedragon", 2, 43), p("pangolin", 4, 36)],
       0,
+      "fleet",
     );
     const enemy = f("guard", 3, 1);
     enemy.x = tree.x + 1;
@@ -161,6 +166,7 @@ describe("不朽生命周期与控制", () => {
     const b = simulate(
       [p("treant", 1), p("vine", 2, 36), p("pangolin", 4, 34)],
       [p("cannon", 11, 35, 3), p("titan", 12, 36, 3)],
+      "fleet",
     );
     expect(b.frames.flatMap((f) => f.fighters).some((f) => isUndying(f))).toBe(
       true,
@@ -230,9 +236,43 @@ describe("不朽生命周期与控制", () => {
       );
   });
   it("原0.12的32棋子完整战斗SHA-256保持一致", async () => {
+    const original = [
+      "infantry",
+      "guard",
+      "pangolin",
+      "panda",
+      "sniper",
+      "lion",
+      "chariot",
+      "monk",
+      "wolf",
+      "cannon",
+      "master",
+      "titan",
+      "cavalry",
+      "dragonfly",
+      "shadowblade",
+      "turtle",
+      "tiger",
+      "bull",
+      "fish",
+      "deer",
+      "adept",
+      "shark",
+      "eyebug",
+      "blastbug",
+      "spider",
+      "wasp",
+      "repair",
+      "bomber",
+      "ghostjet",
+      "ark",
+      "skycrab",
+      "eel",
+    ];
     const pieces = (start: number) =>
-      UNITS.slice(start, start + 16).map((u, i) => ({
-        ...p(u.id, start + i + 1, 32 + i, 2),
+      original.slice(start, start + 16).map((id, i) => ({
+        ...p(id, start + i + 1, 32 + i, 2),
         items: i % 3 === 0 ? ["staff"] : [],
       }));
     const hash = await crypto.subtle.digest(
@@ -250,7 +290,7 @@ describe("不朽生命周期与控制", () => {
   it("胜利时残魂不额外扣血，后台计算保留残魂和统计", () => {
     const left = [p("vine", 1), p("bonedragon", 2, 43)],
       right = [p("pangolin", 11, 35, 2)];
-    const battle = simulate(left, right);
+    const battle = simulate(left, right, "fleet");
     expect(battle.winner).toBe(0);
     expect(
       battle.frames.at(-1)!.fighters.find((f) => f.uid === 1),
@@ -263,7 +303,8 @@ describe("不朽生命周期与控制", () => {
   });
   for (const phase of ["prepare", "battle", "result", "finished"] as const)
     it(`schema11 ${phase}只补新卡池，不改资源或旧回放`, () => {
-      const g = createGame(137);
+      const g = createGame(137, "classic");
+      g.combatVersion = "fleet";
       // Reconstruct an old save without new offers; preserve every old reservation.
       for (const player of g.players)
         player.shop = player.shop.map((id) => {
@@ -304,6 +345,7 @@ describe("不朽生命周期与控制", () => {
       expect(validGame(restored)).toBe(true);
       expect(restored).toEqual({
         ...original,
+        combatVersion: phase === "prepare" ? CURRENT_COMBAT_VERSION : "fleet",
         pool: {
           ...original.pool,
           ...Object.fromEntries(

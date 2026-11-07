@@ -182,11 +182,16 @@ describe("扩展兵种与存档", () => {
     );
     expect(reserve[0].supportHeal).toBe(0);
     const full = army(
-      [piece("fish", 1), piece("deer", 2, 36), piece("dragonfly", 3, 37)],
+      [
+        piece("fish", 1),
+        piece("deer", 2, 36),
+        piece("dragonfly", 3, 37),
+        piece("repair", 4, 38),
+      ],
       0,
     );
     expect(
-      full.every((f) => f.supportHeal === 350 && f.supportMana === 20),
+      full.every((f) => f.supportHeal === 500 && f.supportMana === 20),
     ).toBe(true);
   });
   it("20 兵种混战可重放且落点唯一，有限护甲和能量状态如期结束", () => {
@@ -210,7 +215,7 @@ describe("扩展兵种与存档", () => {
   it.each(["prepare", "battle", "result"] as const)(
     "schema 3 的 %s 存档只补新卡池，不重抽商店或改旧战斗",
     (phase) => {
-      const old = createGame(17);
+      const old = createGame(17, "classic");
       for (const p of old.players)
         p.shop = p.shop.map((id) => {
           if (id && ROSTER_ADDITIONS.includes(id)) {

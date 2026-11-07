@@ -1,0 +1,340 @@
+{
+  "kind": "same-real-paid-capture-repreparation-not-new-game",
+  "probes": [
+    {
+      "label": "actual-capture-before-preparation",
+      "baseline": {
+        "score": 10087.402955465586,
+        "winner": 0,
+        "positions": [
+          {
+            "uid": 5,
+            "position": 52
+          },
+          {
+            "uid": 73,
+            "position": null
+          },
+          {
+            "uid": 74,
+            "position": 45
+          },
+          {
+            "uid": 117,
+            "position": null
+          },
+          {
+            "uid": 131,
+            "position": 46
+          },
+          {
+            "uid": 132,
+            "position": 47
+          },
+          {
+            "uid": 185,
+            "position": null
+          },
+          {
+            "uid": 186,
+            "position": null
+          },
+          {
+            "uid": 215,
+            "position": 51
+          },
+          {
+            "uid": 247,
+            "position": null
+          },
+          {
+            "uid": 288,
+            "position": null
+          },
+          {
+            "uid": 349,
+            "position": 63
+          },
+          {
+            "uid": 372,
+            "position": null
+          },
+          {
+            "uid": 388,
+            "position": 44
+          },
+          {
+            "uid": 398,
+            "position": null
+          },
+          {
+            "uid": 415,
+            "position": 62
+          },
+          {
+            "uid": 430,
+            "position": 53
+          }
+        ],
+        "trials": 7,
+        "opponent": {
+          "id": 4,
+          "name": "零号机",
+          "kind": "pvp"
+        }
+      },
+      "quote": {
+        "improves": false,
+        "trials": 7,
+        "baseline": 10087.402955465586,
+        "best": null,
+        "sellUid": null
+      }
+    },
+    {
+      "label": "after-sell-vajra",
+      "baseline": {
+        "score": -10200.934545454546,
+        "winner": 1,
+        "positions": [
+          {
+            "uid": 5,
+            "position": 45
+          },
+          {
+            "uid": 73,
+            "position": null
+          },
+          {
+            "uid": 117,
+            "position": null
+          },
+          {
+            "uid": 131,
+            "position": 46
+          },
+          {
+            "uid": 132,
+            "position": 47
+          },
+          {
+            "uid": 185,
+            "position": null
+          },
+          {
+            "uid": 186,
+            "position": null
+          },
+          {
+            "uid": 215,
+            "position": 44
+          },
+          {
+            "uid": 247,
+            "position": null
+          },
+          {
+            "uid": 288,
+            "position": null
+          },
+          {
+            "uid": 349,
+            "position": 63
+          },
+          {
+            "uid": 372,
+            "position": null
+          },
+          {
+            "uid": 388,
+            "position": 52
+          },
+          {
+            "uid": 398,
+            "position": 51
+          },
+          {
+            "uid": 415,
+            "position": 62
+          },
+          {
+            "uid": 430,
+            "position": 53
+          }
+        ],
+        "trials": 7,
+        "opponent": {
+          "id": 4,
+          "name": "零号机",
+          "kind": "pvp"
+        }
+      },
+      "quote": {
+        "improves": true,
+        "trials": 25,
+        "baseline": -10200.934545454546,
+        "best": 10433.749691340652,
+        "sellUid": null
+      }
+    },
+    {
+      "label": "after-buy-turtle",
+      "baseline": {
+        "score": 10301.560824569931,
+        "winner": 0,
+        "positions": [
+          {
+            "uid": 5,
+            "position": 53
+          },
+          {
+            "uid": 73,
+            "position": null
+          },
+          {
+            "uid": 117,
+            "position": null
+          },
+          {
+            "uid": 131,
+            "position": 46
+          },
+          {
+            "uid": 132,
+            "position": 47
+          },
+          {
+            "uid": 185,
+            "position": 55
+          },
+          {
+            "uid": 186,
+            "position": null
+          },
+          {
+            "uid": 215,
+            "position": 44
+          },
+          {
+            "uid": 247,
+            "position": null
+          },
+          {
+            "uid": 288,
+            "position": null
+          },
+          {
+            "uid": 349,
+            "position": 63
+          },
+          {
+            "uid": 372,
+            "position": null
+          },
+          {
+            "uid": 388,
+            "position": 52
+          },
+          {
+            "uid": 398,
+            "position": null
+          },
+          {
+            "uid": 415,
+            "position": 62
+          },
+          {
+            "uid": 430,
+            "position": null
+          },
+          {
+            "uid": 440,
+            "position": 45
+          }
+        ],
+        "trials": 7,
+        "opponent": {
+          "id": 4,
+          "name": "零号机",
+          "kind": "pvp"
+        }
+      },
+      "quote": {
+        "improves": false,
+        "trials": 7,
+        "baseline": 10301.560824569931,
+        "best": null,
+        "sellUid": null
+      }
+    }
+  ],
+  "trades": [
+    {
+      "kind": "sell",
+      "id": "vajra",
+      "income": 6
+    },
+    {
+      "kind": "buy",
+      "id": "turtle",
+      "cost": 4
+    }
+  ],
+  "report": {
+    "controlPurchaseTrials": 7,
+    "scoutedPurchases": [],
+    "deploymentTrials": 7
+  },
+  "after": {
+    "gold": 35,
+    "level": 10,
+    "hp": 73,
+    "poolDelta": {
+      "vajra": 3
+    },
+    "uidDelta": 1,
+    "seedChanged": false,
+    "lineup": [
+      {
+        "id": "elephant",
+        "star": 2
+      },
+      {
+        "id": "lion",
+        "star": 2
+      },
+      {
+        "id": "wolf",
+        "star": 2
+      },
+      {
+        "id": "bloodhawk",
+        "star": 1
+      },
+      {
+        "id": "phoenix",
+        "star": 2
+      },
+      {
+        "id": "bull",
+        "star": 1
+      },
+      {
+        "id": "bladethrall",
+        "star": 1
+      },
+      {
+        "id": "winddragon",
+        "star": 1
+      },
+      {
+        "id": "wolf",
+        "star": 1
+      },
+      {
+        "id": "turtle",
+        "star": 1
+      }
+    ]
+  }
+}

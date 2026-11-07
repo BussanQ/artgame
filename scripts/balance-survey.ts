@@ -14,7 +14,7 @@ import {
 import { prepareBot, deployLineup } from "../src/engine/ai";
 import { claimReward, itemScore } from "../src/engine/equipment";
 import { validGame } from "../src/engine/persistence";
-import { AI_PROFILES } from "../src/data/ai-profiles";
+import { AI_PROFILES, profileFor } from "../src/data/ai-profiles";
 import { synergies } from "../src/engine/synergies";
 import type { Difficulty } from "../src/engine/types";
 
@@ -32,6 +32,13 @@ if (
 const commanderPolicy = process.env.REDTIDES_SURVEY_POLICY ?? "standard";
 if (!["standard", "compact", "veteran"].includes(commanderPolicy))
   throw new Error("Unknown survey policy");
+// Focused armor runs use the same doctrine as shipped opponents.
+const profileSet = process.env.REDTIDES_SURVEY_PROFILE ?? "all";
+if (!["all", "armor"].includes(profileSet))
+  throw new Error("Unknown survey profile set");
+const profileIndices = AI_PROFILES.map((_, i) => i).filter(
+  (i) => i > 0 && (profileSet !== "armor" || AI_PROFILES[i].id === "armor"),
+);
 const difficulties: Difficulty[] = ["relaxed", "standard", "veteran"];
 interface SurveyRound {
   round: number;
@@ -44,6 +51,13 @@ interface SurveyRound {
   hp: number;
   lineup: { id: string; star: number; position: number | null }[];
   traits: string[];
+  armorOpponent?: {
+    seat: number;
+    hp: number;
+    gold: number;
+    level: number;
+    lineup: { id: string; star: number; position: number | null }[];
+  };
 }
 interface SurveyRun {
   difficulty: Difficulty;
@@ -52,6 +66,7 @@ interface SurveyRun {
   rank: number;
   hp: number;
   rounds: SurveyRound[];
+  opponentProfiles: { seat: number; profile: string; rank: number }[];
 }
 const runs: SurveyRun[] = [];
 const sourceFiles = [
@@ -64,6 +79,8 @@ const sourceFiles = [
   "src/engine/metamorphosis.ts",
   "src/engine/phoenix.ts",
   "src/engine/battle.ts",
+  "src/engine/birdrider.ts",
+  "src/engine/ironrooster.ts",
   "src/engine/abilities.ts",
   "src/engine/infantry-skills.ts",
   "src/engine/triggers.ts",
@@ -71,6 +88,8 @@ const sourceFiles = [
   "src/engine/progression.ts",
   "src/engine/synergies.ts",
   "src/data/units.ts",
+  "src/data/unit-stats.ts",
+  "src/engine/types.ts",
   "src/data/skills.ts",
   "src/data/traits.ts",
   "src/data/ai-profiles.ts",
@@ -88,7 +107,7 @@ const sources = Object.fromEntries(
 
 const started = performance.now();
 for (const difficulty of difficulties) {
-  for (let profile = 1; profile <= 7; profile++) {
+  for (const profile of profileIndices) {
     for (const seed of seeds) {
       const game = createGame(seed);
       game.difficulty = difficulty;
@@ -115,6 +134,9 @@ for (const difficulty of difficulties) {
         const result = startRound(game);
         const roundMs = performance.now() - prepareStart;
         if (!result) throw new Error("Commander did not field a legal army");
+        const armorOpponent = game.players
+          .slice(1)
+          .find((p) => p.hp > 0 && profileFor(p).id === "armor");
         rounds.push({
           round: game.round,
           kind: result.kind,
@@ -124,6 +146,23 @@ for (const difficulty of difficulties) {
           gold: player.gold,
           level: player.level,
           hp: player.hp,
+          ...(armorOpponent
+            ? {
+                armorOpponent: {
+                  seat: armorOpponent.id,
+                  hp: armorOpponent.hp,
+                  gold: armorOpponent.gold,
+                  level: armorOpponent.level,
+                  lineup: armorOpponent.pieces
+                    .filter((p) => p.position !== null)
+                    .map((p) => ({
+                      id: p.defId,
+                      star: p.star,
+                      position: p.position,
+                    })),
+                },
+              }
+            : {}),
           lineup: result.left.map((p) => ({
             id: p.defId,
             star: p.star,
@@ -157,6 +196,13 @@ for (const difficulty of difficulties) {
         rank: rankings(game).findIndex((p) => p.id === 0) + 1,
         hp: game.players[0].hp,
         rounds,
+        opponentProfiles: game.players
+          .slice(1)
+          .map((p) => ({
+            seat: p.id,
+            profile: profileFor(p).id,
+            rank: rankings(game).findIndex((r) => r.id === p.id) + 1,
+          })),
       };
       runs.push(run);
     }
@@ -207,6 +253,8 @@ const report = {
   label,
   seeds,
   commanderPolicy,
+  profileSet,
+  commanderProfiles: profileIndices.map((i) => AI_PROFILES[i]),
   sources,
   policy:
     "Commander policy held constant across enemy difficulties; normal paid commands; best itemScore reward; no injected currency or cards",
@@ -219,10 +267,12 @@ const report = {
     ]),
   ),
   byProfile: Object.fromEntries(
-    AI_PROFILES.slice(1).map((p) => [
-      p.name,
-      summarize(runs.filter((r) => r.profile === p.name)),
-    ]),
+    profileIndices
+      .map((i) => AI_PROFILES[i])
+      .map((p) => [
+        p.name,
+        summarize(runs.filter((r) => r.profile === p.name)),
+      ]),
   ),
   runs,
 };

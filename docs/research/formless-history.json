@@ -1,0 +1,99 @@
+{
+  "version": "singleplayer-0.77",
+  "reviewedAt": "2026-11-07",
+  "sameClientCompleteCardRecovered": false,
+  "sources": [
+    {
+      "id": "S35",
+      "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
+      "kind": "更新公告原帖",
+      "eventDate": "2019-05-09",
+      "pageModifiedAt": "2019-05-08",
+      "author": "拉克西丝",
+      "evidence": "无形实际6秒、冷却改为16秒且包含隐形时段；期间增加30/40/50%攻速。",
+      "readThisTurn": "复读此前正常取得的原始HTML，当前搜索索引亦有同段；此次网页直开失败。",
+      "archive": {
+        "path": "tmp/wildfront-s35-v041.html",
+        "bytes": 229992,
+        "sha256": "8abb8a45cc529d7ce184ef2f90f68749f2d74c04bbc440a0e02ab7af5391d781"
+      },
+      "limits": "未独立核验官方账号标识；不将其他转载充作官方配置。"
+    },
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "kind": "原始玩家测量",
+      "publishedAt": "2019-07-08",
+      "readThisTurn": "实际目视第一表第16行幽灵机。",
+      "fields": {
+        "cost": 3,
+        "hp": 500,
+        "attackMin": 55,
+        "attackMax": 66,
+        "armor": 5,
+        "range": 1,
+        "intervalSeconds": 1.1,
+        "regenerationPerSecond": 5,
+        "cooldownSeconds": 16,
+        "traits": [
+          "空军",
+          "刺杀"
+        ]
+      },
+      "image": {
+        "path": "docs/research/images/s04-main-attributes.jpg",
+        "bytes": 283542,
+        "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945"
+      },
+      "limits": "具体客户端构建与攻击随机分布未知，不能与五月公告称为统一构建。"
+    },
+    {
+      "id": "S20",
+      "url": "https://game.xiaomi.com/viewpoint/1103968488_1556086391745_13",
+      "kind": "发行方原始客户端图鉴",
+      "publishedAt": "2019-04-24",
+      "readThisTurn": "实际目视空军原图第三个幽灵机，三费、金色机械鲨头、圆眼、齿状进气口、背鳍和短侧翼。",
+      "image": {
+        "path": "docs/research/images/s20-air-client.jpg",
+        "bytes": 609164,
+        "sha256": "1274450ca715cde588b1e3de75e020faa2cb9801d013d9863c3b3c4c2008a5e2"
+      },
+      "limits": "四月身份图像，不是五月／七月完整技能卡。"
+    }
+  ],
+  "implementation": {
+    "attack": 60.5,
+    "attackMethod": "确定均值，不模拟未确认的原始随机区间",
+    "intervalTicks": 4.4,
+    "simulationTickSeconds": 0.25,
+    "skillDurationSeconds": 6,
+    "skillCooldownSeconds": 16,
+    "haste": [
+      0.3,
+      0.4,
+      0.5
+    ]
+  },
+  "localAdaptation": [
+    "初始能量0",
+    "原地瞬时开启、自身增益无需可见敌人",
+    "定向不可选中、友军可治疗、范围伤害和反伤仍生效",
+    "已发出攻击保留各自既有命中规则，不额外给予无敌",
+    "未确认统一版本反隐，未借S06的经典RTS图添加通用反隐",
+    "眩晕／沉默不删除正面增益，魅惑不延长；死亡／化蛋／残魂结束",
+    "攻速与编队及灵蕴相加，最低一帧",
+    "每秒回复5不按星级翻倍；仅实际治疗入账",
+    "隐形有效普攻的实际贡献口径",
+    "有限6/16窗口的AI预算和装备估值"
+  ],
+  "legacy": {
+    "through": "mending",
+    "skill": "幽影迁跃",
+    "hp": 640,
+    "attack": 90,
+    "armor": 3,
+    "range": 3,
+    "intervalTicks": 3,
+    "behavior": "瞬移、200%攻击物伤、2秒相位隐形，旧49代定义及回放保持"
+  }
+}

@@ -1,39 +1,43 @@
+import { unitArmor, unitDefinition, unitSprite,unitAttackInterval,unitMinimumAttackInterval } from "../data/unit-stats";
+import { CURRENT_COMBAT_VERSION,hasInfernoRules } from "../engine/types";
 import { salePrice } from "../engine/progression";
-import { TRAIT_TIERS, AIRSEA_TRAIT_TIERS } from "../data/traits";
+import { traitTiers } from "../data/traits";
 import { equipmentStats, ITEM } from "../data/items";
 import { skillDescription, skillName } from "../data/skills";
-import { isRanged, RANGED_ACTIONS } from "../render/ranged";
+import { isRanged, rangedActionName } from "../render/ranged";
 import { RULES, UNIT } from "../data/units";
 import type { Piece, CombatVersion } from "../engine/types";
 import { isMelee, MELEE_ACTIONS } from "../render/melee";
 export function pieceDetails(
   piece: Piece,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+  costVersion: CombatVersion = version,
 ) {
-  const u = UNIT[piece.defId],
+  version=piece.definitionVersion??version;
+  const u = unitDefinition(piece.defId, version),
     scale = 2 ** (piece.star - 1),
     gear = equipmentStats(piece.items),
-    tiers =
-      version === "fleet" || version === "metamorph"
-        ? TRAIT_TIERS
-        : AIRSEA_TRAIT_TIERS;
+    tiers = traitTiers(version);
   return {
     name: u.name,
     flying: !!u.flying,
+    melee: isMelee(u.id,version),
     hp: u.hp * scale + gear.hp,
     attack: u.attack * scale + gear.attack,
-    armor: u.armor + gear.armor,
+    armor: unitArmor(u, piece.star) + gear.armor,
+    magicResist: Math.round(((u.magicResist ?? 0.2) + gear.magicResist) * 100),
+    regeneration: u.regeneration ?? 0,
     range: u.range,
-    interval: Math.max(1, u.interval * (1 - gear.haste)) * RULES.tickSeconds,
+    interval: Math.max(unitMinimumAttackInterval(u,version), unitAttackInterval(u,piece.star,version) * (1 - gear.haste)) * RULES.tickSeconds,
     items: (piece.items ?? []).map((id) => ITEM[id]),
     skillPower: Math.round(gear.skillPower * 100),
     skill: skillName(u.id, version),
     skillDescription: skillDescription(u.id, version),
-    sell: salePrice(piece),
-    action: isMelee(u.id)
-      ? MELEE_ACTIONS[u.id].name
-      : isRanged(u.id)
-        ? RANGED_ACTIONS[u.id].name
+    sell: salePrice(piece, costVersion),
+    action: isMelee(u.id, version)
+      ? u.id==="vajra"&&hasInfernoRules(version)?"双拳交替重击":MELEE_ACTIONS[u.id].name
+      : isRanged(u.id, version)
+        ? rangedActionName(u.id, version)
         : "普通攻击",
     traits: u.traits.map((t) => ({
       name: t,
@@ -46,16 +50,24 @@ export function pieceDetails(
 }
 export function pieceDetailMarkup(
   p: Piece,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+  costVersion: CombatVersion = version,
 ): string {
-  const d = pieceDetails(p, version);
-  return `<div class="tooltip-heading"><img src="/assets/units/${p.defId}.png" alt=""><div><strong>${d.name}</strong><span>${"★".repeat(p.star)} · ${p.star} 星</span><small>${d.flying ? "飞行" : "地面"} · ${d.range === 1 ? "近战" : "远程"} · ${d.action}</small></div></div><div class="tooltip-stats"><span>生命<b>${d.hp}</b></span><span>攻击<b>${d.attack}</b></span><span>护甲<b>${d.armor}</b></span><span>射程<b>${d.range} 格</b></span><span>攻击间隔<b>${d.interval.toFixed(2)} 秒</b></span><span>出售价格<b>${d.sell} 金</b></span></div><p class="tooltip-basis">当前星级与装备属性 · 未计入上阵羁绊</p><section><b>${d.skill}</b><p>${d.skillDescription}</p></section>${d.items.length ? `<section><b>已装备 · 技能强度 +${d.skillPower}%</b>${d.items.map((i) => `<p>${i.icon} ${i.name} · ${i.description}</p>`).join("")}</section>` : ""}<section><b>兵种与职业</b>${d.traits.map((t) => `<p><em>${t.name} · ${t.threshold} 个不同棋子</em>${t.description}</p>`).join("")}</section>`;
+  version=p.definitionVersion??version;
+  const d = pieceDetails(p, version, costVersion);
+  return `<div class="tooltip-heading"><img src="/assets/units/${unitSprite(p.defId, version, p.star)}.png" alt=""><div><strong>${d.name}</strong><span>${"★".repeat(p.star)} · ${p.star} 星</span><small>${d.flying ? "飞行" : "地面"} · ${d.melee ? "近战" : "远程"} · ${d.action}</small></div></div><div class="tooltip-stats"><span>生命<b>${d.hp}</b></span><span>攻击<b>${d.attack}</b></span><span>护甲<b>${d.armor}</b></span><span>射程<b>${d.range} 格</b></span><span>攻击间隔<b>${d.interval.toFixed(2)} 秒</b></span><span>出售价格<b>${d.sell} 金</b></span><span>法术减伤<b>${d.magicResist}%</b></span>${d.regeneration ? `<span>自然回复<b>${d.regeneration} 生命/秒</b></span>` : ""}</div><p class="tooltip-basis">当前星级与装备属性 · 未计入上阵羁绊</p><section><b>${d.skill}</b><p>${d.skillDescription}</p></section>${d.items.length ? `<section><b>已装备 · 技能强度 +${d.skillPower}%</b>${d.items.map((i) => `<p>${i.icon} ${i.name} · ${i.description}</p>`).join("")}</section>` : ""}<section><b>兵种与职业</b>${d.traits.map((t) => `<p><em>${t.name} · ${t.threshold} 个不同棋子</em>${t.description}</p>`).join("")}</section>`;
 }
 export function pieceInfoMarkup(
   p: Piece,
-  version: CombatVersion = "metamorph",
+  version: CombatVersion = CURRENT_COMBAT_VERSION,
+  costVersion: CombatVersion = version,
+  finalReview = false,
 ): string {
-  return `<div class="modal-backdrop"><section class="modal piece-info-modal" role="dialog" aria-modal="true" aria-label="棋子详情"><button class="close" data-action="close" aria-label="关闭">×</button><span class="eyebrow">UNIT INTELLIGENCE</span><h2>棋子详情</h2>${pieceDetailMarkup(p, version)}</section></div>`;
+  const title = finalReview ? "终局棋子详情" : "棋子详情";
+  const location = p.position === null
+    ? "备战席"
+    : `场上 ${String.fromCharCode(65 + p.position % 8)}${Math.floor(p.position / 8) + 1}`;
+  return `<div class="modal-backdrop"><section class="modal piece-info-modal" role="dialog" aria-modal="true" aria-label="${title}"><div class="piece-info-header"><div><span class="eyebrow">UNIT INTELLIGENCE</span><h2>${title}</h2></div><button class="close" data-action="close" aria-label="关闭">×</button></div><div class="piece-info-body">${finalReview ? `<p class="micro">终局回顾 · ${location} · 最后记录的星级与装备。</p>` : ""}${pieceDetailMarkup(p, version, costVersion)}</div></section></div>`;
 }
 export class BenchTooltip {
   private element = document.createElement("aside");
@@ -65,7 +77,8 @@ export class BenchTooltip {
   constructor(
     root: HTMLElement,
     private getPiece: (uid: number) => Piece | undefined,
-    private getVersion: () => CombatVersion = () => "metamorph",
+    private getVersion: () => CombatVersion = () => CURRENT_COMBAT_VERSION,
+    private getCostVersion?: () => CombatVersion,
   ) {
     this.element.id = "bench-tooltip";
     this.element.className = "bench-tooltip";
@@ -135,7 +148,11 @@ export class BenchTooltip {
       "aria-describedby",
       this.element.id,
     );
-    this.element.innerHTML = pieceDetailMarkup(p, this.getVersion());
+    this.element.innerHTML = pieceDetailMarkup(
+      p,
+      this.getVersion(),
+      this.getCostVersion?.() ?? this.getVersion(),
+    );
     this.element.hidden = false;
     this.position();
   }
@@ -150,11 +167,25 @@ export class BenchTooltip {
       this.hide();
       return;
     }
-    // Constrain the panel to one side of the slot. Clamping a full-height
-    // panel to the viewport could cover the hovered button before a click.
+    // A compact bench can sit near the middle of the screen. Use the room
+    // beside it for long descriptions before introducing an internal scroll.
+    // Every placement keeps the hovered slot clear so it remains clickable.
     const spaceAbove = Math.max(0, r.top - 22),
       spaceBelow = Math.max(0, innerHeight - r.bottom - 22),
       placeAbove = spaceAbove >= spaceBelow;
+    this.element.style.maxHeight = `${Math.max(0, innerHeight - 24)}px`;
+    const naturalWidth = this.element.offsetWidth,
+      naturalHeight = this.element.offsetHeight,
+      fitsRight = r.right + naturalWidth + 22 <= innerWidth,
+      fitsLeft = r.left >= naturalWidth + 22;
+    if (
+      naturalHeight > Math.max(spaceAbove, spaceBelow) &&
+      (fitsRight || fitsLeft)
+    ) {
+      this.element.style.left = `${fitsRight ? r.right + 10 : r.left - naturalWidth - 10}px`;
+      this.element.style.top = `${Math.max(12, Math.min(innerHeight - naturalHeight - 12, r.top + r.height / 2 - naturalHeight / 2))}px`;
+      return;
+    }
     this.element.style.maxHeight = `${placeAbove ? spaceAbove : spaceBelow}px`;
     const w = this.element.offsetWidth,
       h = this.element.offsetHeight;

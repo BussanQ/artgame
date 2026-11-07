@@ -1,0 +1,99 @@
+{
+  "rules": "singleplayer-0.50",
+  "seeds": {
+    "armor": 311,
+    "fleet": 173
+  },
+  "policy": "Each stage uses identical seeds, profiles, classic/rotation modes and three opponent difficulties. Player decisions use the standard agent. Two seeds are not twelve independent human games. Initial prototype changed body and landing semantics together, so it is not an isolated test of either factor.",
+  "reports": {
+    "before": [
+      "core-coverage-armor",
+      "core-coverage-fleet"
+    ],
+    "initial": [
+      "tar-v050-initial-armor",
+      "tar-v050-initial-fleet"
+    ],
+    "final": [
+      "tar-v050-armor",
+      "tar-v050-fleet"
+    ]
+  },
+  "stages": {
+    "before": {
+      "games": 12,
+      "rounds": 302,
+      "riderGames": 5,
+      "riderRounds": 42,
+      "stars": [
+        6,
+        36,
+        0
+      ],
+      "launched": 0,
+      "detonated": 0,
+      "centerHits": 0,
+      "splashHits": 0,
+      "averageRank": {
+        "relaxed": 1.0,
+        "standard": 5.0,
+        "veteran": 5.75
+      },
+      "opponentTar": {
+        "rounds": 0,
+        "launched": 0,
+        "detonated": 0
+      }
+    },
+    "initial": {
+      "games": 12,
+      "rounds": 309,
+      "riderGames": 0,
+      "riderRounds": 0,
+      "stars": [
+        0,
+        0,
+        0
+      ],
+      "launched": 0,
+      "detonated": 0,
+      "centerHits": 0,
+      "splashHits": 0,
+      "averageRank": {
+        "relaxed": 1.0,
+        "standard": 5.75,
+        "veteran": 5.5
+      },
+      "opponentTar": {
+        "rounds": 2,
+        "launched": 1,
+        "detonated": 1
+      }
+    },
+    "final": {
+      "games": 12,
+      "rounds": 304,
+      "riderGames": 5,
+      "riderRounds": 53,
+      "stars": [
+        7,
+        46,
+        0
+      ],
+      "launched": 90,
+      "detonated": 79,
+      "centerHits": 41,
+      "splashHits": 22,
+      "averageRank": {
+        "relaxed": 1.0,
+        "standard": 5.75,
+        "veteran": 5.75
+      },
+      "opponentTar": {
+        "rounds": 5,
+        "launched": 8,
+        "detonated": 7
+      }
+    }
+  }
+}

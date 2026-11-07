@@ -1,0 +1,89 @@
+{
+  "rules": "singleplayer-0.69",
+  "unit": "wasp",
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "useCase": "background-extraction",
+  "inputs": [
+    {
+      "path": "../../public/assets/units/wasp.png",
+      "role": "edit-target-project-illustration-not-client-reference",
+      "sha256": "9fe200a3bd72efcb51152561f7ea17b4cbd71576b6f18831a5c784a5f1f0eb11",
+      "bytes": 2284320,
+      "size": [
+        1230,
+        1278
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "number": 1,
+      "prompt": "Use case: background-extraction\nAsset type: a transparent 2.5D auto-chess Wasp Queen unit sprite used at small size in an existing fantasy science-fiction game.\nInput image: Image 1 is the EDIT TARGET, the project's existing armored wasp character. It is not a historical client screenshot.\nPrimary request: refine the SAME identifiable wasp into a clean, complete transparent cutout. Preserve the three-quarter facing-right pose, elongated segmented gold-and-charcoal abdomen, curved tail stinger, six slender insect legs, two antennae, four pale mint translucent wings, amber compound eye, restrained gold filigree armor and small turquoise cloth details. Preserve the polished illustrated 3D game-unit style and lighting. Keep the silhouette easy to read as a winged insect, not a human or dragon.\nComposition/framing: show the entire subject comfortably inside the canvas, occupying about 80 percent of the height and width. Reconstruct the clipped wing tips and antenna ends naturally in the same pose, then leave at least 7 percent truly transparent margin around every extremity, especially the upper and left wings. All feet, antennae, wing tips and stinger must be fully contained. Keep the head facing right and the abdomen descending leftward as in the input.\nBackground: actual alpha transparency. Remove ALL gray/beige haze, colored red/yellow edge contamination, broad outer glow, rectangular backdrop, floor and cast shadow plate. Retain the wings' translucent membrane and crisp gold veins; do not replace transparency with a black or checkerboard background. Limit any amber glow to the eye itself.\nConstraints: one wasp only. Do not add scenery, pedestal, text, numbers, stars, border, UI, logos, watermark, extra weapons, swarm, projectiles or explosive effects. The game draws attack effects separately. Do not change the character's identity, armor palette or number of wings and legs.",
+      "nativeOutputPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-60c481d6-e2ee-4b4c-b325-a392cf93cae2.png",
+      "sha256": "9d947077fd020ca99bd6293fec21d5a8eacb3a8d108e6a51eb2161340c57f53d",
+      "bytes": 1518549,
+      "size": [
+        1278,
+        1230
+      ],
+      "selected": false,
+      "reason": "完成翅尖，但右侧留白较少且残留彩边，继续一次针对性修整。"
+    },
+    {
+      "number": 2,
+      "prompt": "Use case: background-extraction\nAsset type: final transparent 2.5D armored Wasp Queen game-unit sprite.\nInput image: Image 1 is the edit target, the just-generated complete wasp.\nMake ONLY these two cleanup changes: (1) eliminate every red, yellow, neon-green, gray and beige fringe pixel or haze outside the actual insect silhouette; the boundary should be a clean alpha transition with colors belonging only to the insect, never a colored outline; (2) scale the complete subject down a further 12 percent on the same canvas so that every antenna, wing tip, foot and stinger has at least 8 percent truly transparent margin, including the rightmost antenna.\nStrict invariants: preserve this exact recognizable character, three-quarter right-facing pose, number of wings and legs, chitin anatomy, fine pale-mint transparent wing membranes and gold veins, amber eye, gold-and-charcoal segmented armor, turquoise tassels, material shading and illustrated 3D style. Do not add, remove or redesign body parts. Keep the wing interiors translucent rather than making them opaque. Leave the background genuinely transparent, without checkerboard, black fill, ground, glow or shadow plate. One complete wasp only, no text, stars, UI, borders, scenery, extra insects or particles.",
+      "nativeOutputPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-c1243489-eff0-4f4a-a5e0-1d8bdf4ab37d.png",
+      "sha256": "b2e38d29c6b00d55d86fd04dab08040c03e90828a6d26d5ab847ed3813deab95",
+      "selected": true
+    }
+  ],
+  "output": {
+    "path": "../../public/assets/units/wasp-hive.png",
+    "sha256": "b2e38d29c6b00d55d86fd04dab08040c03e90828a6d26d5ab847ed3813deab95",
+    "bytes": 1099327,
+    "size": [
+      1278,
+      1230
+    ],
+    "transparentBackground": true,
+    "copiedByteForByte": true,
+    "rasterPostprocessing": false,
+    "alpha": {
+      "min": 0,
+      "max": 255,
+      "zeroPixels": 1201706,
+      "fullyOpaque": 800,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "priorAsset": {
+    "preserved": true,
+    "alreadyTransparent": true,
+    "alpha": {
+      "min": 0,
+      "max": 255,
+      "zeroPixels": 435695,
+      "fullyOpaque": 20,
+      "corners": [
+        7,
+        0,
+        1,
+        0
+      ]
+    },
+    "note": "旧图原本已有alpha；这次主要补完整轮廓、扩大留白和减少广泛背景雾，不称首次获得透明通道。"
+  },
+  "review": {
+    "nativeImagesViewed": true,
+    "browserCanvasReviewed": true,
+    "note": "最终输出完整包含翅尖、触角、足和毒针；桌面／390px实战无矩形底。原生极细边缘仍可见少量色纹，不宣称所有像素均已完全去彩边；游戏尺寸下主要轮廓清楚。没有历史模型原卡，因此是现有项目形象修整，未冒称模型精确复刻。"
+  },
+  "routing": "hive及之后使用wasp-hive；41个旧战斗版本保留wasp.png。",
+  "validation": "../analysis/hive-v069-validation.json"
+}

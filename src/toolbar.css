@@ -1,0 +1,392 @@
+/* A single HUD row keeps the battlefield directly below its controls. */
+.shell > .game-toolbar {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: initial;
+  gap: 12px;
+  height: 52px;
+  min-height: 52px;
+  padding: 5px 0;
+}
+.toolbar-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.game-toolbar .brand {
+  font-size: 18px;
+  gap: 7px;
+}
+.game-toolbar .brand-mark {
+  width: 26px;
+  height: 30px;
+}
+.game-toolbar .brand b {
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  margin-left: 4px;
+}
+.game-toolbar .brand small {
+  display: none;
+}
+.game-toolbar .mode {
+  gap: 4px;
+  font-size: 10px;
+}
+.game-toolbar .mode span {
+  margin-left: 0;
+}
+.game-toolbar .round {
+  margin: 0;
+  gap: 4px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.game-toolbar .round strong {
+  font-size: 25px;
+  line-height: 1;
+}
+.game-toolbar .round > span {
+  font-size: 13px;
+}
+.game-toolbar .round small {
+  font-size: 10px;
+}
+.game-toolbar .phase {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  padding: 0;
+  min-width: 0;
+  flex-shrink: 0;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.game-toolbar .phase-dot {
+  margin: 0;
+}
+.game-toolbar .phase small {
+  display: inline;
+  margin: 0;
+  font-size: 10px;
+}
+.game-toolbar .phase small:empty {
+  display: none;
+}
+.game-toolbar nav {
+  flex-wrap: nowrap;
+  max-width: none;
+  gap: 0;
+}
+.game-toolbar nav button,
+.game-toolbar .demo-menu > summary {
+  padding: 6px 7px;
+  font-size: 11px;
+}
+.game-toolbar .start {
+  flex-shrink: 0;
+  min-height: 34px;
+  padding: 7px 14px;
+  font-size: 12px;
+  margin: 0;
+  white-space: nowrap;
+}
+.game-toolbar .rotation-card {
+  position: static;
+  flex-shrink: 0;
+  border: 0;
+  margin: 0;
+  background: none;
+}
+.game-toolbar .rotation-card > summary {
+  flex-wrap: nowrap;
+  gap: 6px;
+  min-height: 34px;
+  padding: 4px 8px;
+  border: 1px solid #736347;
+  background: #192c2b;
+  white-space: nowrap;
+  list-style: none;
+}
+.game-toolbar .rotation-card > summary::after {
+  content: "▾";
+  color: #b5bc9f;
+  font-size: 10px;
+}
+.rotation-card > summary::-webkit-details-marker {
+  display: none;
+}
+.game-toolbar .rotation-card summary .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0;
+}
+.game-toolbar .rotation-chips {
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+.game-toolbar .rotation-chips b {
+  padding: 2px 5px;
+  font-size: 10px;
+}
+.game-toolbar .rotation-card summary .rotation-availability {
+  margin: 0;
+  width: auto;
+  font-size: 10px;
+}
+.game-toolbar .rotation-availability .micro {
+  display: none;
+}
+.rotation-caption-short {
+  display: none;
+}
+.game-toolbar .rotation-content {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 4px);
+  left: 0;
+  width: min(900px, 100%);
+  max-height: min(70dvh, 660px);
+  overflow-y: auto;
+  padding: 12px 16px;
+  border: 1px solid #899b77;
+  background: #192c2b;
+  box-shadow: 0 12px 30px #0009;
+}
+.game-toolbar .rotation-legacy {
+  margin: 0;
+  padding: 5px 8px;
+  border: 1px solid #536053;
+  white-space: nowrap;
+}
+@media (max-width: 1660px) {
+  .game-toolbar .mode span {
+    display: none;
+  }
+}
+@media (max-width: 1480px) {
+  .game-toolbar .mode {
+    display: none;
+  }
+  .game-toolbar .mobile-tools-toggle {
+    display: block;
+    margin-left: auto;
+    min-width: 48px;
+    min-height: 34px;
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  .game-toolbar #game-tools {
+    display: none;
+  }
+  .game-toolbar #game-tools.is-open {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: absolute;
+    z-index: 45;
+    top: 100%;
+    right: 0;
+    width: min(320px, 100%);
+    padding: 10px;
+    gap: 6px;
+    border: 1px solid #899b77;
+    border-radius: 8px;
+    background: #1c2d2b;
+    box-shadow: 0 12px 30px #0008;
+  }
+  .game-toolbar #game-tools button,
+  .game-toolbar #game-tools .demo-menu > summary {
+    min-height: 40px;
+    padding: 8px;
+    font-size: 12px;
+  }
+  .game-toolbar #game-tools .demo-menu {
+    grid-column: 1 / -1;
+  }
+  .game-toolbar #game-tools .demo-options {
+    position: static;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    box-shadow: none;
+  }
+}
+@media (max-width: 1000px) {
+  .game-toolbar .brand b,
+  .game-toolbar .rotation-availability {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .shell > .game-toolbar {
+    gap: 8px;
+    height: 52px;
+    min-height: 52px;
+    padding: 4px 0;
+  }
+  .game-toolbar .brand {
+    font-size: 16px;
+    gap: 5px;
+    letter-spacing: 0;
+  }
+  .game-toolbar .brand-mark {
+    width: 23px;
+    height: 28px;
+  }
+  .game-toolbar .round {
+    gap: 2px;
+  }
+  .game-toolbar .round small,
+  .game-toolbar .round > span {
+    display: none;
+  }
+  .game-toolbar .round strong {
+    font-size: 22px;
+  }
+  .game-toolbar .phase {
+    font-size: 10px;
+  }
+  .game-toolbar .phase-dot,
+  .game-toolbar .phase small {
+    display: none;
+  }
+  .game-toolbar .rotation-card > summary {
+    min-height: 44px;
+    padding: 6px;
+  }
+  .game-toolbar .rotation-caption-full,
+  .game-toolbar .rotation-chips {
+    display: none;
+  }
+  .game-toolbar .rotation-caption-short {
+    display: inline;
+    font-size: 11px;
+  }
+  .game-toolbar .mobile-tools-toggle {
+    min-width: 40px;
+    min-height: 44px;
+    padding: 6px;
+  }
+  .game-toolbar .start {
+    min-height: 44px;
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+  .game-toolbar .rotation-content {
+    padding: 10px;
+    max-height: calc(100dvh - 70px);
+  }
+  .game-toolbar .rotation-legacy {
+    padding: 6px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 370px) {
+  .shell > .game-toolbar {
+    gap: 5px;
+  }
+  .game-toolbar .brand > span:last-child {
+    display: none;
+  }
+  .game-toolbar .start {
+    padding: 6px 7px;
+  }
+}
+
+/* Restore notices share the HUD; details contain the original recovery actions. */
+.toolbar-save-host {
+  display: contents;
+}
+.toolbar-save {
+  min-width: 0;
+  flex: 0 1 auto;
+  color: #b8c8ad;
+  font-size: 11px;
+}
+.toolbar-save > summary {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  list-style: none;
+  white-space: nowrap;
+}
+.toolbar-save > summary::after {
+  content: "▾";
+  flex-shrink: 0;
+  color: #8d9e8b;
+  font-size: 9px;
+}
+.toolbar-save > summary::-webkit-details-marker {
+  display: none;
+}
+.toolbar-save-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toolbar-save-short {
+  display: none;
+}
+.toolbar-save.is-conflict {
+  color: #f0b080;
+}
+.toolbar-save.is-conflict > summary {
+  font-weight: 600;
+}
+.toolbar-save-panel {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, 100%);
+  padding: 14px;
+  border: 1px solid #899b77;
+  background: #192c2b;
+  box-shadow: 0 12px 30px #0009;
+  color: #d7e4c8;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.toolbar-save-panel > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.toolbar-save-panel button {
+  min-height: 40px;
+  padding: 7px 12px;
+}
+@media (max-width: 700px) {
+  .game-toolbar.has-save-notice .phase {
+    display: none;
+  }
+  .toolbar-save {
+    flex-shrink: 0;
+  }
+  .toolbar-save > summary {
+    min-height: 44px;
+    padding: 4px;
+  }
+  .toolbar-save-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .toolbar-save-short {
+    display: inline;
+  }
+  .toolbar-save-panel button {
+    min-height: 44px;
+  }
+}

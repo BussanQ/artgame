@@ -1,0 +1,965 @@
+{
+  "capturedBeforeRules": "singleplayer-0.71",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "tornado",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "wildfire",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "boneblast",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "thornbind",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "rifle",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "gaze",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "hive",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    },
+    {
+      "version": "bulwark",
+      "unit": {
+        "id": "deer",
+        "name": "长生鹿",
+        "cost": 2,
+        "traits": [
+          "野兽",
+          "支援"
+        ],
+        "hp": 650,
+        "attack": 38,
+        "armor": 2,
+        "range": 3,
+        "interval": 4,
+        "skill": "长生庇护",
+        "color": "#c7e6aa",
+        "glyph": "♧"
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "deer",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff",
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "infantry",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "blade"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "core"
+          ]
+        }
+      ],
+      "hash": "db2ca25e1ccd064c47bbfaf7088c4461d2afc98e884e52a4059604192d5358af",
+      "frames": 84,
+      "winner": 0,
+      "casts": 4,
+      "healing": 635
+    },
+    {
+      "version": "bulwark",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "deer",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff",
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "infantry",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "blade"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "core"
+          ]
+        }
+      ],
+      "hash": "2b196138483decd7b2d380d8912a32d3108e8996cb755b05a91349749e4d0f6f",
+      "frames": 59,
+      "winner": 0,
+      "casts": 3,
+      "healing": 404
+    }
+  ]
+}

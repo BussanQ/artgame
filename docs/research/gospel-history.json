@@ -1,0 +1,106 @@
+{
+  "reviewedAt": "2026-11-06",
+  "unit": "acolyte / 童子",
+  "implementation": "singleplayer-0.52 / gospel",
+  "sources": [
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "type": "原作者测量表，非客户端配置",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "imageSha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "row": 40,
+      "facts": {
+        "cost": 2,
+        "hp": 600,
+        "attackRange": [
+          40,
+          45
+        ],
+        "attackIntervalSeconds": 1.7,
+        "armor": 5,
+        "range": 4,
+        "passive": true
+      }
+    },
+    {
+      "id": "S32",
+      "url": "https://news.17173.com/content/05172019/112538567.shtml",
+      "type": "17173署名官方的原文及内嵌客户端图",
+      "image": "images/acolyte-official-may17.jpg",
+      "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/jPfbWnbnlbDawrz.jpg",
+      "imageSha256": "b1ea034c1ff157baacb22a47a0df7aca077f6d882d995de0a0da827d3b299932",
+      "facts": [
+        "原文将童子定位为加速周边友军充能的功能单位。",
+        "原始角色是白壳蓝眼的小型异形，非道童人形。"
+      ]
+    },
+    {
+      "id": "S38",
+      "url": "https://news.17173.com/z/zzq/content/05302019/085535417.shtml",
+      "type": "官方署名五月30日公告，Web直读失败后核对已归档原始HTML正文",
+      "originalHtmlSha256": "e58673f8e89df2d28aff5cbfeea60976e20153d6f4fdf37f9d57a15c4e1f8362",
+      "facts": {
+        "costBefore": 1,
+        "costAfter": 2,
+        "hpBefore": [
+          500,
+          1000,
+          2800
+        ],
+        "hpAfter": [
+          600,
+          1200,
+          2400
+        ]
+      }
+    },
+    {
+      "id": "S54",
+      "url": "https://www.8090.com/news/xinqing/article_328412.html",
+      "type": "转载文章内的原客户端技能卡；页面二次攻略不作为原始字段证据",
+      "image": "images/acolyte-gospel-client.png",
+      "imageUrl": "https://www.8090.com/uploads/allimg/190509/293517-1Z50914263O26.png",
+      "imageSha256": "11626537d3b55d1041104bcfe6774fc911f96ab1ec127cecb812a98fa0a2c5b6",
+      "facts": {
+        "name": "福音",
+        "labelCooldownSeconds": 60,
+        "worldRadius": 15,
+        "readableEnergyPerSecond": [
+          4,
+          7,
+          null
+        ],
+        "costInImage": 2,
+        "traits": [
+          "灵能者",
+          "支援"
+        ]
+      },
+      "limits": [
+        "三星回复末位被水印遮挡，不能将10标为本轮目视确定值；本地暂用10。",
+        "页面标注2019-05-09且正文仍称一费，图片为二费；图片具体客户端日期不明，不能拼成统一五月9日版本。"
+      ]
+    }
+  ],
+  "localAdaptations": {
+    "attack": "40–45取均值42.5后四舍五入43；生命和攻击采用单机星级翻倍。",
+    "rates": [
+      4,
+      7,
+      10
+    ],
+    "thirdRateEvidence": "10为暂定本地梯度；当前归档卡最后一档受水印遮挡，尚待无遮挡原始卡确认。",
+    "activation": "按S04被动定位从开战维持，首个脉冲为1秒，此后每秒一次；卡上60秒标签保留为证据，原始开场施放时机未确定，不解释为60秒才充一次能。",
+    "geometry": "世界圆半径15映射为欧氏3格；没有原世界单位到棋格的已验证换算。",
+    "overlap": "每名受益者只取覆盖中的最高星级童子，同星按最小UID归属；不同覆盖区域可以分别受益。",
+    "statuses": "眩晕/沉默不关闭；魅惑期间暂停，恢复后续跳、不补发；死亡、残魂、火种与召唤分身不产生光环。",
+    "recipients": "仅存活、同阵营、能使用能量、未满且未封能的棋子；魅惑/已耗尽的一次召唤等沿usesEnergy排除。童子和普通召唤物不能接受，溢出不储存。",
+    "recovery": "沿用单机gainMana：回能倍率后扣骑兵定额，每个一秒脉冲扣一次，上限100；不受攻速/技能强度加成。",
+    "telemetry": "无主动施法事件；只统计实际能量增加，满能量/减至零时无供能浮字；脉冲次数包括覆盖为空的存活周期。",
+    "ai": "选阵只给最强电池估价；推荐/AI布阵将童子放在前排之后的空位，按队友实际初始能量缺口及强度改善覆盖；较弱场优先未覆盖目标，非战斗增益或最优站位证明。",
+    "visual": "ImageGen重制异形，普通播放只有小脉冲，悬停/固定战斗详情才显示三格范围；减少动态使用静态足环。"
+  },
+  "compatibility": "新局二费30份；既有目录继续一费45份。schema50→51仅准备期进入gospel，在途/结算/终局及历史保留；49→50固定lightning字面值。旧战斗保留480生命、24攻击、2甲、3格、1秒普攻、50初能量与灵珠充能及旧形象。",
+  "versionBoundary": "五月角色图、五月公告、日期不明的技能卡和七月测量表分字段采用；未宣布统一官方客户端版本。整体伤害、回能、AI及高星公式仍含单机适配。"
+}

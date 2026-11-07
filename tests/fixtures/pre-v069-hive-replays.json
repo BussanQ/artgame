@@ -1,0 +1,924 @@
+{
+  "capturedBeforeRules": "singleplayer-0.69",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "tornado",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "wildfire",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "boneblast",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "thornbind",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "rifle",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    },
+    {
+      "version": "gaze",
+      "unit": {
+        "id": "wasp",
+        "name": "杀人蜂",
+        "cost": 4,
+        "traits": [
+          "异虫",
+          "狙击"
+        ],
+        "hp": 850,
+        "attack": 100,
+        "armor": 3,
+        "range": 3,
+        "interval": 3,
+        "skill": "毒针风暴",
+        "color": "#d6c580",
+        "glyph": "蜂",
+        "flying": true
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "wasp",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "hash": "4ce700a184d5118aad5d8e1a0b5f8ce1ed2a71988c449b66431d73221e9f8b9d",
+      "casts": 3,
+      "frames": 52
+    },
+    {
+      "version": "gaze",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "wasp",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "staff"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 3,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "hash": "dd79124e0f16982ac146e5ab312f68d9dd1ec1faa78f6f8fd47ef8d4ee83cef0",
+      "casts": 3,
+      "frames": 52
+    }
+  ]
+}

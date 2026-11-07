@@ -1,0 +1,104 @@
+{
+  "checkedAt": "2026-11-06T07:34:42.563Z",
+  "scope": "Visible normal campaign, no hidden game-state injection. Desktop 1280x720; selected AI has no layout or combat change.",
+  "origin": "http://localhost:5176/",
+  "rawEvidence": {
+    "path": "tmp/opening-ai-v059-ui-evidence.json",
+    "sha256": "43674ec9cd9f26ec7683c756ae82d4f476c79275959634d41269f3c8a241ed83"
+  },
+  "rawCampaign": {
+    "path": "tmp/opening-ai-v059-ui-campaign.json",
+    "sha256": "6a556339a68bfefd960f7c2c2ad68b9d20820b2f5ab6678cb7cd8b75d1dfe376"
+  },
+  "checkpoints": 11,
+  "campaign": "Existing standard random-ban 0.59 UI campaign continued from R7. Bans 步兵/骑兵/不朽, 49/63 available. R7-R8 occurred during policy exploration; R9 used the selected worktree. All offers and purchases were normal; no restart for favorable offers.",
+  "roundEight": {
+    "opponent": "北境哨兵",
+    "winner": "player",
+    "durationSeconds": 11.5,
+    "playerSurvivors": 6,
+    "totalDamage": 4300,
+    "monk": {
+      "damage": 848,
+      "normalDamage": 108,
+      "skillDamage": 740,
+      "formed": 1,
+      "pulses": 7,
+      "hits": 9,
+      "energyRemoved": 9,
+      "initialMana": 100
+    },
+    "purchase": "R8 natural shop contained two three-gold Ninjas and a four-gold Monk, bought for the actual ten gold; recommendation chose three distinct pandas."
+  },
+  "roundNine": {
+    "opponent": "渡鸦",
+    "winner": "player",
+    "durationSeconds": 13.5,
+    "playerSurvivors": 6,
+    "totalDamage": 5549,
+    "monk": {
+      "damage": 134,
+      "skillDamage": 0,
+      "formed": 1,
+      "pulses": 7,
+      "hits": 0,
+      "energyRemoved": 0
+    },
+    "ninja": {
+      "damage": 810,
+      "skillDamage": 360,
+      "pulses": 5,
+      "hits": 3
+    },
+    "purchase": "Two naturally offered one-gold Masters bought for two gold. Recommendation and battle spent no additional money."
+  },
+  "checks": {
+    "oldRoundSixTextIdentical": true,
+    "roundEightContributionTextIdentical": true,
+    "roundEightReplayActionsDifference": "History analysis includes two replay actions and a separating blank line; contribution text is compared after excluding only those actions and blank lines.",
+    "recommendationKeptEconomyAndGear": true,
+    "recommendationObservedWallMs": 292,
+    "reloadVisiblePanelsExactlyEqual": true,
+    "browserErrorsOrWarnings": []
+  },
+  "finalState": {
+    "round": 10,
+    "phase": "prepare",
+    "hp": 92,
+    "gold": 14,
+    "level": 6,
+    "xp": "5/18",
+    "field": 6,
+    "bench": 6,
+    "equippedItems": 3,
+    "inventory": 0
+  },
+  "screenshots": [
+    {
+      "path": "tmp/opening-ai-v059-three-pandas.jpg",
+      "sha256": "c9930a194dddb4b3effce2f6eb249c3be2e85e6804bc2ec175ba24ab07037caf"
+    },
+    {
+      "path": "tmp/opening-ai-v059-round-eight-analysis.jpg",
+      "sha256": "7cf3954a1090fffd8a407d11765e842809cb725102a351fd71b78cf7ee3f91a3"
+    },
+    {
+      "path": "tmp/opening-ai-v059-opening-energy.jpg",
+      "sha256": "e0fecb877342f1285a81eb4182a92549254133b3c1f504f6be8c24056abe5665"
+    },
+    {
+      "path": "tmp/opening-ai-v059-selected-ready.jpg",
+      "sha256": "a78ae7db6f27cecedcf05586f537885949c2293f0815cc585346b3ce069a5cfd"
+    },
+    {
+      "path": "tmp/opening-ai-v059-round-nine-analysis.jpg",
+      "sha256": "a7f50de5d1c75e27d2ed85a065c583b12a3fe55c8b778007bd7af2dc2145e5c7"
+    }
+  ],
+  "limits": [
+    "R9 orb formed but hit nobody; current public-opponent recommendation does not predict the opponent next preparation or guarantee hits.",
+    "Nine visible rounds across the existing campaign are not a completed current multi-composition campaign.",
+    "Desktop browser timing is not CPU timing, real touch or weak-device verification.",
+    "Screenshots and raw visible text stay in ignored root tmp/ per AGENTS.md."
+  ]
+}

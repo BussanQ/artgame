@@ -5,3 +5,6 @@ dist/
 .env
 .env.*
 !.env.example
+
+# 本地验收截图与临时文件
+/tmp/

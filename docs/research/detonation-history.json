@@ -1,0 +1,107 @@
+{
+  "version": "singleplayer-0.82",
+  "reviewedAt": "2026-11-07",
+  "combatVersion": "detonation",
+  "body": {
+    "source": "S04",
+    "image": "docs/research/images/s04-main-attributes.jpg",
+    "row": 22,
+    "tablePublishedAt": "2019-07-08",
+    "clientBuild": null,
+    "review": "本轮实际目视原表；38–42攻击映射为确定值40。",
+    "cost": 2,
+    "hp": 500,
+    "attackMin": 38,
+    "attackMax": 42,
+    "armor": 0,
+    "range": 2,
+    "intervalSeconds": 1.2,
+    "passive": true
+  },
+  "appearance": {
+    "source": "S20",
+    "articlePublishedAt": "2019-04-24",
+    "image": "docs/research/images/s20-insects-client.jpg",
+    "url": "https://video.kts.g.mi.com/ktv_1103968488_QWlGekJSZ1FpTHRWRjBwYzFpdi9XQT09_1556086271129.jpeg",
+    "bytes": 601423,
+    "sha256": "be308ffe1be375325ff4438026b155a8ffba573696bae7ca69845cd160452571",
+    "review": "实际下载并目视四异虫客户端原图。爆裂虫为蓝色圆囊、白色后壳、深青色卷颚轮廓；四月图显示一费，不覆盖五月与七月的二费记录。"
+  },
+  "mechanics": [
+    {
+      "source": "S35",
+      "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
+      "eventDate": "2019-05-09",
+      "modifiedAt": "2019-05-08",
+      "archive": "tmp/wildfront-s35-v041.html",
+      "archiveBytes": 229992,
+      "archiveSHA256": "8abb8a45cc529d7ce184ef2f90f68749f2d74c04bbc440a0e02ab7af5391d781",
+      "review": "本轮复读原始HTML正文，费用1改2，射程3改2。署名拉克西丝，账号官方标识仍未单独核验。"
+    },
+    {
+      "source": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "modifiedAt": "2019-07-15",
+      "author": "User26157272",
+      "archive": "tmp/vine-s05-original.html",
+      "archiveBytes": 302211,
+      "archiveSHA256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "review": "复读原作者实战评测正文，明确七月版本改为死亡立即爆炸，失去原来的自爆动画承伤和冲锋；后续补充提到伤害增强及中期过渡作用。"
+    },
+    {
+      "source": "S72",
+      "url": "https://forum.gamer.com.tw/Co.php?bPage=0&bsn=36595&sn=141&subbsn=1",
+      "sourceKind": "secondary-community-repost",
+      "eventDate": "2019-07-11",
+      "reviewStatus": "current-search-index-reviewed",
+      "damageBefore": [
+        200,
+        300,
+        400
+      ],
+      "damageAfter": [
+        200,
+        350,
+        500
+      ],
+      "review": "索引再次读到完整分星数列；先前直开403的状态保留。本轮未取得发布方原公告或同版完整技能卡。"
+    },
+    {
+      "source": "S74",
+      "url": "https://news.17173.com/z/zzq/content/07112019/223915220.shtml?_platform=PC",
+      "sourceKind": "secondary-media",
+      "publishedAt": "2019-07-11",
+      "reviewStatus": "current-search-index-reviewed",
+      "review": "另一篇当日媒体报道给出相同伤害数列；不能证明来源独立，也不能将两篇转载当作发行方确证。"
+    }
+  ],
+  "localAdaptations": {
+    "name": "自爆",
+    "damage": "采用七月11日二手历史数列200/350/500作为基础法伤，受本项目技能强度、魔抗和护盾公式影响；不再按最大生命35%计算。",
+    "geometry": "沿用原型横纵距离合计2格，不宣称原版精确半径或圆形范围已证实；画面逐格轮廓与此判定一致。",
+    "timing": "死亡当帧一次，无额外蓄力或冲锋；眩晕和沉默不关闭死亡被动。先标记消耗再递归，连锁中以各自死亡时阵营与伤害快照结算。",
+    "targets": "已有隐形、飞行、召唤物均能被范围命中；同阵营与范围外不受伤。每个目标结算时仍须存活且属于死亡快照的敌军。",
+    "growth": "确定攻击40、0.25秒离散时钟及既有二倍星级生命/普攻成长为本地模型，不冒称完整历史星级公式。",
+    "animation": "鼓囊收颚喷吐及青色死亡爆发是依据轮廓和2格射程设计的本地动作，未取得原版普攻实录。"
+  },
+  "imagegen": {
+    "tool": "built-in image_gen",
+    "fallbackCLI": false,
+    "path": "public/assets/units/blastbug-detonation-v082.png",
+    "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-a4c6f2d7-9df7-4e5b-92bd-bfcd0eaf5050.png",
+    "bytes": 1574901,
+    "sha256": "d8d98a7555a99b4652e2a76b653fdc81306d54321b1ba46c71af607e2252b64e",
+    "width": 1254,
+    "height": 1254,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "transparentPixels": 732753,
+    "copiedOriginalBytes": true,
+    "prompt": "Use case: stylized-concept. Asset type: transparent isometric auto-chess unit sprite for a dark Chinese science-fantasy tactical game. Primary request: one complete Blastbug creature, faithful to the historical silhouette: a compact floating round cyan-blue gas-sac creature with a pale ivory segmented shell cupping the rear, one small sharp blue eye, broad dark teal curled horn-like mandibles encircling its face, tiny dangling pointed chin. It has no legs and no humanoid body. Three-quarter view facing lower right, elevated isometric game camera, head and swollen rounded body as one compact silhouette, all parts fully visible. Medium: polished painterly 3D game character render, sculpted readable volumes, restrained fine detail appropriate to a small game piece, matches realistic fantasy chess miniatures. Materials: soft turquoise translucent sac with subtle inner cool glow, ivory chitin plates and dark teal hard curled mandibles. Lighting: warm soft upper-left key and cool blue rim, readable on a dark board. Composition: single centered creature occupies about 82% of square canvas with generous clear padding; no base, no floor, no cast shadow, no fog, no particles, no text, no border, no watermark, no background. Actual transparent alpha background. Avoid orange abdomen, fire, beetle legs, conventional scarab, wings, weapons, multiple poses."
+  },
+  "limits": [
+    "S04、四月形象、五月公告和七月二手技能梯度属于不同时期，尚未锁定统一历史客户端。",
+    "原版伤害类型、范围、法强公式、控制及死亡交互仍未由完整原卡或实录确认。",
+    "整体单机难度、多种完整构筑经营和真实低端设备体验仍待完成。"
+  ]
+}

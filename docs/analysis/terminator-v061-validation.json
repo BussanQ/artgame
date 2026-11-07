@@ -1,0 +1,213 @@
+{
+  "recordedAt": "2026-11-07T02:07:39.478455+08:00",
+  "rules": "singleplayer-0.61",
+  "combatVersion": "terminator",
+  "saveSchema": 60,
+  "goalStatus": "active; 本增量不代替完整单机目标或总体平衡验收。",
+  "previousGoalTurn": "progress: 方舟集团轰炸、原卡归档与局部验证已经完成。",
+  "tests": {
+    "command": "npm run test:terminator",
+    "passed": 57,
+    "failed": 0,
+    "modules": [
+      {
+        "path": "tests/bombardment.test.ts",
+        "tests": 26,
+        "status": "passed"
+      },
+      {
+        "path": "tests/terminator.test.ts",
+        "tests": 31,
+        "status": "passed"
+      }
+    ],
+    "sourceSha256": {
+      "tests/terminator.test.ts": "1882220cae7d3b9b4c3a25afc0971398ad30871fcab27f144922504e1df960db",
+      "tests/bombardment.test.ts": "3587008702966905013dfc852df28c5c083720e6cbb471234e2f7c630fc5f61c"
+    },
+    "rawReport": "../../tmp/terminator-module-tests.json",
+    "rawReportSha256": "95f1e47e90d0fe07bbd2afa6c54b97f4301cb6f044c197042a6fc62626fd6cb6",
+    "scope": "31项终结者加26项方舟模块；不包含全量测试和经营局采样。"
+  },
+  "historical": {
+    "fixtures": [
+      {
+        "path": "../../tests/fixtures/pre-v061-titan-replays.json",
+        "sha256": "19ac06538ca61f00e9158eb5104aee439c6937ee68b6a1b108cc5a73a39ace6b",
+        "versions": [
+          "legacy",
+          "fleet",
+          "bombardment"
+        ]
+      },
+      {
+        "path": "../../tests/fixtures/pre-v060-ark-replays.json",
+        "sha256": "6a9feee9c7012303d346ba102bfe88b4e663ec0c88689c49986c47fbabd5839f",
+        "versions": [
+          "legacy",
+          "fleet",
+          "secret-orb"
+        ]
+      }
+    ],
+    "frozenReplayCount": 6,
+    "titanDefinitionsCompared": 33,
+    "limits": "修改前冻结的六份小局面完整SHA、历史身板和直接初始化/连携/双合比较；未重跑34版本完整战斗矩阵。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 130,
+    "rawLog": "../../tmp/terminator-v061-build.log",
+    "rawLogSha256": "05221485ee264eeb7d435fa256ccc57eaa29bf04176f0a86b937f721bd381916",
+    "app": "dist/assets/index-gmIh_bNI.js",
+    "worker": "dist/assets/worker-Z2sfeWP9.js",
+    "appSha256": "2943f7970f2d6b3a3bcc9c361be82d61c765752fd196e336aad1bcff74ea6ff8",
+    "workerSha256": "83d07c3cc3137f6e6d1f9e9dd51b56ececf2bd9417f1466650a20d38992538e3"
+  },
+  "art": {
+    "manifest": "../research/terminator-assets.json",
+    "assetPath": "../../public/assets/units/titan-terminator.png",
+    "assetSha256": "076cb61bb6e970ac17909b7e4c777fa93e4b7382b4cc3e1adf45d4bfc4359f9a",
+    "nativeBytesRetained": true,
+    "alphaZeroPixels": 891767,
+    "rawAlphaInspection": "../../tmp/terminator-alpha.json",
+    "priorPortraitRetained": "../../public/assets/units/titan.png"
+  },
+  "ui": {
+    "url": "http://127.0.0.1:5174/",
+    "desktopViewport": [
+      1280,
+      720
+    ],
+    "mobileViewport": [
+      390,
+      844
+    ],
+    "analysisAt45": {
+      "seconds": 4.5,
+      "hp": 1228,
+      "damage": 1605,
+      "normalDamage": 538,
+      "skillDamage": 1067,
+      "shieldDamage": 277,
+      "casts": 1,
+      "small": 1,
+      "large": 1,
+      "detonated": 1,
+      "hits": 6,
+      "interruptions": 0
+    },
+    "analysisAt5": {
+      "seconds": 5.0,
+      "hp": 1228,
+      "damage": 3536,
+      "normalDamage": 538,
+      "skillDamage": 2998,
+      "shieldDamage": 533,
+      "casts": 1,
+      "small": 1,
+      "large": 1,
+      "detonated": 2,
+      "hits": 12,
+      "interruptions": 0
+    },
+    "finalAnalysis": {
+      "seconds": 17.75,
+      "hp": 0,
+      "damage": 5182,
+      "normalDamage": 1607,
+      "skillDamage": 3575,
+      "shieldDamage": 699,
+      "casts": 2,
+      "small": 2,
+      "large": 1,
+      "detonated": 3,
+      "hits": 15,
+      "interruptions": 1
+    },
+    "outcome": "演示17.75秒失败；一枚大弹未发出，终帧有一次施法中断。未仅凭终帧推断中断具体原因。",
+    "mobileLayout": {
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "mobileAnalysisLayout": {
+      "dialog": {
+        "scrollWidth": 331,
+        "width": 332.5
+      },
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "resourcesTextUnchanged": true,
+    "resourceFields": [
+      "commander",
+      "recruitment",
+      "armory"
+    ],
+    "consoleErrorsOrWarnings": [],
+    "viewportOverrideReset": true,
+    "playbackSpeed": 1,
+    "rawEvidence": "../../tmp/terminator-v061-ui.json",
+    "rawEvidenceSha256": "5c2c768592a21d508f4dce60d80cffb43e5af51abb603624eb95f2d9b213d426",
+    "screenshots": [
+      {
+        "path": "../../tmp/terminator-v061-desktop.jpg",
+        "format": "JPEG",
+        "sha256": "1f746556ebbe7b905dd56ac3cd47020cdbd9cf6843c7ca3a534ea819b43a6a6c"
+      },
+      {
+        "path": "../../tmp/terminator-v061-mobile390.jpg",
+        "format": "JPEG",
+        "sha256": "8bda5269e6123de947b70792767cf9289a7ecd85473b0000df0882961b0980c4"
+      },
+      {
+        "path": "../../tmp/terminator-v061-mobile-analysis.jpg",
+        "format": "JPEG",
+        "sha256": "e0520a460aca4d0a57c02ad88247045be7b749f88f639e7b72d840c2eea09e06"
+      }
+    ],
+    "scope": "同一六对六技能演示的指定帧与一次结算，手机为本机窄视口；不是正常经济整局或真实触屏/弱设备验证。"
+  },
+  "sourceFingerprints": {
+    "src/engine/types.ts": "fdc5a641bf88c1f88f732a013ca2b7f2095195eb63f91d45c0edf7fe43dabd59",
+    "src/data/units.ts": "a6e10c9dd82e0079ab713762bba19fdc2fad6022ea41e310562fe6c4b9819bff",
+    "src/data/unit-stats.ts": "ffe58401b221501fdcc66ff1f1e54c5a66920ea69e35d426d367acb3c6e45064",
+    "src/data/skills.ts": "5441834a26491631d451f1a4c44acbab46d42bfb7c8263c7e5d8f2af5f327440",
+    "src/engine/abilities.ts": "7e779c890efa02642dee390cd1d78152999509b17934b1d85dbf1e8ed0f984f4",
+    "src/engine/battle.ts": "fc2404c189883e419de1f989f62c4ae1f5de29f3218743f559ba9dea98246869",
+    "src/engine/terminator.ts": "33144e90239cc232fbd4bf5846d86f72ca7195ea2825500ef10bfc87dc49478b",
+    "src/engine/bombardment.ts": "5c19c12f18b842fd3688a88ca4b8b3b12c0bd622c1e589a6dd5015bf035b6210",
+    "src/engine/persistence.ts": "6d7f3738d6f2b9aee8aa71a7a786dbac892973729bc2b5a2c5b5ac98d5c9562d",
+    "src/engine/ai.ts": "57b36a1a007140f2bf9e4a8814584c5f2a1c1667cfbabdfd8918d6ae2cba353c",
+    "src/engine/summons.ts": "2f96478a63bae39cfe68f48c959632455623ac295f4521fe0e81d02391b38d9a",
+    "src/engine/battle-analysis.ts": "a2fc48e03cc4e45bbda80176827db4ac28be0ea3ac663bf1647c5d70e09839c5",
+    "src/data/terminator-demo.ts": "8e49481d31156859fba14bc7a817b41229229351fd3013bc91be078219fa92de",
+    "src/render/terminator.ts": "9a14b8cd285549227aacbdcbcd7355e93b1d09c90f53e7f3645cfae9731b2074",
+    "src/render/ranged.ts": "5ccb5cb8c66d7678914489f5e3c859e1e84aed25cde4d1a59858465a8ead00f4",
+    "src/render/melee.ts": "d8badf13ec900630c58f4208f3e9036c93ca897a2ea515f8068cfb88e0eb484a",
+    "src/render/scene.ts": "9f1f6fe180f44ccc457dbdd360cb7bd9237b4a582868a2c3393491c20032ad9f",
+    "src/render/skill-effects.ts": "19f9597e9964f1c864f8f7cc11736f837ccf415a0e29e2a27ebda2849a3bac2c",
+    "src/render/battle-inspection.ts": "adc932580312cf608b1130f96500dea46a77ba59ce07977ec6658ecf32797974",
+    "src/ui/battle-analysis.ts": "83d69b82dd99ed0f9d1d051704898ae1dbd99497b27c5be42b9d8cb02f47569a",
+    "src/main.ts": "b72fc9434a411b856e8d17de9ef080bda3bead0e411bacd2025c6fbde45aa643"
+  },
+  "notRun": [
+    "全量测试",
+    "批量阵容/平衡对战采样",
+    "新的完整正常经营局",
+    "真实手机/弱设备性能测试"
+  ],
+  "remaining": [
+    "统一历史构建的全部数据与伤害/回能公式",
+    "其他仍待核对的原型能力",
+    "整体难度与多构筑可玩性",
+    "高星/高费经营的完整体验",
+    "真实触屏与弱设备验证"
+  ],
+  "git": {
+    "branch": "dev",
+    "newCommitCreated": false,
+    "newChangesPushed": false
+  }
+}

@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectedAt": "2026-11-02",
+  "collectedAt": "2026-11-07",
+  "lightningReview": "0.51重新目视S04-1第42行，并读取S50物理装备建议及S53原始公告锁链衰减段落。原图和HTML指纹、跨期边界、未找到的技能卡及本地上限/选敌明确记录于lightning-history.json；未用转载补齐未知参数。",
   "sources": [
     {
       "id": "S01",
@@ -29,10 +30,15 @@
       "publishedAt": "2019-04-27",
       "kind": "community",
       "status": "image-transcribed-traits-roster-reviewed",
-      "accessedAt": "2026-11-03",
+      "accessedAt": "2026-11-05",
       "targetVersion": "2019-05-09作者标记；客户端版本未知",
       "modifiedAt": "2019-05-09",
-      "note": "22类羁绊单元格已转录；攻城阈值未写，档位叠加规则未知。见historical-tables.json。"
+      "note": "22类羁绊单元格保存原始逐档数字；攻城阈值未写。0.43通过S50累计说明与S18总量交叉核对四条连携，见formation-stacking-history.json，不将推导结果冒充原图文字。",
+      "wildfrontReview": "0.41重新下载并目视核对原图，SHA与既存记录一致；野兽为2/4/6档攻速15/25/35%，后两档全军，先锋3/6档护甲6/8。纠正historical-tables.json后两档漏写速度的转录。取最高、增速公式和召唤继承是本地选择。",
+      "formationReview": "0.43再次目视原图，步兵3/6/9与先锋6/8是累计步骤；野兽个人15与团队25/35、傀儡个人10/15与团队20按受益范围分别累计。统一客户端版本仍未知。",
+      "counterplayReview": "0.44原图再次目视：狙击3/6甲穿步骤4/8、骑兵2减回能3、海神2/4空中防御步骤20/20。灵能印为2/3，保留原转录；当前人数与全军范围以S20/S51交叉复核。",
+      "lineagesReview": "0.45目视同指纹原图，核对8项职业格与异能5/5/10增量；本轮页面文本读取失败，不假称重新抓取。",
+      "coalitionsReview": "0.46复核记录见coalitions-history.json；客户端卡已实际目视，保留图片指纹、时间边界、原始增量与本地结算解释。"
     },
     {
       "id": "S04",
@@ -43,7 +49,21 @@
       "status": "images-transcribed",
       "accessedAt": "2026-11-03",
       "targetVersion": "2019-07-08玩家测量；客户端版本未知",
-      "note": "56行兵种属性与35个护甲减伤样本已逐图录入，含来源图片与行号。未提供技能伤害和商店概率。见historical-tables.json。"
+      "note": "56行兵种属性与35个护甲减伤样本已逐图录入，含来源图片与行号。未提供技能伤害和商店概率。见historical-tables.json。",
+      "qiReview": "0.48重新下载并目视S04-2第11行，SHA与先前转录一致，采用550生命、5护甲、5格、2.2秒及153–166区间取整均值160。原始字段保持不变；本次页面正文未成功重新获取，不能称全文复核。见qi-history.json。",
+      "gospelReview": "0.52采用第40行二费、600生命、40–45攻击、5甲、4格、1.7秒及被动定位，原始表格不改写。",
+      "thunderstormReview": "0.53采用S04-1第39行的一费、400生命、36–44攻击、5甲、4格、1.1秒与5/4/3秒冷却。攻击取均值40；原始表格字段不改写，S55客户端卡的伤害与路径宽度分期记录。",
+      "jungleReview": "0.54采用S04-1第38行五费、950生命、40–49攻击、5甲、1格、1.7秒、30秒及每秒回血5；确定攻击取45，原始转录不改写。",
+      "wildfireReview": "0.64重新目视S04-1第32行，采用三费、450生命、71–81攻击取均值76、5甲、3格及1.6秒；七月异能与当前早期攻城分类分期保留，原转录不改写。",
+      "bulwarkReview": "0.70目视第4行护卫兵，采用二费、750生命、30–84攻击取均值57、5甲、1格、1秒和15秒CD；原始表格转录不改写。",
+      "spiritWardReview": "0.71实际目视第30行长生鹿，采用四费、850生命、79–95取均值87、5甲、4格、1.8秒及25秒；原始测量转录不改写。",
+      "tortoiseReview": "0.72实际目视第43行：五费灵能者／护卫、1500生命、34–45攻击、10甲、1格、1.6秒、60秒与技能防御20%；第42行雷震子的被动不能错读到玄龟。",
+      "executionReview": "0.73核对已归档第37行转录：三费勾魂使550HP、49–63攻击、5甲、2格、1.2秒、15秒；原图此前已目视，本轮未重新下载。",
+      "siegeReview": "0.74本轮实际目视原表第11行投石车三费800生命、41–50攻击、10甲5格、1秒和60秒冷却。",
+      "infernoReview": "0.75实际目视S04-2第10行一费金刚650生命、42–46攻击、1.5秒、5甲、1格与60秒CD；原始转录不改写。",
+      "formlessReview": "0.77实际目视第16行幽灵机：三费500生命55–66攻击5甲1格1.1秒、回血5与CD16；确定攻击60.5和离散时序为实现选择。",
+      "dreamReview": "0.79实际目视第23行蜘蛛：三费550生命68–75攻击、5甲3格、2.2秒及40秒CD；原转录不改写。",
+      "detonationReview": "0.82本轮目视第22行爆裂虫：二费500生命38–42攻击、1.2秒、零甲、2格、被动；确定攻击40及星级成长是本地模型。"
     },
     {
       "id": "S05",
@@ -51,9 +71,22 @@
       "url": "https://www.taptap.cn/moment/15216144952591652",
       "publishedAt": null,
       "kind": "community",
-      "status": "partial-text-reviewed",
-      "accessedAt": "2026-11-03",
-      "targetVersion": null
+      "status": "original-body-reviewed",
+      "accessedAt": "2026-11-07",
+      "targetVersion": null,
+      "note": "原文藤妖段描述多段控制、每段回血、目标死亡后的剩余段数转火及可施放瞬发技能的段间空隙，并以铁狗式控制作比较；没有给出完整分星伤害或精确时序。",
+      "modifiedAt": "2019-07-15",
+      "thornbindReview": {
+        "record": "thornbind-history.json",
+        "originalHtmlSha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+        "method": "ordinary public HTTP GET; body text reviewed",
+        "note": "网页工具复访405后，普通HTTP取得完整302211字节原文；不把失败响应当正文证据。"
+      },
+      "bulwarkReview": "0.70索引原作者正文支持护甲重做和1格嘲讽；护甲数列、持续时间、精确交互未知。",
+      "spiritWardReview": "0.71读取索引原作者长生鹿段，支持强防御重做与一星15甲／40法抗；其他梯度、连接数与时序未确证。",
+      "tortoiseReview": "0.72重新解析先前已取得的原始HTML玄龟段：五费语境、变形效果不实时变化、龟缩强防御及提前回能建议；没有完整分星数值。",
+      "executionReview": "0.73重新解析原始HTML勾魂使段，叠印后普攻真伤、满印加伤和2格定位属玩家观察，非完整客户端公式。",
+      "detonationReview": "0.82复读已归档原作者正文，确认七月死亡立即爆炸与移除原自爆动画承伤／冲锋的观察；完整HTML指纹见detonation-history.json。"
     },
     {
       "id": "S06",
@@ -63,7 +96,8 @@
       "kind": "media",
       "status": "text-reviewed",
       "accessedAt": "2026-11-03",
-      "targetVersion": null
+      "targetVersion": null,
+      "mendingReview": "0.76目视79308982.jpg为经典RTS影鱼资料卡，不是自走棋卡；仅保存辨误证据，不据其确认灵鱼原型。"
     },
     {
       "id": "S07",
@@ -109,11 +143,12 @@
       "id": "S11",
       "title": "双人模式",
       "url": "https://shouyou.gamersky.com/news/201906/1191090_2.shtml?tag=wap",
-      "publishedAt": null,
+      "publishedAt": "2019-06-06",
       "kind": "media",
-      "status": "search-excerpt-reviewed",
-      "accessedAt": "2026-11-02",
-      "targetVersion": null
+      "status": "full-text-reviewed",
+      "accessedAt": "2026-11-07",
+      "targetVersion": "2019-06-06",
+      "note": "本次直接读取原始HTML，确认机群出现后方舟阵亡仍继续结算轰炸。页面来源游民星空[整理]、作者未知；仅作机制定性旁证，不称官方数值表。原文SHA及字段边界见bombardment-history.json。"
     },
     {
       "id": "S12",
@@ -144,7 +179,8 @@
       "status": "partial-text-reviewed",
       "accessedAt": "2026-11-03",
       "targetVersion": "S1 June balance commentary, not a complete ruleset",
-      "reviewNotes": "0.16 核对血鹰满血变身、落地及普通攻击三连击方向；同文记录升至四费。本项目保留三费与自主属性、每段60%倍率，不宣称同版本完整还原。"
+      "reviewNotes": "0.16 核对血鹰满血变身、落地及普通攻击三连击方向；同文记录升至四费。本项目保留三费与自主属性、每段60%倍率，不宣称同版本完整还原。",
+      "qiReview": "0.48复核原作者六月评测中的罗汉随机目标和可能缩短前摇，保留为后期变更，没有用来证明早期锁定行为或1秒前摇。"
     },
     {
       "id": "S15",
@@ -182,9 +218,14 @@
       "url": "https://www.taptap.cn/moment/15217028512090333",
       "publishedAt": null,
       "kind": "community-guide",
-      "status": "search-excerpt-reviewed",
-      "accessedAt": "2026-11-03",
-      "targetVersion": "Historical article, not a complete verified ruleset"
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "Historical article, not a complete verified ruleset",
+      "note": "本轮核对铁狗控制型装甲前排的定位，与S04属性表交叉引用；不据此推断具体伤害、范围或控制时长。 0.25直读正文确认特种兵7射程、后排、物理/法术装备与狙击核心定位；页面显示2019-05-22修改，并非已核实发布日期。",
+      "modifiedAt": "2019-05-22",
+      "formationReview": "原始正文经web直读，作者说明各连携数值按和报告；先锋总量6/14，步兵总量3/9/18。野兽35/65与括注40/75及划线内容存在版本/范围歧义。直接HTTP返回WAF页，未将其指纹当正文证据；发布日期仍未核实。",
+      "counterplayReview": "再次直读原文狙击与骑兵段：三/六狙总甲穿4/12；骑兵同时含减3和改减5，采用S03减3。对反伤抵扣原伤害的传闻不采纳。",
+      "lineagesReview": "0.45重新读取异能2/4/6全军吸血5/10/20总量及构筑机会成本；精确伤害分类和召唤继承另标本地边界。"
     },
     {
       "id": "S19",
@@ -194,7 +235,9 @@
       "kind": "community-guide",
       "status": "search-excerpt-reviewed",
       "accessedAt": "2026-11-03",
-      "targetVersion": "Historical article, not a complete verified ruleset"
+      "targetVersion": "Historical article, not a complete verified ruleset",
+      "counterplayReview": "直读灵能调整段，作者报告反伤不减免原受伤害；其低档本族25/高档全军50属于后续切片，不拼入五月20/50。",
+      "hiveEvidenceFollowup": "0.71补读索引原文：作者谨慎目测三连击，是一手观察线索；不证明当前各针倍率、间距和回能，见hive-history.json。"
     },
     {
       "id": "S20",
@@ -203,9 +246,24 @@
       "publishedAt": "2019-04-24",
       "kind": "publisher",
       "status": "text-reviewed",
-      "accessedAt": "2026-11-03",
+      "accessedAt": "2026-11-05",
       "targetVersion": null,
-      "reviewNotes": "0.14 rechecked psychic membership and fixed 20/30 reflection tiers; beneficiary scope not fully expanded in publisher wording."
+      "reviewNotes": "0.14 rechecked psychic membership and fixed 20/30 reflection tiers; beneficiary scope not fully expanded in publisher wording.",
+      "visualReview": {
+        "reviewedAt": "2026-11-05",
+        "imageUrl": "https://video.kts.g.mi.com/ktv_1103968488_bEZsNDhRK2FWYWdsVzJrT0tIYUludz09_1556086200042.jpeg",
+        "sha256": "f29f5453424788005490766b3be606f4d5753db0517184687559035c894e478f",
+        "status": "valid-jpeg-visually-reviewed-lingjiu-first-two-cost-card"
+      },
+      "wildfrontReview": "0.41重读四月原文，野兽2/4/6的10/10/15%本族攻速与五月全军25/35不同，明确保留版本差异。",
+      "infernoReview": {
+        "image": "docs/research/images/s20-landwalkers-client.jpg",
+        "sha256": "4fd0b9e9aa45b3825084fea233ce8d45df32c889e373ffe6d9175cd156b83e8d",
+        "note": "0.75普通HTTPS取得并目视左侧金刚的双臂蓝绿色重装轮廓；该图显示早期二费，与七月一费分期。"
+      },
+      "mendingReview": "0.76实际目视空军原图第二个维修机，保存原图及指纹；四月3费与七月1费分开记录。",
+      "formlessReview": "0.77目视空军原图第三个幽灵机的机械鲨轮廓，作为内置ImageGen身份参考；不代表统一技能版本。",
+      "detonationReview": "0.82实际下载并目视四异虫原图，蓝囊、白后壳与深青卷颚参考用于新形象；四月一费卡面不覆盖后续二费。原图与SHA见detonation-history.json。"
     },
     {
       "id": "S21",
@@ -215,7 +273,8 @@
       "kind": "official-tagged-community-guide",
       "status": "text-reviewed",
       "accessedAt": "2026-11-03",
-      "targetVersion": null
+      "targetVersion": null,
+      "mendingReview": "0.76读取正文：7/18取消无敌，治疗加能量、选最高攻击；嵌图返回挑战HTML，未恢复精确卡面。"
     },
     {
       "id": "S22",
@@ -268,7 +327,8 @@
       "status": "partial-text-reviewed",
       "accessedAt": "2026-11-03",
       "targetVersion": null,
-      "reviewNotes": "Bat damage-over-time/control, Vajra attack-speed reduction and Skytoad HP threshold roles; not a full skill specification."
+      "reviewNotes": "Bat damage-over-time/control, Vajra attack-speed reduction and Skytoad HP threshold roles; not a full skill specification.",
+      "infernoReview": "0.75通过web原作者正文确认对物理阵容减攻速定位，未提供具体梯度和持续时间。"
     },
     {
       "id": "S27",
@@ -279,10 +339,18 @@
       "status": "text-reviewed",
       "accessedAt": "2026-11-03",
       "targetVersion": "2020 historical version; not the April 2019 roster",
-      "reviewNotes": "矩形持续喷火、二星起化蛋和蛋未破则复活。文中羁绊为猛禽/爆破/法术；本项目采用早期攻城原型映射，属性/倍率/3秒孵化/每战一次均自主配置。属性段出现刀奴笔误，未直接采入。"
+      "reviewNotes": "矩形持续喷火、二星起化蛋和蛋未破则复活。文中羁绊为猛禽/爆破/法术；本项目采用早期攻城原型映射，属性/倍率/3秒孵化/每战一次均自主配置。属性段出现刀奴笔误，未直接采入。",
+      "wildfireReview": "0.64重读二手正文及活动技能配图；800/1600火种生命仅作二手交叉说明，不作为原卡确证。正文有刀奴笔误，400生命与S04的450分期保留；本轮没有取得涅槃被动原卡。"
     },
     {
       "id": "S28",
+      "boneblastReview": {
+        "reviewedAt": "2026-11-07",
+        "publishedAt": "2019-06-04",
+        "status": "body-and-embedded-client-image-reviewed",
+        "record": "boneblast-history.json",
+        "note": "客户端图确认骨爆、25秒、巨大骨球和圆形伤害/眩晕。卡面裁切，不推断伤害与眩晕梯度；正文二手说明与原卡视觉证据分开。"
+      },
       "title": "赤潮自走棋哪些棋子必拿 必拿棋子盘点推荐",
       "url": "https://www.9game.cn/cczzq/3200866.html",
       "publishedAt": null,
@@ -334,7 +402,8 @@
       "status": "text-reviewed",
       "accessedAt": "2026-11-03",
       "targetVersion": null,
-      "note": "页面标注来源原作官方，确认军医属于一费治疗角色；亦将武僧熊猫列为一费肉盾。"
+      "note": "页面标注来源原作官方，确认军医属于一费治疗角色；亦将武僧熊猫列为一费肉盾。",
+      "gospelReview": "0.52核对官方署名正文的周边充能定位及内嵌异形角色图，见gospel-history.json。"
     },
     {
       "id": "S33",
@@ -353,10 +422,667 @@
       "url": "https://game.xiaomi.com/viewpoint/1103968488_1555665047389_16",
       "publishedAt": "2019-04-19",
       "kind": "publisher",
-      "status": "text-reviewed",
-      "accessedAt": "2026-11-03",
+      "status": "text-and-client-images-reviewed",
+      "accessedAt": "2026-11-07",
       "targetVersion": null,
-      "note": "英雄互娱账号文章，在装备比较中给出摩托骑兵三连发和三星每发400；10秒指代可能是装备，不独立用于摩托冷却依据。"
+      "note": "英雄互娱账号文章，在装备比较中给出摩托骑兵三连发和三星每发400；10秒指代可能是装备，不独立用于摩托冷却依据。 0.80取得原始狼牙坠与灵魂之晶卡面：10%吸血／30秒召唤、30%技能强度／10秒随机500技能伤害，均标明技能唯一；原图与适配见equipment-skills-history.json。",
+      "whaleEyeReview": {
+        "version": "singleplayer-0.81",
+        "image": {
+          "path": "docs/research/images/whale-eye-client-apr2019.png",
+          "url": "https://video.kts.g.mi.com/ktv_1103968488_em0wV3dyNDhuaVdTTXZwU1FwaUdVQT09_1555665005626.png",
+          "bytes": 652382,
+          "sha256": "549ce88a37aba9764f6096d5744438f4ef989abfaa1de067aa80da29b1f2122f",
+          "originalBytes": true,
+          "review": "实际目视完整原始客户端卡面。"
+        },
+        "details": "whale-eye-history.json"
+      }
+    },
+    {
+      "id": "S35",
+      "title": "更新公告：5月9日早8点停服维护",
+      "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
+      "publishedAt": "2019-05-09",
+      "kind": "announcement-index",
+      "status": "relevant-full-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "2019-05-09",
+      "note": "此次读到公告正文；事件日期五月9日、页面修改日期五月8日，作者署名拉克西丝，未单独核验其官方账号标识。明确猛毒兽酸性污染20秒改为10/8/6秒，并有特种兵射程4改7、装甲15/35再生、先锋6/8护甲、野兽4档起全军等记录。正文核实取代此前仅检索摘要状态；这些梯度仍需在独立战斗版本中逐项对齐。",
+      "modifiedAt": "2019-05-08",
+      "wildfrontReview": "0.41再次读取原始HTML正文，确认4野兽起全军生效与先锋改为6/8护甲；配合S03恢复档位。原始HTML指纹及未核验账号标识见wildfront-history.json。",
+      "bombardmentReview": "0.60复查既有原始HTML，方舟集团轰炸CD由10/8/6改为14/12/10秒；署名及账号边界保持，原始SHA见bombardment-history.json。",
+      "terminatorReview": "0.61复查既有原始HTML，铁巨神终结者冷却改为14/12/10秒；保留账号标识尚未独立核验的边界，另与S04及S55一星数值互证。",
+      "formlessReview": "0.77复读归档HTML，当前索引交叉核对无形字段；直开失败不冒称重取成功。6秒、16秒及30/40/50%明确，官方账号标识仍未独立核验。",
+      "dreamReview": "0.79实际复读归档正文：三费、5/6.5/8秒、随机选人、来源死亡立即解除；本次直开失败，账号标识边界保持。",
+      "detonationReview": "0.82复读原始HTML费用1→2和射程3→2段落，账号标识边界保持。"
+    },
+    {
+      "id": "S36",
+      "title": "《赤潮自走棋》新版本步兵狙击流攻略",
+      "url": "https://shouyou.3dmgame.com/gl/128572.html",
+      "publishedAt": "2019-05-21",
+      "kind": "media-guide",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019",
+      "note": "作者我想静静。正文支持特种兵3费、射程加强、远程单体输出定位；不提供完整技能数值。相关图片请求失败，未声称恢复图片内字段。"
+    },
+    {
+      "id": "S37",
+      "title": "赤潮自走棋 新版本最强性价比兵种以及阵容",
+      "url": "https://news.17173.com/z/zzq/content/05152019/155428285.shtml?_platform=PC",
+      "publishedAt": "2019-05-15",
+      "kind": "community-reprint",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019",
+      "note": "作者墨，来源TapTap。按原文正文而非页面AI摘要核对：特种兵3费、远程输出与控制，建议回能装备；不提供控制时长、技能名和伤害。"
+    },
+    {
+      "id": "S38",
+      "title": "赤潮自走棋 更新公告 5月30日早8点停服维护",
+      "url": "https://news.17173.com/z/zzq/content/05302019/085535417.shtml?_platform=PC",
+      "publishedAt": "2019-05-30",
+      "kind": "publisher-reprint",
+      "status": "html-text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "2019-05-30",
+      "note": "页面作者和来源均标官方；Web直读超时后，用公开HTTP读取HTML成功核对正文。鸟骑兵振翅改信仰之箭，6/5/4次普攻后的下一箭短蓄力、300%暴击；攻击区间及1.5秒间隔可提取。无精确蓄力时长、闪避和取消规则；同时包含摩托焦油弹等改动，不代表当前全部配置为同版本。",
+      "tarReview": "0.50 target counts and three-second delay reviewed in the original announcement; see tar-history.json.",
+      "gospelReview": "0.52核对原始HTML中的一费改二费、分星600/1200/2400生命；不把所有配置当作统一五月版本。"
+    },
+    {
+      "id": "S39",
+      "title": "May 16 2019 update: armored formation thresholds",
+      "url": "https://news.17173.com/z/zzq/content/05162019/161225352.shtml?_platform=PC",
+      "publishedAt": "2019-05-16",
+      "kind": "publisher-reprint",
+      "status": "search-excerpt-reviewed-direct-fetch-failed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "2019-05-16",
+      "note": "Search body attributes author/source to official and reports armor 3/5 to 2/4. Direct web open failed; HTTP fallback returned 567. Cross-checked thresholds with S18. Not used as proof of regeneration values."
+    },
+    {
+      "id": "S40",
+      "title": "《赤潮自走棋》5月9日更细了什么 5月9日更新内容简报",
+      "url": "https://www.9game.cn/news/3107101.html",
+      "publishedAt": "2019-05-09",
+      "kind": "media-guide",
+      "status": "html-text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019",
+      "note": "网页实际为六刺客阵容介绍。Web搜索摘要与公开HTTP读取的HTML正文核对一致，页面时间2019-05-09 16:27。支持铁鸡4费、装甲刺客及提高队友攻击/防御的定位；不提供具体增益幅度、范围或持续时间，不视作官方完整更新公告。"
+    },
+    {
+      "id": "S41",
+      "title": "赤潮自走棋斧奴技能介绍 斧奴适合的阵容",
+      "url": "https://www.8090.com/news/gonglue/article_328648.html",
+      "publishedAt": "2019-05-10",
+      "kind": "media-guide-with-client-screenshot",
+      "status": "html-and-client-screenshot-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019; client build unknown",
+      "note": "正文与客户端截图均支持1费、傀儡/刺杀、飞斧单体技能伤害300/500/700、短暂眩晕与5秒冷却。作者小艾，非官方配置；未给眩晕时长、投掷距离、伤害类型或初始能量。正文刺杀3/6档疑似重复数值，不据此改动羁绊。Web直读失败，使用此前公开HTTP读取的GB编码HTML和截图核对。"
+    },
+    {
+      "id": "S42",
+      "title": "《赤潮自走棋》523更新了哪些内容 523更新内容一览",
+      "url": "https://www.9game.cn/cczzq/3173740.html",
+      "publishedAt": "2019-05-27",
+      "kind": "media-guide-with-client-screenshot",
+      "status": "html-and-client-screenshot-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019; client build unknown",
+      "note": "页面署名互联网、来源手心游戏。公开HTTP读取HTML和客户端截图核对：2费傀儡先锋、狂舞花绽、6次50/100/150技能伤害、6.5秒持续、12秒冷却、期间免疫技能伤害；正文描述可移动。不是官方客户端配置，范围与初始能量未知。 0.34另核对同页刀奴客户端截图80505095.jpg：3费傀儡/先锋、零时突进、普攻10%概率暴击及300/450/600%倍率；截图还显示60秒冷却，与被动描述及S04空白冷却的关系未确定，未伪称已恢复官方触发时序。 0.35另核对同页盾奴客户端截图80505108.jpg：4费傀儡/护卫、正义冲锋、前方矩形范围200/300/400法术伤害、冷却10秒；正文另述新增2秒沉默。精确范围、初始能量与交互细节未给出。"
+    },
+    {
+      "id": "S43",
+      "title": "赤潮自走棋全英雄评测（第3期）",
+      "url": "https://www.taptap.cn/moment/15220462338441888",
+      "publishedAt": "2019-05-28",
+      "kind": "primary-player-review",
+      "status": "text-reviewed",
+      "accessedAt": "2026-11-04",
+      "targetVersion": "May 2019",
+      "note": "User26157272的同期评测，剑奴条目支持大招可移动和免控。属于玩家观察，不是官方控制分类定义；具体控制覆盖范围仍作为本地适配。 同文刀奴条目支持被动输出、二星过渡及野兽傀儡的构筑用途，不提供概率或倍率。"
+    },
+    {
+      "id": "S44",
+      "title": "多多自走棋手游 玩家自制四费英雄图签",
+      "url": "https://news.17173.com/z/zzq/content/05252021/183731192.shtml",
+      "publishedAt": "2021-05-25",
+      "kind": "media-reposted-community-infographic",
+      "status": "text-and-player-designed-card-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "2021 community material; not a verified 2019 client ruleset",
+      "note": "作者字段为战争艺术AOW，来源微信公众号；页面标题提及多多而正文及图签是战争艺术单位，保留此冲突。棍奴玩家图签记录疾风、同目标叠攻速10/15/20%每层、最多10层、满层50护甲与换目标清除。2021职业写战士；不能用于消除四月护卫、七月先锋的时间切片差异。0.38将疾风作为明确标注的后期机制适配实现，基础属性与先锋分类另取2019资料；见staffthrall-history.json。"
+    },
+    {
+      "id": "S45",
+      "title": "赤潮自走棋全英雄评测（第5期）",
+      "url": "https://www.taptap.cn/moment/15201495997744121",
+      "publishedAt": "2019-06-19",
+      "kind": "community-review",
+      "status": "relevant-classification-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "June 2019 community observations",
+      "note": "页面明确记录棍奴职业由护卫改为先锋，配合S04七月属性表选择本地先锋分类。并未提供疾风叠速或满层护甲数值，不能代替S44后期图签的日期边界。",
+      "lineagesReview": "0.45重新读取护卫→先锋原文，以此佐证选择四月/五月护卫分类；0.38当时的先锋选择作为历史记录保留。"
+    },
+    {
+      "id": "S46",
+      "title": "优先挑身板好的英雄上场《战争艺术：赤潮》兵种图鉴",
+      "url": "https://news.17173.com/content/05032019/080728972.shtml",
+      "publishedAt": "2019-05-03",
+      "kind": "media-reposted-publisher-infographic",
+      "status": "indexed-text-reviewed-image-fetch-unavailable",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "May 2019 article; original card not visually verified this turn",
+      "note": "检索文本标注来源为战争艺术赤潮官方。图片索引转写包含巨齿象单体100/200/300伤害与击飞，以及灵鹫候选字段，但原图请求超时/返回HTML挑战，未取得可核实图像。转写存在撕牙冲、灵鳐等读名误差，不能标为精确官方值或已逐图恢复。候选图URL为https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/aSAwUQbnjyDnqsp.jpg。"
+    },
+    {
+      "id": "S47",
+      "title": "《赤潮自走棋》9月28日更新公告",
+      "url": "https://www.sohu.com/a/421209278_100204787",
+      "publishedAt": "2020-09-28",
+      "kind": "game-update-announcement-repost",
+      "status": "relevant-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "2020-09-28, not April/May 2019",
+      "note": "巨齿象獠牙冲冷却20秒改为10/8/6秒；用于技能名及版本差异佐证，不能覆盖S04的2019年20秒冷却。该页面还有其他后期数值，未直接移植到2019规则。"
+    },
+    {
+      "id": "S48",
+      "title": "赤潮自走棋 7月30日不停服更新内容一览",
+      "url": "https://news.17173.com/z/zzq/content/07302020/182340097.shtml?_platform=PC",
+      "publishedAt": "2020-07-30",
+      "kind": "media-reposted-official-announcement",
+      "status": "relevant-full-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "2020-07-30, not a verified 2019 ruleset",
+      "note": "直接正文作者和来源均署名官方，明确灵鹫死魂曲伤害150/250/350改为200/300/400。当前采用后者为注明日期的后期适配；公告没有提供本轮所需的技能中心、范围或初始能量。"
+    },
+    {
+      "id": "S49",
+      "title": "赤潮自走棋 当前版本强度图(新人拿卡向)",
+      "url": "https://news.17173.com/z/zzq/content/05132019/204014986.shtml?_platform=PC",
+      "publishedAt": "2019-05-13",
+      "kind": "media-reposted-community-guide",
+      "status": "relevant-indexed-text-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "May 2019 player observations",
+      "note": "作者六芒龙、来源TapTap，相关检索正文描述灵鹫普攻与范围技能伤害优秀，但身板脆、作为刺客跳后排易被集火。用于角色定位，不能当作精确伤害或范围参数。"
+    },
+    {
+      "id": "S50",
+      "title": "一个从赤潮老玩家到自走棋玩家的攻略",
+      "url": "https://www.taptap.cn/moment/15203671482564780?group_id=42979",
+      "publishedAt": "2019-04-29",
+      "modifiedAt": "2019-05-11",
+      "kind": "primary-player-guide",
+      "status": "body-and-original-client-images-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "mixed early client images; edited May 11 player commentary",
+      "note": "原作者邪王易风，4月29日发表、5月11日修改。正文明确三刺10%、六刺总20%的4.5倍暴击；三张原始客户端图片实际下载并查看，穿山甲为野兽/刺杀、遁地100/200/300、20秒。先锋图仍为旧回血而正文已谈护甲，不能当统一客户端切片；全梯度累计的玩家说法保留为后续逐字段证据。见assassin-history.json。",
+      "formationReview": "0.43采用正文累计说明，重新目视野兽客户端提示；结合S03逐档范围推导野兽自身15/40/75与其他友军0/25/60、傀儡自身10/25/45与其他友军0/0/20。未将混期先锋回血图覆盖五月护甲。",
+      "coalitionsReview": "0.46复核记录见coalitions-history.json；客户端卡已实际目视，保留图片指纹、时间边界、原始增量与本地结算解释。",
+      "auroraReview": "0.47再次目视空蟹客户端卡，复核极光电影575/825/1075、13秒冷却、25%攻击与三层上限；卡片原图归档images/s50-skycrab-client.jpg，来源指纹及本地法伤/目标/叠加公式边界见aurora-history.json。客户端日期仍未知。",
+      "qiReview": "0.48目视罗汉客户端卡：气波掌250/450/650、10秒，3费陆行者/狙击及石晶轮廓。原图images/s50-arhat-client.jpg，日期及本地适配见qi-history.json；不据此推定原始伤害类型、精确前摇或统一客户端版本。",
+      "siegeReview": "0.74普通HTTPS取得原始HTML并解析物理装备分配段；未识别到完整投石车技能卡，配图不用于猜数值。"
+    },
+    {
+      "id": "S51",
+      "title": "赤潮自走棋全英雄评测（第3期）",
+      "url": "https://www.taptap.cn/moment/15220462338441888",
+      "publishedAt": null,
+      "dateAsDisplayed": "2019-05-28",
+      "kind": "community-original-review",
+      "status": "relevant-original-body-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "五月28日更新前/后对照；客户端构建未知",
+      "note": "正文明确数值按和报告；更新前海神2/4空中技能防御20/40%、灵能2/4全军20/50反伤。更新后海神改回能且低档灵能15。0.44采用更新前切片，保留能量描述和版本冲突，见counterplay-history.json。",
+      "coalitionsReview": "0.46复核记录见coalitions-history.json；客户端卡已实际目视，保留图片指纹、时间边界、原始增量与本地结算解释。"
+    },
+    {
+      "id": "S52",
+      "title": "赤潮自走棋全英雄评测（第2期）",
+      "author": "User26157272",
+      "url": "https://www.taptap.cn/moment/15217028512090333",
+      "modifiedAt": "2019-05-22",
+      "kind": "community-original-review",
+      "status": "relevant-original-body-reviewed",
+      "accessedAt": "2026-11-05",
+      "targetVersion": "May 9/16 changes discussed; exact client build unknown",
+      "note": "原作者指出罗汉前摇期间不能普攻，没有给精确时长。由S51系列链接定位原帖。本文混有两个五月版本，0.48只采用该行为方向，不宣称1秒来自原文。见qi-history.json。"
+    },
+    {
+      "id": "S53",
+      "title": "赤潮自走棋 6月13日更新内容介绍",
+      "url": "https://news.17173.com/z/zzq/content/06132019/183201371.shtml",
+      "publishedAt": "2019-06-13",
+      "author": "官方（17173页面标注）",
+      "kind": "official-announcement-reprint",
+      "status": "original-html-body-reviewed",
+      "accessedAt": "2026-11-06",
+      "originalHtmlSha256": "0dedc8dcdaf7ac25178d1154f70b6cc72683a49d2427e3edef07b4e59d8d3189",
+      "note": "Web带参数的缓存包含第三方AI摘要提示；本轮另取无参数原始HTML，正文无摘要，核对摩托生命、攻击区间及焦油弹溅射80→120。原文未给中心伤害和完整黏附边界。"
+    },
+    {
+      "id": "S54",
+      "title": "童子福音客户端技能卡（8090文章内嵌）",
+      "url": "https://www.8090.com/news/xinqing/article_328412.html",
+      "imageUrl": "https://www.8090.com/uploads/allimg/190509/293517-1Z50914263O26.png",
+      "publishedAt": "2019-05-09（文章标注，非已核定图片客户端日期）",
+      "kind": "embedded-client-screenshot",
+      "status": "image-reviewed-with-obscured-field",
+      "accessedAt": "2026-11-06",
+      "image": "images/acolyte-gospel-client.png",
+      "imageSha256": "11626537d3b55d1041104bcfe6774fc911f96ab1ec127cecb812a98fa0a2c5b6",
+      "note": "原始客户端图确认福音、圆形15、60秒标签和每秒4/7，三星末位被水印遮挡；10暂作本地梯度，未将攻略转述当原始证明。页面一费正文与二费截图混期，不能归并历史版本。"
+    },
+    {
+      "id": "S55",
+      "title": "战争艺术 吃鸡宝典丨最强AOE英雄名单大盘点",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名，嘉宾香草糕）",
+      "kind": "publisher-authored-article-and-embedded-client-card",
+      "status": "original-html-and-client-image-reviewed",
+      "accessedAt": "2026-11-07",
+      "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/qfYCXIbnCjisgfv.jpg",
+      "image": "images/stormcaller-thunderstorm-client.jpg",
+      "imageSha256": "698bcf28f72abb267b159d0a1eeb17ca6c4e8b79768608ea9b571d778926c4c2",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "note": "正文确认一费、雷暴、路径命中与20削能；实际目视客户端卡确认宽1格及150/250/350，卡面冷却5秒。原图客户端构建日期未标明，不能把十二月文章与七月测量表当统一历史版本。",
+      "jungleReview": {
+        "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/mrqGIQbnCjisdvn.jpg",
+        "image": "images/treant-jungle-client.webp",
+        "imageSha256": "e07f71bfcf9bfda4418071c87626f360ae7f3295317b9d018d89ad822253ee1c",
+        "details": "jungle-history.json",
+        "note": "同一原HTML中的树妖卡；五费、圆形4格、100/200/300、30秒、击飞后眩晕1/1.5/2秒。保留天师原字段，不覆盖其原图。"
+      },
+      "bombardmentReview": "0.60核对无第三方AI摘要的既有原始HTML，并重新取得、目视方舟原始JPEG客户端卡：四费、空军/攻城、集团轰炸、14秒及250/400/650；卡面无宽度/速度/起手，见bombardment-history.json。当前网页含第三方AI摘要横幅，不以它替代原卡。",
+      "terminatorReview": "0.61重新取得并目视铁巨神原始客户端JPEG：五费、装甲/爆破、终结者、半径3格、小弹100/200/300、大弹250/350/450、一星14秒；正文两次轰炸和精确时序边界分开记录，见terminator-history.json。",
+      "warcryReview": {
+        "image": "images/lion-warcry-client-dec2019.jpg",
+        "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/owxvcmbnCjiseFy.jpg",
+        "imageSha256": "bf24bb39b02b7a98c58b0f541ba8a55683c574bd03fc56a6b536f8fd2fc97c9a",
+        "details": "warcry-history.json",
+        "note": "0.62重新读取正文并目视客户端卡：三费、野兽/护卫、30秒、30/50/80、石化3/3.5/4秒、反伤10/20/30和20秒。半径、角度、起手和反伤交互另列为本地适配；身板采用跨期S04社区表第29行。"
+      },
+      "tornadoReview": {
+        "image": "images/winddragon-tornado-client-dec2019.jpg",
+        "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/tfvogrbnCjisehz.jpg",
+        "imageSha256": "b9d616c2204b0f92689f3e27fd4223fd57213d2672a975a682e0e278565540e0",
+        "details": "tornado-history.json",
+        "note": "0.63目视翔龙原始客户端卡：四费、龙/攻城、20秒、150/200/250与落地眩晕1.5/2/3秒，沿途移动/击飞。早期陆行者目录保留；后期龙族真伤未混入。宽度、速度、行程、起手、空中时间与法术分类均另记适配。"
+      },
+      "wildfireReview": {
+        "image": "images/phoenix-wildfire-client-dec2019.jpg",
+        "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/oCtXaIbnCjisfew.jpg",
+        "imageSha256": "7c94d5de1aff5a96093cf360647aefae1607fef939e7e790c34314d508b4eeba",
+        "details": "wildfire-history.json",
+        "note": "0.64实际目视原始客户端卡：三费、15秒、450/600/1050、4/5.5/7秒矩形持续伤害、二星解锁涅槃及蓝/红/金缩略图。卡面未给频率、总量/逐秒、全程引导、矩形尺寸或孵化时长；这些均明确记录为本地适配。"
+      }
+    },
+    {
+      "id": "S56",
+      "title": "战争艺术 以天师为核心的灵能爆破完美克制步狙流",
+      "url": "https://news.17173.com/z/zzq/content/12032019/183708432.shtml",
+      "publishedAt": "2019-12-03",
+      "author": "牛牛手游平台（页面署名）",
+      "kind": "secondary-guide-with-primary-client-image",
+      "status": "original-html-and-client-portrait-reviewed",
+      "accessedAt": "2026-11-06",
+      "imageUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/wtsRNKbnBfkbakr.jpg",
+      "image": "images/stormcaller-client-dec03.jpg",
+      "imageSha256": "ea904b24766a4664f2f2a7ae9d597182451932e30afcc1e2bb86e099a2ee85f3",
+      "originalHtmlSha256": "2d8e857a4b1253c1410095696f6aa368f83ae325c2b1685395ceab99414c1933",
+      "note": "客户端原图用于确认一费、灵能者/爆破、雷暴和无脸装甲晶核轮廓。正文为二手攻略，提到蓄力与弹道难命中、4/3秒和命中后大量回能；后者未获客户端字段证明，没有按无依据比例实现自回能。"
+    },
+    {
+      "id": "S57",
+      "title": "赤潮自走棋 5月16日停服内容介绍",
+      "url": "https://news.17173.com/z/zzq/content/05162019/161225352.shtml?_platform=PC",
+      "publishedAt": "2019-05-16",
+      "author": "官方",
+      "sourceByline": "官方",
+      "kind": "publisher-authored-update",
+      "status": "original-html-reviewed",
+      "accessedAt": "2026-11-06",
+      "note": "Web全文读取失败但检索正文命中；直接HTTP取得原HTML，并核对作者/来源均为官方。无式增加护甲6/12/18、持续8/10/12秒、变身后范围普攻；不把八月社区嘲讽说法当作本公告字段。",
+      "archivedHtmlSha256": "7d9727113f013f6fd3b73315b29c09efdf65185e4d50764f2f7bdf70328071a7",
+      "secretOrbReview": {
+        "reviewedAt": "2026-11-06T06:11:31.944Z",
+        "confirmed": "七次技能伤害，每次减少3能量；其余字段见secret-orb-history.json。",
+        "htmlSha256": "7d9727113f013f6fd3b73315b29c09efdf65185e4d50764f2f7bdf70328071a7"
+      }
+    },
+    {
+      "id": "S58",
+      "title": "战争艺术 更新公告丨6月11日不停服更新内容一览",
+      "url": "https://news.17173.com/z/zzq/content/06112020/182740162.shtml?_platform=PC",
+      "publishedAt": "2020-06-11",
+      "author": "战争艺术AOW",
+      "kind": "publisher-authored-update-search-excerpt",
+      "status": "relevant-search-text-reviewed",
+      "accessedAt": "2026-11-06",
+      "note": "检索正文为战争艺术AOW署名、来源微信公众号；公告将无式10/15/20%吸血写为新增。用于标记后期差异，不混入本次2019核心适配；未声称直读全文。",
+      "secretOrbBoundary": "后期文本760/1000/1300→800/1100/1400；页面含AI摘要提示，不覆盖2019原始客户端卡760/1200/1300。"
+    },
+    {
+      "id": "S59",
+      "url": "https://news.17173.com/z/zzq/content/08022019/112747368.shtml?_platform=PC",
+      "publishedAt": "2019-08-02",
+      "author": "赤潮最爱科先生",
+      "sourceByline": "今日头条",
+      "kind": "original-client-cards-embedded-in-community-article",
+      "status": "full-article-and-all-three-original-images-reviewed",
+      "limits": "The article is community-authored. Numerical/qualitative fields below were read from the actual client screenshot, not attributed to an official prose guide. Screenshot build is unknown."
+    },
+    {
+      "id": "S60",
+      "title": "战争艺术 4月2日不停服更新内容一览",
+      "url": "https://news.17173.com/z/zzq/content/04022020/174456266.shtml?_platform=PC",
+      "publishedAt": "2020-04-02",
+      "author": "战争艺术AOW",
+      "sourceByline": "微信公众号",
+      "kind": "publisher-authored-later-update",
+      "status": "web-full-text-reviewed",
+      "accessedAt": "2026-11-06",
+      "facts": [
+        "忍者风魔之刃由150/250/350调整至160/270/380",
+        "修复飞镖应有5次伤害的问题"
+      ],
+      "limits": "0.58保留S59的2019伤害；2020新伤害不并入，仅以五次命中说明交叉核对语义。客户端首跳与几何未获证实。"
+    },
+    {
+      "id": "S61",
+      "title": "禅师熊猫二手介绍与不适用配图",
+      "url": "https://www.8090.com/news/xinqing/article_328406.html",
+      "publishedAt": "2019-05-09",
+      "kind": "secondary-guide-with-RTS-illustration",
+      "status": "illustration-rejected-for-autochess-numeric-proof",
+      "note": "实际目视为RTS Yaoguai兵种选择画面，不是自走棋技能卡；不作为第二份客户端数值证据。",
+      "imagePath": "images/panda-monk-client-may2019.png",
+      "imageSha256": "27f04a628d457697c96508da1accd8d3e561d0d3030cd07b199145396ed7324b"
+    },
+    {
+      "id": "S62",
+      "title": "战争艺术 6月10日停服维护更新公告",
+      "url": "https://news.17173.com/z/zzq/content/06102021/180944537.shtml?_platform=PC",
+      "publishedAt": "2021-06-10",
+      "author": "战争艺术AOW（页面署名，来源微信公众号）",
+      "kind": "publisher-byline-update",
+      "status": "relevant-original-body-reviewed",
+      "accessedAt": "2026-11-07",
+      "targetVersion": "2021-06-10; not the current early roster",
+      "note": "藤妖技能名荆棘缠绕、施放能量藤蔓束缚后新增5/7/9护甲。仅确认名称与后期改动边界，不将新增护甲当2019能力，也不推断早期段数、伤害、回血比例。"
+    },
+    {
+      "id": "S63",
+      "title": "新版本最强性价比兵种以及阵容",
+      "url": "https://www.taptap.cn/moment/15212919167910486?group_id=42979",
+      "publishedAt": "2019-05-15",
+      "kind": "original-player-post",
+      "status": "text-and-two-client-images-reviewed",
+      "targetVersion": null,
+      "review": "一费神枪手、攻速装备和三星六步兵四野兽构筑；目测一秒三枪不证明单次普攻三段伤害或裸装星级射速梯度。详见rifle-history.json。"
+    },
+    {
+      "id": "S64",
+      "title": "赤潮自走棋-2元棋子分析(5/30更新版本)",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=29",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "status": "indexed-original-text-reviewed",
+      "targetVersion": null,
+      "review": "长盾兵早期单控5秒CD与七月护卫兵15秒CD及后期重做不同，本轮保留研究边界，未修改盾兵。",
+      "bulwarkReview": "0.70复读索引原文：二费長盾兵750生命、5甲、30–84普攻；六月随机单控5秒CD仅作跨期对照。",
+      "infernoReview": "沿用此前原作者索引的二费650HP、范围50伤害、20%攻速与10%吸血；本轮直读403，未称重新取得原卡，跨期边界见inferno-history.json。"
+    },
+    {
+      "id": "S65",
+      "title": "赤潮自走棋-1元棋子分析(5/30更新版本)",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=30",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "status": "indexed-original-text-reviewed-direct-open-403",
+      "targetVersion": null,
+      "review": "Oculus一费500生命0甲4格、随机四秒单控及15秒CD；异名与星级梯度边界见gaze-history.json。"
+    },
+    {
+      "id": "S66",
+      "title": "[G爱玩]赤潮自走棋之艺术就是爆炸！虫群才是主角",
+      "url": "https://www.taptap.cn/moment/15204184005542801",
+      "author": "老G不寄",
+      "publishedAt": "2019-04-30",
+      "kind": "original-player-strategy",
+      "status": "direct-original-text-reviewed",
+      "targetVersion": null,
+      "review": "眼虫用于保护后排、压制突入目标；未给精确技能数值。"
+    },
+    {
+      "id": "S67",
+      "title": "战争艺术 更新公告 | 5月14日不停服维护内容介绍",
+      "url": "https://news.17173.com/z/zzq/content/05142020/160934052.shtml?_platform=PC",
+      "author": "战争艺术AOW（页面署名，来源微信公众号）",
+      "publishedAt": "2020-05-14",
+      "kind": "publisher-byline-update",
+      "status": "text-reviewed-deferred",
+      "targetVersion": null,
+      "review": "护盾兵刺盾之阵新增技能防御与受击增伤，是2020更新而非2019原卡；本轮未混入。",
+      "bulwarkReview": "0.70重新实际打开正文，只交叉确认后期刺盾之阵名称；2020新增技能防御和受击增伤不混入当前适配。"
+    },
+    {
+      "id": "S68",
+      "title": "赤潮自走棋- 4 & 5 元棋子分析",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=34",
+      "author": "起落是無常 xyz98997",
+      "publishedAt": "2019-06-02",
+      "kind": "original-player-measurement",
+      "status": "indexed-original-text-reviewed-direct-open-403",
+      "targetVersion": null,
+      "review": "女王蜂450生命5甲3格，内外圈半径和伤害随星级提升、20秒CD；地区异名及棋格换算限制见hive-history.json。"
+    },
+    {
+      "id": "S69",
+      "title": "《無限進化：赤潮自走棋》新英雄「玄龜」參戰 針對遊戲內操作進行優化",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=182312",
+      "author": "GNN Edward；相关段落明确为厂商提供原文",
+      "publishedAt": "2019-07-08T15:55:18",
+      "kind": "publisher-provided-original",
+      "status": "indexed-original-text-reviewed-direct-open-403",
+      "targetVersion": null,
+      "review": "双形态、人数比较、龟缩群体嘲讽与破壳群体攻击；没有精确数列、平局或时点。直接访问403，未取得客户端卡图和模型。详见tortoise-history.json。"
+    },
+    {
+      "id": "S70",
+      "title": "变幻莫测《赤潮自走棋》百万赏金赛等你来战！",
+      "url": "https://shouyou.3dmgame.com/news/41121.html",
+      "publishedAt": "2019-07-08T13:38:31",
+      "author": "来源3DM手游／作者我想静静；厂商新闻栏目",
+      "kind": "embedded-original-client-cards",
+      "status": "original-client-images-visually-reviewed",
+      "targetVersion": null,
+      "review": "两张客户端原卡确认刑杀15秒、无法被选中、二星起刑傀4／6秒；原图已归档。三层、伤害、时序和交互未因此全部确证，整篇正文不冒称发行方原文。见execution-history.json。"
+    },
+    {
+      "id": "S71",
+      "title": "赤潮自走棋-3元棋子分析(5/30更新版本)",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=28",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02T23:08:11",
+      "kind": "original-player-measurement",
+      "status": "indexed-original-text-reviewed-direct-open-403",
+      "targetVersion": null,
+      "review": "原作者声明首发并逐个测量；投石机800生命10甲5格、技能转范围普攻与40%攻速。地区映射、跨期和未确证参数见siege-history.json。直接打开403，未绕过限制。"
+    },
+    {
+      "id": "S72",
+      "title": "7/11 更新公告（社区转载）",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=95",
+      "author": "馬子狗 e0987013924",
+      "postedAt": "2019-07-10T21:07:36",
+      "kind": "community-repost-secondary-lead",
+      "status": "indexed-lead-direct-open-403",
+      "targetVersion": null,
+      "review": "炎狱之怒范围与减攻速数列仅作命名和本地调参线索；本轮未取得发布方原公告或完整同版技能卡，不作官方配置确证。",
+      "detonationReview": "0.82当前搜索索引读到自爆200/300/400→200/350/500；仍属二手转载，未取得发布方完整卡面或原公告，采用数列及未知项明确记录于detonation-history.json。"
+    },
+    {
+      "id": "S73",
+      "title": "赤潮自走棋蜘蛛棋子怎么用 蜘蛛棋子的优势",
+      "url": "https://www.8090.com/news/xinqing/article_328414.html",
+      "publishedAt": "2019-05-09",
+      "author": "小艾",
+      "kind": "media",
+      "status": "indexed-text-and-original-html-reviewed",
+      "accessedAt": "2026-11-07",
+      "targetVersion": null,
+      "note": "媒体保留二费、6/8/10秒旧值；时长与费用以S35改动为准。同页其他异虫说明不用于覆盖现有进化规则；攻击梯度与嘲讽为跨期媒体线索，未恢复完整原卡。",
+      "dreamReview": "迷梦、40秒CD、10/20/30%增攻和短暂嘲讽；几何和具体时长单列本地适配，见dream-history.json。"
+    },
+    {
+      "id": "S74",
+      "title": "赤潮自走棋 S2赛季正式开启：棋子与连携的平衡性调整很大",
+      "url": "https://news.17173.com/z/zzq/content/07112019/223915220.shtml?_platform=PC",
+      "publishedAt": "2019-07-11",
+      "kind": "secondary-media",
+      "status": "search-index-reviewed",
+      "accessedAt": "2026-11-07",
+      "targetVersion": null,
+      "note": "当前索引给出爆裂虫自爆由200/300/400改为200/350/500；与S72同为二手报道，来源独立性未证实。不把其他英雄的冲突转录值套入运行配置，完整同版原卡仍缺失。"
     }
-  ]
+  ],
+  "gospelReview": "0.52字段与置信边界见gospel-history.json；客户端三星能量末位被水印遮挡，10为暂定本地值。",
+  "thunderstormReview": "0.53来源、原图SHA与跨期/本地适配边界见thunderstorm-history.json。",
+  "jungleReview": "0.54树妖客户端卡、S04第38行及跨期/本地适配见jungle-history.json。",
+  "wushiReview": {
+    "reviewedAt": "2026-11-06",
+    "history": "wushi-history.json",
+    "notes": "S57原始官方署名更新与S32一费介绍已核对；S04原表复看；S58后期吸血按不同年代保留。"
+  },
+  "wushiControlReview": {
+    "reviewedAt": "2026-11-06T03:49:56.388Z",
+    "record": "wushi-control-history.json",
+    "fields": [
+      "maximum 3 ordinary attack targets",
+      "nearby taunt"
+    ],
+    "localFields": [
+      "2-tile radius",
+      "2-second duration",
+      "exact interactions"
+    ]
+  },
+  "shurikenReview": {
+    "rules": "singleplayer-0.58",
+    "record": "shuriken-history.json",
+    "primaryEvidence": "S59原始客户端技能卡已重新目视，S04原表行已重新目视，S60开发方署名公告重读。",
+    "boundary": "本体/技能跨期；保留2019伤害，后期五次命中仅交叉核对，全部本地参数单列。"
+  },
+  "secretOrbReview": {
+    "rules": "singleplayer-0.59",
+    "record": "secret-orb-history.json",
+    "primaryEvidence": "S59原始客户端卡与S04原表重新目视，S57官方署名HTML重新核对。",
+    "boundary": "跨期、后期差异、不适用配图与本地参数分开记录。"
+  },
+  "wildfireReview": {
+    "rules": "singleplayer-0.64",
+    "record": "wildfire-history.json",
+    "primaryEvidence": "S55原始客户端卡与S04-1第32行实测表已目视，原卡/实测/二手正文分级记录。",
+    "boundary": "保留当前早期职业目录；未把七月异能、后期法术与早期吸血当作同一机制。引导、总量解释、频率与孵化时长未确证。"
+  },
+  "thornbindReview": "0.66依据S05原作者正文与S04第36行补入分段束缚和逐段汲取，S62名称跨期引用但后期护甲不混入；本地数值边界见thornbind-history.json。重新目视S04第34行，修正0.65代码的骨龙攻击间隔1.2→2.2秒，原始转录表不改动。",
+  "rifleReview": "0.67保留S04首行名称映射推断及S63构筑观察的限制；星级射速和快速射击名称为本地适配。",
+  "gazeReview": "0.68再次目视S04眼虫行，以S65测量及S05／S66原作者文字交叉记录。4/5/6秒梯度、10削能、零直接伤害、选敌和生命周期均保留适配边界。",
+  "hiveReview": "0.69重新目视S04-1第24行，并读取S68原作者测量。三针普攻、9单位归一棋格、起手与交互均明确为本地适配；8月转载线索未冒充开发方原公告。",
+  "bulwarkReview": {
+    "rules": "singleplayer-0.70",
+    "record": "bulwark-history.json",
+    "reviewedAt": "2026-11-07",
+    "sourceIds": [
+      "S04",
+      "S05",
+      "S64",
+      "S67"
+    ],
+    "unifiedHistoricalBuildConfirmed": false
+  },
+  "spiritWardReview": {
+    "rules": "singleplayer-0.71",
+    "record": "spirit-ward-history.json",
+    "reviewedAt": "2026-11-07",
+    "sourceIds": [
+      "S04",
+      "S05"
+    ],
+    "unifiedHistoricalBuildConfirmed": false
+  },
+  "tortoiseReview": {
+    "record": "tortoise-history.json",
+    "sources": [
+      "S04",
+      "S05",
+      "S69"
+    ],
+    "note": "0.72实际目视S04第43行五费灵能玄龟及60秒CD、20%技能防御，重新解析S05原始玄龟段，读取S69厂商原文索引。形态数值、判形时序及交互单列适配，旧四费野兽目录保留。"
+  },
+  "executionReview": {
+    "rules": "singleplayer-0.73",
+    "record": "execution-history.json",
+    "sourceIds": [
+      "S04",
+      "S05",
+      "S70"
+    ],
+    "unifiedHistoricalBuildConfirmed": false,
+    "note": "新增第64种棋子；原卡、原作者测量、二手FAQ线索和本地适配分别记录。"
+  },
+  "siegeReview": {
+    "rules": "singleplayer-0.74",
+    "record": "siege-history.json",
+    "sourceIds": [
+      "S04",
+      "S05",
+      "S50",
+      "S71"
+    ],
+    "unifiedHistoricalBuildConfirmed": false
+  },
+  "infernoReview": {
+    "rules": "singleplayer-0.75",
+    "sourceIds": [
+      "S04",
+      "S05",
+      "S14",
+      "S20",
+      "S26",
+      "S64",
+      "S72"
+    ],
+    "record": "inferno-history.json",
+    "note": "一费身板与原始双臂图已目视；持续时间、星级梯度和生命周期保持明确本地适配。S72为社区转载线索，非官方原配置。"
+  },
+  "mendingReview": "0.76维修机资料与适配见mending-history.json；正文支持7月治疗／回能和最高攻击选人，精确梯度仍本地。S06影鱼图片实际为经典RTS，已更正使用边界。",
+  "formlessReview": "0.77实际目视S04第16行与S20第三个空军；复读S35归档的6秒隐形、16秒CD及30/40/50%加速，账号标识和跨期边界见formless-history.json。",
+  "equipmentSkillsReview": {
+    "version": "singleplayer-0.80",
+    "sourceIds": [
+      "S34"
+    ],
+    "details": "docs/research/equipment-skills-history.json",
+    "sameClientCompleteEquipmentLibraryRecovered": false
+  },
+  "whaleEyeReview": {
+    "version": "singleplayer-0.81",
+    "sourceIds": [
+      "S34"
+    ],
+    "details": "docs/research/whale-eye-history.json"
+  }
 }

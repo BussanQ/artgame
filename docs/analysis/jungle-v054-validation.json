@@ -1,0 +1,426 @@
+{
+  "checkedAt": "2026-11-06",
+  "rules": "singleplayer-0.54",
+  "combatVersion": "jungle",
+  "saveSchema": 53,
+  "branch": "dev",
+  "head": "35aa310c85a5d99b5bc4a39e7743340316db160a",
+  "goalStatus": "active; full single-player objective not completed",
+  "tests": {
+    "command": "npm run test:jungle -- --reporter=json --outputFile=tmp/jungle-validation-final-tests.json",
+    "modules": [
+      {
+        "path": "tests/ai-valuation.test.ts",
+        "passed": 5,
+        "status": "passed",
+        "sha256": "ecfcc7edf4c529a26b80ac5dc593da4f1e923b834f71d1ea8376d7d5b8388a9f"
+      },
+      {
+        "path": "tests/battle-analysis.test.ts",
+        "passed": 11,
+        "status": "passed",
+        "sha256": "b9da8059f967409940fa14936f408cce9e738e13e98fa0d9f65834f4e7b3edd5"
+      },
+      {
+        "path": "tests/computation.test.ts",
+        "passed": 14,
+        "status": "passed",
+        "sha256": "514745c1a7ae8e02c6e3ed4e7c575980e82b88bc07d6799e45521154ef56b15b"
+      },
+      {
+        "path": "tests/equipment-overview.test.ts",
+        "passed": 9,
+        "status": "passed",
+        "sha256": "8b8ca4dafd72390703d62ea9310f99a7efb914c9e447b817e68b5af666d91399"
+      },
+      {
+        "path": "tests/immortality.test.ts",
+        "passed": 13,
+        "status": "passed",
+        "sha256": "921575f5a92a1726b8997f9c80dff5bdf1b95f99b01040d571cb8ec8ef6cbcf7"
+      },
+      {
+        "path": "tests/jungle.test.ts",
+        "passed": 166,
+        "status": "passed",
+        "sha256": "b329249171107847ee7ea35452274b1d8bb27872f3aa412cfaa77753bf8512c3"
+      },
+      {
+        "path": "tests/persistence.test.ts",
+        "passed": 11,
+        "status": "passed",
+        "sha256": "58bcb0a4d334807a28cab08d6dd2cf71cecc10d0ea4c7525ed1ff330cb1008c4"
+      },
+      {
+        "path": "tests/thunderstorm.test.ts",
+        "passed": 141,
+        "status": "passed",
+        "sha256": "74cf39c82d3b2b07371a15e2527d1d8c73f9b86415aa9f6de46f265aee80a544"
+      },
+      {
+        "path": "tests/visual.test.ts",
+        "passed": 6,
+        "status": "passed",
+        "sha256": "952c75f1a5f39908ad4ca89ec07bc2157b2226025fed3d27d8d4a60ebc7ca5e2"
+      }
+    ],
+    "passed": 376,
+    "failed": 0,
+    "fullSuiteRun": false,
+    "reportSha256": "70ff6255c52c050ddfc1ba9f687b36b6c01c8c9d212ff8428dce6618f3c97519",
+    "startTime": 1793925347654
+  },
+  "historicalReplay": {
+    "record": "tests/fixtures/pre-v054-replays.json",
+    "count": 123,
+    "capturedBefore": "singleplayer-0.54",
+    "capturedWith": "singleplayer-0.53",
+    "combatVersion": "thunderstorm",
+    "sha256": "6f6e55676379aec55368103507e35553c868f9191b6aaf74497e47fed2d4ce81",
+    "passed": true
+  },
+  "migrationCoverage": {
+    "cases": 16,
+    "olderSchemas": [
+      51,
+      52
+    ],
+    "phases": [
+      "prepare",
+      "battle",
+      "result",
+      "finished"
+    ],
+    "modes": [
+      "classic",
+      "rotation"
+    ],
+    "paidTransactionsAndNormalNextRound": true
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 113,
+    "artifacts": {
+      "dist/assets/index-Bzlyubvo.js": "a0eca294b27dac5b9629d124216bf57eb0c86c8acd125cc594d2b4b2de70bd7b",
+      "dist/assets/index-C6vIi-7Q.css": "27491aea4db931de8c740ef5c364a29d3da37f3105fc6e2a6f954fa9ebc9e171",
+      "dist/assets/worker-Dm-Yj64p.js": "d193c53d47ef34b27b680f6b9a08ef718ff2f4d6597b1dbe6fbf08f355f6eb9a"
+    }
+  },
+  "sourceFingerprints": {
+    "package.json": "c36bdee191e6e066ac9804208246629a802d867823d43024ec248dfcd9e63f61",
+    "public/assets/units/treant-jungle.png": "eb62fa28e2f02de314ebdd5471cb2932d4f1d4355d9470827839afd1fa228301",
+    "scripts/rotation-survey.ts": "58f6aec6b8184586bbfa7f76a5f1e1617d5fc76113cd34b182dacae29ecbc534",
+    "src/audio/cues.ts": "816e3b8ea3d14abe8e891922c2aa3891148085b69d62c30e3825af81eb61ebb4",
+    "src/audio/player.ts": "960e64d2e4eb7430f207d2167079ba185cbff04d1d7915151b6b3d5770b7797f",
+    "src/audio/synthesis.ts": "6ed1834796d5494be3b8de8a93981f8b78c391b2f9db1af2334eff9c74944779",
+    "src/battle-inspection.css": "f18382187d1caeeef3aec71bb0a73e0d39663cc0b724c3fc23489cf0b80301bb",
+    "src/command-layout.css": "ec56d6e2ccd067ea5cd5a156946888d725976e69cddb43b05186040bb1b15b90",
+    "src/compact.css": "685eb660c5f806820019daa1892aa7499ebf9ab249db18cbe0d45ac64cc0d1b8",
+    "src/compute/client.ts": "1ba053bfc7b10c15d57197a3bd1233d7f82712d8eb261efc1ff30a515ad0eb4c",
+    "src/compute/job.ts": "7d1b782399973ecd901400186e89861458f215acb09b95692bc1c60fe268df0a",
+    "src/compute/worker.ts": "671d1a2536b8bb707604fcc2a1667dbbcff1ab70b09e3efb98ecccdab569ebc2",
+    "src/data/abnormal-demo.ts": "f39d89a4975f0c8f0221c4a336f9f28200aedd2568841e6d3424bb94a79740fc",
+    "src/data/ai-profiles.ts": "94692ba49058d48cf237c058e3705b733f12ef79e990e3714dc2df20f6587645",
+    "src/data/assassin-demo.ts": "26bd337f77404cb2df4ec15f0db8dde0ac82a96a4672d9510417e6485fccace5",
+    "src/data/aurora-demo.ts": "5d536911cfd14c7f76045377bcf6ce05556ed3189614261805774cc0f1ec0a5f",
+    "src/data/axethrall-demo.ts": "e753f888f6d7181cbe02cacf7f6eba7b490124edf8bc757509944108fabf8e23",
+    "src/data/beast-frontline-demo.ts": "0dca9d8b86da4ce5f52fef6fdece66e35ed0436ec37de53628b2aead11c50fde",
+    "src/data/bladethrall-demo.ts": "330e4fd8764f9f3bce79d3d415c58f328185209d0bd9379e68ade93a6814084b",
+    "src/data/catalog.ts": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d",
+    "src/data/coalition-demo.ts": "c39f5517f8db652c11bd9695731d1ec8c5a5d99808ecace12ed66328e17087fc",
+    "src/data/counterplay-demo.ts": "89bba4fb7c61733cc52a840430feda6d11a4228ce286b3a60e752334ee34756f",
+    "src/data/encounters.ts": "762f649bd560004bb14a6b23f9ca51005c08dc8bde37db9e4ab481fb584ae62d",
+    "src/data/gospel-demo.ts": "670ac143a73933448f9a2567828e8bfb3e78eae76c927fd4e934c8a4e83b6a67",
+    "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba",
+    "src/data/jungle-demo.ts": "617775bd9b74ca1db4254caff2572830e09646a6510a5bb9d5fa962bcdb61bf9",
+    "src/data/lightning-demo.ts": "70d16396b91c19fb7033d527d6ff54bddce783eff754300d026b2127cc97e3c8",
+    "src/data/lingjiu-demo.ts": "7ff2b2d29a20c7dc068f794efe167ac61574e53751dbc9f51417dac0d47e54da",
+    "src/data/shieldthrall-demo.ts": "bb6b29064083db4cf3c07a0341c1a1253df0ab40511e62bce8eb6351761d20ab",
+    "src/data/skills.ts": "2f7948b60b7827da7350cc468db730c82a06c28368403760fee2fcfe07090b9f",
+    "src/data/staffthrall-demo.ts": "a0d4b22ddab5ea7c7e72fddcd4c8ea26396a7ce501dffab9e138b570bb9eb1a9",
+    "src/data/swordthrall-demo.ts": "8c21b7b290e54f2c7c77ef43bf2f9ff925e14ac50db2169571c701b0420f1d53",
+    "src/data/taotie-demo.ts": "96f77913390241f2358063f580d9a6b68088613596f07eccfbd6fb4cbc1656cb",
+    "src/data/tar-demo.ts": "a571dbc675508f04ea6f782d7c5fb9eb4d0e2ff54283b5151606e221ff70267c",
+    "src/data/thunderstorm-demo.ts": "1509a2f6cfe2631e5b265e8f89fd7ab7c9bd288efb06396fd41ab309625960c8",
+    "src/data/traits.ts": "095219dcb4352371202e9d84ea671a93c326cffa63149b8446efeb4554df70fb",
+    "src/data/unit-stats.ts": "b794103cc38fe93ea1df3a128670f0db5bbcc101656fd376160e15977feba36d",
+    "src/data/units.ts": "72e6e753ee04b7e42dc2d79e6250a30a99ae9d647c74fe08950d0edff5b1a33f",
+    "src/data/wildfront-demo.ts": "17f963e214eed3069e0c255652007e39255cdee924b494b63a93c1a3fb694b50",
+    "src/engine/abilities.ts": "cbfe16233c95a32d2e0c9f2a4bb173ea8230945818598ff95fdbe8fc7b50900b",
+    "src/engine/ai.ts": "314ae91ec4ce5e1ef3d3d893710f79d8bc48bf0ad7cef87d8ebebeedec0cb7f6",
+    "src/engine/assassins.ts": "e88609c81bae44956d4aa39c1e8b32d4414f0d1f8f16bab7106076955011bc01",
+    "src/engine/battle-analysis.ts": "11c50f08cf7a1dc7c93a65c243e098b8dbc39790637c571a5796f6828883812e",
+    "src/engine/battle.ts": "ac58ed002f4c009215bd5092f78296ad966746f30916742a2afc01d9afc86230",
+    "src/engine/beasts.ts": "cc44ac5d85a62711af58c72ee35f8c29722ee48df68d5069f395fd41a5dc62b7",
+    "src/engine/birdrider.ts": "61a81c9c3a0da3c07e047eb28278f2597361c13706f8c029417a7d3018015878",
+    "src/engine/bladethrall.ts": "24a15ea431ad5ec67aed56f867b203c38b3f4f0110369541442a857726bb1424",
+    "src/engine/economy.ts": "3d7e8b88ac2f16e4cdeb01fbe9ae58549a774070ed1173c2a5e666ed0a9dcd71",
+    "src/engine/equipment.ts": "8096c1c22a4637b4085eeb4a1ce699208988f207067937810ddd36167603f61d",
+    "src/engine/game.ts": "6eaaf5259238a8e6a75c7ee72437f82ec60acdde8e90aff86f24a9d308304ca6",
+    "src/engine/gospel.ts": "638a6351fcfa6d3ebf703b4b0ea96cab43bd6ee4bef777994a917d64654aea66",
+    "src/engine/immortality.ts": "fe9106a0b2084841c81bf498efd18a141da81a78099920df746e051cc29cf960",
+    "src/engine/infantry-skills.ts": "d9f63278972aca474b1a912cad8951c31349b0520c21ce5c909355203191914a",
+    "src/engine/ironrooster.ts": "5835565b2b5097b8ecdb524c5855f4e767e19910f1657e8c52cf8b72a7fb2c06",
+    "src/engine/jungle.ts": "c3a4d01c8991664e50c570637c1b7c0b539044a5810be2bf7f42b23e8082e1f5",
+    "src/engine/lightning.ts": "a0dfd157419807e8133fc4b1b3da5a30468a3f260db4a83663da86ba7beeaf58",
+    "src/engine/lingjiu.ts": "e34c520d075d8d93bde0ebbbf5dcbb767f7ebc086872ddac4dced5aabbb8548e",
+    "src/engine/match-summary.ts": "fc0225d87c171a58f3fcf9ea54263d1b9e3b3b2416632d7db63b0fe54bcf3674",
+    "src/engine/metamorphosis.ts": "d70ce056ac8dec6f62255df57b6633f72abc61be6a39adb6f0bbde3307f116f8",
+    "src/engine/persistence.ts": "1bc9cf03ac67afe95881e1d0db42a28191d9a60dc45c937feecc1f060527f041",
+    "src/engine/phoenix.ts": "7ca133ffa3f436af675978e80ad92005bb0948478400c3e4ee12cfb9e04128f5",
+    "src/engine/progression.ts": "537cd7d8a59fe402dd3dbc0a5b70bac437de4e4c8bda117e52db158ad8afeaa6",
+    "src/engine/random.ts": "ba0d5984534fdd513fac5e9d54bc586c1e8dfb65736af189f048ade4c34d0b21",
+    "src/engine/recruitment.ts": "8c98a6758811b74e5920360e6c780ce76b8bd73f5ad64c4c484ec10fd2d59927",
+    "src/engine/rotation.ts": "31004f784695125cd6b187409d022748a397f8b153593f748de0bf5d469f48d3",
+    "src/engine/sea-ward.ts": "c7205db3f8643c82ed374411931b096a7ee17421515b59fc3c9dd4f58aea1cab",
+    "src/engine/shieldthrall.ts": "e34e99dda3213eb00418ca6775fdc68409a7c84b71f16465e35aaaf9865001bb",
+    "src/engine/staffthrall.ts": "208b898b1fc9586409b2661d9ad1f2b65b176dc2107d50e62ca8a059c13b1f70",
+    "src/engine/summons.ts": "2ce7178aab21b37ccbbdb7bcb247ba4da547831d1688335f35e01286d3ea172b",
+    "src/engine/swordthrall.ts": "4531a8b9625f4ce71e6972f3e63075afaef51cb482df7decd879e1b197253d00",
+    "src/engine/synergies.ts": "e1e26d4536e5d24e27a93f78872ff63dc448ea777e5f55325b4a782ae7bf8662",
+    "src/engine/tar.ts": "c6f8d5196114e17e0010d4f9ce494ae7fed7cf163bb7922c34a34a47e69dbba9",
+    "src/engine/thunderstorm.ts": "584bb565b83c5e0a425908cb5295ed464d452c43da83d305f3f291e2aa88abb3",
+    "src/engine/triggers.ts": "420ecc2ee33df93b3b97e764ab0412c6679ef3fb74550b9a3b36b8b8d7fd27d9",
+    "src/engine/types.ts": "343ef37ffd65cc79a12093fa67ddb1a48c10ac6713fe17ebd07748cd68d0e96e",
+    "src/engine/wild-skills.ts": "040807f4b6a071893c82b4d52babded5ea6ab454b50799d9578dd6635929a63a",
+    "src/equipment-overview.css": "cbb7676c299e3851a84a52e890290927dbd3c21380b1a936f0993475511c4f61",
+    "src/main.ts": "b0b9e89a48cd6f5103df766556f3af278d5c953cbdf9c8f6572ccdd6db5a5df3",
+    "src/mobile-navigation.css": "c73f3cdf809a7c8eb225f770bb26f0e197794fcdc9980e7a3faf7f84b2cb2536",
+    "src/recruitment-layout.css": "087464db46615b66c37dfcca4b8ab38404c6a9c07c7b0f0326daf08e4de6e804",
+    "src/render/battle-inspection.ts": "6ce8e764c9e41a89b746d5d1d792279608edbe8911249e6eba9e01df4ed8b70f",
+    "src/render/beast-presentation.ts": "1cb537e0501b012f371d246f3f9e56b30481c517233f8c19d555e8d92606c95f",
+    "src/render/combat-presentation.ts": "f81e666b0bc4194630db22e17b7f1096098e9eb4bd6a5660778b415da6da3f1d",
+    "src/render/frame-policy.ts": "3f61e3f19bedaf435d268206a02b51d560d045f93aa54a554bac6acf2dc08b4b",
+    "src/render/gospel.ts": "af5dd52c1d94325f403655e87719ddeae7c90b3deec44ec5f480f10d89a6cfa6",
+    "src/render/jungle.ts": "b2428fd151b8553700ad6d165ebe0c94c570a1622938ec5c12e2e014dcbbd302",
+    "src/render/melee.ts": "a2ea403ebe26badcb3784536f2b048ad32a6476ef0533d3a1d3aaa69906c08a7",
+    "src/render/metamorph-presentation.ts": "f8912c1c6959a5e483384721143c1b029ac99a2fe6c62ffc36223d99afe5130a",
+    "src/render/projection.ts": "6471ef351ac21e83821aed776721c8ee4ae2995ce207fe9b7cfb9220f2872c5a",
+    "src/render/ranged.ts": "0f76ccb375f384d110350427e32b16fba2582c4174bb8efd1d84b4dec8bf8de2",
+    "src/render/scene.ts": "4354ccd1881cc04be00eac9acb65fba352507446f9c3cda6636a1badf8b49d66",
+    "src/render/skill-effects.ts": "908864d824b83e7ddd623a2acebcb015705a0686be6e61b547d4990f09441f79",
+    "src/render/taotie.ts": "74c27f041bce7dea321a65770b7820ceb3e6b49c91cd83cb465a25ef7b80c2f4",
+    "src/render/tar.ts": "22a3958fe2ea57ffa545553fc6e1ce04344405d9b3aeeca2a08103bf6f9536c6",
+    "src/render/thunderstorm.ts": "9b61f3fbe10d8aab061cf35c91b299f4fbcbacb825241e89f9d05144588304c4",
+    "src/style.css": "a5c59f453a0264015c272d7b3a555aa84e26edcfa316bdf3bed06c6efc4e6be4",
+    "src/toolbar.css": "90512043aec74f5cec51fd6e94fb7ad5093745ba590b49652920a70c13a07ec7",
+    "src/ui/battle-analysis.ts": "c6928ea5a5bac097879de468c6cdcd805c7e1ab2a2a5525709f12a8212742bc4",
+    "src/ui/battle-result.ts": "6e5303ecc37dccfba402d28ac3bc5cefaccf6d0b8301bc8a027a7564b67352f9",
+    "src/ui/bench-tooltip.ts": "6e7afbba4cf96d598827235599ad76f46d1c8b583e3d249785f0f74c57a3c572",
+    "src/ui/deployment.ts": "69cc637f5682376f75789d48eb7b2c7aa158bfc65d4d87daeebda042a1a450df",
+    "src/ui/dialog-focus.ts": "783123eeb8e0c5d101a9aaab4eb30f5c9503567a5989e436be24c5d227a67d21",
+    "src/ui/equipment.ts": "5602f9c4fb9e6d474fcc9cc42d43ef26a3c9a2815e2fe6acffb49583a3a23bbd",
+    "src/ui/income.ts": "bb7442bb53dc263b3caee0c61370e5ab51ffc649379060c206a8da64b5485e95",
+    "src/ui/match-history.ts": "11e685149acc3aad0f6fb1115e4d529a63d3476c567bd0edad68e16da4a36634",
+    "src/ui/match-summary.ts": "a450f13dedefe2c72c4184853f3bbf81cd3d3cce10ed2fff46911ab485cbd057",
+    "src/ui/pausable-delay.ts": "2aacf33ac3f0d97c72f453dd63c8981a343d7be336d8a43ab5d4884aad1a0dab",
+    "src/ui/preferences.ts": "846f40bbafc86ec3931a8754ffd254fc418e0dacd9af8e7a1fe59bcdd3131a0d",
+    "src/ui/recruitment.ts": "0e1f7c9644245efd5251138fb12b8b3fd2703d8b4c6d1098d216f4148924940e",
+    "src/ui/restart.ts": "5af4950651b613bd12698a1d1b08fd75d3fb16de7569a479a4bb953628692abf",
+    "src/ui/rotation.ts": "b5f01d1bd577e7d743520019e33ad457ac020b8c188f30fb358497f1f2fd0fe3",
+    "src/ui/save-notice.ts": "a0b9e766baa1050c66099f21fa641ce3d35f1b413f2581d52c072384af452e6e",
+    "src/ui/scouting.ts": "560e6c0f4e0a3670b02d574d61d10c9b4f6a1f944606556d4700e71017d70b1e",
+    "src/ui/synergies.ts": "df682a52e687fd00b547f3c3a388aecce293ab31c2c1f28006afabc5155471be",
+    "src/ui/unit-codex.ts": "74b71f1f0361a433a7ee7a7c13d218e0bde8ef8d74661769f867017be5c56fa0",
+    "src/visual.css": "9c580ba3eb28b7bc7d55483dabfb95bafcc70dd59a94b0f41d1ad548ec33185d",
+    "tests/fixtures/pre-v054-replays.json": "6f6e55676379aec55368103507e35553c868f9191b6aaf74497e47fed2d4ce81",
+    "tests/jungle.test.ts": "b329249171107847ee7ea35452274b1d8bb27872f3aa412cfaa77753bf8512c3",
+    "tests/ai-valuation.test.ts": "ecfcc7edf4c529a26b80ac5dc593da4f1e923b834f71d1ea8376d7d5b8388a9f",
+    "tests/battle-analysis.test.ts": "b9da8059f967409940fa14936f408cce9e738e13e98fa0d9f65834f4e7b3edd5",
+    "tests/computation.test.ts": "514745c1a7ae8e02c6e3ed4e7c575980e82b88bc07d6799e45521154ef56b15b",
+    "tests/equipment-overview.test.ts": "8b8ca4dafd72390703d62ea9310f99a7efb914c9e447b817e68b5af666d91399",
+    "tests/immortality.test.ts": "921575f5a92a1726b8997f9c80dff5bdf1b95f99b01040d571cb8ec8ef6cbcf7",
+    "tests/persistence.test.ts": "58bcb0a4d334807a28cab08d6dd2cf71cecc10d0ea4c7525ed1ff330cb1008c4",
+    "tests/thunderstorm.test.ts": "74cf39c82d3b2b07371a15e2527d1d8c73f9b86415aa9f6de46f265aee80a544",
+    "tests/visual.test.ts": "952c75f1a5f39908ad4ca89ec07bc2157b2226025fed3d27d8d4a60ebc7ca5e2",
+    "tests/fixtures/pre-v053-replays.json": "a5f1e9e89992b87a4db7f5fe11424ee79f70526d2be2b53f69d81a476ea67f59",
+    "docs/analysis/jungle-v054-demo.json": "416e36c66c4fcf7b59c679ebe595a37f82dd29594355fb79bbfa904de6d59cd1"
+  },
+  "surveyFingerprintMismatches": {
+    "docs/analysis/jungle-v054-psychic.json": [],
+    "docs/analysis/jungle-v054-beasts.json": []
+  },
+  "evidence": {
+    "docs/analysis/jungle-v054-demo.json": "416e36c66c4fcf7b59c679ebe595a37f82dd29594355fb79bbfa904de6d59cd1",
+    "docs/analysis/jungle-v054-comparison.json": "6cef1683690c447452066e0d06028ad74a026239f8e8b936390bd22eb5543a5f",
+    "docs/analysis/jungle-v054-ui.json": "65d21c9bcdec9b7063815e9f9472ee22a846ab68c6d3575176fa631c7dbf2fdc",
+    "docs/research/jungle-history.json": "d81af805e6754352e2abeff95649a43aae06b9204844ce08877aa835645b7186",
+    "docs/research/jungle-assets.json": "0fb11e71c8d39afa21d9f76051643bec74359d654d7f09dd4ee803856573e4c7"
+  },
+  "screenshots": {
+    "tmp/jungle-v054-320-airborne.jpg": {
+      "sha256": "db5490e929d710dc0bf7f69632fd048a3c0ed32b95488c80bb3164125d919be7",
+      "bytes": 44934,
+      "size": [
+        320,
+        740
+      ],
+      "capturedAtUTC": "2026-11-06T00:21:20.943044+00:00"
+    },
+    "tmp/jungle-v054-airborne.jpg": {
+      "sha256": "d75e6801c38c9fcdbd2629ac24c256f0eef52ec3d335d0f560c446896e39f2ef",
+      "bytes": 139667,
+      "size": [
+        1280,
+        720
+      ],
+      "capturedAtUTC": "2026-11-06T00:11:24.270626+00:00"
+    },
+    "tmp/jungle-v054-analysis.jpg": {
+      "sha256": "31d26f53f5e35b695643ad2bec6ce76a797c6fce896689be315085b541a1b711",
+      "bytes": 57538,
+      "size": [
+        1280,
+        720
+      ],
+      "capturedAtUTC": "2026-11-06T00:17:54.856772+00:00"
+    },
+    "tmp/jungle-v054-landing.jpg": {
+      "sha256": "284c09551f74bb3309dba922c29ea4cd920a6f42b84dc7834a6973732444a91f",
+      "bytes": 141201,
+      "size": [
+        1280,
+        720
+      ],
+      "capturedAtUTC": "2026-11-06T00:11:23.677458+00:00"
+    },
+    "tmp/jungle-v054-mobile-airborne.jpg": {
+      "sha256": "68b84f5806c94393849b25b519e88da359337982cf2793f14c6f6deea31e20e4",
+      "bytes": 56587,
+      "size": [
+        390,
+        844
+      ],
+      "capturedAtUTC": "2026-11-06T00:21:20.738249+00:00"
+    },
+    "tmp/jungle-v054-mobile-analysis.jpg": {
+      "sha256": "56dfda09957f6e6a7c6f38b5509bc0a059fd73baf7dfb603c3b9e2e877efdf08",
+      "bytes": 33890,
+      "size": [
+        390,
+        844
+      ],
+      "capturedAtUTC": "2026-11-06T00:21:19.131070+00:00"
+    },
+    "tmp/jungle-v054-windup.jpg": {
+      "sha256": "444843c1dd5400755781ddc8771688902d42ede033a8026a68247078dd141f97",
+      "bytes": 139602,
+      "size": [
+        1280,
+        720
+      ],
+      "capturedAtUTC": "2026-11-06T00:08:41.727252+00:00"
+    }
+  },
+  "pending": [
+    "最终图鉴新增字段与分析文案的浏览器画面",
+    "退出演示后的旧终局状态和默认视口复核",
+    "新局图鉴/实际招募树妖",
+    "自然高费控制构筑、总体难度、多构筑人工长局与真实设备"
+  ],
+  "livePreview": {
+    "url": "http://192.168.31.130:5174",
+    "checkedAt": "2026-11-06T00:44:05.979Z",
+    "kind": "HTTP-source-and-asset-check-not-UI-verification",
+    "checks": {
+      "src/main.ts": {
+        "status": 200,
+        "sha256": "b0b9e89a48cd6f5103df766556f3af278d5c953cbdf9c8f6572ccdd6db5a5df3",
+        "matchesWorkspace": true
+      },
+      "src/data/units.ts": {
+        "status": 200,
+        "sha256": "72e6e753ee04b7e42dc2d79e6250a30a99ae9d647c74fe08950d0edff5b1a33f",
+        "matchesWorkspace": true
+      },
+      "src/data/skills.ts": {
+        "status": 200,
+        "sha256": "2f7948b60b7827da7350cc468db730c82a06c28368403760fee2fcfe07090b9f",
+        "matchesWorkspace": true
+      },
+      "src/engine/jungle.ts": {
+        "status": 200,
+        "sha256": "c3a4d01c8991664e50c570637c1b7c0b539044a5810be2bf7f42b23e8082e1f5",
+        "matchesWorkspace": true
+      },
+      "src/engine/persistence.ts": {
+        "status": 200,
+        "sha256": "1bc9cf03ac67afe95881e1d0db42a28191d9a60dc45c937feecc1f060527f041",
+        "matchesWorkspace": true
+      },
+      "src/ui/unit-codex.ts": {
+        "status": 200,
+        "sha256": "74b71f1f0361a433a7ee7a7c13d218e0bde8ef8d74661769f867017be5c56fa0",
+        "matchesWorkspace": true
+      },
+      "src/ui/battle-analysis.ts": {
+        "status": 200,
+        "sha256": "c6928ea5a5bac097879de468c6cdcd805c7e1ab2a2a5525709f12a8212742bc4",
+        "matchesWorkspace": true
+      },
+      "src/command-layout.css": {
+        "status": 200,
+        "sha256": "ec56d6e2ccd067ea5cd5a156946888d725976e69cddb43b05186040bb1b15b90",
+        "matchesWorkspace": true
+      },
+      "public/assets/units/treant-jungle.png": {
+        "status": 200,
+        "sha256": "eb62fa28e2f02de314ebdd5471cb2932d4f1d4355d9470827839afd1fa228301",
+        "matchesWorkspace": true
+      }
+    }
+  },
+  "completionAudit": {
+    "scope": "仅0.54能力增量，不是完整单机目标完成审计",
+    "requirements": [
+      {
+        "requirement": "原卡确认字段与单机适配分开",
+        "status": "verified",
+        "evidence": "docs/research/jungle-history.json"
+      },
+      {
+        "requirement": "真实两段控制、几何、生命周期与片段统计",
+        "status": "verified-by-necessary-module-tests-and-demo-audit",
+        "evidence": [
+          "tests/jungle.test.ts",
+          "docs/analysis/jungle-v054-demo.json"
+        ]
+      },
+      {
+        "requirement": "独立透明ImageGen形象及旧图保留",
+        "status": "verified",
+        "evidence": "docs/research/jungle-assets.json"
+      },
+      {
+        "requirement": "旧战斗/阶段存档/价格/资源保留",
+        "status": "verified-by-123-frozen-replays-and-16-migration-cases",
+        "evidence": "tests/jungle.test.ts"
+      },
+      {
+        "requirement": "图鉴、详情和分析字段",
+        "status": "module-checks-passed; final-render-pending",
+        "evidence": [
+          "src/ui/unit-codex.ts",
+          "src/ui/bench-tooltip.ts",
+          "src/ui/battle-analysis.ts"
+        ]
+      },
+      {
+        "requirement": "桌面与窄屏战斗画面",
+        "status": "saved-evidence-reviewed; later-UI-copy-not-rechecked",
+        "evidence": "docs/analysis/jungle-v054-ui.json"
+      },
+      {
+        "requirement": "自然经营中的高费控制位价值",
+        "status": "not-proven; observed-coverage-regression",
+        "evidence": "docs/analysis/jungle-v054-comparison.json"
+      },
+      {
+        "requirement": "当前目录多构筑完整人工局、总体难度、其余历史能力/公式、真实设备",
+        "status": "incomplete",
+        "evidence": "docs/design/single-player-plan.md"
+      }
+    ]
+  }
+}

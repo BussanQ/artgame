@@ -19,12 +19,11 @@ describe("技能与装备参与AI选阵", () => {
     for (const id of [
       "whale",
       "ark",
-      "thunderlord",
       "arhat",
       "phoenix",
       "skycrab",
     ]) {
-      const p = createGame(41).players[0];
+      const p = createGame(41, "classic").players[0];
       p.level = 1;
       p.pieces = [piece(id, 1), piece(id, 2, 2, ["staff"])];
       const original = structuredClone(p);

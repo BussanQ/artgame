@@ -1,0 +1,531 @@
+{
+  "checkedAt": "2026-11-06T01:59:02.131691+00:00",
+  "rules": "singleplayer-0.55",
+  "combatVersion": "continuity",
+  "goalStatus": "active",
+  "method": "Paired diagnostic paid standard player proxy, two preferences/seeds (psychic/173 and beasts/311), classic/rotation, three formal opponent difficulties. Current public deployment and legal purchase policy change together. Not isolated causal skill attribution or human win rate. Twelve games per stage are two seeded families, not twelve independent seeds.",
+  "reports": {
+    "before": [
+      {
+        "path": "docs/analysis/continuity-v055-psychic.json",
+        "sha256": "b23992042315c566d0ed6f8765cef4e4c70edf473329150303e8793bee2ddb79"
+      },
+      {
+        "path": "docs/analysis/continuity-v055-beasts.json",
+        "sha256": "ff090235b00afe1d8c3a6633fe29bceae7c2686156767b4366fa17e10be3cd0d"
+      }
+    ],
+    "after": [
+      {
+        "path": "docs/analysis/scouting-v055-psychic.json",
+        "sha256": "83b71f4d2c7dccc909b864d517d2e9e15a76a1a559b9f993a468f73fb7e73aa9"
+      },
+      {
+        "path": "docs/analysis/scouting-v055-beasts.json",
+        "sha256": "c86b839b7bd716223a10734676f09b2ddf45bf3ec1bc1d5371e39cca7e519cff"
+      }
+    ]
+  },
+  "summary": {
+    "before": {
+      "games": 12,
+      "rounds": 307,
+      "averageRank": {
+        "relaxed": 1.0,
+        "standard": 4.75,
+        "veteran": 7.5
+      },
+      "gamesWithThreeStar": 2,
+      "uniqueThreeStars": 2,
+      "playerTreeGames": 0,
+      "playerTreeUsage": {},
+      "formalAiTreeUnitRounds": 6,
+      "playerObservedEnemyTree": {
+        "rounds": 2,
+        "waves": 1,
+        "hits": 5,
+        "knockups": 5,
+        "landings": 4
+      }
+    },
+    "after": {
+      "games": 12,
+      "rounds": 317,
+      "averageRank": {
+        "relaxed": 1.0,
+        "standard": 4.0,
+        "veteran": 6.75
+      },
+      "gamesWithThreeStar": 1,
+      "uniqueThreeStars": 1,
+      "playerTreeGames": 2,
+      "playerTreeUsage": {
+        "rounds": 9,
+        "stars": [
+          5,
+          4,
+          0
+        ],
+        "casts": 8,
+        "damage": 7651,
+        "criticalHits": 0,
+        "peakGale": 0,
+        "fullGaleAttacks": 0,
+        "armorApplications": 0,
+        "knockups": 34,
+        "peakAurora": 0,
+        "auroraUpgrades": 0,
+        "qiReleases": 0,
+        "taotieFeasts": 0,
+        "taotieHealing": 0,
+        "tarLaunched": 0,
+        "tarDetonated": 0,
+        "tarCenterHits": 0,
+        "tarSplashHits": 0,
+        "chainAttacks": 0,
+        "chainBounces": 0,
+        "chainDamage": 0,
+        "chainEvades": 0,
+        "stormLaunched": 0,
+        "stormHits": 0,
+        "stormEnergyRemoved": 0,
+        "jungleWaves": 6,
+        "jungleHits": 34,
+        "jungleLandings": 29,
+        "gospelPulses": 0,
+        "peakGospelTargets": 0,
+        "energyGiven": 0,
+        "interruptions": 2,
+        "lostTargets": 0
+      },
+      "formalAiTreeUnitRounds": 2,
+      "playerObservedEnemyTree": {
+        "rounds": 0,
+        "waves": 0,
+        "hits": 0,
+        "knockups": 0,
+        "landings": 0
+      }
+    }
+  },
+  "pairedRuns": [
+    {
+      "profile": "psychic",
+      "seed": 173,
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "roundsBefore": 27,
+      "roundsAfter": 28,
+      "threeStarBefore": 27,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "psychic",
+      "seed": 173,
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "roundsBefore": 28,
+      "roundsAfter": 28,
+      "threeStarBefore": 28,
+      "threeStarAfter": 28,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "psychic",
+      "seed": 173,
+      "mode": "classic",
+      "difficulty": "standard",
+      "rankBefore": 8,
+      "rankAfter": 5,
+      "roundsBefore": 20,
+      "roundsAfter": 27,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {
+        "rounds": 4,
+        "stars": [
+          2,
+          2,
+          0
+        ],
+        "casts": 4,
+        "damage": 6366,
+        "criticalHits": 0,
+        "peakGale": 0,
+        "fullGaleAttacks": 0,
+        "armorApplications": 0,
+        "knockups": 25,
+        "peakAurora": 0,
+        "auroraUpgrades": 0,
+        "qiReleases": 0,
+        "taotieFeasts": 0,
+        "taotieHealing": 0,
+        "tarLaunched": 0,
+        "tarDetonated": 0,
+        "tarCenterHits": 0,
+        "tarSplashHits": 0,
+        "chainAttacks": 0,
+        "chainBounces": 0,
+        "chainDamage": 0,
+        "chainEvades": 0,
+        "stormLaunched": 0,
+        "stormHits": 0,
+        "stormEnergyRemoved": 0,
+        "jungleWaves": 4,
+        "jungleHits": 25,
+        "jungleLandings": 23,
+        "gospelPulses": 0,
+        "peakGospelTargets": 0,
+        "energyGiven": 0,
+        "interruptions": 0,
+        "lostTargets": 0
+      }
+    },
+    {
+      "profile": "psychic",
+      "seed": 173,
+      "mode": "rotation",
+      "difficulty": "standard",
+      "rankBefore": 6,
+      "rankAfter": 7,
+      "roundsBefore": 24,
+      "roundsAfter": 23,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "psychic",
+      "seed": 173,
+      "mode": "classic",
+      "difficulty": "veteran",
+      "rankBefore": 7,
+      "rankAfter": 7,
+      "roundsBefore": 23,
+      "roundsAfter": 23,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "psychic",
+      "seed": 173,
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "rankBefore": 8,
+      "rankAfter": 8,
+      "roundsBefore": 18,
+      "roundsAfter": 18,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "roundsBefore": 30,
+      "roundsAfter": 29,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "rotation",
+      "difficulty": "relaxed",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "roundsBefore": 28,
+      "roundsAfter": 28,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "classic",
+      "difficulty": "standard",
+      "rankBefore": 1,
+      "rankAfter": 1,
+      "roundsBefore": 30,
+      "roundsAfter": 30,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "rotation",
+      "difficulty": "standard",
+      "rankBefore": 4,
+      "rankAfter": 3,
+      "roundsBefore": 28,
+      "roundsAfter": 30,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "classic",
+      "difficulty": "veteran",
+      "rankBefore": 8,
+      "rankAfter": 5,
+      "roundsBefore": 27,
+      "roundsAfter": 30,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {
+        "rounds": 5,
+        "stars": [
+          3,
+          2,
+          0
+        ],
+        "casts": 4,
+        "damage": 1285,
+        "criticalHits": 0,
+        "peakGale": 0,
+        "fullGaleAttacks": 0,
+        "armorApplications": 0,
+        "knockups": 9,
+        "peakAurora": 0,
+        "auroraUpgrades": 0,
+        "qiReleases": 0,
+        "taotieFeasts": 0,
+        "taotieHealing": 0,
+        "tarLaunched": 0,
+        "tarDetonated": 0,
+        "tarCenterHits": 0,
+        "tarSplashHits": 0,
+        "chainAttacks": 0,
+        "chainBounces": 0,
+        "chainDamage": 0,
+        "chainEvades": 0,
+        "stormLaunched": 0,
+        "stormHits": 0,
+        "stormEnergyRemoved": 0,
+        "jungleWaves": 2,
+        "jungleHits": 9,
+        "jungleLandings": 6,
+        "gospelPulses": 0,
+        "peakGospelTargets": 0,
+        "energyGiven": 0,
+        "interruptions": 2,
+        "lostTargets": 0
+      }
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "rotation",
+      "difficulty": "veteran",
+      "rankBefore": 7,
+      "rankAfter": 7,
+      "roundsBefore": 24,
+      "roundsAfter": 23,
+      "threeStarBefore": null,
+      "threeStarAfter": null,
+      "playerTreeBefore": {},
+      "playerTreeAfter": {}
+    }
+  ],
+  "fallbackPurchases": [
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "classic",
+      "difficulty": "relaxed",
+      "round": 16,
+      "planning": {
+        "controlPurchaseTrials": 14,
+        "scoutedPurchases": [
+          "bonedragon"
+        ],
+        "deploymentTrials": 7
+      },
+      "economy": {
+        "startGold": 44,
+        "purchases": 1,
+        "refreshes": 0,
+        "xpBuys": 2,
+        "sales": 1,
+        "spent": 14,
+        "saleIncome": 1,
+        "trades": [
+          {
+            "kind": "sell",
+            "id": "pangolin",
+            "starsBefore": [
+              1,
+              1
+            ],
+            "price": 1
+          },
+          {
+            "kind": "buy",
+            "id": "bonedragon",
+            "starsBefore": [],
+            "price": 4
+          }
+        ],
+        "offers": [
+          [
+            "adept",
+            "shieldthrall",
+            "grenadier",
+            "bonedragon",
+            "spider"
+          ]
+        ]
+      },
+      "goldAfterPreparation": 31,
+      "level": 8,
+      "hp": 85
+    },
+    {
+      "profile": "beasts",
+      "seed": 311,
+      "mode": "classic",
+      "difficulty": "standard",
+      "round": 23,
+      "planning": {
+        "controlPurchaseTrials": 25,
+        "scoutedPurchases": [
+          "bonedragon"
+        ],
+        "deploymentTrials": 19
+      },
+      "economy": {
+        "startGold": 48,
+        "purchases": 2,
+        "refreshes": 0,
+        "xpBuys": 3,
+        "sales": 2,
+        "spent": 23,
+        "saleIncome": 10,
+        "trades": [
+          {
+            "kind": "sell",
+            "id": "vajra",
+            "starsBefore": [
+              2
+            ],
+            "price": 6
+          },
+          {
+            "kind": "buy",
+            "id": "turtle",
+            "starsBefore": [],
+            "price": 4
+          },
+          {
+            "kind": "sell",
+            "id": "turtle",
+            "starsBefore": [
+              1
+            ],
+            "price": 4
+          },
+          {
+            "kind": "buy",
+            "id": "bonedragon",
+            "starsBefore": [],
+            "price": 4
+          }
+        ],
+        "offers": [
+          [
+            "grenadier",
+            "ghostjet",
+            "turtle",
+            "cannon",
+            "bonedragon"
+          ]
+        ]
+      },
+      "goldAfterPreparation": 35,
+      "level": 10,
+      "hp": 73
+    }
+  ],
+  "limits": {
+    "purchaseTrials": 40,
+    "deploymentTrials": 20,
+    "maximumObservedPlayerProxyPurchaseTrials": 39,
+    "maximumObservedPlayerProxyDeploymentTrials": 20,
+    "scope": "Recorded history planning counters are for the paid player proxy only; formal seven opponents also use bounded code, but their per-round trial counters are not collected in these reports."
+  },
+  "sourceChanges": [
+    {
+      "path": "scripts/rotation-survey.ts",
+      "before": "58f6aec6b8184586bbfa7f76a5f1e1617d5fc76113cd34b182dacae29ecbc534",
+      "after": "91715c3e70b47bc335891ac3061b89a2fd057e6c19b03f80d82333595546d813"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "before": "314ae91ec4ce5e1ef3d3d893710f79d8bc48bf0ad7cef87d8ebebeedec0cb7f6",
+      "after": "c13b05e47f4438de1bfb7931a28957698cd40c1784f71ff6fca08b23ec59e682"
+    },
+    {
+      "path": "src/engine/deployment.ts",
+      "before": null,
+      "after": "7b3536cdf128ec7b10b9142a864ac529750120c13ff9f6f9d1ffbbd4cff08393"
+    },
+    {
+      "path": "src/engine/game.ts",
+      "before": "d77f805d25e1ab29efa189f5bcac95beb0abec076f1536f7316c94cbe4415fd8",
+      "after": "e4ebe95b0da39ae3a77fa9a9190c64a7c5c328507e132a4693cfe722b62a299b"
+    },
+    {
+      "path": "src/engine/recruitment.ts",
+      "before": "8c98a6758811b74e5920360e6c780ce76b8bd73f5ad64c4c484ec10fd2d59927",
+      "after": "e052d1a3ba95aa783a330eb324ae316c4fe5eb73859dc8fd48b2ff983fcbb8ab"
+    }
+  ],
+  "initialRuns": [
+    {
+      "path": "docs/analysis/scouting-v055-initial-psychic.json",
+      "sha256": "f1566ca2f5e9818ad393168f1d8938e6ca706ae378cd75e650b52339abba6689",
+      "sameRanksAndRoundsAsFinal": true,
+      "countedAsAdditionalSample": false
+    },
+    {
+      "path": "docs/analysis/scouting-v055-initial-beasts.json",
+      "sha256": "a4f039258de1ce5ec2f0b98c092cd655e016d966675375025fa08da9f0582267",
+      "sameRanksAndRoundsAsFinal": true,
+      "countedAsAdditionalSample": false
+    }
+  ],
+  "limitations": [
+    "Average standard/veteran rank improved in this small pair, while natural three-star games fell from two to one and formal AI tree deployment fell from six to two unit-rounds.",
+    "Player tree purchases/uses cannot be attributed to fallback scouting; the two explicitly approved fallback purchases were bone dragons.",
+    "Standard classic beasts R23 bought and sold a one-star turtle in one preparation before buying a bone dragon; zero one-star sale loss, but unnecessary churn remains.",
+    "No combat damage, trait table, catalog odds, rewards or save schema changed in this strategy follow-up. Existing old battle hashes remain under their captured versions.",
+    "Historical rule fidelity, overall difficulty, multiple complete current-version UI builds and real touch/low-end devices remain unfinished."
+  ]
+}

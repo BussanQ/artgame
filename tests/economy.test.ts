@@ -14,7 +14,7 @@ import type { Game, RoundReport } from "../src/engine/types";
 
 /** Legal late-round state with historical payouts from the former flat economy. */
 function fixture(round: number) {
-  const game = createGame(137),
+  const game = createGame(137, "classic"),
     player = game.players[0];
   buy(game, player, 0);
   move(game, player, player.pieces[0].uid, 35);

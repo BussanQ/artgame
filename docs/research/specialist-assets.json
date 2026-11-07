@@ -1,0 +1,29 @@
+{
+  "status": "generated",
+  "generatedAt": "2026-11-04",
+  "method": "built-in image_gen",
+  "assets": [
+    {
+      "id": "specialist",
+      "name": "特种兵",
+      "prompt": "Create one transparent full-body isometric strategy-game sprite of an elite science-fantasy long-range marksman, Special Forces infantry: slim athletic adult soldier in desaturated ivory and petrol-blue light segmented armor, bronze joints, enclosed helmet with one narrow amber targeting lens, short split charcoal scout cloak. Distinctive enormous long precision rifle with a rectangular bronze barrel, cyan power chamber and telescopic sight, held in both hands; left knee bent in a stable half-kneeling aiming stance, rifle points viewer-right. No shield, no vehicle, no wings. Polished hand-painted 3D miniature aesthetic with readable broad shapes and weathered metal, warm edge lighting and cool fill, slightly elevated three-quarter front view, entire rifle and both boots in frame, generous transparent padding. Genuine transparent alpha background, no floor, pedestal, shadow, scene, text, UI, logo, watermark or detached effects. One character only. Original reinterpretation for a science-fantasy auto-chess game.",
+      "path": "public/assets/units/specialist.png",
+      "kind": "transparent-unit-sprite",
+      "origin": "AI-generated reinterpretation, not original game model",
+      "sourcePath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-5dd7e71b-151e-419b-9696-27991c2bd269.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 998016,
+      "totalPixels": 1572864,
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "279c1bf028b4a7daab8349e567a44d9f0a49062b843cc1803fb59bb127be03cc"
+    }
+  ]
+}

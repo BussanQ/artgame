@@ -1,0 +1,191 @@
+{
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.64",
+  "combatVersion": "wildfire",
+  "unitId": "phoenix",
+  "scope": "恢复按原卡数列与时长的矩形持续法伤，并完善涅槃循环及星级形象。原卡、玩家测量、二手说明和本地解释分别记录，不宣称统一历史客户端。",
+  "sources": [
+    {
+      "id": "S55",
+      "url": "https://news.17173.com/z/zzq/content/12182019/120501054.shtml?_platform=PC",
+      "publishedAt": "2019-12-18",
+      "author": "战争艺术无限进化（页面署名）",
+      "kind": "publisher-byline-article-with-original-client-card",
+      "originalHtmlSha256": "850ba31560c2d43ce435f96c626a6b18f4bc30b05a80a8915f0663c3cb9efcc3",
+      "review": "本次网页正文可读，原始活动技能卡实际目视。确认三费、15秒、矩形持续技能伤害、450/600/1050、4/5.5/7秒、二星解锁涅槃。默认星级缩略图呈蓝/红/金。没有精确客户端构建号。"
+    },
+    {
+      "id": "S04-1",
+      "path": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "publishedAt": "2019-07-08",
+      "kind": "community-measured-attribute-table",
+      "row": 32,
+      "name": "不死鸟",
+      "fields": {
+        "cost": 3,
+        "traits": [
+          "猛禽",
+          "爆破",
+          "异能"
+        ],
+        "hp": 450,
+        "attackRange": [
+          71,
+          81
+        ],
+        "armor": 5,
+        "range": 3,
+        "attackIntervalSeconds": 1.6,
+        "cooldownSeconds": 15
+      },
+      "review": "本次重新目视第32行。攻击采用区间均值76，1.6秒转为6.4个0.25秒步；它不能证明与十二月卡同一构建，职业与当前早期目录不同。"
+    },
+    {
+      "id": "S27",
+      "url": "https://news.17173.com/z/zzq/content/04072020/173005383.shtml?_platform=PC",
+      "publishedAt": "2020-04-07",
+      "author": "游戏菜鸟小嘈（页面署名，来源网络）",
+      "kind": "secondary-community-reprint",
+      "review": "本次重读正文和两张配图。正文与主动卡数列一致，另提二/三星800/1600火种，未取得可读的涅槃被动原卡。400生命、法术分类与七月表不同；属性段含刀奴笔误，未据此替换S04的450生命。"
+    },
+    {
+      "id": "S01/S05",
+      "kind": "previously-reviewed-early-roster-and-player-commentary",
+      "review": "当前四月目录的猛禽/攻城/爆破继续保留；本轮没有重新获取它们，不将原有记录冒称本次新增原始证据。"
+    }
+  ],
+  "image": {
+    "url": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/oCtXaIbnCjisfew.jpg",
+    "path": "images/phoenix-wildfire-client-dec2019.jpg",
+    "sha256": "7c94d5de1aff5a96093cf360647aefae1607fef939e7e790c34314d508b4eeba",
+    "format": "JPEG",
+    "size": [
+      640,
+      296
+    ],
+    "bytes": 26447,
+    "visuallyReviewed": true,
+    "clientBuild": "unknown"
+  },
+  "confirmedClientCard": {
+    "cost": 3,
+    "traitsAsPrinted": [
+      "猛禽",
+      "爆破",
+      "法术"
+    ],
+    "skill": "燎原",
+    "cooldownSeconds": 15,
+    "shape": "矩形",
+    "skillDamage": [
+      450,
+      600,
+      1050
+    ],
+    "damageTypeAsPrinted": "技能伤害",
+    "durationSeconds": [
+      4,
+      5.5,
+      7
+    ],
+    "passiveUnlockStar": 2,
+    "passiveName": "涅槃",
+    "unconfirmed": [
+      "逐跳频率",
+      "技能伤害数值的总量/逐秒解释",
+      "是否全程引导与打断条件",
+      "矩形棋格尺寸",
+      "起手时长",
+      "初始能量",
+      "火种生命的原卡确证",
+      "孵化时长",
+      "每战重生次数",
+      "复活是否重置冷却"
+    ]
+  },
+  "localChoices": {
+    "initialMana": 25,
+    "damageType": "magic",
+    "baseDamageMeaning": "每名目标完整引导的总基础预算，属于本地解释，不宣称原卡明写总量。",
+    "windupSeconds": 0.5,
+    "pulseIntervalSeconds": 0.5,
+    "pulses": [
+      8,
+      11,
+      14
+    ],
+    "rectangle": {
+      "lengthTiles": 5,
+      "widthTiles": 3,
+      "orientation": "沿起手方向的主轴，横向绝对差较大时横向，否则纵向；包含前方格，不包含自身格，边缘裁剪。"
+    },
+    "channel": "保留并完善原型的可中断维持；禁止移动/普攻/重入。眩晕、沉默、魅惑、阵亡与化蛋取消未发生部分，嘲讽不撤销已开始维持。该维持模型尚无独立原始动态影像确证。",
+    "targeting": "起手目标必须可见且在3格内；后续固定区域按当前占位命中所有当前敌人，包括隐蔽/飞行；友军和走出范围的敌人不受伤。",
+    "rounding": "先用相邻累计四舍五入的差分分摊整份基础预算，再独立减伤与逐包整数舍入；实际总扣血可因减伤后的逐包舍入略有不同。",
+    "power": "只冻结起手法强，普通攻击力不参与；每跳读取当前魔抗、护盾和技能免伤。",
+    "rebirth": {
+      "eggHp": [
+        800,
+        1600
+      ],
+      "eggHpEvidence": "S27二手说明交叉佐证，原型保留；没有被动原卡确证。",
+      "hatchSeconds": 3,
+      "usesPerBattle": 1,
+      "startingManaAfterHatch": 0,
+      "cooldownReset": false,
+      "note": "同UID/同占位的可破坏地面形态，保留原护甲/装备防御；不治疗、不加盾、不回能。孵化恢复包含装备的本体生命，不计治疗。以上交互为本地既有规则并扩充统计。"
+    },
+    "traits": [
+      "猛禽",
+      "攻城",
+      "爆破"
+    ],
+    "traitBoundary": "七月异能、十二月法术与当前四月异能吸血没有被证明为同一机制；保持早期目录，不新增或改名后期职业。",
+    "magicResistance": "没有另加已确证的先天技能防御；继续通用20%本地法术减伤。",
+    "ai": "有限两目标、65%维持收益及既有二星12%有限重生估值，不假设全队命中或火种必定孵化。"
+  },
+  "art": {
+    "manifest": "wildfire-assets.json",
+    "tool": "built-in image_gen edit",
+    "newImages": 2,
+    "forms": {
+      "oneStar": "../../public/assets/units/phoenix-wildfire-blue.png",
+      "twoStar": "../../public/assets/units/phoenix.png",
+      "threeStar": "../../public/assets/units/phoenix-wildfire-gold.png",
+      "egg": "../../public/assets/units/phoenix-egg.png"
+    },
+    "nativeBytesRetained": true,
+    "rasterPostprocessing": false,
+    "scope": "以现有项目角色保持身份并根据卡面缩略图改色，不是原版3D模型提取。"
+  },
+  "compatibility": {
+    "previousRules": "singleplayer-0.63",
+    "previousCombatVersion": "tornado",
+    "saveSchema": 63,
+    "oldDefinition": {
+      "cost": 4,
+      "hp": 1000,
+      "attack": 85,
+      "armor": 4,
+      "range": 3,
+      "intervalTicks": 4,
+      "initialMana": 25,
+      "traits": [
+        "猛禽",
+        "攻城",
+        "爆破"
+      ]
+    },
+    "historicalDefinitions": 36,
+    "frozenBattles": "../../tests/fixtures/pre-v064-phoenix-replays.json",
+    "frozenSha256": "982edb2788d4b8e6550ed529ff302d034bc521145eb9aa32801bc2c1047c3097",
+    "catalog": "新开局三费25份，历史目录四费15份及已付金币不回填、不改价；旧局在下一准备阶段升级能力。"
+  },
+  "remaining": [
+    "燎原总量/逐秒、全程引导和涅槃被动的原始动态或客户端证据",
+    "统一历史切片、其他原型能力及历史伤害/回能公式",
+    "整体难度、多构筑高星经营",
+    "真实触屏和弱设备性能"
+  ]
+}

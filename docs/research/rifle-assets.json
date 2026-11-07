@@ -1,0 +1,66 @@
+{
+  "rules": "singleplayer-0.67",
+  "unit": "infantry",
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "useCase": "precise-object-edit",
+  "inputs": [
+    {
+      "path": "../../public/assets/units/infantry.png",
+      "role": "edit-target",
+      "sha256": "9ec7e9c20ec928ba41f24e743906b948a14b4fe514e674d1d00b497b84f35165",
+      "alreadyTransparent": true
+    },
+    {
+      "path": "images/rifleman-player-client-may2019-a.jpg",
+      "role": "supporting-palette-reference-only"
+    }
+  ],
+  "attempts": [
+    {
+      "number": 1,
+      "prompt": "Use case: precise-object-edit\nAsset type: transparent full-body 2.5D auto-chess rifle infantry sprite.\nInput images: Image 1 is the EDIT TARGET, the project's existing armored human rifleman. Image 2 is a supporting historical auto-chess client screenshot for muted red and charcoal infantry color cues only. Do not reproduce its interface, text, battlefield or other characters.\nPrimary request: refine the SAME rifleman for a small on-board sprite. Change the large ivory armor panels to restrained worn crimson and charcoal-grey panels, leaving small warm-grey edges for readability. Keep the compact cyan visor and a few narrow cyan power accents. Preserve the original recognizable helmet, full armored human body, gloves, boots, three-quarter facing-right stance, anatomy and rifle held in both hands across the chest. Make the rifle, hands and trigger grip crisp and clearly separated, with a readable single muzzle silhouette.\nStyle: retain the original polished, semi-realistic hand-painted 3D strategy miniature style, detailed but readable at small size. Avoid photorealistic soldier footage. This is a game sprite matching the project's existing art, not an extraction of a historical model.\nComposition: one complete character only, centered with generous truly transparent margin around the helmet, muzzle and boots. Full body must be contained. Same camera angle and broadly the same pose and proportions as Image 1.\nBackground: genuine alpha transparency, no grey or beige haze, no scenery, ground, cast-shadow plate, pedestal or rectangular backdrop. Preserve clean native transparent edges.\nConstraints: no text, letters, numbers, stars, rank badges, logos, watermark, border or user interface. No muzzle flash, bullets or projectile trails baked into the sprite; those are animated by the game. No extra limbs, extra weapons, cape, wings, extra characters or new props. Do not change to a living realistic person or alter the weapon category.",
+      "nativeOutputPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-b1e1fbdc-d605-465a-86be-e003ce8bdfed.png",
+      "sha256": "f18cec196675d1c9344fc2cedcc8c92c20fcaaa2b66b618a789d28e74fa5a4c3",
+      "selected": false,
+      "reason": "头盔接近画布顶边，继续调整透明留白。"
+    },
+    {
+      "number": 2,
+      "prompt": "Use case: precise-object-edit\nAsset type: transparent full-body auto-chess unit sprite, composition-only refinement.\nInput image: the EDIT TARGET is the just-generated crimson-and-charcoal armored rifleman.\nPrimary request: keep exactly the same character, crimson-grey palette, helmet, cyan visor, rifle, hands, armor, boots, pose and semi-realistic illustrated game style. Change ONLY framing: scale the entire subject down to about 84% of its current size within a slightly larger transparent canvas so there is clear transparent padding on every side. The top helmet crest must be completely inside the canvas, with at least 7% transparent space above it. Keep comparable transparent space below the boots and beside the rifle muzzle. Do not crop any helmet tip, armor, muzzle or boot. Do not invent a different soldier or alter its body proportions.\nBackground: native alpha transparency throughout the margins, no haze, background, ground, shadow plate or pedestal.\nConstraints: preserve all existing character details and the complete rifle. No text, logos, border, stars, badges, UI, muzzle flash, bullets, trails, extra limbs, characters or props. This is only a framing/padding correction; colors and identity must remain unchanged.",
+      "nativeOutputPath": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-7eb2ddac-cdf5-4c44-9320-5ab1e0bc1413.png",
+      "sha256": "28add125946e56d6d721d4e191d87ca3613b1ba04b4bfa6bb54b8aafd336a6e5",
+      "selected": true
+    }
+  ],
+  "output": {
+    "path": "../../public/assets/units/infantry-rifle.png",
+    "sha256": "28add125946e56d6d721d4e191d87ca3613b1ba04b4bfa6bb54b8aafd336a6e5",
+    "bytes": 865689,
+    "size": [
+      1225,
+      1284
+    ],
+    "transparentBackground": true,
+    "copiedByteForByte": true,
+    "rasterPostprocessing": false,
+    "alpha": {
+      "min": 0,
+      "max": 255,
+      "zeroPixels": 1243062,
+      "fullyOpaque": 658,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "review": {
+    "nativeImageViewed": true,
+    "browserCanvasReviewed": true,
+    "note": "已目视最终原生输出及1280×720／390×844实际Canvas射击、状态与图鉴；完整头盔、枪口和双脚，无矩形底；见rifle-v067-validation.json。"
+  },
+  "routing": "rifle及以后使用新图；39个旧战斗版本仍使用原infantry.png。"
+}

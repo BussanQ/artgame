@@ -1,0 +1,831 @@
+{
+  "capturedBeforeRules": "singleplayer-0.61",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "护卫",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "titan",
+        "name": "铁巨神",
+        "cost": 5,
+        "traits": [
+          "装甲",
+          "爆破"
+        ],
+        "hp": 1700,
+        "attack": 120,
+        "armor": 10,
+        "range": 1,
+        "interval": 4,
+        "skill": "天坠",
+        "color": "#a3b0be",
+        "glyph": "♜"
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "titan",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "ark",
+          "star": 1,
+          "position": 51
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "cannon",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "medic",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "cb4245cb5fd1c096bdc786c709eee7e5828fe715c3332b3b6dc97d8d03db3d9a",
+      "titanCasts": 2,
+      "frames": 40
+    },
+    {
+      "version": "fleet",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "titan",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "ark",
+          "star": 1,
+          "position": 51
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "cannon",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "medic",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "bc2f0efb8dc016808f4e0a69a946df18a3679f0ee9ca5ea1f9a9b95c046f6aa5",
+      "titanCasts": 2,
+      "frames": 51
+    },
+    {
+      "version": "bombardment",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "titan",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "crystal"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 2,
+          "position": 36
+        },
+        {
+          "uid": 103,
+          "defId": "ark",
+          "star": 1,
+          "position": 51
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "vine",
+          "star": 2,
+          "position": 35
+        },
+        {
+          "uid": 202,
+          "defId": "cannon",
+          "star": 2,
+          "position": 43
+        },
+        {
+          "uid": 203,
+          "defId": "medic",
+          "star": 2,
+          "position": 51
+        }
+      ],
+      "hash": "b16ab06e86c40a385976d76163f091f18024d3be98ae075ac109c9b917ad20f1",
+      "titanCasts": 2,
+      "frames": 152
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "unit": "panda",
+  "variant": "panda-shuriken",
+  "tool": "built-in image_gen",
+  "attempts": 1,
+  "prompt": "Use case: precise-object-edit. Asset type: transparent full-body 2.5D auto-chess unit sprite, a new ranged ninja panda variant. Input image 1 is the existing project's panda character: preserve his recognizable black-and-white panda face, stocky powerful proportions, realistic fur, aged bronze metal detail and polished rendered game-art style. Input image 2 is a historical client card used only as role/wardrobe reference; do not copy its UI, text or scene. Primary request: turn the dual-sword melee panda into a ranged shuriken ninja. Replace both curved swords with one clearly readable large four-bladed steel throwing shuriken held to the side in a ready-to-throw pose. Use dark teal-black segmented ninja armor with restrained red cloth trim, a low face scarf below the eyes and a small angular armored brow; keep panda ears and expressive eyes readable. Composition: isolated single full-body character including both feet and the entire throwing weapon; three-quarter view facing slightly toward screen right, camera above eye level to match tactical board units; compact stable silhouette and generous transparent edge margin. Keep the detailed semi-realistic 3D game rendering of image 1, directional warm top light, subtle cyan weapon edge. Background must be genuinely transparent alpha, no backdrop, floor, scene, pedestal, cast shadow, text, labels, logos, interface, collage or multiple characters. Only this one panda sprite.",
+  "asset": "public/assets/units/panda-shuriken.png",
+  "generatedOriginal": "/Users/haomi/.codex/generated_images/01a19ce1-61c3-7aa1-948d-51f987035690/exec-e16c91c7-4a42-46b5-8a4d-ca9cf5fa66d6.png",
+  "references": [
+    "public/assets/units/panda.png",
+    "docs/research/images/panda-ninja-client-aug2019.jpg"
+  ],
+  "legacyAssetPreserved": "public/assets/units/panda.png",
+  "notes": "现有自有熊猫形象的飞镖变体；参考客户端角色定位与衣甲，非原版游戏素材提取。保留生成的原始 alpha，未做栅格后处理。",
+  "path": "public/assets/units/panda-shuriken.png",
+  "width": 1223,
+  "height": 1286,
+  "mode": "RGBA",
+  "sha256": "c3612a741f8f7565818835f3f8a9b1122cb798300a15f429b3d1da231ea8844c",
+  "alphaZeroPixels": 866769,
+  "alphaOpaquePixels": 623,
+  "alphaBbox": [
+    0,
+    9,
+    1223,
+    1276
+  ],
+  "transparent": true,
+  "originalBytesUnmodified": true,
+  "rules": "singleplayer-0.58",
+  "generatedAt": "2026-11-06",
+  "previousAssetSha256": "285906a2ca9b3fc4f591a634cae8af3a8ffd493c16ca45ccb3e4ae10e368090c"
+}

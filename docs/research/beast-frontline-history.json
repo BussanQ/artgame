@@ -1,0 +1,103 @@
+{
+  "reviewedAt": "2026-11-05",
+  "rules": "singleplayer-0.39",
+  "status": "implemented-historically-informed-local-adaptation",
+  "units": [
+    {
+      "id": "elephant",
+      "name": "巨齿象",
+      "classification": {
+        "traits": ["野兽", "先锋"],
+        "sources": ["S20", "S25", "S04"]
+      },
+      "julyObservation": {
+        "source": "S04-1 row 26",
+        "publishedAt": "2019-07-08",
+        "cost": 1,
+        "hp": 650,
+        "attackMin": 34,
+        "attackMax": 58,
+        "armor": 5,
+        "range": 1,
+        "intervalSeconds": 1.2,
+        "cooldownSeconds": [20]
+      },
+      "implementation": {
+        "cost": 1,
+        "hp": 650,
+        "attack": 46,
+        "armor": 5,
+        "range": 1,
+        "intervalSeconds": 1.25,
+        "initialMana": 25,
+        "skillName": "獠牙冲",
+        "damageType": "magic",
+        "damageByStar": [100, 200, 300],
+        "knockupSeconds": 1,
+        "cooldownSeconds": [20, 20, 20]
+      },
+      "evidenceBoundary": [
+        "费用、基础属性和20秒冷却参考2019年S04；攻击取区间中值，1.2秒量化为1.25秒。",
+        "S46五月3日图表的图片索引转写出现单体伤害100/200/300与击飞，但图像原件获取超时，不能标成已逐像素核实。当前伤害保留为本地参数候选。",
+        "獠牙冲名称由S47明确公告支持。S47为2020年9月28日，20秒改10/8/6秒属于更晚改动，本实现保留S04的20秒。",
+        "初始能量、法伤类型、击飞1秒、原地无棋格位移、打断与免控边界均为本地适配；未加后来版本的吸血。"
+      ]
+    },
+    {
+      "id": "venombeast",
+      "name": "猛毒兽",
+      "classification": {
+        "traits": ["野兽", "先锋"],
+        "sources": ["S20", "S25", "S04"]
+      },
+      "julyObservation": {
+        "source": "S04-1 row 27",
+        "publishedAt": "2019-07-08",
+        "cost": 2,
+        "hp": 650,
+        "attackMin": 87,
+        "attackMax": 125,
+        "armor": 5,
+        "range": 1,
+        "intervalSeconds": 1.5,
+        "cooldownSeconds": [10, 8, 6]
+      },
+      "mayAnnouncement": {
+        "source": "S35",
+        "eventDate": "2019-05-09",
+        "pageModifiedAt": "2019-05-08",
+        "skillName": "酸性污染",
+        "oldCooldownSeconds": [20],
+        "newCooldownSeconds": [10, 8, 6]
+      },
+      "implementation": {
+        "cost": 2,
+        "hp": 650,
+        "attack": 106,
+        "armor": 5,
+        "range": 1,
+        "intervalSeconds": 1.5,
+        "initialMana": 25,
+        "skillRange": 3,
+        "armorReductionByStar": [7, 14, 21],
+        "durationSeconds": 6,
+        "footprint": "target cell and adjacent eight cells, clipped to the 8x8 board",
+        "cooldownSeconds": [10, 8, 6],
+        "directSkillDamage": 0,
+        "damageOverTime": 0
+      },
+      "evidenceBoundary": [
+        "费用与基础属性来自S04，攻击87–125取中值106。",
+        "S35此次已读到公告正文，明确酸性污染20秒改10/8/6秒；S18的同期玩家评测独立描述喷吐后前排被物理输出更快击倒，支持削甲定位。",
+        "减甲7/14/21、6秒持续、3格施法射程、九宫格区域、初始25能量为本地适配，尚无同版本原始图鉴直接验证。",
+        "不从技能名称推断毒伤；当前仅减甲，没有直接伤害和持续伤害。",
+        "同类取最高值、独立计时、驱散、残魂/火种/剑奴免控排除与施法者死后持续均为本地规则。已施加污染不因阵营改变而转移目标。"
+      ]
+    }
+  ],
+  "unresolved": [
+    "补取S46原始图表并逐项视觉核实技能参数。HTML挑战响应未保存为图像证据，未执行下载的脚本。",
+    "本轮新增两种不等于统一2019历史切片；仍缺灵鹫，另有9项四月分类差异及其他羁绊、技能和费用差异。",
+    "当前美术是内置ImageGen原创再设计，不是原作客户端模型或动画素材。"
+  ]
+}

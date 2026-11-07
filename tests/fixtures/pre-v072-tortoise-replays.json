@@ -1,0 +1,1023 @@
+{
+  "capturedBeforeRules": "singleplayer-0.72",
+  "definitions": [
+    {
+      "version": "legacy",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "tactics",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "balanced",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "signature",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "summons",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "legions",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "brood",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "airsea",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "fleet",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "metamorph",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "infantry",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "armored",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "puppets",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "wildfront",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "ambush",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "formations",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "counterplay",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "lineages",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "coalitions",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "aurora",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "qi",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "taotie",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "tar",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "lightning",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "gospel",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "thunderstorm",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "jungle",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "continuity",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "wushi",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "wushi-control",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "shuriken",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "secret-orb",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "bombardment",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "terminator",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "warcry",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "tornado",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "wildfire",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "boneblast",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "thornbind",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "rifle",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "gaze",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "hive",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "bulwark",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    },
+    {
+      "version": "spirit-ward",
+      "unit": {
+        "id": "turtle",
+        "name": "玄龟",
+        "cost": 4,
+        "traits": [
+          "野兽",
+          "护卫"
+        ],
+        "hp": 1500,
+        "attack": 62,
+        "armor": 9,
+        "range": 1,
+        "interval": 4,
+        "initialMana": 100,
+        "skill": "玄甲",
+        "color": "#96bc9d",
+        "glyph": "⬢"
+      }
+    }
+  ],
+  "replays": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "turtle",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "blade"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "core"
+          ]
+        }
+      ],
+      "frames": 118,
+      "winner": 1,
+      "sha256": "1d60d13ee5bc2c7c4f7bf1b6ffd7d67d330a2b425bb7d41da678654ab61ebd3b"
+    },
+    {
+      "version": "spirit-ward",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "turtle",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "blade"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "core"
+          ]
+        }
+      ],
+      "frames": 74,
+      "winner": 0,
+      "sha256": "ee5a150f7fbb85b6973d3e97cbb27a156e34c54630805d8f37c0025c7f66d41f"
+    }
+  ]
+}

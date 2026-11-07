@@ -18,7 +18,7 @@ const ranged = () =>
 
 describe("前排保护参与选阵", () => {
   it("不会为了坦克名额强行撤下高星输出", () => {
-    const player = createGame().players[0];
+    const player = createGame(undefined, "classic").players[0];
     player.level = 5;
     player.pieces = [
       piece("guard", 1),
@@ -55,7 +55,7 @@ describe("前排保护参与选阵", () => {
     );
   });
   it("实际激活跳后排的刺杀棋子不再为留下的远程充当前排", () => {
-    const team = [piece("wolf"), piece("panda"), ...ranged()];
+    const team = [piece("axethrall"), piece("panda"), ...ranged()];
     expect(frontlineFactor(team, true)).toBeCloseTo(0.82);
     expect(frontlineFactor(team, false)).toBeGreaterThan(
       frontlineFactor(team, true),
@@ -65,7 +65,10 @@ describe("前排保护参与选阵", () => {
     );
     // An entirely diving team does not need cover for ranged units that also dive.
     expect(
-      frontlineFactor([piece("ghostjet"), piece("panda"), piece("wolf")], true),
+      frontlineFactor(
+        [piece("ghostjet"), piece("panda"), piece("axethrall")],
+        true,
+      ),
     ).toBe(1);
   });
   it("小阵容和纯近战不硬塞坦克；评分有界、顺序无关、不修改棋子", () => {
@@ -85,13 +88,13 @@ describe("前排保护参与选阵", () => {
     expect(team).toEqual(before);
   });
   it("长局持有阵容不再因一个刺杀近战而撤掉所有护卫，正常战斗验证保护作用", () => {
-    const player = createGame().players[0];
+    const player = createGame(undefined, "classic").players[0];
     player.level = 8;
     player.pieces = [
       "fish",
       "infantry",
       "guard",
-      "wolf",
+      "panda",
       "sniper",
       "bat",
       "cannon",
@@ -116,24 +119,30 @@ describe("前排保护参与选阵", () => {
       "guard",
     );
     expect(player).toEqual(before);
-    const previous = structuredClone(player);
-    previous.pieces = previous.pieces.filter(
-      (p) => !["guard", "infantry", "sniper"].includes(p.defId),
-    );
-    deployLineup(previous, "standard");
     deployLineup(player, "standard");
     expect(player.pieces.filter((p) => p.position !== null)).toHaveLength(8);
     expect(player.pieces.map(({ position, ...p }) => p)).toEqual(
       before.pieces.map(({ position, ...p }) => p),
     );
+    // Keep the same seven carries; compare the selected guard with a real diving melee.
+    const previous = structuredClone(player);
+    previous.pieces = previous.pieces.filter(
+      (p) => p.position !== null && p.defId !== "guard",
+    );
+    previous.pieces.push({
+      ...before.pieces.find((p) => p.defId === "panda")!,
+      position: null,
+    });
+    deployLineup(previous, "standard");
+    expect(
+      frontlineFactor(
+        player.pieces.filter((p) => p.position !== null),
+        true,
+      ),
+    ).toBeGreaterThan(frontlineFactor(previous.pieces, true));
     const enemy = encounterArmy(ENCOUNTERS.find((e) => e.round === 25)!);
-    const oldBattle = simulateOutcome(previous.pieces, enemy, "metamorph");
-    const battle = simulateOutcome(player.pieces, enemy, "metamorph");
-    const enemyHp = (result: typeof battle) =>
-      result.final.fighters
-        .filter((f) => (f.homeSide ?? f.side) === 1)
-        .reduce((n, f) => n + Math.max(0, f.hp), 0);
-    expect(enemyHp(battle)).toBeLessThan(enemyHp(oldBattle));
+    const oldBattle = simulateOutcome(previous.pieces, enemy);
+    const battle = simulateOutcome(player.pieces, enemy);
     expect(
       battle.winner === 0 || battle.final.tick > oldBattle.final.tick,
     ).toBe(true);

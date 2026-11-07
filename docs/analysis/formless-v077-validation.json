@@ -1,0 +1,310 @@
+{
+  "version": "singleplayer-0.77",
+  "schema": 76,
+  "date": "2026-11-07",
+  "baseCommit": "5a762b45f624b85a069a7e5d508df3671b39151d",
+  "git": "本轮未提交或推送",
+  "scope": "必要模块、一个固定二对二演示及一个冻结历史小回放；无全量、完整经营局或批量对战。",
+  "tests": {
+    "distinctPassed": 57,
+    "formless": 30,
+    "mending": 26,
+    "historicalAirsea": 1,
+    "runs": [
+      {
+        "command": "npx vitest run tests/formless.test.ts tests/mending.test.ts",
+        "passed": 54,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "command": "npx vitest run tests/formless.test.ts -t '友军治疗|吸血与反伤|无形期间可回能'",
+        "passed": 3,
+        "failed": 0,
+        "skipped": 26
+      },
+      {
+        "command": "npx vitest run tests/airsea.test.ts -t '旧规则幽灵机'",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 16
+      },
+      {
+        "command": "npx vitest run tests/formless.test.ts -t '二次选人|旧定义和呈现'",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 28
+      },
+      {
+        "command": "npx vitest run tests/formless.test.ts -t '二次选人|旧定义和呈现'",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 28
+      }
+    ],
+    "note": "首次54项全通过；加强友军治疗／反伤致死断言并新增回能／驱散／到期例后定向3项通过；旧空军例显式固定mending后定向1项通过；二次选人审计补魅惑／迁跃／突袭及无可见目标保护，新增定向例和旧SHA共2项通过，增强无目标断言后2项再通过。"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "modules": 177,
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "bytes": 596,
+        "sha256": "efca9b35542f163928c41826a46f102f4f7b48a55b60373c6b20afa5eed6d8bf"
+      },
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      },
+      {
+        "path": "dist/assets/index-D5Au9kKt.js",
+        "bytes": 434194,
+        "sha256": "b49551488cd71c26e18bc6adab01ed6bc6e5f40e7bea7a2d276da8a79bf673bd"
+      },
+      {
+        "path": "dist/assets/worker-CaEXFGu5.js",
+        "bytes": 230208,
+        "sha256": "107a3883113ae985699eb60d94ccd0c09ec477bed29319a2af646d519bcfaf6b"
+      }
+    ]
+  },
+  "compatibility": {
+    "versions": 49,
+    "units": 64,
+    "definitionsAndPresentation": "逐版本SHA保持",
+    "frozenReplay": {
+      "version": "mending",
+      "frames": 35,
+      "winner": 1,
+      "sha256": "f7bf25874506291248a5a3e89d2e9c835f26e2b6c57265c12c60c37e89aab7a2"
+    },
+    "migration": "schema75准备期升级formless，battle/result仍mending；目录、卡池、玩家、历史和播放资料保持"
+  },
+  "demo": "同一固定二对二回放真实开启并在无形中普攻，Worker入口与快算一致、输入不变；模块验证不代表整体平衡。",
+  "ui": {
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "visibleFragmentSeconds": 11,
+    "analysis11": "BATTLE ANALYSIS\n战斗分析\n×\n\n无形幽灵机 · 战斗片段\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 11.00 秒\n可查看至 11.00 秒；不改变战场播放进度\n己方\n存活 1/2\n生命伤害\n1,348\n伤害 1348 · 治疗 445\n承伤 1982 · 承盾 0\n幽灵机\n★★ · 生命 563/1000\n1,076\n\n普攻 1076 · 技能 0 · 破盾 0\n承伤 882 · 治疗 55 · 承盾 0 · 施法 1 次 · 无形 1 次 · 隐形普攻有效命中 7 次 / 生命伤害 479 / 破盾 0 · 闪避 1 次\n\n维修机\n★★ · 已阵亡\n272\n\n普攻 272 · 技能 0 · 破盾 0\n承伤 1100 · 治疗 390 · 承盾 0 · 施法 1 次 · 灵蕴缝合 1 次 · 治疗 390 生命 · 充能 0 · 加速施加 1 人次 · 闪避 1 次\n\n敌方\n存活 2/2\n生命伤害\n1,982\n伤害 1982 · 治疗 0\n承伤 1348 · 承盾 0\n火焰兵\n★★ · 生命 1640/1640\n1,166\n\n普攻 790 · 技能 376 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 2 次\n\n盾兵\n★★ · 生命 152/1500\n816\n\n普攻 816 · 技能 0 · 破盾 0\n承伤 1348 · 治疗 0 · 承盾 0 · 施法 1 次 · 盾阵举盾 1 次 · 嘲讽施加 1 人次\n\n查看此刻战场\n从头回放这场战斗\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "analysis0": "BATTLE ANALYSIS\n战斗分析\n×\n\n无形幽灵机 · 战斗片段\n\n比较指标\n生命伤害\n生命承伤\n有效治疗\n护盾吸收\n统计至 0.00 秒\n可查看至 7.00 秒；不改变战场播放进度\n己方\n存活 2/2\n生命伤害\n0\n伤害 0 · 治疗 0\n承伤 0 · 承盾 0\n幽灵机\n★★ · 生命 1000/1000\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 无形 0 次 · 隐形普攻有效命中 0 次 / 生命伤害 0 / 破盾 0\n\n维修机\n★★ · 生命 1100/1100\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 灵蕴缝合 0 次 · 治疗 0 生命 · 充能 0 · 加速施加 0 人次\n\n敌方\n存活 2/2\n生命伤害\n0\n伤害 0 · 治疗 0\n承伤 0 · 承盾 0\n盾兵\n★★ · 生命 1500/1500\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次 · 盾阵举盾 0 次 · 嘲讽施加 0 人次\n\n火焰兵\n★★ · 生命 1640/1640\n0\n\n普攻 0 · 技能 0 · 破盾 0\n承伤 0 · 治疗 0 · 承盾 0 · 施法 0 次\n\n查看此刻战场\n从头回放这场战斗\n\n伤害与承伤仅计实际扣除生命，不含过量伤害；破盾与护盾吸收单独统计。有效治疗计入装甲再生与棋子自带回复，不含溢出及旧版先锋自然再生。每枚棋子独立列出，双方条形使用相同刻度。中断次数按已记录的施法或蓄力中断计；目标丢失表示完成蓄力后失去合法目标。查看实时战斗会暂停播放，关闭后可手动继续。",
+    "inspectorAt7Seconds": "×\n幽灵机 己方 · ★★\n生命\n984 / 1000\n能量\n100 / 100\n攻击\n139\n间隔\n0.65 秒\n护甲\n2.0\n法术减伤\n20%\n空军闪避 15%\n灵蕴加速 +30% · 5.8s · 同类取最强\n无形 1次 · 隐形普攻有效命中 5次 · 生命伤害 355 · 破盾 0\n自然恢复 5 生命/秒\n无形隐身 1.5s · 攻速 +40% · 范围伤害可命中\n无形冷却 11.5s\n步兵减甲 −3\n隐蔽\n\n点击棋子固定详情 · 点击空处或按 Esc 收起",
+    "mobile": {
+      "close": {
+        "bottom": 237.5,
+        "height": 44,
+        "left": 257,
+        "right": 301,
+        "top": 193.5,
+        "width": 44,
+        "x": 257,
+        "y": 193.5
+      },
+      "rect": {
+        "bottom": 391,
+        "height": 201.5,
+        "left": 16,
+        "right": 306,
+        "top": 189.5,
+        "width": 290,
+        "x": 16,
+        "y": 189.5
+      },
+      "scrollWidth": 390,
+      "text": "×幽灵机 己方 · ★★生命 984 / 1000能量 100 / 100攻击 139间隔 0.65 秒护甲 2.0法术减伤 20%空军闪避 15%灵蕴加速 +30% · 5.8s · 同类取最强无形 1次 · 隐形普攻有效命中 5次 · 生命伤害 355 · 破盾 0自然恢复 5 生命/秒无形隐身 1.5s · 攻速 +40% · 范围伤害可命中无形冷却 11.5s步兵减甲 −3隐蔽点击棋子固定详情 · 点击空处或按 Esc 收起",
+      "width": 390
+    },
+    "mobileScroll": "前后截图显示内部内容滚动、关闭按钮保持；原始记录的根容器scrollTop不是内部滚动层，不用于证明内部滚动。",
+    "codex3Star": "FIELD MANUAL\n棋子图鉴\n×\n\n64 种棋子各有独立技能。星级提升生命与攻击，护盾和治疗按技能说明计算。以下采用单机平衡数值。\n\n搜索棋子与能力\n招募范围\n全部棋子\n本局可招募\n本局禁用\n费用\n全部费用\n1 金\n2 金\n3 金\n4 金\n5 金\n羁绊\n全部羁绊\n猛禽\n陆行者\n灵能\n不朽\n步兵\n装甲\n野兽\n熊猫\n护卫\n狙击\n先锋\n刺杀\n骑兵\n支援\n召唤\n傀儡\n异虫\n空军\n海神\n攻城\n爆破\n异能\n星级\n1 星\n2 星\n3 星\n攻击方式\n全部方式\n近战\n远程\n飞行\n排序\n费用从低到高\n攻击从高到低\n生命从高到低\n射程从远到近\n\n找到 1 / 64 种棋子 · 本局可招募 44 种\n\n重置图鉴\n幽灵机 ★★★\n3 金 · 飞行 · 空军 / 刺杀 · 隐形高速普攻\n\n生命 2000 · 攻击 242\n护甲 5 · 射程 1 · 间隔 1.1 秒\n法术减伤 20% · 自然回复 5 生命/秒\n\n无形\n\n初始能量0。满能量且16秒冷却结束时原地进入无形，持续6秒，期间攻击速度提高30/40/50%（一/二/三星）。冷却从施放时开始计算，包含隐形持续时间；不瞬移、不直接造成技能伤害，不受技能强度加成。期间可移动、普攻和回能，普攻仍按物理伤害结算护甲、闪避、护盾、刺杀暴击、吸血与反伤；加速与编队及灵蕴加速相加。隐形使自己无法被敌方定向攻击或技能选中，仍会受到范围伤害、反伤和控制，不是无敌；已锁定并发出的攻击依照各自命中规则处理。眩晕只停止行动，沉默只阻止再次施放，均不删除已获得的无形；魅惑不延长时长，增益随当前阵营继续。死亡、涅槃化蛋或进入残魂会结束无形。没有可见敌人时仍可施放自身增益。自然恢复每秒5生命，仅记录实际回复，不复活或恢复残魂。隐形中的有效普攻命中、生命伤害与破盾单独计入战报。\n\n羁绊梯度 · 同名仅计一次，异虫包含备战席",
+    "resourcesUnchanged": true,
+    "logs": [],
+    "storage": "保留原有存档版本不兼容提示，未清空用户存储；合法存档迁移以模块证明。",
+    "reset": "已退出演示、重置图鉴筛选并恢复临时视口。"
+  },
+  "sourceFingerprints": [
+    {
+      "path": "src/data/formless-demo.ts",
+      "bytes": 489,
+      "sha256": "cd8d1a0773dd4e418538e9b670e2cfdea09bc2435cb8ea4dff9449502471f31b"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "bytes": 83870,
+      "sha256": "4386d08036a66c1bd106912ac45f241424f6ced5d072b678a3221c8f258623ca"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "bytes": 10730,
+      "sha256": "c9829f1fe0651292f049c6acff473bdc899dcb2b0f1ec0bb5461f98b049e03b5"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 21264,
+      "sha256": "5c6fc2ccae26962e23a110e7b7736521d699795c49148307ee9e70f16f28ad81"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "bytes": 66191,
+      "sha256": "c077127a6fe08d9ce428bb9e4a91b0829c709ac9cd18876da270e1c058b87da1"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "bytes": 56069,
+      "sha256": "34c2e3e44c6b9e164fccb01512391673b0431d0dd275f060bdfdaf3f393e8dc0"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "bytes": 12049,
+      "sha256": "aad85210f24d3e5fc329297e44376507b9ca47331b04eaeed5f6fa14036d3a91"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 34134,
+      "sha256": "b751d291320f7875c741a54c1da31088df59d560ec342b3e52a3e93f5ad37ee3"
+    },
+    {
+      "path": "src/engine/equipment.ts",
+      "bytes": 8260,
+      "sha256": "f27bd6b9443e90cad5a9a872bc39f70cdb0b12a0e98c277ad1bb61e4becda7c6"
+    },
+    {
+      "path": "src/engine/execution.ts",
+      "bytes": 7207,
+      "sha256": "532c3bc9ff13d6abbc1f4c0950d940caa20ed6850e37b958a8e0f4ca5692d31a"
+    },
+    {
+      "path": "src/engine/formless.ts",
+      "bytes": 1559,
+      "sha256": "034833830ea1fb933848c0d04274373a387d100f2b15599105b8cd97a489c38a"
+    },
+    {
+      "path": "src/engine/immortality.ts",
+      "bytes": 1697,
+      "sha256": "b8a4d1eec8578fc404c6d600dbbe1721b60a9d07ae51398671efdba36a0902c0"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 39761,
+      "sha256": "275f5fa3ed085780ade02ec2af5726a2b3e6f37176473075ca71a6898b399b60"
+    },
+    {
+      "path": "src/engine/phoenix.ts",
+      "bytes": 3448,
+      "sha256": "af2495421498d7db0f1cb0a702d6da049454edea3d31025a2ab85b274b9530d3"
+    },
+    {
+      "path": "src/engine/summons.ts",
+      "bytes": 12722,
+      "sha256": "eb038d67248e0fce5a5ae504e52c0cd808643642d1f5a6805622edf6934d3a85"
+    },
+    {
+      "path": "src/engine/triggers.ts",
+      "bytes": 6370,
+      "sha256": "d96aa521d8f063266e7d47b22fa2f211f90adc2639c20e16f6d80a10d7a958b9"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 25147,
+      "sha256": "8b4160c6f3f34fd25f398d9baa25e6bb82fa385fe558d7cee4a1e904c8e4ebc5"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 80804,
+      "sha256": "3c7706512fde883a18f549a62b2c07bf120ce2643343483c76c1207ab661e087"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "bytes": 5753,
+      "sha256": "b2d936cb70c9cd980649179ab561b170cc887912eb16fa5c9ba8e3850f38dddd"
+    },
+    {
+      "path": "src/render/formless.ts",
+      "bytes": 1787,
+      "sha256": "25e7b81512145fd8a2e2e59384991f22fa6b98fef47cc02571d9dc3523bb091c"
+    },
+    {
+      "path": "src/render/ranged.ts",
+      "bytes": 43885,
+      "sha256": "fdad3cb914b0e1f6b3f334c22fe92241c4031ce92f47c732ea0861843679d36d"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "bytes": 39643,
+      "sha256": "80727300d0cea7b64152303d138d690fc9feda75f41038e35571b3d4d25ac7ba"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "bytes": 45020,
+      "sha256": "313f06d84e8690642fea6a73495c827d2bc4651a63ec85fa39d3b515918e47a3"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "bytes": 11855,
+      "sha256": "761032e24a3072f8d0d9dcee6d4405e6237c801937ab521c3984673f0f1f4e24"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "tests/formless.test.ts",
+      "bytes": 14897,
+      "sha256": "4f2dc6cb51b67183afdf014250843a58660e68a52bdf4e4206e9c8d9d4c0d892"
+    },
+    {
+      "path": "tests/mending.test.ts",
+      "bytes": 10404,
+      "sha256": "f59d3ac85378c3a805dd1b721335a0d555ff69e8c78be56bc5f9af7375e35ba6"
+    },
+    {
+      "path": "tests/airsea.test.ts",
+      "bytes": 15965,
+      "sha256": "9a3e710057c0f6016584bce5c6bf64963b083e2eaee749f47451ecc54db7d385"
+    },
+    {
+      "path": "tests/fixtures/pre-v077-formless-replays.json",
+      "bytes": 10730,
+      "sha256": "52e1f9d473e9602fb220024ec9e3fb8f102512829ffcff3278e2e4ee586e1352"
+    },
+    {
+      "path": "public/assets/units/ghostjet-formless-v077.png",
+      "bytes": 1717451,
+      "sha256": "7468f9af06280413575e3a4dc533167d40979c0e2a3671cb68448d70dbaeafc5"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "tmp/formless-v077-active-desktop.jpg",
+      "sha256": "74e85a98b577f9b5e370d6ff0ae04ebae0b21f1ecf5935ca12d669de4a32226b"
+    },
+    {
+      "path": "tmp/formless-v077-inspector-desktop.jpg",
+      "sha256": "4ff5907ece39a42c4fd3e58978f70c301c3e5961f11f195e3539c9e314607b28"
+    },
+    {
+      "path": "tmp/formless-v077-inspector-mobile.jpg",
+      "sha256": "8c1f2a0f38dec963669dc0a9a194a6c7f7b6d0c04248a9f9b795b257815391fe"
+    },
+    {
+      "path": "tmp/formless-v077-mobile-scroll.jpg",
+      "sha256": "8772738d9dade525a64b60b23e5c6985bffcebc23785732ffe8b7cbba08b673d"
+    },
+    {
+      "path": "tmp/formless-v077-before-cast-desktop.jpg",
+      "sha256": "394ca0cf5bac54104cbd765fbc0c90f3f184a6f547d116f62159c6354ad3cbeb"
+    },
+    {
+      "path": "tmp/formless-v077-codex-mobile.jpg",
+      "sha256": "a6d09c6c8dc2249b22c263c2a87a9bd81e411e6134c6b694013b93bed807d65c"
+    }
+  ],
+  "remaining": "统一历史版本和公式、其他原型、整体难度、多构筑经营和真实设备体验仍未全部验收；完整单机目标保持进行中。"
+}

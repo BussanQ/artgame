@@ -28,6 +28,8 @@ const sourcePaths = [
     ).sources,
   ),
   "src/engine/economy.ts",
+  "src/data/unit-stats.ts",
+  "src/engine/types.ts",
 ].filter(existsSync);
 const sources = Object.fromEntries(
   sourcePaths.map((p) => [

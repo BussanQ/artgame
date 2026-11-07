@@ -1,0 +1,272 @@
+{
+  "scope": "Initial unshipped prototype: recovered body and fixed cells versus old taotie in the same frozen inputs. Not normal campaign statistics.",
+  "fixture": "../../tests/fixtures/pre-v050-replays.json",
+  "prototypeSources": {
+    "scripts/rotation-survey.ts": "0b24d2041da423786830d06f866affbcdad5c2ffbf5626acfd79799eb5e3670c",
+    "src/data/abnormal-demo.ts": "f39d89a4975f0c8f0221c4a336f9f28200aedd2568841e6d3424bb94a79740fc",
+    "src/data/ai-profiles.ts": "94692ba49058d48cf237c058e3705b733f12ef79e990e3714dc2df20f6587645",
+    "src/data/assassin-demo.ts": "26bd337f77404cb2df4ec15f0db8dde0ac82a96a4672d9510417e6485fccace5",
+    "src/data/aurora-demo.ts": "5d536911cfd14c7f76045377bcf6ce05556ed3189614261805774cc0f1ec0a5f",
+    "src/data/axethrall-demo.ts": "e753f888f6d7181cbe02cacf7f6eba7b490124edf8bc757509944108fabf8e23",
+    "src/data/beast-frontline-demo.ts": "0dca9d8b86da4ce5f52fef6fdece66e35ed0436ec37de53628b2aead11c50fde",
+    "src/data/bladethrall-demo.ts": "330e4fd8764f9f3bce79d3d415c58f328185209d0bd9379e68ade93a6814084b",
+    "src/data/catalog.ts": "7fe6d93392d50a7ea43d3bd78109965c7fc6048c0eef2e0621865360ba223b6d",
+    "src/data/coalition-demo.ts": "c39f5517f8db652c11bd9695731d1ec8c5a5d99808ecace12ed66328e17087fc",
+    "src/data/counterplay-demo.ts": "89bba4fb7c61733cc52a840430feda6d11a4228ce286b3a60e752334ee34756f",
+    "src/data/encounters.ts": "762f649bd560004bb14a6b23f9ca51005c08dc8bde37db9e4ab481fb584ae62d",
+    "src/data/items.ts": "4fa9b214e55712d3ee0b61a42ba89a00236a9e5dcbd239350363caab9cb1caba",
+    "src/data/lingjiu-demo.ts": "7ff2b2d29a20c7dc068f794efe167ac61574e53751dbc9f51417dac0d47e54da",
+    "src/data/shieldthrall-demo.ts": "bb6b29064083db4cf3c07a0341c1a1253df0ab40511e62bce8eb6351761d20ab",
+    "src/data/skills.ts": "e4363397d530ddb20492982ee2eca911d0c41caa6ff388bdbe2ae4d1d84110ba",
+    "src/data/staffthrall-demo.ts": "a0d4b22ddab5ea7c7e72fddcd4c8ea26396a7ce501dffab9e138b570bb9eb1a9",
+    "src/data/swordthrall-demo.ts": "8c21b7b290e54f2c7c77ef43bf2f9ff925e14ac50db2169571c701b0420f1d53",
+    "src/data/taotie-demo.ts": "96f77913390241f2358063f580d9a6b68088613596f07eccfbd6fb4cbc1656cb",
+    "src/data/tar-demo.ts": "f2945fc3829d61d4b234f8111d2cc4372a98f33acb2b207b728a42b66d128bc4",
+    "src/data/traits.ts": "b9d8c44bd0169a114aa79e3402e2b873fb95184e115fce725b4e6caf02745bee",
+    "src/data/unit-stats.ts": "e819fe7f56e030282e2c53668305f63d9fd25cced91a94e1d6fc48a895512285",
+    "src/data/units.ts": "daf2dbeaba41145cd48761eb9ada10e675a63c64a17fe2ba52cbe735ae65ad2d",
+    "src/data/wildfront-demo.ts": "17f963e214eed3069e0c255652007e39255cdee924b494b63a93c1a3fb694b50",
+    "src/engine/abilities.ts": "d4dda9e9ec4ef114816469e8ea93e8c30bc7ba0640d2b12e83d68f6f903c306c",
+    "src/engine/ai.ts": "fe8c367d684d6dbf4cfbcc23c544c464316cbbeac6833406c362b625a7e25bc0",
+    "src/engine/assassins.ts": "e88609c81bae44956d4aa39c1e8b32d4414f0d1f8f16bab7106076955011bc01",
+    "src/engine/battle-analysis.ts": "47abd1b2fca535c38cb335ba5b8d96e801bbfd21eb4292b45cb3cf9f00480659",
+    "src/engine/battle.ts": "57fb6c5f4cb22be4718d88327c1003b030d42812df0cdb71c00222a6bd4053cb",
+    "src/engine/beasts.ts": "cc44ac5d85a62711af58c72ee35f8c29722ee48df68d5069f395fd41a5dc62b7",
+    "src/engine/birdrider.ts": "61a81c9c3a0da3c07e047eb28278f2597361c13706f8c029417a7d3018015878",
+    "src/engine/bladethrall.ts": "24a15ea431ad5ec67aed56f867b203c38b3f4f0110369541442a857726bb1424",
+    "src/engine/economy.ts": "3d7e8b88ac2f16e4cdeb01fbe9ae58549a774070ed1173c2a5e666ed0a9dcd71",
+    "src/engine/equipment.ts": "cdb4a6b70da5fbcd3e748c451539015def6e48c0225df2855f83affc89866846",
+    "src/engine/game.ts": "e56b2f2beb0aa31aaa02b0904f18721791b0e7489cabe1aa9ebd3f477b6ddc2e",
+    "src/engine/immortality.ts": "609e1ab25259d8fb717fec982517e59bcb175bf13283398dbfcf97acad534b12",
+    "src/engine/infantry-skills.ts": "d9f63278972aca474b1a912cad8951c31349b0520c21ce5c909355203191914a",
+    "src/engine/ironrooster.ts": "5835565b2b5097b8ecdb524c5855f4e767e19910f1657e8c52cf8b72a7fb2c06",
+    "src/engine/lingjiu.ts": "e34c520d075d8d93bde0ebbbf5dcbb767f7ebc086872ddac4dced5aabbb8548e",
+    "src/engine/match-summary.ts": "f8f6ad23aa27a079c57886b93e150c46199748cef8a832a6db504e69ae71a186",
+    "src/engine/metamorphosis.ts": "d70ce056ac8dec6f62255df57b6633f72abc61be6a39adb6f0bbde3307f116f8",
+    "src/engine/persistence.ts": "a4c7e883f08006f8669dc01d85aeba8ad2d4f86d267fc2f0a347adfe3281eb09",
+    "src/engine/phoenix.ts": "6a939267ad567d7e21819a1d4b7eea44d41f2afb1565877f4f6e8063e459e05c",
+    "src/engine/progression.ts": "64701d9c167c2c0270cf72933c72e2493013a1780384ed4102b8f17f1653b1f1",
+    "src/engine/random.ts": "ba0d5984534fdd513fac5e9d54bc586c1e8dfb65736af189f048ade4c34d0b21",
+    "src/engine/recruitment.ts": "8c98a6758811b74e5920360e6c780ce76b8bd73f5ad64c4c484ec10fd2d59927",
+    "src/engine/rotation.ts": "31004f784695125cd6b187409d022748a397f8b153593f748de0bf5d469f48d3",
+    "src/engine/sea-ward.ts": "c7205db3f8643c82ed374411931b096a7ee17421515b59fc3c9dd4f58aea1cab",
+    "src/engine/shieldthrall.ts": "e34e99dda3213eb00418ca6775fdc68409a7c84b71f16465e35aaaf9865001bb",
+    "src/engine/staffthrall.ts": "208b898b1fc9586409b2661d9ad1f2b65b176dc2107d50e62ca8a059c13b1f70",
+    "src/engine/summons.ts": "07af7164ee7f82432344399434cab2fdc3b4157f51924c6eb0c1d86b3e7c6002",
+    "src/engine/swordthrall.ts": "4531a8b9625f4ce71e6972f3e63075afaef51cb482df7decd879e1b197253d00",
+    "src/engine/synergies.ts": "e1e26d4536e5d24e27a93f78872ff63dc448ea777e5f55325b4a782ae7bf8662",
+    "src/engine/tar.ts": "1ed827b4f5c9b99748d51e5ff152f69c48cd49a407848c107cadc8aba6fe1acc",
+    "src/engine/triggers.ts": "deaecf9033bb2389ee7021aaa05e2f0e5ff0b55328771d2530bb8d3ce31989d0",
+    "src/engine/types.ts": "e719fff3e5b2d0f680451fe9bfeb0514c3de2b9709a2441467d14921a5e93ab4",
+    "src/engine/wild-skills.ts": "040807f4b6a071893c82b4d52babded5ea6ab454b50799d9578dd6635929a63a"
+  },
+  "scenarios": [
+    {
+      "name": "army-1",
+      "taotie": {
+        "winner": 0,
+        "ticks": 63,
+        "damage": 869,
+        "skill": 250,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 1,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 0,
+        "ticks": 63,
+        "damage": 602,
+        "skill": 300,
+        "launched": 1,
+        "detonated": 1,
+        "centerHits": 0,
+        "splashHits": 2
+      }
+    },
+    {
+      "name": "army-10",
+      "taotie": {
+        "winner": 0,
+        "ticks": 46,
+        "damage": 529,
+        "skill": 600,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 3,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 0,
+        "ticks": 44,
+        "damage": 584,
+        "skill": 640,
+        "launched": 2,
+        "detonated": 2,
+        "centerHits": 1,
+        "splashHits": 2
+      }
+    },
+    {
+      "name": "army-11",
+      "taotie": {
+        "winner": 1,
+        "ticks": 43,
+        "damage": 1824.5,
+        "skill": 725,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 4,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 1,
+        "ticks": 46,
+        "damage": 1249,
+        "skill": 510,
+        "launched": 3,
+        "detonated": 3,
+        "centerHits": 0,
+        "splashHits": 4
+      }
+    },
+    {
+      "name": "counterplay-v044",
+      "taotie": {
+        "winner": 0,
+        "ticks": 53,
+        "damage": 690,
+        "skill": 480,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 3,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 0,
+        "ticks": 49,
+        "damage": 116,
+        "skill": 0,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 0,
+        "splashHits": 0
+      }
+    },
+    {
+      "name": "counterplay-v045",
+      "taotie": {
+        "winner": 0,
+        "ticks": 53,
+        "damage": 690,
+        "skill": 480,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 3,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 0,
+        "ticks": 49,
+        "damage": 116,
+        "skill": 0,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 0,
+        "splashHits": 0
+      }
+    },
+    {
+      "name": "arhat-v046",
+      "taotie": {
+        "winner": 1,
+        "ticks": 51,
+        "damage": 846,
+        "skill": 480,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 3,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 1,
+        "ticks": 54,
+        "damage": 196,
+        "skill": 0,
+        "launched": 1,
+        "detonated": 1,
+        "centerHits": 0,
+        "splashHits": 0
+      }
+    },
+    {
+      "name": "motorcycle-1",
+      "taotie": {
+        "winner": 1,
+        "ticks": 28,
+        "damage": 310,
+        "skill": 240,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 3,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 1,
+        "ticks": 23,
+        "damage": 0,
+        "skill": 0,
+        "launched": 1,
+        "detonated": 0,
+        "centerHits": 0,
+        "splashHits": 0
+      }
+    },
+    {
+      "name": "motorcycle-2",
+      "taotie": {
+        "winner": 1,
+        "ticks": 36,
+        "damage": 877,
+        "skill": 480,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 3,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 1,
+        "ticks": 27,
+        "damage": 62,
+        "skill": 0,
+        "launched": 2,
+        "detonated": 1,
+        "centerHits": 0,
+        "splashHits": 0
+      }
+    },
+    {
+      "name": "motorcycle-3",
+      "taotie": {
+        "winner": 1,
+        "ticks": 48,
+        "damage": 2171,
+        "skill": 960,
+        "launched": 0,
+        "detonated": 0,
+        "centerHits": 3,
+        "splashHits": 0
+      },
+      "tar": {
+        "winner": 1,
+        "ticks": 40,
+        "damage": 351,
+        "skill": 0,
+        "launched": 2,
+        "detonated": 2,
+        "centerHits": 0,
+        "splashHits": 0
+      }
+    }
+  ]
+}
