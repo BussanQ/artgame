@@ -9,7 +9,7 @@
 body {
   background:
     linear-gradient(#101e22ed, #111f22f7),
-    url("/assets/arena/frontier.png") center/cover fixed;
+    var(--arena-background, url("/assets/arena/frontier.png")) center/cover fixed;
 }
 .shell {
   max-width: 1800px;

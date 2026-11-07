@@ -121,8 +121,16 @@ function picture(id: string): HTMLCanvasElement | null {
   }
   return pictures.get(id) ?? null;
 }
-const terrain = new Image();
-terrain.src = "/assets/arena/frontier.png";
+const terrainImages = new Map<string, HTMLImageElement>();
+function terrainImage(url: string) {
+  let image = terrainImages.get(url);
+  if (!image) {
+    image = new Image();
+    image.src = url;
+    terrainImages.set(url, image);
+  }
+  return image;
+}
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 function polygon(
   c: CanvasRenderingContext2D,
@@ -150,6 +158,7 @@ export class BattleScene {
   private observer: IntersectionObserver;
   private board = document.createElement("canvas");
   private boardKey = "";
+  private terrain: HTMLImageElement;
   private motionReduced = false;
   private inspector = document.createElement("aside");
   private inspectorBody = document.createElement("div");
@@ -166,9 +175,11 @@ export class BattleScene {
     private canvas: HTMLCanvasElement,
     private state: () => SceneState,
     onCell: (cell: number) => void,
+    arenaUrl: string,
     private options: () => Preferences,
     private onInspect?: (uid: number | null) => void,
   ) {
+    this.terrain = terrainImage(arenaUrl);
     this.ctx = canvas.getContext("2d")!;
     this.pinnedFighter = this.state().inspected ?? null;
     this.inspector.className = "battle-inspector";
@@ -271,6 +282,7 @@ export class BattleScene {
     this.inspector.hidden = false;
   }
   private drawBoard(c: CanvasRenderingContext2D, s: SceneState) {
+    const terrain = this.terrain;
     c.clearRect(0, 0, W, H);
     if (terrain.complete && terrain.naturalWidth) {
       const scale = Math.max(W / terrain.width, H / terrain.height),
@@ -405,7 +417,7 @@ export class BattleScene {
       s.selected,
       s.pieces.find((p) => p.uid === s.selected)?.position,
       s.phase,
-      terrain.naturalWidth,
+      this.terrain.complete && this.terrain.naturalWidth > 0,
     ].join(":");
     if (key !== this.boardKey) {
       this.drawBoard(this.board.getContext("2d")!, s);

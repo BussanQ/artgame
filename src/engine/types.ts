@@ -157,6 +157,7 @@ export interface Player {
   eliminatedRound?: number;
 }
 export interface Game {
+  arenaIndex?: number;
   /** Player-only, one-copy requests for the next successful shop refresh. */
   debugShopQueue?: string[];
   /** Unit price and pool tier at match creation; not changed by battle upgrades. */

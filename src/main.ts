@@ -1,3 +1,4 @@
+import { ARENAS } from "./data/arenas";
 import { TERMINATOR_DEMO } from "./data/terminator-demo";
 import { WARCRY_DEMO } from "./data/warcry-demo";
 import { TORNADO_DEMO } from "./data/tornado-demo";
@@ -232,7 +233,12 @@ let analysisView: {
   title: string;
 } | null = null;
 let analysisMetric: BattleMetric = "damage";
-let game = restored.data?.game ?? createGame(Date.now() >>> 0),
+function newMatch(previousArena = 0) {
+  const match = createGame(Date.now() >>> 0);
+  match.arenaIndex = (previousArena + 1) % ARENAS.length;
+  return match;
+}
+let game = restored.data?.game ?? newMatch(),
   selected: number | null = null,
   result: RoundResult | null = null,
   frame = 0,
@@ -317,6 +323,8 @@ function token(p: Piece | Fighter, enemy = false) {
   return `<span class="piece ${enemy ? "enemy" : ""} ${fighter?.flash ? "flash" : ""}" style="--unit:${u.color}"><img class="unit-portrait" src="${spriteUrl(fighter ? fighterSprite(fighter) : unitSprite(p.defId, game.combatVersion, p.star))}" alt="${u.name}" draggable="false"><span class="piece-name">${u.name}</span><span class="stars">${stars(p.star)}</span>${fighter ? `<span class="health"><i style="width:${Math.max(0, (fighter.hp / fighter.maxHp) * 100)}%"></i></span>` : ""}</span>`;
 }
 function render() {
+  const arena = ARENAS[game.arenaIndex ?? 0];
+  document.body.style.setProperty("--arena-background", `url("${arena.image}")`);
   app
     .querySelectorAll<HTMLDetailsElement>("details[data-disclosure]")
     .forEach((detail) => {
@@ -469,7 +477,7 @@ function render() {
    )}</select></label><p class="difficulty-hint">${DIFFICULTIES[game.difficulty].description}</p><h2>指挥官 <span>01</span></h2><div class="vitals"><strong>${p.hp}<small>生命值</small></strong><strong class="gold">${p.gold}<small>金币</small></strong></div><div class="life"><i style="width:${p.hp}%"></i></div><div class="level"><span>等级 <b>${p.level}</b></span><span>${p.level === 10 ? "MAX" : `${p.xp} / ${XP[p.level]} XP`}</span></div><div class="xp"><i style="width:${p.level === 10 ? 100 : (p.xp / XP[p.level]) * 100}%"></i></div><button class="wide" data-action="xp" ${disabled(busy || p.gold < 5 || p.level === 10)}>购买经验 <span>5 金 / 5 XP</span></button>${incomeMarkup(game.round)}<p class="micro">预计利息 +${Math.min(5, Math.floor(p.gold / 10))} 金 · ${p.streak >= 0 ? "连胜" : "连败"} ${Math.abs(p.streak)}</p></section>
  ${equipmentMarkup(game, selected, busy || !!demoBattle)}
  </aside>
- <div class="battle-column"><section class="arena" id="battlefield"><div class="arena-label"><span><i class="red-dot"></i>${fighting ? result!.opponent.name : "敌方阵地"}</span><span>${fighting ? "实时战况" : "8 × 8 战术棋盘"} <button class="speed" data-action="speed">${speed}×</button></span></div><div class="battle-viewport"><div class="battle-stage ${demoBattle ? "is-demo" : ""}"><canvas id="battle-canvas" role="img" aria-label="斜俯视战场：点击己方棋格部署选中的棋子"></canvas><div class="stage-title"><span>云海遗迹</span><small>THE CLOUD SANCTUARY</small></div><div class="stage-status">${demoBattle ? (replayRound ? "历史回放 · 不影响当前对局" : "兵种演示 · 不影响当前对局") : fighting ? "交战中" : game.phase === "result" ? "战果展示 · 即将进入准备" : done ? "演习结束" : "部署阶段 · 己方半场可落子"}</div>${resultMarkup(resultPresentation)}</div></div>
+ <div class="battle-column"><section class="arena" id="battlefield"><div class="arena-label"><span><i class="red-dot"></i>${fighting ? result!.opponent.name : "敌方阵地"}</span><span>${fighting ? "实时战况" : "8 × 8 战术棋盘"} <button class="speed" data-action="speed">${speed}×</button></span></div><div class="battle-viewport"><div class="battle-stage ${demoBattle ? "is-demo" : ""}"><canvas id="battle-canvas" role="img" aria-label="斜俯视战场：点击己方棋格部署选中的棋子"></canvas><div class="stage-title"><span>${arena.name}</span><small>${arena.subtitle}</small></div><div class="stage-status">${demoBattle ? (replayRound ? "历史回放 · 不影响当前对局" : "兵种演示 · 不影响当前对局") : fighting ? "交战中" : game.phase === "result" ? "战果展示 · 即将进入准备" : done ? "演习结束" : "部署阶段 · 己方半场可落子"}</div>${resultMarkup(resultPresentation)}</div></div>
  <div class="arena-bottom"><div class="stage-controls"><button data-action="pause" ${disabled(!fighting && !demoBattle)}>${paused ? "继续播放" : "暂停画面"}</button><button data-action="speed">${speed}× 速度</button><button data-action="battle-analysis" ${disabled(computing || !canAnalyzeBattle)}>${battleAnalysisLabel}</button></div><span><i class="teal-dot"></i>己方阵地</span><span>${demoBattle ? `${replayRound ? "回放" : "演示"}阵容 <b>${demoPieces.length} 枚</b>` : `已部署 <b>${onboard.length} / ${p.level}</b>`}</span></div>
  <div class="bench-header"><span>备战席 <small>${bench.length} / 8</small></span><span>${sceneBattle ? "点击棋子查看战斗状态" : chosen ? `已选择 ${UNIT[chosen.defId].name}` : "点击棋子选择 · 点击棋格部署"}</span></div><div class="bench">${Array.from(
    { length: 8 },
@@ -525,6 +533,7 @@ function render() {
       paused,
     }),
     selectCell,
+    arena.image,
     () => preferences,
     (uid) => {
       battleInspection = { battle: sceneBattle, uid };
@@ -623,7 +632,7 @@ function reset() {
   demoBattle = null;
   paused = false;
   playbackTime = 0;
-  game = createGame(Date.now() >>> 0);
+  game = newMatch(game.arenaIndex);
   selected = null;
   result = null;
   frame = 0;

@@ -1,5 +1,6 @@
 import { catalogCost, catalogDefinitionVersion, pinCatalogDefinitions } from "../data/catalog";
 import { isRecruitable, validBans } from "./rotation";
+import { ARENAS } from "../data/arenas";
 import { validDebugShopQueue } from "./debug-shop";
 import { isAiProfileId } from "../data/ai-profiles";
 import { COMBAT_VERSIONS, CURRENT_COMBAT_VERSION,hasExecutionRules } from "./types";
@@ -160,6 +161,7 @@ export function validGame(value: unknown): value is Game {
     !validBans(g.bannedSeries) ||
     !validCombatVersion(g.combatVersion) ||
     (g.catalogVersion !== undefined && !validCombatVersion(g.catalogVersion)) ||
+    (g.arenaIndex !== undefined && !integer(g.arenaIndex, 0, ARENAS.length - 1)) ||
     !validDebugShopQueue(g) ||
     !["relaxed", "standard", "veteran"].includes(g.difficulty) ||
     !integer(g.nextUid, 1, 1e9) ||
