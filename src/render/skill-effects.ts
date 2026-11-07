@@ -15,6 +15,7 @@ import {gazeLabels} from "./gaze";
 import {hiveLabels} from "./hive";
 import {bulwarkLabels} from "./bulwark";
 import {executionLabels} from "./execution";
+import {siegeLabels} from "./siege";
 import {tortoiseLabels} from "./tortoise";
 import {spiritWardLabels} from "./spirit-ward";
 import { shieldWaveCells } from "../engine/shieldthrall";
@@ -994,7 +995,7 @@ export function drawStatuses(
       "ironape",
       "ironrooster",
     ].includes(f.defId) &&
-    !f.air?.cast &&
+    !f.air?.cast && !f.executionPuppet &&
     !(f.bladeStorm && f.bladeStorm.until > time) &&
     (f.skillReadyAt ?? 0) > time
   )
@@ -1087,6 +1088,7 @@ export function drawStatuses(
   labels.push(...hiveLabels(f,time));
   labels.push(...bulwarkLabels(f,time));
   labels.push(...executionLabels(f,time));
+  labels.push(...siegeLabels(f,time));
   labels.push(...tortoiseLabels(f,time));
   labels.push(...spiritWardLabels(f,time));
   if(f.rifle)labels.push(`被动射击 · 已开火 ${f.rifle.shots}次 · 无能量技能`);

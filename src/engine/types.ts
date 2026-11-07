@@ -28,10 +28,10 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "execution";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "siege";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
@@ -42,6 +42,7 @@ export const hasHiveRules = (version: CombatVersion) => hasRuleSince(version,"hi
 export const hasBulwarkRules = (version: CombatVersion) => hasRuleSince(version,"bulwark");
 export const hasSpiritWardRules = (version: CombatVersion) => hasRuleSince(version,"spirit-ward");
 export const hasTortoiseRules = (version: CombatVersion) => hasRuleSince(version,"tortoise");
+export const hasSiegeRules = (version: CombatVersion) => hasRuleSince(version,"siege");
 export const hasExecutionRules = (version: CombatVersion) => hasRuleSince(version,"execution");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
@@ -185,6 +186,10 @@ export interface RoundReport {
   inventory?: string[];
 }
 export interface Fighter {
+  siege?:{formed:number;fired:number;impacts:number;splashHits:number;splashDamage:number;interrupted:number;mode?:boolean;actedAt?:number;
+    casting?:{start:number;release:number;side:0|1};
+    shells:{start:number;landAt:number;from:{x:number;y:number};to:{x:number;y:number};damage:number;side:0|1}[];
+    shot?:{start:number;landAt:number;from:{x:number;y:number};to:{x:number;y:number}};pulse?:{tick:number;x:number;y:number}};
   reaper?:{marks:number;trueHits:number;trueDamage:number;executions:number;enhanced:number;puppets:number;interrupted:number;missed:number;actedAt?:number;
     casting?:{start:number;release:number;target:number;side:0|1;power:number}};
   reaperMarks?:{source:number;stacks:number}[];

@@ -56,10 +56,10 @@ export function releaseWarcry(ctx: CombatContext, source: Fighter) {
 
 /** Called only for an actual received damage/shield packet, after psychic reflection.
  * A regular lethal hit may retaliate; reflected packets can never recurse. */
-export function retaliateWarcry(ctx: CombatContext, defender: Fighter, attacker: Fighter) {
+export function retaliateWarcry(ctx: CombatContext, defender: Fighter, attacker: Fighter, attackerSide=attacker.side) {
   const state=defender.warcry;
   if (!state || state.until<=ctx.tick || state.reflection<=0 || attacker.hp<=0 ||
-    attacker.side===defender.side || isUndying(defender) || isPhoenixEgg(defender)) return;
+    attackerSide===defender.side || isUndying(defender) || isPhoenixEgg(defender)) return;
   state.retaliations++;
   effect(ctx,defender,attacker,"reflect",state.reflection,"战吼反伤");
   const shield=attacker.shield;

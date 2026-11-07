@@ -3,6 +3,7 @@ import {
   hasBulwarkRules,
   hasSpiritWardRules,
   hasTortoiseRules,
+  hasSiegeRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -50,6 +51,8 @@ const previousDefinitions: Record<string, UnitDef> = Object.fromEntries(
   ]),
 );
 
+const oldChariot: UnitDef = {...UNIT.chariot,cost:2,hp:620,attack:100,armor:5,range:4,interval:5,initialMana:undefined,skill:"集束轰击"};
+const oldChariotSniper: UnitDef = {...oldChariot,traits:previousTraits.chariot};
 const oldPangolin: UnitDef = {
   ...UNIT.pangolin,
   traits: ["野兽", "先锋"],
@@ -214,6 +217,7 @@ export function unitDefinition(
   if (id === "master" && !hasWushiRules(version)) return oldMaster;
   if (id === "treant" && !hasJungleRules(version)) return oldTreant;
   if (id === "stormcaller" && !hasStormRules(version)) return oldStormcaller;
+  if (id === "chariot" && !hasSiegeRules(version)) return hasLineageRules(version)?oldChariot:oldChariotSniper;
   if (id === "acolyte" && !hasGospelRules(version)) return oldAcolyte;
   if (id === "thunderlord" && !hasLightningRules(version))
     return hasLineageRules(version) ? oldThunderlord : oldThunderlordBlast;

@@ -11,6 +11,7 @@ import {
   hasBulwarkRules,
   hasSpiritWardRules,
   hasTortoiseRules,
+  hasSiegeRules,
 } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
@@ -112,6 +113,7 @@ export function itemScore(
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): number {
   version=piece.definitionVersion??version;
+  const siege=hasSiegeRules(version)&&piece.defId==="chariot";
   const tortoise=hasTortoiseRules(version)&&piece.defId==="turtle";
   const wushi = hasWushiRules(version) && piece.defId === "master";
   const lightning = hasLightningRules(version) && piece.defId === "thunderlord";
@@ -120,7 +122,7 @@ export function itemScore(
   const gaze=hasGazeRules(version)&&piece.defId==="eyebug";
   const bulwark=hasBulwarkRules(version)&&piece.defId==="guard";
   const spiritWard=hasSpiritWardRules(version)&&piece.defId==="deer";
-  const expectedAttack = hasHiveRules(version)&&piece.defId==="wasp" ? 2.5 : rifle ? 4/unitAttackInterval(unitDefinition(piece.defId,version),piece.star,version) : lightning
+  const expectedAttack = siege?1.7:hasHiveRules(version)&&piece.defId==="wasp" ? 2.5 : rifle ? 4/unitAttackInterval(unitDefinition(piece.defId,version),piece.star,version) : lightning
     ? 1 +
       Math.min(
         0.6,
@@ -143,7 +145,7 @@ export function itemScore(
       u.id === "blastbug" ||
       u.id === "irondog" ||
       u.id === "ironape",
-    caster =
+    caster = !siege && (
       (hasShurikenRules(version) && u.id === "panda") ||
       [
         "wolf",
@@ -158,7 +160,7 @@ export function itemScore(
       ].includes(u.id) ||
       (hasAmbushRules(version) && u.id === "pangolin") ||
       SKILLS[u.id].damageType === "magic" ||
-      SKILLS[u.id].healRatio > 0;
+      SKILLS[u.id].healRatio > 0);
   return (
     (s.attack ?? 0) * (u.range > 1 ? 2 : 1) * expectedAttack +
     (s.hp ?? 0) * (gospel ? 0.2 : tank ? 0.2 : 0.08) +
@@ -166,7 +168,7 @@ export function itemScore(
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
     (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
-      (lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise
+      (lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise || siege
         ? 0
         : (version === "signature" ||
               version === "summons" ||

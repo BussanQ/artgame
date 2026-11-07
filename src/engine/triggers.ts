@@ -9,7 +9,7 @@ import {tortoiseArmor,tortoiseResist} from "./tortoise";
 const distance = (a: Fighter, b: Fighter) =>
   Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export function usesEnergy(f: Fighter) {
-  if(f.executionPuppet)return false;
+  if(f.executionPuppet||f.siege?.mode)return false;
   if(f.tortoise?.mode)return false;
   if(f.rifle)return false;
   if (f.wushi && (f.wushi.casting || f.wushi.until > 0)) return false;
@@ -32,7 +32,7 @@ export function usesEnergy(f: Fighter) {
   return !!f.tortoise || !f.signature || !["cavalry", "turtle", "tiger"].includes(f.defId);
 }
 export function skillReady(f: Fighter) {
-  if(f.executionPuppet||f.reaper?.casting)return false;
+  if(f.executionPuppet||f.reaper?.casting||f.siege?.mode||f.siege?.casting)return false;
   if(f.tortoise?.mode||f.tortoise?.casting)return false;
   if(f.spiritWard?.channel)return false;
   if(f.hive?.casting||f.hive?.burst)return false;

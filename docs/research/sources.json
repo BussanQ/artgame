@@ -58,7 +58,8 @@
       "bulwarkReview": "0.70目视第4行护卫兵，采用二费、750生命、30–84攻击取均值57、5甲、1格、1秒和15秒CD；原始表格转录不改写。",
       "spiritWardReview": "0.71实际目视第30行长生鹿，采用四费、850生命、79–95取均值87、5甲、4格、1.8秒及25秒；原始测量转录不改写。",
       "tortoiseReview": "0.72实际目视第43行：五费灵能者／护卫、1500生命、34–45攻击、10甲、1格、1.6秒、60秒与技能防御20%；第42行雷震子的被动不能错读到玄龟。",
-      "executionReview": "0.73核对已归档第37行转录：三费勾魂使550HP、49–63攻击、5甲、2格、1.2秒、15秒；原图此前已目视，本轮未重新下载。"
+      "executionReview": "0.73核对已归档第37行转录：三费勾魂使550HP、49–63攻击、5甲、2格、1.2秒、15秒；原图此前已目视，本轮未重新下载。",
+      "siegeReview": "0.74本轮实际目视原表第11行投石车三费800生命、41–50攻击、10甲5格、1秒和60秒冷却。"
     },
     {
       "id": "S05",
@@ -596,7 +597,8 @@
       "formationReview": "0.43采用正文累计说明，重新目视野兽客户端提示；结合S03逐档范围推导野兽自身15/40/75与其他友军0/25/60、傀儡自身10/25/45与其他友军0/0/20。未将混期先锋回血图覆盖五月护甲。",
       "coalitionsReview": "0.46复核记录见coalitions-history.json；客户端卡已实际目视，保留图片指纹、时间边界、原始增量与本地结算解释。",
       "auroraReview": "0.47再次目视空蟹客户端卡，复核极光电影575/825/1075、13秒冷却、25%攻击与三层上限；卡片原图归档images/s50-skycrab-client.jpg，来源指纹及本地法伤/目标/叠加公式边界见aurora-history.json。客户端日期仍未知。",
-      "qiReview": "0.48目视罗汉客户端卡：气波掌250/450/650、10秒，3费陆行者/狙击及石晶轮廓。原图images/s50-arhat-client.jpg，日期及本地适配见qi-history.json；不据此推定原始伤害类型、精确前摇或统一客户端版本。"
+      "qiReview": "0.48目视罗汉客户端卡：气波掌250/450/650、10秒，3费陆行者/狙击及石晶轮廓。原图images/s50-arhat-client.jpg，日期及本地适配见qi-history.json；不据此推定原始伤害类型、精确前摇或统一客户端版本。",
+      "siegeReview": "0.74普通HTTPS取得原始HTML并解析物理装备分配段；未识别到完整投石车技能卡，配图不用于猜数值。"
     },
     {
       "id": "S51",
@@ -875,6 +877,17 @@
       "status": "original-client-images-visually-reviewed",
       "targetVersion": null,
       "review": "两张客户端原卡确认刑杀15秒、无法被选中、二星起刑傀4／6秒；原图已归档。三层、伤害、时序和交互未因此全部确证，整篇正文不冒称发行方原文。见execution-history.json。"
+    },
+    {
+      "id": "S71",
+      "title": "赤潮自走棋-3元棋子分析(5/30更新版本)",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=36595&snA=28",
+      "author": "起落是無常 xyz98997",
+      "modifiedAt": "2019-06-02T23:08:11",
+      "kind": "original-player-measurement",
+      "status": "indexed-original-text-reviewed-direct-open-403",
+      "targetVersion": null,
+      "review": "原作者声明首发并逐个测量；投石机800生命10甲5格、技能转范围普攻与40%攻速。地区映射、跨期和未确证参数见siege-history.json。直接打开403，未绕过限制。"
     }
   ],
   "gospelReview": "0.52字段与置信边界见gospel-history.json；客户端三星能量末位被水印遮挡，10为暂定本地值。",
@@ -961,5 +974,16 @@
     ],
     "unifiedHistoricalBuildConfirmed": false,
     "note": "新增第64种棋子；原卡、原作者测量、二手FAQ线索和本地适配分别记录。"
+  },
+  "siegeReview": {
+    "rules": "singleplayer-0.74",
+    "record": "siege-history.json",
+    "sourceIds": [
+      "S04",
+      "S05",
+      "S50",
+      "S71"
+    ],
+    "unifiedHistoricalBuildConfirmed": false
   }
 }

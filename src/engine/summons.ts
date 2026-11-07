@@ -18,6 +18,7 @@ export function fighterSprite(
     Fighter,
     "defId" | "summon" | "hawkForm" | "phoenix" | "aurora" | "qiSkill" | "gospelAura" | "jungle" | "wushi"
   > & { storm?: Pick<NonNullable<Fighter["storm"]>, "launched">;
+    siege?:Pick<NonNullable<Fighter["siege"]>,"mode">;
     tortoise?:Pick<NonNullable<Fighter["tortoise"]>,"mode">;
     rifle?:Pick<NonNullable<Fighter["rifle"]>,"shots">;
     hive?:Pick<NonNullable<Fighter["hive"]>,"explosions">;
@@ -29,6 +30,7 @@ export function fighterSprite(
     secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>, "formed"> },
 ) {
   if (isPhoenixEgg(f)) return "phoenix-egg";
+  if(f.siege?.mode)return "chariot-siege-v074";
   if(f.tortoise?.mode)return f.tortoise.mode==="shell"?"turtle-shell-v072":"turtle-breach-v072";
   if(!f.summon&&f.defId==="wasp"&&f.hive)return "wasp-hive";
   if(!f.summon&&f.defId==="infantry"&&f.rifle)return "infantry-rifle";

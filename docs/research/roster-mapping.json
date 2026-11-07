@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reviewedAt": "2026-11-07",
-  "rules": "singleplayer-0.73",
+  "rules": "singleplayer-0.74",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
@@ -223,7 +223,10 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S04",
+        "S05",
+        "S71"
       ],
       "currentUnitId": "chariot",
       "currentName": "投石车",
@@ -233,7 +236,7 @@
       ],
       "mapping": "classification-aligned-local-skills",
       "classificationMatches": true,
-      "note": "0.45按S03四月/五月分类对齐；属性、技能与费用仍须逐项核对，未声明统一版本复原。",
+      "note": "0.74恢复三费800生命45.5平均攻击与架设范围普通攻击；S71地区名投石机为映射判断，时序、增攻和溅射细则单列于siege-history.json。旧局价格与份数保持。",
       "classificationReview": {
         "rules": "singleplayer-0.45",
         "sourceIds": [

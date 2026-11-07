@@ -2,6 +2,7 @@ import { beginWushi } from "./wushi";
 import {tauntTarget} from "./taunt";
 import {beginBulwark} from "./bulwark";
 import {beginSpiritWard,spiritWardTargets,spiritWardBuff,stopSpiritWard} from "./spirit-ward";
+import {beginSiege,stopSiege} from "./siege";
 import {beginTortoise,stopTortoise} from "./tortoise";
 import {beginExecution,executionCanCast,stampExecution,claimExecutionPuppet,stopExecution} from "./execution";
 import {unwardedMagicResist} from "./triggers";
@@ -72,6 +73,7 @@ import {
   HIVE,HIVE_SKILL,
   BULWARK_SKILL,
   SPIRIT_WARD_SKILL,
+  SIEGE,SIEGE_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -91,12 +93,12 @@ export const distance = (
 export const attackInterval = (f: Fighter, tick: number) =>
   Math.max(
     f.hive ? HIVE.needlesPerAttack*HIVE.needleInterval : 1,
-    (f.interval / (1 + staffSpeed(f) + (f.formationHaste ?? 0))) *
+    (f.interval / (1 + staffSpeed(f) + (f.formationHaste ?? 0) + (f.siege?.mode?SIEGE.haste:0))) *
       (f.hasteUntil > tick ? 0.7 : 1) *
       (f.slow && f.slow.until > tick ? f.slow.multiplier : 1),
   );
 export const combatAttack = (f: Fighter, tick: number) =>
-  (f.attack +
+  (f.attack + (f.siege?.mode?SIEGE.attack[f.star-1]:0) +
     (f.taotie?.rage && f.taotie.rage.until > tick ? f.taotie.rage.attack : 0)) *
   (1 + (f.aurora?.stacks ?? 0) * AURORA.attackPerStack) *
   (1 +
@@ -167,6 +169,7 @@ export function damage(
   gale = 0,
   committed = false,
   executionPacket = false,
+  origin?:{side:0|1;from:{x:number;y:number}},
 ) {
   if (
     (source.hp <= 0 &&
@@ -177,13 +180,15 @@ export function damage(
     target.hp <= 0
   )
     return 0;
+  const sourceSide=origin?.side??source.side;
+  const from=origin?.from??{x:source.x,y:source.y};
   const wasPhoenixEgg = isPhoenixEgg(target);
   const assassinCritical =
     !skill &&
     !reflected &&
     !periodic &&
     source.stunUntil <= ctx.tick &&
-    source.side !== target.side &&
+    sourceSide !== target.side &&
     distance(source, target) <= source.range &&
     !!source.assassinCrit &&
     attackTargets(source, ctx.fighters, ctx.tick).some(
@@ -204,7 +209,7 @@ export function damage(
       !reflected &&
       (target.reflection ?? 0) > 0 &&
       source.hp > 0 &&
-      source.side !== target.side
+      sourceSide !== target.side
     ) {
       effect(ctx, target, source, "reflect", target.reflection!, "灵能反伤");
       damage(
@@ -220,7 +225,7 @@ export function damage(
         true,
       );
     }
-    if (!reflected && received) retaliateWarcry(ctx,target,source);
+    if (!reflected && received) retaliateWarcry(ctx,target,source,sourceSide);
   };
   if (isUndying(target) || (skill && bladeStormActive(target, ctx.tick))) {
     ctx.events.push({
@@ -241,7 +246,7 @@ export function damage(
       immune: true,
       ...(reflected ? { reflected: true } : {}),
       ...(periodic ? { periodic: true } : {}),
-      from: { x: source.x, y: source.y },
+      from: {...from},
       to: { x: target.x, y: target.y },
     });
     reflectHit();
@@ -264,7 +269,7 @@ export function damage(
         ? { strike: 3 - (source.combo?.remaining ?? 2) }
         : {}),
       evaded: true,
-      from: { x: source.x, y: source.y },
+      from: {...from},
       to: { x: target.x, y: target.y },
     });
     return 0;
@@ -364,7 +369,7 @@ export function damage(
     ...(!skill && source.hawkForm?.active
       ? { strike: 3 - (source.combo?.remaining ?? 2) }
       : {}),
-    from: { x: source.x, y: source.y },
+    from: {...from},
     to: { x: target.x, y: target.y },
   });
   if (
@@ -614,10 +619,11 @@ export function interruptAirSkill(ctx: CombatContext, source: Fighter) {
     !source.windup &&
     !source.combo &&
     !source.bird?.draw &&
-    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting && !source.spiritWard?.channel && !source.tortoise?.casting && !source.reaper?.casting
+    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting && !source.spiritWard?.channel && !source.tortoise?.casting && !source.reaper?.casting && !source.siege?.casting
   )
     return;
   const wasDrawing = !!source.bird?.draw;
+  if(source.siege?.casting)stopSiege(ctx,source);
   if(source.reaper?.casting)stopExecution(ctx,source);
   if(source.tortoise?.casting)stopTortoise(ctx,source);
   if(source.spiritWard?.channel)stopSpiritWard(ctx,source,true);
@@ -860,7 +866,7 @@ export function castSkill(
 ) {
   if (source.gospelAura || source.rifle) return false;
   if (source.taunt?.kind!=="tortoise"&&tauntTarget(ctx, source)) return false;
-  const s = source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  const s = source.siege ? SIEGE_SKILL : source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -876,6 +882,7 @@ export function castSkill(
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
   const wardTargets=source.spiritWard?spiritWardTargets(ctx,source):[];
+  if(source.siege&&(source.siege.mode||source.siege.casting||(source.skillReadyAt??0)>ctx.tick||source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source)))return false;
   if(source.reaper&&!executionCanCast(ctx,source,target))return false;
   if(source.tortoise&&((source.skillReadyAt??0)>ctx.tick||source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source)))return false;
   if(source.spiritWard&&(source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||
@@ -1104,7 +1111,7 @@ export function castSkill(
     if (dashTo(ctx, source, farthest)) target = farthest;
     else if (distance(source, target) > source.range) return false;
   }
-  if (source.defId === "ironrooster" || source.wushi || source.bulwark || source.spiritWard || source.tortoise) target = source;
+  if (source.defId === "ironrooster" || source.wushi || source.bulwark || source.spiritWard || source.tortoise || source.siege) target = source;
   source.mana = 0;
   if (source.signature) {
     source.signature.casts++;
@@ -1781,6 +1788,7 @@ export function castSkill(
         hit(f, f.uid === target.uid, 0.5);
       break;
     case "chariot":
+      if(source.siege){beginSiege(ctx,source);break;}
       for (const f of enemies().filter((f) => distance(target, f) <= s.radius))
         hit(f, f.uid === target.uid);
       break;

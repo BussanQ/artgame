@@ -3,6 +3,7 @@ import {
   hasBulwarkRules,
   hasSpiritWardRules,
   hasTortoiseRules,
+  hasSiegeRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -31,6 +32,9 @@ import {
 } from "../engine/types";
 import type { DamageType, CombatVersion } from "../engine/types";
 
+/** S71 measured 40% haste and ordinary area attacks; other siege tuning is documented locally. */
+export const SIEGE={name:"攻城形态",role:"架设远程物理炮台",cooldown:240,windup:3,haste:0.4,attack:[60,110,160],range:14,radius:1.5,splash:0.4,speed:2,
+ description:"初始能量0。满能量且60秒冷却结束时，原地架设0.75秒，成功后本场变为不能自行移动的攻城炮台，射程覆盖棋盘，攻击增加60/110/160，攻速增加40%。此后普通攻击发出实际飞行的炮弹，伤害在发射时确定、落点固定；命中格内敌人承受完整普通攻击，周围1.5格敌人受到40%攻击的普通物理溅射，各自结算护甲、闪避、护盾、吸血和反伤。移动可避开落点，范围可波及隐蔽和飞行敌人，炮弹按发射时阵营判敌，已发出炮弹不因来源受控或阵亡取消；战斗结束后停止结算。架设期间不能移动或普攻，眩晕、沉默、魅惑、阵亡或进入残魂会中断，不返还能量或冷却。成形后不再施法或回能，沉默不影响炮击，眩晕仅暂停后续发射；魅惑期间仍保留形态并转向攻击原队友。法术强度不提高增攻、攻速或溅射。"} as const;
 /** Shared spell metadata; individual historical sources and local adaptations live in docs/research. */
 export interface SkillDef {
   name: string;
@@ -54,6 +58,7 @@ const define = (
   healRatio: 0,
   ...skill,
 });
+export const SIEGE_SKILL=define({name:SIEGE.name,role:SIEGE.role,description:SIEGE.description});
 /** Client field and visible 4/7 rates; the obscured third rate (10), geometry and cadence are local. */
 export const GOSPEL = {
   name: "福音",
@@ -909,6 +914,7 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (hasSiegeRules(version) && id === "chariot") return SIEGE.description;
   if (hasTortoiseRules(version) && id === "turtle") return TORTOISE.description;
   if (hasSpiritWardRules(version) && id === "deer") return SPIRIT_WARD.description;
   if (hasBulwarkRules(version) && id === "guard") return BULWARK.description;
@@ -1040,6 +1046,7 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "chariot" && hasSiegeRules(version) ? SIEGE.name :
   id === "turtle" && hasTortoiseRules(version) ? TORTOISE.name :
   id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.name :
   id === "guard" && hasBulwarkRules(version) ? BULWARK.name :
@@ -1102,6 +1109,7 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "chariot" && hasSiegeRules(version) ? SIEGE.role :
   id === "turtle" && hasTortoiseRules(version) ? TORTOISE.role :
   id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.role :
   id === "guard" && hasBulwarkRules(version) ? BULWARK.role :

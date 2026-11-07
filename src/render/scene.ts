@@ -16,6 +16,7 @@ import {drawGazes,gazePose} from "./gaze";
 import {drawHives,hivePose} from "./hive";
 import {drawBulwarks,bulwarkPose} from "./bulwark";
 import {drawExecutionMarks,executionPose} from "./execution";
+import {drawSieges,siegePose} from "./siege";
 import {drawTortoises,tortoisePose} from "./tortoise";
 import {drawSpiritWards,spiritWardPose} from "./spirit-ward";
 import {bulwarkActive} from "../engine/bulwark";
@@ -524,7 +525,7 @@ export class BattleScene {
           now,
           s.selected,
           death,
-          (f.thornbind || f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
+          f.siege?.mode || (f.thornbind || f.boneblast || f.wildfire || f.tornado || f.warcry || f.terminator || f.bombardment || f.secretOrb || f.shuriken || f.storm || f.jungle) && attack?.event.skill ? undefined : attack,
           hit && fraction < 0.35,
           s.time,
           f.transformation ?? undefined,
@@ -544,6 +545,7 @@ export class BattleScene {
       drawBulwarks(c,fs,s.time,this.motionReduced);
       drawExecutionMarks(c,fs,s.time,this.motionReduced);
       drawTortoises(c,fs,s.time,this.motionReduced);
+      drawSieges(c,fs,s.time,this.motionReduced);
       drawSpiritWards(c,fs,s.time,this.motionReduced);
       drawShuriken(c, fs, s.time, this.motionReduced, "blades");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
@@ -567,7 +569,7 @@ export class BattleScene {
                 attackInterval(attacker, n),
               )
             : 1;
-          const impactAge = (attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
+          const impactAge = attacker.siege?.mode?0:(attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken) && e.skill ? 0 : rangedId
             ? RANGED_ACTIONS[rangedId].impactAt * duration
             : 0.45;
           if (
@@ -575,7 +577,7 @@ export class BattleScene {
             e.ranged &&
             rangedId &&
             e.primary &&
-            !attacker.lightningChain &&
+            !attacker.lightningChain && !attacker.siege?.mode &&
             !((attacker.terminator || attacker.bombardment || attacker.secretOrb || attacker.shuriken || attacker.qiSkill || attacker.taotie || attacker.tar || attacker.storm) && e.skill)
           )
             drawRangedAttack(
@@ -783,6 +785,8 @@ export class BattleScene {
       ? REST_POSE
       : !this.motionReduced && !death && f.reaper?.casting
         ? executionPose(f,time)
+      : !this.motionReduced && !death && f.siege && (f.siege.mode||f.siege.casting)
+        ? siegePose(f,time)
       : !this.motionReduced && !death && f.tortoise && (f.tortoise.casting||f.tortoise.mode)
         ? tortoisePose(f,time,attack?.progress)
       : !this.motionReduced && !death && f.spiritWard?.channel
@@ -891,6 +895,8 @@ export class BattleScene {
         : p;
     const destination = transformation?.moving
       ? project(transformation.to.x + 0.5, transformation.to.y + 0.5)
+      : f.siege?.shot
+        ? project(f.siege.shot.to.x+0.5,f.siege.shot.to.y+0.5)
       : boneTarget
         ? project(boneTarget.x+0.5,boneTarget.y+0.5)
       : thornTarget
@@ -912,7 +918,7 @@ export class BattleScene {
       dy = destination.y - origin.y,
       length = Math.hypot(dx, dy) || 1;
     const facing =
-      (attack || transformation || throwCast || throwBlade || secretTarget || roarTarget || windTarget || wildfireTarget || boneTarget || thornTarget) && Math.abs(dx) > 1
+      (f.siege?.shot || attack || transformation || throwCast || throwBlade || secretTarget || roarTarget || windTarget || wildfireTarget || boneTarget || thornTarget) && Math.abs(dx) > 1
         ? Math.sign(dx)
         : f.side === 0
           ? 1

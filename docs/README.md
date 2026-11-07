@@ -1,5 +1,7 @@
 # 赤潮网页自走棋：资料与开发方案
 
+最新能力：[0.74 投石车攻城炮台](design/siege.md) · [原始测量与适配](research/siege-history.json) · [内置ImageGen完整提示词](research/siege-assets.json) · [验证记录](analysis/siege-v074-validation.json)。真实架设、普通炮弹、固定落点、独立溅射贡献及旧目录兼容已接入；68项不同必要检查、构建及桌面／390px同一小演示通过。
+
 最新能力：[0.73 勾魂使刑杀与刑傀](design/execution.md) · [原卡与适配边界](research/execution-history.json) · [内置ImageGen完整提示词](research/execution-assets.json) · [验证记录](analysis/execution-v073-validation.json)。新增第64种棋子与第四种不朽；75项不同必要检查、构建及桌面／390px同一小演示通过，刑傀实际出手并单列贡献。
 
 最新能力：[0.72 玄龟双形态](design/tortoise.md) · [逐字段资料与适配](research/tortoise-history.json) · [生成图与完整提示词](research/tortoise-assets.json) · [验证记录](analysis/tortoise-v072-validation.json)。五费灵能护卫补入人数判形、持续引火和破壳群攻；旧目录保留原系列与卡池。106项不同模块检查、构建及桌面／390px两个小演示通过。

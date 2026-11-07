@@ -40,7 +40,7 @@ import type { Game, Piece, RoundReport } from "./types";
 export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
-export const SAVE_SCHEMA = 72;
+export const SAVE_SCHEMA = 73;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -982,10 +982,15 @@ export function decodeSave(raw: string | null): {
       if(v.game.catalogVersion===undefined)v.game.catalogVersion="tortoise";
       if(record(v.game.pool)&&v.game.pool.reaper===undefined)
         v.game.pool.reaper=isRecruitable(v.game as unknown as Game,"reaper")?COPIES[3]:0;
-      if(v.game.phase==="prepare")v.game.combatVersion=CURRENT_COMBAT_VERSION;
+      if(v.game.phase==="prepare")v.game.combatVersion="execution";
       v.schema=72;
-      v.rules=RULES.version;
+      v.rules="singleplayer-0.73";
       migrated = true;
+    }
+    if(v.schema===72&&v.rules==="singleplayer-0.73"&&record(v.game)){
+      if(v.game.catalogVersion===undefined)v.game.catalogVersion="execution";
+      if(v.game.phase==="prepare")v.game.combatVersion=CURRENT_COMBAT_VERSION;
+      v.schema=73;v.rules=RULES.version;migrated=true;
     }
     if (v.schema !== SAVE_SCHEMA || v.rules !== RULES.version)
       return { data: null, status: "incompatible" };

@@ -1,6 +1,6 @@
 import { catalogCost, catalogUnit } from "../data/catalog";
 import { unitArmor,unitAttackInterval,unitDefinition } from "../data/unit-stats";
-import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules } from "./types";
+import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules } from "./types";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { army, simulateOutcome } from "./battle";
 import { usesEnergy } from "./triggers";
@@ -20,6 +20,7 @@ import {
   SKILLS,
   BULWARK,
   SPIRIT_WARD,
+  SIEGE,
   TORTOISE,
   EXECUTION,
   AURORA,
@@ -80,6 +81,10 @@ export function abilityCredit(
   if(p.defId==="infantry")return 0;
   const u = unitDefinition(p.defId,p.definitionVersion),
     skill = SKILLS[p.defId];
+  if(p.defId==="chariot"&&hasSiegeRules(p.definitionVersion??CURRENT_COMBAT_VERSION)){
+    const readiness=0.65+Math.min(100,(u.initialMana??0)+gear.mana+openingMana)*0.0035;
+    return Math.min(0.6,(SIEGE.haste+SIEGE.attack[p.star-1]/(u.attack*2**(p.star-1)+gear.attack)+SIEGE.splash*0.6)*0.22*readiness);
+  }
   // Team healing, charging and retinues are already credited separately below.
   if (
     [

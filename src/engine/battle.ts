@@ -1,3 +1,4 @@
+import {emptySiege,advanceSiegeForms,advanceSiegeShells,siegeActionBusy,launchSiegeShell} from "./siege";
 import { advanceTarBombs, updateTarBombPositions } from "./tar";
 import { lightningStrike } from "./lightning";
 import { advanceGospel } from "./gospel";
@@ -31,6 +32,7 @@ import {
   hasSpiritWardRules,
   hasTortoiseRules,
   hasExecutionRules,
+  hasSiegeRules,
   hasBoneBlastRules,
   hasThornBindRules,
   hasHiveRules,
@@ -153,6 +155,7 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasSiegeRules(definitionVersion)&&d.id==="chariot"?{siege:emptySiege()}:{}),
         ...(hasExecutionRules(definitionVersion)&&d.id==="reaper"?{reaper:{marks:0,trueHits:0,trueDamage:0,executions:0,enhanced:0,puppets:0,interrupted:0,missed:0}}:{}),
         ...(hasTortoiseRules(definitionVersion) && d.id === "turtle" ? {tortoise:{formed:0,interrupted:0,taunts:0,swings:0,splashHits:0}} : {}),
         ...(hasSpiritWardRules(definitionVersion) && d.id === "deer" ? {spiritWard:{formed:0,protected:0,severed:0,interrupted:0,mitigated:0,physicalSaved:0,magicSaved:0}} : {}),
@@ -598,6 +601,8 @@ function runBattle(
       }
     }
     expireUndying(context);
+    advanceSiegeForms(context);
+    advanceSiegeShells(context);
     advanceExecutions(context);
     advanceTortoises(context);
     advanceSpiritWards(context);
@@ -645,6 +650,7 @@ function runBattle(
           f.shuriken?.casting ||
           f.secretOrb?.casting || f.secretOrb?.channel ||
           f.wildfire?.casting || f.wildfire?.channel || f.thornbind?.channel ||
+          f.siege?.casting || f.siege?.actedAt===tick ||
           f.spiritWard?.channel || f.spiritWard?.actedAt===tick || f.tortoise?.casting || f.tortoise?.actedAt===tick || executionActionBusy(f,tick) ||
           f.hive?.casting || f.hive?.burst || f.hive?.actedAt===tick ||
           f.combo ||
@@ -661,6 +667,7 @@ function runBattle(
       if (advanceThornBindAction(context, f)) continue;
       if (advanceSpiritWardAction(context, f)) continue;
       if (advanceTortoiseAction(context, f)) continue;
+      if (siegeActionBusy(context, f)) continue;
       if (executionActionBusy(f,tick)) continue;
       if (advanceHiveAction(context, f)) continue;
       if (advanceFaithArrow(context, f)) continue;
@@ -706,6 +713,7 @@ function runBattle(
         (distance(f, skillTarget) <= f.range ||
           !!jungleTarget ||
           !!f.wushi ||
+          !!f.siege ||
           !!f.bulwark ||
           (f.defId === "axethrall" && distance(f, skillTarget) <= AXE_THROW.range) ||
           (f.defId === "venombeast" &&
@@ -780,6 +788,7 @@ function runBattle(
         gainMana(f, ATTACK_MANA, tick);
         const gale = recordStaffAttack(f, target);
         if (
+          !launchSiegeShell(context,f,target) &&
           !tortoiseStrike(context,f,target) &&
           !startHiveBurst(context,f,target) &&
           !startFaithArrow(context, f, target) &&
