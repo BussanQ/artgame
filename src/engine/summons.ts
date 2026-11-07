@@ -6,8 +6,9 @@ import { UNIT } from "../data/units";
 
 export const SPIRIT_WOLF = { hp: 400, attack: 40, armor: 2, interval: 3 };
 export function fighterName(
-  f: Pick<Fighter, "defId" | "summon" | "hawkForm" | "phoenix">,
+  f: Pick<Fighter, "defId" | "summon" | "hawkForm" | "phoenix" | "executionPuppet">,
 ) {
+  if(f.executionPuppet)return `${UNIT[f.defId].name}·刑傀`;
   if (f.summon?.kind === "puppet") return "灵木傀儡";
   if (f.summon?.kind === "sentinel") return "镇海盾卫";
   return f.summon ? "幽影幼狼" : UNIT[f.defId].name;
@@ -17,6 +18,7 @@ export function fighterSprite(
     Fighter,
     "defId" | "summon" | "hawkForm" | "phoenix" | "aurora" | "qiSkill" | "gospelAura" | "jungle" | "wushi"
   > & { storm?: Pick<NonNullable<Fighter["storm"]>, "launched">;
+    tortoise?:Pick<NonNullable<Fighter["tortoise"]>,"mode">;
     rifle?:Pick<NonNullable<Fighter["rifle"]>,"shots">;
     hive?:Pick<NonNullable<Fighter["hive"]>,"explosions">;
     boneblast?: Pick<NonNullable<Fighter["boneblast"]>, "launched">;
@@ -27,6 +29,7 @@ export function fighterSprite(
     secretOrb?: Pick<NonNullable<Fighter["secretOrb"]>, "formed"> },
 ) {
   if (isPhoenixEgg(f)) return "phoenix-egg";
+  if(f.tortoise?.mode)return f.tortoise.mode==="shell"?"turtle-shell-v072":"turtle-breach-v072";
   if(!f.summon&&f.defId==="wasp"&&f.hive)return "wasp-hive";
   if(!f.summon&&f.defId==="infantry"&&f.rifle)return "infantry-rifle";
   if (!f.summon && f.defId === "bonedragon" && f.boneblast) return "bonedragon-boneblast";

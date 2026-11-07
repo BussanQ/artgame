@@ -1,4 +1,5 @@
-import { catalogUnit } from "../data/catalog";
+import {isMelee} from "../render/melee";
+import { catalogUnit, catalogDefinitionVersion } from "../data/catalog";
 import {
   availableUnits,
   isRecruitable,
@@ -44,12 +45,12 @@ export function filteredUnits(game: RecruitmentContext = {}) {
           u.traits.some((t) => t === codexFilters.trait)) &&
         (codexFilters.range === "all" ||
           (codexFilters.range === "melee"
-            ? u.range === 1
+            ? isMelee(u.id,catalogDefinitionVersion(game,u.id))
             : codexFilters.range === "ranged"
-              ? u.range > 1
+              ? !isMelee(u.id,catalogDefinitionVersion(game,u.id))&&u.range > 1
               : !!u.flying)) &&
         words.every((word) =>
-          `${u.name} ${u.id} ${u.traits.join(" ")} ${skillName(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)} ${skillRole(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)} ${skillDescription(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)}`
+          `${u.name} ${u.id} ${u.traits.join(" ")} ${skillName(u.id, catalogDefinitionVersion(game,u.id))} ${skillRole(u.id, catalogDefinitionVersion(game,u.id))} ${skillDescription(u.id, catalogDefinitionVersion(game,u.id))}`
             .normalize("NFKC")
             .toLocaleLowerCase()
             .includes(word),
@@ -101,7 +102,7 @@ export function codexCards(game: RecruitmentContext = {}) {
     ? units
         .map(
           (u) =>
-            `<article class="${isRecruitable(game, u.id) ? "" : "codex-banned"}">${!isRecruitable(game, u.id) ? '<span class="ban-badge">本局禁用</span>' : ""}<img class="codex-portrait" src="/assets/units/${unitSprite(u.id, game.combatVersion, codexFilters.star)}.png" alt="${u.name}"><strong style="color:${u.color}">${u.name} <span class="codex-stars">${"★".repeat(codexFilters.star)}</span></strong><small>${u.cost} 金 · ${u.flying ? "飞行" : "地面"} · ${u.traits.join(" / ")} · ${skillRole(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)}</small><p>生命 ${u.hp * scale} · 攻击 ${u.attack * scale}<br>护甲 ${unitArmor(u, codexFilters.star)} · 射程 ${u.range} · 间隔 ${unitAttackInterval(u, codexFilters.star, game.combatVersion ?? CURRENT_COMBAT_VERSION) * 0.25} 秒<br>法术减伤 ${Math.round((u.magicResist ?? 0.2) * 100)}%${u.regeneration ? ` · 自然回复 ${u.regeneration} 生命/秒` : ""}</p><b class="codex-skill">${skillName(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)}</b><p class="skill-description">${skillDescription(u.id, game.combatVersion ?? CURRENT_COMBAT_VERSION)}</p></article>`,
+            `<article class="${isRecruitable(game, u.id) ? "" : "codex-banned"}">${!isRecruitable(game, u.id) ? '<span class="ban-badge">本局禁用</span>' : ""}<img class="codex-portrait" src="/assets/units/${unitSprite(u.id, catalogDefinitionVersion(game,u.id), codexFilters.star)}.png" alt="${u.name}"><strong style="color:${u.color}">${u.name} <span class="codex-stars">${"★".repeat(codexFilters.star)}</span></strong><small>${u.cost} 金 · ${u.flying ? "飞行" : "地面"} · ${u.traits.join(" / ")} · ${skillRole(u.id, catalogDefinitionVersion(game,u.id))}</small><p>生命 ${u.hp * scale} · 攻击 ${u.attack * scale}<br>护甲 ${unitArmor(u, codexFilters.star)} · 射程 ${u.range} · 间隔 ${unitAttackInterval(u, codexFilters.star, game.combatVersion ?? CURRENT_COMBAT_VERSION) * 0.25} 秒<br>法术减伤 ${Math.round((u.magicResist ?? 0.2) * 100)}%${u.regeneration ? ` · 自然回复 ${u.regeneration} 生命/秒` : ""}</p><b class="codex-skill">${skillName(u.id, catalogDefinitionVersion(game,u.id))}</b><p class="skill-description">${skillDescription(u.id, catalogDefinitionVersion(game,u.id))}</p></article>`,
         )
         .join("")
     : '<p class="empty">没有符合条件的棋子。请缩短关键词，或将招募范围、费用、羁绊和攻击方式改为全部。</p>';

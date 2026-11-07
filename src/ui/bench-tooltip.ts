@@ -13,6 +13,7 @@ export function pieceDetails(
   version: CombatVersion = CURRENT_COMBAT_VERSION,
   costVersion: CombatVersion = version,
 ) {
+  version=piece.definitionVersion??version;
   const u = unitDefinition(piece.defId, version),
     scale = 2 ** (piece.star - 1),
     gear = equipmentStats(piece.items),
@@ -20,6 +21,7 @@ export function pieceDetails(
   return {
     name: u.name,
     flying: !!u.flying,
+    melee: isMelee(u.id,version),
     hp: u.hp * scale + gear.hp,
     attack: u.attack * scale + gear.attack,
     armor: unitArmor(u, piece.star) + gear.armor,
@@ -51,8 +53,9 @@ export function pieceDetailMarkup(
   version: CombatVersion = CURRENT_COMBAT_VERSION,
   costVersion: CombatVersion = version,
 ): string {
+  version=p.definitionVersion??version;
   const d = pieceDetails(p, version, costVersion);
-  return `<div class="tooltip-heading"><img src="/assets/units/${unitSprite(p.defId, version, p.star)}.png" alt=""><div><strong>${d.name}</strong><span>${"★".repeat(p.star)} · ${p.star} 星</span><small>${d.flying ? "飞行" : "地面"} · ${d.range === 1 ? "近战" : "远程"} · ${d.action}</small></div></div><div class="tooltip-stats"><span>生命<b>${d.hp}</b></span><span>攻击<b>${d.attack}</b></span><span>护甲<b>${d.armor}</b></span><span>射程<b>${d.range} 格</b></span><span>攻击间隔<b>${d.interval.toFixed(2)} 秒</b></span><span>出售价格<b>${d.sell} 金</b></span><span>法术减伤<b>${d.magicResist}%</b></span>${d.regeneration ? `<span>自然回复<b>${d.regeneration} 生命/秒</b></span>` : ""}</div><p class="tooltip-basis">当前星级与装备属性 · 未计入上阵羁绊</p><section><b>${d.skill}</b><p>${d.skillDescription}</p></section>${d.items.length ? `<section><b>已装备 · 技能强度 +${d.skillPower}%</b>${d.items.map((i) => `<p>${i.icon} ${i.name} · ${i.description}</p>`).join("")}</section>` : ""}<section><b>兵种与职业</b>${d.traits.map((t) => `<p><em>${t.name} · ${t.threshold} 个不同棋子</em>${t.description}</p>`).join("")}</section>`;
+  return `<div class="tooltip-heading"><img src="/assets/units/${unitSprite(p.defId, version, p.star)}.png" alt=""><div><strong>${d.name}</strong><span>${"★".repeat(p.star)} · ${p.star} 星</span><small>${d.flying ? "飞行" : "地面"} · ${d.melee ? "近战" : "远程"} · ${d.action}</small></div></div><div class="tooltip-stats"><span>生命<b>${d.hp}</b></span><span>攻击<b>${d.attack}</b></span><span>护甲<b>${d.armor}</b></span><span>射程<b>${d.range} 格</b></span><span>攻击间隔<b>${d.interval.toFixed(2)} 秒</b></span><span>出售价格<b>${d.sell} 金</b></span><span>法术减伤<b>${d.magicResist}%</b></span>${d.regeneration ? `<span>自然回复<b>${d.regeneration} 生命/秒</b></span>` : ""}</div><p class="tooltip-basis">当前星级与装备属性 · 未计入上阵羁绊</p><section><b>${d.skill}</b><p>${d.skillDescription}</p></section>${d.items.length ? `<section><b>已装备 · 技能强度 +${d.skillPower}%</b>${d.items.map((i) => `<p>${i.icon} ${i.name} · ${i.description}</p>`).join("")}</section>` : ""}<section><b>兵种与职业</b>${d.traits.map((t) => `<p><em>${t.name} · ${t.threshold} 个不同棋子</em>${t.description}</p>`).join("")}</section>`;
 }
 export function pieceInfoMarkup(
   p: Piece,

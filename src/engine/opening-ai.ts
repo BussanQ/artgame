@@ -1,6 +1,7 @@
 import { profileFor } from "../data/ai-profiles";
 import { traitTiers } from "../data/traits";
-import { UNIT } from "../data/units";
+import {unitDefinition} from "../data/unit-stats";
+import {catalogUnit} from "../data/catalog";
 import { availableUnits, type RecruitmentContext } from "./rotation";
 import type { CombatVersion, Piece, Player, Trait } from "./types";
 
@@ -24,7 +25,7 @@ export function openingCores(
       all.findIndex((other) => other.defId === piece.defId) === index,
     );
   return manaTiers(version).flatMap(({ trait, count }) => {
-    const members = strongest.filter((piece) => UNIT[piece.defId].traits.includes(trait));
+    const members = strongest.filter((piece) => unitDefinition(piece.defId,piece.definitionVersion??version).traits.includes(trait));
     return count <= player.level && members.length >= count
       ? [members.slice(0, count)]
       : [];
@@ -48,7 +49,7 @@ export function openingCollection(
       trait,
       target: count,
       kinds: new Set(player.pieces
-        .filter((piece) => UNIT[piece.defId].traits.includes(trait))
+        .filter((piece) => unitDefinition(piece.defId,piece.definitionVersion??version).traits.includes(trait))
         .map((piece) => piece.defId)),
     }))
     .find(({ kinds, target }) => kinds.size >= target - 1) ?? null;
@@ -63,9 +64,9 @@ export function completesOpening(
 ) {
   if (!availableUnits(context).some((unit) => unit.id === id)) return false;
   return manaTiers(version).some(({ trait, count }) => {
-    if (count > player.level || !UNIT[id].traits.includes(trait)) return false;
+    if (count > player.level || !catalogUnit(context,id).traits.includes(trait)) return false;
     const kinds = new Set(player.pieces
-      .filter((piece) => UNIT[piece.defId].traits.includes(trait))
+      .filter((piece) => unitDefinition(piece.defId,piece.definitionVersion??version).traits.includes(trait))
       .map((piece) => piece.defId));
     return !kinds.has(id) && kinds.size === count - 1;
   });

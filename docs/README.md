@@ -1,5 +1,9 @@
 # 赤潮网页自走棋：资料与开发方案
 
+最新能力：[0.73 勾魂使刑杀与刑傀](design/execution.md) · [原卡与适配边界](research/execution-history.json) · [内置ImageGen完整提示词](research/execution-assets.json) · [验证记录](analysis/execution-v073-validation.json)。新增第64种棋子与第四种不朽；75项不同必要检查、构建及桌面／390px同一小演示通过，刑傀实际出手并单列贡献。
+
+最新能力：[0.72 玄龟双形态](design/tortoise.md) · [逐字段资料与适配](research/tortoise-history.json) · [生成图与完整提示词](research/tortoise-assets.json) · [验证记录](analysis/tortoise-v072-validation.json)。五费灵能护卫补入人数判形、持续引火和破壳群攻；旧目录保留原系列与卡池。106项不同模块检查、构建及桌面／390px两个小演示通过。
+
 最新能力：[0.71长生鹿多目标双防](design/spirit-ward.md) · [原始资料与适配](research/spirit-ward-history.json) · [验证记录](analysis/spirit-ward-v071-validation.json)。可中断连线、双防、真实减伤归功、AI和schema70已接入；70项相关检查、构建及桌面／390px同一三对三通过。43版旧定义和旧两费目录保留，新局四费；数列、目标数、公式换算与时序不冒称同一原卡。
 
 最新能力：[0.70盾兵护甲盾阵](design/bulwark.md) · [逐字段资料与适配](research/bulwark-history.json) · [验证记录](analysis/bulwark-v070-validation.json)。限时护甲、相邻转火、可见盾阵、AI、独立统计和schema69已接入；109项直接相关检查、构建及桌面／390px通过。同一旧蜂群局面40秒平局变为19秒结束，42版旧定义和旧局一费目录保持；新局两费，未确证数列不标为原版值。

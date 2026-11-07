@@ -1,6 +1,5 @@
 import { catalogUnit } from "../data/catalog";
 import { UNITS, UNIT } from "../data/units";
-import { unitDefinition } from "../data/unit-stats";
 import { traitTiers } from "../data/traits";
 import { CURRENT_COMBAT_VERSION } from "./types";
 import { random } from "./random";
@@ -27,7 +26,7 @@ export type RecruitmentContext = Pick<Game, "bannedSeries"> &
   Partial<Pick<Game, "combatVersion" | "catalogVersion">>;
 export function isRecruitable(game: RecruitmentContext, id: string): boolean {
   return (
-    !!UNIT[id] && !game.bannedSeries?.some((t) => UNIT[id].traits.includes(t))
+    !!UNIT[id] && !game.bannedSeries?.some((t) => catalogUnit(game,id).traits.includes(t))
   );
 }
 export function availableUnits(game: RecruitmentContext) {
@@ -102,10 +101,7 @@ export function rotationTraits(game: RecruitmentContext) {
   ).map(([trait, tiers]) => ({
     trait,
     total: UNITS.filter((u) =>
-      unitDefinition(
-        u.id,
-        game.combatVersion ?? CURRENT_COMBAT_VERSION,
-      ).traits.includes(trait as Trait),
+      catalogUnit(game,u.id).traits.includes(trait as Trait),
     ).length,
     available: units.filter((u) => u.traits.includes(trait as Trait)).length,
     tiers: tiers.map((t) => t.count),

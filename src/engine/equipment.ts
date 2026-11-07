@@ -10,6 +10,7 @@ import {
   hasHiveRules,
   hasBulwarkRules,
   hasSpiritWardRules,
+  hasTortoiseRules,
 } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
@@ -110,6 +111,8 @@ export function itemScore(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): number {
+  version=piece.definitionVersion??version;
+  const tortoise=hasTortoiseRules(version)&&piece.defId==="turtle";
   const wushi = hasWushiRules(version) && piece.defId === "master";
   const lightning = hasLightningRules(version) && piece.defId === "thunderlord";
   const gospel = hasGospelRules(version) && piece.defId === "acolyte";
@@ -163,7 +166,7 @@ export function itemScore(
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
     (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
-      (lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard
+      (lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise
         ? 0
         : (version === "signature" ||
               version === "summons" ||
@@ -190,7 +193,7 @@ export function itemScore(
             ? 300
             : 100) +
     (s.mana ?? 0) *
-      (lightning || gospel || rifle
+      (tortoise?1.8:lightning || gospel || rifle
         ? 0
         : (version === "signature" ||
               version === "summons" ||

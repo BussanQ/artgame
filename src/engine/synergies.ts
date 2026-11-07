@@ -31,10 +31,8 @@ export function synergies(
     insectCount(pieces)
   )
     counts.set("异虫", insectCount(pieces));
-  for (const id of new Set(
-    pieces.filter((p) => p.position !== null).map((p) => p.defId),
-  ))
-    for (const trait of unitDefinition(id, definitionVersion).traits.filter(
+  for (const id of new Set(pieces.filter((p) => p.position !== null).map((p) => p.defId)))
+    for (const trait of unitDefinition(id, pieces.find(p=>p.defId===id&&p.position!==null)?.definitionVersion??definitionVersion).traits.filter(
       (trait) =>
         (!["不朽", "灵能", "猛禽", "陆行者"].includes(trait) ||
           version === "fleet") &&

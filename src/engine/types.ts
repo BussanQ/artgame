@@ -28,10 +28,10 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "spirit-ward";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "execution";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
@@ -41,6 +41,8 @@ export const hasGazeRules = (version: CombatVersion) => hasRuleSince(version,"ga
 export const hasHiveRules = (version: CombatVersion) => hasRuleSince(version,"hive");
 export const hasBulwarkRules = (version: CombatVersion) => hasRuleSince(version,"bulwark");
 export const hasSpiritWardRules = (version: CombatVersion) => hasRuleSince(version,"spirit-ward");
+export const hasTortoiseRules = (version: CombatVersion) => hasRuleSince(version,"tortoise");
+export const hasExecutionRules = (version: CombatVersion) => hasRuleSince(version,"execution");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
 export const hasWarcryRules = (version: CombatVersion) => hasRuleSince(version,"warcry");
@@ -108,6 +110,8 @@ export interface UnitDef {
   regeneration?: number;
 }
 export interface Piece {
+  /** A replaced species stays on its match's original catalog, including future purchases. */
+  definitionVersion?: CombatVersion;
   /** Actual copies withdrawn from the pool, independent of discounted insect evolution. */
   copies?: number;
   uid: number;
@@ -181,6 +185,14 @@ export interface RoundReport {
   inventory?: string[];
 }
 export interface Fighter {
+  reaper?:{marks:number;trueHits:number;trueDamage:number;executions:number;enhanced:number;puppets:number;interrupted:number;missed:number;actedAt?:number;
+    casting?:{start:number;release:number;target:number;side:0|1;power:number}};
+  reaperMarks?:{source:number;stacks:number}[];
+  /** A separate, short-lived actor preserves the victim's original contribution history. */
+  executionPuppet?:{owner:number;victim:number;born:number;until:number};
+  tortoise?:{formed:number;interrupted:number;taunts:number;swings:number;splashHits:number;
+    mode?:"shell"|"breach";allies?:number;enemies?:number;actedAt?:number;strike?:{tick:number;x:number;y:number};
+    casting?:{start:number;release:number;side:0|1}};
   /** Maintained friendly connections; effective protection is never added to permanent body stats. */
   spiritWard?:{formed:number;protected:number;severed:number;interrupted:number;mitigated:number;physicalSaved:number;magicSaved:number;actedAt?:number;
     channel?:{start:number;release:number;until:number;side:0|1;targets:number[];formed:boolean;armor:number;resist:number}};
@@ -294,7 +306,7 @@ export interface Fighter {
     casting?: { start: number; until: number };
   };
   /** Short forced aggression; source death, invalid allegiance or cleanse releases it. */
-  taunt?: { source: number; until: number; kind?:"bulwark" };
+  taunt?: { source: number; until: number; kind?:"bulwark"|"tortoise" };
   /** Released forest waves and actual two-stage control applications, battle-local only. */
   jungle?: { waves: number; hits: number; knockups: number; landings: number };
   /** A committed knockup lands even after its caster dies; cleansing removes the pending stun. */

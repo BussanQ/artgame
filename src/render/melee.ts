@@ -1,6 +1,7 @@
 import { CURRENT_COMBAT_VERSION, hasShurikenRules, hasSecretOrbRules, hasTerminatorRules, type CombatVersion } from "../engine/types";
 /** Pure animation sampling; no combat damage or simulation timing changes. */
 export const MELEE_ACTIONS = {
+  reaper: {name:"双弯刀交错勾斩",duration:3.6,color:"#b3e9ef"},
   elephant: { name: "踏步扬鼻挑牙", duration: 3.8, color: "#e5bd83" },
   venombeast: { name: "压肩横甩撕咬", duration: 3.6, color: "#b7dc76" },
   staffthrall: { name: "双手点棍与疾风轮转", duration: 3.4, color: "#85c8ff" },
@@ -214,6 +215,13 @@ export function meleePose(id: MeleeId, t: number, skill = false): AttackPose {
       p.alpha = 1 - 0.62 * pulse(t, 0.05, 0.55);
       p.lift = 16 * hit;
       p.trail = hit;
+      break;
+    case "reaper":
+      p.forward=-12*wind+34*pulse(t,0.3,0.78);
+      p.rotation=0.36*wind-0.72*hit+0.2*recover;
+      p.lift=8*wind-5*hit;
+      p.scaleX=1-0.12*wind+0.14*hit;
+      p.trail=0.9*hit;
       break;
     case "turtle":
       p.forward = -6 * wind + 23 * pulse(t, 0.35, 0.85);
@@ -481,6 +489,13 @@ export function drawMeleeWeapon(
     case "shadowblade":
       arc(8, -45, 44, t * 8 - 2, t * 8 + 0.6);
       arc(8, -45, 34, -t * 7, -t * 7 + 2.1);
+      break;
+    case "reaper":
+      c.lineWidth=4;
+      arc(12+hit*18,-43,46,-2.7+t*2.8,-0.6+t*2.8);
+      arc(2+hit*22,-56,31,0.6-t*2.4,2.5-t*2.4);
+      c.lineWidth=1.5;
+      arc(12+hit*18,-43,51,-2.6+t*2.8,-0.7+t*2.8);
       break;
     case "turtle":
       for (let i = 0; i < 3; i++) {

@@ -181,9 +181,9 @@ describe("双防真实结算与贡献",()=>{
 describe("四费目录与旧长生鹿",()=>{
  it("43版旧定义和两费目录冻结，其余兵种不因本次修改，旧庇护仍补盾治疗",()=>{
   expect(frozen.definitions).toHaveLength(43);for(const row of frozen.definitions)expect(unitDefinition("deer",version(row.version))).toEqual(row.unit);
-  for(const u of UNITS.filter(u=>u.id!=="deer"))expect(unitDefinition(u.id)).toEqual(unitDefinition(u.id,"bulwark"));
+  for(const u of UNITS.filter(u=>u.id!=="deer"))expect(unitDefinition(u.id,"spirit-ward")).toEqual(unitDefinition(u.id,"bulwark"));
   expect(unitCost("deer")).toBe(4);expect(unitCost("deer","bulwark")).toBe(2);
-  const game=createGame(4,"classic");expect(game.catalogVersion).toBe("spirit-ward");expect(catalogCost(game,"deer")).toBe(4);
+  const game=createGame(4,"classic");expect(game.catalogVersion).toBe(CURRENT_COMBAT_VERSION);expect(catalogCost(game,"deer")).toBe(4);
   const a=army([piece("deer",101)],0,"bulwark")[0],b=army([piece("guard",102)],0,"bulwark")[0],enemy=fighter("infantry",201,1);
   Object.assign(a,{x:3,y:4,mana:100});Object.assign(b,{x:3,y:3,hp:100});const ctx=context(a,b,enemy);
   expect(castSkill(ctx,a,enemy)).toBe(true);expect(a.spiritWard).toBeUndefined();expect(b.hp).toBeGreaterThan(100);expect(b.shield).toBeGreaterThan(0);
@@ -204,7 +204,9 @@ describe("四费目录与旧长生鹿",()=>{
   const before=structuredClone(game),playback={time:3,speed:2,paused:true};
   const decoded=decodeSave(JSON.stringify({schema:69,rules:"singleplayer-0.70",savedAt:1,revision:1,game,playback}));
   expect(decoded.status).toBe("migrated");expect(decoded.data!.schema).toBe(SAVE_SCHEMA);expect(decoded.data!.rules).toBe(RULES.version);
-  expect(decoded.data!.game).toEqual({...before,...(phase==="prepare"?{combatVersion:CURRENT_COMBAT_VERSION}:{})});expect(decoded.data!.playback).toEqual(playback);
+  before.pool.reaper=COPIES[3]; // 0.73 adds only the new unit pool to this classic fixture.
+    if(phase==="prepare")for(const player of before.players)for(const piece of player.pieces)if(piece.defId==="turtle")piece.definitionVersion="spirit-ward";
+    expect(decoded.data!.game).toEqual({...before,...(phase==="prepare"?{combatVersion:CURRENT_COMBAT_VERSION}:{})});expect(decoded.data!.playback).toEqual(playback);
   if(phase==="result"){nextRound(decoded.data!.game);expect(decoded.data!.game.combatVersion).toBe(CURRENT_COMBAT_VERSION);expect(decoded.data!.game.catalogVersion).toBe("secret-orb");}
  });
 

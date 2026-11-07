@@ -342,15 +342,15 @@ export const UNITS: UnitDef[] = [
   {
     id: "turtle",
     name: "玄龟",
-    cost: 4,
-    traits: ["野兽", "护卫"],
+    cost: 5,
+    traits: ["灵能", "护卫"],
     hp: 1500,
-    attack: 62,
-    armor: 9,
+    attack: 40,
+    armor: 10,
     range: 1,
-    interval: 4,
-    initialMana: 100,
-    skill: "玄甲",
+    interval: 6.4,
+    initialMana: 0,
+    skill: "玄武双相",
     color: "#96bc9d",
     glyph: "⬢",
   },
@@ -1007,6 +1007,9 @@ UNITS.push({
   color: "#efcb85",
   glyph: "鸡",
 });
+export const REAPER_ADDITIONS=["reaper"];
+UNITS.push({id:"reaper",name:"勾魂使",cost:3,traits:["不朽","刺杀"],hp:550,attack:56,armor:5,
+  range:2,interval:4.8,initialMana:0,skill:"刑杀 / 刑傀",color:"#acdfe4",glyph:"刈"});
 export const UNIT = Object.fromEntries(UNITS.map((u) => [u.id, u])) as Record<
   string,
   UnitDef
@@ -1040,7 +1043,7 @@ export const TRAITS: Record<Trait, { threshold: number; description: string }> =
     异能: { threshold: 2, description: "敌方能量获取降低 25%" },
   };
 export const RULES = {
-  version: "singleplayer-0.71",
+  version: "singleplayer-0.73",
   bench: 8,
   shop: 5,
   reroll: 2,

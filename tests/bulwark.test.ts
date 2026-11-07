@@ -185,6 +185,8 @@ describe("盾阵画面、经营与旧局",()=>{
     const before=structuredClone(game),playback={time:3,speed:2,paused:true};
     const decoded=decodeSave(JSON.stringify({schema:68,rules:"singleplayer-0.69",savedAt:1,revision:1,game,playback}));
     expect(decoded.status).toBe("migrated");expect(decoded.data!.schema).toBe(SAVE_SCHEMA);expect(decoded.data!.rules).toBe(RULES.version);
+    before.pool.reaper=COPIES[3]; // 0.73 adds only the new unit pool to this classic fixture.
+    if(phase==="prepare")for(const player of before.players)for(const piece of player.pieces)if(piece.defId==="turtle")piece.definitionVersion="spirit-ward";
     expect(decoded.data!.game).toEqual({...before,...(phase==="prepare"?{combatVersion:CURRENT_COMBAT_VERSION}:{})});expect(decoded.data!.playback).toEqual(playback);
     if(phase==="result"){nextRound(decoded.data!.game);expect(decoded.data!.game.combatVersion).toBe(CURRENT_COMBAT_VERSION);expect(decoded.data!.game.catalogVersion).toBe("secret-orb");}
   });

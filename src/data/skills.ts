@@ -2,6 +2,7 @@ import {
   CURRENT_COMBAT_VERSION,
   hasBulwarkRules,
   hasSpiritWardRules,
+  hasTortoiseRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -855,6 +856,20 @@ export const THORNBIND_SKILL=define({name:THORNBIND.name,role:THORNBIND.role,
   multiplier:THORNBIND.multiplier,damageType:"magic",duration:THORNBIND.root,description:THORNBIND.description});
 
 /** S04 body/CD and S05 one-star armor/resistance; all connection timing and later ladders are local. */
+/** Publisher material confirms forms/taunt/AoE; exact form numbers and decision timing are local. */
+export const TORTOISE={
+  name:"玄武双相",role:"人数判形 · 守御与群攻",windup:2,cooldown:240,
+  armor:[20,35,50],resist:[0.2,0.3,0.4],multiplier:[2,2.5,3],breachArmorLoss:10,radius:1,
+  description:"初始能量0。满能量且冷却结束时蓄势0.5秒，冷却60秒从蓄势开始计；完成时比较双方存活棋子数：我方更多则破壳，否则龟缩；包含召唤物，不计残魂和涅槃火种。每场成功变形一次，形态确定后不再改变。龟缩停止移动与普攻，护甲+20/35/50、法术减伤+20/30/40个百分点（总上限75%），持续吸引所有可选中自己的敌人，使其普通攻击优先指向玄龟；不阻止施法或取消已发出的攻击。破壳降低自身10点护甲，普攻对主目标及其相邻1格可见敌人各造成200/250/300%攻击物理伤害，分别结算闪避、护甲、吸血和反伤，不受技能强度加成。蓄势可被眩晕、沉默、魅惑或阵亡打断，能量不退还；成形后眩晕或沉默不解除形态，嘲讽随当前阵营转移，阵亡后停止。",
+} as const;
+export const TORTOISE_SKILL=define({name:TORTOISE.name,role:TORTOISE.role,description:TORTOISE.description});
+/** Client cards establish execution, 15s and 4/6s puppets; mark threshold, damage and timing are local. */
+export const EXECUTION={
+  name:"刑杀 / 刑傀",role:"叠印真伤与击杀转化",marks:3,cooldown:60,windup:2,damage:[180,300,500],puppetDuration:[0,16,24],
+  description:"初始能量0。普通攻击命中敌人的生命或护盾后，给该目标叠加自己的死亡印记，最多3层；本次命中叠满时起，后续普攻对该目标造成真实伤害。换目标不把印记带走，不同勾魂使分别叠层；印记不直接伤害，灵鱼可驱散。满能量、15秒冷却结束且2格内有可见敌人和相邻空位时，闪现至目标后方并蓄势0.5秒，期间不能被定向攻击选中，仍可受到范围伤害与控制；随后刑杀造成180/300/500法伤，满3层时伤害翻倍，并清除自己的印记。技能伤害受起手法强加成，普攻真伤仍可暴击、被闪避或护盾抵挡。眩晕、沉默、魅惑、阵亡或残魂到期会打断蓄势；目标死亡、隐蔽、变为友军或离开2格时落空，不返还能量和冷却。二星起，刑杀击杀会将合格敌人转化为我方刑傀残魂，持续4/6秒；它保留死亡时普攻能力，下一步行动，不能施法、回能、治疗或再次转化，不占人口和卡池，来源阵亡不提前消散。刑傀可替代被击杀者的不朽续战；支援余辉或自爆优先，未重生过的不死鸟先化蛋，火种不转化，已重生的鸟可以转化。",
+} as const;
+export const EXECUTION_SKILL=define({name:EXECUTION.name,role:EXECUTION.role,damageType:"magic",description:EXECUTION.description});
+SKILLS.reaper=EXECUTION_SKILL;
 export const SPIRIT_WARD={
   name:"长生庇护",role:"维持多目标双防",cooldown:100,windup:2,range:4,targets:[3,5,7],armor:[15,20,25],resist:[0.4,0.5,0.6],duration:[20,24,28],
   description:"初始能量0。满能量且25秒冷却结束时，锁定4格内生命比例最低的3/5/7名其他存活友军，蓄灵0.5秒后连接并维持5/6/7秒（一/二/三星），提供15/20/25护甲和40/50/60个百分点法术减伤，最终法术减伤最高75%。生命比例相同优先近处，再按稳定编号选取；满生命友军也可受到保护，不保护自身、残魂或涅槃火种。蓄灵和维持期间不能移动、普攻或另行施法。眩晕、沉默、魅惑、阵亡或进入残魂会中断并撤回全部连线，不返还能量或冷却；友军死亡、成为敌军或走出4格只断开该条连线，不重新选人，全部失效则结束。多枚长生鹿的庇护不叠加，只采用最强的一条；较弱但仍维持的连线可在强庇护结束后继续生效。灵鱼驱散负面状态不会移除这项友方增益。法强不增加双防、目标数或时长；技能不治疗、补盾或直接造成伤害。防护减伤比较本次伤害在有无庇护时对现有生命与护盾的实际消耗，排除闪避、免疫和过量部分；只归功给本次生效的来源，不计入治疗或护盾吸收。收束当帧不附带普攻。冷却从蓄灵开始计算。",
@@ -894,6 +909,7 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (hasTortoiseRules(version) && id === "turtle") return TORTOISE.description;
   if (hasSpiritWardRules(version) && id === "deer") return SPIRIT_WARD.description;
   if (hasBulwarkRules(version) && id === "guard") return BULWARK.description;
   if (hasHiveRules(version) && id === "wasp") return HIVE.description;
@@ -1024,6 +1040,7 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "turtle" && hasTortoiseRules(version) ? TORTOISE.name :
   id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.name :
   id === "guard" && hasBulwarkRules(version) ? BULWARK.name :
   id === "wasp" && hasHiveRules(version) ? HIVE.name :
@@ -1085,6 +1102,7 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "turtle" && hasTortoiseRules(version) ? TORTOISE.role :
   id === "deer" && hasSpiritWardRules(version) ? SPIRIT_WARD.role :
   id === "guard" && hasBulwarkRules(version) ? BULWARK.role :
   id === "wasp" && hasHiveRules(version) ? HIVE.role :

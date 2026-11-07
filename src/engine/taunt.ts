@@ -11,7 +11,7 @@ export function tauntTarget(ctx:CombatContext,victim:Fighter){
   if(!taunt||taunt.until<=ctx.tick||victim.hp<=0||isUndying(victim)||
       isPhoenixEgg(victim)||bladeStormActive(victim,ctx.tick))return undefined;
   const source=ctx.fighters.find(f=>f.uid===taunt.source);
-  const active=source&&source.hp>0&&(taunt.kind==="bulwark"
+  const active=source&&source.hp>0&&(taunt.kind==="tortoise"?source.tortoise?.mode==="shell":taunt.kind==="bulwark"
     ? !!source.bulwark&&source.bulwark.until>ctx.tick
     : !!source.wushi&&source.wushi.until>ctx.tick);
   if(!source||!active||isUndying(source)||isPhoenixEgg(source)||source.side===victim.side||

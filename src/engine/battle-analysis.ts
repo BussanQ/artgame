@@ -4,6 +4,9 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  reaper?:Pick<NonNullable<Fighter["reaper"]>,"marks"|"trueHits"|"trueDamage"|"executions"|"enhanced"|"puppets"|"interrupted"|"missed">;
+  executionPuppet?:Fighter["executionPuppet"];
+  tortoise?:Omit<NonNullable<Fighter["tortoise"]>,"casting"|"actedAt">;
   spiritWard?:Pick<NonNullable<Fighter["spiritWard"]>,"formed"|"protected"|"severed"|"interrupted"|"mitigated"|"physicalSaved"|"magicSaved">;
   bulwark?:Pick<NonNullable<Fighter["bulwark"]>,"formations"|"taunts">;
   hive?:Pick<NonNullable<Fighter["hive"]>,"volleys"|"needles"|"explosions"|"innerHits"|"outerHits"|"interrupted">;
@@ -57,6 +60,9 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.reaper?{reaper:{marks:f.reaper.marks,trueHits:f.reaper.trueHits,trueDamage:f.reaper.trueDamage,executions:f.reaper.executions,enhanced:f.reaper.enhanced,puppets:f.reaper.puppets,interrupted:f.reaper.interrupted,missed:f.reaper.missed}}:{}),
+    ...(f.executionPuppet?{executionPuppet:{...f.executionPuppet}}:{}),
+    ...(f.tortoise?{tortoise:{formed:f.tortoise.formed,interrupted:f.tortoise.interrupted,taunts:f.tortoise.taunts,swings:f.tortoise.swings,splashHits:f.tortoise.splashHits,mode:f.tortoise.mode,allies:f.tortoise.allies,enemies:f.tortoise.enemies}}:{}),
     ...(f.spiritWard?{spiritWard:{formed:f.spiritWard.formed,protected:f.spiritWard.protected,severed:f.spiritWard.severed,
       interrupted:f.spiritWard.interrupted,mitigated:f.spiritWard.mitigated,physicalSaved:f.spiritWard.physicalSaved,magicSaved:f.spiritWard.magicSaved}}:{}),
     ...(f.bulwark?{bulwark:{formations:f.bulwark.formations,taunts:f.bulwark.taunts}}:{}),

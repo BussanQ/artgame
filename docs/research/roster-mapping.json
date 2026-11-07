@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-06",
-  "rules": "singleplayer-0.59",
+  "reviewedAt": "2026-11-07",
+  "rules": "singleplayer-0.73",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
-    "currentRecruitableUnits": 63,
+    "currentRecruitableUnits": 64,
     "mappedNamesOrLocalDesigns": 53,
     "missingAprilUnits": 0,
-    "currentOutsideBaseline": 10,
+    "currentOutsideBaseline": 11,
     "classificationDifferences": 0
   },
   "aprilUnits": [
@@ -1306,14 +1306,15 @@
       "currentUnitId": "turtle",
       "currentName": "玄龟",
       "currentTraits": [
-        "野兽",
+        "灵能",
         "护卫"
       ],
       "sourceIds": [
-        "S06"
+        "S04",
+        "S69"
       ],
       "status": "outside-april-baseline",
-      "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+      "note": "0.72新局五费灵能／护卫；旧目录继续原四费野兽身份。不属于四月基线。"
     },
     {
       "currentUnitId": "tiger",
@@ -1371,6 +1372,21 @@
       ],
       "status": "outside-april-baseline",
       "note": "不能用后来版本或原型命名抵扣四月名单缺失项。"
+    },
+    {
+      "currentUnitId": "reaper",
+      "currentName": "勾魂使",
+      "currentTraits": [
+        "不朽",
+        "刺杀"
+      ],
+      "sourceIds": [
+        "S04",
+        "S05",
+        "S70"
+      ],
+      "status": "outside-april-baseline",
+      "note": "0.73新增七月兵种，三费与刑杀／刑傀见execution-history.json；不与暗影刀合并，不能抵扣四月名单。"
     }
   ]
 }

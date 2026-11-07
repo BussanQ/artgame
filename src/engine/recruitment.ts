@@ -1,4 +1,4 @@
-import { catalogCost, catalogVersion } from "../data/catalog";
+import { catalogCost, catalogVersion, pinCatalogDefinitions } from "../data/catalog";
 import { isRecruitable } from "./rotation";
 import { RULES, UNIT } from "../data/units";
 import { isInsect, mergePieces, pieceCopies, salePrice } from "./progression";
@@ -67,6 +67,7 @@ export function previewPurchase(
     position: null,
     ...(isInsect(id) ? { copies: 1 } : {}),
   });
+  pinCatalogDefinitions(game,after.pieces);
   mergePieces(after, game.combatVersion);
   after.gold -= cost;
   after.shop[index] = null;

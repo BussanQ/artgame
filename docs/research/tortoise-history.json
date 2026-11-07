@@ -1,0 +1,121 @@
+{
+  "rules": "singleplayer-0.72",
+  "unit": "turtle",
+  "historicalName": "玄龟",
+  "skillNameStatus": "玄武双相为本项目命名，未取得同版本完整客户端技能卡。",
+  "sources": [
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "kind": "original-player-measurement",
+      "reviewMethod": "本轮实际目视原始属性表第43行。相邻第42行雷震子的被动字段不属于玄龟。社区测量，客户端构建号未知。",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "imageSha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "fields": {
+        "cost": 5,
+        "series": "灵能者",
+        "profession": "护卫",
+        "hp": 1500,
+        "attackMin": 34,
+        "attackMax": 45,
+        "armor": 10,
+        "range": 1,
+        "intervalSeconds": 1.6,
+        "cooldownSeconds": 60,
+        "note": "技能防御20%"
+      },
+      "adoption": "采用五费灵能／护卫及本体、60秒CD；攻击均值39.5取整40，技能防御20%映射为当前20%基础法术减伤，原表不覆盖。"
+    },
+    {
+      "id": "S69",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=182312",
+      "publishedAt": "2019-07-08T15:55:18",
+      "kind": "publisher-provided-original",
+      "reviewMethod": "网页检索收录的发行方原文完整段落；页面明确标记厂商提供资料。直接打开及普通HTTP GET均403，没有取得HTML、完整客户端卡或原模型。未绕过访问限制。",
+      "supports": [
+        "橙色稀有度",
+        "龟缩防御与破壳攻击两形态",
+        "依据双方棋子数量判形，敌众我寡偏防御，敌寡我众偏攻击",
+        "龟缩群体嘲讽吸收火力",
+        "破壳群体攻击"
+      ],
+      "doesNotEstablish": [
+        "确切技能名与全量分星数值",
+        "平局判定",
+        "开始/完成时判形或实时切换的精确时点",
+        "召唤物/残魂/火种计数",
+        "普攻群体伤害的精确形状、范围和系数",
+        "嘲讽对技能与已发出攻击的细则"
+      ]
+    },
+    {
+      "id": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "modifiedAt": "2019-07-15",
+      "kind": "original-player-evaluation",
+      "reviewMethod": "重新解析已取得的原始HTML正文中的玄龟段。原始302211字节，SHA见下；原作者观点与实测表、发行说明分开。",
+      "originalHtml": "tmp/vine-s05-original.html",
+      "originalHtmlSha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "supports": [
+        "五费玄龟的出现概率与护卫强化语境",
+        "变身后的技能效果不实时变化",
+        "龟缩更能承伤，脱壳容易阵亡",
+        "作者建议水晶球、回能装和童子以便在敌人阵亡前变身"
+      ],
+      "limits": "玩家观察，不证明完整原技能参数、永久锁定时长或全版本行为。当前60秒CD与40秒战斗上限下采用本场锁定，不能将这份七月观察冒称所有版本自动实时切换的证据。"
+    },
+    {
+      "id": "S06",
+      "url": "https://www.9game.cn/cczzq/3157619.html",
+      "kind": "secondary-earlier-roster",
+      "supports": [
+        "更早四费陆行／守护与入场护甲渐减语境"
+      ],
+      "adoption": "只解释原型来源与年代差异；不将旧渐减护甲和新五费双形态拼为同一能力。当前野兽标签属于既有项目原型，不能反称S06原文标签。"
+    }
+  ],
+  "localAdaptation": {
+    "initialMana": 0,
+    "windupSeconds": 0.5,
+    "cooldownStart": "蓄势开始，打断不返还；60秒数值来自S04。",
+    "modeDecision": "完成时按当前阵营比较存活棋子数，友方严格更多选择破壳，平局选择龟缩。",
+    "counts": "包含已有召唤物，排除死亡、残魂和涅槃火种。",
+    "locking": "成形后保持到本场结束。S05非实时变化只支持方向，精确锁定边界为适配。",
+    "shell": {
+      "armor": [
+        20,
+        35,
+        50
+      ],
+      "magicResistPoints": [
+        20,
+        30,
+        40
+      ],
+      "combinedResistCap": 75,
+      "ordinaryAttacks": false,
+      "movement": false,
+      "taunt": "全场后续普通攻击与追击转向；不阻止施法、不撤销已释放攻击。新入场敌人也纳入。"
+    },
+    "breach": {
+      "armorLoss": 10,
+      "attackPercent": [
+        200,
+        250,
+        300
+      ],
+      "area": "主目标及曼哈顿1格可见敌人",
+      "contacts": "逐目标结算普通攻击；源被反伤击杀后停止余下接触。",
+      "skillPowerScaling": false
+    },
+    "controls": "启动受眩晕、沉默、魅惑、阵亡及残魂中断；完成形态不因眩晕/沉默消失，嘲讽按当前阵营更新；短嘲讽优先，多来源按星级、距离、UID确定。",
+    "catalogCompatibility": "旧目录玄龟整体保持四费野兽与渐减玄甲；原持有与后续购买固定spirit-ward定义。新局才采用五费灵能，系列禁用和卡池按各自目录解释。",
+    "art": "两张内置ImageGen生成图是本地重制形态，不是原客户端模型。"
+  },
+  "unresolved": [
+    "同一客户端完整技能卡与精确形态参数",
+    "不同地区、时期分类及公式差异",
+    "原版模型、逐星外观和原始动画"
+  ]
+}

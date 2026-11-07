@@ -15,6 +15,8 @@ import {drawThornBinds,thornBindPose} from "./thornbind";
 import {drawGazes,gazePose} from "./gaze";
 import {drawHives,hivePose} from "./hive";
 import {drawBulwarks,bulwarkPose} from "./bulwark";
+import {drawExecutionMarks,executionPose} from "./execution";
+import {drawTortoises,tortoisePose} from "./tortoise";
 import {drawSpiritWards,spiritWardPose} from "./spirit-ward";
 import {bulwarkActive} from "../engine/bulwark";
 import { drawShuriken } from "./shuriken";
@@ -540,6 +542,8 @@ export class BattleScene {
       drawGazes(c,fs,s.time,this.motionReduced);
       drawHives(c,fs,s.time,this.motionReduced);
       drawBulwarks(c,fs,s.time,this.motionReduced);
+      drawExecutionMarks(c,fs,s.time,this.motionReduced);
+      drawTortoises(c,fs,s.time,this.motionReduced);
       drawSpiritWards(c,fs,s.time,this.motionReduced);
       drawShuriken(c, fs, s.time, this.motionReduced, "blades");
       drawSecretOrbs(c, fs, s.time, this.motionReduced, "orb");
@@ -675,7 +679,7 @@ export class BattleScene {
         .filter((p) => p.position !== null)
         .sort((a, b) => a.position! - b.position!)) {
         const version = s.version ?? CURRENT_COMBAT_VERSION;
-        const d = unitDefinition(p.defId, version);
+        const d = unitDefinition(p.defId, p.definitionVersion??version);
         this.unit(
           {
             uid: p.uid,
@@ -695,7 +699,7 @@ export class BattleScene {
           false,
           0,
           undefined,
-          unitSprite(p.defId, version, p.star),
+          unitSprite(p.defId, p.definitionVersion??version, p.star),
         );
       }
       if (!s.pieces.some((p) => p.position !== null)) {
@@ -777,6 +781,10 @@ export class BattleScene {
     c.save();
     const pose = isPhoenixEgg(f) || stone
       ? REST_POSE
+      : !this.motionReduced && !death && f.reaper?.casting
+        ? executionPose(f,time)
+      : !this.motionReduced && !death && f.tortoise && (f.tortoise.casting||f.tortoise.mode)
+        ? tortoisePose(f,time,attack?.progress)
       : !this.motionReduced && !death && f.spiritWard?.channel
         ? spiritWardPose(f,time)
       : !this.motionReduced && !death && !attack && bulwarkActive(f,time)

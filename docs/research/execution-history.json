@@ -1,0 +1,117 @@
+{
+  "rules": "singleplayer-0.73",
+  "unit": "reaper",
+  "historicalName": "勾魂使",
+  "reviewedAt": "2026-11-07",
+  "scope": "新增七月兵种，不把四月53名覆盖等同于统一版本复原。",
+  "sources": [
+    {
+      "id": "S70",
+      "url": "https://shouyou.3dmgame.com/news/41121.html",
+      "title": "变幻莫测《赤潮自走棋》百万赏金赛等你来战！",
+      "publishedAt": "2019-07-08T13:38:31",
+      "kind": "embedded-original-client-cards",
+      "byline": "来源3DM手游／作者我想静静；栏目为厂商新闻，整篇正文不冒称发行方原文。",
+      "reviewMethod": "实际目视两张原始客户端截图；页面与图片普通HTTPS取得，客户端构建号未知。",
+      "cards": [
+        {
+          "image": "images/s70-reaper-execution-client.jpg",
+          "url": "https://syimg.3dmgame.com/uploadimg/upload/image/20190708/20190708133706_26287.jpg",
+          "bytes": 38461,
+          "sha256": "b30d9e2274b09f3718635883393aa3e3efe6ed58063be87e69c87e30a8e832bb",
+          "supports": [
+            "三费不朽者／刺杀",
+            "刑杀15秒冷却",
+            "闪现到敌人身后并进行单体刑杀",
+            "印记叠满增加技能伤害，刑杀后清印",
+            "刑杀期间无法被选中"
+          ],
+          "doesNotEstablish": [
+            "完整分星伤害数列",
+            "印记确切层数和普通攻击真伤的完整结算公式",
+            "无法选中是否等于免疫全部范围伤害"
+          ]
+        },
+        {
+          "image": "images/s70-reaper-puppet-client.jpg",
+          "url": "https://syimg.3dmgame.com/uploadimg/upload/image/20190708/20190708133706_70293.jpg",
+          "bytes": 40122,
+          "sha256": "7a36b2243dbccb70b054d1b5a32550af171389429528a0b454276250554b4875",
+          "supports": [
+            "二星起刑傀被动",
+            "刑杀击杀敌人后转为我方不朽者继续作战",
+            "二／三星持续4／6秒",
+            "蓝灰有角蜥蜴与双弯刀身份参考"
+          ]
+        }
+      ],
+      "secondaryProseBoundary": "页面正文的三层说明只作线索；三层阈值仍标为本地适配，技术证据优先客户端卡。"
+    },
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "publishedAt": "2019-07-08",
+      "kind": "original-player-measurement",
+      "image": "images/s04-skytoad-attributes.jpg",
+      "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945",
+      "reviewMethod": "核对已归档原表第37行转录；原图此前已目视，本轮未重新下载。",
+      "fields": {
+        "cost": 3,
+        "traits": [
+          "不朽者",
+          "刺杀"
+        ],
+        "hp": 550,
+        "attackMin": 49,
+        "attackMax": 63,
+        "attackMean": 56,
+        "armor": 5,
+        "range": 2,
+        "intervalSeconds": 1.2,
+        "cooldownSeconds": 15
+      }
+    },
+    {
+      "id": "S05",
+      "url": "https://www.taptap.cn/moment/15216144952591652",
+      "modifiedAt": "2019-07-15",
+      "kind": "original-player-observation",
+      "reviewMethod": "重新解析先前取得的原始HTML勾魂使段落，并交叉检索原作者页面。",
+      "cachedHtmlSha256": "a6f7d9bb90d3fb698ef76b1a854ee5f310a687c9ecbeef4c23e74c719ca21d7d",
+      "supports": [
+        "叠印后普通攻击趋向真伤的战术描述",
+        "满印技能约双倍的玩家观察",
+        "2格射程减少近战拥挤",
+        "刑杀取消选中与不朽续战"
+      ],
+      "boundary": "玩家观察不等于客户端完整公式；创建时间未知，不能用修改日期推断同一构建。"
+    }
+  ],
+  "localAdaptations": {
+    "passive": "独立来源／目标，最多3印；第三次有效普通接触本身起转为真伤；命中护盾也叠层，闪避或免疫不叠。真实扣血单独统计，仍走普攻暴击、闪避、护盾、吸血与反伤。",
+    "execution": {
+      "initialMana": 0,
+      "windupSeconds": 0.5,
+      "baseMagicDamage": [
+        180,
+        300,
+        500
+      ],
+      "fullMarkMultiplier": 2,
+      "landing": "目标四邻空格，优先背侧，无位不扣能量；释放仍须原目标可见且在2格内。",
+      "untargetability": "蓄势不能被定向选中，但范围与已发出攻击仍可命中；不把客户端无法选中扩写成全面无敌。",
+      "interruptions": "眩晕、沉默、魅惑、阵亡及残魂到期中断，不退能量或冷却。"
+    },
+    "puppet": "只有刑杀致死能产生新UID的独立友方残魂，下一步行动，保留普攻状态，剥离主动技能、既有投射物、光环和旧贡献；不能回能、治疗或再次转化，不改真实人口和卡池。",
+    "deathPriority": "支援余辉／殉爆优先，未重生不死鸟先化蛋，火种不转化，已重生鸟可转化；刑傀可替代被害者不朽残魂。此交互为本地选择。",
+    "secondaryFaqBoundary": "PP聚合页及转载FAQ提供血鹰、不死鸟、支援和自爆交互线索，未找到发行方原始FAQ，不作为已确证原版规则。FAQ短暂无敌与客户端无法选中不同，保留区别。",
+    "roster": "由63增至64；第四种不朽使完整未禁卡池的4不朽阈值可达。不是保证随机禁用后所有档位可达。",
+    "migration": "schema72新增reaper池键，依原局固定禁用加入三费整池或0份；原63种份数、费用、持有、历史与禁用结果保持。旧玄龟仍固定旧四费野兽定义；旧战斗到下一准备期才换战斗规则。"
+  },
+  "unresolved": [
+    "统一历史客户端构建未确证。",
+    "分星伤害、三层时点、范围伤害/控制与死亡优先级仍含本地适配。",
+    "单张生成形象供各星使用，未复原原客户端全部星级模型。",
+    "整体难度、多构筑长局和真实设备仍需后续按问题验证。"
+  ]
+}

@@ -1,0 +1,609 @@
+{
+  "checkedAt": "2026-11-07T01:07:15.923418+00:00",
+  "pointInTime": "0.73完成必要检查、提交推送前的工作区；0.72报告保留其当时状态。",
+  "rules": "singleplayer-0.73",
+  "combatVersion": "execution",
+  "saveSchema": 72,
+  "goalTurnClassification": "progress",
+  "scope": "新增勾魂使并保留0.72玄龟改动；不等于完整单机目标验收。",
+  "tests": {
+    "uniquePassed": 75,
+    "failedAtCompletion": 0,
+    "fullTestSuiteRun": false,
+    "counts": {
+      "execution": 37,
+      "tortoise": 36,
+      "oldPrepareMigration": 2
+    },
+    "runs": [
+      {
+        "report": "tmp/execution-related-tests.json",
+        "passed": 71,
+        "failed": 1,
+        "skipped": 0
+      },
+      {
+        "report": "tmp/execution-scene-test.json",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 35
+      },
+      {
+        "report": "tmp/execution-old-migration-tests.json",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 68
+      }
+    ],
+    "initialFailure": "首次72项报告71通过1失败：转化最后敌人后刑傀没有出手机会。调整同一二对三演示并定向验证，同时补主动状态剥离检查，两项通过；不把首次报告冒称全部通过。",
+    "earlierModuleRun": "最初新模块35项通过，已包含在37项中，不重复计数。",
+    "commands": [
+      "npx vitest run tests/execution.test.ts tests/tortoise.test.ts --reporter=json --outputFile=tmp/execution-related-tests.json",
+      "npx vitest run tests/execution.test.ts -t 'Worker入口|复制体不重复' --reporter=json --outputFile=tmp/execution-scene-test.json",
+      "npx vitest run tests/bulwark.test.ts tests/spirit-ward.test.ts -t '0.69 prepare迁移|0.70 prepare迁移' --reporter=json --outputFile=tmp/execution-old-migration-tests.json"
+    ]
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "modules": 165,
+    "js": "index-CB_7RsvS.js",
+    "worker": "worker-BfqpX0S2.js",
+    "css": "index-0iwQsGQW.css",
+    "artifacts": [
+      {
+        "path": "dist/index.html",
+        "bytes": 596,
+        "sha256": "1bfcbc025dab73c0b23929fa583234d1a8e24830b3dfa619950881da79350230"
+      },
+      {
+        "path": "dist/assets/worker-BfqpX0S2.js",
+        "bytes": 212589,
+        "sha256": "84c2942ff80075c5dbbb77e86dbc758633c5843c603f42c5f42688ba281e132c"
+      },
+      {
+        "path": "dist/assets/index-CB_7RsvS.js",
+        "bytes": 412345,
+        "sha256": "81d342acc3c3096c95576c9df2c861c84ebf2ca3ed477de94d1e613aaf5f719e"
+      },
+      {
+        "path": "dist/assets/index-0iwQsGQW.css",
+        "bytes": 88803,
+        "sha256": "56cae94f029a557290086063d38e94dbc36896e6cc7e09cb8cc4c384a780f993"
+      }
+    ]
+  },
+  "compatibility": {
+    "oldDefinitions": {
+      "versions": 45,
+      "unitsPerVersion": 63,
+      "sha256Unchanged": true,
+      "fixture": "tests/fixtures/pre-v073-execution-replays.json"
+    },
+    "oldReplays": [
+      {
+        "version": "legacy",
+        "frames": 118,
+        "winner": 1,
+        "sha256": "1d60d13ee5bc2c7c4f7bf1b6ffd7d67d330a2b425bb7d41da678654ab61ebd3b"
+      },
+      {
+        "version": "tortoise",
+        "frames": 73,
+        "winner": 0,
+        "sha256": "453cf7bdf2373a8893e91e26d35042cb0435993bd6c95155d5aceaab0c742a68"
+      }
+    ],
+    "poolPolicy": "按原禁用增补reaper键为三费整池或0；旧63种份数、持有、费用、禁用和历史保持，不宣称全池字节不变。旧玄龟四费野兽身份继续固定，旧战斗保留到下一准备期。"
+  },
+  "scenes": {
+    "scope": "同一二对三局部演示",
+    "frames": 87,
+    "winner": 0,
+    "lastTick": 86,
+    "seconds": 21.5,
+    "puppet": {
+      "uid": 204,
+      "defId": "elephant",
+      "owner": 101,
+      "victim": 202,
+      "born": 72,
+      "until": 88
+    },
+    "source": {
+      "marks": 11,
+      "trueHits": 9,
+      "trueDamage": 1005,
+      "executions": 2,
+      "enhanced": 1,
+      "puppets": 1,
+      "interrupted": 0,
+      "missed": 0,
+      "actedAt": 72
+    },
+    "puppetNormalHits": 3,
+    "puppetActualHpDamage": 213,
+    "inputUnchanged": true,
+    "workerAndFastOutcomeEqual": true,
+    "bornFrameActs": false
+  },
+  "browser": {
+    "url": "http://127.0.0.1:5174/#battlefield",
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "observed": [
+      "近战筛选找到勾魂使1／64种，三星2200生命／224攻击。",
+      "独立双弯刀形象、当前帧刑杀和残魂；早期分析没有未来刑傀。",
+      "21.5秒勾魂使2295、己方刑傀213，敌方原巨齿象1012独立列出。",
+      "19.5秒刑傀当前贡献71、剩余2.5秒，不能施法或回能。",
+      "手机长说明可滚动；刑傀详情184px高，关闭44×44。"
+    ],
+    "mobileInspector": {
+      "close": {
+        "bottom": 255,
+        "height": 44,
+        "left": 257,
+        "right": 301,
+        "top": 211,
+        "width": 44,
+        "x": 257,
+        "y": 211
+      },
+      "rect": {
+        "bottom": 391,
+        "height": 184,
+        "left": 16,
+        "right": 306,
+        "top": 207,
+        "width": 290,
+        "x": 16,
+        "y": 207
+      },
+      "text": "×巨齿象·刑傀 己方 · ★★生命 1 / 1750能量 刑傀不回能攻击 92间隔 1.25 秒护甲 5.0法术减伤 20%回充 6.8s刑傀残魂 2.5s · 不能施法或回能点击棋子固定详情 · 点击空处或按 Esc 收起",
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "resourcesUnchanged": true,
+    "logs": [],
+    "screenshots": [
+      "tmp/execution-v073-active-desktop.jpg",
+      "tmp/execution-v073-codex-desktop.jpg",
+      "tmp/execution-v073-codex-mobile.jpg",
+      "tmp/execution-v073-end-desktop.jpg",
+      "tmp/execution-v073-initial-desktop.jpg",
+      "tmp/execution-v073-inspector-mobile.jpg",
+      "tmp/execution-v073-puppet-desktop.jpg"
+    ],
+    "rawText": "tmp/execution-v073-ui.json",
+    "restored": "退出演示、重置图鉴筛选并恢复临时视口，正式对局保留，页面已标记交付。",
+    "existingNotice": "验收开始前已有存档版本不兼容通知；未清空或替换用户存档，合法迁移由必要模块验证。",
+    "playbackNote": "演示结束会循环；早期两次分析读取的是当时播放位置，随后暂停终局获取完整统计并回看19.5秒。",
+    "cosmeticRemaining": "刑傀可能带原主体无效回充说明，实际不能施法。"
+  },
+  "sourceReview": {
+    "record": "docs/research/execution-history.json",
+    "newSource": "S70嵌入原始客户端卡；整篇3DM正文不冒称发行方原文。",
+    "localAdaptationsExplicit": true
+  },
+  "art": {
+    "record": "docs/research/execution-assets.json",
+    "mode": "built-in-imagegen",
+    "sprite": "public/assets/units/reaper.png",
+    "sharedAllStars": true,
+    "originalClientModelRecovered": false
+  },
+  "sampling": {
+    "newFullCampaigns": 0,
+    "bulkBattleSampling": false,
+    "note": "只运行相关模块与必要小局面／同一演示；演示调整的失败尝试不算整体平衡验证。"
+  },
+  "git": {
+    "branch": "dev",
+    "baseCommit": "05137639379475889382f210c3d67f29910e0a71",
+    "newCommitRequested": true,
+    "request": "push代码",
+    "captureStage": "pre-commit-pre-push"
+  },
+  "remainingGoalRequirements": [
+    "统一历史客户端构建未确证。",
+    "分星伤害、三层时点、范围伤害/控制与死亡优先级仍含本地适配。",
+    "单张生成形象供各星使用，未复原原客户端全部星级模型。",
+    "整体难度、多构筑长局和真实设备仍需后续按问题验证。",
+    "其他历史原型能力仍需核对恢复。",
+    "刑傀无效回充文字可后续简化。"
+  ],
+  "sourceFingerprints": [
+    {
+      "path": "README.md",
+      "bytes": 29836,
+      "sha256": "0fee6d5b62b503bc2084dbc859efc3d0efa609d3f14a004659576c02eee6a78c"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 36046,
+      "sha256": "5be642f9d961daa482776d9d83fdbe091e8e4e95153a9095e9b7be0ba5fc7070"
+    },
+    {
+      "path": "docs/analysis/tortoise-v072-validation.json",
+      "bytes": 18429,
+      "sha256": "5ed516eb1675387d6de0f6bd132f320e75296960522cd3f5b1735414ce586553"
+    },
+    {
+      "path": "docs/design/execution.md",
+      "bytes": 4623,
+      "sha256": "b06033075e652993cb751605e04aa3302ba1ae7b861c441e1c91336d65cb232c"
+    },
+    {
+      "path": "docs/design/roadmap.md",
+      "bytes": 29864,
+      "sha256": "5e59f8b3182f802664db4d19b71ca08ebec43ae9c32e4beca5b9517c772a8551"
+    },
+    {
+      "path": "docs/design/single-player-plan.md",
+      "bytes": 37768,
+      "sha256": "623b13b7128faac5d7067cf73bc2baf56729f25e74b15574e63aff3488624354"
+    },
+    {
+      "path": "docs/design/skills.md",
+      "bytes": 11445,
+      "sha256": "a201e1938264712895ceba68e02bd0d7eb6e473cf1f9003afda2ba301f4b5c1a"
+    },
+    {
+      "path": "docs/design/tortoise.md",
+      "bytes": 5139,
+      "sha256": "700abcab76e3d333404f81fcfe0ff14efd7d57e3284786a314642291c7d51968"
+    },
+    {
+      "path": "docs/research/execution-assets.json",
+      "bytes": 2677,
+      "sha256": "6bf9bd2c0345c20e4aab584e82acc7c3f68aafa88c84f6c344f6dc5952c8c9c2"
+    },
+    {
+      "path": "docs/research/execution-history.json",
+      "bytes": 5954,
+      "sha256": "3195344f49e6a54419851c9034f1cefeb943cb2795d8d0eeee451ec6e9e122d2"
+    },
+    {
+      "path": "docs/research/historical-tables.md",
+      "bytes": 13100,
+      "sha256": "c6857645cd76361847689beaf0e5185cd344bc537d4963c508342df589764472"
+    },
+    {
+      "path": "docs/research/images/s70-reaper-execution-client.jpg",
+      "bytes": 38461,
+      "sha256": "b30d9e2274b09f3718635883393aa3e3efe6ed58063be87e69c87e30a8e832bb"
+    },
+    {
+      "path": "docs/research/images/s70-reaper-puppet-client.jpg",
+      "bytes": 40122,
+      "sha256": "7a36b2243dbccb70b054d1b5a32550af171389429528a0b454276250554b4875"
+    },
+    {
+      "path": "docs/research/roster-mapping.json",
+      "bytes": 35563,
+      "sha256": "4f254b45609c59790a1090eec3521da86bbe19ed8fbd100f567db52d0c00e5b3"
+    },
+    {
+      "path": "docs/research/roster-mapping.md",
+      "bytes": 15832,
+      "sha256": "7d88d2326fc0a8cad7f03aef4574d82b9feb3e3475ab22fac67e7ed9416eb1c3"
+    },
+    {
+      "path": "docs/research/sources.json",
+      "bytes": 56881,
+      "sha256": "5891b37ea32ac7b6260280d6dc64793cd9bd9c6d93dd10594ed4174ffb1c2135"
+    },
+    {
+      "path": "docs/research/sources.md",
+      "bytes": 25738,
+      "sha256": "c323e698d93fcc07ecb086afdda37e80854c5f7da25e85cbd20e2cf37f9d16e4"
+    },
+    {
+      "path": "docs/research/tortoise-assets.json",
+      "bytes": 3510,
+      "sha256": "8e1786a9218b61c2487d6087697783ce2378d61fc115e146ce2c2ddfaf643c4a"
+    },
+    {
+      "path": "docs/research/tortoise-history.json",
+      "bytes": 5464,
+      "sha256": "3b558af92104996e03c2a268c2a1d7f36edd1c12cc961441442f8a785554a055"
+    },
+    {
+      "path": "package.json",
+      "bytes": 19185,
+      "sha256": "3cdbb562b67565c55c85d35ab64ee097910a317ce4dc4fd16cc91a667a484fcc"
+    },
+    {
+      "path": "public/assets/units/reaper.png",
+      "bytes": 1625660,
+      "sha256": "4770928c90dcb0ac2281bff70dae8a77d0aa9013a0cab676eaa22fd40532a08a"
+    },
+    {
+      "path": "public/assets/units/turtle-breach-v072.png",
+      "bytes": 2334836,
+      "sha256": "d743e5642ab02ca835a50072b9f56e8ad605b061b93eae2d027be3c2af70c1cf"
+    },
+    {
+      "path": "public/assets/units/turtle-shell-v072.png",
+      "bytes": 2662806,
+      "sha256": "b40cfa1e06b3b4f2a10ee2b51cb0249b5e8bb5dba71306da571566374f5c9f8d"
+    },
+    {
+      "path": "src/data/catalog.ts",
+      "bytes": 1557,
+      "sha256": "7b53d261ddb4af10346af8f7c325fa661656d1141d6806b08d93f9f8ff0aabc3"
+    },
+    {
+      "path": "src/data/execution-demo.ts",
+      "bytes": 481,
+      "sha256": "3aec2c17b6c9a286e3a1e5d3054f5f98a8b7421694ce0a86c1d452ac8b777a11"
+    },
+    {
+      "path": "src/data/skills.ts",
+      "bytes": 77216,
+      "sha256": "ac1d71a4c887fb84f153d1edddd3496cd04604ffad7bc5b88188ef7f26e8946d"
+    },
+    {
+      "path": "src/data/tortoise-demo.ts",
+      "bytes": 928,
+      "sha256": "24c70da6ff3cfd7e9085785daf3b62592e1330d0391d2b7993234f4db9e0bbf9"
+    },
+    {
+      "path": "src/data/unit-stats.ts",
+      "bytes": 9477,
+      "sha256": "16d6e1c7ef4b8e624a801c5762c10f9e49357efe8d73cc355dff6cfc116b15f1"
+    },
+    {
+      "path": "src/data/units.ts",
+      "bytes": 21205,
+      "sha256": "33d65935f2298c1848535c343402ca8e88a00d278e2b5056893e89334b91270c"
+    },
+    {
+      "path": "src/engine/abilities.ts",
+      "bytes": 63448,
+      "sha256": "f0acd8dbeb4c2eee5f68c758828e6408083ada9985ad65e28446bc32ab29ef69"
+    },
+    {
+      "path": "src/engine/ai.ts",
+      "bytes": 53449,
+      "sha256": "4a4035bc03588134c740b98abe6a11a0de26c1dcba314247d32f4ac0a838e603"
+    },
+    {
+      "path": "src/engine/battle-analysis.ts",
+      "bytes": 10895,
+      "sha256": "0bcc89fc513bb90beec6e7bd984745688515ae3343bfe0d28312403020d3e688"
+    },
+    {
+      "path": "src/engine/battle.ts",
+      "bytes": 32612,
+      "sha256": "e56d64f1148e89c8b54664c25f9a684cc56c06da8c90073b5499f452233f84d8"
+    },
+    {
+      "path": "src/engine/equipment.ts",
+      "bytes": 7759,
+      "sha256": "03a1ccdf992b0a3f1314d5ec1dfb26f5a94e37037d51e3ad34b287267b317361"
+    },
+    {
+      "path": "src/engine/execution.ts",
+      "bytes": 6744,
+      "sha256": "b5a0741ee5858a786cea9cfcda270c061d990e279f4d554b3d2dbbcd8fc237c1"
+    },
+    {
+      "path": "src/engine/game.ts",
+      "bytes": 10750,
+      "sha256": "847a92bad16f8c31466377ca576f103af5b3a26b82ab722e7fb2329e9083c05d"
+    },
+    {
+      "path": "src/engine/immortality.ts",
+      "bytes": 1585,
+      "sha256": "3f05ff033cc9c2cd00518e79420e3899c78d8c3fd40aee0b582d7ac98eac7537"
+    },
+    {
+      "path": "src/engine/opening-ai.ts",
+      "bytes": 2925,
+      "sha256": "720f83f5c41a270740ee1a341c6a8254f246f23d9e693839e2bc080915285f90"
+    },
+    {
+      "path": "src/engine/persistence.ts",
+      "bytes": 38645,
+      "sha256": "5d014d0cd2655e43605e91bcf036ed0d18e5f2df674e717179823a379b7f0c2a"
+    },
+    {
+      "path": "src/engine/recruitment.ts",
+      "bytes": 2941,
+      "sha256": "4b3426da1842f9303b255ed4116ff7d4f0d4d4207940af6faa6e2e184441d442"
+    },
+    {
+      "path": "src/engine/rotation.ts",
+      "bytes": 3793,
+      "sha256": "faba5284bddd4f7e184fabcdccd70fc89407a45434df6523395f908840ae6c3d"
+    },
+    {
+      "path": "src/engine/summons.ts",
+      "bytes": 12288,
+      "sha256": "48726cc189253e40d52a2b7d1fea4aea9367ab5521d07af8299bf399aa9c698e"
+    },
+    {
+      "path": "src/engine/synergies.ts",
+      "bytes": 3391,
+      "sha256": "3ada5c77ae7a6adc7ca010cbdabf4c59f9ed9fd4b4b88ac95b5b3ae8e85dd80a"
+    },
+    {
+      "path": "src/engine/taunt.ts",
+      "bytes": 1233,
+      "sha256": "f3c6082177fbe7d5cce7248667ade222b38443d0084cc941c76ae96df24e4a44"
+    },
+    {
+      "path": "src/engine/tortoise.ts",
+      "bytes": 5248,
+      "sha256": "5d8f0d9415dd96f0a5c2bd5a489cfa51be6d669ee4231c6cfbc4324f999ed7f6"
+    },
+    {
+      "path": "src/engine/triggers.ts",
+      "bytes": 6162,
+      "sha256": "9fce465d2d667aa900f961ccb818f9d8582a1ba8430d4185e3989678fa007c8f"
+    },
+    {
+      "path": "src/engine/types.ts",
+      "bytes": 23305,
+      "sha256": "82234f2317935acc188b6414acbe1f4b4c4b23b6454b25027975c9cd172dc660"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 79969,
+      "sha256": "d048d4c838b7833dcbc123b5574559bcdfb379502d404bb066c0d9d7857e4177"
+    },
+    {
+      "path": "src/render/battle-inspection.ts",
+      "bytes": 5116,
+      "sha256": "f5c2513dc67213ec2dd2ace1a66327ff12099f287b634880dd6b59ed83348200"
+    },
+    {
+      "path": "src/render/execution.ts",
+      "bytes": 2576,
+      "sha256": "bf2460aee83e3430ae1a3700181fa3adb83a12655ec44b1ab46d3fcb93609209"
+    },
+    {
+      "path": "src/render/melee.ts",
+      "bytes": 19952,
+      "sha256": "4df199e850faf20dc01dfd129536e1865fb30fd33e0afec0800a38cfad8daa6e"
+    },
+    {
+      "path": "src/render/scene.ts",
+      "bytes": 38662,
+      "sha256": "51427fe27a283554fbcaf503e50ef6edf5eae681786843eae59193e63014ae6a"
+    },
+    {
+      "path": "src/render/skill-effects.ts",
+      "bytes": 44673,
+      "sha256": "daffbde39c747edaf923fef0c2f14c0fbfb69cf056d7cab960e5276e1e5d76f4"
+    },
+    {
+      "path": "src/render/tortoise.ts",
+      "bytes": 2893,
+      "sha256": "5624ab4328d663dc2bfd0b89efbeb7c00e4ed63832b0c1218f8337a14260788c"
+    },
+    {
+      "path": "src/ui/battle-analysis.ts",
+      "bytes": 10503,
+      "sha256": "921f7514ed7016942b5f3d51c4257e20fddb54f4e53cec45e064941b67786c2e"
+    },
+    {
+      "path": "src/ui/bench-tooltip.ts",
+      "bytes": 9170,
+      "sha256": "70963b36a1d52792cc59203a4445d1cc0a349fc98fc5921c7daf184b85181e37"
+    },
+    {
+      "path": "src/ui/unit-codex.ts",
+      "bytes": 8340,
+      "sha256": "42903a393ed2438e6f25de211b11bf7afac0488a31229edff049110916ce2ceb"
+    },
+    {
+      "path": "tests/bulwark.test.ts",
+      "bytes": 16079,
+      "sha256": "5894de4f0dc14ee619b21f40839d9f2f90ac1628c1cdd37bfb1360079b82e05d"
+    },
+    {
+      "path": "tests/execution.test.ts",
+      "bytes": 20206,
+      "sha256": "ad4fef564b8dee32cde005cc003e0fddd3af6cd13b9155626de555f0b93f93fa"
+    },
+    {
+      "path": "tests/fixtures/pre-v072-tortoise-replays.json",
+      "bytes": 20189,
+      "sha256": "e642f8a39f6675c0687d3a886d17f2b09b317825fa2d06df28de8bfc403f6e77"
+    },
+    {
+      "path": "tests/fixtures/pre-v073-execution-replays.json",
+      "bytes": 8624,
+      "sha256": "f6bf30eb025de3d77f39388c14964f2a29b4a6ae520e3c9d787ff53baa37e408"
+    },
+    {
+      "path": "tests/spirit-ward.test.ts",
+      "bytes": 18095,
+      "sha256": "23cf5c5818692649e9d843484ebf973a971db6253dd4003227afa5398ea0456b"
+    },
+    {
+      "path": "tests/tortoise.test.ts",
+      "bytes": 19732,
+      "sha256": "fac2944eb6818546a43b1bb18ffbc666d0ef8e9562278fd7592cda87890e1c2c"
+    }
+  ],
+  "localArtifactFingerprints": [
+    {
+      "path": "tmp/execution-related-tests.json",
+      "bytes": 26239,
+      "sha256": "03c89712694b4374758166e28684fea74c3c262bc83170b52cc5275758256c2b"
+    },
+    {
+      "path": "tmp/execution-scene-test.json",
+      "bytes": 11959,
+      "sha256": "9ba162ad1b372dc196dba1280a1d4bade7db1efa5850e18ed4a67fb3299dbf0c"
+    },
+    {
+      "path": "tmp/execution-old-migration-tests.json",
+      "bytes": 20404,
+      "sha256": "edb7ca0f69751b026d580a2fa698c545e9b015cda0ad7a3cd344db55a335dac6"
+    },
+    {
+      "path": "tmp/execution-v073-ui.json",
+      "bytes": 17320,
+      "sha256": "b6c194340f1cbd15c57f89f689503c42a389adca4f1f3be3d5bbd9b0c4fee7a2"
+    },
+    {
+      "path": "tmp/execution-v073-probe.json",
+      "bytes": 6023,
+      "sha256": "a753270d0df6198612d348a1517767ab310beed533447786e85e5287a6a6880e"
+    },
+    {
+      "path": "tmp/execution-v073-scene.json",
+      "bytes": 358770,
+      "sha256": "e039621f8d0ce4053c85a6074fc6f6f284970ffd5d87c707949af44a59fed29a"
+    },
+    {
+      "path": "tmp/execution-v073-active-desktop.jpg",
+      "bytes": 145264,
+      "sha256": "e56c79f25b1932adfded7efb293029ac8bea6eaae2cb92ecebf2474fe8e2016e"
+    },
+    {
+      "path": "tmp/execution-v073-codex-desktop.jpg",
+      "bytes": 55699,
+      "sha256": "2aeea6b36e4a095df79aceba657d9a12c7ed67f59e5686b67f8e1adfeefb282a"
+    },
+    {
+      "path": "tmp/execution-v073-codex-mobile.jpg",
+      "bytes": 60068,
+      "sha256": "9d1ba677bfd7172c23729b274ecd4b11c81c3e8819e344604163ca29e8230b09"
+    },
+    {
+      "path": "tmp/execution-v073-end-desktop.jpg",
+      "bytes": 144120,
+      "sha256": "c35186db38874a4b827f53e7d8f1ca37c04a09c6702b0a1deaf8b96bea599094"
+    },
+    {
+      "path": "tmp/execution-v073-initial-desktop.jpg",
+      "bytes": 144469,
+      "sha256": "ec989249d7bdd7c6c2281477e2ee927dcde62cb4ba0d43cf831768ec97d8d304"
+    },
+    {
+      "path": "tmp/execution-v073-inspector-mobile.jpg",
+      "bytes": 51089,
+      "sha256": "810a7153d9b065c4d0893762c2093eecb7d884f48d423042ab69c2fd72fe5975"
+    },
+    {
+      "path": "tmp/execution-v073-puppet-desktop.jpg",
+      "bytes": 110180,
+      "sha256": "8df5202cffbbafb8aa977a39ae4f8a0970203f5ee40ac4bfb1fd10af7d9cf125"
+    }
+  ]
+}

@@ -33,7 +33,7 @@ export function expireUndying(ctx: CombatContext) {
     if (!isUndying(fighter) || fighter.immortal!.until > ctx.tick) continue;
     fighter.hp = 0;
     fighter.shield = 0;
-    if (fighter.boneblast || fighter.thornbind) interruptAirSkill(ctx, fighter);
+    if (fighter.boneblast || fighter.thornbind || fighter.reaper) interruptAirSkill(ctx, fighter);
     if (fighter.air) delete fighter.air.cast;
     ctx.effects.push({
       source: fighter.uid,

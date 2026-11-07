@@ -1,7 +1,7 @@
-import { catalogCost } from "../data/catalog";
+import { catalogCost, catalogDefinitionVersion, pinCatalogDefinitions } from "../data/catalog";
 import { isRecruitable, validBans } from "./rotation";
 import { isAiProfileId } from "../data/ai-profiles";
-import { COMBAT_VERSIONS, CURRENT_COMBAT_VERSION } from "./types";
+import { COMBAT_VERSIONS, CURRENT_COMBAT_VERSION,hasExecutionRules } from "./types";
 import { ITEM, COMPONENTS } from "../data/items";
 import {
   LINGJIU_ADDITIONS,
@@ -40,7 +40,7 @@ import type { Game, Piece, RoundReport } from "./types";
 export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
-export const SAVE_SCHEMA = 70;
+export const SAVE_SCHEMA = 72;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -86,6 +86,7 @@ function validPiece(v: unknown): v is Piece {
     integer(v.uid, 1, 1e9) &&
     typeof v.defId === "string" &&
     Object.hasOwn(UNIT, v.defId) &&
+    (v.definitionVersion===undefined||(v.defId==="turtle"&&v.definitionVersion==="spirit-ward")) &&
     integer(v.star, 1, 3) &&
     (v.copies === undefined ||
       (isInsect(v.defId) &&
@@ -201,6 +202,7 @@ export function validGame(value: unknown): value is Game {
     for (const piece of p.pieces) {
       if (
         !validPiece(piece) ||
+        (piece.definitionVersion!==undefined&&piece.definitionVersion!==catalogDefinitionVersion(g as unknown as Game,piece.defId)) ||
         piece.encounterPower !== undefined ||
         uids.has(piece.uid) ||
         piece.uid >= g.nextUid
@@ -221,14 +223,17 @@ export function validGame(value: unknown): value is Game {
       if (id) counts[id]++;
     }
   }
-  if (Object.keys(g.pool).length !== UNITS.length) return false;
-  for (const u of UNITS)
+  const preReaper=!hasExecutionRules(g.combatVersion)&&g.pool.reaper===undefined&&counts.reaper===0;
+  if (Object.keys(g.pool).length !== UNITS.length-(preReaper?1:0)) return false;
+  for (const u of UNITS){
+    if(preReaper&&u.id==="reaper")continue;
     if (
       !integer(g.pool[u.id], 0, COPIES[catalogCost(g, u.id)]) ||
       g.pool[u.id] + counts[u.id] !==
         (isRecruitable(g, u.id) ? COPIES[catalogCost(g, u.id)] : 0)
     )
       return false;
+  }
   const settled = g.phase === "result" || g.phase === "finished";
   if (
     g.history.length !== g.round - (settled ? 0 : 1) ||
@@ -961,9 +966,25 @@ export function decodeSave(raw: string | null): {
     }
     if (v.schema === 69 && v.rules === "singleplayer-0.70" && record(v.game)) {
       if (v.game.catalogVersion === undefined) v.game.catalogVersion = "bulwark";
-      if (v.game.phase === "prepare") v.game.combatVersion = CURRENT_COMBAT_VERSION;
+      if (v.game.phase === "prepare") v.game.combatVersion = "spirit-ward";
       v.schema = 70;
-      v.rules = RULES.version;
+      v.rules = "singleplayer-0.71";
+      migrated = true;
+    }
+    if (v.schema === 70 && v.rules === "singleplayer-0.71" && record(v.game)) {
+      if (v.game.catalogVersion === undefined) v.game.catalogVersion = "spirit-ward";
+      if (v.game.phase === "prepare") v.game.combatVersion = "tortoise";
+      v.schema = 71;
+      v.rules = "singleplayer-0.72";
+      migrated = true;
+    }
+    if (v.schema === 71 && v.rules === "singleplayer-0.72" && record(v.game)) {
+      if(v.game.catalogVersion===undefined)v.game.catalogVersion="tortoise";
+      if(record(v.game.pool)&&v.game.pool.reaper===undefined)
+        v.game.pool.reaper=isRecruitable(v.game as unknown as Game,"reaper")?COPIES[3]:0;
+      if(v.game.phase==="prepare")v.game.combatVersion=CURRENT_COMBAT_VERSION;
+      v.schema=72;
+      v.rules=RULES.version;
       migrated = true;
     }
     if (v.schema !== SAVE_SCHEMA || v.rules !== RULES.version)
@@ -981,6 +1002,7 @@ export function decodeSave(raw: string | null): {
       typeof v.playback.paused !== "boolean"
     )
       return { data: null, status: "damaged" };
+    for(const player of v.game.players)pinCatalogDefinitions(v.game,player.pieces);
     // Validate the untrusted record before reconciling pairs that 0.54 left
     // unmerged. Actual pool copies and every item survive the normal merge path.
     if (reconcileEvolution) {

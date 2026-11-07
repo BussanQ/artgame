@@ -6,6 +6,8 @@ import { BONEBLAST_DEMO } from "./data/boneblast-demo";
 import {THORNBIND_DEMO} from "./data/thornbind-demo";
 import {HIVE_DEMO} from "./data/hive-demo";
 import {BULWARK_DEMO} from "./data/bulwark-demo";
+import {EXECUTION_DEMO} from "./data/execution-demo";
+import {TORTOISE_SHELL_DEMO,TORTOISE_BREACH_DEMO} from "./data/tortoise-demo";
 import {SPIRIT_WARD_DEMO} from "./data/spirit-ward-demo";
 import {GAZE_DEMO} from "./data/gaze-demo";
 import {RIFLE_DEMO} from "./data/rifle-demo";
@@ -20,7 +22,7 @@ import { GOSPEL_DEMO } from "./data/gospel-demo";
 import { restartMarkup } from "./ui/restart";
 import { TAR_DEMO } from "./data/tar-demo";
 import { TAOTIE_DEMO } from "./data/taotie-demo";
-import { catalogVersion } from "./data/catalog";
+import { catalogVersion, catalogDefinitionVersion } from "./data/catalog";
 import { synergyPanelMarkup } from "./ui/synergies";
 import { saveNoticeMarkup } from "./ui/save-notice";
 import { LINGJIU_DEMO } from "./data/lingjiu-demo";
@@ -233,6 +235,7 @@ let pendingJob: {
 } | null = null;
 let playbackTime = restored.data?.playback.time ?? 0;
 let demoBattle: Battle | null = null;
+let demoTitle="兵种演习";
 let battleInspection: { battle: Battle | null; uid: number | null } = {
   battle: null,
   uid: null,
@@ -403,6 +406,9 @@ function render() {
           ["wildfire-demo", "燎原涅槃"],
           ["boneblast-demo", "骨球震爆"],
           ["thornbind-demo", "荆棘汲取"],
+          ["execution-demo", "刑杀勾魂"],
+          ["tortoise-shell-demo", "玄龟守御"],
+          ["tortoise-breach-demo", "玄龟破壳"],
           ["spirit-ward-demo", "灵鹿庇护"],
           ["bulwark-demo", "盾阵护卫"],
           ["hive-demo", "蜂群双环"],
@@ -421,7 +427,7 @@ function render() {
           .join("")}</div></details>`
   }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="restart">重新开始</button></nav><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></header>
  ${computing || computeError ? `<section class="compute-status" role="status" aria-live="polite"><span>${computing ? pendingJob?.label : computeError}</span><div>${!computing ? '<button data-action="retry-compute">重试计算</button>' : ""}<button data-action="cancel-compute">${computing ? "取消计算" : "关闭"}</button></div></section>` : ""}
- <h1 class="toolbar-title">${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : spiritWardDemo ? "灵鹿庇护 · 战术演习" : bulwarkDemo ? "盾阵护卫 · 战术演习" : hiveDemo ? "蜂群双环 · 战术演习" : gazeDemo ? "凝视压制 · 战术演习" : rifleDemo ? "步枪火力 · 战术演习" : thornbindDemo ? "荆棘汲取 · 战术演习" : boneblastDemo ? "骨球震爆 · 战术演习" : wildfireDemo ? "燎原涅槃 · 战术演习" : tornadoDemo ? "龙卷穿阵 · 战术演习" : warcryDemo ? "战吼石化 · 战术演习" : terminatorDemo ? "终结者轰炸 · 战术演习" : bombardmentDemo ? "集团轰炸 · 战术演习" : secretOrbCounterDemo ? "秘法反制 · 战术演习" : secretOrbDemo ? "秘法削能 · 战术演习" : shurikenDemo ? "风魔飞镖 · 战术演习" : wushiDemo ? "武僧无式 · 战术演习" : jungleDemo ? "丛林震荡 · 战术演习": thunderstormDemo ? "雷暴削能 · 战术演习" : gospelDemo ? "福音供能 · 战术演习" : lightningDemo ? "雷神锁链 · 战术演习" : tarDemo ? "焦油爆破 · 战术演习" : taotieDemo ? "饕餮狂暴 · 战术演习" : auroraDemo ? "极光成长 · 战术演习" : coalitionDemo ? "空援协同 · 战术演习" : abnormalDemo ? "异能续战 · 战术演习" : counterplayDemo ? "狙骑反制 · 战术演习" : assassinDemo ? "六刺突袭 · 战术演习" : wildfrontDemo ? "荒原先锋 · 战术演习" : lingjiuDemo ? "海神刺杀 · 战术演习" : beastDemo ? "野兽破阵 · 战术演习" : staffDemo ? "疾风棍阵 · 战术演习" : shieldDemo ? "傀儡卫阵 · 战术演习" : bladeDemo ? "傀儡战刃 · 战术演习" : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : "十对十 · 兵种演习") : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "赤潮战术演习"}</h1>
+ <h1 class="toolbar-title">${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : spiritWardDemo ? "灵鹿庇护 · 战术演习" : bulwarkDemo ? "盾阵护卫 · 战术演习" : hiveDemo ? "蜂群双环 · 战术演习" : gazeDemo ? "凝视压制 · 战术演习" : rifleDemo ? "步枪火力 · 战术演习" : thornbindDemo ? "荆棘汲取 · 战术演习" : boneblastDemo ? "骨球震爆 · 战术演习" : wildfireDemo ? "燎原涅槃 · 战术演习" : tornadoDemo ? "龙卷穿阵 · 战术演习" : warcryDemo ? "战吼石化 · 战术演习" : terminatorDemo ? "终结者轰炸 · 战术演习" : bombardmentDemo ? "集团轰炸 · 战术演习" : secretOrbCounterDemo ? "秘法反制 · 战术演习" : secretOrbDemo ? "秘法削能 · 战术演习" : shurikenDemo ? "风魔飞镖 · 战术演习" : wushiDemo ? "武僧无式 · 战术演习" : jungleDemo ? "丛林震荡 · 战术演习": thunderstormDemo ? "雷暴削能 · 战术演习" : gospelDemo ? "福音供能 · 战术演习" : lightningDemo ? "雷神锁链 · 战术演习" : tarDemo ? "焦油爆破 · 战术演习" : taotieDemo ? "饕餮狂暴 · 战术演习" : auroraDemo ? "极光成长 · 战术演习" : coalitionDemo ? "空援协同 · 战术演习" : abnormalDemo ? "异能续战 · 战术演习" : counterplayDemo ? "狙骑反制 · 战术演习" : assassinDemo ? "六刺突袭 · 战术演习" : wildfrontDemo ? "荒原先锋 · 战术演习" : lingjiuDemo ? "海神刺杀 · 战术演习" : beastDemo ? "野兽破阵 · 战术演习" : staffDemo ? "疾风棍阵 · 战术演习" : shieldDemo ? "傀儡卫阵 · 战术演习" : bladeDemo ? "傀儡战刃 · 战术演习" : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : demoTitle) : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "赤潮战术演习"}</h1>
  ${!demoBattle ? matchSummaryMarkup(game) : ""}
  <main><aside class="left"><section class="panel commander" id="commander"><span class="eyebrow">COMMANDER</span><label class="difficulty-setting">难度<select data-difficulty aria-label="单机难度" title="仅在第 1 回合开战前选择难度" ${disabled(game.round !== 1 || busy || !!demoBattle)}>${Object.entries(
    DIFFICULTIES,
@@ -444,7 +450,7 @@ function render() {
      return `<div class="bench-item" ${x ? `data-bench-info="${x.uid}" tabindex="${busy ? 0 : -1}"` : ""}><button class="bench-slot ${x?.uid === selected ? "selected" : ""}" data-bench="${x?.uid ?? ""}" ${disabled(busy)} aria-label="${x ? UNIT[x.defId].name : "空备战位置"}">${x ? token(x) : `<span>${String(i + 1).padStart(2, "0")}</span>`}</button>${x ? `<button class="bench-info" data-piece-info="${x.uid}" aria-label="查看备战席${UNIT[x.defId].name}详情">详情</button>` : ""}</div>`;
    },
  ).join("")}</div>
- <div class="formation-tools">${deploymentMarkup(p, selected, busy || !!demoBattle, deploymentOpen, game.combatVersion)}<div class="auto-deploy"><button data-action="auto-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>推荐布阵</button><button data-action="compact-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>抱团布阵</button><span class="micro">分散避群伤，抱团保护后排；均可继续手动调整</span></div></div><div class="selection ${chosen ? "has-selection" : ""}">${chosen ? `<span><b>${UNIT[chosen.defId].name}</b> ${stars(chosen.star)} · ${unitDefinition(chosen.defId, game.combatVersion).traits.join(" / ")}</span><div><button data-action="deselect" aria-keyshortcuts="Escape" title="取消选择（Esc）">取消选择</button><button data-action="unit-info">查看详情</button><button data-action="recall" ${disabled(busy || chosen.position === null)}>撤回备战席</button><button data-action="sell" ${disabled(busy)}>出售 +${salePrice(chosen, catalogVersion(game))} 金</button></div>` : "<span>招募 → 布阵 → 自动交战 → 升级阵容</span>"}</div><p class="mobile-feedback" role="status">${sceneBattle ? "点击战场棋子查看状态与羁绊效果。" : reportMessage}</p></section>
+ <div class="formation-tools">${deploymentMarkup(p, selected, busy || !!demoBattle, deploymentOpen, game.combatVersion)}<div class="auto-deploy"><button data-action="auto-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>推荐布阵</button><button data-action="compact-deploy" ${disabled(busy || !!demoBattle || !p.pieces.length)}>抱团布阵</button><span class="micro">分散避群伤，抱团保护后排；均可继续手动调整</span></div></div><div class="selection ${chosen ? "has-selection" : ""}">${chosen ? `<span><b>${UNIT[chosen.defId].name}</b> ${stars(chosen.star)} · ${unitDefinition(chosen.defId, chosen.definitionVersion??game.combatVersion).traits.join(" / ")}</span><div><button data-action="deselect" aria-keyshortcuts="Escape" title="取消选择（Esc）">取消选择</button><button data-action="unit-info">查看详情</button><button data-action="recall" ${disabled(busy || chosen.position === null)}>撤回备战席</button><button data-action="sell" ${disabled(busy)}>出售 +${salePrice(chosen, catalogVersion(game))} 金</button></div>` : "<span>招募 → 布阵 → 自动交战 → 升级阵容</span>"}</div><p class="mobile-feedback" role="status">${sceneBattle ? "点击战场棋子查看状态与羁绊效果。" : reportMessage}</p></section>
  ${recruitmentMarkup(game, p, busy)}<button class="mobile-shop-return" data-jump="battlefield">返回战场布阵 <span>备战 ${bench.length} / 8 →</span></button></div>
  <aside class="right command-deck" id="intel"><section class="panel leaderboard"><div class="section-label"><h2>战场情报</h2><span>${game.players.filter((x) => x.hp > 0).length} / 8 存活</span></div><div class="player-grid">${ranked.map((x, i) => `<div class="player ${x.id === 0 ? "you" : ""} ${x.hp === 0 ? "eliminated" : ""}"><span class="rank">${String(i + 1).padStart(2, "0")}</span><div class="player-identity"><b title="${x.name}">${x.name}</b>${x.id !== 0 ? `<small class="player-doctrine">${profileFor(x).name}</small>` : ""}<span class="player-bar"><i style="width:${x.hp}%"></i></span></div><strong>${x.hp}</strong>${x.id !== 0 ? `<button class="scout-button" data-scout="${x.id}" aria-label="侦察 ${x.name}" title="侦察 ${x.name} · ${profileFor(x).name}">侦察</button>` : ""}</div>`).join("")}</div></section><section class="panel report"><div class="section-label"><h2>${fighting || demoBattle ? "战斗贡献" : done ? `最终排名 #${ranked.findIndex((x) => x.id === 0) + 1}` : "作战简报"}</h2><button class="report-analysis" data-action="battle-analysis" aria-label="${reportAnalysisAria}" ${disabled(computing || !canAnalyzeBattle)}>${reportAnalysisLabel}</button></div><div class="damage-stats">${
    fighting || demoBattle
@@ -468,7 +474,7 @@ function render() {
  ${unitInfo ? pieceInfoMarkup(unitInfo, unitInfoVersion ?? game.combatVersion, catalogVersion(game), unitInfoFinal) : ""}
  ${scoutId !== null ? scoutingMarkup(game, scoutId) : ""}
  ${historyOpen ? historyMarkup(game) : ""}
- ${help || codex ? `<div class="modal-backdrop"><section class="modal manual-modal" role="dialog" aria-modal="true" aria-label="${help ? "作战指南" : "棋子图鉴"}"><header class="manual-header"><div><span class="eyebrow">FIELD MANUAL</span><h2>${help ? "作战指南" : "棋子图鉴"}</h2></div><button class="close" data-action="close" aria-label="关闭">×</button></header><div class="manual-body">${help ? `<ol><li>新开比赛系统随机禁用3个种族系列，玩家与AI共用剩余卡池，整场不变。双种族命中任一禁用系列即不可招募。展开“本局禁用”可查看棋子与羁绊影响；图鉴可筛选本局可招募棋子。旧局继续原卡池。</li><li>在招募中心购买棋子。通常 3 个同星同名棋子自动合成，最高三星。持有 2 种异虫时，一星异虫只需 2 枚；持有 4 种时，二星也只需 2 枚。异虫种类包含备战席。异虫售价按常规星级价值计算、上限 5 金，卡池只返还实际使用份数。</li><li>点击备战席中的棋子，再点击棋盘下半区部署。上场数量不能超过等级。</li><li>点击场上棋子后可移动、交换、撤回或出售。重复棋子不增加羁绊计数。</li><li>点击开始战斗，观察走位与伤害。战斗期间不能更改阵容。</li><li>每轮基础奖励从5金开始，每5回合增加2金，最高15金；利息、对战胜利和连胜或连败奖励另算，玩家与AI使用相同规则。后期可用更多金币刷新、追星或购买经验提升人口。</li><li>存活到最后获胜；第 30 回合按剩余生命排名。重新开始会清空本局。</li></ol><p>本版包含 ${UNITS.length} 种棋子、22 类羁绊与多档效果和共享卡池。棋子各有独立技能：护盾、治疗、眩晕、破甲、贯穿和突袭。飞行属性独立于空军羁绊，巨神炮优先对空。展开阵容连携可查看该局的门槛、累计总量和受益对象，图鉴也列出全部效果。方舟蓄力和电蛟雷场有范围预告，控制可中断施法。蓝色条为护盾，紫色数字为法术伤害。不朽棋子能在阵亡后以残魂继续战斗，剩余时间用青色倒计时显示，无法治疗或获得护盾；残魂不增加战后扣血。灵能受击反伤的具体数值与受益范围见连携详情，残魂和召唤物同样生效；反伤不连锁、不回能。童子可为邻近主力充能，战斗分析单列反伤与供能。猛禽和空军连携关注飞行状态，血鹰落地后效果可能改变。${hasCoalitionRules(game.combatVersion) ? "陆行者只上阵一种时普攻为真实伤害，多种同时上阵会显示冲突；同名重复仍算一种。" : "陆行者的普攻可转为真实伤害，具体效果见连携详情。"}声波持续伤害、罗汉蓄力和蛤蟆吞噬可在阵容演示中观察。${hasTaotieRules(game.combatVersion) ? "飞天蛤蟆的饕餮具有星级冷却，成功吞噬后回血并获得8秒攻击狂暴；新比赛为五费，已有比赛保留原价格和卡池份数。" : ""}${hasQiRules(game.combatVersion) ? "罗汉的气波掌蓄力1秒、冷却10秒，技能伤害与陆行者普攻真伤分别结算；战斗分析会标出动作中断或目标丢失。" : ""}${hasAuroraRules(game.combatVersion) ? "空蟹的极光电影有13秒冷却，每次施放后攻击增加25%，最多三层；极光成长演示可查看叠层、攻击与剩余冷却。" : ""}${hasLightningRules(game.combatVersion) ? "雷震子的普通攻击会弹射物理雷电，攻击、攻速、吸血和狙击穿透都可增益；不需要能量或技能强度。" : ""}${hasTarRules(game.combatVersion) ? "摩托骑兵会分批投放焦油弹，焦油弹黏附目标并有3秒倒计时；分散站位和及时打断投弹可以减少溅射伤害。" : ""}操作后自动保存本局，刷新可恢复战斗与准备进度。本局战报可查看已结束回合与回放，并打开双方战斗分析。战场上的“战斗分析”会暂停播放，只统计已播放片段，可比较伤害、承伤、治疗和护盾贡献。野怪回合后选择装备；选中棋子后可在装备工坊穿戴、卸下或合成。每枚棋子最多 3 件装备，升星溢出装备和出售装备会归还库存。首轮开战前可选择休闲、标准或挑战难度；新开局根据剩余卡池，从${AI_PROFILES.length - 1}种构筑风格中选择仍可构筑的偏好分配给7名AI，可能重复；同一对手在本局内保持风格。战场情报会显示风格，侦察按钮可查看对手站位与装备。推荐布阵可自动挑选阵容并安排前后排。</p>` : codexMarkup(game)}</div></section></div>` : ""}`;
+ ${help || codex ? `<div class="modal-backdrop"><section class="modal manual-modal" role="dialog" aria-modal="true" aria-label="${help ? "作战指南" : "棋子图鉴"}"><header class="manual-header"><div><span class="eyebrow">FIELD MANUAL</span><h2>${help ? "作战指南" : "棋子图鉴"}</h2></div><button class="close" data-action="close" aria-label="关闭">×</button></header><div class="manual-body">${help ? `<ol><li>新开比赛系统随机禁用3个种族系列，玩家与AI共用剩余卡池，整场不变。双种族命中任一禁用系列即不可招募。展开“本局禁用”可查看棋子与羁绊影响；图鉴可筛选本局可招募棋子。旧局保留原费用与禁用结果；版本新增兵种按相同禁用规则加入。</li><li>在招募中心购买棋子。通常 3 个同星同名棋子自动合成，最高三星。持有 2 种异虫时，一星异虫只需 2 枚；持有 4 种时，二星也只需 2 枚。异虫种类包含备战席。异虫售价按常规星级价值计算、上限 5 金，卡池只返还实际使用份数。</li><li>点击备战席中的棋子，再点击棋盘下半区部署。上场数量不能超过等级。</li><li>点击场上棋子后可移动、交换、撤回或出售。重复棋子不增加羁绊计数。</li><li>点击开始战斗，观察走位与伤害。战斗期间不能更改阵容。</li><li>每轮基础奖励从5金开始，每5回合增加2金，最高15金；利息、对战胜利和连胜或连败奖励另算，玩家与AI使用相同规则。后期可用更多金币刷新、追星或购买经验提升人口。</li><li>存活到最后获胜；第 30 回合按剩余生命排名。重新开始会清空本局。</li></ol><p>本版包含 ${UNITS.length} 种棋子、22 类羁绊与多档效果和共享卡池。棋子各有独立技能：护盾、治疗、眩晕、破甲、贯穿和突袭。飞行属性独立于空军羁绊，巨神炮优先对空。展开阵容连携可查看该局的门槛、累计总量和受益对象，图鉴也列出全部效果。方舟蓄力和电蛟雷场有范围预告，控制可中断施法。蓝色条为护盾，紫色数字为法术伤害。不朽棋子能在阵亡后以残魂继续战斗，剩余时间用青色倒计时显示，无法治疗或获得护盾；残魂不增加战后扣血。灵能受击反伤的具体数值与受益范围见连携详情，残魂和召唤物同样生效；反伤不连锁、不回能。童子可为邻近主力充能，战斗分析单列反伤与供能。猛禽和空军连携关注飞行状态，血鹰落地后效果可能改变。${hasCoalitionRules(game.combatVersion) ? "陆行者只上阵一种时普攻为真实伤害，多种同时上阵会显示冲突；同名重复仍算一种。" : "陆行者的普攻可转为真实伤害，具体效果见连携详情。"}声波持续伤害、罗汉蓄力和蛤蟆吞噬可在阵容演示中观察。${hasTaotieRules(game.combatVersion) ? "飞天蛤蟆的饕餮具有星级冷却，成功吞噬后回血并获得8秒攻击狂暴；新比赛为五费，已有比赛保留原价格和卡池份数。" : ""}${hasQiRules(game.combatVersion) ? "罗汉的气波掌蓄力1秒、冷却10秒，技能伤害与陆行者普攻真伤分别结算；战斗分析会标出动作中断或目标丢失。" : ""}${hasAuroraRules(game.combatVersion) ? "空蟹的极光电影有13秒冷却，每次施放后攻击增加25%，最多三层；极光成长演示可查看叠层、攻击与剩余冷却。" : ""}${hasLightningRules(game.combatVersion) ? "雷震子的普通攻击会弹射物理雷电，攻击、攻速、吸血和狙击穿透都可增益；不需要能量或技能强度。" : ""}${hasTarRules(game.combatVersion) ? "摩托骑兵会分批投放焦油弹，焦油弹黏附目标并有3秒倒计时；分散站位和及时打断投弹可以减少溅射伤害。" : ""}操作后自动保存本局，刷新可恢复战斗与准备进度。本局战报可查看已结束回合与回放，并打开双方战斗分析。战场上的“战斗分析”会暂停播放，只统计已播放片段，可比较伤害、承伤、治疗和护盾贡献。野怪回合后选择装备；选中棋子后可在装备工坊穿戴、卸下或合成。每枚棋子最多 3 件装备，升星溢出装备和出售装备会归还库存。首轮开战前可选择休闲、标准或挑战难度；新开局根据剩余卡池，从${AI_PROFILES.length - 1}种构筑风格中选择仍可构筑的偏好分配给7名AI，可能重复；同一对手在本局内保持风格。战场情报会显示风格，侦察按钮可查看对手站位与装备。推荐布阵可自动挑选阵容并安排前后排。</p>` : codexMarkup(game)}</div></section></div>` : ""}`;
   app
     .querySelectorAll<HTMLDetailsElement>("details[data-disclosure]")
     .forEach((detail) => {
@@ -917,7 +923,7 @@ app.addEventListener("click", (e) => {
                                                         ? "异虫蜂群演习"
                                                         : summonDemo
                                                           ? "召唤卫阵演习"
-                                                          : "十对十兵种演习"
+                                                          : demoTitle
           : `第 ${game.round} 回合 · ${result!.opponent.name}`,
       );
     else if (game.phase === "prepare" && !computing && !saveConflict) {
@@ -999,6 +1005,7 @@ app.addEventListener("click", (e) => {
     unitInfo = {
       uid: 0,
       defId: target.dataset.unitInfo,
+      definitionVersion:catalogDefinitionVersion(game,target.dataset.unitInfo),
       star: 1,
       position: null,
     };
@@ -1161,12 +1168,15 @@ app.addEventListener("click", (e) => {
     action === "wildfire-demo" ||
     action === "boneblast-demo" ||
     action === "thornbind-demo" ||
+    action === "execution-demo" ||
+    action === "tortoise-shell-demo" || action === "tortoise-breach-demo" ||
     action === "spirit-ward-demo" ||
     action === "bulwark-demo" ||
     action === "hive-demo" ||
     action === "gaze-demo" ||
     action === "rifle-demo"
   ) {
+    demoTitle=action==="execution-demo"?"刑杀勾魂":action==="tortoise-shell-demo"?"玄龟守御":action==="tortoise-breach-demo"?"玄龟破壳":"兵种演习";
     if (mobileViewport.matches) showMobileView("battlefield");
     resultPresentation = null;
     replayRound = null;
@@ -1218,7 +1228,7 @@ app.addEventListener("click", (e) => {
       beastDemo = action === "beast-demo";
       staffDemo = action === "staff-demo";
       swordDemo = action === "sword-demo";
-      const { left, right } = spiritWardDemo ? SPIRIT_WARD_DEMO : bulwarkDemo ? BULWARK_DEMO : hiveDemo ? HIVE_DEMO : gazeDemo ? GAZE_DEMO : rifleDemo ? RIFLE_DEMO : thornbindDemo ? THORNBIND_DEMO : boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
+      const { left, right } = action === "execution-demo" ? EXECUTION_DEMO : action === "tortoise-shell-demo" ? TORTOISE_SHELL_DEMO : action === "tortoise-breach-demo" ? TORTOISE_BREACH_DEMO : spiritWardDemo ? SPIRIT_WARD_DEMO : bulwarkDemo ? BULWARK_DEMO : hiveDemo ? HIVE_DEMO : gazeDemo ? GAZE_DEMO : rifleDemo ? RIFLE_DEMO : thornbindDemo ? THORNBIND_DEMO : boneblastDemo ? BONEBLAST_DEMO : wildfireDemo ? WILDFIRE_DEMO : tornadoDemo ? TORNADO_DEMO : warcryDemo ? WARCRY_DEMO : terminatorDemo ? TERMINATOR_DEMO : bombardmentDemo ? BOMBARDMENT_DEMO : secretOrbCounterDemo ? SECRET_ORB_COUNTER_DEMO : secretOrbDemo ? SECRET_ORB_DEMO : shurikenDemo ? SHURIKEN_DEMO : wushiDemo ? WUSHI_DEMO : jungleDemo ? JUNGLE_DEMO : thunderstormDemo ? THUNDERSTORM_DEMO : gospelDemo
         ? GOSPEL_DEMO
         : lightningDemo
           ? LIGHTNING_DEMO

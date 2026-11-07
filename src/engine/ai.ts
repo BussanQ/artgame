@@ -1,6 +1,6 @@
 import { catalogCost, catalogUnit } from "../data/catalog";
-import { unitArmor,unitAttackInterval } from "../data/unit-stats";
-import { CURRENT_COMBAT_VERSION, hasGospelRules } from "./types";
+import { unitArmor,unitAttackInterval,unitDefinition } from "../data/unit-stats";
+import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules } from "./types";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { army, simulateOutcome } from "./battle";
 import { usesEnergy } from "./triggers";
@@ -20,6 +20,8 @@ import {
   SKILLS,
   BULWARK,
   SPIRIT_WARD,
+  TORTOISE,
+  EXECUTION,
   AURORA,
   ARHAT_QI,
   MOTOR_TAR,
@@ -76,7 +78,7 @@ export function abilityCredit(
   openingMana = 0,
 ): number {
   if(p.defId==="infantry")return 0;
-  const u = UNIT[p.defId],
+  const u = unitDefinition(p.defId,p.definitionVersion),
     skill = SKILLS[p.defId];
   // Team healing, charging and retinues are already credited separately below.
   if (
@@ -107,7 +109,7 @@ export function abilityCredit(
         (_, i) => THUNDER_CHAIN.retention ** (i + 1),
       ).reduce((a, b) => a + b, 0) * 0.7,
     );
-  const passive = ["cavalry", "turtle", "tiger", "blastbug"].includes(p.defId);
+  const passive = ["cavalry", "turtle", "tiger", "blastbug"].includes(p.defId)&&!(p.defId==="turtle"&&hasTortoiseRules(p.definitionVersion??CURRENT_COMBAT_VERSION));
   const initial = Math.min(
     100,
     (p.defId === "bomber" ? 50 : (u.initialMana ?? 0)) + gear.mana + openingMana,
@@ -223,8 +225,12 @@ export function abilityCredit(
           0.7) /
         (u.attack * 2 ** (p.star - 1));
       break;
+    case "reaper":
+      return Math.min(0.38,0.12+(EXECUTION.damage[p.star-1]*power/(u.attack*2**(p.star-1)))*0.02+(p.star>=2?0.06:0))*readiness; // Discounted marks and one execution; no guaranteed kill or puppet.
     case "turtle":
-      return 0.12; // Decaying armor ignores mana and skill power.
+      return hasTortoiseRules(p.definitionVersion??CURRENT_COMBAT_VERSION)
+        ? Math.min(0.38,0.18+(TORTOISE.multiplier[p.star-1]-1)*0.06)*readiness
+        : 0.12; // Old catalog keeps its decaying passive armor.
     case "bloodhawk":
       return 0.22 * readiness; // Heal/form cannot be amplified by skill power.
     case "skytoad":
@@ -315,7 +321,7 @@ export function wardSupportCredit(pieces:Piece[]){
   }));
 }
 function strengthWithOpening(p: Piece, openingMana: number): number {
-  const u = UNIT[p.defId],
+  const u = unitDefinition(p.defId,p.definitionVersion),
     scale = 2 ** (p.star - 1),
     gear = equipmentStats(p.items);
   const summon =
@@ -357,7 +363,7 @@ export function frontlineFactor(
     back = 0;
   let hasRanged = false;
   for (const p of pieces) {
-    const u = UNIT[p.defId],
+    const u = unitDefinition(p.defId,p.definitionVersion),
       gear = equipmentStats(p.items);
     const durability =
       (u.hp * 2 ** (p.star - 1) + gear.hp) *
@@ -365,7 +371,7 @@ export function frontlineFactor(
     const assassin = u.traits.includes("刺杀");
     // Bomber is deliberately placed on the front row despite its range of two.
     const frontRole =
-      u.range === 1 || ["bomber", "flametrooper"].includes(u.id);
+      u.range === 1 || ["reaper","bomber", "flametrooper"].includes(u.id);
     hasRanged ||= !frontRole;
     if (assassin && assassinsJump) continue;
     if (!frontRole) back += durability;
@@ -380,7 +386,7 @@ export function frontlineFactor(
 export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   const active = synergies(pieces.map((p, i) => ({ ...p, position: 32 + i })));
   const base = pieces.reduce((n, p) => n + strengthWithOpening(p, active.reduce(
-    (mana, synergy) => mana + (UNIT[p.defId].traits.includes(synergy.trait)
+    (mana, synergy) => mana + (unitDefinition(p.defId,p.definitionVersion).traits.includes(synergy.trait)
       ? synergy.bonus.mana ?? 0 : 0), 0,
   )), 0);
   const bonus = active.reduce((n, s) => n + s.tier * 0.075, 0);
@@ -391,7 +397,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
       return n;
     const skill = SKILLS[p.defId],
       gear = equipmentStats(p.items);
-    const hp = UNIT[p.defId].hp * 2 ** (p.star - 1) + gear.hp;
+    const hp = unitDefinition(p.defId,p.definitionVersion).hp * 2 ** (p.star - 1) + gear.hp;
     if (p.defId === "medic")
       return (
         n +
@@ -458,10 +464,10 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
       0.4
     : 0;
   const flyingShare =
-    pieces.filter((p) => UNIT[p.defId].flying).length /
+    pieces.filter((p) => unitDefinition(p.defId,p.definitionVersion).flying).length /
     Math.max(1, pieces.length);
   const physicalShare = pieces.length
-    ? pieces.filter((p) => !UNIT[p.defId].traits.includes("陆行者")).length /
+    ? pieces.filter((p) => !unitDefinition(p.defId,p.definitionVersion).traits.includes("陆行者")).length /
       pieces.length
     : 0;
   const teamBonus = active.reduce(
@@ -498,7 +504,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   const preferred = pieces.reduce(
     (n, p) =>
       n +
-      UNIT[p.defId].traits.filter((t) => profile.traits.includes(t)).length * 8,
+      unitDefinition(p.defId,p.definitionVersion).traits.filter((t) => profile.traits.includes(t)).length * 8,
     0,
   );
   const coordinator = pieces
@@ -518,9 +524,9 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
     : 0;
   const armorRegen = active.find((s) => s.trait === "装甲")?.bonus.regen ?? 0;
   const sustain = pieces.reduce((value, p) => {
-    if (!UNIT[p.defId].traits.includes("装甲")) return value;
+    if (!unitDefinition(p.defId,p.definitionVersion).traits.includes("装甲")) return value;
     const hp =
-      UNIT[p.defId].hp * 2 ** (p.star - 1) + equipmentStats(p.items).hp;
+      unitDefinition(p.defId,p.definitionVersion).hp * 2 ** (p.star - 1) + equipmentStats(p.items).hp;
     // Credit at most six damaged seconds, capped at 20% of body value.
     return (
       value + pieceStrength(p) * Math.min(0.2, ((armorRegen * 24) / hp) * 0.5)
@@ -528,7 +534,7 @@ export function lineupScore(pieces: Piece[], profile: AiProfile): number {
   }, 0);
   const mixed = frontlineFactor(
     pieces,
-    pieces.some((p) => UNIT[p.defId].traits.includes("刺杀")),
+    pieces.some((p) => unitDefinition(p.defId,p.definitionVersion).traits.includes("刺杀")),
   );
   return (
     (base * (1 + bonus + teamBonus) +
@@ -613,7 +619,7 @@ function candidateLineups(p: Player, difficulty: Difficulty): Piece[][] {
     if (profile.traits.length && !profile.traits.includes(synergy.trait))
       continue;
     const members = strongest.filter((piece) =>
-      UNIT[piece.defId].traits.includes(synergy.trait),
+      unitDefinition(piece.defId,piece.definitionVersion).traits.includes(synergy.trait),
     );
     for (const count of synergy.tiers)
       if (count <= size && members.length >= count)
@@ -682,7 +688,7 @@ function placeLineup(
   for (const piece of best.sort(
     (a, b) => pieceStrength(b) - pieceStrength(a) || a.uid - b.uid,
   )) {
-    const u = UNIT[piece.defId];
+    const u = unitDefinition(piece.defId,piece.definitionVersion);
     const positions = ["bomber", "flametrooper"].includes(u.id)
       ? [35, 36, 34, 37, 43, 44, 42, 45, 33, 38]
       : compact
@@ -930,7 +936,7 @@ function puppetCollection(
   if (profileFor(p).id !== "puppets") return null;
   const kinds = new Set(
     p.pieces
-      .filter((piece) => UNIT[piece.defId].traits.includes("傀儡"))
+      .filter((piece) => unitDefinition(piece.defId,piece.definitionVersion).traits.includes("傀儡"))
       .map((piece) => piece.defId),
   );
   const available = availableUnits(context).filter((unit) =>
@@ -975,7 +981,7 @@ export function reservePriority(
     (trait) =>
       profile.traits.includes(trait) &&
       [...distinct].some(
-        (id) => id !== piece.defId && UNIT[id].traits.includes(trait),
+        (id) => id !== piece.defId && catalogUnit(context,id).traits.includes(trait),
       ),
   ).length;
   const collection = puppetCollection(p, context, version);
@@ -1157,7 +1163,7 @@ export function prepareBot(g: Game, p: Player, actions: BotActions) {
     const link = existing.has(id)
       ? 0
       : u.traits.filter((t) =>
-          p.pieces.some((x) => UNIT[x.defId].traits.includes(t)),
+          p.pieces.some((x) => unitDefinition(x.defId,x.definitionVersion).traits.includes(t)),
         ).length;
     const collection = puppetCollection(p, g, g.combatVersion);
     const newCore =

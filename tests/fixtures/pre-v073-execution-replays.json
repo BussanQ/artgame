@@ -1,0 +1,352 @@
+{
+  "capturedBeforeRules": "singleplayer-0.73",
+  "ids": [
+    "lingjiu",
+    "elephant",
+    "venombeast",
+    "staffthrall",
+    "shieldthrall",
+    "bladethrall",
+    "swordthrall",
+    "axethrall",
+    "infantry",
+    "guard",
+    "pangolin",
+    "panda",
+    "sniper",
+    "lion",
+    "chariot",
+    "monk",
+    "wolf",
+    "cannon",
+    "master",
+    "titan",
+    "cavalry",
+    "dragonfly",
+    "shadowblade",
+    "turtle",
+    "tiger",
+    "bull",
+    "fish",
+    "deer",
+    "adept",
+    "shark",
+    "eyebug",
+    "blastbug",
+    "spider",
+    "wasp",
+    "repair",
+    "bomber",
+    "ghostjet",
+    "ark",
+    "skycrab",
+    "eel",
+    "vine",
+    "bonedragon",
+    "treant",
+    "acolyte",
+    "stormcaller",
+    "thunderlord",
+    "bat",
+    "bloodhawk",
+    "skytoad",
+    "vajra",
+    "arhat",
+    "winddragon",
+    "phoenix",
+    "whale",
+    "medic",
+    "flametrooper",
+    "grenadier",
+    "motorcycle",
+    "irondog",
+    "specialist",
+    "birdrider",
+    "ironape",
+    "ironrooster"
+  ],
+  "definitions": [
+    {
+      "version": "legacy",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "tactics",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "balanced",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "signature",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "summons",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "legions",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "brood",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "airsea",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "fleet",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "metamorph",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "infantry",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "armored",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "puppets",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "wildfront",
+      "sha256": "62d0df025f823dd7e73bfe5a713b8797dc0d9e3a7a5133d855c0bcd72935c6d9"
+    },
+    {
+      "version": "ambush",
+      "sha256": "e806cc33c202f59f1f665d094b55545d79e0fee87e63b0fefe7ffd70e168ef4f"
+    },
+    {
+      "version": "formations",
+      "sha256": "e806cc33c202f59f1f665d094b55545d79e0fee87e63b0fefe7ffd70e168ef4f"
+    },
+    {
+      "version": "counterplay",
+      "sha256": "e806cc33c202f59f1f665d094b55545d79e0fee87e63b0fefe7ffd70e168ef4f"
+    },
+    {
+      "version": "lineages",
+      "sha256": "19656591fc64466e6597d3cbd7594ebc3a5d5c7966b95a33bfda764b996b8b75"
+    },
+    {
+      "version": "coalitions",
+      "sha256": "19656591fc64466e6597d3cbd7594ebc3a5d5c7966b95a33bfda764b996b8b75"
+    },
+    {
+      "version": "aurora",
+      "sha256": "436cd7726bb8879c042b384d0e2c700d6d4a9c6983fa3d2e55974d9c2136e062"
+    },
+    {
+      "version": "qi",
+      "sha256": "698c382e5daa2ba13473eba84ef722b5986a51b21b50f9a9256bd3275fe15c64"
+    },
+    {
+      "version": "taotie",
+      "sha256": "61585d6e82937d217a65a868120e0920f99d95ca2124d8cdd304a18b7caee81d"
+    },
+    {
+      "version": "tar",
+      "sha256": "a176d3183e22a49cfd424d41ca484d7327222b3e6f95326c5831c515d2a403dd"
+    },
+    {
+      "version": "lightning",
+      "sha256": "301833d7c1f2e473a5f9a0547a6d1b0f9e184703e69d5d5115fcd0f0f3679c51"
+    },
+    {
+      "version": "gospel",
+      "sha256": "e55786d654d70be71ee45ab281f570dd4ef7dc7a87a6c2469999007c49231927"
+    },
+    {
+      "version": "thunderstorm",
+      "sha256": "4aaf24a8448c094fb77e03415f4591b1c8630f2e5d7070df6fb56ac2cfeb8be2"
+    },
+    {
+      "version": "jungle",
+      "sha256": "78ef0ea0bf03386718b385cc4bc1c89197613fd70de045ac24e621d47d545464"
+    },
+    {
+      "version": "continuity",
+      "sha256": "78ef0ea0bf03386718b385cc4bc1c89197613fd70de045ac24e621d47d545464"
+    },
+    {
+      "version": "wushi",
+      "sha256": "3510eee29a2b427c83e96aef12a4ddca2e9b54bab6e18cce9cc4ab9b72b20660"
+    },
+    {
+      "version": "wushi-control",
+      "sha256": "3510eee29a2b427c83e96aef12a4ddca2e9b54bab6e18cce9cc4ab9b72b20660"
+    },
+    {
+      "version": "shuriken",
+      "sha256": "67ac97fb682efa7b83e6cfaf85977b3ebf254d70efb12a78f02aa68f577968c8"
+    },
+    {
+      "version": "secret-orb",
+      "sha256": "f099986eed0a64d141fe6790330c9127cbb6a4ff2370ebcfc459476fb009c307"
+    },
+    {
+      "version": "bombardment",
+      "sha256": "2ba29bfba34ed1274815f85c12505577c4d765ea1b3a320fa74e68f643f6d1ab"
+    },
+    {
+      "version": "terminator",
+      "sha256": "aa6797aa8c2a9f3b4be6299a8a4169598b449fd46a7330d0651c2c49be6496c8"
+    },
+    {
+      "version": "warcry",
+      "sha256": "48b1a99611f6d2d4602afa3319817c19ddaba1a4828fde7265a9d6f43673cb08"
+    },
+    {
+      "version": "tornado",
+      "sha256": "9c841bfae4a29ca84accf91f1c7be67a14972620bb09ff733f957c12419cc46a"
+    },
+    {
+      "version": "wildfire",
+      "sha256": "c3a45bb1122695447bbfaca788b1528491e76f7c9bcf718a367da5faf4e7d7ae"
+    },
+    {
+      "version": "boneblast",
+      "sha256": "4012c2a014d25f068005d96e33ae1aeb3cfb0bf66b833034f21b5e87a982aa92"
+    },
+    {
+      "version": "thornbind",
+      "sha256": "ff26c922deaba232bcd4cd1f4e18ddd44d4eaa82a861985a7b202c61af7aecd5"
+    },
+    {
+      "version": "rifle",
+      "sha256": "71e8f80545aaa44265f8773dee2109c9c2c150b0c802e0934fbd4e3a0306dc7e"
+    },
+    {
+      "version": "gaze",
+      "sha256": "825a094e5f53d47b1db899e538f93a996c55f13688c1b71a4193d440dad6cd77"
+    },
+    {
+      "version": "hive",
+      "sha256": "93f9e65a02389a170165f101651cacf2feee5ee8499096141ba0951df025cc52"
+    },
+    {
+      "version": "bulwark",
+      "sha256": "0094a7929edbdc50d1dc8445e42f480cbe9260d32e8ecdde3d55e07790d0944a"
+    },
+    {
+      "version": "spirit-ward",
+      "sha256": "a2e6918a975bcf68e8cc99cf3ecfdf222fe3fd027a9e19d4f7c39f6936c44aa3"
+    },
+    {
+      "version": "tortoise",
+      "sha256": "682db2bebac0234dbbfa3aa5d7eb0ba75472949efb2ba60183946e7ecea4958e"
+    }
+  ],
+  "replays": [
+    {
+      "version": "legacy",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "turtle",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "infantry",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "blade"
+          ]
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "stormcaller",
+          "star": 2,
+          "position": 43,
+          "items": [
+            "core"
+          ]
+        }
+      ],
+      "frames": 118,
+      "winner": 1,
+      "sha256": "1d60d13ee5bc2c7c4f7bf1b6ffd7d67d330a2b425bb7d41da678654ab61ebd3b"
+    },
+    {
+      "version": "tortoise",
+      "left": [
+        {
+          "uid": 101,
+          "defId": "turtle",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "staff",
+            "staff",
+            "staff"
+          ]
+        },
+        {
+          "uid": 102,
+          "defId": "guard",
+          "star": 1,
+          "position": 36,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 103,
+          "defId": "infantry",
+          "star": 1,
+          "position": 44
+        }
+      ],
+      "right": [
+        {
+          "uid": 201,
+          "defId": "guard",
+          "star": 2,
+          "position": 35,
+          "items": [
+            "heart"
+          ]
+        },
+        {
+          "uid": 202,
+          "defId": "guard",
+          "star": 2,
+          "position": 36,
+          "items": [
+            "heart"
+          ]
+        }
+      ],
+      "frames": 73,
+      "winner": 0,
+      "sha256": "453cf7bdf2373a8893e91e26d35042cb0435993bd6c95155d5aceaab0c742a68"
+    }
+  ]
+}

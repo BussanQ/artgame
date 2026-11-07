@@ -18,6 +18,8 @@ import { advanceWushi, expireWushi, wushiStrike } from "./wushi";
 import {tauntTarget,expireTaunts} from "./taunt";
 import {expireBulwarks} from "./bulwark";
 import {advanceSpiritWards,advanceSpiritWardAction,expireSpiritWards} from "./spirit-ward";
+import {advanceTortoises,advanceTortoiseAction,refreshTortoiseTaunts,tortoiseStrike} from "./tortoise";
+import {advanceExecutions,executionActionBusy,expireExecutionMarks} from "./execution";
 import { bladeStrike, seedBladeStrikes } from "./bladethrall";
 import { recordStaffAttack, retargetStaff } from "./staffthrall";
 import { advanceBladeStorm } from "./swordthrall";
@@ -27,6 +29,8 @@ import {
   CURRENT_COMBAT_VERSION,
   hasBulwarkRules,
   hasSpiritWardRules,
+  hasTortoiseRules,
+  hasExecutionRules,
   hasBoneBlastRules,
   hasThornBindRules,
   hasHiveRules,
@@ -92,7 +96,7 @@ export function army(
   side: 0 | 1,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): Fighter[] {
-  const definitionVersion = version;
+  const battleDefinitionVersion = version;
   const bonuses = traitBonuses(pieces, version);
   const teamAttack = bonuses.get("傀儡")?.teamAttack ?? 0;
   const teamHaste = bonuses.get("野兽")?.teamHaste ?? 0;
@@ -113,6 +117,7 @@ export function army(
   return pieces
     .filter((p) => p.position !== null)
     .map((p) => {
+      const definitionVersion=p.definitionVersion??battleDefinitionVersion;
       const d = unitDefinition(p.defId, definitionVersion),
         scale = 2 ** (p.star - 1) * (p.encounterPower ?? 1),
         gear = equipmentStats(p.items),
@@ -148,6 +153,8 @@ export function army(
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
       return {
+        ...(hasExecutionRules(definitionVersion)&&d.id==="reaper"?{reaper:{marks:0,trueHits:0,trueDamage:0,executions:0,enhanced:0,puppets:0,interrupted:0,missed:0}}:{}),
+        ...(hasTortoiseRules(definitionVersion) && d.id === "turtle" ? {tortoise:{formed:0,interrupted:0,taunts:0,swings:0,splashHits:0}} : {}),
         ...(hasSpiritWardRules(definitionVersion) && d.id === "deer" ? {spiritWard:{formed:0,protected:0,severed:0,interrupted:0,mitigated:0,physicalSaved:0,magicSaved:0}} : {}),
         ...(hasBulwarkRules(definitionVersion) && d.id === "guard" ? {bulwark:{formations:0,taunts:0,start:0,until:0,armor:0}} : {}),
         ...(hasRifleRules(definitionVersion) && d.id === "infantry" ? {rifle:{shots:0}} : {}),
@@ -375,7 +382,7 @@ export function army(
                   version === "brood" ||
                   version === "airsea" ||
                   version === "fleet") &&
-                ["cavalry", "turtle", "tiger"].includes(p.defId)
+                ["cavalry", "turtle", "tiger"].includes(p.defId) && !(d.id==="turtle"&&hasTortoiseRules(definitionVersion))
               ? 0
               : Math.min(
                   100,
@@ -591,6 +598,8 @@ function runBattle(
       }
     }
     expireUndying(context);
+    advanceExecutions(context);
+    advanceTortoises(context);
     advanceSpiritWards(context);
     hatchPhoenix(context);
     expireWarcry(context);
@@ -622,7 +631,7 @@ function runBattle(
           ? [...fighters]
           : fighters;
     for (const f of order) {
-      if (f.hp <= 0 || isPhoenixEgg(f)) continue;
+      if (f.hp <= 0 || isPhoenixEgg(f) || (f.executionPuppet?.born??-1)>=tick) continue;
       if (f.regeneration && !isUndying(f)) {
         const restored = Math.min(f.maxHp - f.hp, f.regeneration);
         f.hp += restored;
@@ -636,7 +645,7 @@ function runBattle(
           f.shuriken?.casting ||
           f.secretOrb?.casting || f.secretOrb?.channel ||
           f.wildfire?.casting || f.wildfire?.channel || f.thornbind?.channel ||
-          f.spiritWard?.channel || f.spiritWard?.actedAt===tick ||
+          f.spiritWard?.channel || f.spiritWard?.actedAt===tick || f.tortoise?.casting || f.tortoise?.actedAt===tick || executionActionBusy(f,tick) ||
           f.hive?.casting || f.hive?.burst || f.hive?.actedAt===tick ||
           f.combo ||
           f.bird?.draw) &&
@@ -651,6 +660,8 @@ function runBattle(
       if (advanceWildfireAction(context, f)) continue;
       if (advanceThornBindAction(context, f)) continue;
       if (advanceSpiritWardAction(context, f)) continue;
+      if (advanceTortoiseAction(context, f)) continue;
+      if (executionActionBusy(f,tick)) continue;
       if (advanceHiveAction(context, f)) continue;
       if (advanceFaithArrow(context, f)) continue;
       if (advanceHawkCombo(context, f)) continue;
@@ -687,18 +698,19 @@ function runBattle(
             distance(f, a) <= SKILLS.monk.radius,
         );
       const jungleTarget = f.jungle ? enemies.find((enemy) => jungleContains(f, enemy)) : undefined;
+      const skillTarget=f.taunt?.kind==="tortoise"?(enemies[0]??target):target;
       const canCast =
-        !forcedTarget &&
+        (!forcedTarget || f.taunt?.kind==="tortoise") &&
         skillReady(f) &&
         (f.defId !== "monk" || !!f.secretOrb || injuredAlly) &&
-        (distance(f, target) <= f.range ||
+        (distance(f, skillTarget) <= f.range ||
           !!jungleTarget ||
           !!f.wushi ||
           !!f.bulwark ||
-          (f.defId === "axethrall" && distance(f, target) <= AXE_THROW.range) ||
+          (f.defId === "axethrall" && distance(f, skillTarget) <= AXE_THROW.range) ||
           (f.defId === "venombeast" &&
-            distance(f, target) <= ACID_POLLUTION.range) ||
-          (f.burrowSkill && distance(f, target) <= PANGOLIN_BURROW.range) ||
+            distance(f, skillTarget) <= ACID_POLLUTION.range) ||
+          (f.burrowSkill && distance(f, skillTarget) <= PANGOLIN_BURROW.range) ||
           injuredAlly ||
           (f.defId === "panda" && !f.shuriken) ||
           [
@@ -716,7 +728,7 @@ function runBattle(
             "ghostjet",
             "bloodhawk",
           ].includes(f.defId));
-      if (canCast && castSkill(context, f, jungleTarget ?? target)) {
+      if (canCast && castSkill(context, f, jungleTarget ?? skillTarget)) {
         f.cooldown += attackInterval(f, tick);
       } else if (distance(f, target) > f.range) {
         f.cooldown = 0;
@@ -768,6 +780,7 @@ function runBattle(
         gainMana(f, ATTACK_MANA, tick);
         const gale = recordStaffAttack(f, target);
         if (
+          !tortoiseStrike(context,f,target) &&
           !startHiveBurst(context,f,target) &&
           !startFaithArrow(context, f, target) &&
           !startHawkCombo(context, f, target) &&
@@ -794,8 +807,10 @@ function runBattle(
       }
     }
     expireBulwarks(context);
+    refreshTortoiseTaunts(context);
     expireTaunts(context);
     expireSpiritWards(context);
+    expireExecutionMarks(context);
     expireHiveStates(context);
     expireShurikenCasts(context);
     expireSecretOrbs(context);

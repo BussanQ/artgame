@@ -2,6 +2,10 @@ import { beginWushi } from "./wushi";
 import {tauntTarget} from "./taunt";
 import {beginBulwark} from "./bulwark";
 import {beginSpiritWard,spiritWardTargets,spiritWardBuff,stopSpiritWard} from "./spirit-ward";
+import {beginTortoise,stopTortoise} from "./tortoise";
+import {beginExecution,executionCanCast,stampExecution,claimExecutionPuppet,stopExecution} from "./execution";
+import {unwardedMagicResist} from "./triggers";
+import {TORTOISE_SKILL} from "../data/skills";
 import { beginShuriken } from "./shuriken";
 import { beginSecretOrb } from "./secret-orb";
 import { beginWildfire } from "./wildfire";
@@ -162,6 +166,7 @@ export function damage(
   empowered = false,
   gale = 0,
   committed = false,
+  executionPacket = false,
 ) {
   if (
     (source.hp <= 0 &&
@@ -226,7 +231,7 @@ export function damage(
       damageType: type,
       skill,
       primary,
-      ranged: source.range > 1,
+      ranged: source.range > 1 && source.defId!=="reaper",
       ...(empowered ? { empowered: true } : {}),
       ...(assassinCritical ? { assassinCritical: true } : {}),
       ...(gale ? { gale } : {}),
@@ -251,7 +256,7 @@ export function damage(
       damageType: type,
       skill: false,
       primary,
-      ranged: source.range > 1,
+      ranged: source.range > 1 && source.defId!=="reaper",
       ...(empowered ? { empowered: true } : {}),
       ...(assassinCritical ? { assassinCritical: true } : {}),
       ...(gale ? { gale } : {}),
@@ -264,6 +269,8 @@ export function damage(
     });
     return 0;
   }
+  const markedTrue=!skill&&!periodic&&!reflected&&stampExecution(ctx,source,target);
+  if(markedTrue)type="true";
   if (!skill && source.air?.antiAir && target.air?.flying) raw *= 1.5;
   if (
     source.air &&
@@ -304,7 +311,7 @@ export function damage(
   if(ward&&type!=="true"){
     const unwardedArmor=Math.max(0,effectiveArmor(target,ctx.tick,ctx.fighters)-ward.armor-
       (target.armorBreakUntil>ctx.tick?target.armorBreak:0)-(type==="physical"?(source.armorPenetration??0):0))*(1-penetration);
-    const without=Math.max(1,Math.round(raw*(type==="physical"?100/(100+unwardedArmor*6):1-target.magicResist)));
+    const without=Math.max(1,Math.round(raw*(type==="physical"?100/(100+unwardedArmor*6):1-unwardedMagicResist(target))));
     const capacity=target.hp+target.shield,prevented=Math.max(0,Math.min(capacity,without)-Math.min(capacity,total));
     const owner=ctx.fighters.find(f=>f.uid===ward.source);
     if(prevented>0&&owner?.spiritWard){
@@ -319,6 +326,7 @@ export function damage(
   const amount = Math.min(target.hp, total - absorbed);
   target.hp -= amount;
   source.damage += amount;
+  if(markedTrue&&source.reaper){source.reaper.trueHits++;source.reaper.trueDamage+=amount;}
   if (target.hp === 0) {
     if (wasPhoenixEgg && target.wildfire) target.wildfire.brokenEggs++;
     delete target.bladeStorm;
@@ -349,7 +357,7 @@ export function damage(
     damageType: type,
     skill,
     primary,
-    ranged: source.range > 1,
+    ranged: source.range > 1 && source.defId!=="reaper",
     ...(empowered ? { empowered: true } : {}),
     ...(assassinCritical ? { assassinCritical: true } : {}),
     ...(gale ? { gale } : {}),
@@ -398,7 +406,8 @@ export function damage(
       amount * source.lifesteal,
       source.teamLifesteal ? "普攻吸血" : "治疗",
     );
-  if (target.hp === 0 && target.supportHeal > 0) {
+  const supportTriggered=target.hp===0&&target.supportHeal>0;
+  if (supportTriggered) {
     const healing = target.supportHeal,
       mana = target.supportMana;
     target.supportHeal = 0;
@@ -434,7 +443,8 @@ export function damage(
     delete target.jungleLandings;
     delete target.taunt;
   }
-  if (target.hp === 0 && !enterPhoenixEgg(ctx, target))
+  if (target.hp === 0 && !enterPhoenixEgg(ctx, target) &&
+      !(executionPacket&&claimExecutionPuppet(ctx,source,target,wasPhoenixEgg,supportTriggered)))
     enterUndying(ctx, target);
   reflectHit(amount>0 || absorbed>0);
   return amount;
@@ -604,10 +614,12 @@ export function interruptAirSkill(ctx: CombatContext, source: Fighter) {
     !source.windup &&
     !source.combo &&
     !source.bird?.draw &&
-    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting && !source.spiritWard?.channel
+    !source.wildfire?.casting && !source.wildfire?.channel && !source.thornbind?.channel && !source.hive?.casting && !source.spiritWard?.channel && !source.tortoise?.casting && !source.reaper?.casting
   )
     return;
   const wasDrawing = !!source.bird?.draw;
+  if(source.reaper?.casting)stopExecution(ctx,source);
+  if(source.tortoise?.casting)stopTortoise(ctx,source);
   if(source.spiritWard?.channel)stopSpiritWard(ctx,source,true);
   if(source.hive?.casting){source.hive.interrupted++;source.hive.actedAt=ctx.tick;delete source.hive.casting;}
   if(source.thornbind?.channel){source.thornbind.interrupted++;delete source.thornbind.channel;}
@@ -847,8 +859,8 @@ export function castSkill(
   target: Fighter,
 ) {
   if (source.gospelAura || source.rifle) return false;
-  if (tauntTarget(ctx, source)) return false;
-  const s = source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  if (source.taunt?.kind!=="tortoise"&&tauntTarget(ctx, source)) return false;
+  const s = source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -864,6 +876,8 @@ export function castSkill(
   if (!s || source.hp <= 0 || !skillReady(source) || target.hp <= 0)
     return false;
   const wardTargets=source.spiritWard?spiritWardTargets(ctx,source):[];
+  if(source.reaper&&!executionCanCast(ctx,source,target))return false;
+  if(source.tortoise&&((source.skillReadyAt??0)>ctx.tick||source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source)))return false;
   if(source.spiritWard&&(source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||
     (source.skillReadyAt??0)>ctx.tick||isUndying(source)||isPhoenixEgg(source)||!wardTargets.length))return false;
   if(source.bulwark&&(source.charm||source.stunUntil>ctx.tick||(source.silenceUntil??0)>ctx.tick||
@@ -1056,7 +1070,7 @@ export function castSkill(
         (f) =>
           f.hp > 0 &&
           f.side !== source.side &&
-          !f.summon &&
+          !f.summon && !f.executionPuppet && !f.reaper?.casting &&
           !f.charm &&
           !isPhoenixEgg(f) &&
           !bladeStormActive(f, ctx.tick) &&
@@ -1090,7 +1104,7 @@ export function castSkill(
     if (dashTo(ctx, source, farthest)) target = farthest;
     else if (distance(source, target) > source.range) return false;
   }
-  if (source.defId === "ironrooster" || source.wushi || source.bulwark || source.spiritWard) target = source;
+  if (source.defId === "ironrooster" || source.wushi || source.bulwark || source.spiritWard || source.tortoise) target = source;
   source.mana = 0;
   if (source.signature) {
     source.signature.casts++;
@@ -1647,6 +1661,7 @@ export function castSkill(
         hit(f, f.uid === target.uid);
       break;
     case "turtle":
+      if(source.tortoise){beginTortoise(ctx,source);break;}
       if (source.signature) {
         const duration = (4 + source.star * 4) * 4;
         source.signature.carapace = {
@@ -1655,6 +1670,9 @@ export function castSkill(
         };
         effect(ctx, source, source, "fortify", 12, "玄甲渐减");
       } else fortify(ctx, source, source, 12, s.duration);
+      break;
+    case "reaper":
+      beginExecution(ctx,source,target);
       break;
     case "tiger":
       for (const f of enemies().filter((f) => distance(target, f) <= s.radius))
@@ -1676,6 +1694,7 @@ export function castSkill(
         ally.stunUntil = 0;
         delete ally.thornRoot;
         delete ally.gazed;
+        delete ally.reaperMarks;
         ally.armorBreak = 0;
         ally.armorBreakUntil = 0;
         delete ally.corrosion;

@@ -1,6 +1,7 @@
 import { catalogCost } from "../data/catalog";
 import { availableUnits, isRecruitable, randomBans } from "./rotation";
 import { CURRENT_COMBAT_VERSION } from "./types";
+import {pinCatalogDefinitions} from "../data/catalog";
 import { mergePieces, pieceCopies } from "./progression";
 import { previewPurchase, previewSale } from "./recruitment";
 import { income } from "./economy";
@@ -329,6 +330,7 @@ export function nextRound(g: Game) {
   g.combatVersion = CURRENT_COMBAT_VERSION;
   g.phase = "prepare";
   for (const p of g.players.filter((p) => p.hp > 0)) {
+    pinCatalogDefinitions(g,p.pieces);
     if (previousVersion !== CURRENT_COMBAT_VERSION) mergePieces(p, g.combatVersion);
     if (!p.locked) roll(g, p, false);
   }

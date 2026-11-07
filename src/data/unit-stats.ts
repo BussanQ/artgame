@@ -2,6 +2,7 @@ import {
   CURRENT_COMBAT_VERSION,
   hasBulwarkRules,
   hasSpiritWardRules,
+  hasTortoiseRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -165,6 +166,7 @@ const oldEyeBug:UnitDef={...UNIT.eyebug,hp:450,attack:28,armor:1,range:3,interva
 const oldWasp:UnitDef={...UNIT.wasp,hp:850,attack:100,armor:3,interval:3,skill:"毒针风暴"};
 const oldGuard:UnitDef={...UNIT.guard,cost:1,hp:800,attack:36,armor:7,skill:"震荡重击"};
 const oldDeer:UnitDef={...UNIT.deer,cost:2,hp:650,attack:38,armor:2,range:3,interval:4};
+const oldTurtle:UnitDef={...UNIT.turtle,cost:4,traits:["野兽","护卫"],attack:62,armor:9,interval:4,initialMana:100,skill:"玄甲"};
 /** Keep the original portrait available to in-flight battles and historical reports. */
 export function unitSprite(
   id: string,
@@ -191,6 +193,7 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "turtle" && !hasTortoiseRules(version)) return oldTurtle;
   if (id === "deer" && !hasSpiritWardRules(version)) return oldDeer;
   if (id === "guard" && !hasBulwarkRules(version)) return oldGuard;
   if (id === "wasp" && !hasHiveRules(version)) return oldWasp;
