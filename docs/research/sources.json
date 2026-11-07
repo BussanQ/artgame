@@ -61,7 +61,8 @@
       "executionReview": "0.73核对已归档第37行转录：三费勾魂使550HP、49–63攻击、5甲、2格、1.2秒、15秒；原图此前已目视，本轮未重新下载。",
       "siegeReview": "0.74本轮实际目视原表第11行投石车三费800生命、41–50攻击、10甲5格、1秒和60秒冷却。",
       "infernoReview": "0.75实际目视S04-2第10行一费金刚650生命、42–46攻击、1.5秒、5甲、1格与60秒CD；原始转录不改写。",
-      "formlessReview": "0.77实际目视第16行幽灵机：三费500生命55–66攻击5甲1格1.1秒、回血5与CD16；确定攻击60.5和离散时序为实现选择。"
+      "formlessReview": "0.77实际目视第16行幽灵机：三费500生命55–66攻击5甲1格1.1秒、回血5与CD16；确定攻击60.5和离散时序为实现选择。",
+      "dreamReview": "0.79实际目视第23行蜘蛛：三费550生命68–75攻击、5甲3格、2.2秒及40秒CD；原转录不改写。"
     },
     {
       "id": "S05",
@@ -418,10 +419,10 @@
       "url": "https://game.xiaomi.com/viewpoint/1103968488_1555665047389_16",
       "publishedAt": "2019-04-19",
       "kind": "publisher",
-      "status": "text-reviewed",
-      "accessedAt": "2026-11-03",
+      "status": "text-and-client-images-reviewed",
+      "accessedAt": "2026-11-07",
       "targetVersion": null,
-      "note": "英雄互娱账号文章，在装备比较中给出摩托骑兵三连发和三星每发400；10秒指代可能是装备，不独立用于摩托冷却依据。"
+      "note": "英雄互娱账号文章，在装备比较中给出摩托骑兵三连发和三星每发400；10秒指代可能是装备，不独立用于摩托冷却依据。 0.80取得原始狼牙坠与灵魂之晶卡面：10%吸血／30秒召唤、30%技能强度／10秒随机500技能伤害，均标明技能唯一；原图与适配见equipment-skills-history.json。"
     },
     {
       "id": "S35",
@@ -437,7 +438,8 @@
       "wildfrontReview": "0.41再次读取原始HTML正文，确认4野兽起全军生效与先锋改为6/8护甲；配合S03恢复档位。原始HTML指纹及未核验账号标识见wildfront-history.json。",
       "bombardmentReview": "0.60复查既有原始HTML，方舟集团轰炸CD由10/8/6改为14/12/10秒；署名及账号边界保持，原始SHA见bombardment-history.json。",
       "terminatorReview": "0.61复查既有原始HTML，铁巨神终结者冷却改为14/12/10秒；保留账号标识尚未独立核验的边界，另与S04及S55一星数值互证。",
-      "formlessReview": "0.77复读归档HTML，当前索引交叉核对无形字段；直开失败不冒称重取成功。6秒、16秒及30/40/50%明确，官方账号标识仍未独立核验。"
+      "formlessReview": "0.77复读归档HTML，当前索引交叉核对无形字段；直开失败不冒称重取成功。6秒、16秒及30/40/50%明确，官方账号标识仍未独立核验。",
+      "dreamReview": "0.79实际复读归档正文：三费、5/6.5/8秒、随机选人、来源死亡立即解除；本次直开失败，账号标识边界保持。"
     },
     {
       "id": "S36",
@@ -913,6 +915,19 @@
       "status": "indexed-lead-direct-open-403",
       "targetVersion": null,
       "review": "炎狱之怒范围与减攻速数列仅作命名和本地调参线索；本轮未取得发布方原公告或完整同版技能卡，不作官方配置确证。"
+    },
+    {
+      "id": "S73",
+      "title": "赤潮自走棋蜘蛛棋子怎么用 蜘蛛棋子的优势",
+      "url": "https://www.8090.com/news/xinqing/article_328414.html",
+      "publishedAt": "2019-05-09",
+      "author": "小艾",
+      "kind": "media",
+      "status": "indexed-text-and-original-html-reviewed",
+      "accessedAt": "2026-11-07",
+      "targetVersion": null,
+      "note": "媒体保留二费、6/8/10秒旧值；时长与费用以S35改动为准。同页其他异虫说明不用于覆盖现有进化规则；攻击梯度与嘲讽为跨期媒体线索，未恢复完整原卡。",
+      "dreamReview": "迷梦、40秒CD、10/20/30%增攻和短暂嘲讽；几何和具体时长单列本地适配，见dream-history.json。"
     }
   ],
   "gospelReview": "0.52字段与置信边界见gospel-history.json；客户端三星能量末位被水印遮挡，10为暂定本地值。",
@@ -1026,5 +1041,13 @@
     "note": "一费身板与原始双臂图已目视；持续时间、星级梯度和生命周期保持明确本地适配。S72为社区转载线索，非官方原配置。"
   },
   "mendingReview": "0.76维修机资料与适配见mending-history.json；正文支持7月治疗／回能和最高攻击选人，精确梯度仍本地。S06影鱼图片实际为经典RTS，已更正使用边界。",
-  "formlessReview": "0.77实际目视S04第16行与S20第三个空军；复读S35归档的6秒隐形、16秒CD及30/40/50%加速，账号标识和跨期边界见formless-history.json。"
+  "formlessReview": "0.77实际目视S04第16行与S20第三个空军；复读S35归档的6秒隐形、16秒CD及30/40/50%加速，账号标识和跨期边界见formless-history.json。",
+  "equipmentSkillsReview": {
+    "version": "singleplayer-0.80",
+    "sourceIds": [
+      "S34"
+    ],
+    "details": "docs/research/equipment-skills-history.json",
+    "sameClientCompleteEquipmentLibraryRecovered": false
+  }
 }

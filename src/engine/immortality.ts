@@ -1,5 +1,6 @@
 import type { Fighter } from "./types";
 import { interruptAirSkill, type CombatContext } from "./abilities";
+import {releaseDream,releaseDreamsFrom} from "./dream";
 
 /** hp=1 keeps an active soul in targeting and occupancy; it is not restored life. */
 export const isUndying = (fighter: Fighter) =>
@@ -7,6 +8,8 @@ export const isUndying = (fighter: Fighter) =>
 export function enterUndying(ctx: CombatContext, fighter: Fighter) {
   const state = fighter.immortal;
   if (!state || state.spent || fighter.hp > 0) return false;
+  releaseDreamsFrom(ctx,fighter.uid);
+  releaseDream(ctx,fighter,"target-lost");
   state.spent = true;
   state.until = ctx.tick + state.duration;
   fighter.hp = 1;

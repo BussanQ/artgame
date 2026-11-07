@@ -113,7 +113,9 @@
     "test:mending": "vitest run tests/mending.test.ts",
     "test:formless": "vitest run tests/formless.test.ts",
     "test:support-actions": "vitest run tests/support-actions.test.ts",
-    "test:save-protection": "vitest run tests/save-protection.test.ts"
+    "test:save-protection": "vitest run tests/save-protection.test.ts",
+    "test:dream": "vitest run tests/dream.test.ts",
+    "test:equipment-skills": "vitest run tests/equipment-skills.test.ts"
   },
   "devDependencies": {
     "typescript": "~5.9.3",

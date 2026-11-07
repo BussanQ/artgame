@@ -41,7 +41,7 @@ export const SAVE_KEY = "red-tides.singleplayer.save";
 export const BACKUP_KEY = `${SAVE_KEY}.backup`;
 export const RECOVERY_KEY = `${SAVE_KEY}.recovery`;
 export const PRESERVED_KEY = `${SAVE_KEY}.preserved`;
-export const SAVE_SCHEMA = 77;
+export const SAVE_SCHEMA = 79;
 export interface PlaybackSave {
   time: number;
   speed: 1 | 2 | 4;
@@ -1014,8 +1014,18 @@ export function decodeSave(raw: string | null): {
     }
     if(v.schema===76&&v.rules==="singleplayer-0.77"&&record(v.game)){
       if(v.game.catalogVersion===undefined)v.game.catalogVersion="formless";
+      if(v.game.phase==="prepare")v.game.combatVersion="support-actions";
+      v.schema=77;v.rules="singleplayer-0.78";migrated=true;
+    }
+    if(v.schema===77&&v.rules==="singleplayer-0.78"&&record(v.game)){
+      if(v.game.catalogVersion===undefined)v.game.catalogVersion="support-actions";
+      if(v.game.phase==="prepare")v.game.combatVersion="dream";
+      v.schema=78;v.rules="singleplayer-0.79";migrated=true;
+    }
+    if(v.schema===78&&v.rules==="singleplayer-0.79"&&record(v.game)){
+      if(v.game.catalogVersion===undefined)v.game.catalogVersion="dream";
       if(v.game.phase==="prepare")v.game.combatVersion=CURRENT_COMBAT_VERSION;
-      v.schema=77;v.rules=RULES.version;migrated=true;
+      v.schema=79;v.rules=RULES.version;migrated=true;
     }
     if (v.schema !== SAVE_SCHEMA || v.rules !== RULES.version)
       return { data: null, status: "incompatible" };

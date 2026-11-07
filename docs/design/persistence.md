@@ -1,5 +1,9 @@
 # 本地存档与战报
 
+当前0.80使用schema79：schema78准备期升级 `equipment-skills`，战斗／结算／终局继续 `dream`，目录、资源、历史与播放状态保留，见[装备技能](equipment-skills.md)。下列版本为此前记录。
+
+当前0.79使用schema78：schema77准备期升级迷梦，战斗／结算继续support-actions；资源、目录和旧历史保留。原文保留、导出与重试入口继续使用，见[dream.md](dream.md)与[save-protection.md](save-protection.md)。以下为此前存档记录。
+
 0.78恢复后续：[保留旧档并保存当前局](save-protection.md)增加独立保留区、当前局写入恢复、旧档导出和失败重试；原保存schema77不变。30项必要模块与构建通过，实际界面／下载验收因浏览器连接未响应尚待完成。
 
 0.59使用schema58：56→57固定shuriken/0.58，57→58仅准备期升级secret-orb。新禅师四费15份，旧三费目录、价格与实际份数保持；战斗/结果/终局和历史继续旧规则，下一准备期升级。197组旧完整回放、四阶段付费捕获与旧R8三费报价/旧R7治疗贡献见[秘法兼容](secret-orb.md)。

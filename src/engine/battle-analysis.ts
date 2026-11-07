@@ -4,6 +4,8 @@ import type { Battle, Fighter } from "./types";
 
 export type BattleMetric = "damage" | "received" | "healing" | "absorbed";
 export interface UnitContribution {
+  equipmentSkills?:Fighter["equipmentSkills"];
+  dream?:Fighter["dream"];
   formless?:Pick<NonNullable<Fighter["formless"]>,"activations"|"hits"|"damage"|"shieldDamage">;
   mending?:Pick<NonNullable<Fighter["mending"]>,"completed"|"healing"|"energy"|"hastes"|"interrupted"|"missed">;
   inferno?:Pick<NonNullable<Fighter["inferno"]>,"formed"|"hits"|"slows"|"healing"|"interrupted">;
@@ -64,6 +66,8 @@ export interface UnitContribution {
 }
 function contribution(f: Fighter): UnitContribution {
   return {
+    ...(f.equipmentSkills?{equipmentSkills:structuredClone(f.equipmentSkills)}:{}),
+    ...(f.dream?{dream:{...f.dream}}:{}),
     ...(f.formless?{formless:{activations:f.formless.activations,hits:f.formless.hits,damage:f.formless.damage,shieldDamage:f.formless.shieldDamage}}:{}),
     ...(f.mending?{mending:{completed:f.mending.completed,healing:f.mending.healing,energy:f.mending.energy,hastes:f.mending.hastes,interrupted:f.mending.interrupted,missed:f.mending.missed}}:{}),
     ...(f.inferno?{inferno:{formed:f.inferno.formed,hits:f.inferno.hits,slows:f.inferno.slows,healing:f.inferno.healing,interrupted:f.inferno.interrupted}}:{}),

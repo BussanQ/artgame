@@ -203,7 +203,7 @@ describe("装备工坊总览", () => {
     expect(html).toContain("点击持有人查看最后的星级、装备与阵位");
     const workshop = equipmentMarkup(game, 101, false);
     expect(workshop).toContain("3 背包 · 4 已装");
-    expect(workshop).toContain("合成配方 · 10 种</summary>");
+    expect(workshop).toContain(`合成配方 · ${ITEMS.filter(item => item.recipe).length} 种</summary>`);
     expect(workshop).not.toContain("种可合成");
     expect(workshop).not.toContain("data-unequip=");
     expect(workshop).not.toContain("挑战野怪获取装备");

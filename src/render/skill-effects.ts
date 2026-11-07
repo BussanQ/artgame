@@ -19,6 +19,8 @@ import {siegeLabels} from "./siege";
 import {infernoLabels} from "./inferno";
 import {mendingLabels} from "./mending";
 import {formlessLabels} from "./formless";
+import {dreamLabels} from "./dream";
+import {drawEquipmentEffect,equipmentSkillLabels} from "./equipment-skills";
 import {tortoiseLabels} from "./tortoise";
 import {spiritWardLabels} from "./spirit-ward";
 import { shieldWaveCells } from "../engine/shieldthrall";
@@ -38,6 +40,7 @@ export function drawSkillEffect(
   age: number,
   reducedMotion = false,
 ) {
+  if(e.kind==="equipment"){drawEquipmentEffect(c,e,age,reducedMotion);return;}
   if (drawWarcryEffect(c,e,age,reducedMotion)) return;
   if (drawBoneBlastEffect(c,e,age,reducedMotion)) return;
   if (e.name === "燎原烈焰") return; // Draw the actual maintained area once, not one overlay per pulse.
@@ -1095,6 +1098,8 @@ export function drawStatuses(
   labels.push(...infernoLabels(f,time));
   labels.push(...mendingLabels(f,time));
   labels.push(...formlessLabels(f,time));
+  labels.push(...dreamLabels(f,time));
+  labels.push(...equipmentSkillLabels(f,time));
   labels.push(...tortoiseLabels(f,time));
   labels.push(...spiritWardLabels(f,time));
   if(f.rifle)labels.push(`被动射击 · 已开火 ${f.rifle.shots}次 · 无能量技能`);

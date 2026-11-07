@@ -6,6 +6,7 @@ import {beginSiege,stopSiege} from "./siege";
 import {beginInferno,stopInferno,infernoCanCast,infernoActive,attackSlowRate} from "./inferno";
 import {beginMending,stopMending,mendingCanCast,mendingTarget,mendingHaste} from "./mending";
 import {beginFormless,formlessCanCast,formlessActive,formlessHaste} from "./formless";
+import {beginDream,dreamCanCast,dreamTarget,releaseDream,releaseDreamsFrom,recordDreamHit} from "./dream";
 import {beginTortoise,stopTortoise} from "./tortoise";
 import {beginExecution,executionCanCast,stampExecution,claimExecutionPuppet,stopExecution} from "./execution";
 import {unwardedMagicResist} from "./triggers";
@@ -78,7 +79,7 @@ import {
   SPIRIT_WARD_SKILL,
   SIEGE,SIEGE_SKILL,
   INFERNO,INFERNO_SKILL,
-  MENDING_SKILL,FORMLESS_SKILL,
+  MENDING_SKILL,FORMLESS_SKILL,DREAM_SKILL,
   HAWK_METAMORPH,
   AXE_THROW,
   TUSK_CHARGE,
@@ -106,6 +107,7 @@ export const combatAttack = (f: Fighter, tick: number) =>
   (f.attack + (f.siege?.mode?SIEGE.attack[f.star-1]:0) +
     (f.taotie?.rage && f.taotie.rage.until > tick ? f.taotie.rage.attack : 0)) *
   (1 + (f.aurora?.stacks ?? 0) * AURORA.attackPerStack) *
+  (1 + (f.charm?.source!==undefined&&f.charm.until>tick ? f.charm.bonus??0 : 0)) *
   (1 +
     Math.max(
       f.attackBoost && f.attackBoost.until > tick ? f.attackBoost.ratio : 0,
@@ -336,11 +338,13 @@ export function damage(
   const amount = Math.min(target.hp, total - absorbed);
   target.hp -= amount;
   source.damage += amount;
+  if(!skill&&!periodic&&!reflected)recordDreamHit(ctx,source,amount,absorbed);
   if(!skill&&!periodic&&!reflected&&(amount>0||absorbed>0)&&formlessActive(source,ctx.tick)){
     source.formless!.hits++;source.formless!.damage+=amount;source.formless!.shieldDamage+=absorbed;
   }
   if(markedTrue&&source.reaper){source.reaper.trueHits++;source.reaper.trueDamage+=amount;}
   if (target.hp === 0) {
+    releaseDreamsFrom(ctx,target.uid);
     if (wasPhoenixEgg && target.wildfire) target.wildfire.brokenEggs++;
     delete target.bladeStorm;
     delete target.petrifyUntil;
@@ -460,6 +464,7 @@ export function damage(
     delete target.jungleLandings;
     delete target.taunt;
   }
+  if(target.hp===0)releaseDream(ctx,target,"target-lost");
   if (target.hp === 0 && !enterPhoenixEgg(ctx, target) &&
       !(executionPacket&&claimExecutionPuppet(ctx,source,target,wasPhoenixEgg,supportTriggered)))
     enterUndying(ctx, target);
@@ -881,7 +886,7 @@ export function castSkill(
 ) {
   if (source.gospelAura || source.rifle) return false;
   if (source.taunt?.kind!=="tortoise"&&tauntTarget(ctx, source)) return false;
-  const s = source.formless ? FORMLESS_SKILL : source.mending ? MENDING_SKILL : source.inferno ? INFERNO_SKILL : source.siege ? SIEGE_SKILL : source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
+  const s = source.dream ? DREAM_SKILL : source.formless ? FORMLESS_SKILL : source.mending ? MENDING_SKILL : source.inferno ? INFERNO_SKILL : source.siege ? SIEGE_SKILL : source.tortoise ? TORTOISE_SKILL : source.spiritWard ? SPIRIT_WARD_SKILL : source.bulwark ? BULWARK_SKILL : source.hive ? HIVE_SKILL : source.gaze ? GAZE_SKILL : source.thornbind ? THORNBIND_SKILL : source.boneblast ? BONEBLAST_SKILL : source.wildfire ? WILDFIRE_SKILL : source.tornado ? TORNADO_SKILL : source.warcry ? WARCRY_SKILL : source.terminator ? TERMINATOR_SKILL : source.bombardment ? BOMBARDMENT_SKILL : source.secretOrb ? SECRET_ORB_SKILL : source.shuriken ? SHURIKEN_SKILL : source.wushi ? WUSHI_SKILL : source.jungle ? JUNGLE_SKILL : source.storm ? STORM_SKILL : source.tar
     ? TAR_SKILL
     : source.taotie
       ? TAOTIE_SKILL
@@ -1089,7 +1094,10 @@ export function castSkill(
     )
   )
     return false;
-  if (source.charmCast) {
+  if(source.dream){
+    if(!dreamCanCast(ctx,source))return false;
+    const victim=dreamTarget(ctx,source);if(!victim)return false;target=victim;
+  } else if (source.charmCast) {
     const victim = ctx.fighters
       .filter(
         (f) =>
@@ -1658,7 +1666,8 @@ export function castSkill(
       stun(ctx, source, target, 6);
       break;
     case "spider":
-      if (source.charmCast) {
+      if(source.dream)beginDream(ctx,source,target);
+      else if (source.charmCast) {
         interruptAirSkill(ctx, target);
         target.charm = {
           until: ctx.tick + (source.star + 1) * 4,
@@ -1667,6 +1676,7 @@ export function castSkill(
         };
         target.side = source.side;
         target.attack *= 1.2;
+        releaseDreamsFrom(ctx,target.uid);
         source.charmCast = "spent";
       }
       break;
@@ -1719,8 +1729,9 @@ export function castSkill(
     case "fish":
       for (const ally of ctx.fighters.filter(
         (f) =>
-          f.side === source.side && f.hp > 0 && distance(source, f) <= s.radius,
+          (f.side === source.side || f.charm?.source!==undefined&&f.charm.side===source.side) && f.hp > 0 && distance(source, f) <= s.radius,
       )) {
+        if(ally.charm?.source!==undefined&&ally.charm.side===source.side)releaseDream(ctx,ally,"cleanse");
         ally.stunUntil = 0;
         delete ally.thornRoot;
         delete ally.gazed;

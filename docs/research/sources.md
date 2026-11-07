@@ -1,5 +1,7 @@
 # 公开来源目录
 
+本轮补充：[S73 蜘蛛早期媒体说明](https://www.8090.com/news/xinqing/article_328414.html)，并复读S35归档、实际目视S04第23行。媒体旧时长不覆盖公告新值，详见[dream-history.json](dream-history.json)。
+
 0.77幽灵机复核：[S04／S20／S35逐字段证据与边界](formless-history.json)。以原始图表、原帖归档和当前索引交叉核对；不把直开失败写成已重取，不把未核验账号标识写成已确认。
 
 0.75金刚：[逐字段研究](inferno-history.json)与[原生ImageGen提示词](inferno-assets.json)。本轮目视S04-2第10行及S20原始客户端陆行者图，重解析S05金刚段，并通过web读取S26。S64沿用既有索引测量，本轮直接403；新增S72仅为7/11社区转载线索，不作发布方原配置。未取得完整同版技能卡，梯度和生命周期单列本地适配。

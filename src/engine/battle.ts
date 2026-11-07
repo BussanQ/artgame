@@ -3,6 +3,8 @@ import {emptyInferno,advanceInfernos,infernoActionBusy} from "./inferno";
 import {emptyMending,advanceMendings,mendingActionBusy} from "./mending";
 import {emptyFormless,advanceFormless} from "./formless";
 import {advanceWithoutTarget} from "./support-actions";
+import {emptyDream,advanceDreams} from "./dream";
+import {initialEquipmentSkills,advanceEquipmentSkills} from "./equipment-skills";
 import { advanceTarBombs, updateTarBombPositions } from "./tar";
 import { lightningStrike } from "./lightning";
 import { advanceGospel } from "./gospel";
@@ -41,6 +43,7 @@ import {
   hasMendingRules,
   hasFormlessRules,
   hasSupportActionRules,
+  hasDreamRules,hasEquipmentSkillRules,
   hasBoneBlastRules,
   hasThornBindRules,
   hasHiveRules,
@@ -162,7 +165,10 @@ export function army(
           ? (bonuses.get("召唤")?.summonWard ?? 0)
           : 0);
       const seaWard = d.flying ? (bonuses.get("海神")?.seaWard ?? 0) : 0;
+      const equipmentSkills=hasEquipmentSkillRules(battleDefinitionVersion)?initialEquipmentSkills(p.items):undefined;
       return {
+        ...(equipmentSkills?{equipmentSkills}:{}),
+        ...(hasDreamRules(definitionVersion)&&d.id==="spider"?{dream:emptyDream()}:{}),
         ...(hasFormlessRules(definitionVersion)&&d.id==="ghostjet"?{formless:emptyFormless(),innateRegen:true as const}:{}),
         ...(hasMendingRules(definitionVersion)&&d.id==="repair"?{mending:emptyMending()}:{}),
         ...(hasInfernoRules(definitionVersion)&&d.id==="vajra"?{inferno:emptyInferno()}:{}),
@@ -581,6 +587,7 @@ function runBattle(
     const events: CombatEvent[] = [];
     const effects: CombatEffect[] = [];
     const context = { fighters, tick, events, effects };
+    advanceDreams(context);
     expireWushi(context);
     expireBulwarks(context);
     expireTaunts(context);
@@ -589,7 +596,7 @@ function runBattle(
       f.flash = false;
       if (f.bladeStorm && (f.hp <= 0 || f.bladeStorm.until <= tick))
         delete f.bladeStorm;
-      if (f.charm && f.charm.until <= tick) {
+      if (f.charm && f.charm.source===undefined && f.charm.until <= tick) {
         f.side = f.charm.side;
         f.attack = f.charm.attack;
         delete f.charm;
@@ -638,6 +645,7 @@ function runBattle(
     advanceSecretOrbPulses(context);
     advanceWildfirePulses(context);
     advanceGospel(context);
+    advanceEquipmentSkills(context);
     // Alternate initiative each tick to avoid permanent left-side first-action priority.
     const order =
       tick % 2
@@ -650,7 +658,7 @@ function runBattle(
           ? [...fighters]
           : fighters;
     for (const f of order) {
-      if (f.hp <= 0 || isPhoenixEgg(f) || (f.executionPuppet?.born??-1)>=tick) continue;
+      if (f.hp <= 0 || isPhoenixEgg(f) || (f.executionPuppet?.born??-1)>=tick || f.summon?.item&&f.summon.born>=tick) continue;
       if (f.regeneration && !isUndying(f)) {
         const restored = Math.min(f.maxHp - f.hp, f.regeneration);
         f.hp += restored;

@@ -7,6 +7,7 @@ import {
   hasInfernoRules,
   hasMendingRules,
   hasFormlessRules,
+  hasDreamRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -71,6 +72,10 @@ const define = (
   ...skill,
 });
 export const SIEGE_SKILL=define({name:SIEGE.name,role:SIEGE.role,description:SIEGE.description});
+/** S35 duration/random draw/source-death release; S04 cooldown. Taunt geometry is local. */
+export const DREAM={name:"迷梦",role:"随机策反与引火",duration:[20,26,32],attack:[0.1,0.2,0.3],cooldown:160,tauntRadius:2,tauntDuration:6,
+ description:"初始能量50。满能量时从3格内随机选择一名可见的非召唤敌人，使其暂时加入己方5/6.5/8秒，并提高攻击力10/20/30%（一/二/三星）。选人使用独立确定序列，不按攻击高低，也不影响商店随机；不能选择残魂、火种、刑傀、已被魅惑或免控中的敌人。被策反者立即嘲讽周围2格可见的原队友1.5秒，迫使后续普攻和追击转向自己并阻止新技能；已出手的攻击不撤销。控制期间可移动和普攻，不能施法或回能；只改变当前战斗阵营，不改变原归属、棋子、装备或卡池。蜘蛛阵亡、进入残魂、失去自身阵营，或目标死亡、化蛋、进入残魂时立即断开；眩晕和沉默不会撤回已成功的蛛丝。目标原阵营的灵鱼可驱散魅惑及附带嘲讽。控制自然结束时只撤回本次攻击增益，保留期间其他合法增益。冷却40秒，在本地40秒战斗上限内每场一次；法强不增加时长、攻击增幅或嘲讽。魅惑最后敌人不会直接判胜；控制命中、诱导普攻生命伤害及破盾独立显示，仍按实际攻击者记账，不重复增加蜘蛛本体伤害。"} as const;
+export const DREAM_SKILL=define({name:DREAM.name,role:DREAM.role,description:DREAM.description});
 /** Client field and visible 4/7 rates; the obscured third rate (10), geometry and cadence are local. */
 export const GOSPEL = {
   name: "福音",
@@ -929,6 +934,7 @@ export function skillDescription(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): string {
+  if (id === "spider" && hasDreamRules(version)) return DREAM.description;
   if (id === "ghostjet" && hasFormlessRules(version)) return FORMLESS.description;
   if (id === "repair" && hasMendingRules(version)) return MENDING.description;
   if (id === "vajra" && hasInfernoRules(version)) return INFERNO.description;
@@ -1064,6 +1070,7 @@ export const skillName = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "spider" && hasDreamRules(version) ? DREAM.name :
   id === "ghostjet" && hasFormlessRules(version) ? FORMLESS.name :
   id === "repair" && hasMendingRules(version) ? MENDING.name :
   id === "vajra" && hasInfernoRules(version) ? INFERNO.name :
@@ -1130,6 +1137,7 @@ export const skillRole = (
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ) =>
+  id === "spider" && hasDreamRules(version) ? DREAM.role :
   id === "ghostjet" && hasFormlessRules(version) ? FORMLESS.role :
   id === "repair" && hasMendingRules(version) ? MENDING.role :
   id === "vajra" && hasInfernoRules(version) ? INFERNO.role :

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "reviewedAt": "2026-11-07",
-  "rules": "singleplayer-0.78",
+  "rules": "singleplayer-0.80",
   "scope": "2019-04-24种族表S20与2019-04-30职业表S25的去重名单；不是统一版本数值复原。",
   "summary": {
     "aprilUniqueUnits": 53,
@@ -1079,7 +1079,10 @@
       ],
       "sourceIds": [
         "S20",
-        "S25"
+        "S25",
+        "S35",
+        "S04",
+        "S73"
       ],
       "currentUnitId": "spider",
       "currentName": "蜘蛛",
@@ -1089,7 +1092,8 @@
       ],
       "mapping": "name-only",
       "classificationMatches": true,
-      "note": "同名角色；属性、技能与费用须单独核对。"
+      "note": "同名角色；属性、技能与费用须单独核对。",
+      "implementationNote": "0.79迷梦随机策反、5/6.5/8秒与来源死亡解除；S04身板、媒体增攻和本地引火／驱散边界见dream-history.json。"
     },
     {
       "historicalName": "杀人蜂",

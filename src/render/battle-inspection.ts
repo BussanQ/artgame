@@ -35,7 +35,7 @@ export function compactBattleLabels(f: Fighter, time: number) {
   if(f.gazed&&f.gazed.until>time&&f.stunUntil>time)labels.push("凝视压制");
   if (f.stunUntil > time)
     labels.push(petrified(f,time) ? "石化" : f.knockup && f.knockup.until > time ? "击飞" : "眩晕");
-  if (f.charm) labels.push("魅惑");
+  if (f.charm) labels.push(f.charm.source!==undefined?"迷梦策反":"魅惑");
   if (f.taunt && f.taunt.until > time) labels.push("嘲讽");
   if ((f.silenceUntil ?? 0) > time) labels.push("沉默");
   if (isPhoenixEgg(f)) labels.push("涅槃");

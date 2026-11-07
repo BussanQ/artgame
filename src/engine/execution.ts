@@ -2,6 +2,7 @@ import {EXECUTION} from "../data/skills";
 import {emptyInferno} from "./inferno";
 import {emptyMending} from "./mending";
 import {emptyFormless} from "./formless";
+import {emptyDream} from "./dream";
 import {damage,type CombatContext} from "./abilities";
 import {attackTargets} from "./triggers";
 import {isPhoenixEgg} from "./phoenix";
@@ -73,7 +74,7 @@ export function claimExecutionPuppet(ctx:CombatContext,source:Fighter,victim:Fig
   copy.hp=1;copy.mana=0;copy.shield=0;copy.damage=0;copy.healing=0;copy.absorbed=0;copy.cooldown=0;copy.flash=false;
   copy.immortal={duration,until:ctx.tick+duration,spent:true};
   copy.supportHeal=0;copy.supportMana=0;copy.reflection=0;copy.stunUntil=0;copy.silenceUntil=0;copy.manaLockUntil=0;
-  for(const key of ["reaper","reaperMarks","charm","command","corrosion","knockup","jungleLandings","taunt","gazed","burn","slow","thornRoot","spiritWards","combo","windup",
+  for(const key of ["equipmentSkills","reaper","reaperMarks","charm","command","corrosion","knockup","jungleLandings","taunt","gazed","burn","slow","thornRoot","spiritWards","combo","windup",
     "gospelAura","bulwark","spiritWard","tortoise","gaze","thornbind","boneblast","wildfire","tornado","warcry","terminator","bombardment","secretOrb","shuriken","jungle","storm","tar","aurora","qiSkill"] as const)delete copy[key];
   if(copy.siege)copy.siege={formed:0,fired:0,impacts:0,splashHits:0,splashDamage:0,interrupted:0,shells:[],...(copy.siege.mode?{mode:true}:{})};
   delete copy.attackSlows;
@@ -81,6 +82,7 @@ export function claimExecutionPuppet(ctx:CombatContext,source:Fighter,victim:Fig
   if(copy.inferno)copy.inferno=emptyInferno();
   if(copy.mending)copy.mending=emptyMending();
   if(copy.formless)copy.formless=emptyFormless();
+  if(copy.dream)copy.dream=emptyDream();
   if(copy.air)delete copy.air.cast;
   if(copy.rifle)copy.rifle.shots=0;
   if(copy.hive)copy.hive={volleys:0,needles:0,explosions:0,innerHits:0,outerHits:0,interrupted:0};

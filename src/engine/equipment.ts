@@ -13,8 +13,8 @@ import {
   hasTortoiseRules,
   hasSiegeRules,
   hasInfernoRules,
-  hasMendingRules,
-  hasFormlessRules,
+  hasMendingRules,hasDreamRules,
+  hasFormlessRules,hasEquipmentSkillRules,
 } from "./types";
 import { COMPONENTS, ITEM, ITEMS } from "../data/items";
 import { UNIT } from "../data/units";
@@ -117,11 +117,13 @@ export function itemScore(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): number {
+  const equipmentVersion=version;
   version=piece.definitionVersion??version;
   const siege=hasSiegeRules(version)&&piece.defId==="chariot";
   const inferno=hasInfernoRules(version)&&piece.defId==="vajra";
   const mending=hasMendingRules(version)&&piece.defId==="repair";
   const formless=hasFormlessRules(version)&&piece.defId==="ghostjet";
+  const dream=hasDreamRules(version)&&piece.defId==="spider";
   const tortoise=hasTortoiseRules(version)&&piece.defId==="turtle";
   const wushi = hasWushiRules(version) && piece.defId === "master";
   const lightning = hasLightningRules(version) && piece.defId === "thunderlord";
@@ -169,14 +171,16 @@ export function itemScore(
       (hasAmbushRules(version) && u.id === "pangolin") ||
       SKILLS[u.id].damageType === "magic" ||
       SKILLS[u.id].healRatio > 0);
+  const uniqueCredit=hasEquipmentSkillRules(equipmentVersion)&&!(piece.items??[]).includes(id)
+    ? ITEM[id].effect==="resonance"?150:ITEM[id].effect==="call"?105:0 : 0;
   return (
-    (s.attack ?? 0) * (u.range > 1 ? 2 : 1) * expectedAttack +
-    (s.hp ?? 0) * (gospel ? 0.2 : tank ? 0.2 : 0.08) +
-    (s.armor ?? 0) * (gospel ? 8 : tank ? 10 : 4) +
+    uniqueCredit + (s.attack ?? 0) * (u.range > 1 ? 2 : 1) * expectedAttack +
+    (s.hp ?? 0) * (gospel ? 0.2 : tank ? 0.2 : dream ? 0.16 : 0.08) +
+    (s.armor ?? 0) * (gospel ? 8 : tank ? 10 : dream ? 8 : 4) +
     (s.haste ?? 0) * u.attack * 4 * expectedAttack +
     (s.lifesteal ?? 0) * u.attack * 3 * expectedAttack +
     (s.skillPower ?? 0) *
-      (mending ? MENDING.healing[piece.star-1]*0.3 : inferno ? INFERNO.damage[piece.star-1]*1.5*0.75 : formless || lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise || siege
+      (mending ? MENDING.healing[piece.star-1]*0.3 : inferno ? INFERNO.damage[piece.star-1]*1.5*0.75 : dream || formless || lightning || gospel || wushi || rifle || gaze || bulwark || spiritWard || tortoise || siege
         ? 0
         : (version === "signature" ||
               version === "summons" ||
@@ -239,8 +243,25 @@ export function equipBot(g: Game, p: Player) {
     p.inventory.push(...(piece.items ?? []));
     piece.items = [];
   }
-  for (const item of ITEMS.filter((i) => i.recipe))
-    while (canCraft(p, item.id)) craft(g, p, item.id);
+  if(hasEquipmentSkillRules(g.combatVersion)){
+    const carriers=p.pieces.filter(piece=>piece.position!==null);
+    const value=(id:string)=>Math.max(0,...carriers.map(piece=>{
+      // One unique proc per carrier; spare copies must not repeatedly receive its full credit.
+      const saturated=!!ITEM[id].effect&&p.inventory.filter(item=>item===id).length>=carriers.length;
+      const planned=saturated?{...piece,items:[...(piece.items??[]),id]}:piece;
+      return itemScore(planned,id,g.combatVersion)*piece.star;
+    }));
+    const budget=p.inventory.length;
+    for(let step=0;step<budget;step++){
+      const candidates=ITEMS.filter(item=>item.recipe&&canCraft(p,item.id)).map(item=>({
+        id:item.id,gain:value(item.id)-item.recipe!.reduce((sum,part)=>sum+value(part),0),value:value(item.id),
+      })).filter(item=>item.gain>0).sort((a,b)=>b.gain-a.gain||b.value-a.value||a.id.localeCompare(b.id));
+      if(!candidates.length||!craft(g,p,candidates[0].id))break;
+    }
+  }else{
+    for (const item of ITEMS.filter((i) => i.recipe&&!i.effect))
+      while (canCraft(p, item.id)) craft(g, p, item.id);
+  }
   for (let index = p.inventory.length - 1; index >= 0; index--) {
     const candidates = p.pieces
       .filter((x) => x.position !== null && (x.items?.length ?? 0) < 3 &&

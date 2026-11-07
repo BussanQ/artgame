@@ -9,6 +9,7 @@ export function fighterName(
   f: Pick<Fighter, "defId" | "summon" | "hawkForm" | "phoenix" | "executionPuppet">,
 ) {
   if(f.executionPuppet)return `${UNIT[f.defId].name}·刑傀`;
+  if(f.summon?.item)return "呼号傀儡";
   if (f.summon?.kind === "puppet") return "灵木傀儡";
   if (f.summon?.kind === "sentinel") return "镇海盾卫";
   return f.summon ? "幽影幼狼" : UNIT[f.defId].name;
@@ -193,7 +194,7 @@ export function callWolfPack(ctx: CombatContext, source: Fighter): boolean {
 }
 
 export function summonOwnerName(f: Pick<Fighter, "summon">) {
-  return f.summon?.kind === "puppet"
+  return f.summon?.item ? "狼牙坠" : f.summon?.kind === "puppet"
     ? "真人"
     : f.summon?.kind === "sentinel"
       ? "须弥鲨"
@@ -218,43 +219,10 @@ export const RETINUE = {
   },
 };
 /** An adept replenishes at most two living puppets; a shark calls its guard once. */
-export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
-  const state = source.summoning;
-  if (
-    !state ||
-    state.spent ||
-    ctx.tick < state.readyAt ||
-    source.mana < 100 ||
-    source.hp <= 0 ||
-    source.summon
-  )
-    return false;
-  const profile = RETINUE[state.kind];
-  const capacity =
-    state.kind === "puppet"
-      ? 2 -
-        ctx.fighters.filter((f) => f.hp > 0 && f.summon?.owner === source.uid)
-          .length
-      : profile.count;
-  const forward = source.side === 0 ? -1 : 1;
-  const cells = [
-    [0, forward],
-    [-1, 0],
-    [1, 0],
-    [0, -forward],
-  ]
-    .map(([dx, dy]) => ({ x: source.x + dx, y: source.y + dy }))
-    .filter(
-      (p) =>
-        p.x >= 0 &&
-        p.x < 8 &&
-        p.y >= 0 &&
-        p.y < 8 &&
-        !ctx.fighters.some((f) => f.hp > 0 && f.x === p.x && f.y === p.y),
-    )
-    .slice(0, Math.max(0, Math.min(capacity, profile.count)));
-  if (!cells.length) return false;
-  const scale = 2 ** (source.star - 1) * source.skillPower;
+/** Shared transient actor construction; item pets have fixed base stats and never inherit item skills. */
+export function spawnRetinue(ctx:CombatContext,source:Fighter,kind:"puppet"|"sentinel",cells:{x:number;y:number}[],item?:"wolf-fang"){
+  const state={kind},profile=RETINUE[kind];
+  const scale = item ? 1 : 2 ** (source.star - 1) * source.skillPower;
   let uid = Math.min(0, ...ctx.fighters.map((f) => f.uid)) - 1;
   for (const cell of cells) {
     const hp = Math.round(profile.hp * scale);
@@ -274,7 +242,7 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
       ...(source.reflection ? { reflection: source.reflection } : {}),
       uid: uid--,
       defId: profile.defId,
-      star: source.star,
+      star: item ? 1 : source.star,
       side: source.side,
       ...(source.air
         ? {
@@ -297,7 +265,7 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
           }
         : {}),
       ...cell,
-      summon: { owner: source.uid, born: ctx.tick, kind: state.kind },
+      summon: { owner: source.uid, born: ctx.tick, kind: state.kind, ...(item?{item}:{}) },
       signature: { casts: 0, attacks: 0, concealed: false },
       hp,
       maxHp: hp,
@@ -338,11 +306,39 @@ export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
       target: uid + 1,
       kind: "teleport",
       amount: 1,
-      name: state.kind === "puppet" ? "傀儡化生" : "盾卫降临",
+      name: item ? "狼牙坠·呼号" : state.kind === "puppet" ? "傀儡化生" : "盾卫降临",
       from: { x: source.x, y: source.y },
       to: cell,
     });
   }
+  return cells.length;
+}
+export function summonCells(ctx:CombatContext,source:Fighter,count:number){
+  const forward=source.side===0?-1:1;
+  return [[0,forward],[-1,0],[1,0],[0,-forward]].map(([dx,dy])=>({x:source.x+dx,y:source.y+dy}))
+    .filter(p=>p.x>=0&&p.x<8&&p.y>=0&&p.y<8&&!ctx.fighters.some(f=>f.hp>0&&f.x===p.x&&f.y===p.y)).slice(0,count);
+}
+export function callRetinue(ctx: CombatContext, source: Fighter): boolean {
+  const state = source.summoning;
+  if (
+    !state ||
+    state.spent ||
+    ctx.tick < state.readyAt ||
+    source.mana < 100 ||
+    source.hp <= 0 ||
+    source.summon
+  )
+    return false;
+  const profile = RETINUE[state.kind];
+  const capacity =
+    state.kind === "puppet"
+      ? 2 -
+        ctx.fighters.filter((f) => f.hp > 0 && f.summon?.owner === source.uid && !f.summon.item)
+          .length
+      : profile.count;
+  const cells=summonCells(ctx,source,Math.max(0,Math.min(capacity,profile.count)));
+  if (!cells.length) return false;
+  spawnRetinue(ctx,source,state.kind,cells);
   if (state.kind === "sentinel") {
     // One landing stun per enemy, even if both guards land beside it.
     for (const enemy of ctx.fighters.filter(

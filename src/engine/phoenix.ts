@@ -1,6 +1,7 @@
 import { setFlight } from "./sea-ward";
 import type { Fighter } from "./types";
 import type { CombatContext } from "./abilities";
+import {releaseDream,releaseDreamsFrom} from "./dream";
 
 export const isPhoenixEgg = (fighter: Pick<Fighter, "phoenix">) =>
   !!fighter.phoenix && fighter.phoenix.eggUntil > 0;
@@ -9,6 +10,8 @@ export const isPhoenixEgg = (fighter: Pick<Fighter, "phoenix">) =>
 export function enterPhoenixEgg(ctx: CombatContext, fighter: Fighter) {
   const state = fighter.phoenix;
   if (!state || state.spent || fighter.star < 2 || fighter.hp > 0) return false;
+  releaseDreamsFrom(ctx,fighter.uid);
+  releaseDream(ctx,fighter,"target-lost");
   if (fighter.wildfire) fighter.wildfire.eggs++;
   state.spent = true;
   state.eggUntil = ctx.tick + 12;

@@ -1,6 +1,6 @@
 import { catalogCost, catalogUnit } from "../data/catalog";
 import { unitArmor,unitAttackInterval,unitDefinition } from "../data/unit-stats";
-import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules,hasInfernoRules,hasMendingRules,hasFormlessRules } from "./types";
+import { CURRENT_COMBAT_VERSION, hasGospelRules, hasTortoiseRules, hasSiegeRules,hasInfernoRules,hasMendingRules,hasFormlessRules,hasDreamRules } from "./types";
 import { isInsect, insectCount, mergeCount, pieceCopies } from "./progression";
 import { army, simulateOutcome } from "./battle";
 import { usesEnergy } from "./triggers";
@@ -23,7 +23,7 @@ import {
   SIEGE,
   INFERNO,
   MENDING,
-  FORMLESS,
+  FORMLESS,DREAM,
   TORTOISE,
   EXECUTION,
   AURORA,
@@ -255,7 +255,9 @@ export function abilityCredit(
     case "skytoad":
       return (0.22 + 0.06 + Math.min(0.08, 0.04 * p.star)) * readiness; // Threshold execution plus some first-feast sustain/rage, not unlimited kills or skill-power scaling.
     case "spider":
-      return Math.min(0.24, 0.08 + p.star * 0.04) * readiness;
+      return hasDreamRules(p.definitionVersion??CURRENT_COMBAT_VERSION)
+        ? Math.min(0.3,0.1+DREAM.duration[p.star-1]/160*0.6+DREAM.attack[p.star-1]*0.1)*readiness
+        : Math.min(0.24, 0.08 + p.star * 0.04) * readiness;
     case "flametrooper":
       attacks = (skill.multiplier + 0.35 * 2) * 1.6;
       break;

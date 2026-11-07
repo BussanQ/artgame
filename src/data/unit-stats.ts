@@ -7,6 +7,7 @@ import {
   hasInfernoRules,
   hasMendingRules,
   hasFormlessRules,
+  hasDreamRules,
   hasHiveRules,
   hasGazeRules,
   hasRifleRules,
@@ -58,6 +59,7 @@ const oldChariot: UnitDef = {...UNIT.chariot,cost:2,hp:620,attack:100,armor:5,ra
 const oldVajra:UnitDef={...UNIT.vajra,cost:2,hp:900,attack:42,interval:4,initialMana:25,skill:"镇岳重击"};
 const oldRepair:UnitDef={...UNIT.repair,hp:500,attack:24,armor:2,range:3,interval:4,initialMana:50,skill:"战地维修"};
 const oldGhost:UnitDef={...UNIT.ghostjet,hp:640,attack:90,armor:3,range:3,interval:3,initialMana:undefined,regeneration:undefined,skill:"幽影迁跃"};
+const oldSpider:UnitDef={...UNIT.spider,hp:650,attack:45,armor:3,interval:4,skill:"迷梦蛛丝"};
 const oldChariotSniper: UnitDef = {...oldChariot,traits:previousTraits.chariot};
 const oldPangolin: UnitDef = {
   ...UNIT.pangolin,
@@ -205,6 +207,7 @@ export function unitDefinition(
   id: string,
   version: CombatVersion = CURRENT_COMBAT_VERSION,
 ): UnitDef {
+  if (id === "spider" && !hasDreamRules(version)) return oldSpider;
   if (id === "ghostjet" && !hasFormlessRules(version)) return oldGhost;
   if (id === "vajra" && !hasInfernoRules(version)) return oldVajra;
   if (id === "repair" && !hasMendingRules(version)) return oldRepair;

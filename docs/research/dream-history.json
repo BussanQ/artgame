@@ -1,0 +1,146 @@
+{
+  "version": "singleplayer-0.79",
+  "reviewedAt": "2026-11-07",
+  "sameClientCompleteCardRecovered": false,
+  "sources": [
+    {
+      "id": "S35",
+      "url": "https://www.taptap.cn/moment/15209355339104422?group_id=42979",
+      "kind": "原始更新公告归档",
+      "eventDate": "2019-05-09",
+      "pageModifiedAt": "2019-05-08",
+      "author": "拉克西丝",
+      "readThisTurn": "实际复读已取得HTML正文；本次web直开失败，不称重新取得。",
+      "fields": {
+        "cost": 3,
+        "durationSeconds": [
+          5,
+          6.5,
+          8
+        ],
+        "target": "随机敌军",
+        "sourceDeath": "立即恢复被控单位"
+      },
+      "archive": {
+        "path": "tmp/wildfront-s35-v041.html",
+        "bytes": 229992,
+        "sha256": "8abb8a45cc529d7ce184ef2f90f68749f2d74c04bbc440a0e02ab7af5391d781"
+      },
+      "limits": "未另行核验作者的官方账号标识；公告是改动记录，非完整技能卡。"
+    },
+    {
+      "id": "S04",
+      "url": "https://www.taptap.cn/moment/15213091339897518",
+      "kind": "原始社区测量",
+      "publishedAt": "2019-07-08",
+      "readThisTurn": "实际目视第一表第23行蜘蛛。",
+      "image": {
+        "path": "docs/research/images/s04-main-attributes.jpg",
+        "bytes": 283542,
+        "sha256": "899c7645515f590feb18f29e052d8d27d7d9049d40cbe9769dfd5750e1056945"
+      },
+      "fields": {
+        "cost": 3,
+        "hp": 550,
+        "attackMin": 68,
+        "attackMax": 75,
+        "armor": 5,
+        "range": 3,
+        "intervalSeconds": 2.2,
+        "skillCooldownSeconds": 40,
+        "traits": [
+          "异虫",
+          "异能"
+        ]
+      },
+      "limits": "客户端构建未标明，不能与五月公告称为统一版本。"
+    },
+    {
+      "id": "S73",
+      "url": "https://www.8090.com/news/xinqing/article_328414.html",
+      "kind": "早期媒体技能说明",
+      "publishedAt": "2019-05-09",
+      "readThisTurn": "web索引正文及普通HTTP原始页面均取得。",
+      "archive": {
+        "path": "tmp/dream-spider-s73-media.html",
+        "bytes": 28825,
+        "sha256": "a38dd83b5a95e08c2244de1ea8ef452f41b3d7ffd99009566c7d08a79ccbd953"
+      },
+      "fields": {
+        "name": "迷梦",
+        "attackBonus": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "taunt": "短暂嘲讽",
+        "skillCooldownSeconds": 40,
+        "oldDurationSeconds": [
+          6,
+          8,
+          10
+        ]
+      },
+      "limits": "媒体保留二费、6/8/10秒旧值；时长与费用以S35改动为准。同页其他异虫说明不用于覆盖现有进化规则；攻击梯度与嘲讽为跨期媒体线索，未恢复完整原卡。"
+    }
+  ],
+  "implementation": {
+    "hp": 550,
+    "attack": 71.5,
+    "attackMethod": "确定均值，不模拟未知随机区间",
+    "intervalTicks": 8.8,
+    "tickSeconds": 0.25,
+    "durationTicks": [
+      20,
+      26,
+      32
+    ],
+    "cooldownTicks": 160,
+    "attackBonus": [
+      0.1,
+      0.2,
+      0.3
+    ],
+    "tauntRadiusManhattan": 2,
+    "tauntTicks": 6
+  },
+  "localAdaptations": [
+    "保留初始能量50；满能量瞬时施放、3格射程与可重放的独立随机序列",
+    "暂时攻击倍率独立于基础攻击，不回滚其他合法成长",
+    "嘲讽曼哈顿2格和1.5秒；只影响后续行动，不取消在途技能",
+    "非召唤／非刑傀／非残魂／非火种／非隐蔽／非免控的合法目标限制",
+    "目标原队灵鱼可驱散，同队灵鱼不误解除；控制方改变阵营时解除其旧控制",
+    "源死亡当帧、源离场、目标死亡／化蛋／残魂时清理；眩晕与沉默不驱散已完成的控制",
+    "本地40秒战斗上限内每场一次；不能用法强扩大持续或攻击梯度",
+    "原归属用于胜负和贡献分组，诱导普攻的生命伤害与破盾单列，不重复增加蜘蛛伤害",
+    "有限持续时间的AI估值与来源生存装备权重"
+  ],
+  "visuals": {
+    "asset": "public/assets/units/spider.png",
+    "provenance": "复用仓库既有ImageGen形象；本轮没有新生成或编辑图片。",
+    "newPresentation": [
+      "蛛丝曲线",
+      "被控目标环",
+      "剩余时间和攻击增幅",
+      "低动态静止连线"
+    ],
+    "browserAcceptance": "not-verified"
+  },
+  "legacy": {
+    "through": "support-actions",
+    "hp": 650,
+    "attack": 45,
+    "armor": 3,
+    "intervalTicks": 4,
+    "skill": "迷梦蛛丝",
+    "target": "3格内攻击最高",
+    "durationSeconds": [
+      2,
+      3,
+      4
+    ],
+    "attackBonus": 0.2,
+    "sourceDeath": "持续到原到期时间",
+    "frozenFixture": "tests/fixtures/pre-v079-dream.json"
+  }
+}

@@ -208,8 +208,8 @@ describe("异虫战斗技能", () => {
     expect(castSkill(ctx, bee, target)).toBe(true);
     expect(ctx.events.at(-1)?.attacker).toBe(bee.uid);
   });
-  it("蜘蛛魅惑范围内最强非召唤敌人，控制期间不可施法或回能，每场一次", () => {
-    const spider = fighter("spider", 1),
+  it("旧版蜘蛛魅惑范围内最强非召唤敌人，控制期间不可施法或回能，每场一次", () => {
+    const spider = army([piece("spider",1,1,35)],0,"support-actions")[0],
       weak = fighter("guard", 2, 1),
       strong = fighter("titan", 3, 1),
       pet = fighter("guard", 4, 1);

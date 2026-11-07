@@ -28,10 +28,10 @@ export const COMBAT_VERSIONS = [
   "brood", "airsea", "fleet", "metamorph", "infantry", "armored",
   "puppets", "wildfront", "ambush", "formations", "counterplay", "lineages",
   "coalitions", "aurora", "qi", "taotie", "tar", "lightning", "gospel",
-  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege", "inferno", "mending", "formless", "support-actions",
+  "thunderstorm", "jungle", "continuity", "wushi", "wushi-control", "shuriken", "secret-orb", "bombardment", "terminator", "warcry", "tornado", "wildfire", "boneblast", "thornbind", "rifle", "gaze", "hive", "bulwark", "spirit-ward", "tortoise", "execution", "siege", "inferno", "mending", "formless", "support-actions", "dream", "equipment-skills",
 ] as const;
 export type CombatVersion = typeof COMBAT_VERSIONS[number];
-export const CURRENT_COMBAT_VERSION: CombatVersion = "support-actions";
+export const CURRENT_COMBAT_VERSION: CombatVersion = "equipment-skills";
 const hasRuleSince = (version: CombatVersion, first: CombatVersion) =>
   COMBAT_VERSIONS.indexOf(version) >= COMBAT_VERSIONS.indexOf(first);
 export const hasBoneBlastRules = (version: CombatVersion) => hasRuleSince(version,"boneblast");
@@ -47,6 +47,8 @@ export const hasInfernoRules = (version: CombatVersion) => hasRuleSince(version,
 export const hasMendingRules = (version: CombatVersion) => hasRuleSince(version,"mending");
 export const hasFormlessRules = (version: CombatVersion) => hasRuleSince(version,"formless");
 export const hasSupportActionRules = (version: CombatVersion) => hasRuleSince(version,"support-actions");
+export const hasDreamRules = (version: CombatVersion) => hasRuleSince(version,"dream");
+export const hasEquipmentSkillRules = (version: CombatVersion) => hasRuleSince(version,"equipment-skills");
 export const hasExecutionRules = (version: CombatVersion) => hasRuleSince(version,"execution");
 export const hasWildfireRules = (version: CombatVersion) => hasRuleSince(version,"wildfire");
 export const hasTornadoRules = (version: CombatVersion) => hasRuleSince(version,"tornado");
@@ -315,7 +317,7 @@ export interface Fighter {
     casting?: { start: number; until: number };
   };
   /** Short forced aggression; source death, invalid allegiance or cleanse releases it. */
-  taunt?: { source: number; until: number; kind?:"bulwark"|"tortoise" };
+  taunt?: { source: number; until: number; kind?:"bulwark"|"tortoise"|"dream" };
   /** Released forest waves and actual two-stage control applications, battle-local only. */
   jungle?: { waves: number; hits: number; knockups: number; landings: number };
   /** A committed knockup lands even after its caster dies; cleansing removes the pending stun. */
@@ -510,11 +512,16 @@ export interface Fighter {
   armorPenetration?: number;
   deathBurst?: "ready" | "spent";
   charmCast?: "ready" | "spent";
-  charm?: { until: number; attack: number; side: 0 | 1 };
+  dream?: { selections:number; controls:number; taunts:number; released:number; cleansed:number; hits:number; damage:number; shieldDamage:number };
+  charm?: { until: number; attack: number; side: 0 | 1; source?:number; bonus?:number };
   summoning?: { kind: "puppet" | "sentinel"; readyAt: number; spent: boolean };
   summonWard?: number;
   packCall?: "ready" | "spent";
-  summon?: { owner: number; born: number; kind?: "puppet" | "sentinel" };
+  summon?: { owner: number; born: number; kind?: "puppet" | "sentinel"; item?:"wolf-fang" };
+  equipmentSkills?: {
+    resonance?: {readyAt:number; activations:number; damage:number; shieldDamage:number};
+    call?: {readyAt:number; activations:number; summoned:number};
+  };
   signature?: {
     casts: number;
     attacks: number;
@@ -568,6 +575,7 @@ export interface CombatEffect {
   source: number;
   target: number;
   kind:
+    | "equipment"
     | "taunt"
     | "slow"
     | "sonic"
@@ -602,6 +610,8 @@ export interface CombatEffect {
   to: { x: number; y: number };
 }
 export interface CombatEvent {
+  /** One original equipment packet; reflections and later death effects keep their own identity. */
+  item?:"soul-crystal";
   /** Avoided consumption of existing HP/shield; credited to one strongest live deer connection. */
   ward?:{source:number;prevented:number};
   /** Secondary ordinary physical contact made by the transformed panda's cleave. */
