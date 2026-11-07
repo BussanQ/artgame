@@ -9,10 +9,9 @@ export function queueShopCommand(game: Game, command: string, quantity = 1) {
     return { ok: false, message: "请在准备阶段输入指令。" };
   if (!Number.isInteger(quantity) || quantity < 1 || quantity > RULES.shop)
     return { ok: false, message: `数量需为 1–${RULES.shop} 的整数。` };
-  const input = command.trim();
-  if (!input.startsWith("/") || !input.slice(1).trim())
-    return { ok: false, message: "请输入 /兵种完整名称，例如 /投石车。" };
-  const name = input.slice(1).trim();
+  const name = command.trim().replace(/^\//, "").trim();
+  if (!name)
+    return { ok: false, message: "请输入兵种完整名称，例如投石车。" };
   const unit = UNITS.find((u) => catalogUnit(game, u.id).name === name);
   if (!unit) return { ok: false, message: "未找到该兵种，请使用图鉴中的完整名称。" };
   if (!isRecruitable(game, unit.id))

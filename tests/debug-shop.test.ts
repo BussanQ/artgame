@@ -48,9 +48,9 @@ function checkpoint(phase: Game["phase"]) {
 }
 
 describe("后台定向招募指令", () => {
-  it("输入完整名称只排队，不预扣金币、库存或随机数", () => {
+  it.each(["投石车", "  投石车  ", "  / 投石车  "])("输入 %s 只排队，不预扣金币、库存或随机数", (command) => {
     const { game } = setup(), before = structuredClone(game);
-    expect(queueShopCommand(game, "  / 投石车  ").ok).toBe(true);
+    expect(queueShopCommand(game, command).ok).toBe(true);
     expect(game).toEqual({ ...before, debugShopQueue: ["chariot"] });
     expect(validGame(game)).toBe(true);
   });
@@ -90,7 +90,7 @@ describe("后台定向招募指令", () => {
     expect(game.debugShopQueue).toEqual([id, id, id]);
     expect(validGame(game)).toBe(true);
   });
-  it.each(["投石车", "/", " /  ", "/chariot", "/不存在的兵种", '/\"><img src=x onerror=alert(1)>'])(
+  it.each(["", "/", " /  ", "/chariot", "/不存在的兵种", '/\"><img src=x onerror=alert(1)>'])(
     "无效指令 %s 不改变任何游戏状态", (command) => {
       const { game } = setup(), before = structuredClone(game);
       expect(queueShopCommand(game, command).ok).toBe(false);

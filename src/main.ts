@@ -152,7 +152,7 @@ let equipmentOverviewOpen = false;
 let equipmentHeldOnly = false;
 let settingsOpen = false;
 let debugOpen = false;
-let debugCommand = "/";
+let debugCommand = "";
 let debugQuantity = "1";
 let debugNotice: { ok: boolean; message: string } | null = null;
 let unitInfo: Piece | null = null;
@@ -453,7 +453,7 @@ function render() {
               `<button data-action="${action}" ${disabled(computing || fighting || game.phase === "result")}>${label}</button>`,
           )
           .join("")}</div></details>`
-  }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="debug" title="按 / 输入兵种指令">后台模式${game.debugShopQueue?.length ? ` · ${game.debugShopQueue.length}` : ""}</button><button data-action="restart">重新开始</button></nav><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></header>
+  }<button data-action="codex">棋子图鉴</button><button data-action="history">本局战报</button><button data-action="help">作战指南</button><button data-action="settings">设置</button><button data-action="debug" title="按 / 打开后台模式">后台模式${game.debugShopQueue?.length ? ` · ${game.debugShopQueue.length}` : ""}</button><button data-action="restart">重新开始</button></nav><button class="primary start" data-action="next" ${disabled(!!demoBattle || computing || saveConflict || !!game.reward || fighting || (!onboard.length && !done && game.phase === "prepare"))}>${computing ? "正在计算…" : game.phase === "battle" && !result ? "恢复战斗" : done ? "开始新演习" : game.phase === "result" ? (game.reward ? "选择战利品" : "下一回合 →") : "开始战斗 →"}</button></header>
  ${computing || computeError ? `<section class="compute-status" role="status" aria-live="polite"><span>${computing ? pendingJob?.label : computeError}</span><div>${!computing ? '<button data-action="retry-compute">重试计算</button>' : ""}<button data-action="cancel-compute">${computing ? "取消计算" : "关闭"}</button></div></section>` : ""}
  <h1 class="toolbar-title">${demoBattle ? (replayRound ? `第 ${replayRound} 回合 · 战斗回放` : spiritWardDemo ? "灵鹿庇护 · 战术演习" : bulwarkDemo ? "盾阵护卫 · 战术演习" : hiveDemo ? "蜂群双环 · 战术演习" : gazeDemo ? "凝视压制 · 战术演习" : rifleDemo ? "步枪火力 · 战术演习" : thornbindDemo ? "荆棘汲取 · 战术演习" : boneblastDemo ? "骨球震爆 · 战术演习" : wildfireDemo ? "燎原涅槃 · 战术演习" : tornadoDemo ? "龙卷穿阵 · 战术演习" : warcryDemo ? "战吼石化 · 战术演习" : terminatorDemo ? "终结者轰炸 · 战术演习" : bombardmentDemo ? "集团轰炸 · 战术演习" : secretOrbCounterDemo ? "秘法反制 · 战术演习" : secretOrbDemo ? "秘法削能 · 战术演习" : shurikenDemo ? "风魔飞镖 · 战术演习" : wushiDemo ? "武僧无式 · 战术演习" : jungleDemo ? "丛林震荡 · 战术演习": thunderstormDemo ? "雷暴削能 · 战术演习" : gospelDemo ? "福音供能 · 战术演习" : lightningDemo ? "雷神锁链 · 战术演习" : tarDemo ? "焦油爆破 · 战术演习" : taotieDemo ? "饕餮狂暴 · 战术演习" : auroraDemo ? "极光成长 · 战术演习" : coalitionDemo ? "空援协同 · 战术演习" : abnormalDemo ? "异能续战 · 战术演习" : counterplayDemo ? "狙骑反制 · 战术演习" : assassinDemo ? "六刺突袭 · 战术演习" : wildfrontDemo ? "荒原先锋 · 战术演习" : lingjiuDemo ? "海神刺杀 · 战术演习" : beastDemo ? "野兽破阵 · 战术演习" : staffDemo ? "疾风棍阵 · 战术演习" : shieldDemo ? "傀儡卫阵 · 战术演习" : bladeDemo ? "傀儡战刃 · 战术演习" : swordDemo ? "傀儡先锋 · 战术演习" : axeDemo ? "傀儡刺杀 · 战术演习" : armorDemo ? "装甲爆破 · 战术演习" : riderDemo ? "骑射编队 · 战术演习" : wildDemo ? "猛禽陆行 · 战术演习" : immortalDemo ? "灵能不朽 · 战术演习" : airseaDemo ? "空海舰队 · 战术演习" : insectDemo ? "异虫蜂群 · 战术演习" : summonDemo ? "召唤卫阵 · 战术演习" : demoTitle) : done ? "演习结束" : fighting ? "交战进行中" : game.phase === "result" ? "战斗结算" : "赤潮战术演习"}</h1>
  ${!demoBattle ? matchSummaryMarkup(game) : ""}
@@ -611,7 +611,7 @@ function reset() {
   saveConflict = false;
   saveNotice = "";
   closePanels();
-  debugCommand = "/";
+  debugCommand = "";
   debugQuantity = "1";
   debugNotice = null;
   deploymentOpen = false;
@@ -788,7 +788,7 @@ function openDebugShop(command?: string) {
 function submitDebugCommand() {
   if (!debugOpen || !canEditDebugShop()) return;
   debugNotice = queueShopCommand(game, debugCommand, Number(debugQuantity));
-  if (debugNotice.ok) debugCommand = "/";
+  if (debugNotice.ok) debugCommand = "";
   render();
   focusDebugCommand();
 }
@@ -1623,7 +1623,7 @@ document.addEventListener("keydown", (e) => {
     !(e.target instanceof HTMLElement && (e.target.isContentEditable || e.target.closest("input, textarea, select"))) &&
     !app.querySelector('[role="dialog"]')) {
     e.preventDefault();
-    openDebugShop("/");
+    openDebugShop("");
     return;
   }
   const cell =
