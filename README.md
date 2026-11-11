@@ -140,7 +140,16 @@ npm install
 npm run dev
 ```
 
-浏览器打开终端输出的本地地址（默认 http://127.0.0.1:5173）。
+在项目根目录的 `.env.local` 中设置 `GAME_ACCESS_TOKEN`，启动服务后打开 `http://127.0.0.1:5173/?token=你的令牌`（端口以终端输出为准）。开发服务与 `npm run preview` 都会校验令牌。若通过其他 Web 服务器托管 `dist/`，需在该服务器配置访问校验。
+
+使用 Nginx 在独立站点根路径部署时，将站点的 `root` 指向 `dist/`。在 `server {}` 中使用 `include /etc/nginx/red-tides.locations.conf;`，用[仓库提供的配置](deploy/nginx/red-tides.locations.conf)替换原有的游戏页面及静态资源 location。将该文件复制到对应 include 路径，在网站目录之外创建 `/etc/nginx/private/red-tides-keys.conf`，设置两条指令：
+
+```nginx
+set $game_access_token "替换为本局部署的访问令牌";
+set $game_asset_session "替换为独立生成的随机串";
+```
+
+第一项填入与本地 `GAME_ACCESS_TOKEN` 相同的值，第二项可用 `openssl rand -hex 32` 生成。运行 `nginx -t && nginx -s reload` 生效。访问页面时必须在 URL 携带令牌，浏览器用会话 Cookie 加载该页面的脚本和图片。
 
 ```sh
 npm run test:qi # 气波掌、冷却/打断、属性、版本形象及旧回放的必要模块

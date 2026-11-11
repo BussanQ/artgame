@@ -518,6 +518,7 @@ function render() {
       detail.open = disclosures.get(detail.dataset.disclosure!) ?? false;
     });
   syncMobileNavigation();
+  app.querySelector<HTMLAnchorElement>("a.brand")!.search = window.location.search;
   scene = new BattleScene(
     document.querySelector<HTMLCanvasElement>("#battle-canvas")!,
     () => ({
