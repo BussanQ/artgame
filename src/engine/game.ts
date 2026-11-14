@@ -241,6 +241,22 @@ export function resumeRound(g: Game): RoundResult | null {
     outcomes,
   };
 }
+export function settlePlayer(g: Game, p: Player, kind: RoundResult["kind"], won: boolean, damage: number) {
+  p.hp = Math.max(0, p.hp - damage);
+  if (kind === "pvp")
+    p.streak = won ? Math.max(0, p.streak) + 1 : Math.min(0, p.streak) - 1;
+  if (p.hp === 0) {
+    p.eliminatedRound = g.round;
+    for (const x of p.pieces) g.pool[x.defId] += pieceCopies(x);
+    for (const id of p.shop) if (id) g.pool[id]++;
+    p.shop = [];
+    p.pieces = [];
+    p.inventory = [];
+  } else {
+    p.gold += income(p, kind === "pvp" && won, g.round);
+    addXp(p, 1);
+  }
+}
 export function settle(g: Game, result: RoundResult): void {
   if (
     g.phase !== "battle" ||
@@ -256,23 +272,8 @@ export function settle(g: Game, result: RoundResult): void {
     bench = structuredClone(
       g.players[0].pieces.filter((piece) => piece.position === null),
     );
-  for (const o of result.outcomes) {
-    const p = g.players[o.playerId];
-    p.hp = Math.max(0, p.hp - o.damage);
-    if (result.kind === "pvp")
-      p.streak = o.won ? Math.max(0, p.streak) + 1 : Math.min(0, p.streak) - 1;
-    if (p.hp === 0) {
-      p.eliminatedRound = g.round;
-      for (const x of p.pieces) g.pool[x.defId] += pieceCopies(x);
-      for (const id of p.shop) if (id) g.pool[id]++;
-      p.shop = [];
-      p.pieces = [];
-      p.inventory = [];
-    } else {
-      p.gold += income(p, result.kind === "pvp" && o.won, g.round);
-      addXp(p, 1);
-    }
-  }
+  for (const o of result.outcomes)
+    settlePlayer(g, g.players[o.playerId], result.kind, o.won, o.damage);
   const won = result.battle.winner === 0;
   g.history.push({
     round: g.round,

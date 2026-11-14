@@ -118,9 +118,13 @@
     "test:equipment-skills": "vitest run tests/equipment-skills.test.ts",
     "test:whale-eye": "vitest run tests/whale-eye.test.ts",
     "test:detonation": "vitest run tests/detonation.test.ts",
-    "test:debug-shop": "vitest run tests/debug-shop.test.ts"
+    "test:debug-shop": "vitest run tests/debug-shop.test.ts",
+    "build:online": "vite build --ssr server/start.ts --outDir dist-server",
+    "start:online": "node --env-file-if-exists=.env.local dist-server/start.js",
+    "test:online": "vitest run tests/online.test.ts"
   },
   "devDependencies": {
+    "@types/node": "^22.20.5",
     "typescript": "~5.9.3",
     "vite": "^7.2.2",
     "vitest": "^3.2.4"

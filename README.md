@@ -151,6 +151,41 @@ set $game_asset_session "替换为独立生成的随机串";
 
 第一项填入与本地 `GAME_ACCESS_TOKEN` 相同的值，第二项可用 `openssl rand -hex 32` 生成。运行 `nginx -t && nginx -s reload` 生效。访问页面时必须在 URL 携带令牌，浏览器用会话 Cookie 加载该页面的脚本和图片。
 
+### 联机对战
+
+从游戏菜单进入「联机对战」。房主创建房间，其他玩家用各自的浏览器打开同一游戏地址，输入六位房间号加入。房主开始比赛时，系统把空位补成电脑，最多八人。真人共享禁用系列和卡池，各自招募、部署和管理装备。每轮有 45 秒准备时间，所有存活真人准备完毕可提前开战。野怪回合自动分配装备，玩家回合双方观看同一场战斗，奇数席位中一人挑战镜像。淘汰后可以继续查看排名。
+
+开发服务与预览服务内置房间接口。局域网测试可以运行 `npx vite --host 0.0.0.0 --port 5174`，各设备通过同一台服务器的带令牌地址进入。
+
+**Docker 单容器部署**包含网页、Nginx 和联机房间服务。在仓库根目录构建镜像：
+
+```sh
+docker pull nginx:latest
+docker build -f deploy/docker/Dockerfile -t red-tides:local .
+```
+
+如果项目根目录已有包含 `GAME_ACCESS_TOKEN` 的 `.env.local`，启动时传入即可使用原来的访问令牌：
+
+```sh
+docker run -d --name red-tides --restart unless-stopped -p 8088:80 --env-file .env.local red-tides:local
+```
+
+打开 `http://服务器地址:8088/?token=你的令牌`，进入「联机对战」即可建房。也可以省略 `--env-file .env.local`，容器会自动生成访问令牌，通过 `docker logs red-tides` 查看。房间服务在容器内监听 5175，玩家统一从映射的网页端口访问。重启容器会结束内存中的对局。
+
+Nginx 部署时，在 Node.js 22.12+ 或 24 的服务器上从项目根目录运行：
+
+```sh
+npm ci --include=dev
+npm run build
+npm run build:online
+npm run start:online
+```
+
+网页仍由 Nginx 提供 `dist/`。将最新版 `deploy/nginx/red-tides.locations.conf` 放到现有站点的 include 路径，测试配置并重新加载。片段将 `/api/online/` 转发给默认监听 `127.0.0.1:5175` 的房间进程。房间进程从环境变量或项目根目录的 `.env.local` 读取 `GAME_ACCESS_TOKEN`，值须与 Nginx 页面令牌相同。若 Nginx 与 Node 分属两个容器，请将它们加入同一 Docker 网络，给 Node 设置 `ONLINE_HOST=0.0.0.0`，并将 `proxy_pass` 的主机改为 Node 的服务名。可用 `ONLINE_PORT` 更改后端端口。
+
+房间由单个 Node 进程保存在内存中。部署时保持该进程运行，进程重启会结束当前房间。同一标签页刷新可恢复原席位，已开始的对局中离线超过 60 秒的玩家由电脑临时操作，重连后可在准备阶段继续。房间连续 10 分钟无人访问会回收。联机进度与单人存档独立。
+
+
 ```sh
 npm run test:qi # 气波掌、冷却/打断、属性、版本形象及旧回放的必要模块
 npm run test:aurora # 协同、13系列、回能、冲突、迁移及旧回放的必要模块

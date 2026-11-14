@@ -1177,8 +1177,8 @@ function recruitmentPlan(g: Game, p: Player) {
   };
 }
 
-export function prepareBot(g: Game, p: Player, actions: BotActions) {
-  if (g.phase !== "prepare" || p.hp <= 0 || p.id === 0) return;
+export function prepareBot(g: Game, p: Player, actions: BotActions, allowSeatZero = false) {
+  if (g.phase !== "prepare" || p.hp <= 0 || (p.id === 0 && !allowSeatZero)) return;
   const profile = profileFor(p),
     settings = DIFFICULTIES[g.difficulty],
     reserve = savingsTarget(g, p);

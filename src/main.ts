@@ -396,7 +396,7 @@ function render() {
   const ranked = rankings(game);
   const saveMarkup = currentSaveNotice();
   renderedSaveNotice = saveMarkup;
-  app.innerHTML = `<div class="shell" data-mobile-view="${mobileView}"><header class="game-toolbar${saveMarkup ? " has-save-notice" : ""}"><a class="brand" href="/" aria-label="赤潮战术演习主页"><span class="brand-mark">赤</span><span>赤潮 <b>RED TIDES</b><small>战 争 艺 术 / AUTO CHESS</small></span></a><div class="mode"><i></i>单人演习 <span>${DIFFICULTIES[game.difficulty].name} · 你 + 7 位 AI</span></div>${!demoBattle ? rotationMarkup(game) : ""}<div class="round"><small>回合</small><strong>${String(replayRound ?? game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? (replayRound ? "历史回放" : "战斗演示") : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "选择战利品" : "回合结算", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? `${(frame * RULES.tickSeconds).toFixed(1)}s` : fighting ? `${(frame * RULES.tickSeconds).toFixed(1)}s` : ""}</small></div><span class="toolbar-save-host" data-save-notice-host>${saveMarkup}</span><button class="mobile-tools-toggle" data-action="mobile-tools" aria-controls="game-tools" aria-expanded="${mobileToolsOpen}">菜单</button><nav id="game-tools" aria-label="演习工具"><button data-jump="recruitment">招募</button>${
+  app.innerHTML = `<div class="shell" data-mobile-view="${mobileView}"><header class="game-toolbar${saveMarkup ? " has-save-notice" : ""}"><a class="brand" href="/" aria-label="赤潮战术演习主页"><span class="brand-mark">赤</span><span>赤潮 <b>RED TIDES</b><small>战 争 艺 术 / AUTO CHESS</small></span></a><div class="mode"><i></i>单人演习 <span>${DIFFICULTIES[game.difficulty].name} · 你 + 7 位 AI</span></div>${!demoBattle ? rotationMarkup(game) : ""}<div class="round"><small>回合</small><strong>${String(replayRound ?? game.round).padStart(2, "0")}</strong><span>/ ${RULES.maxRounds}</span></div><div class="phase"><span class="phase-dot"></span>${demoBattle ? (replayRound ? "历史回放" : "战斗演示") : { prepare: "准备阶段", battle: "自动战斗", result: game.reward ? "选择战利品" : "回合结算", finished: "最终战报" }[game.phase]}<small class="battle-clock">${demoBattle ? `${(frame * RULES.tickSeconds).toFixed(1)}s` : fighting ? `${(frame * RULES.tickSeconds).toFixed(1)}s` : ""}</small></div><span class="toolbar-save-host" data-save-notice-host>${saveMarkup}</span><button class="mobile-tools-toggle" data-action="mobile-tools" aria-controls="game-tools" aria-expanded="${mobileToolsOpen}">菜单</button><nav id="game-tools" aria-label="演习工具"><button data-action="online">联机对战</button><button data-jump="recruitment">招募</button>${
     demoBattle
       ? `<button data-action="demo" ${disabled(computing || fighting || game.phase === "result")}>${replayRound ? "退出回放" : "退出演示"}</button>`
       : `<details class="demo-menu"><summary data-focus="demo-menu">战斗演示</summary><div class="demo-options">${[
@@ -517,7 +517,6 @@ function render() {
     .forEach((detail) => {
       detail.open = disclosures.get(detail.dataset.disclosure!) ?? false;
     });
-  syncMobileNavigation();
   app.querySelector<HTMLAnchorElement>("a.brand")!.search = window.location.search;
   scene = new BattleScene(
     document.querySelector<HTMLCanvasElement>("#battle-canvas")!,
@@ -856,6 +855,12 @@ app.addEventListener("click", (e) => {
   }
   const p = me(),
     action = target.dataset.action;
+  if (action === "online") {
+    const url = new URL(location.href);
+    url.searchParams.set("mode", "online");
+    location.assign(url);
+    return;
+  }
   if (action === "mobile-tools") {
     mobileToolsOpen = !mobileToolsOpen;
     syncMobileNavigation();

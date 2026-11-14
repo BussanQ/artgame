@@ -1,3 +1,4 @@
+import { roomService } from "./server/http";
 import { randomBytes } from "node:crypto";
 import { defineConfig, loadEnv, type Connect } from "vite";
 
@@ -45,13 +46,20 @@ function accessGate(token: string | undefined): Connect.NextHandleFunction {
   };
 }
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, isSsrBuild }) => {
   const { GAME_ACCESS_TOKEN } = loadEnv(mode, process.cwd(), "GAME_ACCESS_TOKEN");
+  function install(server: import("vite").ViteDevServer | import("vite").PreviewServer) {
+    const rooms = roomService(GAME_ACCESS_TOKEN);
+    server.httpServer?.once("close", rooms.close);
+    server.middlewares.use(rooms.handle);
+    server.middlewares.use(accessGate(GAME_ACCESS_TOKEN));
+  }
   return {
+    publicDir: isSsrBuild ? false : "public",
     plugins: [{
       name: "game-access",
-      configureServer(server) { server.middlewares.use(accessGate(GAME_ACCESS_TOKEN)); },
-      configurePreviewServer(server) { server.middlewares.use(accessGate(GAME_ACCESS_TOKEN)); },
+      configureServer: install,
+      configurePreviewServer: install,
     }],
   };
 });
