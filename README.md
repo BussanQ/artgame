@@ -160,7 +160,6 @@ set $game_asset_session "替换为独立生成的随机串";
 **Docker 单容器部署**包含网页、Nginx 和联机房间服务。在仓库根目录构建镜像：
 
 ```sh
-docker pull nginx:latest
 docker build -f deploy/docker/Dockerfile -t red-tides:local .
 ```
 
